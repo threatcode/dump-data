@@ -1,0 +1,9 @@
+{
+    "name": "ringID frontend",
+    "version": "0.1.0",
+    "description": "ringID auth Server api",
+    "apidoc": {
+        "title": "ringID auth Server api",
+        "url" : "http://ringid.com"
+    }
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <div><button onclick="test()">Send</button></div>
+
+        <script>
+
+		
+		
+
+//            var myArray = new ArrayBuffer(1);
+//            var longInt8View = new Uint8Array(myArray);
+//
+//
+//
+//            console.log(myArray.length);
+//
+//            var xhr = new XMLHttpRequest;
+//            xhr.open("POST", "http://localhost:50006/test1?test=test123", false);
+//            xhr.send(myArray);
+//
+
+
+//?rs={"actn":20,"pckId":"LSKJDFLKJOIEJRGLLDFKSDKFUEIJFKJ","usrPw":"aaaaaa","lt":1,"uId":"2000001786","vsn":1015,"dvc":5,"wk":"kiikdkdifikkdidkdkkd","tbid":1}
+//&loginInfo={"lt":1,"uId":"2000001786","wk":"kiikdkdifikkdidkdkkd","tbid":1}
+//&pkt_type=1
+
+
+var d = new Date();
+var n = d.getMilliseconds();
+
+var pktid=n+"kjskdfjlksdjflksjdlfk";
+
+var wk=n+"oppoweirpowerpowekjflsdjf";
+
+
+var rs_json={"actn":20,"pckId":pktid,"usrPw":"aaaaaa","lt":1,"uId":"2000001786","vsn":1015,"dvc":5,"wk":wk,"tbid":1}
+var rs_string =JSON.stringify(rs_json);
+
+var byte_rs=[];
+
+for (var i = 0; i < rs_string.length; ++i) {
+    byte_rs.push(rs_string.charCodeAt(i));
+}
+
+
+var arrayBuffer=new ArrayBuffer(2+byte_rs.length);
+
+            var myArray = new Uint8Array(arrayBuffer);
+			myArray[0]=3;
+			myArray[1]=0;
+			
+	
+	
+
+		for (var i = 0; i < byte_rs.length; ++i) {
+    myArray[i+2]=byte_rs[i];
+
+	}
+	
+
+	
+			
+		//	myArray=[3];
+		//	myArray[0]=1;
+		//	myArray[1]=1;
+         //  myArray[2]=2;			
+		alert(myArray);	
+          //  var longInt8View = new Uint8Array(myArray);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+            var exampleSocket = new WebSocket("ws://localhost:90/DataSocket","proto");
+            var count = 1;
+
+            exampleSocket.onopen = function (event) {
+
+            };
+
+            exampleSocket.onmessage = function (event) {
+                console.log(event.data);
+            };
+
+            function test() {
+                exampleSocket.send(myArray);
+                count++;
+			console.log("sent");
+            }
+
+        </script>
+    </body>
+</html>

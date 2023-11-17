@@ -1,0 +1,40 @@
+<div class="pt-box feed-location-container {{ viewDirection}}">
+    <div class="pt-top">
+        <span class="float-right showpointer icon-close post-drop" ng-click="close()"></span>
+    </div>
+    <div class="pt-middle w-392">
+        <div class="location-search">
+            <i class="icon-search"></i>
+            <input type="text" value="" data-ng-model="keyword"  ng-model-options="{debounce: 1000}" placeholder="Search..." />
+        </div>
+        <div class="clear"></div>
+        <div>
+            <div ng-show="loadingData">
+                <div class="feedloader"> 
+                    <div class="loader-id icon-id-s">
+                        <span class="icon-logo-circle"></span>
+                    </div>
+                </div>
+            </div>
+            <ul class="feed-location-options" rg-scrollbar="scrollbar()" style="max-height: 180px;">
+                <li class="feed-location-item showpointer"
+                    style="padding: 5px;border-bottom: 1px solid #eee;list-style: none;cursor:pointer"
+                    data-ng-repeat="(placeId, location) in suggestedLocations" feed-location-select="{{ placeId}}" data-place-id="{{ placeId}}" >
+                    <div ng-show="!!location.geometry.location">
+                        <div class="float-left location-img" style="width: 50px;" ng-if="location.icon">
+                            <img width="50px" height="50px" ng-src="{{ location.icon}}" alt="">
+                        </div>
+                        <div class="float-right location-text f-view-loc" style="">
+                            <p ng-cloak="true">{{  location.name}} </p>
+                            <p ng-cloak="true">{{  location.description}}</p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="feed-location-map-container" >
+            <div style="width: 392px;height: 200px;margin-top:5px;" id="feed-location-map" ></div>
+        </div>
+    </div>
+</div>

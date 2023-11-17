@@ -1,0 +1,126 @@
+<div class="feed_details main_feed">
+    <!-- Feed Text -->
+    <p class="feed_value ng-hide" rg-more-feed="feed"></p>
+
+
+    <!-- Editor Disabled Start -->
+    <!-- Feed Location Start -->
+    <p class="location" ng-if="feed.hasLocationInfo() && !feed.hasSharedFeed()">
+
+
+    <feed-location-preview target="feed"></feed-location-preview>
+    <!-- <a ng-href="{{ feed.getLocationUrl() }}"               
+           rg-ringbox="true"
+           ringbox-type="remote"
+           ringbox-target="templates/partials/google-map-preview.html"
+           scope-data="{url : feed.getLocationEmbedUrl() }">
+           
+           <img height="170px" width="100%" ng-src="{{ feed.getLocationStaticEmbedUrl()}}" alt="location-hover" />
+    </a> -->
+
+
+    <!-- <a title={{::feed.getLocationText()}} ng-href="{{ feed.getLocationEmbedUrl() }}" target="_blank"><img height="170px" width="100%" ng-src="{{ feed.getLocationStaticEmbedUrl()}}" alt="location-hover" /></a> -->
+
+</p>
+<!--<p ng-repeat="video in feed.getVideos()">{video.value.getVideoUrl()}</p>-->
+<!--<video ng-repeat="video in feed.getVideos()" vidurl="video.value.getVideoUrl()">-->
+
+<!--</video>-->
+
+<!-- Feed Location End -->
+
+
+<rg-url-og-preview ng-if="feed.hasOgData()"  og-data="feed.getOgData()" show-preview="feed.hasOgData()" loading-data="ogDataLoading" feed-key="{{::feed.getMapKey()}}"></rg-url-og-preview>
+</p>
+<!-- Editor Disabled End -->
+
+
+
+<!-- <br />    
+    <div>{{ $id   }} 0</div>
+<br />
+    <div>{{ $parent.$id   }} 1</div>
+<br />
+    <div>{{ $parent.$parent.$id   }} 2</div>
+<br />
+    <div>{{ $parent.$parent.$parent.$id   }} 3</div>
+<br />
+    <div>{{ $parent.$parent.$parent.$parent.$id   }} 4</div>
+<br />  -->
+
+
+
+<div ng-if="feed.getImages().length">
+
+    <div ng-if="!feed.hasNewsPortalFeed()">
+        <div  feed-image="main"></div>
+    </div>
+
+    <div ng-if="feed.hasNewsPortalFeed()">
+        <div ng-if="(!feed.hasExternalUrl() || feed.hasExternalUrl()) && feed.hasNewsPortalUrl()">
+            <div feed-image="main" portal="true" ex-url="false"></div>
+        </div>
+        <div ng-if="!feed.hasExternalUrl() && !feed.hasNewsPortalUrl()">
+            <div feed-image="main" portal="true" ex-url="false"></div>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+</div>
+
+<div ng-if="feed.hasNewsPortalFeed()" class="news-portal-feed">
+    <p class="og-title"
+       ringbox-type="remote"
+       rg-ringbox="true"
+       ringbox-scrollable="true"
+       loader-hide = "false"
+       ringbox-data="getFeedInfo(feed)"
+       ringbox-controller="PortalFeedPopUpController"
+       ringbox-target="templates/newsportal/portal-feed-popup.html" ng-cloak="true">
+        {{feed.getNewsPortalTitle()}}
+    </p>
+    <!-- <p class="og-title" ng-if="!feed.hasExternalUrl() && !feed.hasNewsPortalUrl()">{{feed.getNewsPortalTitle()}}</p>
+    <p class="og-title" ng-if="feed.hasExternalUrl() && feed.hasNewsPortalUrl()">{{feed.getNewsPortalTitle()}}</p> -->
+
+    <p class="og-description"
+       ringbox-type="remote"
+       rg-ringbox="true"
+       ringbox-scrollable="true"
+       loader-hide = "false"
+       ringbox-data="getFeedInfo(feed)"
+       ringbox-controller="PortalFeedPopUpController"
+       ringbox-target="templates/newsportal/portal-feed-popup.html" ng-cloak="true">{{feed.getNewsPortalShortDescription()}}</p>
+    <!-- <p ng-if="feed.hasExternalUrl()" class="news_link og-url" style="padding-top:0;padding-bottom:0;width:98%;overflow:hidden;white-space: nowrap;text-overflow: ellipsis;">
+        <a ng-href="{{feed.getNewsPortalUrl()}}" target="_blank">{{feed.getNewsPortalUrl()}}</a>
+    </p> -->
+
+    <span class="float-left m-l-8"><a class="news_link og-url"
+        ng-if="feed.hasExternalUrl()"
+        ringbox-type="remote"
+        rg-ringbox="true"  
+        ringbox-scrollable="true"
+        loader-hide = "false"
+        ringbox-data="getFeedInfo(feed)"
+        ringbox-controller="PortalFeedPopUpController"
+        ringbox-target="templates/newsportal/portal-feed-popup.html" ng-cloak="true">{{feed.getPortalBaseUrl()}}</a></span>
+</div>
+
+</div>
+
+
+<rg-video ng-if="feed.getMedias().length()" feed="feed"
+          get-media-data="getMediaData(mediavalue, feed)" select-album="selectAlbum(mediavalue)"
+          no-download="noDownload($event)" get-media-first-data="getMediaFirstData()">
+
+</rg-video>
+
+<rg-audio ng-if="feed.getAudios().length()" feed="feed"
+          get-media-data="getMediaData(mediavalue, feed)" select-album="selectAlbum(mediavalue)"
+          no-download="noDownload($event)" get-audio-first-data="getAudioFirstData()">
+
+</rg-audio>
+
+
+
+
+

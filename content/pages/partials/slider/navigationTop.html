@@ -1,0 +1,5 @@
+<ul class="arrowstop">
+    <li ng-repeat="image in images" ng-click="select(image.slide)" ng-click="mystyle=''" class="pr-5">
+        <span  ng-class="{'active':isCurrentSlideIndex($index)}" ng-cloak="true">{{ image.heading}}</span>
+    </li>
+</ul>

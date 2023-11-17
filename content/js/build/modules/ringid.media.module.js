@@ -1,0 +1,1 @@
+(function(angular, window) { 'use strict';  angular.module('ringid.media', [ 'ringid.filters', 'ringid.config', 'ringid.controllers' ]); })(angular, window);

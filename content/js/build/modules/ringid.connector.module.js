@@ -1,0 +1,1 @@
+(function(angular, window) { 'use strict';  angular.module('ringid.connector', [ 'ngWebSocket', 'ringid.config' ]); })(angular, window);

@@ -1,0 +1,54 @@
+<ul data-events class="feed_lcs_menu" ng-hide="feed.isSpecial()">
+
+    <li rg-likes="" target="likeTarget" like-type="{{::likeType}}">
+
+        <!-- <a rg-click="like(feed)"><i ng-class="{'icon-like-h':feed.like() > 0}" class="icon-like lc-ico" rg-like=""></i></a>
+
+        <a  class="lcs_button" ng-class="{'active':feed.like() > 0}">Like&nbsp;</a>
+  
+        <a class="count" rg-ringbox="{{ feed.getTotalLikes() > 0}}" ringbox-open="openRingBoxLike()" ringbox-controller="fetchLikeController"
+           ringbox-target="templates/home/wholikes.html" ringbox-type="remote" ringbox-data="fetchWhoLikes()">{{
+               feed.getTotalLikes()}}</a> -->
+
+    </li>
+    <li ng-class="{'active':feed.selfComment() > 0}">
+        <!--<a class="icon-comments-str ico-f" rg-click="toggleCommentBox($event)"ng-class="{'active':feed.getTotalComment() > 0}"></a>-->
+        <a class="lcs_button" data-event-comment>
+            <i  class="img_sprite icon-comments-str"></i>
+			<b ng-cloak="true" ng-cloak="true">{{feed.getTotalComment() > 1 ? "Comments":"Comment" }}</b>
+        </a>
+        <a class="count" data-event-comment ng-cloak="true">{{feed.getTotalComment()}}</a>
+    </li>
+    <li ng-if="!shareMenuDisabled">
+        <a class="lcs_button" data-event-share><i class="img_sprite icon-share"></i><b>Share</b></a>
+        <a ng-href="{{ ::feed.getWhoShareUrl() }}" rg-ringbox="true" ringbox-open="openRingboxShare()" ringbox-falsy-func="whoShareFalsyFunc()"
+           ringbox-controller="FeedRingboxWhoShareController" ringbox-scrollable="true" ringbox-type="remote"
+           ringbox-target="templates/home/whosharefeed.html" ringbox-data="getShareData()" ng-cloak="true">{{ feed.hasSharedFeed() ?
+                       feed.getOrginalFeed().getTotalShare() : feed.getTotalShare()}}
+        </a>
+    </li>
+
+</ul>
+
+
+
+<!-- <a class="icon-share ico-f" rg-ringbox="{{ ::isShareAble(feed) }}" ringbox-falsy-func="errorShareRingbox()" ringbox-controller="feedRingboxShareController"
+   ringbox-type="remote" ringbox-target="templates/home/sharefeed.html" ringbox-data="getShareData()"></a> -->
+
+<!-- <a class="lcs_button" rg-ringbox="{{ ::isShareAble(feed)  }}" ringbox-falsy-func="errorShareRingbox()"
+   ringbox-controller="feedRingboxShareController" ringbox-type="remote"
+   ringbox-target="templates/home/sharefeed.html" ringbox-data="getShareData()">Share</a> -->
+
+<!-- <a class="icon-share ico-f" data-feed-inline-share="{{ ::isShareAble(feed)  }}"  data-feed="feed" data-inline-share-falsy-func="errorShareRingbox()" ></a> -->
+
+<!--data-feed-inline-share="{{ ::isShareAble(feed)  }}"-->
+<!--data-feed="feed"-->
+<!--show-share-form="showShareForm"-->
+<!--data-inline-share-falsy-func="errorShareRingbox()"-->
+
+
+<!--  <a rg-click="toggleShareBox($event)" class="icon-share ico-f lcs_button" > Share</a> -->
+<!--<a class="icon-share ico-f" rg-click="toggleShareBox($event)"></a>-->
+
+<!-- show-share-form="showShareForm" -->
+

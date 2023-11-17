@@ -1,0 +1,88 @@
+<div  class="dashboard-bg  mid-width pro-page-width">
+    <div class="middle"> 
+        <div class="profile news-pro-wrap">
+            <div  class="media-nav">
+                <rg-celebrity-tab-nav></rg-celebrity-tab-nav>
+                <div style="position:relative; float: right; ">
+                    <div class="box-search media-search">
+                        <span class="img_sprite width-25px height-25px search-icon-25 p-absolute search-icon-p"></span>
+                        <input type="text" name="search" 
+                               ng-change="doSearch()" 
+                               ng-model="searchParam" 
+                               ng-model-options="{ debounce: 500 }" 
+                               value="" 
+                               autocomplete="off" 
+                               placeholder="Search discover"/>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-show="!searching" class="news-pro-wrap mar-0-5">
+                <div  class="news-pro-box h240" ng-repeat="celebrity in celebrityDiscoverMap.all() track by $index" ng-class="{followed: celebrity.value.isSubscribed()}">
+                    <div class="news-pro-img" style="background: url('../images/default_cover.jpg') no-repeat; ">
+                        <!--<img ng-src="{{celebrity.value.getProfileImage()}}">-->
+                    </div>
+                    <div class="dscv-img" style="background: url('{{celebrity.value.getProfileImage()}}') no-repeat;"></div>
+                    <div class="flow-text" ng-cloak="true">{{ celebrity.value.getFollowerCountWithText() }}</div>
+                    <div class="flow-text-name"><a ng-href="{{celebrity.value.getProfileLink()}}" ng-cloak="true">{{celebrity.value.getFullName()}}</a></div>
+
+                    <div class="flow-btn" ng-if="! celebrity.value.isSubscribed()" rg-click="doneFollow(celebrity.value.getKey())">+ Follow</div>
+                    <a ng-if="celebrity.value.isSubscribed()" ng-href="{{celebrity.value.getProfileLink()}}">
+                        <div class="flow-btn">&#x2714; Following</div>
+                    </a>
+                </div>
+
+                <div ng-if="discoverSuggestion" class="no-suggest">
+                    <p>No suggestions available at this moment</p>
+                </div>
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+
+                <div class="news-load" ng-show="loadmore">
+                    <a class="load-more"  rg-click="loadMorePortal()" ng-show="celebrityDiscoverMap.length() > 1 && !showloadmore">Load More &raquo;</a>
+                    <a class="load-more-disabled"  ng-show="showloadmore"> 
+                        <span class="load-circle">
+                            <span class="ld-cir1 ld-cir"></span>
+                            <span class="ld-cir2 ld-cir"></span>
+                            <span class="ld-cir3 ld-cir"></span>
+                            <span class="ld-cir4 ld-cir"></span>
+                            <span class="ld-cir5 ld-cir"></span>
+                            <span class="ld-cir6 ld-cir"></span>
+                            <span class="ld-cir7 ld-cir"></span>
+                            <span class="ld-cir8 ld-cir"></span>
+                            <span class="ld-cir9 ld-cir"></span>
+                            <span class="ld-cir10 ld-cir"></span>
+                            <span class="ld-cir11 ld-cir"></span>
+                            <span class="ld-cir12 ld-cir"></span>
+                        </span>
+                        Loading...
+                    </a>
+                </div>
+
+            </div>
+
+            <div ng-show="searching" class="news-pro-wrap mar-0-10">
+                <div  class="news-pro-box h240" ng-repeat="celebrity in searchResultMap.all() track by $index" ng-class="{followed: celebrity.value.isSubscribed()}">
+                    <div class="news-pro-img" style="background: url('../images/default_cover.jpg') no-repeat; ">
+                        <!--<img ng-src="{{celebrity.value.getProfileImage()}}">-->
+                    </div>
+                    <div class="dscv-img" style="background: url('{{celebrity.value.getProfileImage()}}') no-repeat;"></div>
+                    <div class="flow-text" ng-cloak="true">{{ celebrity.value.getFollowerCountWithText() }}</div>
+                    <div class="flow-text-name"><a ng-href="{{celebrity.value.getProfileLink()}}" ng-cloak="true">{{celebrity.value.getFullName()}}</a></div>
+
+                    <div class="flow-btn" ng-if="! celebrity.value.isSubscribed()" rg-click="doneFollow(celebrity.value.getKey())">+ Follow</div>
+                    <a ng-if="celebrity.value.isSubscribed()" ng-href="{{celebrity.value.getProfileLink()}}">
+                        <div class="flow-btn">&#x2714; Following</div>
+                    </a>
+                </div>  
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+            </div>
+        </div>
+    </div>
+</div>

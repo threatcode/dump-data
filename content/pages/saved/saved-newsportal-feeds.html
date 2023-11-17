@@ -1,0 +1,21 @@
+<div class="dashboard-bg  mid-width pro-page-width">
+    <div class="middle">
+        <div class="profile news-pro-wrap">
+            <div class="media-nav">
+                <rg-saved-feeds-tab-nav></rg-saved-feeds-tab-nav>
+            </div>
+            <div class="dashboard-bg  mid-width pro-page-width" ng-controller="portalSaveController">
+
+                <div ng-include src="'templates/home/portal-feed.html'"  rg-feed-subscriber>
+                </div>
+
+                <div ng-if="noDataYet()">
+                    <div  class="no-suggest">
+                        <p>You don't have any saved feeds</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

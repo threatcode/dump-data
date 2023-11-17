@@ -1,0 +1,62 @@
+ <div data-ng-controller="CirclePopupController as circlepop" class="modal-container border-radius">
+	<div class="modal-header">
+		<h3>Creat New Group</h3>
+	</div>
+	<div id="content" class="pad-0-35">
+		<form action="#" method="post">
+			<div class="modal-search pad-20-0">
+				<input data-ng-model="circlepop.circleName" class="float-left radius album-serach-icon-size"  type="text" placeholder="Type Name" value="" name="">
+				<div class="float-right modal-search-bg">
+					<div class="float-left icon-search modal-serach-icon-size">
+
+					</div>
+					<div class="float-left">
+						<div  class="modal-friend-search">
+							<input data-ng-model="circlepop.friendFilter" name="q" type="text"  placeholder="Search..." autofocus="true"/>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+				<!--<input class="float-right" type="text" placeholder="Search Friend" value="" name="">-->
+				<div class="clear"></div>
+			</div>
+			<div class="modal-input">
+				<div class="modal-list-box">
+						<div class="m-left">
+						<!--<p></p>-->
+						</div>
+						 <div class="m-right scrollbar-design">
+							 <ul class="modal-friend-list">
+								 <li class="popup_type">Members:</li>
+							   <li data-ng-repeat="member in circlepop.memberList">
+								   <a href="#" target="_blank" ng-cloak="true">{{member.getName('f')}}</a>
+									<a data-ng-click="circlepop.removeMember($event, member)" class="icon-close" href="#"></a>
+							   </li>
+							</ul>
+						</div>
+				</div>
+				<div class="modal-friend-box mar-20-0  scrollbar-design">
+					<div class="modal-friends">
+						<div data-ng-repeat="friend in circlepop.friends | filter:circlepop.friendFilter" class="modal-pro-pic-full float-left">
+							<div data-ng-click="circlepop.addToCircle($event, friend)" class="friend-pic">
+								<div class="icon-logo-circle pid-logo"><a href="{{friend.link()}}#">
+										<img  src="{{ friend.profileImage()  }}" alt="{{friend.getName('f')}}"/></a></div>
+							</div>
+							<div class="clear"></div>
+							<a data-ng-click="circlepop.addToCircle($event, friend)" class="modal-username" 
+							   href="{{friend.link()}}#" ng-cloak="true">{{friend.getName('f')}}</a>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<input data-ng-click="circlepop.createCircle($event)" class="save-button float-left border-radius" type="submit" name="" value="Create">
+				<input data-ng-click="circlechat.close()" class="cancel-button float-right border-radius" type="submit" name="" value="Cancel">
+				<div class="clear"></div>
+			</div>
+		</form>
+	</div>
+</div>

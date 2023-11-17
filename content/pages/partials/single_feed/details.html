@@ -1,0 +1,124 @@
+<div class="feed_details main_feed" style="margin:0 auto;">
+
+    <p ng-if="feed" class="feed_value"  rg-more-feed="feed" ng-hide="editorEnabled"></p>
+
+    <p class="location" ng-if="!editorEnabled && feed.hasLocationInfo() && !feed.hasSharedFeed()" >
+
+    <feed-location-preview target="feed"></feed-location-preview>
+
+    <!-- <a ng-href="{{ feed.getLocationUrl() }}"                   
+           rg-ringbox="true"
+           ringbox-type="remote"
+           ringbox-target="templates/partials/google-map-preview.html"
+           scope-data="{url : feed.getLocationEmbedUrl() }">
+           
+           <img height="170px" width="100%" ng-src="{{ feed.getLocationStaticEmbedUrl()}}" alt="location-hover" />
+    </a>
+    -->
+
+    <!--             <a title={{::feed.getLocationText()}} ng-href="{{ feed.getLocationEmbedUrl() }}" target="_blank"><img height="170px" width="100%" ng-src="{{ feed.getLocationStaticEmbedUrl()}}" alt="location-hover" /></a> -->
+
+</p>
+
+<p ng-if="editorEnabled && !!feedLocation.description" style="font-size:9pt;color:#504f4f;" ng-cloak="true"><span>-</span> {{ feedLocation.description}}
+    <span class="float-right showpointer" ng-click="resetFeedLocation()" >x</span>
+</p>
+
+
+<p ng-if="!editorEnabled && feed.hasOgData()" ng-init="ogData = feed.getOgData()" >
+<rg-url-og-preview og-data="ogData" show-preview="feed.hasOgData()" loading-data="false"  ></rg-url-og-preview>
+</p>
+
+
+
+
+
+<p class=" mar-bottom-15"></p>
+<!--<div class="single-feed-images-container-wrapper" >
+    <div class="single-feed-images-container"  ng-repeat="image in feed.getImages()" ng-init="image = image.value;">
+        <a ng-href="#{{ image.getUrl()}}">
+            <div class="single-feed-image" feed-image feed-image-responsive="true"
+                 rg-ringbox="true" ringbox-controller="RingBoxImageController" ringbox-type="remote"
+                 ringbox-target="templates/partials/notification/image-popup.html"
+                 ringbox-data="getImageData(image, feed)">
+            </div>
+        </a>
+    </div>
+    
+    <div class="clear"></div>
+</div>-->
+
+<div ng-if="feed.getImages().length">
+    <div  feed-image="main" ></div>
+    <!-- <a ng-href="#{{ image.getUrl()}}" ng-repeat="image in feed.getImages()" ng-init="image = image.value;"  >
+        <div class="floader" feed-image
+             rg-ringbox="true" ringbox-controller="RingBoxImageController" ringbox-type="remote"
+             ringbox-target="templates/partials/notification/image-popup.html"
+             ringbox-data="getImageData(image, feed)"></div>
+    </a> -->
+    <div class="clear"></div>
+</div>
+
+
+<div ng-if="feed.hasNewsPortalFeed()" class="news-portal-feed">
+    <p class="og-title" ng-if="!feed.hasExternalUrl() && feed.hasNewsPortalUrl()"
+       ringbox-type="remote"
+       rg-ringbox="true"
+       ringbox-scrollable="true"
+       loader-hide = "false"
+       ringbox-data="getFeedInfo(feed)"
+       ringbox-controller="PortalFeedSubController"
+       ringbox-target="templates/newsportal/portal-feed-popup.html" ng-cloak="true">
+        {{feed.getNewsPortalTitle()}}
+    </p>
+    <p class="og-title" ng-if="!feed.hasExternalUrl() && !feed.hasNewsPortalUrl()" ng-cloak="true">{{feed.getNewsPortalTitle()}}</p>
+    <p class="og-title" ng-if="feed.hasExternalUrl() && feed.hasNewsPortalUrl()" ng-cloak="true">{{feed.getNewsPortalTitle()}}</p>
+    <p class="og-description" ng-cloak="true">{{feed.getNewsPortalShortDescription()}}</p>
+    <p ng-if="feed.hasExternalUrl()" class="news_link og-url mar-top-10 m-l-10" ng-cloak="true">{{feed.getPortalBaseUrl()}}</p>
+</div>
+
+
+
+
+<!--<div class="video-dec" ng-if="feed.getMedias().length" ng-init="medialength = feed.getMedias().length">-->
+<!--<a ng-repeat="media in feed.getMedias()" ng-init="media = media.value;"  style="position: relative;-->
+<!--margin-bottom: 5px;display: block;">-->
+
+<!--[><p>{{media.getKey()}}</p><]-->
+
+
+<!--<div feed-video rg-ringbox="true" ring-backdrop-close="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote" ringbox-animation="false"-->
+<!--ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(media, feed)" class="margin-5 float-left"><div class="play-area"><span class="play-icon"></span></div></div>-->
+
+
+<!--</a>-->
+<!--</div>-->
+<!--<div class="audio-dec" ng-if="feed.getAudios().length" ng-init="medialength = feed.getAudios().length">-->
+<!--<a ng-repeat="media in feed.getAudios()" ng-init="media = media.value;"  style="position: relative;-->
+<!--margin-bottom: 5px;display: block;">-->
+<!--<div class="audio-dec" ng-if="feed.getAudios().length" ng-init="medialength = feed.getAudios().length">-->
+<!--<a ng-repeat="media in feed.getAudios()" ng-init="media = media.value;"  style="position: relative;-->
+<!--margin-bottom: 5px;display: block;">-->
+<!--<div feed-video rg-ringbox="true" ring-backdrop-close="false" ringbox-controller="RingBoxMediaController" ringbox-animation="false"-->
+<!--ringbox-type="remote"-->
+<!--ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(media, feed)">-->
+<!--<div class="play-ico"><span class="play-btn"></span></div>-->
+<!--</div>-->
+<!--</a>-->
+<!--</div>-->
+<!--</a>-->
+<!--</div>-->
+
+</div>
+
+
+<rg-video feed-type="single" ng-if="feed.getMedias().length()" feed="feed"
+          get-media-data="getMediaData(mediavalue, feed)" select-album="selectAlbum(mediavalue)"
+          no-download="noDownload($event)" get-media-first-data="getMediaFirstData()">
+</rg-video>
+
+<rg-audio feed-type="single" ng-if="feed.getAudios().length()" feed="feed"
+          get-media-data="getMediaData(mediavalue, feed)" select-album="selectAlbum(mediavalue)"
+          no-download="noDownload($event)" get-audio-first-data="getAudioFirstData()">
+
+</rg-audio>

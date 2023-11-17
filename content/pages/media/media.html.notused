@@ -1,0 +1,76 @@
+
+
+<div class="media-bg" >
+    <div class="browse-album">
+        <div class="clear"></div>
+        <div class="media-list">
+            <div class="music-container margin-0">
+                <div  class="grid-view active">            		
+                    <div class="my-album">
+                        <h2>My Music Albums</h2>
+                        <p ng-show="!state.albumsLoading && audioAlbums.length == 0" style="padding:10px;font-size:13px;">No music albums</p>
+                        <div ng-show="state.albumsLoading" class="full_album-box music-loader-box">
+                            <div class="p-area-loader">
+                                <div class="music-box-loader">
+                                    <div class="loader-id icon-id-s">
+                                        <span class="icon-logo-circle"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ng-repeat ng-repeat="album in getAlbums('audio')| mediaFilter:'audio' as audioAlbums">
+                            <rg-albumview album="album.value" template-path="templates/media/albumview.directive.html" ></rg-albumview>
+                        </ng-repeat>
+                        <div class="full_album-box nab" ng-hide="!state.albumsLoading && albums.length == 0"></div>
+                        <div class="full_album-box nab" ng-hide="!state.albumsLoading && albums.length == 0"></div>
+                        <div class="full_album-box nab" ng-hide="!state.albumsLoading && albums.length == 0"></div>
+                        <div class="full_album-box nab" ng-hide="!state.albumsLoading && albums.length == 0"></div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="media-bg" >
+    <div class="browse-album">
+
+        <div class="clear"></div>
+        <div class="">
+
+            <div class="music-container margin-0">
+                <div  class="grid-view active">            		
+                    <div class="my-album">
+                        <h2>My Video Albums</h2>
+                        <p ng-if="!state.albumsLoading && videoAlbums.length == 0" style="padding:10px;font-size:13px;">No video albums </p>
+                        <div ng-show="state.albumsLoading" class="full_album-box music-loader-box">
+                            <div class="p-area-loader">
+                                <div class="music-box-loader">
+                                    <div class="loader-id icon-id-s">
+                                        <span class="icon-logo-circle"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ng-repeat ng-repeat="album in getAlbums('video')| mediaFilter:'video' as videoAlbums">
+                            <rg-albumview album="album.value" template-path="templates/media/albumview.directive.html" ></rg-albumview>
+                        </ng-repeat>
+                        <div class="full_album-box nab" ng-hide="!state.albumsLoading && albums.length == 0"></div>
+                        <div class="full_album-box nab" ng-hide="!state.albumsLoading && albums.length == 0"></div>
+                        <div class="full_album-box nab" ng-hide="!state.albumsLoading && albums.length == 0"></div>
+                        <div class="full_album-box nab" ng-hide="!state.albumsLoading && albums.length == 0"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+

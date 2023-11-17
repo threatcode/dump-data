@@ -1,0 +1,23 @@
+<!--<div class="album-ad action" ng-show="showDropdown">-->
+<div class="add-to-al">
+<div class="album-ad" >
+<!--<div class="add-to">Add to {{ddControl.uploadWhat}}</div>-->
+    <div class="add-lb">     
+<!--         <div class="au-ab abl-src">
+            <i class="au-search icon-search"></i>
+            <input style="border:0;" type="text" placeholder="Search album" focus-me="focusFilter" ng-model="filterText" class="ng-pristine ng-untouched ng-valid"> 
+        </div>-->
+       
+        <ul rg-scrollbar="scrollbar()">
+            <!--active class active-lb-->
+            <li ng-class="{'active-lb': ddControl.selectedAlbum.getId() == album.value.getId()}" rg-click="ddAction()(album.value, $event)" 
+                ng-repeat="album in ddControl.Media.getAlbums(true, ddControl.uploadSpec.type) | mapFilter:{mapApi: 'getName', value: ddControl.albumName}">
+                <span class="alb-thmb"></span>
+                <span class="alb-nm" ng-cloak="true">{{album.value.getName()}}</span>
+                <span class="alb-cntr" ng-cloak="true">{{album.value.getContentCount()}} {{album.value.isAudio() ? 'songs' : 'videos'}}</span>
+            </li>
+        </ul> 
+        <div class="clear"></div>
+    </div>
+</div>
+</div>

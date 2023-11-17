@@ -1,0 +1,26 @@
+<div class="mid-width sm-w-700">
+    <rg-loader-view-1 is-loading="loading"></rg-loader-view-1>
+    <div ng-if="!loading">
+        <div class="stkmkt-hdr">
+            <div class="backbtn" ng-click="goBack()">Back</div>
+            <p ng-cloak="true">{{ categoryName || pageTitle }}</p>
+            <span class="icon-close stk-close" rg-click="$close()"></span>
+        </div>
+        <div class="sdb">
+            <p ng-cloak="true">{{ pageSticker.getName()  }}</p>
+            <div class="dnld" 
+                    rg-click="addSticker(pageSticker)" 
+                    ng-if="!isInstalled(pageSticker.getKey())" >Free</div>
+
+            <div class="dnld" 
+                    rg-click="removeSticker(pageSticker)" 
+                    ng-if="isInstalled(pageSticker.getKey())" >Remove</div>
+        </div>
+
+        <div class="stkmkt-detail-area" style="background: #fff; text-align: center;">
+            <img ng-src="{{ pageSticker.getDetailImageUrl() }}" alt="{{ pageSticker.getName() }} Detail Image" style="max-width: 100%;min-width:650px;"/>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+

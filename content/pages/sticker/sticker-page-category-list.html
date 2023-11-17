@@ -1,0 +1,26 @@
+<div class="smcat">
+    <div class="smcathdr">
+        <div class="catname" ng-cloak="true">{{ ::categoryName }}</div>
+         <a class="smr" ng-click='goTo({urlPath: "/sticker/category/" +  categorySlug })'>See more</a>   
+    </div>
+
+    <div class="stk-preview-area">
+        <div class="stk-preview" ng-class="{'stwid' : !showIcon }"
+            ng-repeat="aCatItem in categoryItems | orderBy:aCatItem.getKey()| limitTo:(showIcon ? 4: 2) track by aCatItem.getKey()" >
+                <a ng-click="goTo({urlPath: '/sticker/category/single/' + aCatItem.getKey()})">
+                    <div class="catpc p-relative">
+                        <img ng-if="!showIcon" ng-src="{{ ::aCatItem.getBannerImageUrl() }}" alt="{{ ::aCatItem.getName() }} Image" />
+                        <img ng-if="showIcon"  ng-src="{{ ::aCatItem.getIconImageUrl() }}" alt="{{ ::aCatItem.getName() }} Image" />
+                        
+                        <span ng-if="isNewSticker(aCatItem.getKey())" class="p-absolute sti-new border-radius-100p f-12">New</span>
+                        
+                    </div>
+                    <div class="catnm" ng-cloak="true">{{ ::aCatItem.getName() }}</div>
+                </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+
+

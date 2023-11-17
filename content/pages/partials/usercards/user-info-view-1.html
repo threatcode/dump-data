@@ -1,0 +1,83 @@
+<!-- user action dropdown -->
+<div user-actions template-url="{{ userActionsTpl }}" ng-if="hasUserActions(getMemberObject(member))"  ></div>
+
+<!-- user info front card -->
+<div class="fnd-info-box card front" rg-user-track="{{ getMemberObject(member).getId() }}">
+
+    <div class="fnd-img" rg-click="showBack(getUserObject(member).getKey(), $event)">
+
+        <a  ng-href="{{getUserObject(member).link()}}">
+            <img class="responsive-all" 
+                    ng-src="{{ getUserObject(member).avatar('thumb') }}" 
+                    ng-alt="{{  getUserObject(member).avatar('thumb') }}" 
+                    onerror="this.src='images/prof.png';"
+            />
+        </a>
+    </div>
+
+    <div class="fnd-info">
+        <p class="fnd-name">  
+            <a href="javascript:void(0);" ng-href="{{ getUserObject(member).link() }}" >{{getMemberObject(member).getName()}}</a>
+        <p>
+
+        <p class="fnd-rid">
+            <span><i class="img_sprite id-circle-h rid"></i></span> <span ng-cloak="true"> : {{ getMemberObject(member).getRingId() || getUserObject(member).getRingNumber()}} </span>
+        </p>
+
+<!--        <p> 
+            <a  class="count cursor"
+               ng-if="getUserObject(member).commonFriends() > 0"
+               rg-ringbox="true"
+               ringbox-controller="mutualFriendsController"
+               ringbox-target="templates/home/mutual-friends.html"
+               ringbox-type="remote"
+               ringbox-data="getMutualFriend(getUserObject(member))"
+
+            > {{getUserObject(member).commonFriends()}} mutual friends</a>
+        </p>-->
+
+        <div user-member-type ></div>
+        <div user-friendship-type  ></div>
+
+    </div>
+</div>
+
+<!-- user info back card -->
+<div class="fnd-action-box card back" rg-click="showBack(0, $event)">
+    <div  class="f-name" ng-cloak="true">{{ getMemberObject(member).getName() }}</div>
+    <div class="logout-divider mar-top-5"></div>
+    <div class="actn-wrapper" >
+        <a ng-href="{{ ( getUserObject(member).friendType() !== 3 ) ? getUserObject(member).link() : 'javascript:void(0);'}}" 
+            class="feed-shape-cover p-relative " 
+            style="display:inline-block;"
+        >
+            <div class="img_sprite feed-shape-ico p-absolute"></div>
+            <img data-is-anchor="true"  
+                class="border-radius-100p" width="35px" height="35px" alt="" 
+                ng-src="{{getUserObject(member).avatar('thumb')}}" 
+                ng-alt="{{getMemberObject(member).getName()}}" 
+            onerror="this.src='images/prof.png';" />
+        </a>
+
+        <div class="img_sprite w-h-36px call-ico showpointer"  title="Call"
+             ng-if="friend.value.friendType() !== 3" 
+             rg-click="showComingSoon($event)"
+
+        ></div>
+
+        <div class="img_sprite w-h-36px f-chat-ico showpointer" title="Chat"
+            open-chat-box="{{getUserObject(member).getKey()}}" 
+            utId="{{getUserObject(member).getUtId()}}"
+
+        > </div>
+
+        <a class="showpointer" title="Profile info" 
+            ng-href="{{getUserObject(member).link()}}">
+
+             <i data-is-anchor="true" class="img_sprite w-h-36px info-ico "></i>
+        </a>
+
+    </div>
+</div>
+
+

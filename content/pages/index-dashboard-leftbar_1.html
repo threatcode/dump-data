@@ -1,0 +1,91 @@
+<div class="width-200 left-sidebar-min-height white-background left-fixed border-right width-in-mobile">
+    <div class="row-responsive">
+        <div class="profile-box">
+            <div class="icon-logo-circle psa-logo margin-0-auto user-pic-in-m"
+                 style="background-image: url({{currentUser.avatar('thumb')}}); background-size: cover">
+                <!--<a href="#"><img class="responsive-all" ng-src="{{ currentUser.avatar('crp')}}" alt="{{currentUser.getName()}}"/></a>-->
+            </div>
+            <div class="user-name hide-in-mobile">
+                <a class="r-usernm" ng-bind="currentUser.getName()" ng-href="{{currentUser.link()}}"></a>
+                <span class="rid-ico "><i class="icon-id-s"></i>&nbsp;</span><span ng-bind="currentUser.getRingNumber()"></span>
+            </div>
+        </div>
+        <ul ng-controller="MenuController
+                    as mc" class="left-nav icons-color-size">
+            <li class="icon-home" ng-click="mc.hideRingCircle()" ng-class="{ active: isCurrentPath('/') }"><a title="ringID Feeds" reloadpage="true" rg-href="#/"><b class="hide-in-mobile">ringID Feeds</b></a></li>
+            <li class="icon-my-feeds" ng-click="mc.hideRingCircle()" ng-class="{ active: isCurrentPath('{{currentUser.navActiveLink()}}') }"><a title="My Feeds" reloadpage="true" rg-href="{{currentUser.link() + '/post'}}"><b class="hide-in-mobile">My Feeds</b></a></li>
+
+            <li style="padding-bottom:5px;" ng-class="{ active: isCurrentPath('media',true) }"><div  class="play-a"><span class="play-i"></span></div><a style="padding-left:42px;" title="Music & Video" reloadpage="true" rg-href="#/media"><b class="hide-in-mobile">Music & Video</b></a></li>
+            
+            <!--<li class="icon-circle" ng-class="{ active: isCurrentPath('circle',true) }" data-ng-click="mc.toggleRingCircle()"  ng-mouseenter="mc.circleListMouseEnter()" ng-mouseleave="mc.circleListMouseLeave()">-->
+            <li class="icon-circle" ng-class="{ active: isCurrentPath('circle',true) }" data-ng-click="mc.openRingCircle()"  ng-mouseenter="mc.circleListMouseEnter()" ng-mouseleave="mc.circleListMouseLeave()">
+                <a title="RingID Circle" ng-href=""  class="active" ><span class="float-left"><b class="hide-in-mobile">ringID Circle</b></span>  <span class="r-arrow"></span></a>
+                
+                 <!----> 
+                <ul class="mycircle-list" ng-show="mc.showRingCircle"  ng-mouseleave="mc.circleListMouseLeave()">
+                    <li class="top-title-bar">
+                        <span style="font-size:25px;" class="icon-circle"></span>
+                        <span>My Circles</span>
+                        <a style="margin:0;padding:0;vertical-align:top;float: right;padding-right:3px;width:20px;" data-ng-click="mc.hideRingCircle()"
+                           rg-ringbox="true" ringbox-controller="CirclePopupController" ringbox-type="remote"
+                           ringbox-target="pages/partials/circle-popup.html" title="Create New">
+                            <span style="font-size:18px;font-weight: 600;" class="img_sprite w-h-18px add-new-gr "></span>
+                        </a>
+                    </li>
+                    <li style="margin:0;padding:0;">
+                        <div class="right-top-search" style="height:30px;">
+                            <div class="chat-list" style="border-bottom:0;padding:2px 0;">
+                                <div class="search-s float-left icon-search circle-serach-icon-size border-right-0">
+
+                                </div>
+                                <div class="float-left">
+                                    <form method="get" action="">
+                                        <input type="text" ng-model="searchText"  class="right-searchbar" placeholder="Search Circle" />
+                                    </form>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li class="height-of-nav-right" style="margin:0;padding:0;">
+                        <ul class="height-and-overflow" rg-scrollbar="true">
+                            <li style="font-weight:300;padding:10px;display:block;font-size:14px;"
+                                ng-show="!mc.getMyCircles().length() && !mc.getCirclesOfMe().length()">
+                                You don't have any circle yet, to create your first circle
+                                <a style="margin:0;padding:0;width:80px;" data-ng-click="mc.hideRingCircle()"
+                                   rg-ringbox="true" ringbox-controller="CirclePopupController" ringbox-type="remote"
+                                   ringbox-target="pages/partials/circle-popup.html" title="Create New">
+                                    Click Here
+                                </a>
+                            </li>
+                            <li ng-repeat="c in mc.getMyCircles().all() | mapFilter:{mapApi: 'getName', value: searchText}" class="grp-array">
+                                <a ng-href="{{c.value.getLink()}}">{{c.value.getName()}}</a>
+                            </li>
+                            <li ng-repeat="c in mc.getCirclesOfMe().all() | mapFilter:{mapApi: 'getName', value: searchText}" class="grp-array">
+                                <a ng-href="{{c.value.getLink()}}">{{c.value.getName()}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+    <div  class="hide-in-mobile" rg-invite></div>
+</div>
+
+
+<!--Uncomment for Upload [START]-->
+<!--
+<li class="icon-albume  left-nav-border-bottom">
+ <a title="Album" href="">Album</a><span class="icon-right-arrow  float-right right-arrow"></span>
+</li>
+<ul class="left-nav-circle icons-color-size">
+ <li class="icon-my-circle  sub-border-bottom"><a ng-href="mc.allPhotosLink" >All Photos</a></li>
+ <li class="icon-my-circle  sub-border-bottom"><a ng-href="mc.myAlbumsLink" >My Albums</a></li>
+ <li class="icon-my-circle  sub-border-bottom"><a rg-click="mc.openAlbumPopup($event)" title="Create New" href="#">Create New</a></li>
+</ul>
+
+-->
+<!--Uncomment for Upload [END]-->

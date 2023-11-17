@@ -1,0 +1,25 @@
+<div class="col-12-12 col-md-12-12 col-mob-12-12">
+    <div class="slider-container">
+        <div class="slide" ng-repeat="image in images" ng-class="mystyle" ng-show="image.visible" style="backg">
+            <table>
+                <tr>
+                    <td class="sld-align">
+                    <div class="slider-title float-left">
+                        <h2 ng-cloak="true"><span class="ring-color" style="font-family:'Roboto'">ringID </span>for {{ image.heading}}</h2>
+                        <br/>
+                        <p ng-bind-html="image.title"></p>
+                        <br/>
+                        <a ng-show="image.btnText" href="{{ image.btnText}}"><div class="download_btn"></div></a>
+                    </div>
+                </td>
+                <td>
+                    <img  ng-mouseover='cTimer()' ng-mouseleave="sTimer()"   ng-src="images/slider/{{image.src}}"/>
+                </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+

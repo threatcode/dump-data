@@ -1,0 +1,68 @@
+<div class="pro-page-width t-a-c c-r-warp display_ib w-bg" rg-scrollbar="true" ><div class="pro-page-width t-a-c c-r-warp display_ib w-bg" rg-scrollbar="true" >
+
+
+    <div class="mar-right-157 w-100-per cr-search-wrap">
+        <div class="box-search border-radius-4px float-left w-250-px cr-serch bg-eaeaec fl-right">
+            <span class="img_sprite width-25px height-25px search-icon-25 p-absolute search-icon-p"></span>
+            <input ng-change="searchRoom()" ng-model="searchParams.roomName" ng-model-options="{debounce:500}" name="roomName"
+                    type="text" placeholder="Search Room"/>  
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="cr-box display_ib t-a-l"
+        ng-repeat="room in rooms | mapFilter:{ mapApi: 'getName', value: searchParams.roomName, compare: 'regex'} track by room.key"
+        open-box box-id="{{ room.value.getId() }}" is-public-chat="true" >
+
+        <img class="w-100-per" ng-src="{{ room.value.getUrl() }}" alt="">
+        <div class="online-room">
+            <div class="top-r room-pro" 
+                ng-repeat="message in getPopularMemberMessages(room.value)" 
+                data-tooltip-post="{{ message.getSenderName() }}" >
+                    <img data-tooltip-post="{{ user.getSenderName() }}"  ng-src="{{ message.getSenderImageUrl() }}">
+            </div>
+        </div>
+        <div class="f-16 f-500 org-color cr-name w-100-p tx-elps" ng-cloak="true">{{ room.value.getName() }}
+            <h4 ng-cloak="true">{{ room.value.getNoOfMember(); }} members</h4>
+        </div>
+        
+<!--        <div class="crp-pro display_ib "
+            ng-repeat="message in room.value.getMessages().all() track by message.key" >
+            <img ng-src="{{ message.value.getSenderImageUrl() }}">
+            <div class="crp-name display_ib">
+                <h3 class="c-pt f-14 tx-elps">{{ message.value.getSenderName() }}</h3>
+                <h4 class="pad-top-3 f-11 tx-elps">{{ message.value.getShortMessageText() }}</h4>
+            </div>
+        </div>-->
+            
+    </div>
+    <div class="cr-box-empty"></div>
+    <div class="cr-box-empty"></div>
+    <div class="cr-box-empty"></div>
+    <div class="cr-box-empty"></div>
+
+    <div  ng-if="!hasMoreRooms() && searchParams.roomName != ''" class="background-linear">No rooms found for this name.</div>
+    <div  ng-if="!hasMoreRooms() && searchParams.roomName == ''" class="background-linear">No more rooms to show !</div>
+
+    <div class="news-load" ng-if="hasMoreRooms()">
+        <a class="load-more"  rg-click="loadMoreRooms()" ng-if="!loading">Load More &raquo;</a>
+        <a class="load-more-disabled"  ng-show="loading"> 
+            <span class="load-circle">
+                <span class="ld-cir1 ld-cir"></span>
+                <span class="ld-cir2 ld-cir"></span>
+                <span class="ld-cir3 ld-cir"></span>
+                <span class="ld-cir4 ld-cir"></span>
+                <span class="ld-cir5 ld-cir"></span>
+                <span class="ld-cir6 ld-cir"></span>
+                <span class="ld-cir7 ld-cir"></span>
+                <span class="ld-cir8 ld-cir"></span>
+                <span class="ld-cir9 ld-cir"></span>
+                <span class="ld-cir10 ld-cir"></span>
+                <span class="ld-cir11 ld-cir"></span>
+                <span class="ld-cir12 ld-cir"></span>
+            </span>
+            Loading...</a>
+    </div>
+</div>

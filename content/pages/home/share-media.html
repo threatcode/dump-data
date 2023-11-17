@@ -1,0 +1,42 @@
+<style>
+    .ringbox-content, .ringbox-inner{
+        overflow: visible !important;
+    }
+    .media-share{width:600px; padding: 20px}
+    .media-content{border: 1px solid #ededed; min-height: 100px; text-align: left; margin: 20px 0 0 0;}
+    .media-share .inline-share{border:1px solid #ededed}
+    .left-thumb{
+        width: 120px; 
+        height: 100px; 
+        border-right: 1px solid #ededed;
+        position: relative;
+        margin-right: 20px;
+        box-sizing: border-box;float: left
+    }
+    .media-share .inline-share .c-button{font-size: 14px}
+    .media-share .mcaption{
+        font-size: 14px;
+        margin: 10px 0 5px 0;
+        word-wrap: break-word;
+        width: 450px;
+        float: left;
+    }
+    .media-share .media-content .mttl{
+        font-size: 13px;
+        margin: 5px 0;
+    }
+    .pos{right:3px;top:3px;}
+</style>
+<div class="media-share">
+    <feed-inline-share-view></feed-inline-share-view>
+    <div class="clear"></div>
+    <div class="media-content">
+        <div class="left-thumb"  style="background-image:url('{{::media.getThumb()}}'); background-repeat: no-repeat;background-size: cover;">
+            <div class="m-icn audio"></div>
+        </div>
+        <p class="mcaption" ng-cloak="true">{{::media.getCaption()}}</p>
+        <p class="mttl" ng-cloak="true">{{::media.getArtistName()}}</p>
+        <p class="mttl" ng-cloak="true">{{::media.getDuration(true)}}</p>
+    </div> 
+<!--    <span class="close pos" rg-click="closeShareBox()"></span>-->
+</div>

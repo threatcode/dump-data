@@ -1,0 +1,1 @@
+(function(angular, window) { 'use strict';  angular.module('ringid.controllers', [ 'ringid.config' ]); })(angular, window);

@@ -1,0 +1,43 @@
+<div class="emo_div" ng-style="emoWindowStyle">
+    <div class="emo-wrapper">
+        <div class="emo_div_body"  rg-scrollbar="scrollbar()">
+            <div tabindex="0"  >
+                <div style="position:relative; top:0; left:0;" dir="ltr">
+                    <div class="emo_body" >
+                        <div ng-repeat="emo in emoticonMap.getImages().all()" ng-init="emo = emo.value"
+                             rg-click="selectEmoOrSticker(emo, $event)" title="{{emo.symbol()}}" style="background-image:url({{ emo.src() }})"
+                             ng-class="emo.isEmoticon() ? 'emocon' : 'emostick'">
+                             </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="emoticon_bottom" ng-if="showsticker">
+        <div class="emo_stage">
+            <div class="emo-btn emo-prev emo-prev-p" rg-click="loadPrevious($event)" ng-class="{'o-c-sticker': startAt == 0}"><i class="img_sprite icon-left-arrow"></i></div>
+            <div class="emo-btn " rg-click="showEmoticons($event)" ><i class="img_sprite  icon-emoticon ico-sty"></i></div>
+            <div class="emo-btn emo-next" rg-click="loadNext($event)" ng-class="{'o-c-sticker': startAt + 4 == myStickerCatIds().length}"><i class=" img_sprite icon-right-arrow"></i></div>
+            <div class="emo-btn emo-add" id="stickerMarketOpener"
+                 rg-ringbox="true" ringbox-controller="StickerPopupController"
+                 ringbox-type="remote" ringbox-target="templates/sticker/home.html" >
+                <i class="img_sprite w-h-22px icon-add-border"></i>
+            </div>
+            <div style="" class="slider_stage" >
+                <div class="emo_cats" id="emo_cats">
+                    <a ng-show="myStickerCatIds().length > 0" class="theme" ng-repeat="aStickerCatId in getMyStickers()" ng-init="aSticker = getSticker(aStickerCatId)"  data-tooltip-post="{{aSticker.getName()}}"
+                        rg-click="selectStickerCatId($event, aSticker.getKey())"> <!--changeEmoticonPreview(sticker.getKey())-->
+                        <img rg-src="aSticker.getCaptionImageUrl(selectedStickerCatId == aStickerCatId)" alt="StickerImage" class="stickerCaptionImage" />
+                    </a>
+                    <a ng-show="myStickerCatIds().length == 0"class="theme" ng-repeat="aStickerCatId in getTopStickers()" ng-init="aSticker = getSticker(aStickerCatId)" data-tooltip-post="{{aSticker.getName()}}"
+                        rg-ringbox="true" ringbox-controller="StickerPopupController"
+                        ringbox-type="remote" ringbox-target="templates/partials/stickers/popups/sticker-market.html">
+                        <img rg-src="aSticker.getCaptionImageUrl(selectedStickerCatId == aStickerCatId)" alt="StickerImage" class="stickerCaptionImage" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

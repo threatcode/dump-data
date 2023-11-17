@@ -1,0 +1,36 @@
+
+<div  ng-show="activeNav === 'recent'"  ng-class="{'dis-none': activeNav !== 'recent'}" >
+    <img ng-if="medias.length() === 0" src="images/music-error.png">
+    <div class="medialist"  ng-repeat="media in medias.all()| limitTo:10" title="{{media.value.getCaption()}}">
+        <!--rg-ringbox="true" ring-backdrop-close="true" ringbox-controller="RingBoxMediaController" ringbox-type="remote"    ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getRecentMediaData(media.value)"-->
+
+        <div class="media-thumb" rg-ringbox="true" ring-backdrop-close="true" show-close-btn="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"    ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getRecentMediaData(media.value)"
+        ringbox-open="isMinimized()" ringbox-falsy-func="falsyMethod(media.value)">
+            <img ng-src="{{media.value.getThumbForMedia()}}" alt=""/>
+            <div class="m-icn" ng-class="media.value.isAudio() ? 'audio':'video'"></div>
+            <div class="duration" ng-cloak="true">{{media.value.getDuration(true)}}</div>
+        </div>
+        <div class="media-details" >
+            <p class="mtitle"><a title="{{media.value.getCaption()}}" rg-ringbox="true" ring-backdrop-close="true" show-close-btn="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"    ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getRecentMediaData(media.value)">{{media.value.getCaption()}}</a></p>
+            <p ng-cloak="true"> {{media.value.getArtistName()}}</p>
+            <p ng-cloak="true">Album: {{media.value.getAlbumName()}}</p>
+            <p class="views-music" ng-cloak="true">{{media.value.getViewCount()}} Played</p>
+
+            <!-- <p class="addto"><span class="img_sprite  addtoalbm"></span><span class="addtotxt" rg-ringbox="true" ringbox-controller="RingBoxAlbumlistController" ringbox-animation="true"
+                                                                              ringbox-type="remote" ringbox-target="templates/dropdowns/popup-album-dropdown.html" ringbox-data="selectAlbum(media.value)" >Add To Album</span></p> -->
+
+            <div class="mshare clickz" >
+                <div rg-dropdown="dropdown()" dd-html="recentMediaDropdown"
+                     dd-control="{obj:media.value}" dd-action="actionRecentMediaDropdown">
+                    <div class="img_sprite mshare-icon"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- <div class="album" ng-show="activeNav === 'album'"  ng-class="{'dis-none': activeNav !== 'album'}" >
+    <rg-media in-profile="false" templatepath="templates/partials/media.html"></rg-media>
+</div>
+<div class="padding-10-20" ng-show="activeNav === 'upload'"  ng-class="{'dis-none': activeNav !== 'upload'}" >Upload</div> -->

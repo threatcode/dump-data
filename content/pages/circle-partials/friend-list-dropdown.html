@@ -1,0 +1,32 @@
+<div class="drop-member">
+<!--    <div class="cir-title-box">
+        <span class="emotion-title">Select circle members</span>
+        <span class="float-right showpointer icon-close post-drop cir-close" rg-click="close()"></span>
+    </div>-->
+    <div class="cir-list-mid">
+
+        <div class="clear"></div>
+        <div class="friend-req-scroll-wrapper">
+            <ul class="emotion cricle-li" rg-scrollbar="scrollbar()" bottom-reached="lodeMore()">
+                <li class="unread" ng-repeat="user in users track by user.getUtId()" ng-class="{active:$index==activeId}" ng-mouseenter="setActiveId($index)">
+                    <!-- show feed image popup -->
+                    <a rg-click="choose(user,$event)" >
+
+                        <div class="left">
+                            <div class="pic"><img rg-src="user.avatar()"/></div>
+                        </div>
+                        <div class="right">
+                            <p class="emotion-txt" ng-cloak="true">{{::user.getName()}}</p>
+                        </div>
+                        <div class="clear"></div>
+                    </a>
+
+                </li>
+
+            </ul>
+            <div ng-show="loading" class="notification-loader-position">
+                <div class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+            </div>
+        </div>
+    </div>
+</div>

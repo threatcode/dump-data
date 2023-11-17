@@ -1,0 +1,47 @@
+[
+    {
+        "name":"screenshot-for-app-store1.png",
+        "kind":"Image File",
+        "md":"Jan 18,2015",
+        "size":"188 KB",
+        "dimension":"1080*1920",
+        "src":"mediakit/android/formats_in_1080_1920/PNG/screenshot-for-app-store1.png"
+    },
+    
+    {
+        "name":"screenshot-for-app-store2.png",
+        "kind":"Image File",
+        "md":"Jan 18,2015",
+        "size":"708 KB",
+        "dimension":"1080*1920",
+        "src":"mediakit/android/formats_in_1080_1920/PNG/screenshot-for-app-store2.png"
+    },
+    
+    {
+        "name":"screenshot-for-app-store3.png",
+        "kind":"Image File",
+        "md":"Jan 18,2015",
+        "size":"157 KB",
+        "dimension":"1080*1920",
+        "src":"mediakit/android/formats_in_1080_1920/PNG/screenshot-for-app-store3.png"
+    },
+    
+    {
+        "name":"screenshot-for-app-store4.png",
+        "kind":"Image File",
+        "md":"Jan 18,2015",
+        "size":"910 KB",
+        "dimension":"1080*1920",
+        "src":"mediakit/android/formats_in_1080_1920/PNG/screenshot-for-app-store4.png"
+    },
+    
+    {
+        "name":"screenshot-for-app-store5.png",
+        "kind":"Image File",
+        "md":"Jan 18,2015",
+        "size":"624 KB",
+        "dimension":"1080*1920",
+        "src":"mediakit/android/formats_in_1080_1920/PNG/screenshot-for-app-store5.png"
+    }
+
+]

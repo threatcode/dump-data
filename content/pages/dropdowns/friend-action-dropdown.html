@@ -1,0 +1,49 @@
+
+        <div class="action pad-204 fr-drop-w z-in-110">
+            <i class="drop-sprite curve-a curve-t-ico p-ab top11"></i>
+
+            <div class="ac-top-line" 
+                ng-if="ddControl.friendshipStatus()==0 && !ddControl.isCurrentUser()" 
+                rg-click="ddAction()({ action: 'addfriend', friend: ddControl, event:$event})">
+                <a class="pad-8-14" href="#">
+                    <i class="drop-sprite fr-request-mar w-h-13 remove-member-ico feed-font"></i>{{consType.add_friend}}</a>
+            </div>
+
+            <div class="ac-top-line" 
+                 ng-if="ddControl.friendshipStatus()==1" 
+                 rg-click="ddAction()({ action: 'unfriend', friend: ddControl, event:$event})">
+                <a class="pad-8-14" href="#"><i class="drop-sprite fr-request-mar w-h-13 remove-member-ico feed-font"></i>{{consType.unfriend}}</a>
+            </div>
+
+            <div class="ac-top-line" 
+                ng-if="ddControl.friendshipStatus()==2" 
+                rg-click="ddAction()({ action: 'accept', friend: ddControl, event:$event})">
+                <a class="pad-8-14" href="#"><i class="drop-sprite fr-request-mar w-h-13 request-accept-ico feed-font"></i>{{consType.accept}}</a>
+            </div>
+
+            <div class="ac-top-line" 
+                ng-if="ddControl.friendshipStatus()==3" 
+                rg-click="ddAction()({ action: 'remove', friend: ddControl, event:$event})">
+                <a class="pad-8-14" href="#"><i class="drop-sprite w-h-13 fr-request-mar request-cancel-ico feed-font"></i>Cancel Request</a>
+            </div>
+
+            <div class="ac-top-line" 
+                ng-if="ddControl.isBlocked()===0 && !ddControl.isCurrentUser() && ddControl.friendshipStatus()==1" 
+                rg-click="ddAction()({ action: 'block', friend: ddControl, event:$event})">
+                <a class="pad-8-14" href="#"><i class="drop-sprite fr-request-mar w-h-13 block-ico feed-font"></i>{{consType.block}}</a>
+            </div>
+
+            <div class="ac-top-line" 
+                ng-if="ddControl.isBlocked()===1 && !ddControl.isCurrentUser() && ddControl.friendshipStatus()==1" 
+                rg-click="ddAction()({ action: 'unblock', friend: ddControl, event:$event})">
+                <a class="pad-8-14" href="#"><i class="drop-sprite w-h-13 unblock-ico feed-font"></i>{{consType.unblock}}</a>
+            </div>
+
+            <!-- <div class="ac-top-line" ng-if="!ddControl.isCurrentUser()"> -->
+            <!--     <a class="pad-8-14" open-chat-box="{{user.getKey()}}"><i class="drop-sprite fr-request-mar w-h-13 feed-font"></i>Chat</a> -->
+            <!-- </div> -->
+
+            <div class="ac-top-line" ng-if="!ddControl.isCurrentUser()">
+                <a class="pad-8-14" rg-report spam-type="user" spam-id="ddControl.getUtId()"><i class="drop-sprite fr-request-mar w-h-13 report-ico feed-font"></i>Report</a>
+            </div>
+        </div>

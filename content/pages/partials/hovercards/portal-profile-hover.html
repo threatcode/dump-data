@@ -1,0 +1,30 @@
+<div>
+    <div class="img_sprite left-shape-ico  ufr-pro ufr-m">
+        <img rg-src="user.avatar('thumb')">
+    </div>
+    <div class="ufr-info">
+        <a ng-href="{{ user.link() }}" ng-cloak="true">{{user.getName()}}</a>
+        <h2 ng-cloak="true">{{ portalCategory }}</h2>
+        <h2 ng-cloak="true">{{ user.getFollowerCountWithText() }}</h2>
+    </div>
+    <div class="fr-b">
+        
+        <div class="butt border-gray-orange  float-right btn-m-l-8" ng-show="portalSubscriber" >
+            <a class="btn-p-5-8" ng-click="unFollowPage('portal')">
+                <i class="drop-sprite w-h-13 unfollow-ico dis-inline-blok  btn-m-r-0"></i>
+                <span class="butt-text">Unfollow</span>
+            </a>
+        </div>
+        <div class="butt border-gray-orange  float-right btn-m-l-8" ng-if="! portalSubscriber">
+            <a class="btn-p-5-8" rg-ringbox="true"
+             ringbox-controller="portalFollowController"
+             ringbox-target="templates/newsportal/portal-follow.popup.html"
+             ringbox-type="remote"
+             ringbox-data="getPortalCatList($index)">
+                <i class="btn-m-r-0 friend-ico cir-joined-icon"></i>
+                <span class="butt-text">Follow</span>
+            </a>
+        </div>
+      
+    </div>
+</div>

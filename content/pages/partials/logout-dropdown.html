@@ -1,0 +1,24 @@
+<div class="logout-box">
+	<div class="logout-profile-info" style="">
+		<div class="pro-pic" style="">
+			<div class="icon-logo-circle pid-logo"><img  ng-src="{{ddControl.currentUser.avatar()}}" /></div>
+		</div>
+		<div class="pro-info" style="">
+			<p class="name" ng-bind="ddControl.currentUser.getName()"></p>
+			<p class="rid" ng-bind="'+876-' + ddControl.currentUser.getKey()"></p>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="logout-divider"></div>
+	<div class="log-btn-div"><input rg-click="doAction()()" type="button" name="" class="logout-button" value="Log out" /></div>
+
+	<div class="logout-menu">
+		<a ng-href="{{ddControl.currentuser.link()}}">Password Settings</a>
+                <a ng-href="{{ddControl.currentuser.link()}}">Privacy Settings aaa</a>
+		<a ng-href="{{ddControl.currentuser.link()}}">About</a>
+		<a ng-href="{{ddControl.currentuser.link()}}">Contact Us</a>
+		<a ng-href="{{ddControl.currentuser.link()}}">help</a>
+	</div>
+        
+        
+</div>

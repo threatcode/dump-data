@@ -1,0 +1,291 @@
+
+<style>
+    .ringbox-content {
+        overflow: visible;
+    }
+</style>
+
+
+<div class="circle-part" ng-class="{'partone' : circleNameSection, 'parttwo' :circleMemberSection, 'partthree' :circleAdminSection}">
+
+    <div class="circle-part1" ng-class="circleNameSection ? 'cr-opacity' : ''">
+        <!--        <div class="cir-head cir-top">
+                    <div class="cir-head-text f-left">
+                        <span class="cir-ico mh-ico"></span>Circle Name
+                    </div>
+                </div>-->
+
+        <div class="modal-header">
+            <h3 class="ng-binding"><span class="cir-ico mh-ico"></span>Circle Name</h3>
+            <!--<span class="icon-close mdl-close" rg-click="$close()"></span>-->
+        </div>
+
+
+        <div class="cir-select-mid">
+
+            <div class="create-circle-box">
+
+                <span class="left-align">Enter your circle name</span>
+            </div>
+            <div class="circle-name-in">
+                <input type="text" ng-model="models.circleName" maxlength="60" placeholder="Type your circle name">
+            </div>
+
+        </div>
+        <div class="cir-head cir-bottom">
+            <div class="member-step">
+
+                <ul>
+                    <li><a class="color-org">Circle Name</a></li>
+                    <li><a>Select member</a></li>
+                    <li><a>Select admin</a></li>
+                </ul>
+
+                <div class="m-step">
+                    <div class="m-step1">
+                        <!--<span class="sc-line"></span>-->
+                        <span class="select-check"></span>
+                    </div>
+                    <div class="m-step2">
+                        <!--<span class="sc-line"></span>-->
+                        <span class="un-check"></span>
+                    </div>
+                    <div class="m-step3">
+                        <span class="sc-dot"></span>
+                        <span class="un-check"></span>
+                    </div>
+                </div>
+            </div>
+            <button class="circle-next f-right" ng-disabled="models.circleName.length === 0" rg-click="nextPart('setmembers')">Next</button>
+        </div>
+    </div>
+
+
+    <div class="circle-part2" ng-class="circleMemberSection ? 'cr-opacity' : ''">
+        <!--        <div class="cir-head cir-top">
+                    <div class="cir-head-text f-left">
+                        <span class="cir-ico mh-ico"></span>Select Members
+                    </div>
+                </div>-->
+
+        <div class="modal-header">
+            <h3 class="ng-binding"> <span class="cir-ico mh-ico"></span>Select Members</h3>
+            <!--<span class="icon-close mdl-close" rg-click="$close()"></span>-->
+        </div>
+
+
+        <div class="cir-select-mid">
+            <div class="member-box" rg-scrollbar="scrollbar()" style="max-height: 150px;min-height: 50px;">
+                <div class="member-box-list" ng-repeat="member in memberList.all()">
+                    <span class="pt0" ng-cloak="true"> {{member.value.getName()}}</span>
+                    <div class="m-close" rg-click="removeMember(member.value)">
+                        <span class="cir-ico m-add-close"></span>
+                    </div>
+                </div>
+                <div class="cri-error" ng-show="memberList.length() < 1">No member selected yet.</div>
+
+                <!--<li ng-repeat="member in memberList.all()">-->
+                <!--<a  ng-href="{{member.value.link()}}" target="_blank">{{member.value.getName()}}</a>-->
+                <!--<a rg-click="removeMember(member.value)" class="icon-close" href="#"></a>-->
+                <!--</li>-->
+            </div>
+            <!--            <div class="add-member-box margin-re">
+                            <span>Add members for your circle</span>
+                            <div class="clear"></div>
+                            <div class="select-search">
+                                <input type="text" name="fs" ng-model="friendsNameFilter" placeholder="Search friends to add">
+                                <rg-friend-dropdown ng-show="friendDropdown" template-url="templates/circle-partials/friend-list-dropdown.html" tag-items="selectedMembers" filter-text="friendsNameFilter"  on-close="closeFriendDd" on-select="addToCircle"></rg-friend-dropdown>
+                                <div class="drop-member" ng-show="friendDropdown">
+                                <div class="member-d-box" ng-repeat="frnd in friendlist.all() | friendListFilter:{name: friendsNameFilter}"
+                                rg-click="addToCircle(frnd.value)">
+                                <div class="member-d-pro">
+                                <img ng-src="http://devimagesres.ringid.com/{{frnd.value.user.prIm}}">
+                                </div>
+                                <div class="member-d-name">{{frnd.value.user.fn}}</div>
+                                </div>
+            
+                                </div>
+                            </div>
+                        </div>-->
+
+            <div class="search-admin-box">
+                <span class="cir-head-text f-left">Select Circle Members</span>
+
+
+                <div class="box-search border-radius-4px float-right width-192 bg-eaeaec" style="margin:9px 12px 5px 12px">
+                    <span class="img_sprite width-25px height-25px search-icon-25 p-absolute search-icon-p"></span>
+                    <input type="text" name="fs" ng-model="friendName" ng-model-options="{ debounce: 500 }" placeholder="Search friends to add">
+                </div>
+
+            </div>
+
+            <div  ng-show="state.loading" class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+            <div class="member-box" rg-scrollbar="scrollbar()" style="max-height: 300px; min-height: 150px;" bottom-reached="loadMoreFriends()">
+
+                <div class="member-admin-box" ng-repeat="frnd in friendlist.all()| mapFilter:{mapApi: 'getName', value: friendName, compare: 'regex'}|mapListFilter:memberList as filterList" 
+                     ng-class="{'fndz-action': showBackKey === frnd.value.getKey()}" rg-click="addToCircle(frnd.value,$event)">
+                    <div class="member-admin-pro">
+                        <img ng-src="{{::frnd.value.avatar('thumb')}}"  onerror="this.src='images/prof.png';"/>
+                    </div>
+                    <div class="member-admin-name" ng-cloak="true">{{::frnd.value.getName()}}</div>
+                    <span class="addcir">+</span>
+                </div>
+
+                <!--
+                 <div class="cri-error" ng-show="memberList.length() < 1"> Member list can not be empty </div>-->
+            </div>
+
+
+
+
+        </div>
+        <div class="cir-head cir-bottom">
+            <div class="member-step">
+
+                <ul>
+                    <li><a class="color-org">Circle Name</a></li>
+                    <li><a class="color-org">Select member</a></li>
+                    <li><a>Select admin</a></li>
+                </ul>
+
+                <div class="m-step">
+                    <div class="m-step1" rg-click="nextPart('setname')">
+                        <span class="sc-line"></span>
+                        <span class="succ-check"></span>
+                    </div>
+                    <div class="m-step2">
+                        <!--<span class="sc-line"></span>-->
+                        <span class="select-check"></span>
+                    </div>
+                    <div class="m-step3">
+                        <span class="sc-dot"></span>
+                        <span class="un-check"></span>
+                    </div>
+                </div>
+            </div>
+            <button class="circle-next f-right" ng-disabled="memberList.length() < 1" rg-click="nextPart('setadmins')">Next</button>
+        </div>
+    </div>
+
+
+
+    <div class="circle-part3" ng-class="circleAdminSection ? 'cr-opacity' : ''">
+        <!--        <div class="cir-head cir-top">
+                    <div class="cir-head-text f-left">
+                        <span class="cir-ico mh-ico"></span>Select Admin
+                    </div>
+                </div>-->
+
+        <div class="modal-header">
+            <h3 class="ng-binding">  <span class="cir-ico mh-ico"></span>Select Admin</h3>
+            <!--<span class="icon-close mdl-close" rg-click="$close()"></span>-->
+        </div>
+
+
+        <div class="cir-select-mid">
+            <div class="member-box" rg-scrollbar="scrollbar()" style="max-height: 120px;min-height: 50px;">
+                <div class="member-box-list" ng-repeat="admin in adminList.all()">
+                    <span ng-cloak="true"> {{admin.value.getName()}}</span>
+                    <div class="m-close" rg-click="removeAdmin(admin.value)">
+                        <span class="cir-ico m-add-close"></span>
+                    </div>
+                </div>
+                <div class="cri-error" ng-show="adminList.length() < 1"> No admin added yet. Add admin from selected members. </div>
+
+
+                <!--<li ng-repeat="admin in adminList.all()">-->
+                <!--<a href="#" target="_blank">{{admin.value.getName()}}</a>-->
+                <!--<a ng-show="isCurrentUserSuperAdmin || circleAddMode" rg-click="removeAdmin(admin.value)" class="icon-close" href="#"></a>-->
+                <!--</li>-->
+
+                <div class="admin-search">
+                    <!--<input type="text" name="" placeholder="Search admin">-->
+
+
+                    <div class="admin-drop" style="display: none">
+                        <div class="member-d-box">
+                            <div class="member-d-pro">
+                                <img src="images/ullsize_distr.jpg">
+                            </div>
+                            <div class="member-d-name">Meadow rian</div>
+                        </div>
+
+                        <div class="member-d-box">
+                            <div class="member-d-pro">
+                                <img src="images/ullsize_distr.jpg">
+                            </div>
+                            <div class="member-d-name">Meadow rian</div>
+                        </div>
+
+                        <div class="member-d-box">
+                            <div class="member-d-pro">
+                                <img src="images/ullsize_distr.jpg">
+                            </div>
+                            <div class="member-d-name">Meadow rian</div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="search-admin-box">
+                <span class="cir-head-text f-left">Selected Circle Members</span>
+                <!--                <div class="cir-search f-right cir-m">
+                                    <input type="text" name="" ng-model="memberfilter" placeholder="Search members">
+                                </div>-->
+
+                <div class="box-search border-radius-4px float-right width-192 bg-eaeaec" style="margin:9px 12px 5px 12px">
+                    <span class="img_sprite width-25px height-25px search-icon-25 p-absolute search-icon-p"></span>
+                    <input type="text" name="" ng-model="memberfilter" placeholder="Search members">
+                </div>
+
+
+            </div>
+            <div class="member-box" rg-scrollbar="scrollbar()" style="max-height: 130px;min-height: 50px;">
+
+                <div class="member-admin-box" ng-repeat="member in memberList.all()| mapFilter:{mapApi: 'getName', value: memberfilter, compare: 'regex'}" rg-click="addToAdmin(member.value)">
+                    <div class="member-admin-pro">
+                        <img ng-src="{{member.value.avatar()}}" onerror="this.src='images/prof.png';">
+                        <!--<img ng-src="http://devimagesres.ringid.com/{{frnd.value.user.prIm}}">-->
+                    </div>
+                    <div class="member-admin-name" ng-cloak="true">{{member.value.getName()}}</div>
+                    <div class="member-set" rg-click="removeMember(member.value)">
+                        <span class="cir-ico m-set-close"></span>
+                    </div>
+                </div>
+
+                <!--
+                 <div class="cri-error" ng-show="memberList.length() < 1"> Member list can not be empty </div>-->
+            </div>
+        </div>
+        <div class="cir-head">
+            <div class="member-step">
+
+                <ul>
+                    <li><a class="color-org">Circle Name</a></li>
+                    <li><a class="color-org">Select member</a></li>
+                    <li><a class="color-org">Select admin</a></li>
+                </ul>
+
+                <div class="m-step">
+                    <div class="m-step1">
+                        <span class="sc-line"></span>
+                        <span class="succ-check"></span>
+                    </div>
+                    <div class="m-step2" rg-click="nextPart('setmembers')">
+                        <span class="sc-line"></span>
+                        <span class="succ-check"></span>
+                    </div>
+                    <div class="m-step3">
+                        <span class="sc-dot"></span>
+                        <span ng-class="adminList.length() < 1 ? 'select-check':'succ - check'"></span>
+                    </div>
+                </div>
+            </div>
+            <button class="circle-next f-right" ng-disabled="adminList.length() < 1 && memberList.length() < 1" rg-click="createCircle()">Finish</button>
+        </div>
+    </div>
+
+</div>

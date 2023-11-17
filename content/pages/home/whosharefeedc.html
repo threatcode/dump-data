@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h3 class="ng-binding">People who share's your status</h3>
+    <!--<span class="icon-close mdl-close"  rg-click="$close()"></span>-->
+</div>
+<div rg-scrollbar="true" bottom-reached="loadMore()" ng-style="{height:boxHeight + 'px'}">
+
+    <div style="width:600px;" class="newsfeed-row" ng-controller="FeedSubController" ng-repeat="feed in feeds track by feed.getKey()" ng-init="feedstatus = feed.text();
+                    keyid = feed.getKey();
+                    imageslength = feed.getImages().length;"  ng-class="{'half_opacity':feed.isPending()}">
+
+        <rg-news-feed-top feed="feed"
+                          dd-html="ddHtml"
+                          dropdown="dropdown"
+                          action-feed-dropdown="actionFeedDropdown"
+                          single-feed="true"
+                          serial="false"
+                          ></rg-news-feed-top>
+
+        <rg-news-feed-bottom></rg-news-feed-bottom>
+
+        <div class="clear"></div>
+    </div>
+</div>

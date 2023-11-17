@@ -1,0 +1,50 @@
+<div class="stickerContainer">
+    <div class="stickerContainerInner">
+        <div class="headSection" style="background: url(../../images/shop-02.png)">
+            <div class="pull-right"><input type="button" class="close" id="closeStickerMarket"></div>
+        </div>
+        <div class="midContain">
+            <div>
+                <input type="button" value="Back" ng-click="go_back_st_mk()">
+                <div class="eachItemInner">
+                    <div class="eachItemInnertop">
+                        <div class="innterItemLeft">
+                            <img src="http://images.ringid.com/stickermarket/d5/{{currentPreview.imageList[0].name}}"
+                                 width="95" height="95">
+                        </div>
+                        <div class="innterItemRight">
+                            <div class="stickerInd" ng-repeat="eachimg in currentPreview.imageList | limitTo:6">
+                                <img src="http://images.ringid.com/stickermarket/d5/{{eachimg.name}}" width="50"
+                                     height="50">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="eachItemInnerBot">
+                        <div class="infoSection"></div>
+                        <div class="optionSection">
+                            <div class="buttonPreview">
+                            </div>
+                            <div class="buttonAdd">
+                                <button class="btnAdd btn btn-danger"
+                                        data-stickeercatid="{{currentPreview.categoryId}}"
+                                        data-btntype="btntp"
+                                        data-stkitem="'+i+'"
+                                        data-stkbtnid="emo-table_s_{{currentPreview.collectionId}}_{{currentPreview.categoryId}}"
+                                        style="width: 42px; height: 22px; font-size: 10px; margin: 0px; padding: 0px;">
+                                    Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+
+<ul>
+    <li ng-repeat="each in mydata.data">{{each.categoryId}}</li>
+</ul>-->

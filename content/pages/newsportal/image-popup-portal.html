@@ -1,0 +1,32 @@
+<div class="pv-area" rg-img-change >
+    <div class="pro-pv" style="margin-left: 0px">
+        <div class="like-bottom">
+            <div class="nf">
+                <ul class="co_menu">
+                    <li class="img-caption" ng-cloak="true">{{image.getCaption()}}</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="view-lod">
+            <div class="loader-view"></div>
+        </div>
+
+        <div class="view-wrap" rg-img="{{image.src()}}" commentsection="false" rg-img-obj="image">
+
+        </div>
+
+
+        <a style="width:30%;float:left;left:0;top:0;height:100%;position:absolute;z-index:3;cursor:pointer;"
+           ng-show="prevImg" rg-click="changeImage('prev')">
+            <div class="pv-icon pv-left-ico img_sprite icon-left-arrow showpointer"></div>
+        </a>
+
+
+        <a style="width:30%;float:right;right:0;top:0;height:100%;position:absolute;z-index:3;cursor:pointer;"
+           ng-show="nextImg" rg-click="changeImage('next')">
+            <div class="pv-icon pv-right-ico img_sprite icon-right-arrow showpointer"></div>
+        </a>
+    </div>
+</div>

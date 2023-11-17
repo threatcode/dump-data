@@ -1,0 +1,81 @@
+<div class="sinimg-comment-area" ng-show="showCommentBox" style="background-color:#fff;">
+    <div class="feed_comment">
+        <ul class="media-list" >
+            
+            <!--<li><span class="showpointer" data-ng-click="loadPreviousComments()" ng-class="{ loading: loadingPreviousComments }">View Previous Comments</span></li>-->
+            <li>
+                <div >
+                    <ul>
+                        <li  class="item " ng-repeat="comm in allComments" ng-init="comment = comm.value" ng-class="{ half_opacity:comment.isPending() }">
+
+                            <div class="pad-7 caction-area a-comment-container" ng-class="{ active: (comment.getKey() == activeCommentId) }">
+                                <div class="prof_img">
+                                    <img alt="{{comment.user().getName()}}"  ng-src="{{::comment.user().avatar('thumb')}}"  >
+                                </div>
+                                <div style="width: calc(100% - 100px);" class="status_title comment-p" >
+                                    <p><a ng-href="{{::comment.user().link()}}">{{::comment.user().getName()}}</a></p>
+                                    <p onmousedown="return false"  ng-hide="(commentEditorEnabled && commentKey == comment.getKey())"
+                                       ng-bind-html="comment.getDynamicText()" ></p>
+
+
+
+
+                                    <p  ng-show="(commentEditorEnabled && commentKey == comment.getKey())" class="mar-5-0">
+                                        <span class="comment">
+                                            <rg-editor class="editor" editor-content="$parent.commentEditText" new-line="false" on-enter="updateCommentAdaptor" on-enter-arg="comment" show-emoji="true" on-escape="cancelEdit" edit-mode="comment.getDynamicText" placeholder="Write something...." ></rg-editor>
+                                             <span class="esc-to-cancel">Press Esc to <a rg-click="cancelEdit()">cancel</a></span>
+
+                                        </span>
+                                    </p>
+
+
+
+
+                                    <ul class="comment_like_menu">
+                                        <li>
+                                            <a  class="like_button" rg-click="likeCommentAdaptor(comment)"  ng-class="{
+                                                active:comment.like() > 0
+                                                }" ><i class="icon-like lc-ico"></i></a>
+                                            <a data-rg-click="likeCommentAdaptor(comment)" ng-class="{
+                                               active:comment.like() > 0
+                                               }" >&nbsp;Like</a>
+                                            <a  class="showpointer counter" data-toggle="modal" data-target="#likeModal"
+                                                data-rg-ringbox="{{ comment.getTotalLikes() > 0}}" data-ringbox-controller="fetchLikeController"  data-ringbox-target="templates/home/wholikes.html" data-ringbox-type="remote"
+                                                data-ringbox-data="fetchWhoLikes({'commentId' : comment.getKey()})" ng-cloak="true"> {{comment.getTotalLikes()}}</a>
+                                        </li>
+                                        <li class="mar-top-7 feed-m "><span class="time " ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i> {{comment.time()}}</span></li>
+                                    </ul>
+                                </div>
+
+                                <div class="pv-arrow-p" ng-show="comment.user().isCurrentUser()"  >
+                                    <div class="" >
+                                        <div class="ico-f arrow-b img_sprite w-h-13  icon-ds-arrow "  data-rg-dropdown="true" data-dd-html="ddCommentHtml"
+                                             data-dd-control="comment" data-dd-action="actionCommentDropdownAdaptor"></div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li  style="text-align:right;padding-right:10px;"><span class="showpointer" ng-show="feed.getTotalComment() !== allComments.length" data-ng-click="loadMoreComments()" ng-class="{ loading: loadingMoreComments }" >View More Comments</span></li>
+
+            
+            
+            
+            <li  class="comment" >
+                <div class="comment-w">
+                    <div class="cmnt-usr-prof">
+                        <img alt=""  ng-src="{{::user().avatar('thumb')}}"  >
+                    </div>
+                    <div class="comment float-left" style="width:calc(100% - 70px);">
+                        <rg-editor class="editor" editor-content="commentText" new-line="false" on-enter="addCommentAdaptor" is-disabled="!canComment" show-emoji="true"  placeholder="Write something...." ></rg-editor>
+                    </div>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>

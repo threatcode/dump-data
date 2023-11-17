@@ -1,0 +1,27 @@
+<!--<style>-->
+    <!--.ringbox-content {-->
+        <!--overflow: visible;-->
+    <!--}-->
+<!--</style>-->
+<div class="circle-part partone" >
+    <div class="circle-part1 cr-opacity" >
+        <div class="modal-header">
+            <h3 class="ng-binding">Album Name</h3>
+            <!--<span class="icon-close mdl-close" rg-click="$close()"></span>-->
+        </div>
+        <div class="cir-select-mid">
+            <div class="create-circle-box">
+                <span class="left-align">Enter your album name</span>
+            </div>
+            <div class="circle-name-in">
+                <input type="text" ng-model="albumName" maxlength="60" placeholder="Type your album name" autofocus="true" >
+            </div>
+        </div>
+        <div class="cir-head cir-bottom">
+            <button class="circle-next f-right" ng-disabled="albumName.length === 0" rg-click="createAlbum()">Create</button>
+            
+        
+            
+        </div>
+    </div>
+</div>

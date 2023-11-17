@@ -1,0 +1,89 @@
+.news-portal{ background-image:url('../images/news_portal.png');display:inline-block;}
+.w-h-18{width:18px;height:18px;}
+.w-23{width:23px;}
+.h-17{height:17px;}
+.mar-5-0{margin:5px 0;}
+.mar-6-0-4-0{margin: 6px 0 4px 0;}
+.m-r-5{margin-right:5px;}
+.h-40{height:40px;}
+.v-a-b{vertical-align:bottom;}
+.v-a-t{vertical-align:top;}
+.v-a-m{vertical-align: middle;}
+.camera{background-position: -246px -4px;}
+.fileUpload:hover .camera{background-position: -246px -33px;}
+.write-msg{background-position: -111px -26px;}
+.right-10{right:10px;}
+.import-icon{    
+    background-position: -180px -77px;
+    width: 30px;
+    height: 26px;}
+.edit-icon{
+    background-position: -190px -149px;
+    width: 16px;
+    height: 16px;
+    margin-right:5px;
+}
+.add-icon{
+    background-position: -210px -149px;
+    width: 16px;
+    height: 16px;
+    margin-right:5px;
+}
+.icon-id-circle{
+    background-position: -62px -27px;
+    width: 18px;
+    height: 20px;
+    vertical-align: middle;
+}
+.icon-id-circle-pro{
+    background-position: -39px -27px;
+    width: 18px;
+    height: 20px;
+    vertical-align: middle;
+}
+.pro-ico{
+    background-position: 0px 0px;
+    vertical-align: middle;
+    width: 25px;
+    height: 24px;
+}
+.cat-ico{
+    background-position: 0px -29px;
+    vertical-align: middle;
+    width: 25px;
+    height: 24px;
+}
+.profile-ico{
+    background-position: 0px -57px;
+    vertical-align: middle;
+    width: 25px;
+    height: 24px; 
+}
+.report-ico{
+    background-position: 0px -86px;
+    vertical-align: middle;
+    width: 25px;
+    height: 24px; 
+}
+.prev-icon{background-position: -253px -61px;}
+.prev-icon-p{top: 50%;margin-top: -20px;left:0;}
+.next-icon-p{top: 50%;margin-top: -20px;right:0;}
+.next-icon{background-position: -227px -61px;}
+.icon-stat{background-position: -181px -107px;}
+.icon-edit{background-position: -227px -107px;}
+.icon-delete{background-position: -248px -106px;}
+.icon-preview{background-position:-206px -106px;}
+
+.newsfeed-bottom ul.feed_lcs_menu li a.lcs_button:hover .icon-stat{background-position: -181px -125px;}
+.newsfeed-bottom ul.feed_lcs_menu li a.lcs_button:hover .icon-edit{background-position: -227px -125px}
+.newsfeed-bottom ul.feed_lcs_menu li a.lcs_button:hover .icon-delete{background-position: -248px -124px}
+.newsfeed-bottom ul.feed_lcs_menu li a.lcs_button:hover .icon-preview{background-position:-206px -124px;}
+.newsfeed-bottom ul.feed_lcs_menu li a.lcs_button i{vertical-align:middle;margin-top:-4px;}
+.full-name-icon{background-position: -275px -107px;}
+.city-icon{background-position:-275px -128px;}
+.about-icon{background-position:-275px -149px}
+.about-me-icon{background-position:-273px -172px;}
+.password-icon{background-position:-274px -197px;}
+.portal-icon{background-position:-275px -221px;}
+
+

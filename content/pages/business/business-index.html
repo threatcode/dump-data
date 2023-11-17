@@ -1,0 +1,27 @@
+
+ <div  class="dashboard-bg  mid-width pro-page-width" ng-controller="FeedBusinessPortalController">
+
+    <div class="middle"> 
+        <div class="profile news-pro-wrap">
+
+            <div  class="media-nav">
+
+                <rg-business-tab-nav></rg-business-tab-nav> 
+
+            </div>
+                    
+            <!-- <rg-business-slider></rg-business-slider> -->
+            <rg-portal-slider type="pages"></rg-portal-slider>
+
+            <div class="dashboard-bg  mid-width pro-page-width">
+    
+                <div ng-include src="'templates/business/business-feed.html'"  rg-feed-subscriber>
+                    
+                </div> 
+                <div ng-if="noDataYet()">
+                    <rg-discover-business tab-name="feed"></rg-discover-business>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

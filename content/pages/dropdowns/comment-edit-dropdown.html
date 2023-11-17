@@ -1,0 +1,24 @@
+<!--<div ng-show="showDropdown" class="ng-cloak action comment-dd float-right">-->
+<div class="action comment-dd pad-204 top-23">
+    <i class="drop-sprite curve-a curve-t-ico p-ab top11"></i>
+     <div class="ac-top-line" ng-if="ddControl.comment.isEditable()">
+        <a class="pad-8-14" rg-click="ddAction()({event: $event, action:'edit', commentMap: ddControl.comment})" href="#"><i class="drop-sprite w-h-13 edit-ico feed-font"></i>Edit</a>
+     </div>
+    <div class="ac-top-line" ng-if="ddControl.comment.isDeleteAble(ddControl.target)">
+      <a class="pad-8-14" rg-click="ddAction()({event: $event, action:'delete', commentMap: ddControl.comment})" href="#"><i class="drop-sprite w-h-13 delete-ico feed-font"></i>Delete</a>
+    </div>
+</div>
+
+
+
+<!--<div class="ng-cloak action comment-dd top-23">
+     <div class="ac-top-line drop-h" ng-if="ddControl.comment.isEditable()">
+        <span class="drop-sprite feed-font edit-ico w-h-13"></span>
+        <a rg-click="ddAction()({event: $event, action:'edit', commentMap: ddControl.comment})" href="#">Edit</a>
+     </div>
+    <div class="ac-top-line drop-h" ng-if="ddControl.comment.isDeleteAble(ddControl.target)">
+      <span class="drop-sprite w-h-13 delete-ico feed-font"></span>
+      <a rg-click="ddAction()({event: $event, action:'delete', commentMap: ddControl.comment})" href="#"
+         class="border-0">Delete</a>
+    </div>
+</div>-->

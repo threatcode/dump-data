@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="language" content="EN"/>
+    <title>ringID: News portal login</title>
+    <link rel="icon" href="images/favicon.ico"/>
+    <link href='//fonts.googleapis.com/css?family=Roboto:100,300,400,500,600' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' type='text/css' href='styles/static_new.css' />
+    <link rel='stylesheet' type='text/css' href='styles/js_team.css' />
+    <link rel='stylesheet' type='text/css' href='styles/common.css' />
+    <link rel='stylesheet' type='text/css' href='styles/sweetalert2.min.css'/>
+    <style type="text/css">
+        body,h2,h1,p,a,span,div,ul,li{font-family:'Roboto'}
+        .switch-text,.copyright-text,.s-option ul li{font-family:'Roboto'}
+    </style>
+</head>
+<body>
+<div id="top"></div>
+<div class="grid">
+    <div class="blck-bg">
+        <div class="header-wrapper">
+            <div class="sc-height"></div>
+            <div class="fixed-top headersc">
+                <div class="col-5-12 hide-on-600">
+                    &nbsp;<a href="faq.html"><img class="faq-logo" src="images/static/faq-nav.png"></a>
+                </div>
+                <div class="col-2-12  ring-logo">
+                    <div class="ring-logo-small">
+                        <a href="/">
+                            <img src="images/ring-logo-circle.png" alt="ringID" class="responsive-pic"/>
+                        </a>
+                    </div>
+                    &nbsp;
+                </div>
+                <div class="col-5-12  hide-on-600">
+                    <ul class="nav">
+                        <li><a target="_blank" href="//media.ringid.com">Media</a></li>
+                        <li><a rg-click="reloadHome()" ng-href="/" >Home</a></li>
+                        <!--<li><a rg-ringbox="true" ringbox-type="remote" ringbox-target="pages/welcome/login-popup.html" ring-backdrop-close="false" ringbox-controller="SignInController" class="btn-log">Log In</a></li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <!--Header end-->
+        <!--Slider Start-->
+        <div class="slider-bg hide-on-600">
+            <div class="left-bg">
+                <div class="right-bg">
+                    <div  class="sld-height">
+                        <div class="col-12-12 padding-top-30">
+                            <div class="module form-module">
+
+                                <div class="toggle">
+                                    <a id="loginSignupSelectionTop"> Signup </a>
+                                </div>
+
+                                <div class="form" id="loginForm">
+                                    <form id="_loginForm">
+                                        <h2 style="color:#f47727;">Login to your account</h2>
+                                        <!--value="2110078079"-->
+                                        <!--value="123456"-->
+                                        <div class="input-box">
+                                            <input class="text" autocomplete="off" type="text" id="portalUserId" name="portalUserId"  placeholder="User Id"/>
+                                        </div>
+                                        <div class="input-box">
+                                            <input class="text" autocomplete="off" type="password" id="portalUserPassword" name="portalUserPassword"  placeholder="Password"/>
+                                        </div>
+                                        <!--<button id="loginSubmitButton">Login</button>-->
+                                        <div class="input-box">
+                                            <input id="loginSubmitButton" type="submit" value="Login">
+                                        </div>
+                                    </form>
+                                    <div class="forgot-t m-t-7">
+                                        <div class="re-box chck-s">
+                                            <input type="checkbox"  id="r2" name="remember" />
+                                            <label for="r2"><span  >Keep me logged in</span></label>
+                                        </div>
+                                        <div class="for-box" id="forgetPassword">Forgot password?</div>
+                                        <div class="clear"></div>
+                                        <div class="s-up ">Don't have account?  <a href="#"  id="loginSignupSelection" class="ring-color loginSignupSelection" > Signup</a> now</div>
+                                    </div>
+                                </div>
+                                <div class="form" id="signupForm">
+                                    <form id="_signupForm" autocomplete="nope">
+                                        <h2 style="color:#f47727;">Create an account</h2>
+                                        <div class="input-box">
+                                            <input class="text" autocomplete="off"  type="text" id="portalName" name="portalName" placeholder="Portal Name"/>
+                                        </div>
+                                        <div class="input-box">
+                                            <input class="text" autocomplete="off"  type="password" id="portalPassword" name="portalPassword" placeholder="Password"/>
+                                        </div>
+                                        <div class="input-box">
+                                            <input class="text" autocomplete="off"  type="password" id="portalConfirmPassword" name="portalConfirmPassword" placeholder="Confirm Password"/>
+                                        </div>
+                                        <div class="input-box">
+                                            <input class="text" autocomplete="off"  type="email" id="portalEmail" name="portalEmail" placeholder="Email Address"/>
+                                        </div>
+                                        <div class="input-box">
+                                            <input class="text" autocomplete="off"  type="text" id="portalSlogan" name="portalSlogan" placeholder="Slogan"/>
+                                        </div>
+
+                                        <div class="input-box">
+                                            <!--<label  class="msg" for="categoryPost">You don't have any category! <a href='caegory.html'>Click here</a> to manage category</label>-->
+                                            <div class="country-wrapper" style="margin-bottom: 20px ;width:239px;background-color:#fff;">
+                                                <div style="border:1px solid #eee;padding:5px;">
+                                                    <div id="singleFlag" class="float-left flag b880"><span id="countryCode">+880</span></div>
+                                                    <input id="portalPhone"  name="portalPhone" style="float:right;width:calc(100% - 80px);margin-bottom:0;border:0;padding: 4px;border-left: 1px solid #eee;" spellcheck="false"  type="text" placeholder="Mobile Number" autocomplete="off"  required="required">
+                                                    <div class="clear"></div>
+                                                </div>
+                                                <ul id="countrylist">
+                                                    <div class="count-s" style="background-color: #f7f7f7;display: inline-block;height: 25px;width: 100%;padding: 5px 0;">
+                                                        <input id="searchCountry" type="text" placeholder="Search Country"></div>
+                                                </ul>
+                                            </div>
+                                            <input type="submit" id="signupSubmitButton" value="Register" />
+                                        </div>
+                                    </form>
+                                    <div class="s-up ">Yes I have account.  <a href="#" class="ring-color loginSignupSelection"> Login</a> now</div>
+                                </div>
+                                <div class="form" id="emailVerifyCodeForm">
+                                    <h2 style="color:#f47727;">Signup verification</h2>
+                                    <form id="_emailVerifyCodeForm">
+                                        <h5 id="emailVerifyMsg"></h5>
+                                        <div class="input-box"> <input type="text" id="verifyCode" name="verifyCode" placeholder="Verification Code"/>  </div>
+                                        <div class="input-box"> <input type="submit" id="verifyCodeButton" value="Verify" /> </div>
+                                        <a href="#" id="resendVerificationCode">Resend Code</a>
+                                    </form>
+                                </div>
+
+                                <div class="form" id="recoverSendCodeForm">
+                                    <h2 style="color:#f47727;">Password recovery</h2>
+                                    <form id="_recoverSendCodeForm">
+                                        <div class="input-box">
+                                            <input type="text" id="verifyEmail" name="verifyEmail" placeholder="Enter your email"/>
+                                        </div>
+                                        <div class="input-box"> <input type="submit" value="Submit" /> </div>
+                                    </form>
+                                </div>
+
+                                <div class="form" id="verifySendCodeForm">
+                                    <form id="_verifySendCodeForm">
+                                        <h2 style="color:#f47727;">Password recovery verification</h2>
+                                        <div class="input-box">
+                                            <input type="text" id="recoverVerifyCode" name="recoverVerifyCode" placeholder="Enter your verification code"/>
+                                        </div>
+                                        <div class="input-box"> <input type="submit" value="Submit" /> </div>
+                                    </form>
+                                </div>
+
+                                <div class="form" id="resetPasswordForm">
+                                    <form id="_resetPasswordForm">
+                                        <h2 style="color:#f47727;">Reset password</h2>
+                                        <div class="input-box">
+                                            <input type="password" id="resetPass" name="resetPass" placeholder="Enter new password"/>
+                                        </div>
+                                        <div class="input-box">
+                                            <input type="password" id="confirmResetPass" name="confirmResetPass" placeholder="Confirm password"/>
+                                        </div>
+                                        <div class="input-box"> <input type="submit" value="Submit" /> </div>
+                                    </form>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Footer Start-->
+    <div class="clear"></div>
+    <div class="switch-text"></div>
+    <div class="footer-r">
+        <div class="col-12-12 ">
+            <div class="col-3-12 ">
+                &nbsp;
+            </div>
+            <div class="col-6-12  footer-mid-height">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="javascript:void(0)" class="circle"></a>
+                <a href="terms.html">Terms & Conditions</a>
+                <div class="copyright-text">Copyright &copy; Ring Inc. 2016 All Rights Reserved</div>
+            </div>
+            <div class="col-3-12 back-to-top ">
+
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!--Footer End-->
+</div>
+<script src='js/vendor/js.cookie.min.js?v=0.14.01-1462438335325'></script>
+<script src='js/vendor/q/q.js?v=0.14.01-1462438335325'></script>
+<script src='app/debug.tool.js?v=0.14.01-1462438335325'></script>
+<script src='app/developer.config.dist.js?v=0.14.01-1462438335325'></script>
+<script src='js/vendor/jquery/jquery.js?v=0.14.01-1462438335325'></script>
+<script src='app/init-worker.js?v=0.14.01-1462438335325'></script>
+<script src='app/wat.fall.js?v=0.14.01-1462438335325'></script>
+<script src='app/config/settings.constant.js?v=0.14.01-1462438335325'></script>
+<script src='app/config/attribute-codes.constant.js?v=0.14.01-1462438335325'></script>
+<script src='app/config/app-constants.constant.js?v=0.14.01-1462438335325'></script>
+<script src='app/config/actions.constant.js?v=0.14.01-1462438335325'></script>
+<script src='app/config/newsportal.constant.js?v=0.14.01-1462438335325'></script>
+<script src='app/language/default/default.js?v=0.14.01-1462438335325'></script>
+<script src='app/language/language.module.js?v=0.14.01-1462438335325'></script>
+<script src='app/common/factories/storage.factory.js?v=0.14.01-1462438335325'></script>
+<script src='app/common/factories/map.factory.js?v=0.14.01-1462438335325'></script>
+<script src='app/puller/channel.manager.js?v=0.14.01-1462438335325'></script>
+<!--<script src='app/auth/auth.module.js?v=0.14.01-1462438335325'></script>-->
+<script src='app/common/services/file-upload.service.js?v=0.14.01-1462438335325'></script>
+<script src='app/common/services/ringhttp.service.js?v=0.14.01-1462438335325'></script>
+<script src='app/common/services/image-quality.service.js?v=0.14.01-1462438335325'></script>
+<script src='app/utils/factories/app.utils.factory.js?v=0.14.01-1462438335325'></script>
+<script src="js/vendor/sweetalert2.min.js"></script>
+<script src="js/vendor/jquery.validate.min.js"></script>
+<script src='app/utils/portal.utils.js?v=0.14.01-1462438335325'></script>
+<script src='app/category.module.js?v=0.14.01-1462438335325'></script>
+<!--<script src='app/feed.js?v=0.14.01-1462438335325'></script>-->
+<!--<script src='app/portal.js?v=0.14.01-1462438335325'></script>-->
+<!--<script src='js/vendor/parsley/parsley.js?v=0.14.01-1462438335325'></script>-->
+<script src='app/auth/signup.module.js?v=0.14.01-1462438335325'></script>
+<script src='app/auth/signup.js?v=0.14.01-1462438335325'></script>
+</body>
+</html>

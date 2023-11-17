@@ -1,0 +1,16 @@
+<div class="cir-head cir-bottom">
+    <div class="member-step" ng-if='!hideSteps'>
+        <ul>
+            <li ng-repeat="step in steps"><a ng-class="{ 'color-org' :  $index <= currentStep }" ng-cloak="true">{{ step.title }}</a></li>
+        </ul>
+
+        <div class="m-step">
+            <div ng-repeat="step in steps"  class="m-step{{ $index+1 }}" rg-click="goToStep($index)" ng-clock>
+                <span ng-if="$index < currentStep" ng-class="{ 'sc-line' : !last , 'sc-dot': $last }"></span>
+                <span ng-class="{ 'select-check': $index <= currentStep, 'un-check' : $index > currentStep }"></span>
+            </div>
+        </div>
+    </div>
+    <button class="circle-next f-right" ng-disabled="disableNextButton" rg-click="goNextStep()" ng-cloak="true">{{ nextButtonText }}</button>
+</div>
+

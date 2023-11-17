@@ -1,0 +1,17 @@
+<!--<ul ng-show="showDropdown" class="cover-dropdown action">-->
+<div class="action pad-204 cover-drop-w z-in-110">
+   <i class="drop-sprite curve-a curve-t-ico p-ab top11"></i>
+    
+     <div class="ac-top-line">
+            <a class="pad-8-14"><i class="drop-sprite w-h-13 icon-upload-pro feed-font"></i>Upload Image</a>
+            <rg-upload upload-type="cover" class="hp-tex" upload-action="ddAction()"></rg-upload>
+     </div>               
+    <div class="ac-top-line">
+       <a class="pad-8-14" href="" rg-ringbox="true" ringbox-type="remote" ringbox-data="ddAction()({action: 'popupData'})"
+       ringbox-target="templates/partials/notification/album-popup.html"  ><i class="drop-sprite icon-camera-f w-h-13 feed-font"></i>Browse Albums</a> 
+    </div>
+    
+    <div class="ac-top-line">
+        <a class="pad-8-14" ng-if="ddControl.enableCoverReposition" href="#" rg-click="ddAction()({action: 'toggleReposition', event: $event});"><i class="drop-sprite icon-move w-h-13 feed-font"></i>Enable Reposition</a>
+    </div>
+    </div>

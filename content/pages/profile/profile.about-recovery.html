@@ -1,0 +1,71 @@
+<!--  Recovery Settings   DIV start -->
+<div id="recovery-settings" ng-class="{'dis-none': activeNav !== 'recovery'}" class="pad-80-0" ng-if="isOwner">
+    <div class="view" >
+        <div class="ppinfo" ng-show="showAddEmailButton && !isAddEmail"  type="button" name="em" value="{{emailValue}}" title="{{emailTitle}}" rg-click="addEmail()">
+            <div class="rcvsec">
+                <div ng-show="emailEditButton" class="butt border-gray-orange float-right btn-m-l-8 p-absolute right-0 rcvedtbtn" id="enable-edit-Mode"><a class="btn-p-5-8" rg-click="addEmail()"><i class="friend-ico edit-btn-icon"></i><span class="butt-text">Edit</span></a></div>
+                <span class="recov-ico img_sprite w-h-40px  icon-very-mail cur-pntr" ng-class="emailVerified?'verified':''"></span>
+                <span class="recov-text rcvry-txt cur-pntr" ng-class="emailVerified?'verified':''" ng-cloak="true">{{emailTitle}}</span>
+                <span class="recov-text rcvry-txt cur-pntr" ng-class="emailVerified?'verified':''" ng-show="emailVerified" ng-cloak="true">{{vemail}}</span>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="ppinfo"  ng-show="isAddEmail">
+            <div class="title-txt" ng-show="!emailVerified">Verify your email.</div>
+            <div class="title-txt" ng-show="emailVerified">Verify another email.</div>
+            <form name="formSendCodeToMail">
+                <input type="email" class="" placeholder="Enter your email" name="email" ng-model="email.email" required>
+                <input type="button" style="display:inline-block;width:55px;margin-top:5px;" rg-click="sendCode(email)" value="Send" name="" class="pro-edit-btn" ng-disabled="formSendCodeToMail.$invalid">
+                <input type="button" style="display:inline-block;width:55px;margin-top:5px;" rg-click="cancelAddEmail()" value="Cancel" name="" class="pro-edit-btn">
+                <!-- <span class="input-error" ng-show="formSendCodeToMail.email.$error.email">Valid email address required</span> -->
+            </form>
+
+        </div>
+        <div class="ppinfo" ng-show="isAddCode">
+           <form name="mailcodeVerifyForm">
+                <input type="text" class="" placeholder="Enter Code..." name="code" ng-model="code.code" value="" required>
+                <input type="button" style="display:inline-block;width:55px;margin-top:5px;" value="{{consType.verify}}" ng-disabled="mailcodeVerifyForm.$invalid" rg-click="verifyCode(code)" name="" class="pro-edit-btn" ng-disabled="formSendCodeToMail.$invalid">
+                <input type="button" style="display:inline-block;width:55px;margin-top:5px;" value="{{consType.cancel}}" rg-click="cancelVerification()" name="" class="pro-edit-btn">
+                <!-- <span class="input-error" ng-show="formSendCodeToMail.email.$error.email">Valid email address required</span> -->
+                <span style="margin-top: 7px;display: block;"><a rg-click="resendCodeToMail()">Resend Code to Mail</a></span>
+            </form>
+        </div>
+        <div class="divider"  ng-show="!isAddEmail && !isAddPhone"></div>
+        
+        <!-- <div class="ppinfo" ng-show="showAddPhoneButton && !isAddPhone"  type="button" name="" value="{{phoneValue}}"  title="{{phoneTitle}}"  rg-click="enableVerifier()" > -->
+        <div class="ppinfo" ng-show="showAddPhoneButton && !isAddPhone"  type="button" name="" value="{{phoneValue}}"  title="{{phoneTitle}}">
+            <div class="rcvsec">
+
+                <!-- <div class="butt border-gray-orange float-right btn-m-l-8 p-absolute right-0 rcvedtbtn" id="enable-edit-Mode" ><a class="btn-p-5-8" rg-click="enableVerifier()"><i class="friend-ico edit-btn-icon"></i><span class="butt-text">Edit</span></a></div> -->
+
+                <span class="recov-ico img_sprite w-h-40px  icon-very-phone cur-pntr" ng-class="phoneVerified?'verified':''"></span>
+                <span class="recov-text rcvry-txt cur-pntr" ng-class="phoneVerified?'verified':''" ng-cloak="true">{{phoneTitle}}</span>
+                <span class="recov-text rcvry-txt cur-pntr" ng-class="phoneVerified?'verified':''" ng-show="phoneVerified" ng-cloak="true">{{vnumber}}</span>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="ppinfo" >
+            <rg-verify-phone verify="verifyThePhoneNum" enabled="verifierEnabled"></rg-verify-phone>
+        </div>
+    </div>
+</div>
+
+<!--ng-show="isAddPhnCode"-->
+<!-- <div class="info-add" ng-show="isAddPhnCode">
+    <form name="phonecodeVerifyForm">
+        <div class="info-title"  style="border: 1px solid #ededed;padding: 0 10px 0 0;height:25px;width:238px;display:inline-block;">
+            <p class="right" style="text-align: center;">
+                <input style="border:0;display:inline-block;padding:0 2px 0 5px;width:225px" type="text" class="" placeholder="Enter Code..." name="code" ng-model="code.code" value="" required="">
+            </p>
+        </div>
+        <input class="pro-edit-btn" type="button" name="" value="{{consType.verify}}" ng-disabled="phonecodeVerifyForm.$invalid" rg-click="verifyPhoneCode(code)"  style="display:inline-block;width:55px;margin-top:5px;"/>
+        <input class="pro-edit-btn" type="button" name="" value="{{consType.cancel}}" rg-click="cancelVerification()"  style="display:inline-block;width:55px;margin-top:5px;"/>
+        <a rg-click="resendCodeToPhone()">Resend Code to Phone</a>
+    </form>
+</div> -->
+</div>
+
+</div>
+<!---------------------------------------  Recovery Settings   DIV END -------------------------------- ----------->

@@ -1,0 +1,27 @@
+
+    <div class="status-photo-view" id="img-height" ng-show="uploadFiles.length > 0">
+        <div id="sts-img-preview" style="text-align:center;" class="scroll" >
+            <div ng-show="previewStartAt+3 < uploadFiles.length" class="np-box img_sprite icon-right-arrow"  style="right:0;margin-top:60px;" rg-click="loadNext()"></div>
+            <div ng-show="previewStartAt > 0" class="np-box  img_sprite icon-left-arrow" style="left:0;margin-top:60px;"  rg-click="loadPrevious()"></div>
+            <div class="status-photo-view-thumb" ng-repeat="image in getMedia()" 
+                    ng-style="calculateMargin($index)" ng-class="whichClass($index)" >
+                <div ng-show="image.getProgress() !== 100" class="progress-bar-placement" style="position:absolute;width:100%;text-align:center;">
+                    <div class="percent" ng-cloak="true">{{image.getProgress()}}%</div>
+                    <div class="progress-bar">
+                        <div class="uploaded" ng-style="{'width': image.getProgress()+ '%'}"></div>
+                    </div>
+                </div>
+            <div  id="singleImage{{$index}}"  style="position:absolute;width:100%;text-align:center;">
+                <input class="add-title" ng-model="image.cptn" ng-model-options="{ getterSetter: true }" type="text" name="" placeholder="Add Photo Title" ng-show="!image.progressVisible" />
+                <div class="photo-view" style="background-image: url({{image.getPreview()}}); background-position:50% 50%; background-size:100% 100%; background-repeat:no-repeat; cursor: pointer;">
+                    <div class="status-photo-view-thumb-hover">
+                        <div class="m-icn" ng-class="{'audio' : uploadSpec.type == 'audio', 'video' : uploadSpec.type == 'video'}"></div>
+                        <span id="closebtn0" class="close" style="display: block;" rg-click="removeMedia($index)" inc="0">
+                            <div class=" up-p"></div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

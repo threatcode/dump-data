@@ -1,0 +1,106 @@
+/*----------------------------------- Single image feed design css --------------------------------------------------*/
+
+.sinimg-img-page-wrapper{width:100%;  box-sizing: border-box;padding:  0 10px; margin-bottom: 10px}
+.sinimg-area{background: #fff; border-left: 1px solid #d0d0d0; border-right: 1px solid #d0d0d0;}
+.sinimg-img-wrapper{ width:100%;background: #000; min-height: 500px;   padding: 15px 30px; margin-bottom: 40px; box-sizing: border-box;  }
+.sinimg-img{ margin: 0 auto }
+.lcs_menu{width: 100%; background: #F8F8F8; height:25px; border-top: 1px solid #ebebeb; border-bottom: 1px solid #ebebeb;}
+.lcs_menu ul{color: #939494;   list-style: outside none none;    width: 100%; }
+.lcs_menu ul li{width: 33%; float: left; text-align: left;  padding: 3px 20px; box-sizing: border-box}
+.lcs_menu ul li:last-child{text-align:  right; padding-right: 20px}
+.lcs_menu ul li a{cursor: pointer; line-height: 17px; overflow: hidden; vertical-align: middle;  }
+.lcs_menu ul li .active{color:#f77727; text-decoration: none}
+.sinimg-comment-area{max-height:1200px;  }
+.edit-comments-txtarea{width: 100%; resize: vertical; }
+.status-img-info{margin-bottom: 10px; padding: 0 20px; box-sizing: border-box}
+.sinimg-img-page-wrapper ul.media-list li.item{background: #fff; padding: 3px 0; margin-bottom: 5px; box-sizing: border-box}
+.status-img-avater{width: 35px; float: left}
+.status-user-info{margin-left: 50px;    width: auto;}
+.status-user-info h3{margin-left: 3px}
+.img-cap{width: 100%; text-align: justify; padding: 0 20px; box-sizing: border-box; margin-bottom: 15px}
+.comment-box{margin-left: 10px}
+
+
+
+.sinimg-img-page-wrapper ul.media-list li.comment {  border-bottom: 1px solid #d0d0d0;border-top:0;  background: #fff;  width: 100%;    overflow: hidden;   box-sizing: border-box; margin: 0 0 5px;   padding: 15px 0;  display: table   }
+.sinimg-img-page-wrapper .comment-w{/*display: table-cell;*/ vertical-align: middle}
+.sinimg-img-page-wrapper .comment input{width: 100%; box-sizing: border-box}
+.dis-tbl{display: table}
+.prof_img{width: 40px; height: 40px;  margin-right: 10px; float: left }
+.prof_img img{width: 40px; height: 40px; border-radius:50%;}
+.pv-arrow-p{width: 17px; margin-right: 10px;  float: right;position: absolute}
+.sinimg-img-page-wrapper .comment-p{float: left; margin: 0 10px; /*width: auto */  }
+.cmnt-usr-prof{width: 30px; height: 30px; margin: 0 10px 0 20px; display: inline-block; float: left}
+.cmnt-usr-prof img{width: 30px; height: 30px; border-radius: 50%;}
+.inline-share{position: relative; margin:0;padding:0;border:0;background-color: #fdfdfd;position:relative;border-left: 2px solid #f77727;text-align: left}
+.emo-icon-p-abs{    
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.emo-margin-post-comment{
+    right: 2%;
+    bottom: 7px;
+}
+
+.emo-margin-edit-comment{
+    right: 0;
+    bottom: 3px;
+}
+
+.margin-top-popup-emo{margin-top: 4px;}
+.img-caption {
+    color: #dddddd;
+    width: 85%;
+    margin-left: 20px;
+    text-align: left;
+}
+.fip{
+    width: 80%;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+}
+.comment-view{float: left;    margin: 0 10px;display: inline-block; width: 80%;}
+.width-height-of-picture{
+    width: 438px; height: 380px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 1px solid #eee;
+}
+.single-feed-images-container-wrapper{
+    text-align:center;
+}
+.single-feed-images-container{
+    display:inline-block;
+    margin:5px;
+}
+.single-feed-images-container > a{
+    margin:0 auto;
+    padding:0;
+}
+.single-feed-image{
+    margin:0 auto;padding:0;
+}
+
+.feed_details p.s-error {
+    color: #f16b6b;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-align: left;
+    font-size:12px;
+}
+.n-data{padding-top:10px;}
+.w-600 {
+    width: 600px;
+}
+.pad-0 {
+    padding: 0px;
+}
+.pad-10 {
+    padding: 10px;
+}
+.border-n {
+    border: none;
+}

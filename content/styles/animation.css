@@ -1,0 +1,255 @@
+.animation {
+    -webkit-animation-duration: .4s;
+    -moz-animation-duration: .4s;
+    -ms-animation-duration: .4s;
+    -o-animation-duration: .4s;
+    animation-duration: .4s;
+
+    animation-direction: alternate;
+    -webkit-animation-direction: alternate;
+}
+
+.animation.fade-in {
+    -webkit-animation-name: fade-in;
+            animation-name :  fade-in;
+}
+
+.animation.slide-left {
+    -webkit-animation-name: slide-left;
+            animation-name :  slide-left;
+
+}
+
+
+/******************** CHAT ANIMATIONS **************************/
+
+.chat-open-animation { 
+   -webkit-animation-name: chat_box_open;
+    animation-name: chat_box_open;
+}
+
+.chat-minimize-animation { 
+
+   -webkit-animation-name: chat_box_minimize;
+    animation-name: chat_box_minimize;
+}
+
+.chat-maximize-animation { 
+   -webkit-animation-name: chat_box_miximize;
+           animation-name: chat_box_miximize;
+
+}
+.chat-closing-animation{
+    -webkit-animation-name: chat_box_close;
+    animation-name: chat_box_close;
+}
+
+.chat-body-opened.chat-fullscreen-open-animation,
+.chat-fullscreen-open-animation{
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 0px;
+
+    -webkit-animation-duration: .4s;
+    -moz-animation-duration: .4s;
+    -ms-animation-duration: .4s;
+    -o-animation-duration: .4s;
+    animation-duration: .4s;
+
+    -webkit-animation-name: chat_fullscreen_modal;
+            animation-name: chat_fullscreen_modal;
+
+}
+
+.chat-body-opened.chat-fullscreen-close-animation,
+.chat-fullscreen-close-animation{
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 0px;
+
+    -webkit-animation-duration: .4s;
+            animation-duration: .4s;
+
+    -webkit-animation-name: chat_fullscreen_modal;
+            animation-name: chat_fullscreen_modal;
+
+    -webkit-animation-direction: reverse;
+            animation-direction: reverse;
+
+}
+
+
+.chat-fullscreen-close-animation .single-box-container,
+.chat-fullscreen-open-animation .single-box-container{
+    bottom: 0px;
+    position: absolute;
+}
+
+
+.chat-fullscreen-close-animation  .chat-middle,
+.chat-fullscreen-open-animation  .chat-middle{
+    width: 100%;
+    height : 100%;
+    box-sizing: border-box;
+}
+
+
+.chat-fullscreen-close-animation  .chatbox-mid-border,
+.chat-fullscreen-open-animation  .chatbox-mid-border{
+    height : calc(100% - 80px);
+}
+
+
+@keyframes slide-left{
+    0% {
+        margin-right : -200px;
+    }
+    100% {
+        margin-right; 0px;
+    }
+}
+
+
+@-webkit-keyframes slide-left{
+    0% {
+        margin-right : -200px;
+    }
+    100% {
+        margin-right; 0px;
+    }
+}
+
+
+
+@keyframes slide-left{
+    0% {
+        margin-right : -200px;
+    }
+    100% {
+        margin-right; 0px;
+    }
+}
+
+@-webkit-keyframes fade-in{
+    0% {
+        opacity: .1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in{
+    0% {
+        opacity: .1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes chat_fullscreen_modal {
+  0%   { 
+        background: rgba(0, 0, 0, .01);
+    }
+  100% {
+        background: rgba(0, 0, 0, 0.8);
+    }
+}
+
+@-webkit-keyframes chat_fullscreen_modal {
+  0%   { 
+        background: rgba(0, 0, 0, .01);
+    }
+  100% {
+        background: rgba(0, 0, 0, 0.8);
+    }
+}
+
+
+@-webkit-keyframes chat_box_minimize{
+  0% {
+    bottom:0px;
+  }
+  100% {
+    bottom:-363px;
+  }
+}
+
+@keyframes chat_box_minimize{
+  0% {
+    bottom:0px;
+  }
+  100% {
+    bottom:-363px;
+  }
+}
+
+@-webkit-keyframes chat_box_miximize{
+  0% {
+    bottom:-363px;
+  }
+  100% {
+    bottom:0px;
+  }
+}
+
+@keyframes chat_box_miximize{
+  0% {
+    bottom:-363px;
+  }
+  100% {
+    bottom:0px;
+  }
+}
+
+@-webkit-keyframes chat_box_open{
+  0% {
+    bottom:-400px;
+  }
+  100% {
+    bottom:0px;
+  }
+}
+
+@keyframes chat_box_open{
+  0% {
+    bottom:-400px;
+  }
+  100% {
+    bottom:0px;
+  }
+}
+
+@-webkit-keyframes chat_box_close{
+  0% {
+    bottom:0px;
+  }
+  100% {
+    bottom:-400px;
+  }
+}
+
+@keyframes chat_box_close{
+  0% {
+    bottom:0px;
+  }
+  100% {
+    bottom:-400px;
+  }
+}
+
+

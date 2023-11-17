@@ -1,0 +1,17 @@
+<!-- <div style="position: absolute;right: 25px;top: 12px;width: 13px;height: 12px;cursor: pointer;" class="player-size"></div> -->
+        <div class="view-lod">
+            <div class="loader-view"></div>
+        </div>
+
+        <div class="">
+            <!--<p>{{media.getKey()}}</p>-->
+            <!--<video videojs id="videojs_{{media.getKey()}}" height="370" width="600" posterlink="{{media.getThumb()}}" medialink="{{media.getStreamUrl()}}" controls data-setup='{}' class="video-js vjs-default-skin vjs-controls-enabled vjs-has-started vjs-paused vjs-user-inactive">-->
+            <!--</video>-->
+
+            <rg-player id="media_{{::media.getKey()}}" title="{{::media.getCaption()}}" poster="{{::media.getThumb()}}" is-video="{{::media.isVideo()}}" width="650" height="375" 
+                       url="{{::media.getStreamUrl()}}" playlist="playlist" auto="true" on-change="changeMedia"></rg-player>
+            <!--url="{{::media.getStreamUrl()}}" playlist="album.getContents().all()" auto="true" on-change="changeMedia"></rg-player>-->
+
+
+        </div>
+<!-- </div> -->

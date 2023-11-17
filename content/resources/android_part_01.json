@@ -1,0 +1,19 @@
+[ 
+    {
+        "name":"36.png",
+        "kind":"Image File",
+        "md":"Jan 18,2015",
+        "size":"265 KB",
+        "dimension":"36*36",
+        "src":"mediakit/android/app_icon/36.png"
+    },
+    
+    {
+        "name":"48.png",
+        "kind":"Image File",
+        "md":"Jan 18,2015",
+        "size":"25.8 KB",
+        "dimension":"48*48",
+        "src":"mediakit/android/app_icon/48.png"
+    }
+]

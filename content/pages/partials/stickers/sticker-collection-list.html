@@ -1,0 +1,24 @@
+<li>
+    <input type="radio" name="css3-tabstrip-0" checked="checked" id="css3-tabstrip-0-3" data-ng-click="displayingCollections=true" /><label for="css3-tabstrip-0-3">COLLECTIONS</label>
+    <div class="sticker-tab-container">
+        <div class="sti-box" data-ng-repeat="(collectionId, aCollection ) in collections"  ng-if="displayingCollections" ng-click="showCollectionCategories(aCollection.getKey())" >
+
+            <div class="img-b">
+                <img ng-src="{{ aCollection.getBannerImageUrl() }}" alt="stickerCatIcon" />
+            </div>
+            <div class="store-text store-text-mod" ng-cloak="true">
+                {{ aCollection.getName() }}
+            </div>
+        </div>
+
+
+        <div data-ng-repeat="(collectionId, aCollection ) in collections"   >
+
+            <div class="collection-category-list-container" ng-init="categories=aCollection.getCategories()" ng-if="!displayingCollections && shouldShowCollectionCategories(aCollection.getKey())">
+                <rg-sticker-category categories="categories" class="sticker-category-list-container" ></rg-sticker-category>
+            </div>
+        </div>
+
+    </div>
+
+</li>

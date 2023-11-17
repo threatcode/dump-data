@@ -1,0 +1,9 @@
+<!--<div ng-show="showDropdown" class="action friend-settings-dropdown float-right">-->
+<div class="action friend-settings-dropdown float-right">
+    <a  ng-if="ddControl.friendshipStatus()==0 && !ddControl.isCurrentUser()" rg-click="ddAction()({ action: 'addfriend', friend: ddControl})" href="#"><span class="friend-ico addfnd"></span><span class="txt">{{consType.add_friend}}</span></a>
+    <a  ng-if="ddControl.friendshipStatus()==1" rg-click="ddAction()({ action: 'unfriend', friend: ddControl})" href="#"> <span class="friend-ico reject"></span><span class="txt">{{consType.unfriend}}</span></a>
+    <a  ng-if="ddControl.friendshipStatus()==2" rg-click="ddAction()({ action: 'accept', friend: ddControl})" href="#"><span class="friend-ico accept"></span><span class="txt">{{consType.accept}}</span></a>
+    <a  ng-if="ddControl.friendshipStatus()==3" rg-click="ddAction()({ action: 'remove', friend: ddControl})" href="#"><span class="friend-ico reject"></span><span class="txt">{{consType.remove}}</span></a>
+    <a  ng-if="ddControl.isBlocked()===0 && !ddControl.isCurrentUser() && ddControl.friendshipStatus()==1" rg-click="ddAction()({ action: 'block', friend: ddControl})" class="border-0" href="#"><span class="icon-block"></span><span class="txt">{{consType.block}}</span></a>
+    <a  ng-if="ddControl.isBlocked()===1 && !ddControl.isCurrentUser() && ddControl.friendshipStatus()==1" rg-click="ddAction()({ action: 'unblock', friend: ddControl})" class="border-0" href="#"><span class="icon-right f-Block"></span><span class="txt">{{consType.unblock}}</span></a>
+</div>

@@ -1,0 +1,10 @@
+<div ng-if="domBoxLength() > availableNo" class="extra-chat-box" >
+    <a class="extra-chat-box-no" chat-bind-outside-click="asd" ng-click="showHidden = !!showHidden === false ? true: false; c = domBoxLength() - availableNo; b = 60 + c * 32;" ng-cloak="true">{{domBoxLength() - availableNo}}</a>
+    <div class="show-hidded-boxes" ng-show="showHidden" ng-style="{'bottom': b + 'px'}">
+        <div class="extra-chat-box-names"
+             ng-repeat="rbox in boxes| filter : {value : {nonDomBox : true }} | limitTo : -(domBoxLength() - availableNo) : -availableNo"
+             chat-blinker-h="asd"
+             chat-r-focus="{{ rbox.value.getKey()}}"
+             make-visible-chat-box="{{ rbox.value.getKey()}}" ng-cloak="true">{{rbox.value.getTitle() ? (rbox.value.getTitle() | limitTo:15) : rbox.value.getKey()}}</div>
+    </div>
+</div>

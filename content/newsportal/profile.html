@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="language" content="EN"/>
+    <meta name="title" content="ringID: News portal profile"/>
+    <title>ringID: News portal profile</title>
+    <link rel="icon" href="images/favicon.ico"/>
+    <link type="text/css" rel="stylesheet" href="styles/common.css">
+    <link type="text/css" rel="stylesheet" href="styles/sprite.css"/>
+    <link type="text/css" rel="stylesheet" href="styles/dropdown.css"/>
+    <link type="text/css" rel="stylesheet" href="styles/top.css"/>
+    <link type="text/css" rel="stylesheet" href="styles/left.css"/>
+    <link rel='stylesheet' type='text/css' href='styles/sweetalert2.min.css'/>
+    <link type="text/css" rel="stylesheet" href="styles/profile_cover.css"/>
+    <link type="text/css" rel="stylesheet" href="styles/dashboard.css"/>
+    <link type="text/css" rel="stylesheet" href="styles/category.css"/>
+    <link type="text/css" rel="stylesheet" href="styles/profile.css"/>
+    <link type="text/css" rel="stylesheet" href="styles/js_team.css"/>
+    <link type="text/css" rel="stylesheet" href="styles/media.css"/>
+</head>
+<body>
+
+
+<div class="p-fixed b-c-f37726 h-52 l-0 r-0 t-0 z-1030">
+    <div class="h-52">
+        <div class="w-200 float-left">
+            <div class="w-77 m-l-5">
+                <a href="dashboard.html"><img class="m-t-7" src="images/brand_name.png"/></a>
+            </div>
+        </div>
+        <div class="float-right">
+            <div class="top-menu">
+                <ul class="menu-list">
+                    <li class="parent">
+                        <a title="Logout" class="profileLogout">
+                            <img class="tm-img pro-header-image" src="images/prof.png"/>
+                        </a>
+                        <div class="drop-box r-0 w-150 t-52">
+                            <a href="dashboard.html">News Feeds</a>
+                            <a href="profile.html">Profile</a>
+                            <a href="category.html">Manage Category</a>
+                            <a id="logOutButton">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div class="h-52"></div>
+<div class="clear"></div>
+<div class="width-200 left-sidebar-min-height white-background left-fixed border-right">
+    <div class="row-responsive">
+        <div class="profile-box">
+            <a>
+                <div class="p-img" style="background-image: url('images/prof.png');"></div>
+            </a>
+            <div class="user-name">
+                <a class="r-usernm" id="userProfileNameLeft"></a>
+                <i class="news-portal icon-id-circle"></i>&nbsp;<span id="userRingIdLeft"></span>
+            </div>
+        </div>
+        <ul class="left-nav">
+            <li><a title="" href="dashboard.html"><i class="news-portal pro-ico m-r-10"></i><b>News Feeds</b></a></li>
+            <li><a title="" href="profile.html"><i class="news-portal  profile-ico m-r-10"></i><b>Profile</b></a></li>
+
+            <li><a title="" href="category.html"><i class="news-portal  cat-ico m-r-10"></i><b>Manage Category</b></a>
+            </li>
+
+            <li><a id="report" title="report"><i class="news-portal  report-ico m-r-10"></i><b>Report</b></a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<!--Comes from dashboard.html-->
+
+
+<div class="right-wrapper">
+    <div class="w-700 m-0-auto">
+        <div class="cover-photo component" id="image-div-holder">
+            <div id="draggable-element"></div>
+            <a>
+                <div class="profile-pic" style="background-image:url('images/lovebg.png');">
+
+                    <div class="icon-bg-color p-ab"></div>
+
+                    <div class="fileUpload pro-pic-camera">
+                        <input type="file" name="image" class="upload articleImage cursor-pointer" multiple/>
+                        <span class="news-portal camera w-23 h-17 mar-6-0-4-0"></span>
+                    </div>
+                </div>
+
+
+            </a>
+            <div class="profile-shape">
+                <div class="opacity-background">
+                    <div class="online-box-area">
+                        <div class="online-border-left-side">
+
+                        </div>
+                    </div>
+                    <div class="text-of-background"></div>
+                </div>
+                <div class="text-online-status">
+                    <span class="news-portal icon-id-circle-pro"></span>
+                    <span class="p-id-text name_of_profile" id="userRingId"></span>
+                    <div class="clear"></div>
+                    <span class="p-offline float-left top-r"></span>
+                    <span class="p-id-text name_of_profile" id="userProfileName"></span>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="setting">
+                <div class="news-portal set-ico"></div>
+                <div class="drop-box r-0  t-35 setting-box">
+                    <div class="fileUpload drp">
+                        <input style="cursor: pointer;" type="file" name="image" class="upload coverImage"/>
+                        <span>Change Cover</span>
+                    </div>
+                </div>
+            </div>
+            <div class="save-or-cancel">
+                <button id="saveCoverImage">Save</button>
+                <button>Cancel</button>
+            </div>
+        </div>
+
+
+        <div class="middle m-10">
+            <div class="status-box">
+
+                <div class="status-box-header">
+                    <span class="write-msg news-portal"></span>
+                    <span>About Me</span>
+
+                </div>
+
+
+                <div class="profile-listing">
+
+
+                    <div class="left-tab w-300 float-left">
+                        <ul class="left-ico" id="profileListingTab">
+                            <li class="selected" data-content="basic-content">
+                                <a>
+                                    <span class="left-ico-bg">
+                                        <i class="news-portal w-h-18 about-me-icon"></i>
+                                    </span>
+                                    <span class="txt">Basic Info</span>
+                                </a>
+                            </li>
+
+                            <li data-content="password-content">
+                                <a>
+                                    <span class="left-ico-bg">
+                                        <i class="news-portal w-h-18 password-icon"></i>
+                                    </span>
+                                    <span class="txt">Password Settings</span>
+                                </a>
+                            </li>
+
+                            <li data-content="portal-content">
+                                <a>
+                                    <span class="left-ico-bg">
+                                        <i class="news-portal w-h-18 portal-icon"></i>
+                                    </span>
+                                    <span class="txt">Portal</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="right-tab float-right">
+                        <div class="basic-content">
+                            <table id="basicInfoListing" class="t-list margin-0 about-list" border="0" cellspacing="0"
+                                   cellpadding="0">
+                                <a id="editProfile" class="c-807E7E p-ab padd-8 right-10"><i
+                                        class="news-portal edit-icon"></i>Edit</a>
+                                <tbody>
+                                <tr>
+                                    <th><i class="news-portal w-h-18 full-name-icon m-r-5 v-a-m"></i>Full Name</th>
+                                    <td id="uName"></td>
+                                </tr>
+                                <tr>
+                                    <th><i class="news-portal w-h-18 city-icon m-r-5 v-a-m"></i>City</th>
+                                    <td id="uCity"></td>
+                                </tr>
+                                <tr>
+                                    <th><i class="news-portal w-h-18 about-icon m-r-5 v-a-m"></i>About :</th>
+                                    <td id="uAbout"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <form id="editProfileForm">
+                                <div class="write-area padd-0">
+                                    <table class="t-list margin-0 about-list" border="0" cellspacing="0"
+                                           cellpadding="0">
+                                        <tr>
+                                            <th><i class="news-portal w-h-18 full-name-icon m-r-5 v-a-m"></i>Full Name
+                                            </th>
+                                            <td>
+                                                <div class="input-box">
+                                                    <input class="text width-90p" type="text" name="fullName"
+                                                           id="fullName" value="" placeholder="Enter your name"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th><i class="news-portal w-h-18 city-icon m-r-5 v-a-m"></i>City</th>
+                                            <td>
+                                                <div class="input-box">
+                                                    <input class="text width-90p" type="text" name="currentCity"
+                                                           id="currentCity" value="" placeholder="Enter your city"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th><i class="news-portal w-h-18 about-icon m-r-5 v-a-m"></i>About :</th>
+                                            <td>
+                                                <div class="input-box">
+                                                    <textarea class=" width-90p" name="aboutMe" id="aboutMe"
+                                                              placeholder="Tell something about yourself"></textarea>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>&nbsp;</th>
+                                            <td>
+                                                <div class="border-0 width-49p float-left m-t-7">
+                                                    <input class="float-left btn_h" id="resetEditForm"  type="reset"
+                                                           name="reset" value="Reset"/>
+                                                    <input class="float-left btn_h  m-l-5" type="submit" name="send"
+                                                           value="Update"/>
+
+                                                    <div class="clear"></div>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <div class="password-content">
+                            <table class="t-list margin-0 about-list" border="0" cellspacing="0"
+                                   cellpadding="0">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <form id="changePasswordForm">
+                                            <div class="write-area padd-0">
+                                                <div class="input-box">
+                                                    <input class="text" type="password" id="currentPass"
+                                                           name="currentPass" autocomplete="off" value=""
+                                                           placeholder="Current Password"/>
+                                                </div>
+                                                <div class="input-box">
+                                                    <input type="password" class="text" name="newPass" id="newPass"
+                                                           autocomplete="off" value="" placeholder="New Password"
+                                                           required="">
+                                                </div>
+                                                <div class="input-box">
+                                                    <input type="password" class="text" name="confirmNewPass"
+                                                           autocomplete="off" id="confirmNewPass" value=""
+                                                           placeholder="Confirm Password" required="">
+                                                </div>
+                                            </div>
+                                            <div class="border-0 float-left m-t-7">
+                                                <input class="float-left btn_h" type="reset" id="resetPassWordForm"
+                                                       name="reset" value="Reset"/>
+                                                <input class="float-left btn_h m-l-5" type="submit" name="send"
+                                                       value="Update"/>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <div class="portal-content">
+
+
+                            <table id="portalInfo" class="t-list margin-0 about-list" border="0" cellspacing="0" cellpadding="0">
+                                <a id="editPortalButton" class="c-807E7E p-ab padd-8 right-10"><i
+                                        class="news-portal edit-icon"></i>Edit</a>
+                                <tbody>
+                                <tr>
+                                    <th><i class="news-portal w-h-18 full-name-icon m-r-5 v-a-m"></i>Slogan</th>
+                                    <td id="npSlogan">Slogan name</td>
+                                </tr>
+                                <tr>
+                                    <th><i class="news-portal w-h-18 city-icon m-r-5 v-a-m"></i>Portal Category</th>
+                                    <td id="npCategory">Category Name</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+
+                            <!--edit slogan start-->
+                            <form id="editPortalInfoForm">
+                                <div class="write-area padd-0">
+                                    <table class="t-list margin-0 about-list" border="0" cellspacing="0"
+                                           cellpadding="0">
+                                        <tr>
+                                            <th><i class="news-portal w-h-18 full-name-icon m-r-5 v-a-m"></i>Slogan</th>
+                                            <td>
+                                                <div class="input-box">
+                                                    <input class="text width-90p" type="text" name="editSlogan" id="editSlogan"
+                                                           value="" placeholder="Slogan"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th><i class="news-portal w-h-18 city-icon m-r-5 v-a-m"></i>Portal Category
+                                            </th>
+                                            <td>
+                                                <div class="input-box">
+                                                    <select class="text width-90p" id="portalCategory" name="portalCategory">
+                                                        <option value="0">Select Category</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>&nbsp;</th>
+                                            <td>
+                                                <div class="border-0 float-left m-t-7">
+                                                    <input class="float-left btn_h"  type="reset"
+                                                           name="reset" value="Reset"/>
+                                                    <input class="float-left btn_h  m-l-5" type="submit" name="send"
+                                                           value="Update"/>
+
+                                                    <div class="clear"></div>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </form>
+                            <!--edit slogan end-->
+
+
+                        </div>
+
+                    </div>
+                    <!--
+                        <table id="profileListing" class="t-list margin-0 about-list"  border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <th>Full Name : </th>
+                                    <td id="uName"></td>
+                                </tr>
+                                <tr>
+                                    <th>City : </th>
+                                    <td id="uCity"></td>
+                                </tr>
+                                <tr>
+                                    <th>About : </th>
+                                    <td id="uAbout"></td>
+                                </tr>
+                                <tr>
+                                    <th>&nbsp;</th>
+                                    <td>
+                                        <a id="changePassword">Password Settings</a>
+                                        <form id="changePasswordForm">
+                                            <div class="write-area">
+                                                <div class="input-box">
+                                                    <input class="text width-49p" type="password" id="currentPass" name="currentPass" autocomplete="off" value="" placeholder="Current Password"/>
+                                                </div>
+                                                <div class="input-box">
+                                                    <input  type="password" class="text width-49p" name="newPass" id="newPass" autocomplete="off" value="" placeholder="New Password" required="">
+                                                </div>
+                                                <div class="input-box">
+                                                    <input  type="password" class="text width-49p" name="confirmNewPass" autocomplete="off" id="confirmNewPass" value="" placeholder="Confirm Password" required="">
+                                                </div>
+                                            </div>
+                                            <div class="status-bottom border-0 width-49p float-left">
+                                                <input class="float-right btn_h m-l-5"  type="submit" name="send" value="Update"/>
+                                                <input class="float-right btn_h"  type="reset" id="resetPassWordForm" name="reset" value="Reset"/>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <form id="editProfileForm">
+                            <div class="write-area padd-0">
+                                <table class="t-list margin-0 about-list"  border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <th>Full Name : </th>
+                                        <td>
+                                            <div class="input-box">
+                                                <input class="text width-90p" type="text"  name="fullName" id="fullName"  value="" placeholder="Enter your name"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>City : </th>
+                                        <td>
+                                            <div class="input-box">
+                                                <input class="text width-90p" type="text"  name="currentCity" id="currentCity"  value="" placeholder="Enter your city"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>About : </th>
+                                        <td>
+                                            <div class="input-box">
+                                                <textarea class=" width-90p" name="aboutMe" id="aboutMe" placeholder="Tell something about yourself" ></textarea>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <td>
+                                            <div class="status-bottom border-0 width-49p float-left">
+                                                <input class="float-right btn_h m-l-5"  type="submit" name="send" value="Update"/>
+                                                <input class="float-right btn_h"  id="resetEditForm" type="reset" name="reset" value="Reset"/>
+                                                <div class="clear"></div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </form>
+                    -->
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!--SCRIPTS-->
+<script src='js/vendor/js.cookie.min.js?v=0.14.01-1462438335325'></script>
+<script src='js/vendor/q/q.js?v=0.14.01-1462438335325'></script>
+<script src='app/debug.tool.js?v=0.14.01-1462438335325'></script>
+<script src='app/developer.config.dist.js?v=0.14.01-1462438335325'></script>
+<script src='js/vendor/jquery/jquery.js?v=0.14.01-1462438335325'></script>
+<script src='app/init-worker.js?v=0.14.01-1462438335325'></script>
+<script src='app/wat.fall.js?v=0.14.01-1462438335325'></script>
+<script src='app/config/settings.constant.js?v=0.14.01-1462438335325'></script>
+<script src='app/config/attribute-codes.constant.js?v=0.14.01-1462438335325'></script>
+<script src='app/config/app-constants.constant.js?v=0.14.01-1462438335325'></script>
+<script src='app/config/actions.constant.js?v=0.14.01-1462438335325'></script>
+<script src='app/config/newsportal.constant.js?v=0.14.01-1462438335325'></script>
+<script src='app/language/default/default.js?v=0.14.01-1462438335325'></script>
+<script src='app/language/language.module.js?v=0.14.01-1462438335325'></script>
+<script src='app/common/factories/storage.factory.js?v=0.14.01-1462438335325'></script>
+<script src='app/common/factories/map.factory.js?v=0.14.01-1462438335325'></script>
+<script src='app/puller/channel.manager.js?v=0.14.01-1462438335325'></script>
+<script src='app/common/services/file-upload.service.js?v=0.14.01-1462438335325'></script>
+<script src='app/common/services/ringhttp.service.js?v=0.14.01-1462438335325'></script>
+<script src='app/common/services/image-quality.service.js?v=0.14.01-1462438335325'></script>
+<script src='app/utils/factories/app.utils.factory.js?v=0.14.01-1462438335325'></script>
+<script src="js/vendor/sweetalert2.min.js"></script>
+
+<script src="js/vendor/jquery.validate.min.js"></script>
+<!--<script src="app/sweetAlert.js"></script>-->
+<!--<script src='app/feed.js?v=0.14.01-1462438335325'></script>-->
+<script src='app/portal.js?v=0.14.01-1462438335325'></script>
+<!--<script src='js/vendor/parsley/parsley.js?v=0.14.01-1462438335325'></script>-->
+<script src='app/utils/portal.utils.js?v=0.14.01-1462438335325'></script>
+<!--<script src="app/image_reposition.js"></script>-->
+<script src='app/auth/signup.module.js?v=0.14.01-1462438335325'></script>
+<!--<script src='app/auth/signup.js?v=0.14.01-1462438335325'></script>-->
+<!--<script src='js/vendor/tablesort/table.sort.js'></script>-->
+<script src='app/category.module.js?v=0.14.01-1462438335325'></script>
+
+<script src='app/profile.js'></script>
+
+<!--SCRIPTS END-->
+</html>

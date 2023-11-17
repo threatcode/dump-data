@@ -1,0 +1,8 @@
+.w-392{width:392px;}
+.view-map-w{
+    position:absolute;min-height: 266px;width:400px;
+}
+.f-view-loc{
+    margin-left:10px;padding:5px;width: 310px
+}
+.location-text p:hover{color:#f47727;}

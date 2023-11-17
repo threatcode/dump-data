@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="title" content="ringID - Free Calls, Secret Chat, Stickers, Newsfeed & more" />
+        <meta name="keywords" content="Free international phone calls, local calls, free calling, free texting, messaging app, instant messenger, chatting app, newsfeed, secret chat, hide chat, cool stickers, fun emojis, word art, encrypted mail, secured, voice calling, low bandwidth calls, new social app, video chat, voice messaging, image share, update status, group chat, real time, voip calls, free internet calls" />
+        <meta name="description" content="Don't miss the free calling & hottest messaging features of ringID with secret chat, fun stickers, disappearing messages, newsfeed & more. Get your ringID now!" />
+        <meta name="language" content="EN" />
+        <meta name="msvalidate.01" content="9A5746165CA9355415CFE1E46AF3C1C5" />   
+        <meta name="alexaVerifyID" content=“g-Wrc_9V9hjQR7-VAtgUDZdFXBE"/>
+        <meta name="p:domain_verify" content="d04b84515c9c0f2f51650d3b981506f6"/> 
+        <meta name="robots" content="all,index,follow" />
+        <meta name="author" content="RingID" />
+        <meta name="copyright" content="www.ringID.com " />
+        <meta name="distribution" content="Global" />
+        <meta name="rating" content="Safe For Kids" />
+        <meta property="og:title" content="ringID - free calls, text, secret chat, stickers, newsfeed and more" />
+        <meta property="og:description" content="Don't miss the free calling & hottest messaging features of ringID with fun stickers, secret chat, multimedia sharing, newsfeed & more. Get your ringID Now!" />
+        <meta property="og:url" content="http://www.ringid.com/" />
+        <meta property="og:image" content="http://www.ringid.com/images/ringid-og1.png" />
+        <meta property="og:image" content="http://www.ringid.com/images/ringid-og2.png" />
+        <meta property="og:image" content="http://www.ringid.com/images/ringid-og3.png" />
+        <meta property="og:image" content="http://www.ringid.com/images/ringid-og4.png" />
+        <meta property="og:image" content="http://www.ringid.com/images/ringid-og5.png" />
+        <link rel="icon" href="images/favicon.ico"/>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:100,300' rel='stylesheet' type='text/css'>
+        <title>ringID - free calls, text, secret chat, stickers, newsfeed &amp; more</title>
+
+        <link rel="stylesheet" type="text/css" href="styles/static_pages.css?v=0.9.10" />
+        <link rel="stylesheet" type="text/css" href="styles/framework.css?v=0.9.10" />
+        <link rel="stylesheet" type="text/css" href="styles/ring-dropdown.css?v=0.9.10" />
+        <link rel="stylesheet" type="text/css" href="styles/ring-slider.css?v=0.9.10" />
+        <link rel="stylesheet" type="text/css" href="styles/media.css?v=0.9.10" />
+        <link rel="stylesheet" type="text/css" href="styles/ringbox.css?v=0.9.10" />
+
+
+
+        <!--STYLES-->
+        <!--<link rel="stylesheet" type="text/css" href="css/styles-welcome.min.css?v=0.6" />-->
+        <!--STYLES END-->
+        <base href="/"/>
+        <script>
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                window.location = 'http://m.ringid.com';
+            }
+        </script>
+        <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-58547534-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+    <body ng-app="ringid" ng-controller="ApplicationController">
+        <div id="top"></div>
+        <div class="grid">
+            <!--header shrink div-->
+            <div class="blck-bg">
+                <div class="header-wrapper">
+                    <div class="sc-height"></div>
+                    <span scroll-position="scroll"></span>
+                    <div class="fixed-top header" ng-class="{headerscroll: scroll > 15}">
+                        <div class="col-5-12 hide-on-mob">
+                            &nbsp;
+                        </div>
+                        <div class="col-2-12 col-mob-12-12 ring-logo">
+                            <div class="ring-logo-small">
+                                <a href="#">
+                                    <img src="images/ring-logo-circle.png" alt="ringID" class="responsive-pic"/>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-5-12">
+                            <ul class="nav">
+                                <li>
+                                    <a href="javascript:void(0)">Help</a>
+                                    <ul>
+                                        <li><a  href="/faq.html">FAQ</a></li>
+                                        <li class="clear"><a target="_blank" href="http://press.ringid.com">Press</a></li>
+                                        <li class="clear"><a  href="/privacy.html">Privacy</a></li>
+                                    </ul>
+                                </li>
+                                <!--<li><a target="_blank" href="http://blog.ringid.com">Blog</a></li>-->
+                                <!--<li><a  href="/features.html">Features</a></li>-->
+                                <li><a rg-click="reloadHome()" class="active-top" ng-href="/" >Home</a></li>
+                                <li><a rg-ringbox="true" ringbox-type="remote" ringbox-target="pages/welcome/login-popup.html" ringbox-controller="LoginController"><div class="login_btn"></div></a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <!--Header end-->
+                <!--Slider Start-->
+                <div class="slider-bg">
+                    <div class="left-bg">
+                        <div class="right-bg">
+                            <div  class="sld-height">
+                                <div class="col-12-12 padding-top-30">
+                                    <rg-slider nav-class="arrowstop" slide-class="slide" desc-class="desc" delay= "5">
+                                        <ul class="arrowstop">
+                                            <li>iPhone</li>
+                                            <li>Android</li>
+                                            <li>Windows Phone</li>
+                                            <li>Desktop</li>
+                                            <li>Web</li>
+                                        </ul>
+                                        <div class="clear"></div>
+                                        <div class="col-4-12">
+                                            <img class="responsive-pic-index"  src="images/bike.png" alt="ringID Car Sticker"/>
+                                        </div>
+                                        <div class="col-4-12">
+                                            <div class="descs dafult-height">
+                                                <div class="desc">
+                                                    <div class="slider-title">
+                                                        <h2><span class="ring-color">ringID </span>for iPhone</h2>
+                                                        <br/>
+                                                        <p>Taking socializing to new heights.  Make high quality voice calls and grab other exciting features like instant messaging and secret chat for free.  Download to discover more.</p>
+                                                        <br/><br/><br/><br/><br/><br/>
+                                                        <a href="https://itunes.apple.com/us/app/ringid/id925330759?mt=8"><div class="download_btn"></div></a>
+                                                    </div>
+                                                </div>
+                                                <div class="desc">
+                                                    <div class="slider-title">
+                                                        <h2><span class="ring-color">ringID </span>for Android</h2>
+                                                        <br/>
+                                                        <p>Enjoy a whole new chatting experience with free calls and unlimited text. Welcome to the exciting world of <span class="ring-color">ringID </span> and enjoy amazing stickers &amp; secret chat.</p>
+                                                        <br/><br/><br/><br/><br/><br/>
+                                                        <a href="https://play.google.com/store/apps/details?id=com.ringid.ring"><div class="download_btn"></div></a>
+                                                    </div>
+                                                </div>
+                                                <div class="desc">
+                                                    <div class="slider-title">
+                                                        <h2><span class="ring-color">ringID </span>for Windows Phone</h2>
+                                                        <br/>
+                                                        <p>Windows <span class="ring-color">ringID </span> app gives you features like secret chat that makes your conversation fun with unlimited text and calls, newsfeed.</p>
+                                                        <br/><br/><br/><br/><br/><br/>
+                                                        <!--<a href="http://www.windowsphone.com/s?appid=db8b9cd2-cbb0-41cc-9730-c56f2a3ab9a3"><div class="download_btn"></div></a>-->
+                                                        <span class="coming-soon">Coming Soon ..</span>
+                                                    </div>
+                                                </div>
+                                                <div class="desc">
+                                                    <div class="slider-title">
+                                                        <h2><span class="ring-color">ringID </span>for Desktop</h2>
+                                                        <br/>
+                                                        <p><span class="ring-color">ringID </span> in desktop bridges down the gap of communication by synchronizing all your data when your cellphone is just not enough to hold all the fun.</p>
+                                                        <br/><br/><br/><br/><br/><br/>
+                                                        <!--<a href="http://www.ringid.com/download/ringID.zip"><div class="download_btn"></div></a>-->
+                                                        <span class="coming-soon">Coming Soon ..</span>
+                                                    </div>
+                                                </div>
+                                                <div class="desc">
+                                                    <div class="slider-title">
+                                                        <h2><span class="ring-color">ringID </span>for Web</h2>
+                                                        <br/>
+                                                        <p>Discover the galaxy of unlimited fun with the most dynamic newsfeed. <span class="ring-color">ringID</span> web is the perfect networking option on the go to match your fast track lifestyle.</p>
+                                                        <br/><br/><br/><br/><br/><br/>
+                                                        <!--<a rg-ringbox="true" ringbox-type="remote" ringbox-target="pages/welcome/login-popup.html" ringbox-controller="LoginController"><div class="login_btn"></div></a>
+                                                        -->
+                                                        <span class="coming-soon">Coming Soon ..</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                            <ul class="arrowstop">
+                                                <li style="padding:10px;"><img src="images/slider/thumb-iphone.png" alt="ringID iPhone"/></li>
+                                                <li style="padding:10px;"><img src="images/slider/thumb-android.png" alt="ringID Android"/></li>
+                                                <li style="padding:10px;"><img src="images/slider/thumb-windows.png" alt="ringID Windows"/></li>
+                                                <li style="padding:10px;"><img src="images/slider/thumb-desktop.png" alt="ringID Desktop"/></li>
+                                                <li style="padding:10px;"><img src="images/slider/thumb-web.png" alt="ringID Web"/></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-4-12">
+                                            <div class="slides">
+                                                <div class="slide"><img src="images/slider/iphone.png" /></div>
+                                                <div class="slide"><img src="images/slider/android.png" /></div>
+                                                <div class="slide"><img src="images/slider/windows.png" /></div>
+                                                <div class="slide"><img src="images/slider/desktop.png" /></div>
+                                                <div class="slide"><img src="images/slider/web.png" /></div>
+                                            </div>
+                                        </div>
+                                    </rg-slider>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Slider End-->
+
+            <!--Mid Body Start-->
+            <div class="mid-body">
+                <div class="switch-text">Why switch to ringID </div>
+                <div class="clear"></div>
+                <div class="col-12-12">
+                    <div class="col-2-12 col-mob-2-12">&nbsp;</div>
+                    <div class="col-8-12 col-mob-8-12">
+                        <div class="all-in-one font-style">
+                            <h1>All in One</h1>
+                            <p>
+                                <span class="ring-color">ringID</span> makes you versatile! It gives you the hottest networking features in one single application with <i>Messaging, Calling, Fun Stickers, Secret Chat</i> and more for free. Gear up and forget the hassle of maintaining numerous apps and use one dynamic application for all your
+                                social needs. <span class="ring-color">ringID</span> is perfect for you.
+                            </p>
+                            <br/>
+                            <img class="responsive-pic-index"  src="images/all-in-one-new.png" alt="all-in-one"/>
+                        </div>
+                    </div>
+                    <div class="col-2-12 col-mob-2-12">&nbsp;</div>
+                </div>
+                <div class="col-12-12">
+                    <div class="col-6-12 col-mob-12-12">
+                        <div class="area-bg-right padding_50">
+                            <div class="free-call  font-style">
+                                <div class="width_50_percent float-right">
+                                    <h2 style="text-align:right;"> Free Call </h2>
+                                    <p style="text-align:right;">
+                                        Who said good things do not come
+                                        free? Enjoy free calls to other <span class="ring-color">ringID</span> users. You will love the lucid voice clarity and the noise free background. No charges,
+                                        no regretful surprises!
+                                    </p>
+                                </div>
+                                <div class="width_50_percent float-right"  style="margin-top:-100px;">
+                                    <img class="responsive-pic-index float-right"  src="images/free-call-new.png" alt="free-call"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6-12 col-mob-12-12">
+                        <div class="area-bg-right padding_50">
+                            <div class="chat font-style">
+                                <div class="width_50_percent float-left">
+                                    <h2>  Free Message </h2>
+                                    <p>
+                                        Discover the hottest messaging feature
+                                        in <span class="ring-color">ringID</span> with amazing stickers, exciting Emojis
+                                        and perfectly designed chat themes. Place a call directly from the chat screen for that extra
+                                        perk in your conversations.
+                                    </p>
+                                </div>
+                                <div class="width_50_percent float-left" style="margin-top:-100px;">
+                                    <img class="responsive-pic-index float-left"  src="images/free-message-new.png" alt="free-message"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12-12">
+                    <div class="col-2-12 col-mob-2-12">&nbsp;</div>
+                    <div class="col-8-12 col-mob-8-12">
+                        <div class="ring-newsfeed font-style">
+                            <h2><span class="ring-color">ringID</span> Newsfeed </h2>
+                            <p>
+                                Stay connected always with <span class="ring-color">ringID's</span> newsfeed that lets you read the feeds and post! Share all the updates and don't lose the circles you care for. Share status and photos, send stickers, like and comment on friends' posts.
+                            </p>
+                            <br/>
+                            <img class="responsive-pic-index" src="images/ring-newsfeed-new.png" alt="ring-newsfeed"/>
+                        </div>
+                    </div>
+                    <div class="col-2-12 col-mob-2-12">&nbsp;</div>
+                </div>
+                <div class="col-12-12">
+                    <div class="col-6-12 col-mob-12-12">
+                        <div class="area-bg-right padding_50">
+                            <div class="secret-chat font-style">
+                                <div class="width_50_percent float-right">
+                                    <h2  style="text-align:right;">Secret Chat </h2>
+                                    <p  style="text-align:right;">
+                                        Poof! <span class="ring-color">ringID</span> secret chats disappear within the set timeframe. Have fun with your friends by removing your message once your predefined time has elapsed.
+                                        Your secrets are best kept at <span class="ring-color">ringID</span>!
+                                    </p>
+                                </div>
+                                <div class="width_50_percent float-right" style="margin-top:-100px;">
+                                    <img class="responsive-pic-index float-right"  src="images/secret-chat-new.png" alt="secret-chat"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6-12 col-mob-12-12">
+                        <div class="area-bg-right padding_50">
+                            <div class="ring-sticker font-style">
+                                <div class="width_50_percent float-left">
+                                    <h2>Stickers </h2>
+                                    <p>
+                                        Express yourself more fluently than ever with <span class="ring-color">ringID's</span> fun stickers. They are cool, unlimited and free! Speak out more than a thousand words with our highly expressive stickers. Make your messages come alive!
+                                    </p>
+                                </div>
+                                <div class="width_50_percent float-left" style="margin-top:-100px;">
+                                    <img class="responsive-pic-index float-left"  src="images/ring-sticker-new.png" alt="ring-sticker"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12-12">
+                    <div class="col-2-12 col-mob-2-12">&nbsp;</div>
+                    <div class="col-8-12 col-mob-8-12">
+                        <div class="all-in-one font-style">
+                            <h2>Simple, Secure &amp; Ads Free</h2>
+                            <p>
+                                It is easier to grasp a shadow than intercepting ringID communications. We have done our best on keeping things as solid as a rock. <span class="ring-color">ringID</span> keeps you safe from
+                                unwelcome stalkers and phishing scams. Our extra layers of security enable safe exchange of data, giving you peace of mind.
+                            </p>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                        </div>
+                    </div>
+                    <div class="col-2-12 col-mob-2-12">&nbsp;</div>
+                </div>
+            </div>
+            <!--Mid body end-->
+
+            <!--Footer Start-->
+            <div class="clear"></div>
+            <div class="switch-text"></div>
+            <div class="footer-r">
+                <div class="col-12-12 col-mob-12-12">
+                    <div class="col-3-12 col-mob-12-12">
+                        &nbsp;
+                    </div>
+                    <div class="col-6-12 col-mob-12-12 footer-mid-height">
+                        <div class="copyright-text">Copyright &copy; Ring Inc. 2014 - 2015 All Right Reserved</div>
+                    </div>
+                    <div class="col-3-12 back-to-top  col-mob-12-12">
+                        <a href="#" scroll-top="top" class="back float-right">
+                            <img src="images/social/back-to-top.png" alt="back-to-top"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <!--Footer End-->
+        </div>
+        <!--[if lte IE 8]>
+                    <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.0.5/es5-shim.min.js"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+                    <style>
+                        .ng-hide {
+                            display: none !important;
+                        }
+                    </style>
+                <![endif]-->  
+
+        <!--SCRIPTS-->
+        <script src="js/vendor/angular/angular.min.js?v=0.9.10"></script>
+        <script src="js/app-vendor.min.js?v=0.9.10"></script>
+        <script src="app/wat.fall.js?v=0.9.10"></script>
+        <script src="app/app.config.js?v=0.9.10"></script>
+        <script src="app/common/directives/rg-scrollbar.directive.js?v=0.9.10"></script>
+        <script src="app/common/directives/rg-dropdown.directive.js?v=0.9.10"></script>
+        <script src="app/common/directives/rg-accordion.directive.js?v=0.9.10"></script>
+        <script src="app/common/directives/rg-click.directive.js?v=0.9.10"></script>
+        <script src="app/sticker/sticker.module.js?v=0.9.10"></script>
+        <script src="app/sticker/services/sticker.http.service.js?v=0.9.10"></script>
+        <script src="app/sticker/services/sticker.map.factory.js?v=0.9.10"></script>
+        <script src="app/utils/utils.module.js?v=0.9.10"></script>
+        <script src="app/utils/factories/app.utils.factory.js?v=0.9.10"></script>
+        <script src="app/utils/directives/app.utils.directives.js?v=0.9.10"></script>
+        <script src="app/common/factories/map.factory.js?v=0.9.10"></script>
+        <script src="app/utils/factories/window.focus.blur.factory.js?v=0.9.10"></script>
+        <script src="app/common/ringbox/ringbox.js?v=0.9.10"></script>
+        <script src="app/puller/syncher.factory.js?v=0.9.10"></script>
+        <script src="app/puller/puller.module.js?v=0.9.10"></script>
+        <script src="app/puller/ring.http.service.js?v=0.9.10"></script>
+        <script src="app/puller/parser.service.js?v=0.9.10"></script>
+        <script src="app/puller/socket.communication.factory.js?v=0.9.10"></script>
+        <script src="app/common/services.module.js?v=0.9.10"></script>
+        <script src="app/common/services/ringhttp.service.js?v=0.9.10"></script>
+        <script src="app/auth/auth.module.js?v=0.9.10"></script>
+        <script src="app/auth/auth.http.service.js?v=0.9.10"></script>
+        <script src="app/auth/controllers/login.controller.js?v=0.9.10"></script>
+        <script src="app/auth/controllers/register.controller.js?v=0.9.10"></script>
+        <script src="app/welcome-app.module.js?v=0.9.10"></script>
+        <script src="app/common/directives/rg-slider.directive.js?v=0.9.10"></script>
+        <script src="app/common/directives/rg-scrolltop.directive.js?v=0.9.10"></script>
+        <!--SCRIPTS END-->
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+<div class="bottom-right-menu animation fade-in">
+
+    <div class="bottom-right-menu-item">
+        <a data-tooltip-post="Add Photos" href="javascript:void(0)" class="p-ab" data-ng-click="toggleMenu()">
+            <div rg-upload upload-type="chat"
+                 upload-action="uploadAction"
+            ></div>
+        </a>
+    </div>
+
+
+
+    <div class="bottom-right-menu-item" ng-if="showMediaButton">
+
+        <a data-ng-click="resetBottomMenu()" data-tooltip-post="Capture Image" rg-ringbox="true" ringbox-controller="ChatMediaUploadController"
+           ringbox-target="templates/partials/chat/media-upload.html"
+           ringbox-type="remote"
+           ringbox-data="{boxId : box.key}"  ><span class="chat-video-ico"></span></a>
+
+    </div> 
+
+    <!-- <div class="bottom-right-menu-item">
+        <a data-tooltip-post="Add Location"
+           feed-location-menu=""
+           feed-location-menu-direction="up"
+           feed-location-menu-on-select="selectedLocation(location);"
+           selected-value="messageData.locationData"
+           class="p-ab" href="javascript:void(0)">
+            <span class="chat-location-ico"></span>
+        </a>
+    </div> -->
+
+    <div class="bottom-right-menu-item">
+        <a data-tooltip-post="Share Location"
+           rg-click="selectedLocation();"           
+           class="p-ab" href="javascript:void(0)">
+            <span class="chat-location-ico"></span>
+        </a>
+    </div>
+
+</div>

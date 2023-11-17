@@ -1,0 +1,39 @@
+<div style="width:360px">
+     <div class="modal-header">
+        <h3 class="ng-binding">People you may know</h3>
+        <span class="icon-close mdl-close"  rg-click="$close()"></span>
+    </div>
+    <div class="fnd-search-scroll-wrapper">
+        <ul class="fnd-search" rg-scrollbar="scrollbar()" bottom-reached="loadmorefriend()({action: 'loadmore'})">
+            <li ng-repeat="item in users"  ng-show="!item.value.isCurrentUser()">
+                <!--<p>frns:'{{item.friendshipStatus()}}  nct:{{item.newFriendType()}} ct:{{item.friendType()}}</p>-->
+                  <!--style="width: 60%" by rajib-->
+                <div class="left">
+                    <div class="pic"><a ng-href='{{item.value.link()}}'><img ng-src="{{ item.value.avatar('thumb')}}"/></a></div>
+                    <p class="name"><a ng-href='{{item.value.link()}}'>{{item.value.getName()}}</a></p>
+                    <!--<p ng-if="item.commonFriends() > 0" class="common-fnd">{{item.commonFriends()}} mutual friends</p>-->
+                </div>
+                <div class="right-f" ng-show="!item.value.isCurrentUser()">
+                    <a class="friend-btn" ng-class="{'f-loading' : item.value.isLoading()}" ng-show="item.value.friendshipStatus() === 0"
+                        rg-click="contactListAction({friend: item.value, action:'addfriend'})"><span class="friend-ico addfnd"></span>Add Friend</a>
+                   
+                   <a class="friend-btn" ng-show="item.value.friendshipStatus() === 1"><span class="friend-ico fnd"></span>Friend</a>
+                   <a class="friend-btn"  ng-class="{'f-loading' : item.value.isLoading()}" ng-show="item.value.friendshipStatus() === 3"
+                           rg-click="contactListAction({friend: item.value, action: 'reject'})"><span class="friend-ico cancel-req"></span>Cancel Request</a>
+                    <div class="clear"></div>
+
+                    <p class="mar-top-10"><a class="count ng-binding ng-isolate-scope"
+                       rg-ringbox="true"
+                       ringbox-controller="mutualFriendsController"
+                       ringbox-target="templates/home/mutual-friends.html"
+                       ringbox-type="remote"
+                       ringbox-data="getMutualFriend(item.value)">{{item.value.commonFriends()}} mutual friends</a></p>
+                </div>
+                <div class="clear"></div>
+            </li>
+        </ul>
+    </div>
+    <div ng-show="state.isRequestsLoading" class="notification-loader-position">
+        <div class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+.cat-area{position:relative;padding:8px;}
+.cat-area ul.cat-list{position: absolute;margin-top:35px;top:0;border:1px solid #d9d9d9;width: 99%;}
+.cat-area ul.cat-list li{list-style: none;border-top:1px solid #d9d9d9;}
+.cat-area ul.cat-list li:first-child{border:0;}
+.cat-area ul.cat-list li a{text-align:left;background-color: #fff;display:block;padding:7px 15px;text-decoration: none;color:gray;font-size:13px;    white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+.cat-area ul.cat-list li a:hover{background-color: #f47727;color:#fff;}
+
+ul.selected-list{margin:0;padding:0;}
+ul.selected-list li{position:relative;list-style: none;border:1px solid #d9d9d9;border-radius: 3px;display:inline-block; max-width:150px; white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+ul.selected-list li a{background-color: #fff;text-decoration: none;color:gray;font-size:13px;display:inline-block;padding:5px 30px 5px 5px;}
+ul.selected-list li a:hover{background-color: #f47727;color:#fff;}
+ul.selected-list li span.close{position: absolute;right: 0;width: 25px;height: 26px;background-color: #fff;border-left: 1px solid #d9d9d9;}
+ul.selected-list li span a{padding: 6px 10px 7px 9px;font-size: 12px;}
+.write-area .cat-area ul.cat-list{
+    width:80%;
+}
+.cat-area input.edit-cat{
+    width:400px;
+}
+.typ ul.cat-list{
+    width:100%;margin-top:47px;
+}
+.typ ul.cat-list li.typ-search{
+    border:0;overflow:hidden;
+}
+.typ ul.cat-list li.typ-search input{
+    margin:0;width:100%;border:0;background-color:#eee;text-align:center;
+}

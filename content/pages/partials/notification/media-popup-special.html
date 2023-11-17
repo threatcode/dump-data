@@ -1,0 +1,41 @@
+<style>
+    .pro-pv{margin: 0 auto !important}
+    .pro-pv .rg-player{margin: 0 auto !important}
+</style>
+
+
+<div class="pv-area" img-height-change>
+    <div class="pro-pv" >
+        <div class="view-lod">
+            <div class="loader-view"></div>
+        </div>
+
+        <div class="view-wrap">
+            <!--<p>{{media.getKey()}}</p>-->
+            <!--<video videojs id="videojs_{{media.getKey()}}" height="370" width="600" posterlink="{{media.getThumb()}}" medialink="{{media.getStreamUrl()}}" controls data-setup='{}' class="video-js vjs-default-skin vjs-controls-enabled vjs-has-started vjs-paused vjs-user-inactive">-->
+            <!--</video>-->
+
+            <rg-player id="media_{{::media.getKey()}}" title="{{::media.getCaption()}}" poster="{{::media.getThumb()}}" is-video="{{::media.isVideo()}}" width="650" height="375"
+                       url="{{::media.getStreamUrl()}}" playlist="playlist" auto="true" on-change="changeMedia"></rg-player>
+
+
+        </div>
+
+
+        <a style="width:30%;float:left;left:0;top:0;height:100%;position:absolute;z-index:3;cursor:pointer;"
+           ng-show="prevMedia" rg-click="changeMedia('prev')">
+            <div class="pv-icon pv-left-ico img_sprite icon-left-arrow showpointer"></div>
+        </a>
+
+
+        <a style="width:30%;float:right;right:0;top:0;height:100%;position:absolute;z-index:3;cursor:pointer;"
+           ng-show="nextMedia" rg-click="changeMedia('next')">
+            <div class="pv-icon pv-right-ico img_sprite icon-right-arrow showpointer"></div>
+        </a>
+
+
+    </div>
+</div>
+
+
+

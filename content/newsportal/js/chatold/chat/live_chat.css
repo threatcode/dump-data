@@ -1,0 +1,125 @@
+.chatbox {
+    width: 100%;
+}
+
+.chatboxhead {
+    background-color: #07a4eb;
+    padding:2px 5px;
+    color: #ffffff;
+    border-right:1px solid #07a4eb;
+    border-left:1px solid #07a4eb;
+}
+
+.chatboxblink {
+    background-color: #176689;
+    border-right:1px solid #176689;
+    border-left:1px solid #176689;
+}
+
+.chatboxcontent {
+    font-family: arial,sans-serif;
+    font-size: 13px;
+    color: #333333;
+    height:250px;
+    overflow-y:auto;
+    overflow-x:auto;
+    padding:7px;
+    border-left:1px solid #cccccc;
+    border-right:1px solid #cccccc;
+    border-bottom:1px solid #eeeeee;
+    background-color: #ffffff;
+    line-height: 1.3em;
+}
+
+.chatboxinput {
+    padding: 5px;
+    background-color: #ffffff;
+    border-left:1px solid #cccccc;
+    border-right:1px solid #cccccc;
+    border-bottom:1px solid #cccccc;
+}
+
+.chatboxtextarea {
+    width: 90%;
+    height:44px;
+    padding:3px 0pt 3px 3px;
+    border: 1px solid #07a4eb;
+    margin: 1px;
+    overflow:hidden;
+    resize: none;
+}
+
+.chatboxtextareaselected {
+    border: 2px solid #07a4eb;
+    margin:0;
+}
+
+.chatboxmessage {
+    margin-left:1em;
+}
+
+.chatboxinfo {
+    margin-left:-1em;
+    color:#666666;
+
+}
+
+.chatboxmessagefrom {
+    margin-left:-1em;
+    font-weight: bold;
+    text-transform:capitalize;
+    float:left;
+}
+
+.chatboxmessagecontent {
+}
+
+.chatboxoptions {
+    float: right;
+}
+
+.chatboxoptions a {
+    text-decoration: none;
+    color: white;
+    font-weight:bold;
+    font-family:Verdana,Arial,"Bitstream Vera Sans",sans-serif;
+}
+
+.chatboxtitle {
+    float: left;
+    text-transform:capitalize;
+    color:#fff;
+    font-weight:bold;
+}
+
+#emoticons_changed
+{
+    display: none;
+    border: 1px solid #666;
+    background:#fff;
+    position: absolute;
+    left: -10000px;
+    top: 0;
+    max-width:300px;
+    overflow: hidden;
+}
+#emoticons_changed{position:absolute;z-index:10000;}
+#emoticons_changed table td{vertical-align:middle;}
+#emoticons_changed table td div.small{padding:2px;border:1px solid #fefefe;height:25px;width: 25px;}
+#emoticons_changed table td div.sticker{padding:2px;border:1px solid #fefefe;height:80px;width: 80px;}
+#emoticons_changed table td div.small img{height:25px;width: 25px;cursor: pointer;}
+#emoticons_changed table td div.sticker img{height:80px;width: 80px;cursor: pointer;}
+#emoticons_changed table td div:hover{border:1px solid #363636;}
+#emoticonBtn{cursor:pointer;}
+.cname{font-weight:bold;text-transform:capitalize;margin-right:5px;vertical-align:top;}
+.cdate{font-size:8pt;color:#808080;}
+
+.msgNotification{color:#f00;font-weight:bold;font-size:8pt;position:relative;top: -5px;}
+
+.jtab{font-size:9pt;}
+.jtab ul{list-style:none;margin:0;padding:0;}
+.jtab .tab_nav{float:left;cursor:pointer;text-align:center;color:#344e66;}
+.jtab .tab_nav div{background:#e8eced;border-left:1px solid #cccccc;border-right:1px solid #cccccc; border-top:1px solid #cccccc;padding:2px 10px;}
+.jtab .sel div{background:#fff;color:#cc0104;}
+.jtab .tab_body{clear:both;border:1px solid #DDD;padding:5px;max-height:250px;overflow-y:scroll;}
+.jtab .tab_body_2,.tab_body_3,.tab_body_4,.tab_body_5{display:none;}

@@ -1,0 +1,78 @@
+
+<!--<div class="m-h-mid">
+    <div class="m-s-area">-->
+<div style="position:relative; float: right; ">
+    <div class="box-search media-search">
+        <span class="img_sprite width-25px height-25px search-icon-25 p-absolute search-icon-p"></span>
+        <input ng-focus="fetchTrendingKeyword()" 
+               
+               type="text" name="search" 
+               ng-change="doSearch()" 
+               ng-model="searchParam" 
+               ng-model-options="{ debounce: 500 }" 
+               value="" 
+               autocomplete="off" 
+               placeholder="Search media"/>
+        <div class="clear"></div>
+    </div>
+
+
+    <!--        <div class="music-search">
+                <div class="float-left">
+                    <input  ng-focus="fetchTrendingKeyword()" 
+                            ng-blur="hideDropdown()" 
+                            type="text" name="search" 
+                            ng-change="doSearch()" 
+                            ng-model="searchParam" 
+                            ng-model-options="{ debounce: 500 }" 
+                            value="" 
+                            placeholder="Search Songs, Music Albums, Video Albums, Tags"/>
+                </div>
+                <div class="music-s-right float-left" ng-click="doSearch()">
+                    <img src="images/m-search.png">
+                </div>
+                <div class="clear"></div>
+            </div>-->
+
+
+
+
+    <div class="msearch-dd" ng-class="showDropdown ? 'mh-active' : 'mh-inactive'">
+
+        <div class="loader-s txt-center mar-top-15" ng-hide="searchResult.length > 0 || stoploader || showTrending"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div></div>
+        <!-- <p ng-show="searchResult.length < 1 && stoploader" class="mar-15-auto txt-center">No Suggestion Found</p> -->
+        <div class="trend-list txt-center" ng-show="showTrending" ng-mouseover="mouseoverTrendList = true" ng-mouseleave="mouseoverTrendList = false">
+            <div class="tnnd-hdr">
+                <h3>Trending Searches</h3>
+                <div class="orng-divider trnd-div"></div>
+            </div>
+            <a href="/media/all/{{tag.sk}}" ng-repeat="tag in trendingArr track by $index" ng-mousedown="doContentSearch(tag)" ng-cloak="true">
+                <span ng-show="tag.sugt === 1" class="trend-ico trend-song" style="color: red"></span>
+                <span ng-show="tag.sugt === 2" class="trend-ico trend-album" style="color: red"></span>
+                <span ng-show="tag.sugt === 3" class="trend-ico trend-tag" style="color: red"></span>
+                {{tag.sk}}
+            </a>
+            <div class="loader-s" ng-hide="trendingArr.length > 0"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+        </div>
+        <div ng-show="!showTrending && searchResult.length > 0" >
+            <ul class="mtag" rg-scrollbar="true">
+                <li 
+                    ng-mousedown="doContentSearch({sk: result.sk, sugt: result.sugt})" 
+                    ng-class="{'m-p-icon': result.sugt === 1, 'm-a-icon': result.sugt === 2, 'm-t-icon': result.sugt === 3,'m-active':$index === activeId}" 
+                    ng-repeat="result in searchResult track by $index" 
+                    ng-mouseenter="setActiveId($index)"
+                    ng-if="result.sugt > 0 && result.sugt < 4"
+                    >
+                    <a ng-if="result.sugt === 1" href="javascript:void(0)" title="{{result.sk}}" ng-cloak="true"> {{result.sk}}</a>
+                    <a ng-if="result.sugt === 2" href="javascript:void(0)" title="{{result.sk}}" ng-cloak="true"> {{result.sk}}</a>
+                    <a ng-if="result.sugt === 3" href="javascript:void(0)" title="{{result.sk}}" ng-cloak="true"> {{result.sk}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+<!--    </div>
+</div>-->

@@ -1,0 +1,58 @@
+test {{greeting}} {{mydata}}
+{{each.categoryId}}
+<div class="stickerContainer">
+    <div class="stickerContainerInner">
+        <div class="headSection" style="background: url(../../images/shop-02.png)">
+            <div class="pull-right"><input type="button" class="close" id="closeStickerMarket"></div>
+        </div>
+        <div class="midContain">
+            <span ng-repeat="each in mydata.data">
+                <div class="eachItem" ng-if="each.type !== 1 && each.type !== 2">
+                    <div class="eachItemInner">
+                        <div class="eachItemInnertop">
+                            <div class="innterItemLeft">
+                                <img src="http://images.ringid.com/stickermarket/d5/{{each.imageList[0].name}}"
+                                     width="95" height="95">
+                            </div>
+                            <div class="innterItemRight">
+                                <div class="stickerInd" ng-repeat="eachimg in each.imageList | limitTo:6">
+                                    <img src="http://images.ringid.com/stickermarket/d5/{{eachimg.name}}" width="50"
+                                         height="50">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="eachItemInnerBot">
+                            <div class="infoSection"></div>
+                            <div class="optionSection">
+                                <div class="buttonPreview">
+                                    <button class="btnPreview btn btn-default"
+                                            data-stickeercatid="{{each.categoryId}}"
+                                            ng-click="preview_sticker_details(each)"
+                                            style="width: 60px; height: 20px; font-size: 10px; margin: 0px; padding: 0px;">
+                                        Preview
+                                    </button>
+                                </div>
+                                <div class="buttonAdd">
+                                    <button class="btnAdd btn btn-danger"
+                                            data-stickeercatid="{{each.categoryId}}"
+                                            data-btntype="btntp"
+                                            data-stkitem="'+i+'"
+                                            data-stkbtnid="emo-table_s_{{each.collectionId}}_{{each.categoryId}}"
+                                            style="width: 42px; height: 22px; font-size: 10px; margin: 0px; padding: 0px;">
+                                        Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </span>
+        </div>
+    </div>
+</div>
+<!--
+
+<ul>
+    <li ng-repeat="each in mydata.data">{{each.categoryId}}</li>
+</ul>-->

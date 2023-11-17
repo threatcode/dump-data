@@ -1,0 +1,71 @@
+<!--<div class="notification-box" ng-show="showDropdown">-->
+<div class="notification-box ntf-width" ng-controller="NotiController">
+    <div class="notification-title">
+        Notifications
+    </div>
+    <div class="clear"></div>
+    <div class="friend-req-scroll-wrapper" >
+        <ul class="notification" rg-scrollbar="scrollbar()" bottom-reached="loadMoreNotification()" >
+
+            <li ng-show="notifications.length() === 0 && !state.loading" style="background-color:transparent;padding:10px 5px 5px 10px;">No notifications yet.</li>
+            <li  ng-repeat="noti in notifications.all()" ng-class="noti.value.getSeenStatus() ? 'seen' : 'unseen'">
+                <!-- show feed image popup -->
+
+                <!--<a ng-href="noti.value.getLink()" ng-click="notificationAction({action: 'redirect',link:noti.value.getLink(),circleId: noti.value.getActivityId()})" ng-if="!noti.value.showRingbox()">-->
+                <a ng-href="{{noti.value.getLink()}}" ng-if="!noti.value.showRingbox()">
+
+                    <div class="left">
+                        <div class="pic"><img ng-src="{{::noti.value.getUserAvatar()}}"/></div>
+                    </div>
+                    <div class="right">
+                        <p class="main-notification"  ng-cloak="true"><span ng-bind="::noti.value.getName()"></span> {{::noti.value.getMessage()}}</p>
+
+                        <p class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i> {{noti.value.getTime()}}</p>
+                    </div>
+                    <div class="clear"></div>
+                </a>
+
+                <a ng-href="{{::noti.value.getLink()}}" ng-if="::noti.value.showRingbox()"
+                   rg-ringbox="true"
+                   ringbox-controller="{{ ::noti.value.getControllerName(); }}"
+                   ringbox-type="remote" ringbox-target="{{ ::noti.value.getRingboxTemplate() }}"
+                   ringbox-data="getRingboxData(noti)"
+                   ringbox-scrollable="{{ ::noti.value.getPopupType()==='feed' }}"
+                   ringbox-animation="false"
+                   >
+
+                    <div class="left">
+                        <div class="pic"><img ng-src="{{::noti.value.getUserAvatar()}}"/></div>
+                    </div>
+                    <div class="right">
+                        <p class="main-notification"  ng-cloak="true"><span ng-bind="::noti.value.getName()"></span> {{::noti.value.getMessage()}}</p>
+
+                        <p class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i> {{noti.value.getTime()}}</p>
+                    </div>
+                    <div class="clear"></div>
+                </a>
+
+            </li>
+            <!--<li>-->
+            <!--<a-->
+            <!--rg-ringbox="true"-->
+            <!--ringbox-controller="allNotificationController"-->
+            <!--ringbox-target="templates/seeallnot.html"-->
+            <!--ringbox-type="remote"-->
+            <!--ringbox-scrollable="true"-->
+            <!--ringbox-data="getAllNotifications()">see all</a>-->
+            <!--</li>-->
+            <li ng-show="state.noMoreData && notifications.length() !== 0 && !state.loading" style="text-align:center;padding:10px 0;font-size:14px;background-color:transparent;cursor:text;background-color:#fff;">No more notification</li>
+        </ul>
+        <div ng-show="state.loading" class="notification-loader-position">
+            <div class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+        </div>
+        <div class="see-all" ng-show="notifications.length() > 0">
+                <a ng-href="{{routes.notifications}}">See All</a>
+        </div>
+    </div>
+
+
+
+
+</div>

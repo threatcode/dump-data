@@ -1,0 +1,12 @@
+<div ng-controller="RightbarController" class="right-container" ng-class="showFriendsBar?'':'inactive'">
+    <rg-friends ng-show="active_menu === 'friend_list'" rg-friends-tpl="templates/partials/friend-list.html" rg-friends-type="friendslist"></rg-friends>
+    <rg-tag-chat-list template-path="templates/partials/tag-chat/tag-chat-list.html" ng-show="active_menu === 'group_chat'"></rg-tag-chat-list>
+    <rg-public-chat-room-list ng-show="active_menu === 'public_chat'"></rg-public-chat-room-list>
+    <div class="clear"></div>
+    <div class="r-f-icon">
+        <a href="#" class="top-r" ng-class="{ active: active_menu === 'friend_list'}" data-tool="Chat with friend" rg-click="setRightBarContentList('friend_list')"><img src="images/friend-list.png"/></a>
+        <a href="#" class="top-l" ng-class="{ active: active_menu === 'group_chat'}" data-tool="Group chat" rg-click="setRightBarContentList('group_chat')"><img src="images/group-list.png"/></a>
+        <a href="#" class="top-l" ng-class="{ active: active_menu === 'public_chat'}" data-tool="Public chat" rg-click="setRightBarContentList('public_chat')"><img src="images/public-list.png"/></a>
+    </div>
+    <div class="clear"></div>
+</div>

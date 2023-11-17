@@ -1,0 +1,54 @@
+<div class="feed_comment"  >
+    <ul class="media-list">
+        <div  rg-scrollbar="scrollbar()" style="max-height: 250px;">
+            <li class="item" ng-repeat="comm in feed.getComments()"
+                ng-init="comment = comm.value"  > <!--ng-class="{half_opacity:comment.isPending()}" >-->
+                <div class="pad-7 caction-area">
+                    <div class="pro_img_bg_40 float-left">
+                        <img ng-src="{{ comment.user().avatar('thumb')}}" alt="">
+                    </div>
+                    <div class="status_title comment-p" style="position: static">
+                        <p><a ng-href="{{comment.user().link()}}" ng-cloak="true">{{comment.user().getName()}}</a> <p>
+                        <p class="comment_text" onmousedown="return false" ng-hide="(commentEditorEnabled && commentKey == comment.getKey())" ng-bind-html="comment.getDynamicText()"></p>
+                        <p  ng-show="(commentEditorEnabled && commentKey == comment.getKey())">
+                            <span class="comment">
+                                <rg-editor class="editor" editor-content="models.commentedittext" new-line="false" on-enter="updateComment" on-enter-arg="comment" on-escape="cancelEdit" edit-mode="comment.getDynamicText" show-emoji="true" placeholder="Write something...." ></rg-editor>
+                                <span class="esc-to-cancel">Press Esc to <a rg-click="cancelEdit()">cancel</a></span>
+                            </span>
+                        </p>
+                        <ul class="comment_like_menu" ng-hide="comment.isPending() || (commentEditorEnabled && commentKey == comment.getKey())">
+                            <li>
+                                <a  ng-class="{active:comment.like()}" rg-click="likeComment(keyid,comment.getKey())"><i class="icon-like lc-ico" rg-like="comment.like()"></i></a>
+                                <a ng-class="{active:comment.like()}" rg-click="likeComment(keyid,comment.getKey())">&nbsp;Like</a>
+                                <a ng-class="{active:comment.like()}" class="counter" href="javascript:void(0)" rg-ringbox="{{ comment.getTotalLikes() > 0}}" ringbox-controller="fetchLikeController" ringbox-target="templates/home/wholikes.html" ringbox-type="remote" ringbox-data="fetchWhoLikes(comment.getKey())" ng-cloak="true">{{comment.getTotalLikes()}}</a>
+                            </li>
+                            <li class="mar-top-7 feed-m "><span class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i> {{comment.time()}}</span></li>
+                        </ul>
+                    </div>
+                    <div class="pv-arrow-p">
+                        <div ng-show="feed.user().isCurrentUser() || comment.user().isCurrentUser()" class="">
+                            <div  rg-dropdown="dropdown()" dd-html="ddCommentHtml" dd-control="comment" dd-action="actionCommentDropdown" ng-class="comment.user().isCurrentUser() ? 'img_sprite w-h-13 icon-ds-arrow' : ''" class=" ico-f arrow-b"></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </li>
+        </div>
+        <li ng-show="loadingComment" style="text-align:center;margin-top:10px;">
+        <div class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+        </li>
+        <li class="item" style="border:none" ng-show="feed.getComments().length > 0 && feed.getTotalComment() > feed.getComments().length">
+            <div class="float-right gray font-12 margin-10">
+                <a class="view_more" rg-click="fetchComments()">More comments</a></div>
+            <div class="clear"></div>
+        </li>
+        <li ng-if="feed.getTotalComment() > feed.getComments().length" class="divider"></li>
+        <li class="mar-top-10"  >
+            <div  class="comment-w">
+                <div class="comment-editor">
+                    <rg-editor class="editor" editor-content="commenttext" new-line="false" on-enter="addComment" on-enter-arg="feed" show-emoji="true"  is-disabled="!canComment"  focus="showCommentBox" placeholder="Write something...." ></rg-editor>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

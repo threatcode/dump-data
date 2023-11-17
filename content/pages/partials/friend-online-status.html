@@ -1,0 +1,2 @@
+<div  class="online-offline-status online-f" ng-if="user.isOnline()"></div>
+<div  class="online-offline-status offline-f" ng-if="!user.isOnline() && user.hasLastOnline()" ng-cloak="true">{{ user.lastOnline(true) }}</div>

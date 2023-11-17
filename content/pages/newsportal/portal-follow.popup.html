@@ -1,0 +1,41 @@
+ 
+<div class="select-news-warp">
+    <!--<div class="select-cat-name">{{portalName}}<span class="icon-close mdl-close" rg-click="$close($event)"></span></div>-->
+
+    <div class="modal-header"><h3 ng-cloak="true">{{portalName}}&nbsp;</h3>
+        <!--<span class="icon-close mdl-close" rg-click="$close($event)"></span>-->
+    </div>
+
+
+    <div class="news-category-box">
+        <div class="news-check cat-m20">
+            <input type="checkbox" class="css-checkbox" id="selectall" ng-change="selectAllCat()" ng-model="selectall">
+            <label for="selectall" class="css-label radGroup2"></label>
+        </div>
+        <span class="">Select All News Category</span> 
+        <!--<span class="cat-m80">Select All</span>--> 
+        <!-- <span class="unselect-ico top-select-cat"></span> -->
+
+    </div>
+    <div class="news-category-menu">
+        <ul>
+            <li ng-repeat="cat in categoryList">
+                <div class="news-check">
+                    <input type="checkbox" class="css-checkbox" id="{{cat.id}}" ng-change="selectPortalCat(cat)" ng-model="cat.subsc">
+                    <label class="css-label radGroup2" for="{{cat.id}}"> <span class="fl_text" ng-cloak="true">{{cat.catName}}</span> </label>
+                </div>                    
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="button-area" ng-show="! loadMoreDoneFollow">
+        <div class="save-button border-radius margin-10 dis-inline-blok" ng-click="cancelFollow()">Cancel</div> 
+        <div class="save-button  border-radius margin-10 dis-inline-blok" ng-click="doneFollow()">Done</div>
+    </div>
+
+    <div class="margin-10" ng-show="loadMoreDoneFollow">
+        <div class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div></div>
+    </div>
+
+</div>

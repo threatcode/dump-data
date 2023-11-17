@@ -1,0 +1,135 @@
+<div class="feed_details main_feed">
+    <!-- Feed Text -->
+    <!-- <p class="feed_value ng-hide" rg-more-feed="feed"></p> -->
+
+
+    <!-- Editor Disabled Start -->
+    <!-- Feed Location Start -->
+    <!--   <p class="location" ng-if="!editorEnabled && feed.hasLocationInfo() && !feed.hasSharedFeed()">
+  
+      <feed-location-preview></feed-location-preview>
+  
+      
+  
+  </p> -->
+
+
+
+    <!-- <rg-url-og-preview ng-if="!editorEnabled && feed.hasOgData()"  og-data="feed.getOgData()" show-preview="feed.hasOgData()" loading-data="ogDataLoading" feed-key="{{::feed.getMapKey()}}"></rg-url-og-preview> -->
+    <!-- </p> -->
+    <!-- Editor Disabled End -->
+
+
+    <div ng-if="feed.getImages().length">
+
+        <!-- <div ng-if="feed.hasExternalUrl() && feed.hasNewsPortalUrl()">
+            <div feed-image="main" pages="true" ex-url="true"></div>
+        </div> -->
+        <div ng-if="(!feed.hasExternalUrl() || feed.hasExternalUrl()) && feed.hasNewsPortalUrl()">
+            <div feed-image="main" pages="true" ex-url="false"></div>
+        </div>
+        <div ng-if="!feed.hasExternalUrl() && !feed.hasNewsPortalUrl()">
+            <div feed-image="main" pages="true" ex-url="false"></div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    <div ng-if="feed.hasNewsPortalFeed()">
+
+        <ul  class="video-r"  ng-if="feed.getMedias().length()" ng-init="medialength = feed.getMedias().length()">
+            <li style="margin:0;height:300px;" ng-repeat="media in feed.getMedias().all()| limitTo:3" class="item">
+                <div class="click_area" rg-ringbox="true" ring-backdrop-close="false" show-close-btn="false" ringbox-controller="RingBoxMediaController" ringbox-animation="true"
+                     ringbox-type="remote" ringbox-target="templates/business/business-media-popup.html" ringbox-data="getMediaData(media.value, feed)">
+                    <div class="left-thumb float-left" style="background-image:url('{{media.value.getThumb()}}'); background-repeat: no-repeat;background-size: cover;height: 300px;width: 100%;">
+                        <div class="m-icn video play"></div>
+                    </div>
+                    <div class="h_opa" ng-if="media.value.getCaption()">
+                        <h3 title="{{::media.value.getCaption()}}" ng-cloak="true">{{::media.value.getCaption()}}</h3>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+
+                </div>
+
+
+            </li>
+            <span ng-if="medialength > 3" class="text-right"><a rg-ringbox="true" ring-backdrop-close="false" show-close-btn="false" ringbox-controller="RingBoxMediaController" ringbox-animation="true"
+                                                                ringbox-type="remote" ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaFirstData()"><span>+{{medialength - 3}}</span> more</a></span>
+        </ul>
+
+        <ul class="video-r"  ng-if="feed.getAudios().length()" ng-init="medialength = feed.getAudios().length()">
+            <li style="margin:0;height:300px;" ng-repeat="media in feed.getAudios().all()| limitTo:3" class="item">
+                <div class="click_area" rg-ringbox="true" ring-backdrop-close="false" ringbox-controller="RingBoxMediaController"i ringbox-animation="true"
+                     ringbox-type="remote" ringbox-target="templates/business/business-media-popup.html" ringbox-data="getMediaData(media.value, feed)">
+                    <div class="left-thumb float-left" style="background-image:url('{{media.value.getThumb()}}'); background-repeat: no-repeat;background-size: cover;height: 300px;width: 100%;">
+                        <div class="m-icn video play"></div>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="clear"></div>
+            </li>
+            <span ng-if="medialength > 3" class="text-right"><a rg-ringbox="true" ring-backdrop-close="false" show-close-btn="false" show-close-btn="false" ringbox-controller="RingBoxMediaController" ringbox-animation="true"
+                                                                ringbox-type="remote" ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getAudioFirstData()"><span  ng-cloak="true">+{{medialength - 3}}</span> more</a></span>
+        </ul>
+
+        <!-- ng-if="!feed.hasExternalUrl() && feed.hasNewsPortalUrl()" -->
+        <p class="og-title" 
+           ringbox-type="remote"
+           rg-ringbox="true" 
+           ringbox-scrollable="true"
+           loader-hide = "false"
+           ringbox-data="getFeedInfo(feed)"
+           ringbox-controller="businessFeedPopupController"
+           ringbox-target="templates/business/business-feed-popup.html"
+           ng-cloak="true"
+           >{{feed.getNewsPortalTitle()}}</p>
+
+        <!-- <p class="og-title" 
+            ng-if="!feed.hasExternalUrl() && !feed.hasNewsPortalUrl()"
+            ringbox-type="remote"
+            rg-ringbox="true"  
+            ringbox-scrollable="true"
+            loader-hide = "false"
+            ringbox-data="getFeedInfo(feed)"
+            ringbox-controller="businessFeedPopupController"
+            ringbox-target="templates/business/business-feed-popup.html"
+        >{{feed.getNewsPortalTitle()}}</p>
+    
+        <p class="og-title" ng-if="feed.hasExternalUrl() && feed.hasNewsPortalUrl()"><a class="news_link og-url" ng-href="{{feed.getNewsPortalUrl()}}" target="_blank">{{feed.getNewsPortalTitle()}}</a></p> -->
+
+
+        <!-- ng-if="!feed.hasExternalUrl() && feed.hasNewsPortalUrl()" -->
+        <p class="og-description"
+           ringbox-type="remote"
+           rg-ringbox="true"  
+           ringbox-scrollable="true"
+           loader-hide = "false"
+           ringbox-data="getFeedInfo(feed)"
+           ringbox-controller="businessFeedPopupController"
+           ringbox-target="templates/business/business-feed-popup.html"
+           ng-cloak="true">{{feed.getNewsPortalShortDescription()}}</p>
+
+        <!-- <p class="og-description"
+            ng-if="!feed.hasExternalUrl() && !feed.hasNewsPortalUrl()"
+            ringbox-type="remote"
+            rg-ringbox="true"  
+            ringbox-scrollable="true"
+            loader-hide = "false"
+            ringbox-data="getFeedInfo(feed)"
+            ringbox-controller="businessFeedPopupController"
+            ringbox-target="templates/business/business-feed-popup.html">{{feed.getNewsPortalShortDescription()}}</p>
+    
+        <p class="og-description" ng-if="feed.hasExternalUrl() && feed.hasNewsPortalUrl()"><a class="news_link og-url" ng-href="{{feed.getNewsPortalUrl()}}" target="_blank">{{feed.getNewsPortalShortDescription()}}</a></p> -->
+
+        <a class="news_link og-url m-l-8" ng-if="feed.hasExternalUrl() && feed.hasNewsPortalUrl()" ng-href="{{feed.getNewsPortalUrl()}}" target="_blank"  ng-cloak="true">{{feed.getNewsPortalUrl()}}</a>
+
+
+    </div>
+
+
+</div>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .add_new_education {
+            border: 3px solid #0044cc;
+            padding: 10px;
+        }
+
+        .all_my_education {
+            border: 3px solid red;
+            padding: 10px;
+            margin-top: 10px;
+
+        }
+
+        .update_education {
+            border: 3px solid #008000;
+            padding: 10px;
+            margin-top: 10px;
+
+        }
+    </style>
+</head>
+<body>
+<div class="add_new_education">
+    <h2> Add new work</h2>
+
+    <form action="secure/APIEducation" method="post">
+        <input type="hidden" name="operation" value="1"/>
+        <table>
+            <tr>
+                <td>Description (desc)</td>
+                <td><input type="text" name="desc" class="desc" value="Sayadabad "/></td>
+            </tr>
+            <tr>
+                <td>FromTime (ft)</td>
+                <td><input type="text" name="ft" class="ft" value="1389636060000"/></td>
+            </tr>
+            <tr>
+                <td>ToTime (tt)</td>
+                <td><input type="text" name="tt" class="tt" value="1421172060000"/></td>
+            </tr>
+            <tr>
+                <td>Graduated (grtd)</td>
+                <td><input type="text" name="grtd" class="grtd" value="false"/></td>
+            </tr>
+            <tr>
+                <td>IsSchool (iss)</td>
+                <td><input type="text" name="iss" class="iss" value="true"/></td>
+            </tr>
+            <tr>
+                <td>AttentedFor (af)</td>
+                <td><input type="text" name="af" class="af" value="1"/></td>
+            </tr>
+            <tr>
+                <td>School (scl)</td>
+                <td><input type="text" name="scl" class="scl" value="Sayadabad High School"/></td>
+            </tr>
+            <tr>
+                <td>Concentration (cntn)</td>
+                <td><input type="text" name="cntn" class="cntn" value="Computer Science,Biology"/></td>
+            </tr>
+            <tr>
+                <td>Degree (dgr)</td>
+                <td><input type="text" name="dgr" class="dgr" value="Master"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Add new Education"></td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+
+<div class="all_my_education">
+    <form action="secure/APIEducation" method="post">
+        <input type="hidden" name="operation" value="3"/>
+        <input type="submit" value="Get All">
+    </form>
+</div>
+
+<div class="all_my_education">
+    <form action="secure/APIEducation" method="post">
+        <input type="hidden" name="operation" value="4"/>
+        <input type="text" name="id" class="id" />
+        <input type="submit" value="Get One">
+    </form>
+</div>
+
+<div class="all_my_education">
+    <form action="secure/APIEducation" method="post">
+        <input type="hidden" name="operation" value="5"/>
+        <input type="text" name="id" class="id" />
+        <input type="submit" value="Delete">
+    </form>
+</div>
+
+<div class="update_education">
+    <h2> Edit a work work</h2>
+    <form action="secure/APIEducation" method="post">
+        <input type="hidden" name="operation" value="2"/>
+        <table>
+            <tr>
+                <td>Education Id</td>
+                <td><input type="text" name="id" class="id edu_id" value=""/>
+            </tr>
+            <tr>
+                <td>Description (desc)</td>
+                <td><input type="text" name="desc" class="desc" value=""/></td>
+            </tr>
+            <tr>
+                <td>FromTime (ft)</td>
+                <td><input type="text" name="ft" class="ft" value=""/></td>
+            </tr>
+            <tr>
+                <td>ToTime (tt)</td>
+                <td><input type="text" name="tt" class="tt" value=""/></td>
+            </tr>
+            <tr>
+                <td>Graduated (grtd)</td>
+                <td><input type="text" name="grtd" class="grtd" value=""/></td>
+            </tr>
+            <tr>
+                <td>IsSchool (iss)</td>
+                <td><input type="text" name="iss" class="iss" value=""/></td>
+            </tr>
+            <tr>
+                <td>AttentedFor (af)</td>
+                <td><input type="text" name="af" class="af" value=""/></td>
+            </tr>
+            <tr>
+                <td>School (scl)</td>
+                <td><input type="text" name="scl" class="scl" value=""/></td>
+            </tr>
+            <tr>
+                <td>Concentration (cntn)</td>
+                <td><input type="text" name="cntn" class="cntn" value=""/></td>
+            </tr>
+            <tr>
+                <td>Degree (dgr)</td>
+                <td><input type="text" name="dgr" class="dgr" value=""/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Update Education"></td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+
+<div class="error_message" style="color: red; font-weight: bold;"></div>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<div ng-controller="FeedAddController" class="status-box">
+    <div  class="status-box-header" >
+        <span class="img_sprite write-msg"></span>
+        <span>Upload Music or Video</span>
+        <span class="post-val  float-right">
+            <a title="Feed Duration"  feed-timeout-menu="" ring-on-option-select="selectedTimeout(item)" selected-value="validity" class="p-ab">
+                <span class="img_sprite pst-val-ico"></span>
+            </a>
+        </span>
+    </div>
+    <form enctype="multipart/form-data">
+        <div style="padding:3px;">
+            <!--            <div class="float-left" style="position:relative;">
+                            <div class="thumbnail">
+                                <div class="icon-logo-circle pss-logo">
+                                    <a >  <img class="responsive-all"   ng-src="{{ currentUser.avatar('thumb')}}"></a>
+                                </div>
+                            </div>
+                        </div>-->
+
+            <div class="post-area-box float-right">
+                <div class="style-1">
+                    <rg-editor id="post-box-id" editor-content="feedText" new-line="on" adjust-feed-cell="true" placeholder="Share your thoughts..." tag-friend="true" max-height="800" style="border: none;"></rg-editor>
+                    <rg-url-og-fetcher ng-if="!shouldDisableLink()"
+                                       data-fetched-og-info="$parent.ogData"
+                                       editor-content="feedText"
+                                       show-preview="$parent.ogShowPreview"
+                                       loading-data="$parent.ogDataLoading"                        
+                                       >
+                    </rg-url-og-fetcher>
+
+                    <!--<p ng-if="emotions.length" class="feelings-text"> <span>&mdash; Feeling </span> <img class="status_emo" ng-src="{{emotions[0].url}}" /> <span class="feel-sty"> {{emotions[0].nm}} <span class="icon-close f-8" ng-click="emotions.length = 0"></span></span></p>-->
+
+
+                    <p ng-if="emotions.length" class="feelings-text">
+                        <span>— Feeling </span>
+                        <img class="status_emo" ng-src="{{emotions[0].url}}"> 
+                        <span class="feel-sty" ng-cloak="true">{{emotions[0].nm}}
+                            <span class="p-relative" ng-click="emotions.length = 0"><i class="p-ab feel img_sprite icon-close-ico w-h-13"></i></span>
+                        </span>
+                    </p>
+
+
+
+
+                    <div ng-if="tagList.length">
+                        <ul  class="tag-fnd-lst">
+                            <span class="tag-with">&mdash; With  </span>
+                            <li ng-repeat="usr in tagList" ><span class="tag-title" ng-cloak="true">{{::usr.getName()}}</span>&nbsp;<span class="tag-cros" ng-click="removeTag(usr)">X</span></li>
+                        </ul>
+                    </div>
+                    <p ng-if="!!feedLocation.description" class="status-loc-txt " ng-cloak="true">&mdash; {{ feedLocation.description}} <span class=" showpointer icon-close f-8" ng-click="resetFeedLocation()" ></span></p>
+                    <p ng-show="errorMessage" class="ng-cloak s-error">Please insert some text or upload an image!</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+
+        <rg-url-og-preview ng-if="!shouldDisableLink()"
+                           og-data="$parent.ogData" edit-mode="true"
+                           show-preview="$parent.ogShowPreview" 
+                           loading-data="$parent.ogDataLoading" >
+        </rg-url-og-preview>
+
+        <div class="status-photo-box">
+            <rg-upload upload-type="status" upload-action="" upload-enabled="!shouldDisableMedia()" upload-feed="false"></rg-upload>
+            <!--<div class="post-b-ico m-l-5">-->
+            <!--<a data-tooltip-post="Add Emoticon" href="javascript:void(0)" class="p-ab">-->
+            <!--<span class="emo-ico" rg-emoticon show-sticker="false" clicked="insertEmoji"></span>-->
+            <!--</a>-->
+            <!--</div>-->
+
+            <div class="float-right pbox-input mar-6">
+                <input type="button" ng-disabled="shouldDisableInput()" rg-click="addFeed()"  rg-click-noapply="true" ng-class="{'disable': shouldDisableInput()}"  class="p-btn p-btn-bg float-right" value="POST"/>
+
+            </div>
+            <div class="float-right mar-6 prvc-set" ng-if="showPrivacy">
+
+                <a data-tooltip-post="Add Privacy"  rg-dropdown dd-action="setPrivacy" dd-control="privacySet" dd-template="privacyTemplate" class=" p-btn dis-block">
+                    <span ng-cloak="true"><i ng-class="privacy.icon"></i> <b>{{privacy.text}}</b> <i class="img_sprite w-h-13 icon-ds-arrow"></i></span>
+                    <!--<span><i class="icon-g-settings"></i> <b>{{privacy}}</b> <i class="icon-ds-arrow"></i></span>-->
+
+                </a>
+            </div>
+
+        </div>
+    </form>
+
+    <div class="clear"></div>
+    <!--<span class="warning-body"><i class="warning-arrow"></i>Please wait few moment. picture is loading.</span>-->
+</div>
+
+<div class="cell" ng-if="noMoreFeed && getFeeds().length === 0" style="margin-left: 0">
+    <div class="newsfeed-row" ng-if="noMoreFeed" >
+        <p class="not-found">No feed yet!</p>
+        <img height="100%" width="100%" src="images/not-found.png" />
+    </div>
+</div>
+

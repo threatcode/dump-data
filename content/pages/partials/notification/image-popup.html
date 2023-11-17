@@ -1,0 +1,94 @@
+<div class="pv-area" rg-img-change >
+    <div class="pv-profile">
+
+        <div ng-if="feed" class="img-prv-newsfeed-top" style="padding:10px;">
+            <div class="icon-logo-circle ps-logo float-left">
+                <a clas="showpointer"> <img class="responsive-all" ng-src="{{feed.user().avatar('thumb')}}" alt=""> </a>
+            </div>
+            <div class="p-name">
+                <p class="mar-left-3 r-usernm"><a ng-href="{{feed.user().link()}}">{{feed.user().getName()}}</a></p>
+                <span class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i> {{feed.time()}} </span>
+            </div>
+        </div>
+
+        <div ng-if="!feed" class="img-prv-newsfeed-top" style="padding:10px;">
+            <div class="icon-logo-circle ps-logo float-left">
+                <a clas="showpointer"> <img class="responsive-all" ng-src="{{image.user().avatar('thumb')}}" alt="">
+                </a>
+            </div>
+            <div class="p-name">
+                <p class="mar-left-3 r-usernm"><a ng-href="{{image.user().link()}}">{{image.user().getName()}}</a></p>
+                <span class="time"><i class="img_sprite icon-dt-ico w-h-13" ng-cloak="true"></i> {{image.time()}}</span>
+            </div>
+        </div>
+        <div class="nf nfw">
+            <ul class="co_menu">
+                <li>
+                    <a class="img_sprite icon-comments-str showpointer" ng-class="{active:image.selfComment() > 0}"></a>
+                    <a class="showpointer" ng-class="{active:image.selfComment() > 0}">&nbsp;Comments: &nbsp;</a>
+                    <a class="showpointer" ng-class="{active:image.selfComment() > 0}" ng-cloak="true">{{image.getTotalComment()}}</a>
+
+                </li>
+                
+            </ul>
+            <div class="clear"></div>
+        </div>
+
+        <rg-image-comments
+                 target = "image"
+                comment-type = "image"
+                show-comment-box="showCommentBox"
+                comment-order = "desc"
+                active-comment-id="{{::activeCommentId}}"
+        ></rg-image-comments>
+
+
+
+    </div>
+
+
+    <div class="pro-pv">
+        <div class="like-bottom">
+            <div class="nf">
+                <ul class="co_menu">
+                    <li rg-likes="" target="image" like-type="image">
+                       <!--  <a class="showpointer" ng-class="{active:image.like() > 0}"
+                              class="showpointer"><i ng-class="{'icon-like-h':image.like() > 0}" class="icon-like lc-ico" rg-like=""></i></a>
+                        <a class="showpointer" ng-class="{active:image.like() > 0}" rg-click="likeImage()">
+                            Like&nbsp;</a>
+                        <a class="showpointer" ng-class="{active:image.like() > 0}"
+                           rg-ringbox="{{::image.getLikes() > 0}}" ringbox-open="openRingboxLike()" ringbox-controller="fetchLikeController"
+                           ringbox-target="templates/home/wholikes.html" ringbox-type="remote"
+                           ringbox-data="fetchWhoLikes(comment.getKey())"> {{image.getLikes()}}</a> -->
+                    </li>
+                    <li rg-dropdown="dropdown()"  dd-template="ddTemplate"
+                         dd-control="{report: image.ddControl, obj: image}" dd-action="actionImageDropdown" class="">
+                        <div class="option-tx">+Options</div>
+                    </li>
+                    <li class="img-caption fip" ng-cloak="true">{{image.getCaption()}}</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="view-lod">
+            <div class="loader-view"></div>
+        </div>
+
+        <div class="view-wrap" rg-img="{{image.src()}}" on-image-change="changeImage(direction)" rg-img-obj="image">
+
+        </div>
+
+
+        <a style="width:30%;float:left;left:0;top:0;height:100%;position:absolute;z-index:3;cursor:pointer;"
+           ng-show="prevImg" rg-click="changeImage('prev')">
+            <div class="pv-icon pv-left-ico img_sprite icon-left-arrow showpointer"></div>
+        </a>
+
+
+        <a style="width:30%;float:right;right:0;top:0;height:100%;position:absolute;z-index:3;cursor:pointer;"
+           ng-show="nextImg" rg-click="changeImage('next')">
+            <div class="pv-icon pv-right-ico img_sprite icon-right-arrow showpointer"></div>
+        </a>
+    </div>
+</div>

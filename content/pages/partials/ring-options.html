@@ -1,0 +1,7 @@
+<div class="mirror-menu" ng-style="{top : y,left : x,height:wrapperHieght+'px' }" ng-click="stopProp($event)">
+    <a class="mirror-down"  ng-mousedown="scroll('u')" ng-mouseup="release()">&#x25B2;</a>
+    <ul  class="mirror-menu-ul" ng-style="{height:boxHeight + 'px'}">
+        <li ng-repeat="menu in menus" ng-click="select($index)" ng-cloak="true">{{menu.title}}</li>
+    </ul>
+    <a class="mirror-up" ng-mousedown="scroll('d')" ng-mouseup="release()">&#x25BC;</a>
+</div>

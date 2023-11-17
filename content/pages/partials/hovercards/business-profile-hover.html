@@ -1,0 +1,31 @@
+<div>
+    <div class="img_sprite left-shape-ico  ufr-pro ufr-m">
+        <img rg-src="user.avatar('thumb')">
+    </div>
+    <div class="ufr-info">
+        <a ng-href="{{ user.link() }}" ng-cloak="true">{{user.getName()}}</a>
+        <h2 ng-cloak="true">{{ businessCategory }}</h2>
+        <h2 ng-cloak="true">{{ user.getFollowerCountWithText() }}</h2>
+    </div>
+    <div class="fr-b">
+        
+        
+         <div class="butt border-gray-orange  float-right btn-m-l-8" ng-show="businessSubscriber"  >
+            <a class="btn-p-5-8" ng-click="unFollowPage('business')">
+                <i class="drop-sprite w-h-13 unfollow-ico dis-inline-blok  btn-m-r-0"></i>
+                <span class="butt-text">Unfollow</span>
+            </a>
+        </div>
+        <div class="butt border-gray-orange  float-right btn-m-l-8" ng-show="! businessSubscriber">
+            <a class="btn-p-5-8"  ng-click="followPage('business')">
+                <i class="btn-m-r-0 friend-ico cir-joined-icon"></i>
+                <span class="butt-text">Follow</span>
+            </a>
+        </div>
+        
+        
+        
+<!--        <a class="friend-btn" ng-show="businessSubscriber" ng-click="unFollowPage('business')"> <span class="friend-ico fnd"></span>UnFollow</a>
+        <a class="friend-btn" ng-show="! businessSubscriber" ng-click="followPage('business')"> <span class="friend-ico fnd"></span>Follow</a>-->
+    </div>
+</div>

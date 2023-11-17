@@ -1,0 +1,40 @@
+<input type="text" ng-change="doTheSearch()" ng-model="searchText" ng-model-options="{debounce:1000}" ' +
+       ' placeholder={{placeholder}} />
+<div class="fnd-search-box " ng-show="showDropdown">
+    <div class="fnd-req-title">Search</div>
+    <div class="clear"></div>
+    <div ng-show="noResult" class="ser-found">No Result Found</div>
+    <ul class="fnd-search" rg-scrollbar="scrollbar()" >
+        <li ng-repeat="item in listData.all()" ng-init="item=item.value" >
+           <!--<p>frns: {{item.friendshipStatus()}}  nct:{{item.newFriendType()}} ct:{{item.friendType()}}</p>-->
+            <div class="search-item">
+                <div class="left">
+                    <div class="pic"><img ng-src="{{ item.avatar()}}"/></div>
+                    <a ng-href='{{item.link()}}'>{{item.getName()}}</a>
+                    <p ng-if="item.commonFriends() > 0" class="common-fnd">{{item.commonFriends()}} common friends</p>
+                </div>
+                <div class="right">
+                    <!--<p ng-if="item.friendshipStatus() == 0" class="">Add with</p>-->
+                    <!--<p ng-if="item.friendshipStatus() == 1" class="">Change Access</p>-->
+                    <p ng-if="item.friendshipStatus() == 2" class="">Accept with</p>
+                    <p ng-if="item.friendshipStatus() == 1" class="">pending</p>
+                    <input ng-disabled="item.friendshipStatus() !== 0 "
+                           rg-click="contactListAction({friend: item, ct: 2})"
+                           ng-class="item.newFriendType() === 1 || item.friendshipStatus() === 0 ? 'orange-button' : 'orange-button-disabled'"
+                           type='button' name='' value='Add Friend' />
+                    <!--<input ng-disabled="item.friendshipStatus() !== 0"-->
+                            <!--rg-click="contactListAction({friend: item, ct: 1})"-->
+                           <!--ng-class="item.newFriendType() === 2 || item.friendshipStatus() === 0 ? 'orange-button' : 'orange-button-disabled'"-->
+                           <!--type='button' name='' value='Chat' />-->
+                    <p ng-if="item.friendType() == 3">
+                        <input rg-click="contactListAction({friend: item})" class="white-button float-left" type='button' name='' value='Reject' />
+                        <input rg-click="contactListAction({friend: item})" class="white-button float-right" type='button' name='' value='Later' />
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+        </li>
+    </ul>
+    <div ng-show="showLoadbar" class="loader-sm"></div>
+</div>

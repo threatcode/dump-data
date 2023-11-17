@@ -1,0 +1,20 @@
+<div class=" icon-popup-area" style="z-index:3">
+    <!-- settings icon -->
+    <div class="p-rt mar-top-7 w-h-13 cur-p drop-wrap">
+        <div class="img_sprite icon-down-arrow  w-h-13" 
+            rg-dropdown="dropdown()" 
+            dd-html="memberDDHtml"
+            dd-action="memberDDActions"  
+            dd-control="{
+                tagId: tag.getTagId(),
+                member: member.value,
+                canRemoveMember : canRemoveMember,
+                canChangeType : canChangeType,
+                isCurrentUserOwner : isCurrentUserOwner,
+                memberTypeToChange : getUserTypeToChange(member.value)
+            }" 
+        ></div>
+    </div>
+</div>
+
+

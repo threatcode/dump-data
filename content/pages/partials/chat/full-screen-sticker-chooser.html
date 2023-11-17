@@ -1,0 +1,86 @@
+<div class="chat-sticker animation slide-left"> 
+<rg-loader-view1 is-loading="loading" ></rg-loader-view1>
+
+<div ng-if="!loading" style="height: calc(100% - 90px);">
+        <div class="c-sti-top w-100-p f-500 t-a-c box-s-b">
+            <h2 ng-cloak="true">{{ activeCategory.getName() }} </h2> 
+            <button ng-if="!isMySticker(activeCategory.getKey())" 
+                    class="save-button bg-orange-white"  
+                    ng-click="addSticker(activeCategory)">Free</button>
+        </div>
+
+        <div class="c-sti-middle w-100-p" rg-scrollbar="true" style="height:100%;overflow:hidden" >
+            <img ng-repeat="sticker in stickerMap.getImages().all()" 
+                    ng-init="sticker = sticker.value"
+                    rg-click="sendStickerToChatOpenBox(activeCategory, sticker, $event)" 
+                    title="{{sticker.symbol()}}" 
+                    ng-src="{{ sticker.src() }}"
+                    ng-class="emostick">
+        </div>
+
+        <div class="c-sti-bottom w-100-p" ng-class="{ 'opened': !!displayDownloaded }" >
+
+            <div class="c-sti-menu display_ib cur-p"
+                ng-repeat="aStickerCatId in getBottomMenuStickerIds() | limitTo: 4" 
+                ng-init="aSticker = getSticker(aStickerCatId)"  
+                data-tooltip-post="{{aSticker.getName()}}"
+                rg-click="selectStickerCatId($event, aSticker.getKey(), true)" >
+
+                    <img rg-src="aSticker.getCaptionImageUrl(selectedStickerCatId == aStickerCatId)" alt="StickerImage" class="stickerCaptionImage" />
+                    <span class="emo-down img_sprite w-h-22px" ng-if="!isMySticker(aStickerCatId)"></span>
+            </div>
+
+            <div class="pub-arrow-wrap"  ng-click="toggleDisplayDownloaded()" >
+                <i class="img_sprite w-h-22px sti-arrow-ico display_ib cur-p"></i>
+                <i class="img_sprite w-h-22px sti-top-arrow-ico display_ib cur-p"></i>
+
+                <div class="sti-drop w-200-p" ng-if="displayDownloaded"  style="width:200px" rg-stop-event> 
+
+                     <div class="sti-tab">
+                         <div class="sti-tx-tab cur-p dis_ib f-14 h-100p t-a-c v-a-t" 
+                            ng-class="{active: activeTab === 'my_stickers'}" ng-click="setActiveTab('my_stickers')" >My Stickers</div>
+                         <div class="sti-tx-tab cur-p dis_ib f-14 h-100p t-a-c v-a-t" 
+                            ng-class="{active: activeTab === 'all'}" ng-click="setActiveTab('all')"  >All</div>
+                          <i rg-ringbox="true" 
+                                ringbox-controller="StickerPopupController"
+                                ringbox-type="remote" 
+                                ringbox-target="templates/sticker/home.html" 
+                            class="m-l-5 dis_ib img_sprite w-h-18px cur-p add-new-gr add-emo m-t-4"></i>
+                    </div>
+
+
+                    <div class="sti-drop-top w-100-p box-s-b" >
+                        <h3 class="f-12 v-a-t" ng-cloak="true" ng-cloak="true"> {{ interestedCategory.getName()  }}</h3>
+
+                          <div class="sti-src">
+                        <input type="text" placeholder="Search..." ng-model="ob.stickerName" > 
+                        </div>
+
+                    </div>
+
+                    <div class="sti-m">
+                        <div rg-scrollbar="true" style="height:270px;overflow:hidden" bottom-reached="loadMoreByTab()" > 
+                            <div class="w-100-p">
+                                <div class="sti-menu-m display_ib cur-p"
+                                    ng-repeat="aSticker in getStickerCategoriesByTab() | objectFilter:{compare:'string', prop: 'getName', value: ob.stickerName} " 
+                                    ng-init="aStickerCatId = aSticker.getKey()"
+                                    ng-mouseover="onMouseHoverOnAllCategoryList(aSticker)"
+                                    rg-click="selectStickerCatId($event, aSticker.getKey())" >
+
+                                       <img rg-src="aSticker.getCaptionImageUrl(selectedStickerCatId == aStickerCatId)" alt="StickerImage" class="stickerCaptionImage" />
+                                       <span class="emo-down img_sprite w-h-22px" ng-if="!isMySticker(aStickerCatId)"></span>
+                                </div>
+                            </div>
+                            <div class="w-100-p" ng-if="loadMoreLoading"> 
+                                <rg-loader-view1 is-loading="true" ></rg-loader-view1>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

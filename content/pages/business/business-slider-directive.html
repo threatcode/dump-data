@@ -1,0 +1,71 @@
+<div class="news_banner-wrapper">
+    <div class="news_banner_wrap"> 
+        <div class="news_banner_con">
+            <ul>
+                <li  ng-repeat="img in sliderImages.all()">
+                    <a ng-href="{{img.value.getLink('profile')}}">
+                        <img ng-src="{{img.value.getFollowAndSliderImage()}}" width="{{imageWidth}}">
+                    </a>
+                    <div class="banner-flow-w" ng-cloak="true">{{ img.value.getFollowerCountWithText() }}</div>
+                    <div class="banner-flow" ng-if="!img.value.isSubscribed()"
+                            rg-ringbox="true"
+                            ringbox-controller="businessFollowController"
+                            ringbox-target="templates/newsportal/portal-follow.popup.html"
+                            ringbox-type="remote" 
+                            ringbox-data="getCatList(img.value)">+ Follow</div>
+                    <div class="banner-flow" ng-if="img.value.isSubscribed()">
+                        Following
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div ng-show="showLeftArrow" class="icon-left-arrow img_sprite sld-control news-sld-left" ng-click="left()"></div>
+    <div ng-show="showRightArrow" class="icon-right-arrow img_sprite sld-control  news-sld-right" ng-click="right()"></div>
+</div>
+
+<!--<div class="m-0-5">
+    <div class="media-slider-wrapper t-sl">
+        <div class="media-slider">
+            <div class="photobanner">
+                <div id="feeds-container"  class="float-left t-sl-f" style="width:271.5px"  ng-repeat="img in sliderImages.all()">
+                    <div class="newsfeed-row" >
+                        <div class="newsfeed-top">
+                            left user picture
+                            <a  class="float-left m-r-10" ng-href="{{img.value.getLink('profile')}}">
+                                <img class="border-eaeaea" ng-src="{{img.value.getFollowAndSliderImage()}}" width="70px" height="70px" onError="this.src='images/prof.png';" alt=""/>
+                            </a>
+                            middle text
+                            <div class="top-r-feed float-left">
+                                <a ng-href="{{element.value.getProfileLink(sliderType)}}" class="npttl">{{element.value.getPortalTitle()}}</a>
+                                <p class="nttl"
+                                   ringbox-type="remote"
+                                   rg-ringbox="true"  
+                                   ringbox-scrollable="true"
+                                   loader-hide = "false"
+                                   ringbox-data="getFeedInfo(element.value)"
+                                   ringbox-controller="{{popupController}}"
+                                   ringbox-target="{{popupTemplate}}">
+                                    {{element.value.getNewsTitle()}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="feed_details main_feed">
+                            <p class="feed_value newsportal-s-details" ringbox-type="remote"
+                               rg-ringbox="true"  
+                               ringbox-scrollable="true"
+                               loader-hide = "false"
+                               ringbox-data="getFeedInfo(element.value)"
+                               ringbox-controller="{{popupController}}"
+                               ringbox-target="{{popupTemplate}}">
+                                {{element.value.getDescription()}}
+                            </p>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="showLeftArrow" class="icon-left-arrow img_sprite sld-control news-sld-left" ng-click="left()"></div>
+        <div ng-show="showRightArrow" class="icon-right-arrow img_sprite sld-control  news-sld-right" ng-click="right()"></div>
+    </div>
+</div>-->

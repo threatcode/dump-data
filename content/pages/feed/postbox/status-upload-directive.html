@@ -1,0 +1,19 @@
+
+    <div ng-show="!editMode || (editMode && uploadSpec.type === 'image')"  data-tooltip-post="Add Photos"  href="javascript:void(0)" class="p-abc">
+        <div  class="post-b-ico" ng-class="{'disabled': disableUpload('image')}"> 
+            <input ng-disabled="disableUpload('image')"  data-upload-image name="statusimage" type="file" class="pst-input" multiple="multiple" accept="image/*">
+            <span  class="img_sprite status-ico camera-ico ng-binding " ></span>
+        </div>
+    </div>
+    <div ng-show="!editMode || (editMode && uploadSpec.type === 'video')"  data-tooltip-post="Add Videos" href="javascript:void(0)" class="p-abc">
+        <div class="post-b-ico" ng-class="{'disabled': disableUpload('video')}">
+            <input ng-disabled="disableUpload('video')" data-upload-video name="statusvideo" type="file" class="pst-input" multiple="multiple" accept="video/mp4">
+            <span  class="img_sprite status-ico video-ico ng-binding " ></span>
+        </div>
+    </div>
+    <div ng-show="!editMode || (editMode && uploadSpec.type === 'audio')"  data-tooltip-post="Add Audios" href="javascript:void(0)" class="p-abc">
+        <div class="post-b-ico" ng-class="{'disabled': disableUpload('audio')}">
+            <input ng-disabled="disableUpload('audio')" data-upload-audio name="statusaudio" type="file" class="pst-input" multiple="multiple" accept="audio/mp3">
+            <span  class="img_sprite status-ico audio-ico ng-binding " ></span>
+        </div>
+    </div>

@@ -1,0 +1,82 @@
+
+
+
+<div class="dashboard-bg  mid-width ">
+    <div class="middle" >
+        <input type="text" data-ng-model="albumName" placeholder="Album Name"/>
+        <div data-ng-controller="ImageUploadController as imageUpload">
+            <span>
+                <ring-file-upload-dir
+                    auto-upload='true'
+                    choose-file-button-text='Choose files'
+                    upload-file-button-text='Upload files'
+                    upload-url='uploadUrlVal'
+                    max-files='10'
+                    type="sts"
+                    max-file-size-mb='500'
+                    get-additional-data='getData(type)'
+                    on-done='done(files, data, index, type)'
+                    on-progress='progress(percentDone, index)'
+                    on-error='error(files, type, msg)'
+                    on-click='getInfo(type)'
+                    on-start='uploadstarted(index, type)'>                    
+                </ring-file-upload-dir>
+                <form ng-submit="submit()">
+                    <div ng-repeat="image in uploadedImageList as datasource" > 
+                        <div ng-show="image.progressVisible">
+                            <div class="percent" ng-cloak="true">{{image.progressVal}}%</div>
+                            <div class="progress-bar">
+                                <div class="uploaded" ng-style="{'width': image.progressVal + '%'}"></div>
+                            </div>
+                        </div>
+                        <div id="singleImage{{$index}}">
+                            <div class="add_title"> 
+                                <input type="text" placeholder=" Add Photo Title " class="caption" data-ng-model="image.cptn">
+                            </div>
+                            <div class="album_image" style="background-image: url({{image.iurl}}); background-size: 200px; background-repeat: no-repeat;height: 200px;">
+                                <input type="button" class="close" ng-click="datasource.splice($index, 1)">
+                            </div>
+                        </div>   
+                    </div>
+                    <button  type="submit" ng-show="uploadedImageList.length > 0">Create Album</button>
+                </form>
+            </span>
+
+            <span ng-show="newlyCreatedAlbumImageList.length > 0" ng-cloak="true"><h3>{{albumName}}</h3></span>
+            <div ng-repeat="image in newlyCreatedAlbumImageList"> 
+                <div>
+
+                    <span ng-cloak="true">{{image.cptn}}</span>
+
+                    <div style="background-image: url({{image.iurl}}); background-size: 200px; background-repeat: no-repeat;height: 200px;"></div>
+                </div>   
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<style type="text/css">
+
+    .percent {
+        position: absolute; width: 300px; height: 14px; z-index: 1; text-align: center; font-size: 0.8em; color: white;
+    }
+
+    .progress-bar {
+        width: 300px; height: 14px;
+        border-radius: 10px;
+        border: 1px solid #CCC;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#6666cc), to(#4b4b95));
+        border-image: initial;
+    }
+
+    .uploaded {
+        padding: 0;
+        height: 14px;
+        border-radius: 10px;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#66cc00), to(#4b9500));
+        border-image: initial;
+    }
+
+</style>

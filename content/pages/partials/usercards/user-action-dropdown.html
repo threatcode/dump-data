@@ -1,0 +1,19 @@
+<div class="gm-dorp s action">
+
+    <a  rg-click="ddAction()({ action: 'status_change', member : ddControl.member, status : memberStatusToChange })"
+        href="javascript:void(0);" ng-cloak="true">
+
+        <span class="friend-ico make-admin"></span>
+       {{ memberStatusText }} 
+    </a>
+
+
+    <a ng-if="ddControl.canRemoveMember(member)"  
+       rg-click="ddAction()({ action: 'remove', member: ddControl.member, event:$event})" 
+
+        href="javascript:void(0);">
+        <span class="friend-ico reject"></span>
+            Remove
+    </a>
+
+</div>

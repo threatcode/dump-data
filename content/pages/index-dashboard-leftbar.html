@@ -1,0 +1,108 @@
+<div class="width-200 left-sidebar-min-height white-background left-fixed border-right width-in-mobile">
+    <div class="row-responsive" ng-controller="MenuController">
+        <div class="profile-box">
+            <a  ng-href="{{currentUser.link()}}" class="left-shape-cover p-relative">
+                <div class="img_sprite left-shape-ico p-absolute"></div>
+                <!-- <div class="pp-logo margin-0-auto user-pic-in-m"  -->
+                <!--      style="background-image: url({{currentUser.avatar('thumb')}});background-size: cover;"></div> -->
+                <div class="pp-logo margin-0-auto user-pic-in-m" 
+                     ng-style="avatarStyle()"></div>
+            </a>
+            <div class="user-name hide-in-mobile">
+                <a class="r-usernm" ng-bind="currentUser.getName()" ng-href="{{currentUser.link()}}"></a>
+                <i class="img_sprite id-circle w-h-18px"></i>&nbsp;<span ng-bind="currentUser.getRingNumber()"></span>
+            </div>
+        </div>
+        <div>
+            <ul  class="left-nav icons-color-size">
+                <li   ng-class="{ active: isCurrentPath(routes.home) }" >
+                    <a title="Feeds" reloadpage="true" rg-href="{{routes.home}}" >
+                        <i class="img_sprite home-ico-left width-25px height-25px"></i><b class="hide-in-mobile">Feeds</b>
+                    </a>
+                </li>
+                <li  ng-class="{ active: isCurrentPath(routes.mediaFeed) }" >
+                    <a title="Music & Video" reloadpage="true" rg-href="{{routes.mediaFeed}}" >
+                        <i class="img_sprite media-cloud-ico width-25px height-25px"></i><b class="hide-in-mobile">Media Cloud</b>
+                        <!--media-cloud--> 
+                    </a>
+                </li>
+
+                <li ng-class="{ active: isCurrentPath(routes.circle, true) }" >
+                    <a title="Circle" reloadpage="true" rg-href="{{routes.circle}}" >
+                        <i class="img_sprite circle-ico width-25px height-25px"></i><b class="hide-in-mobile b-circle">Circle</b>
+                    </a>
+                </li>
+
+                <li ng-class="{ active: isCurrentPath(routes.newsportal, true) }" >
+                    <a title="Newsportal" reloadpage="true" rg-href="{{routes.newsportal}}" >
+                        <i class="img_sprite news-portal-ico width-25px height-25px"></i><b class="hide-in-mobile b-circle">Newsportal</b>
+                    </a>
+                </li>
+
+                <!-- <li ng-class="{ active: isCurrentPath(routes.pages, true) }" > -->
+                <!--     <a title="Pages"  reloadpage="true" rg-href="{{routes.pages}}" > -->
+                <!--         <i class="img_sprite pages-ico width-25px height-25px"></i><b class="hide-in-mobile b-circle">Pages</b> -->
+                <!--     </a> -->
+                <!-- </li> -->
+
+                <!-- <li ng-class="{ active: isCurrentPath(routes.celebrity, true) }"> -->
+                <!--     <a title="Celebrity" reloadpage="true" rg-href="{{routes.celebrity}}"> -->
+                <!--         <i class="img_sprite cele-ico width-25px height-25px"></i><b class="hide-in-mobile b-circle">Celebrity</b> -->
+                <!--     </a> -->
+                <!-- </li> -->
+<!--                <li ng-class="{ active: isCurrentPath(routes.stickermarket, true) }" >
+                    <a title="Newsportal" rg-href="{{routes.stickermarket}}" >
+                        <i class="img_sprite sticker-ico width-25px height-25px"></i><b class="hide-in-mobile b-circle">Sticker Market</b>
+                    </a>
+                </li>-->
+
+                <li class="show-in-mobile">
+                    <a class="ex-list" title="Friend List" rg-click="toggleFriendsBar()">
+                        <i class="img_sprite icon-full-name"></i>
+                    </a>
+                </li>
+                
+                
+                <li style="visibility:hidden;background-position: 0 0;width:0;height:0;">
+                    <span class="friend-ico"></span>
+                    <span class="drop-sprite"></span>
+                    <span class="profile-dropdown-icon"></span>
+                
+                </li>
+                
+            </ul>
+        </div>
+        
+<!--        dont remove please
+        
+        <div style="margin-left:10px;">
+            <div class="butt bg-white-orange top-r" data-tool="tooltip">
+                <a href="#"><span class="butt-text">Reject</span></a>
+            </div>
+            <br/><br/>
+            <div class="butt bg-orange-white">
+                <button  type="submit" name="b"><span class="butt-text">Reject</span></button>
+            </div>
+            <br/><br/>
+            <div class="butt border-gray-orange">
+                <a href="#"><i class="friend-ico reject"></i><span class="butt-text">Reject</span></a>
+            </div>&nbsp;&nbsp;
+            <div class="butt bg-orange-white-i">
+                <a href="#"><i class="friend-ico accept"></i><span class="butt-text">Accept</span></a>
+            </div>
+            <br/><br/>
+            <div class="butt  border-gray-orange">
+                <a href="#"><i class="img_sprite h-w-14-13 only-i"></i><span class="butt-text">Only Me</span></a>
+            </div>
+            <br/><br/>
+            <div class="butt  border-gray-orange">
+                <a href="#"><i class="img_sprite pages-ico width-25px height-25px"></i><span class="butt-text">Only Me</span></a>
+            </div>
+        </div>
+        
+        dont remove -->
+        
+    </div>
+    <div class="clear"></div>
+    <div  class="hide-in-mobile" rg-invite></div>
+</div>

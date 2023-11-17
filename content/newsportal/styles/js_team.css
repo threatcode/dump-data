@@ -1,0 +1,279 @@
+
+/*:::::::::::::::::::::::::::::::::CSS Added by Prince START::::::::::::::::::::::::*/
+.border_radious{
+    border-radius: 100%;
+}
+
+input.parsley-success,
+select.parsley-success,
+textarea.parsley-success {
+    color: #468847;
+    background-color: #DFF0D8;
+    border: 1px solid #D6E9C6;
+}
+
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error {
+    color: #B94A48;
+    background-color: #F2DEDE;
+    border: 1px solid #EED3D7;
+}
+
+.parsley-errors-list {
+    margin: 2px 0 3px;
+    padding: 0;
+    list-style-type: none;
+    font-size: 0.9em;
+    line-height: 0.9em;
+    opacity: 0;
+    text-align: left;
+
+    transition: all .3s ease-in;
+    -o-transition: all .3s ease-in;
+    -moz-transition: all .3s ease-in;
+    -webkit-transition: all .3s ease-in;
+}
+
+.parsley-errors-list.filled {
+    opacity: 1;
+}
+#categoryForm {
+    display: none;
+}
+.deleteCategory, .editCategory{
+    cursor: pointer;
+}
+
+th.sort-header::-moz-selection { background:transparent; }
+th.sort-header::selection      { background:transparent; }
+th.sort-header { cursor:pointer; }
+table th.sort-header:after {
+    content:'';
+    float:right;
+    margin-top:7px;
+    border-width:0 4px 4px;
+    border-style:solid;
+    border-color:#404040 transparent;
+    visibility:hidden;
+}
+table th.sort-header:hover:after {
+    visibility:visible;
+}
+table th.sort-up:after,
+table th.sort-down:after,
+table th.sort-down:hover:after {
+    visibility:visible;
+    opacity:0.4;
+}
+table th.sort-up:after {
+    border-bottom:none;
+    border-width:4px 4px 0;
+}
+
+
+.progressBar {
+    width: 152px;
+    height: 13px;
+    /* border: 1px solid #111; */
+    background-color: #CCC;
+}
+.progressBar div {
+    height: 100%;
+    color: white;
+    text-align: center;
+    line-height: 15px; /* same as #progressBar height if we want text middle aligned */
+    width: 0;
+    background-color: #f47727;
+    font-size:9px;
+
+}
+#logOutButton {
+    cursor: pointer;
+}
+a {cursor: pointer;}
+
+.swal-wide{
+    width:850px !important;
+    margin-left: -425px!important;
+}
+.newsFullForm {
+    display: none;
+}
+
+
+
+.img-layout-1{width: 100%; padding:0 8px; box-sizing: border-box; height:500px}
+.img-layout-1 .grid{width: 100%; height:50%; float: left; }
+.img-layout-1 .img1{width: 100%; height:100%; background-position: center top}
+.img-layout-1 .img2 , .img-layout-1 .img3 {width: 50%; height: 100%; float: left; background-position: center center}
+.img-layout-0{width: 100%; padding:0 8px; box-sizing: border-box; height:400px}
+.img-layout-0 .grid{width: 50%; height:100%; float: left; }
+.img-layout-0 .img1{width: 100%; height:100%; background-position: center top}
+.img-layout-0 .img2, .img-layout-0 .img3{width: 100%; height: 50%; background-position: center center}
+.contentEditable{
+    /*border: 1px solid #5b5b5b;*/
+    padding: 7px 0;
+    display: block;
+    margin-top: 5px;
+    /*border: 1px solid #eee;*/
+}
+.og-title.contentEditable{font-size:13px;}
+.pic1,.pic2,.pic3,.pic4{ background-position: center center}
+.img1,.img2,.img3{ background-size: cover;box-sizing: border-box;border-bottom:3px solid #fff;border-left:3px solid #fff; }
+.img1{border-left:0;}
+.showFullNews {
+    color: #fff;
+    /*display: inline-block;*/
+    text-align: center;
+}
+
+span.og-url {
+    float: right;
+}
+.manualSelectionBox {
+    margin: 5px;
+    border: 1px solid #d0d0d0;
+    padding: 5px;
+    display: none;
+}
+#hiddenDiv , .hiddenUrl {
+    display: none !important;
+}
+
+#draggable-element-cover, #draggable-element-profile {
+    position:relative;
+}
+
+.component {
+    width: calc(100% - 2px);
+    height:250px;
+    overflow: hidden;
+    /*border: 3px solid #49708A;*/
+}
+/*body {*/
+    /*display: none;*/
+/*}*/
+
+/*.save-or-cancel button {*/
+    /*width: 65px;*/
+
+/*}*/
+
+
+
+/* Save or cancel*/
+.save-or-cancel{
+    position: absolute;
+    top:80%;
+    left: 75%;
+}
+
+.save-or-cancel-profile {
+    position: absolute;
+    top: 66%;
+    left: 5%;
+    z-index: 100;
+    display: none;
+}
+
+.save-or-cancel button {
+    background:#F37726;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 65px;
+
+}
+
+.save-or-cancel-profile button{
+    background:#F37726;
+    color: #fff;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    width: 54px;
+
+}
+
+.save-or-cancel, .save-or-cancel-profile {
+    display: none;
+}
+
+
+.setting-box{
+    position: absolute;
+    right:8px;
+    margin-right: 25px;
+    width:102px;
+}
+.editSubmitButton{margin:8px 0 8px 8px;}
+.editCancelButton{margin:8px  0 8px 8px;}
+.contentEditable:focus{
+    border: 1px solid #f47727;
+    outline: none;
+}
+.top-dropbox {
+    display: none;
+}
+#postImageBoxWithNav{
+    display: none;
+}
+
+/*profile page change password*/
+#editProfileForm, .password-content,.portal-content ,#editPortalInfoForm{
+    display: none;
+}
+
+
+.profile-pic {
+
+    overflow: hidden;
+}
+.background-linear {
+    font-size: 15px;
+    padding: 5px 0;
+    text-align: center;
+    color: #585858;
+    background: -webkit-gradient(radial,center center,0,center center,250,from(#DBDBDB),to(transparent));
+    background: -moz-radial-gradient(circle,#CACACA,transparent);
+    background: -ms-radial-gradient(circle,#CACACA,transparent);
+}
+#noCategoryCreatedYet, #noMorePostToShow{
+    display: none;
+}
+
+#postImages {
+    /*width: 500px;*/
+    height: 170px;
+    overflow: hidden;
+    margin:13px auto 0 auto;
+
+}
+
+
+.status-i{
+    height:170px;
+    width:150px;
+    float: left;
+    background-image:url('../images/pic-img1.png');
+    position:relative;
+
+    z-index:0;cursor:pointer;
+    margin:0 10px 5px 0;
+    /*display:inline-block;*/
+    display:none;
+}
+
+
+.p-relative {
+    margin-top: 10px;
+}
+
+/*Login signup page*/
+#signupForm, #emailVerifyCodeForm, #recoverSendCodeForm, #verifySendCodeForm, #resetPasswordForm  {
+    display: none;
+}
+
+/*:::::::::::::::::::::::::::::::::CSS Added by Prince END::::::::::::::::::::::::*/

@@ -1,0 +1,54 @@
+<div class="circle-part2" ng-class="{'cr-opacity' : currentStep == 1}">
+       
+        <div class="modal-header">
+            <h3 class="ng-binding"> <span class="cir-ico mh-ico"></span>Select Members</h3>
+            <!--<span class="icon-close mdl-close" rg-click="$close()"></span>-->
+        </div>
+
+
+        <div class="cir-select-mid">
+            <div class="member-box" rg-scrollbar="scrollbar()" style="max-height: 150px;min-height: 50px;">
+                <div class="member-box-list" ng-repeat="member in memberList.all() | mapListFilter:currentMemberList" >
+                    <span class="pt0" ng-cloak="true" ng-cloak="true"> {{member.value.getName()}}</span>
+                    <div class="m-close" rg-click="removeMember(member.value)">
+                        <span class="cir-ico m-add-close"></span>
+                    </div>
+                </div>
+                <div class="cri-error" ng-show="memberList.length() < 1">No member selected yet.</div>
+
+            </div>
+     
+            <div class="search-admin-box">
+                <span class="cir-head-text f-left">Select group Members</span>
+
+
+                <div class="box-search border-radius-4px float-right width-192 bg-eaeaec" style="margin:9px 12px 5px 12px">
+                    <span class="img_sprite width-25px height-25px search-icon-25 p-absolute search-icon-p"></span>
+                    <input type="text" name="fs" ng-model="ob.friendName" ng-model-options="{ debounce: 500 }" placeholder="Search friends to add">
+                </div>
+
+            </div>
+
+            <rg-loader-view2 is-loading="state.loading"></rg-loader-view2>
+
+            <div class="member-box" rg-scrollbar="scrollbar()" style="max-height: 300px; min-height: 150px;" bottom-reached="loadMoreFriends()">
+
+                <div class="member-admin-box" 
+                        ng-repeat="frnd in friends.all() | mapFilter:{
+                                                                mapApi: 'getName', 
+                                                                value: ob.friendName, compare: 'regex'
+                                                        } | mapListFilter:memberList as filteredList" 
+
+                     ng-class="{'fndz-action': showBackKey === frnd.value.getKey()}" rg-click="addToTag(frnd.value, 'member')">
+                    <div class="member-admin-pro">
+                        <img ng-src="{{ frnd.value.avatar('thumb') }}"  onerror="this.src='images/prof.png';"/>
+                    </div>
+                    <div class="member-admin-name" ng-cloak="true">{{::frnd.value.getName()}}</div>
+                    <span class="addcir">+</span>
+                </div>
+            </div>
+        </div>
+        <rg-wizard-step-list steps="rgWizardData.steps" ></rg-wizard-step-list>
+</div>
+
+

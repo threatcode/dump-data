@@ -1,0 +1,21 @@
+ <div  class="dashboard-bg  mid-width pro-page-width" ng-controller="MediaSaveController">
+    <div class="middle"> 
+        <div class="profile news-pro-wrap">
+            <div  class="media-nav">
+                <rg-tab-nav></rg-tab-nav>
+            </div>
+
+            <div class="dashboard-bg  mid-width pro-page-width">
+    
+                <div ng-include src="'templates/mediasearch/media-saved-feed.html'"  rg-feed-subscriber>
+                </div>
+
+                <div ng-if="noDataYet()">
+                    <div  class="no-suggest">
+                        <p>You don't have any saved feeds.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

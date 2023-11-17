@@ -1,0 +1,33 @@
+
+ <div style="width:600px;min-height:200px;">
+<div class="modal-header">
+    <h3 class="ng-binding">People who shared this</h3>
+    <!--<span class="icon-close mdl-close"  rg-click="$close()"></span>-->
+</div>
+<div  class="pad-0-35 mar-top-12">
+
+    <div class="newsfeed-row" ng-controller="FeedSubController" ng-repeat="feed in feeds track by feed.getKey()"
+         ng-init="feedstatus = feed.text(); keyid = feed.getKey(); imageslength = feed.getImages().length;"
+         style="opacity: 1;">
+
+            <rg-news-feed-top feed="feed"
+                              serial="false"
+                              dd-html="ddHtml"
+                              dropdown="dropdown"
+                             hide-serial ="singleFeed"
+                              action-feed-dropdown="actionFeedDropdown"
+                              showdroparrow = "showdroparrow">
+            </rg-news-feed-top>
+
+            <rg-news-feed-bottom></rg-news-feed-bottom>
+
+            <div class="clear"></div>
+
+    </div>
+    <div ng-show="busy" class="share-c-l-p">
+        <div ng-show="boxIsLoading" class="loader"><div class="circle1"></div><div class="circle2"></div><div class="circle3"></div></div>
+        <!--<div class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>-->
+    </div>
+    
+</div>
+</div>

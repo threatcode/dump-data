@@ -1,0 +1,104 @@
+<div class="pv-area" img-height-change>
+    <div class="pv-profile">
+        <div class="newsfeed-top" style="padding:10px;">
+            <div class="icon-logo-circle ps-logo float-left">
+                <a href="#"> <img class="responsive-all" ng-src="{{feed.user().avatar('thumb')}}" alt=""> </a>
+            </div>
+            <div class="pv p-name">
+                <p class="r-usernm"><a ng-href="{{feed.user().link()}}" ng-cloak="true">{{feed.user().getName()}}</a></p>
+                <span class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i>{{feed.time()}}</span>
+            </div>
+        </div>
+        <div class="nf nfw">
+            <ul class="co_menu">
+                <li  class="w-140">
+                    <a class="icon-comments active showpointer"  ></a>
+                    <a class="showpointer" ng-class="{active:image.selfComment() > 0}" >Comments</a>
+                    <a class="showpointer" ng-class="{active:image.selfComment() > 0}" ng-cloak="true">{{image.getTotalComment()}}</a>
+                </li>
+                <li>
+                    <a ng-hide="image.getComments().length() == image.getTotalComment()" class="view_more" href='#' rg-click="loadMoreComments()" rg-stop-event>More comments</a>
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="feed_comment"  rg-scrollbar="scrollbar()" style="height:72%;">
+            <ul class="feed-img-l">
+                <li class="item pv-item" ng-repeat="comm in getComments()"
+                    ng-init="comment = comm.value" ng-class="{half_opacity:comment.isPending()}">
+                    <div class="pro_img_bg_40 float-left" style="padding:10px 0 10px 10px;display:block">
+                        <img ng-src="{{::comment.user().avatar('thumb')}}" alt="{{comment.user().getName()}}">
+                    </div>
+                    <div class="pv p-name" style="width:70%;padding:5px 0;">
+                        <p><a ng-href="{{::comment.user().link()}}" ng-cloak="true">{{::comment.user().getName()}}</a> </p>
+                        <p ng-hide="(commentEditorEnabled && commentKey == comment.getKey())" ng-cloak="true">{{comment.text()}}</p>
+                        <p ng-show="(commentEditorEnabled && commentKey == comment.getKey())" class="mar-5-0">
+                             <rg-editor class="editor" editor-content="vm.commentedittext" new-line="false" edit-mode="comment.text" on-enter="updateComment" on-enter-arg="comment" show-emoji="true" placeholder="Write something...." ></rg-editor>                        
+                            <span class="esc-to-cancel">Press Esc to <a rg-click="cancelEdit()">cancel</a></span>
+                        </p>
+                        <ul class="comment_like_menu">
+                            <li><a rg-click="likeImageComment(comment)" rg-stop-event   class="like_button" ng-class="{active:comment.like() > 0}" ><i class="icon-like lc-ico"></i></a></li>
+                            <li><a rg-click="likeImageComment(comment)" rg-stop-event   ng-class="{active:comment.like() > 0}" >Like</a></li>
+                            <li  class="counter"><a  href="#" data-toggle="modal" data-target="#likeModal"  ng-cloak="true">{{comment.getTotalLikes()}}</a></li>
+                            <li class="mar-left-60"><span class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i>{{comment.time()}}</span></li>
+                        </ul>
+                    </div>
+                    <div ng-show="comment.user().isCurrentUser()"
+                         class="pv-arrow-p">
+                        <div  rg-dropdown="true" dd-html="ddCommentHtml"
+                              dd-control="comment" dd-action="actionCommentDropdown"
+                              class="icon-ds-arrow ico-f arrow-b">
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="pv-c-top">
+            <ul  class="feed-img-l">
+                <li class="mar-top-10" >
+                    <div  class="width-100-percent">
+                        <div class="pv-pro float-left">
+                            <img ng-src="{{currentUser.avatar('thumb')}}" alt="">
+                        </div>
+                        <div class="pv-texarea float-left" >
+                            <input ng-keyup="addComment($event)" ng-disabled="!canComment" ng-trim="" class="{{ commentErrorClass }}"
+                                   ng-model="vm.commenttext" type="text" name="" placeholder="Add a Comment" autocomplete="off" />
+                        </div>
+                        <div  class="float-right"><i class="img_sprite icon-emoticon pico-sty"></i></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="pro-pv">
+        <div class="like-bottom">
+            <div class="nf">
+                <ul class="co_menu">
+
+                    <li class="float-left">
+                        <a class="showpointer" ng-class="{active:image.like() > 0}" ><i class="icon-like lc-ico"></i></a>
+                        <a href="#" ng-class="{active:image.like() > 0}" rg-click="likeImage()" rg-stop-event >Like </a>
+                        <a href="#" ng-class="{active:image.like() > 0}" >{{image.getLikes()}}</a>
+                    </li>
+                    <li class="img-caption">{{::image.getCaption()}}</li>
+                </ul>
+            </div>
+        </div>
+        <a href="#" ng-show="prevImg != -1" rg-click="changeImage(prevImg)" rg-stop-event> <div class="pv-icon pv-left-ico img_sprite icon-left-arrow"></div> </a>
+        <a href="#" ng-show="nextImg != -1" rg-click="changeImage(nextImg)" rg-stop-event > <div class="pv-icon pv-right-ico img_sprite icon-right-arrow"></div> </a>
+        <div class="img_sprite w-h-16px icon-close pop-close" ng-click="close($event)"></div>
+        <div class="view-wrap" rg-img="{{image.src()}}">
+        </div>
+    </div>
+</div>
+
+
+

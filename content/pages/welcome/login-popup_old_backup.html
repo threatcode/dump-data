@@ -1,0 +1,149 @@
+<div class="sb">
+    <div class="s-top"> Sign In</div>
+    <div class="s-option">
+        <ul>
+            <li ng-class="{'l-active': activeTab == 'phone'}" rg-click="activateTab('phone')">Phone<span class="s-line"></span></li>
+            <li ng-class="{'l-active': activeTab == 'ringid'}" rg-click="activateTab('ringid')">ringID<span class="s-line"></span></li>
+            <li ng-class="{'l-active': activeTab == 'email'}" rg-click="activateTab('email')">Email</li>
+        </ul>
+    </div>
+    <div class="pad-50" id="login-area" style="padding:20px 50px;height:200px;">
+        <div ng-click="close()" class="icon-close s-cl" style="z-index:4"></div>
+        <div class="sign-in-part">
+
+            <div class="clear"></div>
+            <div class="step1 margin-minus">
+                <form ng-show="signIn"  name="signinForm" ng-submit="login(signinForm.$valid, $event)"  action="#" method="post" novalidate="" >
+                    <div class="s-area">
+                        <div class="s-input h-28 right-rad-0 float-left width-90" style="border-right: 0">
+                            <button ng-if="activeTab == 'ringid'" class="prefix_code"
+                                    type="button" toggle="dropdown" value="RingID" >
+                                <li class="flag r878"><span >RingID</span></li>
+                            </button>
+                            <button  ng-if="activeTab == 'phone'" class="prefix_code"
+                                     rg-dropdown="dropdown()" dd-html="ddHtml" dd-control="ddControl" dd-action="setPrefix"
+                                     type="button" toggle="dropdown" value="{{credentials.login_type}}" >
+                                <li class="flag {{credentials.countryFlag}}"><span ng-bind="credentials.login_type"></span></li>
+                            </button>
+                            <button  ng-if="activeTab == 'email'" class="prefix_code"
+                                     type="button" toggle="dropdown" value="Email" >
+                                <li class="flag remail"><span>Email</span></li>
+                            </button>
+
+                        </div>
+                        <div class="s-input h-28 float-left w-146 left-rad-0" style="overflow:hidden;" >
+                            <input  ng-if="activeTab == 'phone'" ng-model="credentials.username" name="username" type="text" placeholder="Mobile Number" ng-required="true" ng-minlength="6" ng-maxlength="12" ng-pattern="/^\d+$/" autocomplete="off"/>
+                            <input  ng-if="activeTab == 'ringid'" ng-model="credentials.username" name="username" type="text" placeholder="Ringid Number" ng-required="true" ng-minlength="8" ng-maxlength="8" ng-pattern="/^\d+$/" autocomplete="off"/>
+                            <input  ng-if="activeTab == 'email'" ng-model="credentials.username" name="username" type="email" placeholder="Email" ng-required="true"  autocomplete="off"/>
+                        </div>
+                        <span ng-show="!signinForm.username.$pristine" ng-class="signinForm.username.$valid ? 'l-success' : 'l - wrong'"></span>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="s-area">
+                        <div class="s-input h-28 input-p"  style="overflow:hidden;">
+                            <input  ng-model="credentials.password" name="password" type="password" placeholder=" Password" ng-required="true" ng-minlength="2"/>
+                        </div>
+                        <span ng-show="!signinForm.password.$pristine" ng-class="signinForm.password.$valid ? 'l-success' : 'l - wrong'"></span>
+                    </div>
+                    <div class="forgot-t">
+                        <div class="re-box chck-s">
+                            <input type="checkbox" id="rr" name="remember" />
+                            <label for="rr"><span ng-model="credentials.remember" name="remember" type="checkbox">Remember Me</span></label>
+                        </div>
+                        <div class="for-box" rg-click="openForgotForm()"> Forgot your password </div>
+                    </div>
+                    <div class="input-bg-auto-width sign-sty">
+                        <input ng-disabled="disableForm || signinForm.$invalid"  type="submit" value="Sign In" name="login" required="" />
+                        <!--<input type="submit" value="Forgot Password" name="forgot" rg-click="openForgotForm()" />-->
+                    </div>                 
+                    <div ng-cloak="" ng-show="disableForm" class="ng-cloak log-loader">Logging</div>
+                    <!--<div class="input-bg-auto-width float-right">-->
+                    <!--<input  rg-click="showSignup()" type="button" value="Sign Up"/>-->
+                    <!--</div>-->
+                    <p ng-clock="" ng-bind="errorMsg" class="ng-cloak invalid-text"></p>
+                    <div class="clear"></div>
+                    <div class="s-up">Don’t have a ringID? <span rg-ringbox="true" ringbox-type="remote" ringbox-data="initSignup()" ringbox-target="pages/welcome/signup-popup.html" ringbox-controller="SignUpController">Sign-up</span> now</div>
+                </form>
+                <!--forgot password forms start-->
+                <div ng-show="checkWhichForm" class="re-ph chck-s">
+                    <input type="checkbox" id="rf" name="remember" ng-model="checked" aria-label="Toggle ngHide"/>
+                    <label for="rf"> <p  name="remember" type="checkbox" ng-hide="checked">Retrieve with phone?</p> </label>
+                    <p ng-show="checked">retrieve with email? [Please Uncheck]</p>
+                    <!--                    <input type="checkbox" ng-model="checked" aria-label="Toggle ngHide"><br/>
+                                        <p ng-hide="checked">retrieve with phone?</p>
+                                        <p ng-show="checked">retrieve with email?[Please Uncheck]</p>-->
+                </div>
+                <div ng-hide="checked">
+                    <form  name="forgotForm" ng-show="forgotPassForm">
+                        <div class="s-input input-p h-28">
+                            <input  ng-model="forgot.rb" name="credentials" type="text" placeholder="insert verified email" ng-required="true" ng-minlength="2"/>
+                        </div>
+                        <div class="sign-sty">
+                            <input type="button" name="" value="Send" ng-disabled="forgotForm.$invalid" rg-click="codeEmail(forgot)"/>
+                            <input class="m-cl" type="submit" value="Cancel" name="cancel" rg-click="cancelForgot()" />
+                        </div>
+                    </form>
+                </div>
+                <form name="codeForm" class="input-bg"  ng-show="submitCodeForm">
+                    <div class="s-input input-p h-28">
+                        <input  ng-model="code.code" name="code" type="text" placeholder="insert code" ng-required="true"/>
+                    </div>
+                    <div class="s-input input-p h-28">
+                        <input  ng-model="code.userId" name="userid" type="text" placeholder="rindID number" ng-required="true"/>
+                    </div>
+                    <div class="sign-sty">
+                        <input class="pro-edit-btn" type="button" name="" value="Send" ng-disabled="codeForm.$invalid"	rg-click="submitCode(code)" style="display:inline-block;width:55px;"/>
+                        <input class="m-cl" type="submit" value="Cancel" name="cancel" rg-click="cancelForgot()" />
+                    </div>                  
+
+                    <!--                    <input  ng-model="code.code" name="code" type="text" placeholder="insert code" ng-required="true"/>
+                                        <input  ng-model="code.userId" name="userid" type="text" placeholder="rindID number" ng-required="true"/>
+                                        <input class="pro-edit-btn" type="button" name="" value="Send" ng-disabled="codeForm.$invalid"	rg-click="submitCode(code)" style="display:inline-block;width:55px;"/>
+                                        <input type="submit" value="Cancel" name="cancel" rg-click="cancelForgot()" />-->
+                </form>
+
+                <form name="resetForm"  ng-show="resetPassForm">
+                    <div class="s-input input-p h-28">
+                        <input  ng-model="cred.newpass" name="pass" type="password" placeholder="New Password..." ng-required="true"/>
+                    </div>
+                    <div class="s-input input-p h-28">
+                        <input  ng-model="cred.userId" name="userid" type="text" placeholder="rindID number" ng-required="true"/>
+                    </div>
+                    <div class="sign-sty">
+                        <input  class="pro-edit-btn" type="button" name="" value="Send" ng-disabled="resetForm.$invalid"	rg-click="resetPassword(cred)" style="display:inline-block;width:55px;"/>
+                        <input class="m-cl"  type="submit" value="Cancel" name="cancel" rg-click="cancelForgot()" />
+                    </div>                    
+                    <!--                    <input  ng-model="cred.newpass" name="pass" type="password" placeholder="New Password..." ng-required="true"/>
+                                        <input  ng-model="cred.userId" name="userid" type="text" placeholder="rindID number" ng-required="true"/>
+                                        <input  class="pro-edit-btn" type="button" name="" value="Send" ng-disabled="resetForm.$invalid"	rg-click="resetPassword(cred)" style="display:inline-block;width:55px;"/>
+                                        <input  type="submit" value="Cancel" name="cancel" rg-click="cancelForgot()" />-->
+                </form>
+
+                <div ng-show="checked">
+                    <form name="phoneRetrieveForm" ng-show="forgotPhnForm">
+                        <div class="s-input h-28 right-rad-0 float-left width-90">
+                            <button id="prefix_code"
+                                    rg-dropdown="dropdown()" dd-html="ddHtml" dd-control="ddControl" dd-action="setPrefix"
+                                    type="button" toggle="dropdown" value="{{credentials.login_type}}" >
+                                <li class="flag {{credentials.countryFlag}}"><span ng-bind="credentials.login_type"></span></li>
+                            </button>
+                        </div>
+                        <div class="s-input h-28 float-left w-146 left-rad-0" style="overflow:hidden;" >
+                            <input  ng-model="credentials.number" name="number" type="text" ng-required="true" placeholder="Mobile Number" autocomplete="off"/>
+                        </div>
+                        <div class="sign-sty">
+                            <input type="button" name="" value="Send" ng-disabled="phoneRetrieveForm.$invalid" rg-click="submitNumber(credentials)" style="display:inline-block;width:55px;"/>
+                            <input class="m-cl" type="submit" value="Cancel" name="cancel" rg-click="cancelForgot()" />
+                        </div>
+                    </form>
+                </div>
+                <!--forgot password forms end-->
+            </div>
+        </div>
+    </div>
+    <div class="s-dot">
+        <span ng-class="{'sd-active': activeTab == 'phone'}" rg-click="activateTab('phone')"></span>
+        <span ng-class="{'sd-active': activeTab == 'ringid'}" rg-click="activateTab('ringid')"></span>
+        <span ng-class="{'sd-active': activeTab == 'email'}" rg-click="activateTab('email')" ></span>
+    </div>
+</div>

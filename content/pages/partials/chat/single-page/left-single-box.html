@@ -1,0 +1,7 @@
+<li ng-class="{ active : ( singleBox.value.key == selectedLeftBox.key) }">
+    <a href="javascript:void(0);" title="{{ singleBox.value.getTitle() }}">
+        <img class="float-left c-h-image" ng-src="{{ aBoxObject.value.getCover() }}"/>
+        <h3 ng-cloak="true" ng-cloak="true" ng-cloak="true"> {{  singleBox.value.getTitle() }}<span style="font-size:9pt;text-align: right;float: right;" class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i>{{ singleBox.value.lastMessage.date }}</span></h3>
+        <p ng-cloak="true">{{ singleBox.value.lastMessage.user.getName() }}: {{ singleBox.value.lastMessage.messageText() }}</p>
+    </a>
+</li>

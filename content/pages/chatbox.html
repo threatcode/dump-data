@@ -1,0 +1,15 @@
+<div class="chatboxes-container" ng-controller="ChatController" chat-subscriber="asd"  >
+
+    <div class='chatbox-container' ng-repeat="box in boxes| filter : {value : {nonDomBox : true }} | limitTo :  -availableNo ">
+        <div class="chatbox-wrapper {{ box.value.chatBoxClass}}" ng-class="{'fullscreen' : box.value.isFullScreen}"
+             ng-class="{ 'old-tag-box' : (box.value.isTagChat && !box.value.getTagItem().isTagSafeToShow()) }"
+                          ng-init="box.value.previousDate = ''"
+             chat-focus="{{ box.value.getKey()}}" >
+            <single-chat-box ng-hide="(box.value.isTagChat && !box.value.getTagItem().isTagSafeToShow())"></single-chat-box>
+            <div ng-if="box.value.isFullScreen && !box.value.isBlocked()" full-screen-sticker-chooser /></div>
+        </div>
+    </div>
+
+    <extra-chat-boxes></extra-chat-boxes>
+
+</div>

@@ -1,0 +1,25 @@
+<!--<div ng-show="showDropdown">-->
+<div >
+    <ul style="margin: 0 0 0 -80px;">
+        <li style="padding: 0;">
+            <ring-file-upload-dir
+                    auto-upload='true'
+                    choose-file-button-text='Upload Profile Picture'
+                    upload-file-button-text='Upload files'
+                    upload-url='uploadUrlVal'
+                    max-file-size-mb='500'
+                    get-additional-data='getData(type)'
+                    on-done='done(files, data, index, type)'
+                    on-progress='progress(percentDone, index, type)'
+                    on-error='error(files, type, msg)'
+                    on-click='getInfo(type)'
+                    on-start='uploadstarted(index, type)'
+                    startupload ="startupload"
+                    type='pp'>
+            </ring-file-upload-dir>
+        </li>
+        <li rg-click="removeProfilePicture($event)">Delete Profile Picture</li>
+        <li rg-click="toggleProfilePhotoReposition($event);" ng-cloak="true">{{profilePhotoDragText}}</li>
+
+    </ul>
+</div>

@@ -1,0 +1,1 @@
+(function(angular, window) { 'use strict';  angular.module('ringid.auth', [ 'ringid.config', 'ringid.digits', 'ringid.connector', 'ringid.social' ]); })(angular, window);

@@ -1,0 +1,29 @@
+<div class="cell" ng-init="imageslength=feed.getImages().length" style="min-height: auto;">
+    <div  ng-include src="'templates/home/sharepostbox.html'" ></div>
+    <div class="popup-shared-fr" style="overflow: hidden;">
+        <div class="newsfeed-top">
+            <div class="icon-logo-circle ps-logo float-left">
+                <a ng-href="{{ ::feed.user().link() }}">
+                    <img class="responsive-all" ng-src="{{ ::feed.user().avatar() }}" alt="">
+                </a>
+            </div>
+            <div class="status_title p-name">
+                <p><a ng-href="{{::feed.user().link()}}" ng-cloak="true">{{ feed.user().getName() }}</a>
+                </p>
+                    <span class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i> {{feed.time()}}</span>
+            </div>
+        </div>
+        <div class="newsfeed-bottom">
+            <div class="feed">
+                <div class="feed_details main_feed">
+                    <p class="feed_value" rg-more-feed="feed"></p>
+
+                    <div class="feed-shared img-dec" >
+                        <div class="floader" ng-repeat="image in feed.getImages()" ng-init="image = image.value;" feed-image ></div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

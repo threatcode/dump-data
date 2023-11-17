@@ -1,0 +1,68 @@
+ <div  class="modal-container border-radius" style="width: 605px">
+	<div class="modal-header pad-0-35">
+		<h3 ng-cloak="true">{{models.popupTitle}}</h3>
+	</div>
+	<div id="content" class="pad-0-35">
+		<form action="#" method="post">
+			<div class="modal-search pad-20-0">
+                             <div class="circle-t">
+				<input ng-model="models.circleName" class="float-left radius album-serach-icon-size" ng-class="{'m-box-empt': models.errCircleName}" type="text" placeholder="Type Name" value="" name="">
+				<p class="errmsg" ng-show="models.errCircleName">Name Empty</p>
+                                 </div>
+				<div class="float-right modal-search-bg">
+					<div class="float-left icon-search modal-serach-icon-size">
+
+					</div>
+					<div class="float-left">
+						<div  class="modal-friend-search">
+							<input ng-model="friendName" name="q" type="text"  placeholder="Search..." />
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+				<!--<input class="float-right" type="text" placeholder="Search Friend" value="" name="">-->
+				<div class="clear"></div>
+			</div>
+				<div class="modal-list-box" ng-class="{'m-box-empt': models.errMemberList }">
+					<!--<div class="m-left">
+						<p>Members:</p>
+					</div>-->
+						 <div class="m-right " rg-scrollbar="scrollbar()"  >
+
+							 <ul class="modal-friend-list" >
+								 <li class="popup-type">Members:</li>
+							   <li ng-repeat="member in memberList.all()">
+								   <a href="{{member.value.link()}}" target="_blank" ng-cloak="true">{{member.value.getName('f')}}</a>
+									<a rg-click="removeMember(member.value)" class="icon-close" href="#"></a>
+							   </li>
+							</ul>
+						</div>
+				</div>
+				<p class="errmsg" ng-show="models.errMemberList">Member List Empty</p>
+				<div class="modal-friend-box mar-20-0" rg-scrollbar="scrollbar()" bottom-reached="loadMoreFriends()" >
+					<div class="modal-friends" >
+						<div ng-repeat="friend in friends.all() | friendListFilter:friendName | mapListFilter:memberList"  class="modal-pro-pic-full float-left" >
+                                                    
+							<div rg-click="addToCircle(friend.value)" class="friend-pic">
+								<div class="icon-logo-circle pid-logo"><a href="{{friend.value.link()}}#">
+										<img  src="{{ friend.value.avatar('thumb') }}" alt="{{friend.value.getName()}}"/></a></div>
+							</div>
+							<div class="clear"></div>
+							<a rg-click="addToCircle(friend.value)" class="modal-username"
+							   href="{{friend.value.link()}}" ng-cloak="true">{{friend.value.getName()}}</a>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+			<div class="modal-footer">
+				<input ng-show="!editMode" rg-click="createChatCircle()" class="save-button float-left border-radius" type="submit" name="" value="Create">
+				<input ng-show="editMode" rg-click="updateChatCircle()" class="save-button float-left border-radius" type="submit" name="" value="Update">
+				<input rg-click="cancel()" class="cancel-button float-right border-radius" type="submit" name="" value="Cancel">
+				<div class="clear"></div>
+			</div>
+		</form>
+	</div>
+ </div>

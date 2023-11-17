@@ -1,0 +1,334 @@
+.search-icon-p{
+    margin: 3px;
+}
+.show-in-mobile{display:none;}
+.fixed-top,.fixed-bottom{
+    left: 0; 
+    position: fixed; 
+    right: 0; 
+    z-index: 1030;
+    border-radius: 0; 
+    padding-left: 0;
+    padding-right: 0; 
+    position: fixed; 
+    z-index: 1030;
+}
+.top-0{
+    top:0;
+}
+.header-bg {
+    background-color: #f37726;
+    height: 52px;
+}
+.width-200{
+    width:200px;
+}
+.logo{    
+    margin-left: 7px;
+    margin-top: 7px;
+}
+.float-right {
+    float:right;
+}
+.border-radius-4px{
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    -o-border-radius:4px;
+    -ms-border-radius:4px;
+    border-radius: 4px;
+}
+.width-450{
+    width:450px;
+}
+.box-search{
+    background: none repeat scroll 0 0 white;
+    height: 30px;
+    margin-top: 11px;
+    position: relative;
+}
+.box-search input{
+    border: 0;
+    padding: 0 7px;
+    background-color: transparent;
+    width: calc(100% - 46px);
+    margin-left: 30px;
+    border-left:1px solid #eee;
+    height:30px;
+}
+.bg-eaeaec input{
+        border-left: 1px solid #D0D0D0;
+}
+.top-menu {
+    width: 320px;
+    height: 52px;
+    float: right;
+}
+.top-menu ul.menu-list {
+    margin: 0 5px 0 0;
+    padding: 0;
+    float: right;
+}
+.top-menu  ul.menu-list  li.parent  {
+    display: inline-block;
+    list-style: outside none none;
+    height: 50px;
+    width: 50px;
+    position: relative;
+    border: 1px solid transparent;
+    font-weight: 300;
+    font-style: normal;
+}
+.top-menu ul.menu-list  li.parent > a{
+    color: #fff;
+    float: left;
+    font-size: 25px;
+    margin-left: 0;
+    text-align: center;
+    text-decoration: none;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+.top-menu ul.menu-list  li.active {
+    background-color: #f88841;
+    border-left: 1px solid #eb620a;
+    border-right: 1px solid #eb620a;
+}
+.top-menu ul.menu-list  li.parent:hover {
+    background-color: #f88841;
+    border-left: 1px solid #eb620a;
+    border-right: 1px solid #eb620a;
+}
+.counter-not {
+    border-radius: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    top: 4px;
+    right: 3px;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    text-align: center;
+    font-size: 9px;
+    color: #646464;
+    vertical-align: middle;
+    line-height: 2.5;
+    font-weight: 400;
+    font-style: normal;
+    padding: 1px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+}
+
+.m-t-14{margin:14px 0;}
+.m-t-10{margin:10px 0;}
+.pro-header-image{
+    height: 29px;
+    width: 29px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -o-border-radius: 100px;
+    -ms-border-radius: 100px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    height: 30px;
+    overflow: hidden;
+    width: 30px;
+    cursor:pointer;
+}
+
+
+
+
+
+/*.show-in-mobile{display:none;}
+.fixed-top, .fixed-bottom {
+    left: 0; position: fixed; 
+    right: 0; 
+    z-index: 1030;
+    border-radius: 0; 
+    padding-left: 0;
+    padding-right: 0; 
+    position: fixed; 
+    z-index: 1030;}
+.fixed-top {
+    top: 0;
+} 
+.fixed-bottom {
+    border-width: 1px 0 0; 
+    bottom: 0; margin-bottom: 0;
+} 
+.dashboard-position-fixed {
+    background-color: #f47727;
+    height: 52px;
+}
+
+.serach-icon-size{
+    border-right: 1px solid #cccccc;
+    color: #cccccc;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    padding: 6px 20px 6px 13px;
+    width: 10px;
+}
+.h-s-ico {
+    color: #B5B5B5;
+    font-weight: bold !important;
+}
+.hed-search {
+    width: 75%;
+    display: inline-block;
+}
+.hed-search input{
+    border: none;
+    width: 100%;
+    font-size: 12px;
+    font-weight: 300;
+    float: left;
+    display: inline-block;
+    margin-left: 5px;
+}
+.top-menu {
+    width: 350px;
+    height: 52px;
+    float: right;
+}
+.top-menu ul.menu-list {
+    margin: 0 5px 0 0;
+    padding: 0;
+    float: right;
+}
+.top-menu  ul.menu-list  li.parent  {
+    display: inline-block;
+    list-style: outside none none;
+    height: 50px;
+    width: 50px;
+    position: relative;
+    border: 1px solid transparent;
+    font-weight: 300;
+    font-style: normal;
+}
+.top-menu ul.menu-list  li.parent > a{
+    color: #fff;
+    float: left;
+    font-size: 25px;
+    margin-left: 0;
+    text-align: center;
+    text-decoration: none;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+.top-menu ul.menu-list  li.active {
+    background-color: #f88841;
+    border-left: 1px solid #eb620a;
+    border-right: 1px solid #eb620a;
+}
+.top-menu ul.menu-list  li.parent:hover {
+    background-color: #f88841;
+    border-left: 1px solid #eb620a;
+    border-right: 1px solid #eb620a;
+}
+.counter-not {
+    border-radius: 100%;
+    background-color: #fff;
+    top: 4px;
+    right: 3px;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    text-align: center;
+    font-size: 9px;
+    color: #646464;
+    vertical-align: middle;
+    line-height: 2.5;
+    font-weight: 400;
+    font-style: normal;
+    padding: 1px;
+}
+.header-bg {
+    background-color: #f37726;
+    height: 52px;
+}
+.header-p {
+    padding-top: 6px;
+}
+.brand-l {
+    border:none;
+    background: none;
+    margin-left:7px;
+}
+.brand-l img{
+    margin-top:7px;
+}
+.tm-ico {
+    height: 30px;
+    margin: 12px 9px;
+    vertical-align: bottom;
+    width: 30px;
+}
+.tm-ico.icon-contact-b {
+    font-size: 27px;
+}
+.menu-list .icon-chat {
+    font-size: 25px;
+    margin-top: 15px;
+}
+.menu-list .icon-notification{
+    font-size: 23px;
+    margin-top: 15px;
+}
+.tm-ico.icon-very-mail{
+    font-size: 26px;
+    vertical-align: bottom;
+    line-height: 1.2;
+}
+
+.icon-new-contact-size{
+    font-size:30px;
+    float:right;
+    vertical-align:top;
+    padding:19px 0;
+    color:#969696;
+}
+.pro-header-image{
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -o-border-radius: 100px;
+    -ms-border-radius: 100px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    height: 30px;
+    margin-left: 4px;
+    margin-top: 6px;
+    overflow: hidden;
+    width: 30px;
+    cursor:pointer;
+}
+.tm-img {
+    margin: 10px 0;
+    height: 29px;
+    width: 29px;
+}
+.width-165{width:165px;float:left;}
+.width-60{width:60px;float:left;}
+.bx-t-w{width:450px;}
+
+
+.top-ico-size{
+    height:25px;
+    width:25px;
+    margin: 14px 0;
+}
+.home-ico{
+    background-position: 0 -22px;
+}
+.fri-ico{
+    background-position: 0 -96px;
+}
+.chat-ico{
+    background-position: 0 -71px; 
+}
+.notification-ico{
+    background-position: 0 -46px; 
+}
+*/

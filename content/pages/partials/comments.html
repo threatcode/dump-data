@@ -1,0 +1,144 @@
+<div class="feed_comment">
+    <div  rg-scrollbar="scrollbar()" propagate="true" disabled="{{::hideScroll}}" ng-class="!hideScroll ? 'comm-scroll-height':''">
+        <ul class="media-list">
+            <li class="item bd" style="border:none" ng-show="showPreviousButton()">
+                <div class="float-right gray font-12 margin-10">
+                    <a class="view_more" rg-click="loadPreviousComment()">load previous comments</a></div>
+                <div class="clear"></div>
+            </li>
+            <li class="item com-{{::comment.getKey()}}" rg-repeat="comm in comments.all() track by comm.key" ng-init="comment = comm.value"  ng-class="{ half_opacity:comment.isPending(),comment_blink: (comment.getKey() == activeCommentId)}">
+                <div class="comment-area" >
+
+                    <div class="pro_img_bg_30 mar-right-10 " style="flex:none">
+                        <a ng-href="{{comment.user().link()}}"><img ng-src="{{ comment.user().avatar('thumb')}}" alt=""></a>
+                    </div>
+
+                    <div class="comm-p ">
+                        <p class="unm"><user-card user="comment.user()"> </user-card> </p>
+                        <p class="comment_text" ng-hide="isCommentEditing(comment)" ng-bind-html="comment.getDynamicText()"></p>
+                        <div class="photo-view" ng-if="!isCommentEditing(comment) && comment.hasUrl() && comment.hasImage()" rg-image-popup="comment.getUrl()"
+                            title="comment.getDynamicText()" style="background-image: url('{{comment.getUrl()}}');">
+                        </div> 
+                        <div class="photo-view" ng-if="!isCommentEditing(comment) && comment.hasUrl() && comment.hasSticker()" 
+                                style="background-image: url('{{comment.getUrl()}}');">
+                       </div> 
+                        <div class="media-view" 
+                             ng-if="(!isCommentEditing(comment) && comment.hasUrl() && (comment.hasAudio() || comment.hasVideo()))" 
+                             style="background-image: url('{{comment.getPreview()}}');" 
+                             rg-play-popup="comment.getUrl()"
+                             player-id="play-{{comment.getKey()}}"
+                             is-video="{{::comment.hasVideo()}}"
+                             > 
+                            <div class="m-icn play" ng-class="{'audio' : comment.hasAudio(), 'video' : comment.hasVideo()}"></div>
+                       </div> 
+                        <div  ng-if="isCommentEditing(comment)">
+                            <span class="comment" ng-class="commentEditErrorClass">
+                                <rg-editor class="editor" 
+                                    editor-content="$parent.models.commentedittext" 
+                                    new-line="false" on-enter="$parent.updateComment" 
+                                    on-enter-arg="comment" on-escape="cancelEdit" 
+                                    edit-mode="$parent.commentContentEdit(comment)" 
+                                    show-emoji="true" focus="$parent.$parent.commentEditorEnabled" 
+                                    placeholder="Write your comment..." 
+                                    tag-friend="true"   
+                                    on-escape="cancelEdit"
+                                    common-file-uploader= "comment"
+                                    file-uploader-ready="chooseEditFile(fl)"
+                                    >
+                                    </rg-editor>
+                                    <div class="comment-photo-view"  ng-show="commentEditShowFile(comment)">
+
+                                        <div class="comment-thumb">
+                                            <div class="thumb-view" style="background-image: url('{{commentEditGetUrlPreview(comment)}}'); background-position:50% 50%; background-size:100% 100%; background-repeat:no-repeat; cursor: pointer;">
+                                                <!--                                <div class="status-photo-view-thumb-hover">
+                                                                                    <div class="m-icn" ng-class="{'audio' : commentFile.getType() == 'commentaudio', 'video' : commentFile.getType() == 'commentvideo'}"></div>
+                                                                                    <span id="closebtn0" class="close" style="display: block;" rg-click="removeCommentFile()" inc="0">
+                                                                                        <div class=" up-p"></div>
+                                                                                    </span>
+                                                                                </div>-->
+                                            </div> 
+                                            <div class="m-icn" ng-class="{'audio' :  commentEditGetType(comment) == 'commentaudio', 'video' :  commentEditGetType(comment) == 'commentvideo'}"></div>
+                                        </div>
+                                        <span id="closebtn0" class="close-ico tagclose cmnt-pv-close" rg-click="removeEditFile()" inc="0">
+                                            <div class=" up-p"></div>
+                                        </span>
+                                    </div>
+
+
+                                                            <span class="esc-to-cancel">Press Esc to <a rg-click="cancelEdit()">cancel</a></span>
+                            </span>
+                        </div>
+                        <ul class="comment_like_menu" ng-hide="comment.isPending() || (commentEditorEnabled && commentKey == comment.getKey())">
+                            <li rg-likes="" like-type="{{::likeType}}" target="comment" target-parent="parentKey" target-owner="target.getFeedKey()" like-comment="true">
+                                <!-- <a ng-class="{active:comment.like()}" rg-click="like(comment)"><i class="icon-like lc-ico" rg-like="comment.like()" ng-class="{'icon-like-h':comment.like()}"></i></a>
+                                <a ng-class="{active:comment.like()}" rg-click="like(comment)">&nbsp;Like</a>
+                                <a ng-class="{active:comment.like()}" class="counter" href="javascript:void(0)" rg-ringbox="{{::comment.getTotalLikes() > 0}}" ringbox-open="openRingboxLike(comment)" ringbox-controller="fetchLikeController" ringbox-target="templates/home/wholikes.html" ringbox-type="remote" ringbox-data="fetchWhoLikes(comment)">{{comment.getTotalLikes()}}</a> -->
+                            </li>
+                            <li class="mar-top-7 feed-m "><span class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i>{{comment.time()}}</span> <span ng-if="comment.isEdited()" rg-click="showEditHistory(comment)" class="edit-history">Edited</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="comm-sett">
+
+                        <div ng-show="target.user().isCurrentUser() || comment.user().isCurrentUser()" class="" style="position: relative">
+                            <div  rg-dropdown="dropdown()" dd-html="ddCommentHtml" dd-control="{comment:comment,target:target}" dd-action="actionCommentDropdown" ng-class="target.user().isCurrentUser() || comment.user().isCurrentUser() ? 'img_sprite w-h-13 icon-ds-arrow' : ''" class=" ico-f arrow-b"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div ng-show="loadingComment" style="text-align:center;margin-top:10px;" >
+        <div  class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+    </div>
+    <div class="item" style="border:none" ng-show="showMoreButton()">
+        <div class="float-right gray font-12 margin-10">
+            <a class="view_more" rg-click="loadMoreComment()">More comments</a></div>
+        <div class="clear"></div>
+    </div>
+    <div  ng-if="target.getTotalComment() > comments.length()" class="divider"></div>
+    <div class="mar-top-10"  >
+        <div  class="comment-w" ng-class="commentErrorClass">
+            <div class="comment-editor">
+                <rg-editor 
+                    class="editor" 
+                    editor-content="commenttext" 
+                    new-line="false" 
+                    on-enter="addComment" 
+                    show-emoji="true"  
+                    is-disabled="!canComment"  
+                    focus="showCommentBox" 
+                    placeholder="Write a comment...." 
+                    tag-friend="true"
+                    common-file-uploader= "comment"
+                    file-uploader-ready="chooseFile(fl)"
+                    show-sticker="true"
+                    sticker-on-choose="sendSticker(emo)"
+                    >
+                </rg-editor>
+            </div>
+            <div class="comment-photo-view"  ng-show="haveFile">
+
+                <div class="comment-thumb">
+                    <div class="thumb-view" style="background-image: url('{{commentFile.getPreview()}}'); background-position:50% 50%; background-size:100% 100%; background-repeat:no-repeat; cursor: pointer;">
+                        <!--                                <div class="status-photo-view-thumb-hover">
+                                                            <div class="m-icn" ng-class="{'audio' : commentFile.getType() == 'commentaudio', 'video' : commentFile.getType() == 'commentvideo'}"></div>
+                                                            <span id="closebtn0" class="close" style="display: block;" rg-click="removeCommentFile()" inc="0">
+                                                                <div class=" up-p"></div>
+                                                            </span>
+                                                        </div>-->
+                    </div>
+                    <div class="m-icn " ng-class="{'audio' : commentFile.getType() == 'commentaudio', 'video' : commentFile.getType() == 'commentvideo'}"></div>
+                </div>
+                <span id="closebtn0" class="close-ico tagclose cmnt-pv-close" rg-click="removeCommentFile()" inc="0">
+                    <div class=" up-p"></div>
+                </span>
+            </div>
+
+        </div>
+    </div>
+</div>

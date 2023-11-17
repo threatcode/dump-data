@@ -1,0 +1,137 @@
+<div class="chat-message-container" 
+        title="{{ message.user.getName() }}" 
+        chat-message-react="message" 
+        ng-class="{ 'chat-r icon-c-left cm-sty' : (  message.showAvator  &&  message.user.isCurrentUser() && message.status !== 'status_update' ),
+                    'chat-c chat-bgy'           : ( !message.showAvator  &&  message.user.isCurrentUser() && message.status !== 'status_update' ),
+                    'chat-l  icon-c-right'      : (  message.showAvator  && !message.user.isCurrentUser() && message.status !== 'status_update' ),
+                    'chat-c chat-bgw'           : ( !message.showAvator  && !message.user.isCurrentUser() && message.status !== 'status_update' ),
+                    'status-Unread'             :    message.status == 'Unread'
+                  }">
+
+    <div ng-if="message.status != 'status_update'">
+        <a ng-show="message.status == 'Failed'" 
+            retry-message="noneed" 
+            data-tooltip-post=" Retry " 
+            class="retry"></a>
+
+        <div class="t-set" ng-if="(message.timeout > 0 && message.isSecretVisible)">
+            <div class="timer-l">
+                <p ng-cloak="true">{{message.timeout}}</p>
+                <h3>sec</h3>
+            </div>
+        </div>
+
+        <span class="e-d">
+            <a data-tooltip-post="Delete" delete-message="noneed" ng-show="message.canDelete()" class="msgDeleteIcon">
+                <span class="img_sprite w-h-13 icon-delete-p"></span>
+            </a>
+            <a data-tooltip-post="Edit" edit-message="{{::box.value.getKey()}}" ng-show="message.canEdit()" class="msgDeleteIcon">
+                <span class="img_sprite w-h-13 icon-edit-p"></span>
+            </a>
+        </span>
+        <div ng-if="message.messageType == 2 || message.messageType == 3 || message.messageType == 0">
+            <p ng-bind-html="message.getTextPartition()"></p>
+        </div>
+
+        <div class="chat-pic sticker" ng-if="message.messageType == 6">
+            <img width="150" ng-src="{{ message.stickerUrl}}" alt="" />
+            <div class="clear"></div>
+        </div>
+
+        <div class="chat-pic" ng-if="message.messageType == 7 || message.messageType == 10" style="width: {{::message.mediaInfo.thumbWidth}}px;height:{{::message.mediaInfo.thumbHeight}}px">
+            <p ng-bind="message.plainText"></p>
+            
+            <img  ng-class="{'p-chat-img' : message.uploading}" width="{{ ::message.mediaInfo.thumbWidth }}" height="{{ ::message.mediaInfo.thumbHeight }}" ng-src="{{ (message.timeout > 0 || message.secretTimedOut) && settings.baseUrl + 'images/image-preview.jpg' || message.mediaUrl}}" alt=""  />
+            <div class="clear"></div>
+
+            <a ng-click="onViewedCalled(message);openRingboxContent(message)" class="view-play-anchor"></a>
+            <i  ng-if="!message.uploading"><img src="images/chat_preview.png"/></i>
+
+            <chat-file-upload-progress></chat-file-upload-progress>
+        </div>
+
+        <div  class="chat-pic location" ng-if="message.messageType == 4" >
+            <p ng-cloak="true">{{ message.plainText }}</p>
+            <a ng-href="{{ ::message.mapJsUrl }}"  rg-ringbox="true" ringbox-type="remote" ringbox-target="templates/partials/google-map-preview.html" scope-data="{url :  message.getSafeMapJsUrl() }">&nbsp;</a>
+            <!-- a ng-href="{{ message.mapJsUrl}}" target="_blank" alt="" >&nbsp;</a-->
+            <img width="150" ng-src="{{ message.mapStaticUrl}}" alt="" />
+            <div class="clear"></div>
+        </div>
+
+
+        <div class="chat-pic" ng-if="message.messageType == 5 && !!message.ogData">
+            <p ng-bind="message.plainText"></p>
+            <rg-url-og-preview template="templates/partials/chat/url-og-preview.html" og-data="message.ogData" show-preview="true" loading-data="false"></rg-url-og-preview>
+        </div>
+
+        <div class="chat-pic video" ng-if="message.messageType == 8 || message.messageType == 9">
+            <img width="150" src="images/video-preview.jpg" alt="" />
+
+            <div class="clear"></div>
+
+            <a href="javascript:void(0);"
+               ng-click="onViewedCalled(message)"
+               rg-ringbox="true"
+               ringbox-type="remote"
+               ringbox-target="templates/partials/chat/media-preview.html"
+               scope-data="{message : message}"></a>
+            <i  ng-if="!message.uploading"><img src="images/chat_preview.png"/></i>
+        </div>
+
+
+        <div class="chat-pic feed-media" ng-if="message.messageType == 15">
+
+            <div class="cursor" href="javascript:void(0);"
+               ng-click="onViewedCalled(message)"
+               rg-ringbox="true"
+               ringbox-type="remote"
+               ring-backdrop-close="false"
+               ringbox-controller="RingBoxMediaController"
+               show-close-btn="false"
+               ringbox-target="templates/partials/notification/media-popup.html"
+               ringbox-data="getMediaData(message.ringMediaObject)"
+               scope-data="{message : message}">
+            
+               <p ng-bind="message.plainText"></p>
+
+               <img  ng-class="{'p-chat-img' : message.uploading}" width="150"  ng-src="{{ (message.timeout > 0 || message.secretTimedOut) && settings.baseUrl + 'images/image-preview.jpg' || message.thumbURL}}" alt="" />
+
+                <p ng-bind="message.albumName"></p>
+                <p ng-bind="message.artistName" ng-show="message.artistName!=''"></p>
+                <p ng-bind="message.durationText"></p>
+            
+
+            </div>
+
+              
+            <div class="clear"></div>
+            
+        </div>
+
+        <!--<div class="clear"></div>-->
+        <!--<div class="chat-message-user-name">{{ message.user.getName() }}</div>-->
+        <div class="clear"></div>
+
+        <single-message-status></single-message-status>
+
+        <div  class="dis_ib fl-left"
+            ng-if="message.public_chat" >
+            <div class="chat-like"
+                rg-likes="" target="message" like-type="chatMessage" ></div>
+            <div data-tooltip-post="Report" rg-report spam-type="chat_message" spam-id="message.key" box-id="{{ ::message.boxId }}" class="img_sprite room-report cur-p m-l-5"></div>
+        </div>
+
+    </div>
+
+    <div ng-if="message.status == 'status_update'">
+
+        <p ng-bind-html="message.getTextPartition()"></p>
+        <div class="clear"></div>
+        
+
+    </div>
+   
+
+
+
+</div>

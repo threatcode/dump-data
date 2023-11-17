@@ -1,0 +1,67 @@
+<div class="seeall sm-w-700" ng-controller="NotiController">
+    <div class="all-hdr">Your Notifications</div>
+    <ul class="notification"  style="width: 100%; ">
+
+        <li ng-show="notifications.length() === 0 && !state.loading && !state.noMoreData" style="background-color:transparent;">No notifications yet.</li>
+        <li  ng-repeat="noti in notifications.all()" ng-class="noti.value.getSeenStatus() ? 'seen' : 'unseen'">
+            <!-- show feed image popup -->
+
+            <!--<a ng-href="noti.value.getLink()" ng-click="notificationAction({action: 'redirect',link:noti.value.getLink(),circleId: noti.value.getActivityId()})" ng-if="!noti.value.showRingbox()">-->
+            <a ng-href="{{noti.value.getLink()}}" ng-if="!noti.value.showRingbox()">
+
+                <div class="left">
+                    <div class="pic"><img ng-src="{{::noti.value.getUserAvatar()}}"/></div>
+                </div>
+                <div class="right">
+                    <p class="main-notification" ng-cloak="true"><span ng-bind="::noti.value.getName()"></span> {{::noti.value.getMessage()}}</p>
+
+                    <p class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i> {{noti.value.getTime()}}</p>
+                </div>
+                <div class="clear"></div>
+            </a>
+
+            <a ng-href="{{::noti.value.getLink()}}" ng-if="::noti.value.showRingbox()"
+               rg-ringbox="true"
+               ringbox-controller="{{ ::noti.value.getControllerName(); }}"
+               ringbox-type="remote" ringbox-target="{{ ::noti.value.getRingboxTemplate() }}"
+               ringbox-data="getRingboxData(noti)"
+               ringbox-scrollable="{{ ::noti.value.getPopupType()==='feed' }}"
+               ringbox-animation="false"
+               >
+
+                <div class="left">
+                    <div class="pic"><img ng-src="{{::noti.value.getUserAvatar()}}"/></div>
+                </div>
+                <div class="right">
+                    <p class="main-notification" ng-cloak="true"><span ng-bind="::noti.value.getName()"></span> {{::noti.value.getMessage()}}</p>
+
+                    <p class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i> {{noti.value.getTime()}}</p>
+                </div>
+                <div class="clear"></div>
+            </a>
+
+        </li>
+        <li ng-show="state.noMoreData && !state.loading" style="text-align:center;padding:10px 0;font-size:14px;background-color:transparent;cursor:text;background-color:#fff;">No more notification</li>
+    </ul>
+
+    <div class="clear"></div>
+    <div style="width: 210px; margin: 25px auto 5px;" >
+        <a ng-show="!state.noMoreData && !state.loading" class="load-more" rg-click="loadMoreNotification()" >See More Notification &raquo;</a>
+        <a ng-show="!state.noMoreData && state.loading" class="load-more-disabled" >
+            <span class="load-circle">
+                <span class="ld-cir1 ld-cir"></span>
+                <span class="ld-cir2 ld-cir"></span>
+                <span class="ld-cir3 ld-cir"></span>
+                <span class="ld-cir4 ld-cir"></span>
+                <span class="ld-cir5 ld-cir"></span>
+                <span class="ld-cir6 ld-cir"></span>
+                <span class="ld-cir7 ld-cir"></span>
+                <span class="ld-cir8 ld-cir"></span>
+                <span class="ld-cir9 ld-cir"></span>
+                <span class="ld-cir10 ld-cir"></span>
+                <span class="ld-cir11 ld-cir"></span>
+                <span class="ld-cir12 ld-cir"></span>
+            </span>
+            Loading...</a>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div  class="dashboard-bg  mid-width pro-page-width">
+    <div class="middle"> 
+       <rg-media-slider></rg-media-slider>
+        <div class="media-wrapper">
+            <div  class="media-nav">
+
+                <!-- <ul>
+                    <li ng-class="{'active': activeNav === 'recent'}"><a href="/#/media">Recent</a></li>
+                    <li ng-class="{'active': activeNav === 'album'}"><a href="/#/media/myalbums">Album</a></li>
+                    <li ng-class="{'active': activeNav === 'upload'}"><a href="/#/media/upload">Upload</a></li>
+                </ul>  -->
+                <rg-tab-nav></rg-tab-nav>
+                <rg-media-search-directive></rg-media-search-directive>
+                <!-- <div class="media-search">
+                    <div class="float-left  icon-search-d fr-serach-icon-size"></div>
+                    <div class="float-left">
+                        <form class="friend-search ng-pristine ng-valid" action="" method="get">
+                            <input type="text" placeholder="Search...." name="q">
+                        </form>
+                    </div>
+                    <div class="clear"></div>
+                </div> -->
+            </div>
+            <div  style="max-width: 600px; margin: 15px auto">
+                <div style="text-align: left" ng-include  src="'templates/home/postbox-media.html'" > </div>
+            </div>
+        </div>
+    </div>
+</div>

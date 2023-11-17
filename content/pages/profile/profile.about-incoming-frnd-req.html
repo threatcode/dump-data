@@ -1,0 +1,39 @@
+<!--  Privacy Settings  info DIV start -->
+<div id="privacy-settings">
+    <div class="ppinfo-action" >
+        <span class="img_sprite w-h-13 icon-edit-p-h"></span><a rg-click="enableAinfndreqEditMode($event)" ng-cloak="true">{{consType.change}}</a>
+    </div>
+
+    <div class="view pv-rm"  ng-show="!isEditAinfndreq">
+
+        <div class="divider"></div>
+        <div class="ppinfo">
+            <div class="display_ib"><div class="ab_circle"><span class="abn_icon img_sprite w-h-22px  ab_incoming_ico_r"></span> </div><span class="prvc-txt ab-priv">Allow Incoming Friend Request</span></div>
+            <div ng-if="incomingfndreqsettings.ainfndreq == 0" class="allow_sty"> [ Allowed ]</div>
+            <div ng-if="incomingfndreqsettings.ainfndreq == 1" class="deny_sty" > [ Denied ]</div>
+            <div class="clear"></div>
+        </div>
+        <div class="divider"></div>
+
+    </div>
+
+    <div class="edit" ng-show="isEditAinfndreq">
+        
+        <div class="ppinfo">
+            <div class="left width-305"><div class="ab_circle"><span class="abn_icon img_sprite w-h-22px  ab_incoming_ico_r"></span> </div><span class="prvc-txt ab-priv">Allow Incoming Friend Request</span></div>
+            <div class="right prvc-right-txt">
+                <input type="radio"  id="radio9" class="css-checkbox" ng-value="0" ng-model="incomingfndreqsettings.ainfndreq"/><label for="radio9" class="css-label radGroup2">Allow</label>
+                <input type="radio" id="radio10" class="css-checkbox"  ng-value="1" ng-model="incomingfndreqsettings.ainfndreq"/><label for="radio10" class="css-label radGroup2">Deny</label>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="ppinfo">
+            <div class="pp-btn margin-0">
+                <input class="pro-edit-btn" type="button" name="x" value="{{consType.save}}" rg-click="saveAinfndreqSettings(incomingfndreqsettings)"/>
+                <input class="pro-edit-btn" type="button" name="y" value="{{consType.cancel}}" rg-click="cancelAinfndreqSettings()"/>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  Privacy Settings  info DIV END -->

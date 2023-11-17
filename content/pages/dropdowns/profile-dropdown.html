@@ -1,0 +1,5 @@
+<!--<div ng-show="showDropdown" class="action friend-settings-dropdown float-right">-->
+<div  class="action friend-settings-dropdown">
+    <a ng-if="ddControl.isFriend()" rg-click="ddAction()({ action: 'remove'})" href="#">Remove Friend</a>
+    <a ng-if="!ddControl.isFriend()"  rg-click="ddAction()({ action: 'add'})" class="border-0" href="#">Send Request</a>
+</div>

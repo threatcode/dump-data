@@ -1,0 +1,115 @@
+<!--  Work Settings  info DIV start -->
+<div id="work">
+
+<!--    <div class="ppinfo-action" ng-if="isOwner">
+        <a rg-click="addNewWork()" ng-show="!isAddNewWork"><span class="img_sprite w-h-22px  icon-add-border"></span> Add</a>
+    </div>-->
+
+    <div class="butt border-gray-orange float-right btn-m-l-8 p-absolute right-minus-30"  ng-if="isOwner">
+        <a class="btn-p-5-8" rg-click="addNewWork()" ng-show="!isAddNewWork">
+            <i class="friend-ico about-add-icon"></i><span class="butt-text">Add</span></a>
+    </div>
+
+
+    <div class="wes-view-wrapper">
+        <form name="workForm">
+            <div class="add" ng-show="isAddNewWork || isEditWork > -1">
+                <div class="ppinfo">
+                    <div class="left"><span class="ppt-txt">Organization Name:</span><span class="ab-error" ng-show="workForm.cname.$error.required">*</span></div>
+                    <div class="right">
+                        <input type="text"  name="cname" ng-class="workcnmerror?'error-class':''" ng-model="workObjInfo.cnm" value="" required>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="ppinfo">
+                    <div class="left"><span class="ppt-txt">Job Title:</span><span class="ab-error" ng-show="workForm.position.$error.required">*</span></div>
+                    <div class="right">
+                        <input type="text" class="" name="position" ng-class="workpstnerror?'error-class':''" ng-model="workObjInfo.pstn" value="" required>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="ppinfo">
+                    <div class="left"><span class="ppt-txt">Description:</span></div>
+                    <div class="right">
+                        <textarea type="text" class="" name="desc" ng-model="workObjInfo.desc" value="" style="height: 80px; resize: none"></textarea>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="ppinfo">
+                    <div class="left"><span class="ppt-txt">From:</span></div>
+                    <div class="right">
+                        <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="workObjInfo.fromTimeE"
+                               is-open="model.wcalendar" name="wcalendar"
+                               datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                               rg-click="open($event, 'wcalendar')"
+                               close-text="Close"/>
+                        <span class="input-group-btn"></span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="ppinfo" ng-show="!workObjInfo.status">
+                    <div class="left"><span class="ppt-txt">To:</span></div>
+                    <div class="right">
+                        <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="workObjInfo.toTimeE"
+                               is-open="model.wcalendarTo" name="wcalendarTo"
+                               datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                               rg-click="open($event, 'wcalendarTo')"
+                               close-text="Close"/>
+                        <span class="input-group-btn"></span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="ppinfo">
+                    <div class="left"><span class="ppt-txt">I currently work here</span></div>
+                    <div class="right"> 
+
+                        <div class="mar-top-10 chck-s">
+                            <input type="checkbox" id="currently_word" name="remember" ng-model="workObjInfo.status" />
+                            <label for="currently_word"><span></span></label>
+                        </div>
+                    </div>
+
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="ppinfo">
+                    <div class="pp-btn">
+                        <input ng-show="isEditWork == -1" class="pro-edit-btn" type="button" name="" value="{{consType.save}}" ng-disabled="processing"   rg-click="submitNewWork()"/>
+                        <input ng-show="isEditWork > -1" class="pro-edit-btn" type="button" name="" value="{{consType.save}}" ng-disabled="processing"   rg-click="updateWork()"/>
+                        <input ng-show="isEditWork == -1" class="pro-edit-btn" type="button" name=""  value="{{consType.cancel}}"  rg-click="cancelNewWork()"/>
+                        <input ng-show="isEditWork > -1" class="pro-edit-btn" type="button" name=""  value="{{consType.cancel}}"  rg-click="cancelUpdateWork()"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="divider edit-dvdr" ng-show="isAddNewWork && worklist.length > 0">  </div>
+
+        <!--<p class="in-pass" ng-show="getProfileData('workList', profileObj.getUtId()).length == 0">No Work Added</p>-->
+        <div class="no-edu" ng-show="worklist.length == 0 && !isAddNewWork">
+            <div class="no-edu-icon"></div>
+            <div class="no-edu-txt">No work added</div>
+        </div>
+        <div class="wes-view" ng-if="!isAddNewWork"  ng-repeat="work in worklist track by $index">
+            <div  ng-show="(isEditWork !== $index)" >
+                <div ng-show="isOwner" rg-dropdown="dropdown()"  dd-html="ddActionHtml"
+                     dd-control="{index:$index,obj:work}" dd-action="actionWorkDropdown" class="about-action">
+                    <div  class="ab-drop-arrow img_sprite w-h-18px icon-dc-arrow"></div>
+                </div>
+                <div class="left"><span class="img_sprite w-h-40px  icon-job-ab"></span></div>
+                <div class="right"> 
+                    <div class="wes-title" ng-cloak="true">{{ work.cnm}}</div>
+                    <div class="wes-sttle" ng-cloak="true">{{ work.pstn}}<span ng-if="work.ft != '1'" ng-cloak="true"> {{ work.ft| date: 'mediumDate' }} </span>
+                        <span ng-show="work.tt != '1' && work.ft != '1' && !work.status" ng-cloak="true"> to {{work.tt| date: 'mediumDate'}}</span>
+                        <span ng-show="work.status && work.ft != '1'" ng-cloak="true"> - {{work.date_info}}</span>
+                    </div>
+                    <div class="wes-desc" ng-cloak="true">{{work.desc}}</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+</div>
+<!---------------------------------------  Work Settings  info DIV END -------------------------------- ----------->

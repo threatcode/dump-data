@@ -1,0 +1,42 @@
+<div  class="hide-in-mobile" >
+    <div class="invite-area">
+        <div class="padding-invite">
+            <span class="rmv-fnd-sugg img_sprite icon-close-ico w-h-13 top-l" data-tool="Not interested" rg-click="removeSugg()"></span>
+            <div class="invite-sec">
+                <div  class="invite-sec-left">
+                    <a  data-invite-link  class="p-relative">
+                        <img class="border-radius-100p" data-invite-avatar  width="34px" height="34px" />
+                    </a>
+                </div>
+                <div class="invite-sec-right">
+                    <div  class="invite-name">
+                        <a  data-invite-name ></a>
+                        <div class="clear"></div>
+                        <a data-invite-mutual class="mitualfnd"
+
+                               rg-ringbox="true"
+                               ringbox-controller="mutualFriendsController"
+                               ringbox-target="templates/popups/user-list.html"
+                               ringbox-type="remote"
+                               ringbox-data="getMutualFriend()">0 mutual friends</a>
+
+                    </div>
+                </div>
+                <div class="inv-right-icon"  data-invite-loading>
+                    <a class="float-right m-13-a top-l" data-tool="Add as friend" rg-click="friendRequestAction()">
+                        <span><i class="friend-ico addfnd"></i></span>
+                    </a>
+                </div>
+            </div>  
+        </div>
+        <div class="show-all-sugg hide-in-sm-height">
+            <a class="count" rg-ringbox="true" ringbox-controller="allSuggestionController" on-ring-box-close="removeOutGoingFriends()"
+               ringbox-target="templates/popups/user-list.html" ringbox-type="remote" ringbox-data="getSuggestions()">Show all suggestions</a>
+        </div>
+        <div class="show-all-sugg show-in-sm-height">
+            <a class="count" rg-ringbox="true" ringbox-controller="allSuggestionController" on-ring-box-close="removeOutGoingFriends()"
+               ringbox-target="templates/popups/user-list.html" ringbox-type="remote" ringbox-data="getSuggestions()">Show friend suggestions</a>
+        </div>
+    </div>
+</div>
+

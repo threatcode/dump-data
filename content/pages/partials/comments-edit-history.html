@@ -1,0 +1,29 @@
+<div style="width:360px">
+    <div class="modal-header"><h3>Edit History</h3>
+        <!--<span class="icon-close mdl-close" rg-click="$close()"></span>-->
+    </div>
+    <div class="feed_comment">
+        <div> 
+            <ul class="media-list">
+
+                <li class="item com-{{::com.id()}}" rg-repeat="aComment in comments track by aComment.id">
+
+                    <div class="comment-area" >
+                            <div class="pro_img_bg_30 mar-right-10 " style="flex:none">
+                                <a ng-href="{{comment.user().link()}}"><img ng-src="{{ comment.user().avatar('thumb')}}" alt=""></a>
+                            </div>
+                            <div class="comm-p ">
+                                <p class="unm"><a ng-href="{{comment.user().link()}}" ng-cloak="true">{{comment.user().getName()}}</a> </p>
+                                <p class="comment_text" ng-cloak="true">{{::aComment.cmn}}</p>
+                                <ul class="comment_like_menu">
+                                        <li class="mar-top-7 feed-m "><span class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i>{{::aComment.et}}</span> </li>
+                                </ul>
+                            </div>
+
+                    </div>
+
+                </li>
+            </ul> 
+        </div>
+    </div>
+</div>

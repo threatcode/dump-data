@@ -1,0 +1,46 @@
+[
+    {
+        "name":"01.jpg",
+        "kind":"Image File",
+        "md":"Jan 18,2015",
+        "size":"262 KB",
+        "dimension":"640*960",
+        "src":"mediakit/ios/screen_shots/size_in_jpeg/640x960/01.jpg"
+    },
+    
+    {
+        "name":"02.jpg",
+        "kind":"Image File",
+        "md":"Jan 18,2015",
+        "size":"325 KB",
+        "dimension":"640*960",
+        "src":"mediakit/ios/screen_shots/size_in_jpeg/640x960/02.jpg"
+    },
+    
+    {
+        "name":"03.jpg",
+        "kind":"Image File",
+        "md":"Jan 18,2015",
+        "size":"257 KB",
+        "dimension":"640*960",
+        "src":"mediakit/ios/screen_shots/size_in_jpeg/640x960/03.jpg"
+    },
+    
+    {
+        "name":"04.jpg",
+        "kind":"Image File",
+        "md":"Jan 18,2015",
+        "size":"349 KB",
+        "dimension":"640*960",
+        "src":"mediakit/ios/screen_shots/size_in_jpeg/640x960/04.jpg"
+    },
+    
+    {
+        "name":"05.jpg",
+        "kind":"Image File",
+        "md":"Jan 18,2015",
+        "size":"408 KB",
+        "dimension":"640*960",
+        "src":"mediakit/ios/screen_shots/size_in_jpeg/640x960/05.jpg"
+    }
+]

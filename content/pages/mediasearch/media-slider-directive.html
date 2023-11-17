@@ -1,0 +1,19 @@
+<div class="media-slider-wrapper">
+    <div class="media-slider">
+        <div class="photobanner">
+        	 <a href="/#/media/audio/{{img.value.getALbumUtId()}}/{{img.value.getKey()}}" ng-repeat="img in sliderImages.all()" 
+        	 	ng-click="setAlbumName({name:img.value.getName(),count:img.value.getContentCount()})">
+        		<img  width="{{imageWidth}}" height="300" ng-src="{{img.value.getCover()}}" />
+                        <div class="ms-caption">
+                            <div class="cp cp-albnm" ng-cloak="true">Album: {{img.value.getName()}}</div>
+                            <div class="clear"></div>
+                            <div class="cp" ng-show="img.value.getContentCount()<=1" ng-cloak="true">{{img.value.getContentCount()}}  Song</div>
+                            <div class="cp" ng-show="img.value.getContentCount()>1" ng-cloak="true">{{img.value.getContentCount()}}  Songs</div>
+                        </div>
+        	</a> 
+            <!--<img ng-repeat="img in sliderImages.all()" width="{{imageWidth}}" height="300" ng-src="{{img.value.getCover()}}" />-->
+        </div>
+    </div>
+    <div ng-show="showLeftArrow" class="img_sprite icon-left-arrow sld-control sld-left" ng-click="left()"></div>
+    <div ng-show="showRightArrow" class="img_sprite icon-right-arrow sld-control  sld-right" ng-click="right()"></div>
+</div>

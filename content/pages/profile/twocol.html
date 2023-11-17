@@ -1,0 +1,812 @@
+<div ng-controller="ProfileAboutController
+        as pabout" class="prof-about">
+
+    <!-----------------------------1st cell ------------------------------------------->
+    <div class="cell">
+        <div class="basic-info  basicinfo">
+            <div class="basic-info-title">
+                <p class="left">Profile basic info</p>
+
+                <p class="right" ng-if="isOwner && !isEditProfile"><span class="icon-edit-p ab-edit" rg-click="enableEditMode($event)"></span><a href="#" rg-click="enableEditMode($event)">{{consType.edit}}</a></p>
+            </div>
+            <div class="clear"></div>
+            <div class="info-total">
+                <!--<button rg-click="addSocialAccount('facebook')">Add Facebook Account</button>-->
+                <!--<button rg-click="addSocialAccount('twitter')">Add Twitter Account</button>-->
+                <div class="info-box-sl" ng-show="!isEditProfile">
+                    <div class="info-title">
+                        <p class="left-add">ringID:</p>
+                        <p ng-bind="basicInfo.uId" class="right">gh</p>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="info-title">
+                        <p class="left-add">Full Name:</p>
+                        <p ng-bind="profileObj.getBasicInfo().fn" class="right"></p>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="info-title">
+                        <p class="left-add">Current City:</p>
+                        <p ng-bind="profileObj.getBasicInfo().cc" class="right"></p>
+                        <p class="right" ng-show="profileObj.getBasicInfo().cc == ' '">N/A</p>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="info-title">
+                        <p class="left-add">Home City</p>
+                        <p ng-bind="profileObj.getBasicInfo().hc" class="right"></p>
+                        <p class="right" ng-show="profileObj.getBasicInfo().hc == ' '">N/A</p>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="info-title">
+                        <p class="left-add">Gender:</p>
+                        <p ng-bind="profileObj.getBasicInfo().gr" class="right"></p>
+                        <p class="right" ng-show="profileObj.getBasicInfo().gr == ''">N/A</p>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="info-title" >
+                        <p class="left-add">Birthday:</p>
+                        <p class="right" ng-hide="profileObj.getBasicInfo().birthDay == '1'" ng-cloak="true">{{profileObj.getBasicInfo().birthDay | date:'mediumDate'}}</p>
+                        <p class="right" ng-show="profileObj.getBasicInfo().birthDay == '1'">N/A</p>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="info-title" >
+
+                        <p class="left-add">Wedding Day</p>
+
+                        <p class="right" ng-hide="profileObj.getBasicInfo().mDay == '1'" ng-cloak="true">{{profileObj.getBasicInfo().mDay | date:'mediumDate'}}</p>
+                        <p class="right" ng-show="profileObj.getBasicInfo().mDay == '1'">N/A</p>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="info-title">
+                        <p class="left-add">About</p>
+                        <p ng-bind="profileObj.getBasicInfo().am" class="right"></p>
+                        <p class="right" ng-show="profileObj.getBasicInfo().am == ''">N/A</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="info-box edit_mode" ng-show="isEditProfile">
+                    <form name="basicinfo">
+                        <span class="error" ng-show="basicinfo.full_name.$error.required">Name required!</span>
+                        <span class="error" ng-show="basicinfo.current_city.$error.required">Current City required!</span>
+                        <span class="error" ng-show="basicinfo.home_city.$error.required">Home City required!</span>
+                        <div class="info-title">
+                            <p class="left-add">Full Name</p>
+                            <p class="right">
+                                <input type="text" class="full_name" name="full_name" maxlength="50" ng-model="tmpBasic.fn"  required>
+                            </p>
+                        </div>
+                        <div class="info-title">
+                            <p class="left-add">Current City</p>
+                            <p class="right">
+                                <input type="text" class="current_city" name="current_city" ng-model="tmpBasic.cc" required>
+                            </p>
+                        </div>
+                        <div class="info-title">
+                            <p class="left-add">Home City</p>
+                            <p class="right">
+                                <input type="text" class="home_city" name="home_city" ng-model="tmpBasic.hc" required>
+                            </p>
+                        </div>
+
+                        <div class="info-title">
+                            <p class="left-add">Gender:</p>
+                            <p class="right">
+                                <select class="styled-select" ng-model="tmpBasic.gr" >
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </p>
+                        </div>
+
+                        <div class="info-title">
+                            <p class="left-add">Birthday:</p>
+                            <p class="right">
+                                <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="tmpBasic.birthday"
+                                       is-open="model.bcalendar" min-date="minDate" name="bcalendar"
+                                       datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                                       rg-click="open($event, 'bcalendar')"
+                                       close-text="Close"/>
+                            </p>
+                        </div>
+                        <div class="info-title">
+
+                            <p class="left-add">Wedding Day:</p>
+
+                            <p class="right">
+                                <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="tmpBasic.marriageDay"
+                                       is-open="model.mcalendar"  name="mcalendar"
+                                       datepicker-options="dateOptions"
+                                       rg-click="open($event, 'mcalendar')"
+                                       close-text="Close"/>
+                            </p>
+                        </div>
+                        <div class="info-title"  style="height: 50px; margin-bottom: 5px">
+                            <p class="left-add">About Me</p>
+                            <p class="right">
+                                <textarea ng-model="tmpBasic.am" style="width: 195px;height: 50px; border: 1px solid #ededed;resize: none;"></textarea>
+                            </p>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="ab-margin">
+                            <input class="pro-edit-btn" type="button" ng-disabled="basicinfo.$invalid" value="{{consType.update}}" rg-click="updateMyBasicInfo()"/>
+                            <input class="pro-edit-btn" type="button" value="{{consType.cancel}}" rg-click="cancelUpdateMyBasicInfo()"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!--password setting start-->
+        <div class="basic-info" ng-if="isOwner">
+            <div class="basic-info-title">
+                <p class="left">Password Settings</p>
+                <p class="right" ng-if="isOwner"><span class="icon-edit-p ab-edit" rg-click="enablePassEdit($event)"></span><a href="#" rg-click="enablePassEdit($event)" ng-cloak="true">{{consType.change}}</a></p>
+            </div>
+            <div class="clear"></div>
+            <div class="info-add" style="border: none;padding:10px 0;">
+                <div ng-show="IsMatch" style="color: red;">New passwords have to match! Please try again!!</div>
+                <div ng-show="showSuccess" style="color: #008000;">Password changed successfully!!</div>
+                <div ng-show="oldError" style="color: red;">Invalid old Password!!</div>
+                <div class="in-pass" ng-show="showMessage">To change your password, please click on Change button on the top right of this box.</div>
+                <div ng-show="showPassEdit">
+                    <form name="passForm">
+                        <div class="info-pass">
+                            <p>Old Password:</p>
+                            <span>
+                                <input type="password" class="" name="oldpass" ng-model="changepass.oldpassword" required>
+                            </span>
+                        </div>
+                        <div class="info-pass">
+                            <p class="left-add">New Password:</p>
+                            <span>
+                                <input type="password" class="" name="newpass" ng-model="changepass.newpassword" ng-minlength="6" required>
+                                <span ng-show="passForm.newpass.$error.minlength">Minimum 6 Characters</span>
+                            </span>
+                        </div>
+                        <div class="info-pass">
+                            <p>Retype Password :</p>
+                            <span>
+                                <input type="password" class="" name="pass" ng-model="changepass.repassword" required>
+                            </span>
+                        </div>
+                        <div class="ab-margin-pass">
+                            <input class="pro-edit-btn" type="button" name="" value="{{consType.update}}" ng-disabled="passForm.$invalid"	rg-click="updatePassword(changepass)"/>
+                            <input class="pro-edit-btn" type="button" name="" value="{{consType.cancel}}" rg-click="cancelUpdatePassword(changepass)"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--password setting end-->
+
+        <!--show this div in this cell on screen resize-->
+
+        <!--<div ng-show="showDiv">-->
+        
+        <!-- skill div-->
+        <div class="basic-info  skill">
+            <div class="basic-info-title">
+                <p class="left">Skills</p>
+                <p class="right" ng-if="isOwner"><span class="icon-plus-sg ab-add" rg-click="addNewSkill($event)"></span><a rg-click="addNewSkill($event)" ng-cloak="true">{{consType.add}}</a></p>
+            </div>
+            <div class="clear"></div>
+            <div class="info-add" ng-show="isAddNewSkill">
+                <form name="skillForm">
+                    <div class="info-title">
+                        <p class="left-add">Add Skill:</p>
+                        <p class="right">
+                            <input type="text" class="" name="skill" ng-model="skillObjInfo.skl" value="" required="">
+                            <span class="error" ng-show="skillForm.skill.$dirty && skillForm.skill.$error.required">*</span><br>
+                        </p>
+                    </div>
+                    <div class="info-title">
+                        <p class="left-add">Description:</p>
+                        <p class="right">
+                            <input type="text" class="" name="desc" ng-model="skillObjInfo.desc" value="" required="">
+                            <span class="error" ng-show="skillForm.desc.$dirty && skillForm.desc.$error.required">*</span><br>
+                        </p>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="ab-margin">
+                        <input class="pro-edit-btn" type="button" name="" value="{{consType.save}}" ng-disabled="skillForm.$invalid"	rg-click="submitNewSkill()"/>
+                        <input class="pro-edit-btn" type="button" name="" value="{{consType.cancel}}" rg-click="cancelNewSkill()"/>
+                    </div>
+                </form>
+            </div>
+            <div class="info-total">
+                <p class="in-pass" ng-show="skillInfo.length == 0">No Skill Added</p>
+                <div class="info-box"  ng-repeat="skill in skillInfo">
+
+                    <div ng-show="(isEditSkill !== $index)">
+
+                        <div ng-if="isOwner" rg-dropdown="dropdown()"  dd-html="ddActionHtml"
+                             dd-control="{index:$index,obj:skill}" dd-action="actionSkillDropdown" class="float-right mar-top-5">
+                            <div  class="drop-arrow  img_sprite icon-down-arrow  w-h-13"></div>
+                        </div>
+
+                        <div class="skill-box ab-tx-h" ng-cloak="true">{{ skill.skl}}</div>
+                        <div class="skill-box skill-re" ng-cloak="true">{{ skill.desc}}</div>
+                    </div>
+                    <div ng-show="(isEditSkill === $index)">
+                        <form name="editSkill">
+                            <div class="info-title">
+                                <p class="left">Skill:</p>
+                                <p class="right">
+                                    <input type="text" class="" name="skill" ng-model="skill.skl" value="" required>
+                                    <span class="error" ng-show="editSkill.skill.$error.required">*</span>
+                                </p>
+                            </div>
+                            <div class="info-title">
+                                <p class="left">Description:</p>
+                                <p class="right">
+                                    <input type="text" class="" name="desc" ng-model="skill.desc" value="" required>
+                                    <span class="error" ng-show="editSkill.desc.$error.required">*</span>
+                                </p>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="ab-margin">
+                                <input class="pro-edit-btn" type="button" name="" value="{{consType.update}}" ng-disabled="editSkill.$invalid" rg-click="updateSkill(skill)"/>
+                                <input class="pro-edit-btn" type="button" name="" value="{{consType.cancel}}" rg-click="cancelUpdateSkill($index)"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--</div>-->
+
+        <!-- education div -->
+        <div class="basic-info  education">
+            <div class="basic-info-title">
+                <p class="left">Education</p>
+                <p class="right" ng-if="isOwner"><span class="icon-plus-sg ab-add" rg-click="addNewEducation()"></span><a rg-click="addNewEducation()" ng-cloak="true">{{consType.add}}</a></p>
+            </div>
+            <div class="clear"></div>
+            <div class="info-add" ng-show="isaddNewEducation">
+                <form name="eduForm">
+
+                    <div class="info-title">
+                        <p class="left-add">Name of Institution: </p>
+                        <p class="right">
+                            <input type="text" class="" name="school" ng-model="eduObjInfo.scl"  value="" required>
+                            <span class="error" ng-show="eduForm.school.$dirty && eduForm.school.$error.required">*</span><br>
+                        </p>
+                    </div>
+
+                    <div class="info-title">
+                        <p class="left-add">Name of Degree:</p>
+                        <p class="right">
+                            <input type="text" class="" name="degree" ng-model="eduObjInfo.dgr"  value="" required>
+                            <span class="error" ng-show="eduForm.degree.$dirty && eduForm.degree.$error.required">*</span><br>
+                        </p>
+                    </div>
+
+                    <div class="info-title">
+                        <p class="left-add">Field of Study:</p>
+                        <p class="right">
+                            <input type="text" class="" name="cntn" ng-model="eduObjInfo.cntn"  value="" required>
+                            <!--<span class="error" ng-show="eduForm.cntn.$dirty && eduForm.cntn.$error.required">*</span><br>-->
+                        </p>
+                    </div>
+                    <!--<p>Task to Do : Description</p>-->
+                    <div class="info-title">
+                        <p class="left-add">From:</p>
+                        <p class="right">
+                            <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="eduObjInfo.ft"
+                                   is-open="model.ecalendar" min-date="minDate" name="ecalendar"
+                                   datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+
+                                   rg-click="open($event, 'ecalendar')"
+                                   close-text="Close"/>
+                        <span class="input-group-btn">
+
+                        </span>
+                        </p>
+                    </div>
+                    <div class="info-title">
+                        <p class="left-add">To:</p>
+                        <p class="right">
+                            <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="eduObjInfo.tt"
+                                   is-open="model.ecalendarTo" min-date="minDate" name="ecalendarTo"
+                                   datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                                   rg-click="open($event, 'ecalendarTo')"
+
+                                   close-text="Close"/>
+                        <span class="input-group-btn">
+
+                        </span>
+                        </p>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="ab-margin">
+                        <p ng-if="isOwner">
+                            <input class="pro-edit-btn" type="button" name="" value="{{consType.save}}" ng-disabled="eduForm.$invalid"
+                                   rg-click="submitNewEducation()"/>
+                        </p>
+                        <p ng-if="isOwner">
+                            <input class="pro-edit-btn" type="button" name=""
+                                   value="{{consType.cancel}}"
+                                   rg-click="cancelAddEducation()"/>
+                        </p>
+
+                    </div>
+                </form>
+            </div>
+            <div class="info-total">
+                <p class="in-pass" ng-show="educationInfo.length == 0">No Education Added</p>
+                <div class="info-box" ng-repeat="edu in educationInfo">
+
+                    <div ng-show="(isEditEducation !== $index)">
+
+
+                        <div ng-if="isOwner" rg-dropdown="dropdown()"  dd-html="ddActionHtml"
+                             dd-control="{index:$index,obj:edu}" dd-action="actionEduDropdown" class="float-right mar-top-5">
+                            <div class="drop-arrow  img_sprite icon-down-arrow  w-h-13"></div>
+                        </div>
+
+
+                        <div class="ab-box"><img src="images/university.png" class="responsive-all e-icon">
+                            <div class="ab-tx">
+                                <p class="ab-tx-h" ng-cloak="true">{{edu.scl}}</p>
+                                 <p class="ab-tx-p" ng-cloak="true">{{edu.dgr}} , <span ng-if="edu.ft!='1'" ng-cloak="true">{{edu.fromTime | date:'mediumDate'}}</span> -  <span ng-if="edu.tt!='1'" ng-cloak="true">{{edu.toTime | date:'mediumDate'}}</span></p>
+                                
+                                <p ng-cloak="true">{{edu.cntn}}</p>
+                                <!--<p>Degree : {{edu.dgr}}</p>
+                                <p ng-if="edu.ft!='1'">From Time : {{edu.fromTime | date:'mediumDate'}}</p>
+                                <p ng-if="edu.tt!='1'">To Time : {{edu.toTime | date:'mediumDate'}}</p> -->
+
+                            </div>
+                            <!--<div class="abt-desc">On concentration for {{edu.fromTimeE}}</div>-->
+                            <!--<div class="abt-desc">On concentration for {{edu.tt}}</div>-->
+                        </div>
+
+
+
+                    </div>
+                    <div ng-show="isEditEducation === $index">
+
+                        <form name="editeducation">
+                            <div class="info-title">
+                                <p class="left">School:</p>
+                                <p class="right">
+                                    <input type="text" class="" name="school" ng-model="edu.scl"  value="" required>
+                                    <span class="error" ng-show="editeducation.school.$error.required">*</span><br>
+                                </p>
+                            </div>
+                            <div class="info-title">
+                                <p class="left">Degree</p>
+                                <p class="right">
+                                    <input type="text" class="" name="degree" ng-model="edu.dgr"  value="" required>
+                                    <span class="error" ng-show="editeducation.degree.$error.required">*</span><br>
+                                </p>
+                            </div>
+                            <div class="info-title">
+                                <p class="left">Concentration:</p>
+                                <p class="right">
+                                    <input type="text" class="" name="cntn" ng-model="edu.cntn"  value="" required>
+                                    <span class="error" ng-show="editeducation.cntn.$error.required">*</span><br>
+                                </p>
+                            </div>
+                            <div class="info-title">
+                                <p class="left">From Time:</p>
+                                <p class="right">
+                                    <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="edu.fromTimeE"
+                                           is-open="model.ecalendar" min-date="minDate" name="ecalendar"
+                                           datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+
+                                           rg-click="open($event, 'ecalendar')"
+                                           close-text="Close"/>
+                                <span class="input-group-btn">
+
+                                </span>
+                                </p>
+                            </div>
+                            <div class="info-title">
+                                <p class="left">To Time:</p>
+                                <p class="right">
+                                    <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="edu.toTimeE"
+                                           is-open="model.ecalendarTo" min-date="minDate" name="ecalendarTo"
+                                           datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+
+                                           rg-click="open($event, 'ecalendarTo')"
+                                           close-text="Close"/>
+                                <span class="input-group-btn">
+
+                                </span>
+                                </p>
+                            </div>
+
+                            <div class="clear"></div>
+                            <div class="ab-margin">
+                                <input class="pro-edit-btn" type="button" name="" value="{{consType.update}}"
+                                       ng-disabled="editeducation.$invalid"
+                                       rg-click="updateEducation(edu)"/>
+                                <input class="pro-edit-btn" type="button" name=""
+                                       value="{{consType.cancel}}"
+                                       rg-click="cancelUpdateEducation($index)"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--add new education section-->
+            <div class="clear"></div>
+
+
+        </div>
+
+
+    </div>
+
+    <!-----------------------------2nd cell ------------------------------------------->
+    <div class="cell">
+        <!--start new privacy setting for frnd-->
+        <div class="basic-info frnd-privacysettings">
+            <!--ng-show="isOwnerEditPrivacy"-->
+            <div class="basic-info-title">
+                <p class="left" ng-if="isOwner">Privacy Settings</p>
+                <p class="left" ng-if="!isOwner" ng-cloak="true">Privacy Settings with you and {{profileObj.getBasicInfo().fn}}</p>
+                <p class="right" ng-show="showFrndsPvcEditOpt && !profileObj.isBlocked()"><span class="icon-edit-p ab-edit" rg-click="frndsPrivacyEditMode($event)"></span><a href="#"  rg-click="frndsPrivacyEditMode($event)" ng-cloak="true">{{consType.edit}}</a></p>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <p ng-show="profileObj.isBlocked()">This user is blocked by you.</p>
+
+            <div class="info-total" ng-show="!profileObj.isBlocked()">
+
+                <div class="info-box-sl main_mode" ng-show="!isFrndsPrivacyEdit">
+
+
+
+                    <div class="info-title">
+                        <div class="edit-p" ng-hide="callPvcEdit">
+                            <p class="left">Call</p>
+                            <p ng-if="fPrivacyInfo.callPrivacy == 1" class="right">Enable</p>
+                            <p ng-if="fPrivacyInfo.callPrivacy == 0" class="right">Disable</p>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="info-title">
+                        <div class="edit-p" ng-hide="chatPvcEdit">
+                            <p class="left">Chat</p>
+                            <p ng-if="fPrivacyInfo.chatPrivacy == 1" class="right">Enable</p>
+                            <p ng-if="fPrivacyInfo.chatPrivacy == 0" class="right" >Disable</p>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="info-title">
+                        <div class="edit-p" ng-hide="feedPvcEdit">
+                            <p class="left">Feed</p>
+                            <p ng-show="fPrivacyInfo.feedPrivacy == 1" class="right">Enable</p>
+                            <p ng-show="fPrivacyInfo.feedPrivacy == 0" class="right">Disable</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="info-box-sl  main_mode" ng-show="isFrndsPrivacyEdit">
+
+                    <p class="fnd-prvc">Enabling these settings will permit your friend to call you, chat with you and browse your newsfeed.</p>
+
+                    <div class="info-title">
+
+                        <p class="left">Call</p>
+                        <div class="edit-p">
+
+                            <input type="radio"  id="radio1" class="css-checkbox" ng-value="1" ng-model="fPrivacyInfo.callPrivacy"/><label for="radio1" class="css-label radGroup2">On</label>
+                            <input type="radio" id="radio2" class="css-checkbox"  ng-value="0" ng-model="fPrivacyInfo.callPrivacy"/><label for="radio2" class="css-label radGroup2">Off</label>
+
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="info-title">
+
+                        <p class="left">Chat</p>
+                        <div  class="edit-p">
+                            <input type="radio"  id="radio3" class="css-checkbox" ng-value="1" ng-model="fPrivacyInfo.chatPrivacy"/><label for="radio3" class="css-label radGroup2">On</label>
+                            <input type="radio" id="radio4" class="css-checkbox"  ng-value="0" ng-model="fPrivacyInfo.chatPrivacy"/><label for="radio4" class="css-label radGroup2">Off</label>
+
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="info-title">
+
+                        <p class="left">Feed</p>
+                        <div class="edit-p">
+                            <input type="radio"  id="radio5" class="css-checkbox" ng-value="1" ng-model="fPrivacyInfo.feedPrivacy"/><label for="radio5" class="css-label radGroup2">On</label>
+                            <input type="radio" id="radio6" class="css-checkbox"  ng-value="0" ng-model="fPrivacyInfo.feedPrivacy"/><label for="radio6" class="css-label radGroup2">Off</label>
+
+
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="padding-10-0">
+                        <input class="pro-edit-btn" type="button" name="" value="{{consType.save}}" rg-click="savePvcEdit(fPrivacyInfo)"/>
+                        <input class="pro-edit-btn" type="button" name="" value="{{consType.cancel}}" rg-click="cancelPvcEdit()"/>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!--End new privacy setting for frnd-->
+
+        <!--recovery div start-->
+        <div class="basic-info  recovery-setting" ng-if="isOwner">
+            <div class="basic-info-title">
+                <p class="left">Recovery-Settings</p>
+            </div>
+            <div class="clear"></div>
+            <div class="clear"></div>
+            <div style="padding:8px 0;">
+                <div class="very-m" ng-show="showAddEmailButton">
+
+                    <input class="pro-edit-btn veryfy" ng-class="emailVerified?'very-b':'very - c'" type="button" name="" value="{{emailValue}}" title="{{emailTitle}}" rg-click="addEmail()">
+                </div>
+                <div class="very-m" ng-show="showAddPhoneButton">
+                    <input class="pro-edit-btn veryfy" ng-class="phoneVerified?'very-b':'very - c'" type="button" name="" value="{{phoneValue}}"  title="{{phoneTitle}}"  rg-click="addPhone()">
+
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="info-add" ng-show="isAddEmail">
+                <p class="vrf-txt" ng-show="!emailVerified">Verify your email.</p>
+                <p class="vrf-txt" ng-show="emailVerified">Verify another email.</p>
+                <form name="emailForm">
+                    <div class="info-title" style="border: 1px solid #ededed;padding: 0 10px 0 0;height:25px;width:238px;display:inline-block;margin-top: 6px;">
+                        <p class="left">
+                            <input  style="border:0;display:inline-block;padding:0 2px 0 5px;width:225px;" type="email" class="" placeholder="Enter your email" name="email" ng-model="email.email" value="" required="">
+                        </p>
+                    </div>
+                    <p class="right" style="margin: 7px">
+                        <input type="button" style="display:inline-block;width:55px;" rg-click="sendCode(email)" ng-disabled="emailForm.$invalid" value="{{consType.send}}" name="" class="pro-edit-btn" disabled="disabled">
+                        <input type="button" style="display:inline-block;width:55px;" rg-click="cancelAddEmail()" value="{{consType.cancel}}" name="" class="pro-edit-btn">
+                    </p>
+                </form>
+            </div>
+            <div class="info-add" ng-show="isAddPhone">
+                <p class="vrf-txt" ng-show="!phoneVerified">Verify your phone number.</p>
+                <p class="vrf-txt" ng-show="phoneVerified">Verify another phone number.</p>
+                <form name="phoneForm">
+                    <div class="info-title" style="border: 1px solid #ededed;padding: 0 10px 0 0;height:25px;width:238px;display:inline-block;margin-top: 6px;">
+
+                        <div style="width:85px;display:inline-block;background-color:#ededed;">
+                            <button id="prefix_code" class="vmp-code"
+                                    rg-dropdown="dropdown()" dd-html="ddHtml" dd-control="ddControl" dd-action="setPrefix"
+                                    type="button" toggle="dropdown" value="{{phone.countryCode}}" style="height:26px;border:0;background-color:transparent;">
+                                <li class="flag {{countryFlag}}"><span ng-bind="phone.countryCode"></span></li>
+                            </button>
+                        </div>
+                        <input style="border:0;display:inline-block;padding:0 2px 0 5px;width:150px" type="text" class="" placeholder="Enter  phone number" name="phone" ng-model="phone.phone" value="" required="">
+                    </div>
+                    <p class="right" style="margin: 7px">
+                        <input class="pro-edit-btn" type="button" name="" value="{{consType.send}}" ng-disabled="phoneForm.$invalid"	rg-click="sendCodeToPhn(phone)" style="display:inline-block;width:55px;"/>
+                        <input class="pro-edit-btn" type="button" name="" value="{{consType.cancel}}" rg-click="cancelAddPhone()" style="display:inline-block;width:55px;"/></p>
+
+                </form>
+            </div>
+            <div class="info-add" ng-show="isAddCode">
+                <form name="codeVerifyForm">
+                    <div class="info-title" style="border: 1px solid #ededed;padding: 0 10px 0 0;height:25px;width:238px;display:inline-block;">
+                        <p class="right" style="text-align: center;">
+                            <input style="border:0;display:inline-block;padding:0 2px 0 5px;width:225px" type="text" class="" placeholder="Enter Code..." name="code" ng-model="code.code" value="" required="">
+                        </p>
+                    </div>
+                    <input class="pro-edit-btn" type="button" name="" value="{{consType.verify}}" ng-disabled="codeVerifyForm.$invalid" rg-click="verifyCode(code)"  style="display:inline-block;width:55px;"/>
+                    <input class="pro-edit-btn" type="button" name="" value="{{consType.cancel}}" rg-click="cancelVerification()"  style="display:inline-block;width:55px;"/>
+
+                </form>
+            </div>
+            <!--ng-show="isAddPhnCode"-->
+            <div class="info-add" ng-show="isAddPhnCode">
+                <form name="codeVerifyForm">
+                    <div class="info-title"  style="border: 1px solid #ededed;padding: 0 10px 0 0;height:25px;width:238px;display:inline-block;">
+                        <p class="right" style="text-align: center;">
+                            <input style="border:0;display:inline-block;padding:0 2px 0 5px;width:225px" type="text" class="" placeholder="Enter Code..." name="code" ng-model="code.code" value="" required="">
+                        </p>
+                    </div>
+
+
+                    <input class="pro-edit-btn" type="button" name="" value="{{consType.verify}}" ng-disabled="codeVerifyForm.$invalid" rg-click="verifyPhoneCode(code)"  style="display:inline-block;width:55px;"/>
+                    <input class="pro-edit-btn" type="button" name="" value="{{consType.cancel}}" rg-click="cancelVerification()"  style="display:inline-block;width:55px;"/>
+
+                </form>
+            </div>
+        </div>
+        <!--recovery div end-->
+
+          <!--work div start-->
+        <div class="basic-info work">
+            <div class="basic-info-title">
+                <p class="left">Work</p>
+                <p class="right" ng-if="isOwner"><span class="icon-plus-sg ab-add" rg-click="addNewWork()"></span><a rg-click="addNewWork()" ng-cloak="true">{{consType.add}}</a></p>
+            </div>
+            <div class="clear"></div>
+
+            <div class="info-add" ng-show="isAddNewWork">
+                <form name="workForm">
+                    <div class="clear"></div>
+
+                    <div class="info-title">
+                        <p class="left-add">Organization Name:</p>
+                        <p class="right">
+                            <input type="text" class="" name="cname" ng-model="workObjInfo.cnm" value="" required>
+                            <span class="error" ng-show="workForm.cname.$dirty && workForm.cname.$error.required">*</span>
+                        </p>
+                    </div>
+                    <div class="info-title">
+                        <p class="left-add">Job Title:</p>
+                        <p class="right">
+                            <input type="text" class="" name="position" ng-model="workObjInfo.pstn" value="" required>
+                            <!--<span class="error" ng-show="workForm.position.$dirty && workForm.position.$error.required">*</span>-->
+                        </p>
+                    </div>
+                    <div class="info-title">
+                        <p class="left-add">City:</p>
+                        <p class="right">
+                            <input type="text" class="" name="city" ng-model="workObjInfo.ct" value="" >
+                            <!--<span class="error" ng-show="workForm.city.$dirty && workForm.city.$error.required">*</span>-->
+                        </p>
+                    </div>
+                    <div class="info-title">
+                        <p class="left-add">Description:</p>
+                        <p class="right">
+                            <input type="text" class="" name="desc" ng-model="workObjInfo.desc" value="" >
+                            <!--<span class="error" ng-show="workForm.desc.$dirty && workForm.desc.$error.required">*</span>-->
+                        </p>
+                    </div>
+                    <div class="info-title">
+                        <p class="left-add">From Time:</p>
+                        <p class="right">
+                            <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="workObjInfo.ft"
+                                   is-open="model.wcalendar" name="wcalendar"
+                                   datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+
+                                   rg-click="open($event, 'wcalendar')"
+                                   close-text="Close"/>
+                            <span class="input-group-btn"></span>
+                        </p>
+                    </div>
+                    <div class="info-title" ng-hide="checked">
+                        <p class="left-add">To Time:</p>
+                        <p class="right">
+                            <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="workObjInfo.tt"
+                                   is-open="model.wcalendarTo" min-date="minDate" name="wcalendarTo"
+                                   datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+
+                                   rg-click="open($event, 'wcalendarTo')"
+                                   close-text="Close"/>
+                            <span class="input-group-btn"></span>
+                        </p>
+                    </div>
+                    <div class="info-title">
+                        <p class="left-add">I currently work here</p>
+                        <p class="right">
+                            <input id="currently_word" class="" type="checkbox" ng-model="checked"  name="currently_word" style="width:18px;">
+                        </p>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="ab-margin">
+                        <input class="pro-edit-btn" type="button" name="" value="{{consType.save}}" ng-disabled="workForm.$invalid"	rg-click="submitNewWork()"/>
+                        <input class="pro-edit-btn" type="button" name="" value="{{consType.cancel}}" rg-click="cancelNewWork()"/>
+                    </div>
+                </form>
+            </div>
+            <div class="clear"></div>
+
+            <div class="info-total">
+                <p class="in-pass" ng-show="workInfo.length == 0">No Work Added</p>
+                <div class="info-box"  ng-repeat="work in workInfo">
+                    <div ng-show="(isEditWork !== $index)">
+
+                        <div ng-show="isOwner" rg-dropdown="dropdown()"  dd-html="ddActionHtml"
+                             dd-control="{index:$index,obj:work}" dd-action="actionWorkDropdown" class="float-right mar-top-5">
+                            <div  class="drop-arrow  img_sprite icon-down-arrow  w-h-13"></div>
+                        </div>
+
+
+                        <div class="ab-box"><img src="images/company.png" class="responsive-all e-icon">
+                            <div class="ab-tx">
+                                <p class="ab-tx-h">{{ work.cnm}}</p>
+                                <p class="ab-tx-p">{{ work.pstn}}   <span ng-if="work.ft!='1'">- {{ work.fromTime| date: 'mediumDate' }} </span>  <span ng-show="work.tt!='1' && !work.status">- {{work.toTime| date: 'mediumDate'}}</span> <span ng-show="work.status"> to  {{work.date_info}}</span></p>
+                                <p ng-if="!null">{{work.desc}}</p>
+                               <!-- <p ng-if="work.ft!='1'">From Date : {{ work.fromTime| date: 'mediumDate' }}</p>
+                                <p ng-show="work.tt!='1' && !work.status">To Time : {{work.toTime| date: 'mediumDate'}}</p>
+                                <p ng-show="work.status">To Time : {{work.date_info}}</p> -->
+
+                                <!--<span> {{work.fromTime| date: 'mediumDate'}}</span> - <span ng-show="!work.status"> {{work.toTime| date: 'mediumDate'}}</span>-->
+                                <!--<span ng-show="work.status"> {{work.date_info}}</span>-->
+
+                            </div>
+                        </div>
+                        <!--<div class="abt-desc">{{ work.desc}} </div>-->
+
+                    </div>
+                    <div ng-show="(isEditWork === $index)">
+                        <form name="editWork">
+                            <div class="info-title">
+                                <p class="left">Organization Name:</p>
+                                <p class="right">
+                                    <input type="text" class="" name="cname" ng-model="work.cnm" value="" required>
+                                    <span class="error" ng-show="editWork.cname.$error.required">*</span>
+                                </p>
+                            </div>
+                            <div class="info-title">
+                                <p class="left">Job Title:</p>
+                                <p class="right">
+                                    <input type="text" class="" name="position" ng-model="work.pstn" value="" required>
+                                    <!--<span class="error" ng-show="editWork.position.$error.required">*</span>-->
+                                </p>
+                            </div>
+                            <div class="info-title">
+                                <p class="left">City:</p>
+                                <p class="right">
+                                    <input type="text" class="" name="city" ng-model="work.ct" value="">
+                                    <!--<span class="error" ng-show="editWork.city.$error.required">*</span>-->
+                                </p>
+                            </div>
+                            <div class="info-title">
+                                <p class="left">Description:</p>
+                                <p class="right">
+                                    <input type="text" class="" name="desc" ng-model="work.desc" value="">
+                                    <!--<span class="error" ng-show="editWork.desc.$error.required">*</span>-->
+                                </p>
+                            </div>
+
+                            <div class="info-title">
+                                <p class="left">From Time:</p>
+                                <p class="right">
+                                    <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="work.fromTimeE"
+                                           is-open="model.wcalendar" min-date="minDate" name="wcalendar"
+                                           datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                                           rg-click="open($event, 'wcalendar')"
+                                           close-text="Close"/>
+                                    <span class="input-group-btn"></span>
+                                </p>
+                            </div>
+                            <div class="info-title" ng-hide="work.status">
+                                <p class="left">To Time:</p>
+                                <p class="right">
+                                    <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="work.toTimeE"
+                                           is-open="model.wcalendarTo" min-date="minDate" name="wcalendarTo"
+                                           datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+
+                                           rg-click="open($event, 'wcalendarTo')"
+                                           close-text="Close"/>
+                                    <span class="input-group-btn"></span>
+                                </p>
+                            </div>
+                            <div class="info-title">
+                                <p class="left-add">Present</p>
+                                <p class="right checkbox">
+                                    <input type="checkbox" ng-model="work.status">
+                                </p>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="ab-margin">
+                                <input class="pro-edit-btn" type="button" name="" value="{{consType.update}}" ng-disabled="editWork.$invalid" rg-click="updateWork(work)"/>
+                                <input class="pro-edit-btn" type="button" name="" value="{{consType.cancel}}" rg-click="cancelUpdateWork($index)"/>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+        <!--work div end-->
+
+    </div>
+
+    <!-----------------------------2nd cell end--------------------------------------------->
+
+
+
+</div>

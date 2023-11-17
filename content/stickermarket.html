@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html ng-app="sticker">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+    <style>
+
+
+
+        .stickerContainer{
+            margin: 0 auto;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 730px;
+            margin-top: 20px;
+            opacity: 1;
+            overflow: hidden;
+            z-index: 93005;
+            outline: 0;
+            height:100vh;
+            margin-bottom: 10px;
+            background-color: white;
+            height: inherit;
+
+
+        }
+
+        .headSection{
+            width: 730px;
+            height: 200px;
+            background: #f5f4f4;
+        }
+
+        .midContain{
+            background: #DDD;
+            height:500px;
+            overflow: visible;
+            overflow-y: scroll;
+            padding-bottom: 200px;
+        }
+
+        .eachItem{
+            display: block;
+            width: 350px;
+            height: 172px;
+            background:#f4f4f4;
+            float: left;
+            margin: 10px 0px 0px 5px;
+        }
+
+        .eachItemInner{
+            background: #cccccc;
+            width: 350px;
+            height: 170px;
+            overflow: hidden;
+            border:1px solid #d7d7d7;
+        }
+
+
+        .eachItemInnertop{
+            width: 350px;
+            height: 135px;
+            background: #fff;
+        }
+        .eachItemInnerBot{
+            /*border-top:1px solid #d7d7d7;*/
+            width: 350px;
+            height: 35px;
+            background-color: white;
+        }
+
+
+        .innterItemLeft{
+            border: 1px solid #f5f4f4;
+            width: 108px;
+            height: 125px;
+            background:#f4bb6b;
+            float: left;
+            margin: 2px 0px 0px 0px;
+        }
+        .innterItemRight{
+            width: 233px;
+            height: 126px;
+            background: #f5f4f4;
+            float: right;
+            margin: 2px 2px 2px 2px;
+        }
+        .stickerInd{
+            width: 57px;
+            height: 60px;
+            background: white;
+            float: left;
+            margin: 2px 0px 0px 2px;
+        }
+        .infoSection{
+            width: 230px;
+            height: 32px;
+            float: left;
+            margin: 2px 0px 0px 2px;
+
+        }
+        .optionSection{
+            width: 110px;
+            height: 32px;
+            float: right;
+            margin: 2px 2px 0px 2px;
+        }
+        .buttonPreview{
+            width: 62px;
+            height: 23px;
+            background-color: white;
+            overflow: hidden;
+            float: left;
+            margin: 5px 0px 0px 2px;
+        }
+        .buttonAdd{
+            width: 42px;
+            height: 23px;
+            overflow: hidden;
+            float: right;
+            margin: 5px 2px 0px 0px;
+        }
+
+        .stickerMarketBackground{
+            opacity: .5;
+            z-index: 3000;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: #000;
+        }
+        .friendsName{
+            position: relative;
+
+        }
+
+        .eachContact{
+            width: 500px;
+            margin: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div ng-controller="ring_market_controller">
+    <stickermarket ng-show="isVisible"></stickermarket>
+    <stickermarketpreview ng-show="isVisiblePreview">123</stickermarketpreview>
+</div>
+
+<script>
+    var sticker = angular.module('sticker', []);
+    sticker.factory('marketaction', ['$http', function($http) {
+        return {
+            getsticker : function() {
+                return $http({
+                    url: '/secure/APIGetStickerCategories',
+                    method: 'GET'
+                })
+            }
+        }
+    }]);
+    sticker.controller('ring_market_controller', function ring_market_controller($scope, marketaction){
+        $scope.greeting = "weerwer";
+        marketaction.getsticker().success(function(data){
+            $scope.mydata=data;
+        }).error(function(data){
+            $scope.mydata=data;
+        });
+
+        $scope.preview_sticker_details = function(data){
+            console.log("lynas >>>> test");
+            console.log(data);
+            $scope.isVisible = ! $scope.isVisible;
+            $scope.isVisiblePreview = ! $scope.isVisiblePreview;
+            $scope.currentPreview = data;
+        };
+        
+        $scope.go_back_st_mk = function(){
+            $scope.isVisible = ! $scope.isVisible;
+            $scope.isVisiblePreview = ! $scope.isVisiblePreview;
+
+        };
+        $scope.isVisible = true;
+        $scope.isVisiblePreview = false;
+    });
+    sticker.directive('stickermarket', function () {
+        return {
+            restrict: 'E',
+            link: function (scope, e, a) {
+                scope.fullName = 'Sazzad'
+            },
+            templateUrl: "temp1.html"
+        }
+    });
+    sticker.directive('stickermarketpreview', function () {
+        return {
+            restrict: 'E',
+            link: function (scope, e, a) {
+                scope.fullName = 'Sazzad'
+            },
+            templateUrl: "stickermarketpreview.html"
+        }
+    });
+</script>
+
+
+</body>
+</html>

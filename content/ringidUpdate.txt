@@ -1,0 +1,31 @@
+;aiu;
+
+[ringIDUpdate]
+Name = ringID
+ProductVersion = 4.1.5.0
+URL = https://images.ringid.com/official/desktop/ringID.exe
+Size = 15276304
+MD5 = ea45cf1e9a66fb5aac9e33b0f83cb65c
+ServerFileName = ringID.exe
+Flags = NoRedetect
+RegistryKey = HKUD\Software\Ring Inc.\ringID\Version
+Version = 4.1.5.0
+Description = Chat room, News portal, Pages first version.
+Feature = Public Room Chat
+Feature1 = Added More Customized Settings for IM
+Feature2 = Newsportal
+Feature3 = Pages
+Feature4 = Implemented Friends Activity (Add,Accept,Deny friend request) for Multisession
+Feature5 = Video Quality improvment and check capablity
+Enhancement = Sing in process
+Enhancement1 = Friendlist loading
+Enhancement2 = Feed loading
+Enhancement3 = Improved IM With Cross Platform Chat Communication Library
+Enhancement4 = Details View of a News Feed in PopUp Style
+Enhancement5 = General Notification Sound Added
+Enhancement6 = Searching Enhancement(FriendList,Add Friend,DialPad,Own Profile friend search)
+Enhancement7 =  Rearranged Settings UI and added Expire Time
+Enhancement8 =  Improved tagList UI of new status
+BugFix = Bug fixes of Circle Members and Admins Count
+BugFix1 = Fixes in Media sharing and Viewing
+BugFix2 = Bug Fixed of Incoming and Outgoing list

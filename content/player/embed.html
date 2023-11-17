@@ -1,0 +1,194 @@
+<html>
+    <head>
+        <title>ringID: Free Video Calls, Secret Chats, Feeds, Stickers & more</title>
+        <meta charset="utf-8"/>
+        <meta property="og:site_name" content="ringID"/>
+        <meta property="og:title" content="${title}">
+
+        <meta property="og:url" content="${self_url}">
+        <meta property="og:description" content="${description}">
+        <meta property="og:image" content="https://mediacloud.ringid.com/${image}" />
+        <meta name="twitter:title" content="${title}">
+        <meta name="twitter:description" content="${description}">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@ringidapp">
+        <meta name="twitter:creator" content="@ringidapp">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="language" content="EN"/>
+        <meta name="title" content="${title}" />
+        <meta name="keywords" content="ringID Social App, ringID media Cloud, ${keywords}" />
+        <meta name="robots" content="all,index,follow" />
+        <meta name="distribution" content="Global" />
+        <meta name="rating" content="Safe For Kids" />
+
+        <!--STYLES-->
+        <link rel='stylesheet' type='text/css' href='css/player.min.css' />
+        <!--STYLES END-->
+
+    </head>
+    <body>
+        <div class="header">
+            <img src="images/ring-logo-circle.png">
+        </div>
+    
+        <div id="download-info" class="download-info"> <a id="download-link" href="#">Download ringID app</a> with all amazing features in one place.</div>
+        <div style="margin-top:30px;" id="embded"></div>
+        <div id="video-info" class="video-info">
+           <h3 class="title">${title}</h3>
+           <p class="views">${view} views</p>
+        </div>
+        
+        <ul id="related" class="songs">
+        </ul>
+
+        <!--SCRIPTS-->
+        <script  src='js/player.min.js'></script>
+        <!--SCRIPTS END-->
+
+        <script>
+
+            var baseMediaURL = 'https://mediacloud.ringid.com/',
+                embdedPlayerURL = 'https://www.ringid.com/player/embed?id=',
+
+                embded = document.getElementById('embded'),
+                video_info = document.getElementById('video-info'),
+                download_info = document.getElementById('download-info'),
+                download_link = document.getElementById('download-link'),
+                related = document.getElementById('related'),
+                isTouchable = 'ontouchstart' in window || navigator.msMaxTouchPoints,
+                src,
+                psize,
+                player,
+                tpl,
+                link,
+                type,
+                thumb;
+
+
+            tpl = '<li class="item">'
+                        +'<a href="__URL__">'
+                            +'<div class="left-thumb float-left" style="background-image:url(\'__THUMB__\'); background-repeat: no-repeat;background-size: cover">'
+                                +'<div class="play-ico-s">'
+                                    +'<span class="play-btn-s"></span>'
+                                +'</div>'
+                            +'</div>'
+                            +'<h3>__TITLE__</h3>'
+                            +'<p>__VIEWS__</p>'
+                            +'<p>__DURAION__</p>'
+                        +'</a>'
+                    +'</li>';    
+                
+            link = '${url}';
+            type = '${type}';
+            thumb = '${image}';  
+            playlist = JSON.parse('${playlist}');
+
+            /* example of json
+            playlist = [
+                {"title":'lorem ipsum1', "thumb":'cloud/uploaded-140/2110011311/p600725431469623233746.jpg', "views":'10,000', "duration": '10:50', "id":'0124242424014CE5004D2424072C1D12133714'},
+                {"title":'lorem ipsum2', "thumb":'', "views":'100,000', "duration": '10:50', "id":'0124242424014CE5004D2424072C1D12133714'},
+                {"title":'lorem ipsum3', "thumb":'', "views":'1000', "duration": '10:50', "id":'0124242424014CE5004D2424072C1D12133714'}
+            ]; 
+            */    
+            src = baseMediaURL + link;
+            psize = adjustPlayerSize();
+            
+            video_info.style.width = psize.w+'px';
+            download_info.style.width = psize.w+'px';
+            related.style.width = psize.w+'px';
+
+            player = new Player({
+                source: src,
+                type: type == 'v' ? 'video' : 'audio',
+                parentId: "embded",
+                autoPlay: true,
+                poster : thumb ? (baseMediaURL + thumb) : '',
+                width: psize.w,
+                height: psize.h
+            });
+
+            function adjustPlayerSize() {
+                
+                var ww = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+                    wh = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight,
+                    w = 850,
+                    h= 480;
+
+                if(isTouchable) {
+                    ww = screen.width;
+                    wh = screen.height;
+                }    
+
+                if(ww < 550) {
+                   w = ww - 20;
+                } else if(ww < 850) {
+                   w = ww - 100;
+                }
+
+                h = (480 * w ) / 850;
+                return {w:w,h:h};     
+            }
+
+            function getAppURL() {
+                var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i) || userAgent.match(/iPod/i))
+                {
+                    window.location = 'https://itunes.apple.com/us/app/ringid/id925330759?mt=8';
+                } else if (userAgent.match(/Android/i)) {
+                    window.location = 'https://play.google.com/store/apps/details?id=com.ringid.ring';
+                } else if (userAgent.match(/Windows Phone/i) || userAgent.match(/IEMobile/i)) {
+                    window.location = 'https://www.windowsphone.com/s?appid=7e163976-45c6-4bd6-b64c-24639d44193a';
+                } else {
+                   window.location = 'https://www.ringid.com/download.html';  
+                }
+            }
+
+            function setPlayerSize() {
+                var player_dom = document.querySelector('.rg-player'),
+                    psize = adjustPlayerSize();
+
+                player_dom.style.width = psize.w+'px';
+                player_dom.style.height = psize.h+'px';
+                video_info.style.width = psize.w+'px';
+                download_info.style.width = psize.w+'px';
+                related.style.width = psize.w+'px';
+            }
+
+            function renderPlaylist() {
+                var i,
+                  media,
+                  media_tpl,
+                  html = '';
+                if(playlist.length > 0) {
+                    for(i=0;i<playlist.length;i++) {
+                        media = playlist[i];
+                        media_tpl = tpl.replace(/__URL__/g, embdedPlayerURL+media.id);
+                        media_tpl = media_tpl.replace(/__THUMB__/g, baseMediaURL+media.image);
+                        media_tpl = media_tpl.replace(/__TITLE__/g, media.title);
+                        media_tpl = media_tpl.replace(/__DURAION__/g, media.duration);
+                        media_tpl = media_tpl.replace(/__VIEWS__/g, media.view+' views');
+                        html +=media_tpl; 
+                    }
+                    related.innerHTML = html;
+                }  
+            }
+
+            window.addEventListener('resize', function() {
+                if(player.isWebView || isTouchable) return;
+                setPlayerSize();
+            });
+
+            window.addEventListener("orientationchange", function() {
+                setTimeout(setPlayerSize,200);
+            });
+            
+            download_link.addEventListener('click', function(e) {
+                e.preventDefault();
+                getAppURL();
+            });
+
+            window.onload = renderPlaylist; 
+        </script>
+    </body>
+</html>

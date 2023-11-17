@@ -1,0 +1,18 @@
+<div class="sti-box" data-ng-repeat="stickerCategoryId in categories" ng-init="aStickerCategory=getStickerCategory(stickerCategoryId)">
+
+    <div class="img-b">
+        <img ng-src="{{ aStickerCategory.getIconImageUrl() }}" alt="stickerCatIcon" />
+    </div>
+    <div class="store-text store-text-mod" ng-cloak="true">
+        {{ aStickerCategory.getName()  }}
+        <p ng-cloak="true">{{ aStickerCategory.getDescription() }}</p>
+    </div>
+
+    <div class="emoti-btn-box" ng-init="stickerId=aStickerCategory.getKey()">
+        <div  class="preview-btn" rg-click="addSticker(stickerId)" ng-if="!isInstalled(stickerId)" >Free</div>
+        <div  class="preview-btn" rg-click="removeSticker(stickerId)" ng-if="isInstalled(stickerId)" >Delete</div>
+        <div class="preview-btn"
+             rg-ringbox="true" ringbox-controller="StickerPopupController" ringbox-type="remote" ringbox-target="templates/partials/stickers/popups/sticker-preview.html"
+             ringbox-data="showPreview(stickerId)">Preview</div>
+    </div>
+</div>

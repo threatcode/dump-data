@@ -1,0 +1,130 @@
+<div class="dashboard-bg  mid-width pro-page-width" >
+
+    <div ng-cloak class="circle-cover cover-photo"  style="max-height: 250px;background-image:url({{ models.pictureUrl}});"  rg-img-repostion >
+        <div ng-if="tag && canChangeCover()" class="grp-pht" rg-upload upload-type="tagchatcover" upload-action="uploadAction"></div>
+
+        <div class="profile-menu-box">
+            <div class="group" ng-if="isPageReady" >
+                <p class="group-name cursor"
+                   rg-ringbox="{{ canUpdateTagInfo() }}"
+                   ringbox-controller="TagChatMemberPagePopupController"
+                   ringbox-type="remote"
+                   ringbox-target="templates/partials/tag-chat/list-page/popups/create-tag-popup.html"
+                   ringbox-data="{ 'wizardSteps': [0], 'tagId': tag.getTagId() }"
+                   ng-bind="tag.getTagName()"></p>
+
+                <p class="member" ng-if="tag.membersLength()" ng-cloak="true">{{ tag.membersLength() }} members</p>
+            </div>
+        </div>
+
+<!--        <div ng-if="isPageReady" class="group-join drop-h t-a-c w-120 gc-circle-btn">
+            <a ng-if="isCurrentUserOwner()"
+               rg-ringbox="true"
+               ringbox-type="remote"
+               ringbox-controller="TagChatMemberPagePopupController"
+               ringbox-target="templates/partials/tag-chat/owner-select-popup.html"
+               ringbox-data="{ 
+               tagId : tag.getTagId(), 
+               action:'leave'
+               }" 
+               ><span class="lvtxt">Leave Group</span></a>
+            <a href="javascript:void(0);" ng-if="!isCurrentUserOwner()" rg-click="leaveTag()" ><span class="lvtxt">Leave Group</span></a>
+        </div>-->
+        
+        
+        <div ng-show="isPageReady" class="btn-bg-w butt border-gray-orange float-right btn-m-l-8 p-absolute bottom-90 right-50">
+            <a class="btn-p-5-8"  ng-if="isCurrentUserOwner()"  rg-ringbox="true"
+               ringbox-type="remote"
+               ringbox-controller="TagChatMemberPagePopupController"
+               ringbox-target="templates/partials/tag-chat/owner-select-popup.html"
+               ringbox-data="{ 
+               tagId : tag.getTagId(), 
+               action:'leave'
+               }">
+                <i class="btn-m-r-0 friend-ico gr-leave-icon"></i>
+                <span class="butt-text">Leave Group</span>
+            </a>
+            
+            
+            <a class="btn-p-5-8"  ng-if="!isCurrentUserOwner()" rg-click="leaveTag()">
+                <i class="btn-m-r-0 friend-ico gr-leave-icon"></i>
+                <span class="butt-text">Leave Group</span>
+            </a>
+            
+        </div>
+        
+        
+
+    </div>
+    <div class="middle" >
+
+        <!--Friends tab start-->
+        <div ng-show="!isPageReady">
+            <rg-loader-view2 is-loading="true"  ></rg-loader-view2>
+        </div>
+
+        <div class="friend-bg" ng-if="isPageReady" >
+            <div class="friend-header">
+                <h3 >Members</h3>
+
+<!--                <div class="add_circle_btn" style="margin-top:14px;"
+                     ng-if="isPageReady"
+                     >
+                    <span class="img_sprite w-h-18px add-new-gr"></span>
+                    <h2 rg-ringbox="true"
+                        ringbox-controller="TagChatMemberPagePopupController"
+                        ringbox-type="remote"
+                        ringbox-target="templates/partials/tag-chat/list-page/popups/create-tag-popup.html"
+                        ringbox-data="{ 'wizardSteps': [1],  'tagId': tag.getTagId() }"
+                        >Add Member</h2>
+                </div>-->
+
+
+                <div class="butt bg-orange-white-i float-right btn-m-9-13-0-0"  style="margin-top:14px;" ng-if="isPageReady">
+                    <a class="btn-p-5-8"  rg-ringbox="true"
+                       ringbox-controller="TagChatMemberPagePopupController"
+                       ringbox-type="remote"
+                       ringbox-target="templates/partials/tag-chat/list-page/popups/create-tag-popup.html"
+                       ringbox-data="{ 'wizardSteps': [1],  'tagId': tag.getTagId(), 'extra': { onlyAddMember: true} }">
+                        <i class="img_sprite w-h-18px add-new-gr"></i><span class="butt-text">Add Member</span>
+                    </a>
+                </div>
+
+
+                <user-search-input search-key='cp.searchParam'></user-search-input>
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="friends-list">
+                <!--Friend Box this will continue in loop-->
+
+                <div ng-show="tag.hasObjectLock()">
+                    <rg-loader-view2 is-loading="true"  ></rg-loader-view2>
+                </div>
+
+                <div class="pro_friend_box" ng-class="{'fndz-action': showBackKey == member.value.getId()}"
+
+                     ng-repeat="member in memberAdminList.all() | 
+                                                            mapFilter: {
+                                                                mapApi: 'getName', 
+                                                                value: cp.searchParam, 
+                                                                compare: 'regex'
+                                                            } as sresult"
+                     >
+
+                    <user-info-view1
+                        user-actions-tpl='templates/partials/tag-chat/list-page/user-actions.html'
+                        ></user-info-view1>
+
+                </div>
+                <div  class="pro_friend_box no-border h-5"></div>
+                <div  class="pro_friend_box no-border h-5"></div>
+                <p ng-show="cp.searchParam && sresult.length < 1">No Member Found</p>
+                <div class="clear"></div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

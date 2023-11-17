@@ -1,0 +1,72 @@
+<!--  Skill   DIV Start -->
+
+<div id="skill" ng-class="{'dis-none': activeNav !== 'skill'}">
+
+    <!--                <div class="ppinfo-action" ng-if="isOwner">
+                        <a rg-click="addNewSkill($event)" ng-show="!isAddNewSkill"><span class="img_sprite w-h-22px  icon-add-border"></span> Add</a>
+                    </div>-->
+
+    <div class="butt border-gray-orange float-right btn-m-l-8 p-absolute right-minus-30"  ng-if="isOwner">
+        <a class="btn-p-5-8" rg-click="addNewSkill($event)" ng-show="!isAddNewSkill">
+            <i class="friend-ico about-add-icon"></i><span class="butt-text">Add</span></a>
+    </div>
+
+
+    <div class="wes-view-wrapper">
+        <form name="skillForm">
+
+            <div class="add" ng-show="isAddNewSkill || isEditSkill > -1">
+                <div class="ppinfo">
+                    <div class="left"><span class="ppt-txt sk-m">Skill:</span><span class="ab-error" ng-show="skillForm.skill.$error.required">*</span></div>
+                    <div class="right">
+                        <input type="text" ng-class="skillsklerror?'error-class':''" name="skill" ng-model="skillObjInfo.skl" value="" required>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="ppinfo">
+                    <div class="left"><span class="ppt-txt">Description:</span><span class="ab-error" ng-show="skillForm.desc.$error.required">*</span></div>
+                    <div class="right">
+                        <textarea  type="text" ng-class="skilldescerror?'error-class':''" name="desc" ng-model="skillObjInfo.desc"  required style="height: 80px; resize: none"></textarea>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+
+                <div class="ppinfo">
+                    <div class="pp-btn">
+                        <input ng-show="isEditSkill == -1" class="pro-edit-btn" type="button"  value="{{consType.save}}" ng-disabled="processing"   rg-click="submitNewSkill()"/>
+                        <input ng-show="isEditSkill > -1" class="pro-edit-btn" type="button"  value="{{consType.save}}" ng-disabled="processing"   rg-click="updateSkill()"/>
+                        <input ng-show="isEditSkill == -1" class="pro-edit-btn" type="button"   value="{{consType.cancel}}"  rg-click="cancelNewSkill()"/>
+                        <input ng-show="isEditSkill > -1" class="pro-edit-btn" type="button"   value="{{consType.cancel}}"  rg-click="cancelUpdateSkill()"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <!--<div class="in-pass" ng-show="skillInfo.length == 0">No Skill Added</div>-->
+        <div class="no-edu" ng-show="skilllist.length == 0 && !isAddNewSkill">
+            <div class="no-edu-icon"></div>
+            <div class="no-edu-txt">No skill added</div>
+        </div>
+        <div class="wes-view" ng-if="!isAddNewSkill" ng-repeat="skill in skilllist track by $index">
+            <div  ng-show="(isEditSkill !== $index)">
+
+                <div ng-if="isOwner" rg-dropdown="dropdown()"  dd-html="ddActionHtml"
+                     dd-control="{index:$index,obj:skill}" dd-action="actionSkillDropdown" class="about-action">
+                    <div class="ab-drop-arrow img_sprite w-h-18px icon-dc-arrow"></div>
+                </div>
+                <div class="left"><span class="img_sprite w-h-40px icon-skills-w"></span></div>
+                <div class="right"> 
+                    <div class="wes-title" ng-cloak="true">{{ skill.skl}}</div>
+                    <div class="wes-desc" ng-cloak="true">{{ skill.desc}}</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+
+    </div>
+
+</div>
+<!--  Skill   DIV END -->

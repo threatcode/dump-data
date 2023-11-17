@@ -1,0 +1,67 @@
+<div  class="dashboard-bg  mid-width pro-page-width">
+
+    <div class="middle"> 
+        <div class="profile news-pro-wrap">
+
+            <div  class="media-nav">
+
+                <rg-tab-nav></rg-tab-nav>
+
+                <div style="position:relative; float: right; ">
+                    <div class="box-search media-search">
+                        <span class="img_sprite width-25px height-25px search-icon-25 p-absolute search-icon-p"></span>
+                        <input type="text" name="s"
+                               ng-model="searchText"
+                               placeholder="Search following"/>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-flow-warp">
+                <div class="news-flow-box" ng-repeat="media in mediaFollowMap.all() | mapFilter:{mapApi: 'getFullName', value: searchText}">
+                    <div class="news-flow-img">
+                        <img ng-src="{{media.value.getFollowAndSliderImage()}}">
+                    </div>
+                    <div class="flow-cont">
+                        <a ng-href="{{media.value.getLink('profile')}}"><div class="flow-tx-name-in" ng-cloak="true">{{ media.value.getFullName() }}</div></a>
+                        <div class="flow-inline-tx" ng-cloak="true">{{ media.value.getFollowerCountWithText() }}</div>
+                        <div class="flow-inline-tx" ng-cloak="true">{{ media.value.getCategoryName() }}</div>
+                    </div>
+                    <div class="mshare clickz" rg-dropdown="dropdown()" dd-html="ddActionHtml"
+                         dd-control="{media:media}" dd-action="actionFollowingDropdown">
+                        <div class="img_sprite icon-down-arrow w-h-13"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="isEmptyFollow">
+                <div  class="no-suggest">
+                    <p>You are not following any media pages</p>
+                </div>
+            </div>
+
+            <div class="news-load" ng-show="loadmore">
+                <a class="load-more"  rg-click="loadMoreFollowingMediaPages()" ng-show="mediaFollowMap.length() > 9 && !showloadmore">Load More &raquo;</a>
+                <a class="load-more-disabled"  ng-show="showloadmore"> 
+                    <span class="load-circle">
+                        <span class="ld-cir1 ld-cir"></span>
+                        <span class="ld-cir2 ld-cir"></span>
+                        <span class="ld-cir3 ld-cir"></span>
+                        <span class="ld-cir4 ld-cir"></span>
+                        <span class="ld-cir5 ld-cir"></span>
+                        <span class="ld-cir6 ld-cir"></span>
+                        <span class="ld-cir7 ld-cir"></span>
+                        <span class="ld-cir8 ld-cir"></span>
+                        <span class="ld-cir9 ld-cir"></span>
+                        <span class="ld-cir10 ld-cir"></span>
+                        <span class="ld-cir11 ld-cir"></span>
+                        <span class="ld-cir12 ld-cir"></span>
+                    </span>
+                    Loading...</a>
+            </div>
+
+        </div>
+
+    </div>
+</div>

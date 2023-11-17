@@ -1,0 +1,21 @@
+<div ng-show="contactLength>0">
+    <div class="invite-area" ng-class="{'loader-f':requestSent}">
+        <div class="padding-invite"  ng-class="{'dim-invite':requestSent}">
+            <div class="invite-left">
+                <div class="icon-logo-circle pid-logo"><a ng-href="{{people.link()}}"><img ng-src="{{people.avatar('thumb')}}"/></a></div>
+            </div>
+            <div class="invite-right"  style="">
+                <!--<p ng-show="people.friendshipStatus() === 0">Invite with</p>-->
+                <p ng-show="people.friendshipStatus() == 3">Pending</p>
+                <input ng-disabled="people.friendshipStatus() !== 0" rg-click="friendRequestAction({event:$event, ct: 2, friend: people})"
+                       class="orange-button-invite" ng-class="people.get" type='button' name='' value='Add Friend' />
+                <!--<input ng-disabled="people.friendshipStatus() !== 0" rg-click="friendRequestAction({event:$event, ct: 1, friend: people})"-->
+                <!--class="orange-button-invite" type='button' name='' value='Chat' />-->
+                <div class="clear"></div>
+                <p class="invite-name"><a ng-href='{{people.link()}}' ng-bind="people.getName()"></a></p>
+                <p class="invite-common-fnd"><span ng-bind="people.commonFriends()"></span> mutual friends</p>
+            </div>
+        </div>
+    </div>
+</div>
+

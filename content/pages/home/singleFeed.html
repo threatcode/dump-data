@@ -1,0 +1,60 @@
+<div class="middle single-page margin-0-auto share-f-w" ng-controller="SingleFeedSubController" ng-cloak>
+    <div class="dis-b">
+        <rg-loader-view data-is-loading="!isReady"></rg-loader-view>
+        <div  ng-if="noData" class="n-data"><p class="background-linear" >Content not found!</p></div>
+
+        <div ng-if="feed" ng-show="!noData && isReady" class="sinimg-img-page-wrapper mar-top-0">
+            <div class="sinimg-area mar-top-0 sm-w-700">
+                <div class="newsfeed-row mar-top-0">
+                    <rg-news-feed-top feed="feed"
+                                      dd-template="ddTemplate"
+                                      dropdown="dropdown"
+                                      action-feed-dropdown="actionFeedDropdown"
+                                      hide-serial="singleFeed"
+                                      ></rg-news-feed-top>
+
+                    <div class="newsfeed-bottom" data-feed-bottom>
+                        <div class="feed">
+                            <rg-single-feed-details></rg-single-feed-details>
+
+                            <rg-news-feed-shared-feed></rg-news-feed-shared-feed>
+                            <div class="clear"></div>
+                        </div>
+                        <rg-news-feed-menu></rg-news-feed-menu>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+
+               <!-- <rg-single-feed-comments 
+                    comment-type = "feed"
+                    feed = "feed"
+                    user = "currentUser"
+                    add-comment = "addComment(feed)"
+                    update-comment = "updateComment(comment)"
+                    cancel-edit = "cancelEdit()"
+                    like-comment = "likeComment(feedKey, commentKey)"
+                    fetch-who-likes = "fetchWhoLikes(commentId)"
+                    can-comment = "$parent.canComment"
+                    comment-error-class = "$parent.commentErrorClass"
+                    comment-text = '$parent.commenttext'
+                    all-comments = 'feedComments'
+                    comment-key = "commentKey"
+                    comment-editor-enabled = 'commentEditorEnabled'
+                    comment-edit-text = 'models.commentedittext'
+                    dd-comment-html = 'ddCommentHtml'
+                    action-comment-dropdown='actionCommentDropdown(actionObj)'
+                    show-comment-box='$parent.showCommentBox'
+                    load-previous-comments="loadPreviousComments()"
+                    load-more-comments="loadMoreComments()"
+                    active-comment-id="activeCommentId"
+                    >
+                </rg-single-feed-comments> -->
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="clear"></div>

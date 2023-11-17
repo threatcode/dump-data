@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <!-- 
+        If You want to use "Access-Control-Allow-Origin" tag than 
+        put your "Access-Control-Allow-Origin" value to the follwing tag
+    -->
+    <allowAccessOrigin>*</allowAccessOrigin>
+                
+    <!--
+        Server 404 custom page status check
+    -->
+    <errorCustomPageStatus>true</errorCustomPageStatus>
+        
+    <!--
+        Server 404 custom page name
+    -->
+    <errorCustomPageName>not-found.html</errorCustomPageName>
+        
+    <!--
+        redirect defiend regex pattern url to a fixed url
+        <rewrite>
+            <pattern>feed\/\d+\/?</pattern>
+            <url>index.html</url>
+        </rewrite>
+    -->
+    <rewriteModule>false</rewriteModule>
+    
+    <forceWWW>true</forceWWW>
+    
+    <contextFile>index.html</contextFile>
+
+    <authController>https://auth.ringid.com/rac/</authController>
+    
+    
+</root>

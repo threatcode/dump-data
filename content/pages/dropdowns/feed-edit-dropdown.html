@@ -1,0 +1,17 @@
+<!-- 
+   Note not in use now inline template in subcontroller
+    -->
+
+<div class="action ng-cloak pad-204 feed-ac z-in-110 top-23">
+    <i class="drop-sprite curve-a curve-t-ico p-ab top11"></i>
+    <div class="ac-top-line" ng-if="ddControl.showEdit()">
+        <a class="pad-8-14" rg-click="ddAction()({event: $event, action:'edit', feedKey: ddControl.feedKey})"
+           href="#"><i class="drop-sprite w-h-13 edit-ico feed-font"></i>Edit</a>
+    </div>
+    <div class="ac-top-line" ng-if="ddControl.showTagButton()">
+        <a class="pad-8-14" rg-click="ddAction()({event: $event, action:'edittag', feedKey: ddControl.feedKey})" href="#"  ng-cloak="true"><i class="drop-sprite add-tag-mar w-h-13 add-tag-ico feed-font"></i>{{ddControl.tagButtonText()}}</a>
+    </div>
+    <div class="ac-top-line" ng-if="ddControl.showDelete()">
+        <a class="pad-8-14" rg-click="ddAction()({event: $event, action:'delete', feedKey: ddControl.feedKey})" href="#"><i class="drop-sprite w-h-13 delete-ico feed-font"></i>Delete</a>
+    </div>
+</div>

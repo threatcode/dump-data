@@ -1,0 +1,63 @@
+<div  class="music-mid-bg  mid-width  pro-page-width">
+    <div class="middle">
+        <div class="music-container">
+            <div class="music_header">
+                <rg-media-search-directive></rg-media-search-directive>
+                
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <!--Grid view start-->
+            <div  class="grid-view active">
+                <!--
+                if you want to see grid view  then  class list-view will replace by grid-view and
+                calss active and innactive will show and hide tab
+                and id
+                will indicate you which tab will be active and inactive
+                -->
+                <div class="m-l-r-wrapper">
+                <div class="m-list-left float-left">
+                    <h2>Recent</h2>
+                    <img ng-if="medias.length() === 0 " src="images/music-error.png">
+                    <div class="music-box"  style="float:left"
+                         ng-repeat="media in medias.all() | limitTo:6" title="{{media.value.getCaption()}}"
+                         rg-ringbox="true" ring-backdrop-close="true" show-close-btn="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"
+                         ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getRecentMediaData(media.value)"
+                         >
+                        <div class="music-thumb">
+                            <a>
+                                <img ng-src="{{media.value.getThumbForMediaOnly()}}" alt="{{media.value.getThumbForMediaOnly()}}"/>
+                            </a>
+                        </div>
+                        <div class="music-right">
+                            <a title="{{media.value.getCaption()}}" ng-cloak="true">
+                                {{media.value.getCaption()}}
+                            </a>
+                            <p>Album: {{media.value.getAlbumName()}}</p>
+                            <p class="views-music" ng-cloak="true">{{media.value.getViewCount()}}</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="m-list-right float-right">
+                    <h1><i class="icon-trending"></i> Trending</h1>
+                    <div class="trend-list">
+                        <a href="/#/media/{{tag.searchtype}}/{{tag.sk}}" ng-repeat="tag in trendingArr" ng-click="doContentSearch(tag)" ng-cloak="true">
+                            <span ng-show="tag.sugt===1" class="trend-ico trend-song" style="color: red"></span>
+                            <span ng-show="tag.sugt===2" class="trend-ico trend-album" style="color: red"></span>
+                            <span ng-show="tag.sugt===3" class="trend-ico trend-tag" style="color: red"></span>
+                            {{tag.sk}}
+                        </a>
+                        <div class="loader-s" ng-hide="trendingArr.length > 0"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                
+                </div>
+            </div>
+            <div class="clear"></div>
+            <!--Grid view end-->
+        </div>
+        <rg-media in-profile="false" templatepath="templates/partials/media.html"></rg-media>
+    </div>
+</div>

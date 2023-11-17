@@ -1,0 +1,19 @@
+<!--<div class="action news-action pad-204 w-140" >-->
+    <!--<i class="drop-sprite curve-a curve-t-ico p-ab top11"></i>-->
+    <!---->
+    <!---->
+     <!--<div class="ac-top-line" rg-click="ddAction()({event: $event, action:'unfollow',  data: ddControl})">-->
+        <!---->
+        <!--<a class="pad-8-14"><i class="drop-sprite w-h-13 unfollow-ico feed-font"></i>Unfollow</a>-->
+
+    <!--</div>  -->
+
+<!--</div>-->
+
+<div class="action m-share-drop float-right">
+    <div rg-click="ddAction()({event: $event, action:'addtoalbum',  data: ddControl})"></div>
+
+    <div class="feed-line" rg-ringbox="true" ringbox-controller="RingBoxAlbumlistController" ringbox-animation="true"ringbox-type="remote" ringbox-target="templates/dropdowns/popup-album-dropdown.html" ringbox-data="selectAlbum({mediavalue: media.value})" ><span class="img_sprite btn-share w-h-13 feed-font"></span>Add to album</div>
+    <!--<div class="feed-line" rg-click="shareMedia()"><span class="img_sprite icon-share w-h-13 feed-font"></span>Share</div>-->
+    <div class="feed-line" rg-click="noDownload({$event: $event})" ><span class="img_sprite m-download-ico w-h-13 feed-font"></span>Download</div>
+</div>

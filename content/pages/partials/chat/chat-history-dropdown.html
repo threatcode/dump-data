@@ -1,0 +1,49 @@
+<div class="chat-history-dropdown notification-box width_fr" data-ng-controller="ChatHistoryController">
+    <div class="notification-title">
+        Chat History
+        <!--    <span ng-show="!state.loading">
+                <a rg-ringbox="true"
+                   ringbox-type="inline"
+                   ringbox-target="<rg-requests load-on-scroll='true' load-count='50' template-url='templates/seeall.html' ></rg-requests>"
+                   ringbox-scrollable="true">
+                    See All
+                </a>
+            </span>-->
+    </div>
+    <div class="clear"></div>
+    <div class="friend-req-scroll-wrapper">
+
+        <ul ng-show="ready" class="notification chat-history" bottom-reached="bottomReached()" rg-scrollbar="scrollbar()" >
+            <li data-ng-repeat="aBoxObject in boxes.all() track by aBoxObject.key" ng-class="aBoxObject.value.unreadCount > 0 ? 'unseen' : 'seen'"
+                data-open-box="" data-box-id="{{ ::aBoxObject.key}}"  data-is-tag-chat="{{ ::aBoxObject.value.isTagChat }}" ng-show="aBoxObject.value.shouldVisible()">
+                <div class="left">
+                    <div class="pic"><img ng-src="{{ aBoxObject.value.getCover()}}" alt="" /></div>
+                </div>
+                <div class="right">
+                    <p class="main-notification f-500 h-15 c-t-text" title="{{ aBoxObject.value.getTitle()}}" ng-cloak="true">{{ aBoxObject.value.getTitle()}} <span class="unread-count" ng-if="aBoxObject.value.unreadCount > 0"><b ng-cloak="true">{{ aBoxObject.value.unreadCount}}</b></span>  </p>
+
+                    <div class="clear"></div>
+                    <p class="main-notification w-elipsis" title=" {{ aBoxObject.value.lastMessage.messageText()}}">
+                        <span class="message f-400" ng-class="{'self': aBoxObject.value.lastMessage.isSelf() }"> </span>
+                        <span class="c-t-text" ng-cloak="true">{{ aBoxObject.value.lastMessage.messageText()}}</span>
+                    <div class="clear"></div>
+                    <span class="t-history float-left" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i> {{aBoxObject.value.lastMessage.date}}</span>
+                    </p>
+                </div>
+                <div  class="clear"></div>
+            </li>
+
+            <li ng-if="boxes.length() == 0" class="no-more-message" style="cursor:text;">No more messages in your history</li>
+
+        </ul>
+    </div>
+    <!-- <div class="clear"></div>
+    <div  class="notification-loader-position megin-left-18">
+        <a href="#/chat" >See All</a>
+    </div> -->
+    <div class="clear"></div>
+    <div class="notification-loader-position"><rg-loader-view2 is-loading="!ready"></rg-loader-view2></div>
+
+
+</div>
+

@@ -1,0 +1,159 @@
+<style>
+    .ringbox-inner {overflow: visible;}
+</style>
+<div class="status-box" ng-class="{'edit-f' : editMode}">
+    <div  class="status-box-header">
+        <span class="img_sprite write-msg"></span>
+        <span>Write Post</span>
+        <span class="post-val  float-right">
+            <a title="Feed Duration"  feed-timeout-menu="" ring-on-option-select="selectedTimeout(item)" selected-value="validity" class="p-ab">
+                <span class="img_sprite pst-val-ico"></span>
+            </a>
+        </span>
+    </div>
+    <form enctype="multipart/form-data">
+        <div style="padding:3px;">
+            <div class="post-area-box float-right">
+                <div class="style-1">
+                    <rg-editor id="post-box-id" 
+                        editor-content="feedText" 
+                        edit-mode="getFeedHtml"
+                        focus="focus"
+                        new-line="on" 
+                        adjust-feed-cell="true" 
+                        placeholder="{{forAdd === 'my' ? 'Share your thoughts...' : 'Write something...'}}" 
+                        tag-friend="true" 
+                        max-height="800" 
+                        style="border: none;"></rg-editor>
+                    <rg-url-og-fetcher ng-if="!shouldDisable('link')"
+                                       data-fetched-og-info="$parent.ogData"
+                                       editor-content="feedText"
+                                       show-preview="$parent.ogShowPreview"
+                                       loading-data="$parent.ogDataLoading"                        
+                                       >
+                    </rg-url-og-fetcher>
+
+                    <p ng-if="emotions.length" class="feelings-text"> <span>&mdash; Feeling </span> <img class="status_emo" ng-src="{{emotions[0].url}}" /> <span class="feel-sty" ng-cloak="true"> {{emotions[0].nm}} <span class="p-relative" ng-click="emotions.length = 0"><i class="p-ab feel img_sprite icon-close-ico w-h-13"></i></span></span></p>
+                    <div ng-if="friendTags.length()">
+                        <ul  class="tag-fnd-lst">
+                            <span class="tag-with">&mdash; With&nbsp;</span>
+                            <li ng-if="friendTags.length() < 3" ng-repeat="usr in friendTags.all()" ><span class="tag-title" ng-cloak="true">{{::usr.value.getName()}}</span>&nbsp;</li>
+                            <li ng-if="friendTags.length() > 2" ><span class="tag-title" ng-cloak="true">{{::friendTags.bottom().getName()}}</span></li>
+                            <span ng-if="friendTags.length() > 2" class="tag-with" ng-cloak="true"> and {{friendTags.length() - 1}} others</span>
+
+                        </ul>
+                    </div>
+                    <p ng-if="!!feedLocation.description" class="status-loc-txt " ng-cloak="true">&mdash; {{ feedLocation.description}} <span class=" showpointer p-relative" ng-click="selectedLocation()" ><i class="p-ab feel img_sprite icon-close-ico w-h-13"></i></span></p>
+                    <p ng-if="errorMessage" class="ng-cloak s-error" ng-cloak="true">{{errorMessage}}</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>  
+        <div class="clear"></div>
+
+        <rg-selector ng-show="shouldShow('friendtag')" 
+                     template-url="templates/feed/tag-friends.html" 
+                     placeholder="Who are you with?"
+                     identifier="friendtag"
+                     select-any="false"
+                     selected-items="friendTags" 
+                     fetch-items="fetchFriends" 
+                     select-item="selectFriendTag" 
+                     remove-item="removeFriendTag">
+        </rg-selector>
+
+
+        <rg-url-og-preview ng-if="!shouldDisable('link')"
+                           og-data="$parent.ogData" edit-mode="true"
+                           show-preview="$parent.ogShowPreview" 
+                           loading-data="$parent.ogDataLoading" >
+        </rg-url-og-preview>
+        <div class="status-photo-box" ng-show="shouldShow('gotupload')">
+            <rg-selector ng-show="shouldShow('mediaupload')"
+                         select-any="true"
+                         init-input="albumName"
+                         template-url="templates/feed/addto-album.html" 
+                         selected-items="selectedAlbum" 
+                         fetch-items="getAlbums" 
+                         select-item="selectAlbum" >
+            </rg-selector>
+
+            <!-- <div class="to-add" ng-show="uploadSpec.type !== 'image' && getMedia(true).length > 0"> -->
+            <!--     [> <span rg-dropdown dd-html="ddHtml" dd-control="ddControl" dd-action="ddAction"> <] -->
+            <!--     <span > -->
+            <!--         <div class="addalbum"><input id="add-album" ng-model="ddControl.albumName" name="" placeholder="Add Album Title" /></div> -->
+            <!--         <span class="img_sprite btn-share" style="    position: absolute;    top: 8px;    right: 13px;"></span> -->
+            <!-- </div> -->
+            <rg-upload-preview ></rg-upload-preview>
+            <rg-selector  ng-show="shouldShow('mediaupload')"
+                         select-any="true"
+                         template-url="templates/feed/add-hashtag.html" 
+                         selected-items="hashTags" 
+                         fetch-items="fetchHashTags" 
+                         select-item="selectHashTag" 
+                         remove-item="removeHashTag">
+            </rg-selector>
+
+            <!--<rg-hashtag></rg-hashtag>-->
+        </div>
+        <div  class="pst-act">
+
+            <rg-status-uploads
+                edit-mode="editMode"
+                upload-action="" 
+                upload-enabled="!shouldDisable('mediaupload')" 
+                upload-spec="uploadSpec" >
+            </rg-status-uploads>
+            <!--<div class="post-b-ico m-l-5">-->
+            <!--<a data-tooltip-post="Add Emoticon" href="javascript:void(0)" class="p-ab">-->
+            <!--<span class="emo-ico" rg-emoticon show-sticker="false" clicked="insertEmoji"></span>-->
+            <!--</a>-->
+            <!--</div>-->
+
+            <div  data-tooltip-post="Add Feeling"   class="p-abc z101">
+                <div class="post-b-ico" rg-emotion on-select="chooseEmotion(item)">
+                    <span class="img_sprite status-ico feeling-ico"></span>
+                </div>
+            </div>
+            <div data-tooltip-post="Tag Friends"   class="p-abc"  ng-if="shouldShow('friendtagbutton')">
+                <div class="post-b-ico"  rg-click="toggleShowFriendTag()">
+                    <span class="img_sprite status-ico tag-f-ico"></span>
+                </div>
+            </div>
+
+            <div data-tooltip-post="Add Location"  class="p-abc z101">
+                <div class="post-b-ico" ng-if="!shouldDisable('location')" feed-location-menu="" 
+                    feed-location-menu-on-select="selectedLocation(location)" selected-value="feedLocation">
+                    <span class="img_sprite status-ico location-ico"></span>
+                </div>
+            </div>
+
+            <div class="float-right pbox-input mar-6" >
+                <input type="button" ng-disabled="shouldDisable('input')" rg-click="addFeed()"  rg-click-noapply="true" ng-class="{'disable': shouldDisable('input')}"  class="p-btn p-btn-bg float-right" value="{{editMode ? 'Save' : 'Post'}}"/>
+            </div>
+            <div class="float-right pbox-input mar-6" ng-if="editMode">
+                <input type="button" ng-disabled="shouldDisable('input')" rg-click="cancel()"  rg-click-noapply="true" ng-class="{'disable': shouldDisable('input')}"  class="p-btn p-btn-bg float-right" value="Cancel"/>
+            </div>
+            <div class="float-right mar-6-2-0-4 prvc-set" ng-if="showPrivacy">
+
+                <a data-tooltip-post="Add Privacy"  rg-dropdown dd-action="setPrivacy" dd-control="privacySet" dd-template="privacyTemplate" class=" p-btn dis-block">
+                    <span><i ng-class="privacy.icon"></i> <b ng-cloak="true">{{privacy.text}}</b> <i class="img_sprite w-h-13 icon-ds-arrow"></i></span>
+                    <!--<span><i class="icon-g-settings"></i> <b>{{privacy}}</b> <i class="icon-ds-arrow"></i></span>-->
+
+                </a>
+            </div>
+
+        </div>
+    </form>
+
+    <div class="clear"></div>
+    <!--<span class="warning-body"><i class="warning-arrow"></i>Please wait few moment. picture is loading.</span>-->
+</div>
+
+<div class="cell" ng-if="noMoreFeed && getFeeds().length === 0" style="margin-left: 0">
+    <div class="newsfeed-row" ng-if="noMoreFeed" >
+        <p class="not-found">No feed yet!</p>
+        <img height="100%" width="100%" src="images/not-found.png" />
+    </div>
+</div>
+

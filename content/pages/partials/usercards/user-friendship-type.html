@@ -1,0 +1,14 @@
+<div class="mar-top-5" ng-clock ng-if="friendTypeClass != ''">
+    <!--    <a class="friend-btn"  ng-class="{'f-loading' : getUserObject(member).isLoading()}" rg-click="memberAction($event)" > 
+            <span class="friend-ico {{ friendTypeClass }}"></span>{{ friendTypeText }}
+        </a>-->
+
+
+    <div class="butt border-gray-orange  float-left btn-m-r-8">
+        <a class="btn-p-5-8"  ng-class="{'f-loading' : getUserObject(member).isLoading()}" rg-click="memberAction($event)" >
+            <i class="friend-ico {{ friendTypeClass}} btn-m-r-0"></i>
+            <span class="butt-text" ng-cloak="true">{{ friendTypeText}}</span>
+        </a>
+    </div>
+
+</div>

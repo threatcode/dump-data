@@ -1,0 +1,48 @@
+<div class="clear"></div>
+<ul class="audio-r" ng-init="medialength = feed.getAudios().length()">
+    <li ng-repeat="media in feed.getAudios().all()| limitTo:limit" class="item">
+        <div class="click_area" rg-ringbox="true" ring-backdrop-close="false" show-close-btn="{{isShowCloseButton}}" ringbox-controller="RingBoxMediaController" ringbox-animation="true" ringbox-scrollable="true"
+            ringbox-type="remote" ringbox-target="{{targetHTML}}" ringbox-data="getMediaData({ mediavalue: media.value, feed: feed })" media-key="{{::feed.getKey()}}-{{::media.value.getKey()}}">
+            <div class="left-thumb float-left" style="background-image:url('{{::media.value.getThumb()}}'); background-repeat: no-repeat;background-size: cover;">
+                <div class="m-icn audio play"></div>
+                <p class="bottom-4"><span ng-bind="media.value.getDuration(true)"></span></p>
+            </div>
+            <h3 title="{{media.value.getCaption()}}" ng-bind="media.value.getCaption()"></h3>
+            <p><span ng-bind="media.value.getArtistName()"></span></p>
+            <p><span ng-bind="media.value.getAlbumName()"></span></p>
+            <p><span ng-bind="media.value.getViewCount()"></span></p>
+            <div class="clear"></div>
+        </div>
+        <!--<a class="m-download" href="#" rg-click="noDownload({$event: $event})" ><i class="img_sprite m-download-ico"></i>Download</a>-->
+        <div class="clear"></div>
+
+        <div class="mshare clickz" >
+            <div rg-dropdown="dropdown()" dd-html="ddActionHtml"
+                 dd-control="{obj:media.value}" dd-action="actionMediaDropdown">
+                <div class="img_sprite mshare-icon"></div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </li>
+
+    <!-- <span ng-if="medialength > 3" class="text-right">
+        <a rg-ringbox="true" ring-backdrop-close="false" ringbox-controller="RingBoxMediaController" ringbox-animation="true"
+           ringbox-type="remote" ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getAudioFirstData()">
+            <span>+{{medialength - 3}}</span> more
+        </a>
+    </span> -->
+
+    <!-- <span ng-if="medialength > 3" class="text-right">
+        <a rg-ringbox="true" ring-backdrop-close="true" ringbox-controller="FeedMediaListController" ringbox-animation="true"
+           ringbox-type="remote" ringbox-target="templates/partials/media-list-popup.html" ringbox-data="getFeedMediaDataForPopup(feed, 'audio')">
+            <span>+{{medialength - 3}}</span> more
+        </a>
+    </span> -->
+
+    <span  ng-if="medialength > 3 && showMoreButton" class="text-right" ng-click="getMediasForPopUp(feed, 'audio')">
+        
+        <a><span ng-cloak="true">+{{medialength - 3}}</span> more</a>
+        
+    </span>
+</ul>

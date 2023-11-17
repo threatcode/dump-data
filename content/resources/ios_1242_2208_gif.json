@@ -1,0 +1,47 @@
+[
+    {
+        "name":"01.gif",
+        "kind":"Image File",
+        "md":"Jan 18,2015",
+        "size":"365 KB",
+        "dimension":"1242*2208",
+        "src":"mediakit/ios/screen_shots/format_in_1242_2208/GIF/01.gif"
+    },
+    
+    {
+        "name":"02.gif",
+        "kind":"Image File",
+        "md":"Jan 18,2015",
+        "size":"743 KB",
+        "dimension":"1242*2208",
+        "src":"mediakit/ios/screen_shots/format_in_1242_2208/GIF/02.gif"
+    },
+    
+    {
+        "name":"03.gif",
+        "kind":"Image File",
+        "md":"Jan 18,2015",
+        "size":"358 KB",
+        "dimension":"1242*2208",
+        "src":"mediakit/ios/screen_shots/format_in_1242_2208/GIF/03.gif"
+    },
+    
+    {
+        "name":"04.gif",
+        "kind":"Image File",
+        "md":"Jan 18,2015",
+        "size":"799 KB",
+        "dimension":"1242*2208",
+        "src":"mediakit/ios/screen_shots/format_in_1242_2208/GIF/04.gif"
+    },
+    
+    {
+        "name":"05.gif",
+        "kind":"Image File",
+        "md":"Jan 18,2015",
+        "size":"546 KB",
+        "dimension":"1242*2208",
+        "src":"mediakit/ios/screen_shots/format_in_1242_2208/GIF/05.gif"
+    }
+                                
+]

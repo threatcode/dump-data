@@ -1,0 +1,34 @@
+<div class="upper-mess" ng-if="feed.hasActivityMessage()" rg-compile="feed.getActivityMessage()"></div>
+<div class="newsfeed-top" ng-class="{'specail-feed-top':feed.isSpecial()}">
+    <!--left user picture-->
+    <a ng-href='{{ ::feed.user().link()}}' class="drop-shape-cover p-relative float-left" ng-show="feed.user().avatar()">
+        <!--<div class="img_sprite drop-shape-ico p-absolute"></div>-->
+        <img class="border-radius-100p" ng-src="{{ feed.user().avatar('thumb')}}" width="45px" height="45px" onError="this.src='images/prof.png';" alt="bang"/>
+    </a>
+
+
+
+
+    <!--middle text-->
+    <div class="top-r-feed">
+        <div feed-message="feed" >
+        </div>
+        <span class="time" style="padding: 5px 0;vertical-align: middle;"><i class="img_sprite w-h-13 icon-dt-ico"></i><b ng-cloak="true">{{feed.time()}}</b>
+        <span data-tooltip-post="{{::feed.getPrivacy().text}}" ng-class="feed.getPrivacy().iconfeed"></span>
+        </span>
+    </div>
+    
+    <!--right dropdown for own feed-->
+    <div class="top-right-con">
+
+    <div class="p-rt mar-top-7 cur-p drop-wrap w-h-13 fl-right">
+    <div rg-dropdown="dropdown()"  dd-template="ddTemplate"
+         dd-control="feed.ddControl" dd-action="actionFeedDropdown">
+        <div class="drop-arrow img_sprite icon-down-arrow f-500 f-12 w-h-13"></div>
+        
+    </div>
+    </div>
+    <div data-tool="Saved" class="drop-arrow img_sprite saved-ico saved w-h-13" ng-if="feed.isSaved()" ></div>
+    </div>
+</div>
+

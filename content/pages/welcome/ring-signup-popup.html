@@ -1,0 +1,138 @@
+<div class="sb">
+    <div class="s-top"> Sign Up</div>
+    <div ng-click="close()" class="icon-close s-cl not-close" style="z-index:4"></div>
+    <div class="steep-t">
+        <ul>
+            <li ng-class="{'s-active' : signupStep > 0}">Step 1</li>
+            <li ng-class="{'s-active' : signupStep > 1}" >Step 2</li>
+            <li ng-class="{'s-active' : signupStep > 2}" >Step 3</li>
+        </ul>
+    </div>
+    <div class="steep">
+        <div class="steep1">
+            <div class="uns-check" ng-class="{'sc-dot' : signupStep == 1, 's-check': signupStep > 1}" >
+                <div class="sc-line" ng-class="{'s-display' : signupStep < 2}" ></div>
+            </div>
+        </div>
+        <div class="steep2">
+            <div class="uns-check" ng-class="{'sc-dot' : signupStep == 2, 's-check': signupStep > 2}" >
+                <div class="sc-line" ng-class="{'s-display' : signupStep < 3}" ></div>
+            </div>
+        </div>
+        <div class="steep3">
+            <div class="uns-check" ng-class="{'sc-dot' : signupStep == 3, 's-check': signupStep > 3}" >
+            </div>
+        </div>
+    </div>
+
+
+    <div class="sign-up-step" ng-style="formStyle" >
+        <div class="step-1 sign-up-box">
+            <div class="se-msg">
+                <p ng-bind="errorMsg" ng-class="requestSuccess ? 'var-code-sent': 'err-msg' " class="ng-cloak"></p>
+            </div>
+            <div class="clear"></div>
+            <!-- Send Verification code to Email or mobile -->
+            <form ng-if="signupStep == 1" name="signupStep1" ng-submit="sendCode(signupStep1.$valid, $event)"  action="#" method="post" novalidate="" >
+                <div class="s-area">
+                        <div ng-show="credentials.authMethod !== 'email'" class="s-input h-28 right-rad-0 float-left width-80" style="border-right: 0">
+                            <button   class="prefix_code "
+                                      rg-dropdown dd-template="ddTemplate" dd-control="ddControl" dd-action="setPrefix"
+                                      type="button" toggle="dropdown" value="{{credentials.mblDc}}" >
+                                <li class="flag {{credentials.countryFlag}}"><span ng-bind="credentials.mblDc"></span></li>
+                            </button>
+                        </div>
+
+                    <div ng-if="credentials.authMethod === 'email'" class="s-input h-28 right-rad-0 float-left w-48" style="border-right: 0">
+                        <button   class="prefix_code"
+                                 type="button"  value="Email" >
+                            <li class="flag remail"> </li>
+                        </button>
+                    </div>
+                    <div ng-class="credentials.authMethod !== 'email' ? 'w-155' : 'w-210'" class="s-input h-28 float-left left-rad-0" style="overflow:hidden;" >
+                        <input  ng-if="credentials.authMethod !== 'email'" ng-model="credentials.mbl" name="mbl" type="text" placeholder="Mobile Number" ng-required="true" ng-minlength="6" ng-maxlength="14" ng-pattern="/^\d+$/" autocomplete="off"/>
+                        <input style="width: 180px" ng-if="credentials.authMethod === 'email'" ng-model="credentials.email" name="email" type="email" placeholder="Enter your email" ng-required="true"  autocomplete="off"/>
+                    </div>
+                    <span ng-show="!signupStep1.email.$pristine" ng-class="signupStep1.email.$valid ? 'l-success' : 'l - wrong'"></span>
+                    <span ng-show="!signupStep1.mbl.$pristine" ng-class="signupStep1.mbl.$valid ? 'l-success' : 'l - wrong'"></span>
+                </div>
+                <div class="input-bg-auto-width sign-sty">
+                    <input ng-disabled="signupStep1.$invalid || disableForm" rg-click="sendCode(signupStep1.$valid, $event)"  type="submit" value="Send Code" name="sendcode" />
+                </div>
+                <div ng-cloak="" ng-show="disableForm" class="ng-cloak stp-mar log-loader">Processing</div>
+            </form>
+            <div class="clear"></div>
+        </div>
+        <div class="step-2 sign-up-box">
+            <div class="se-msg">
+                <p ng-clock="" ng-bind="errorMsg" ng-class="requestSuccess ? 'var-code-sent': 'err-msg' " class="ng-cloak"></p>
+            </div>
+            <!--Verify Code -->
+            <form name="signupStep2"  ng-if="signupStep == 2"  ng-submit="verifyCode(signupStep2.$valid, $event)">
+                <div class="s-area">
+                    <div class="s-input h-28  float-left" style="overflow:hidden;">
+                        <input  ng-model="credentials.vc" style="width:222px;" name="vc" type="text" placeholder="Enter code" ng-required="true"/>
+                    </div>
+                </div>
+                <div class="input-bg-auto-width sign-sty">
+                    <input ng-disabled="signupStep2.$invalid || disableForm" rg-click="verifyCode(signupStep2.$valid, $event)"  type="submit" value="Verify Code" name="verifycode" />
+                </div>
+                <div class="resend-m" rg-click="sendCode(true, $event)">
+                    <a>Resend</a>
+                </div>
+                <div ng-cloak="" ng-show="disableForm" class="ng-cloak stp-mar log-loader">Processing</div>
+            </form>
+            <div class="clear"></div>
+        </div>
+
+        <div class="step-3 sign-up-box">
+            <!-- Signup -->
+            <div class="se-msg">
+                <p ng-clock="" ng-bind="errorMsg" ng-class="requestSuccess ? 'var-code-sent': 'err-msg' " class="ng-cloak"></p>
+            </div>
+            <div class="clear"></div>
+            <form name="signupStep3"  ng-if="signupStep == 3" ng-submit="signup(signupStep3.$valid, $event)" >
+                <div class="steep3-ani">Your Ringid &nbsp; {{newUid}}</div>
+
+                <div class="s-area">
+
+                    <div class="s-input h-28 right-rad-0 float-left width-80" style="border-right: 0">
+                        <button   class="prefix_code "
+                                  rg-dropdown dd-template="ddTemplate" dd-control="ddControl" dd-action="setPrefix"
+                                  type="button" toggle="dropdown" value="{{credentials.mblDc}}" >
+                            <li class="flag {{credentials.countryFlag}}"><span ng-bind="credentials.mblDc"></span></li>
+                        </button>
+                    </div>
+                    <div  class="s-input h-28 float-left left-rad-0  w-180" style="overflow:hidden;" >
+                        <input style="width: 180px"   ng-model="credentials.mbl" name="mbl" type="text" placeholder="Mobile Number" ng-required="true" ng-minlength="6" ng-maxlength="14" ng-pattern="/^\d+$/" autocomplete="off"/>
+                    </div>
+                    <span ng-show="!signupStep1.mbl.$pristine" ng-class="signupStep1.mbl.$valid ? 'l-success' : 'l - wrong'"></span>
+                </div>
+                    <div class="s-input h-28  float-left" style="overflow:hidden;">
+                        <input  ng-model="credentials.name" name="name" type="text" placeholder="Name" style="width:210px;" ng-required="true" ng-minlength="2" ng-maxlength="50"/>
+                        <span ng-show="!signupStep3.name.$pristine" ng-class="signupStep3.name.$valid ? 'l-success' : 'l - wrong'" class="top-3"></span>
+                    </div>
+                    <div class="s-input h-28  float-left" style="overflow:hidden;">
+                        <input  ng-model="credentials.password" name="password" type="password" style="width:210px;" placeholder="Password" ng-required="true" ng-minlength="6"/>
+                        <span ng-show="!signupStep3.password.$pristine" ng-class="signupStep3.password.$valid ? 'l-success' : 'l - wrong'" class="top-3"></span>
+                    </div>
+
+                    <div class="s-input h-28  float-left" style="overflow:hidden;">
+                        <input  ng-model="credentials.repassword" name="repassword" type="password" style="width:210px;" placeholder="Repeat Password" ng-required="true"/>
+                        <span ng-show="!signupStep3.repassword.$pristine" ng-class="credentials.repassword == credentials.password? 'l-success' : 'l - wrong'" class="top-3"></span>
+                    </div>
+
+                    <div class="input-bg-auto-width sign-sty">
+                        <input ng-disabled="signupStep3.$invalid || disableForm" style="margin-left:0;" type="submit" value="Finish" name="signup" />
+                    </div>
+                    <div ng-cloak="" ng-show="disableForm" class="ng-cloak log-loader">Processing</div>
+                </div>
+            </form>
+            <div class="clear"></div>
+
+        </div>
+
+
+    </div>
+
+</div>

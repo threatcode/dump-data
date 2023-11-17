@@ -1,0 +1,18 @@
+<div class="emoticon_bottom" ng-show="showsticker">
+    <div class="emo_stage">
+        <div class="emo-btn icon-emoticon ico-sty" rg-click="showEmoticons($event)" ></div>
+        <div class="emo-btn emo-prev icon-left-arrow" rg-click="loadPrevious($event)" ng-show="startAt > 0"></div>
+        <div class="emo-btn emo-next icon-right-arrow" rg-click="loadNext($event)" ng-show="startAt + 4 < myStickerCatIds().length"></div>
+        <div class="emo-btn emo-add icon-plus" id="stickerMarketOpener"
+             rg-ringbox="true" ringbox-controller="StickerPopupController"
+             ringbox-type="remote" ringbox-target="pages/partials/stickers/popups/sticker-market.html" >
+        </div>
+        <div style="" class="slider_stage" >
+            <div class="emo_cats" id="emo_cats">
+                <a class="theme" ng-repeat="aStickerCatId in getMyStickers()" ng-init="aSticker = getSticker(aStickerCatId)" rg-click="selectStickerCatId($event, aSticker.getKey())"> <!--changeEmoticonPreview(sticker.getKey())-->
+                    <img ng-src="{{aSticker.getCaptionImageUrl(selectedStickerCatId == aStickerCatId)}}" alt="StickerImage" class="stickerCaptionImage" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+<div  class="dashboard-bg  mid-width pro-page-width">
+    <div class="middle"> 
+        <div class="profile news-pro-wrap">
+            <div  class="media-nav">
+                <rg-tab-nav></rg-tab-nav> 
+                <div style="position:relative; float: right; ">
+                    <div class="box-search media-search">
+                        <span class="img_sprite width-25px height-25px search-icon-25 p-absolute search-icon-p"></span>
+                        <input type="text" name="search" 
+                               ng-change="doSearch()" 
+                               ng-model="searchParam" 
+                               ng-model-options="{ debounce: 500 }" 
+                               value="" 
+                               autocomplete="off" 
+                               placeholder="Search discover"/>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-show="!searching" class="news-pro-wrap mar-0-5 mc">
+
+                <div  class="news-pro-box h210" ng-repeat="media in mediaDiscoverMap.all() track by $index" ng-class="{followed: media.value.isSubscribed()}">
+                    <div class="news-pro-img" style="background: url('{{media.value.getProfileImage()}}') no-repeat; ">
+                        <!--<img ng-src="{{media.value.getProfileImage()}}">-->
+                    </div>
+                    <div class="flow-text" ng-cloak="true">{{ media.value.getFollowerCountWithText() }}</div>
+                    <div class="flow-text-name"><a ng-href="{{media.value.getLink('profile')}}" ng-cloak="true">{{media.value.getFullName()}}</a></div>
+                    <div class="flow-text-name flow-text-details" ng-cloak="true">
+                        {{media.value.getSlogan()}}
+                    </div>
+                    <div class="flow-btn" ng-if="! media.value.isSubscribed()" rg-click="followPage(media.value, $index)">
+                        + Follow
+                    </div>
+                    <a ng-if="media.value.isSubscribed()" ng-href="{{media.value.getLink('profile')}}">
+                        <div class="flow-btn">&#x2714; Following</div>
+                    </a>
+                </div> 
+                <div ng-if="discoverSuggestion" class="no-suggest">
+                    <p>No suggestions available at this moment</p>
+                </div>
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+
+                <div class="news-load" ng-show="loadmore">
+                    <!--<button ng-show="loadmore && portalDiscoverMap.length() > 1" ng-click="loadMoreMedia()">Load More</button>-->
+                    <a class="load-more"  rg-click="loadMoreMediaPage()" ng-show="mediaDiscoverMap.length() > 1 && !showloadmore">Load More &raquo;</a>
+                    <a class="load-more-disabled"  ng-show="showloadmore"> 
+                        <span class="load-circle">
+                            <span class="ld-cir1 ld-cir"></span>
+                            <span class="ld-cir2 ld-cir"></span>
+                            <span class="ld-cir3 ld-cir"></span>
+                            <span class="ld-cir4 ld-cir"></span>
+                            <span class="ld-cir5 ld-cir"></span>
+                            <span class="ld-cir6 ld-cir"></span>
+                            <span class="ld-cir7 ld-cir"></span>
+                            <span class="ld-cir8 ld-cir"></span>
+                            <span class="ld-cir9 ld-cir"></span>
+                            <span class="ld-cir10 ld-cir"></span>
+                            <span class="ld-cir11 ld-cir"></span>
+                            <span class="ld-cir12 ld-cir"></span>
+                        </span>
+                        Loading...</a>
+                </div>
+            </div>
+
+            <div ng-show="searching" class="news-pro-wrap mar-0-5 mc">
+                <div  class="news-pro-box h210" ng-repeat="media in searchResultMap.all() track by $index" ng-class="{followed: media.value.isSubscribed()}">
+                    <div class="news-pro-img" style="background: url('{{media.value.getProfileImage()}}') no-repeat; ">
+                        <!--<img ng-src="{{media.value.getProfileImage()}}">-->
+                    </div>
+                    <div class="flow-text" ng-cloak="true">{{ media.value.getFollowerCountWithText() }}</div>
+                    <div class="flow-text-name"><a ng-href="{{media.value.getLink('profile')}}" ng-cloak="true">{{media.value.getFullName()}}</a></div>
+                    <div class="flow-text-name flow-text-details" ng-cloak="true">
+                        {{media.value.getSlogan()}}
+                    </div>
+                    <!-- <div class="flow-btn" 
+                         ng-if="!media.value.isSubscribed()"
+                         rg-ringbox="true"
+                         ringbox-controller="portalFollowController"
+                         ringbox-target="templates/newsportal/portal-follow.popup.html"
+                         ringbox-type="remote" 
+                         ringbox-data="getSearchPortalCatList(media.value,$index)">+ Follow</div> -->
+                    <div class="flow-btn" ng-if="! media.value.isSubscribed()" rg-click="followPage(media.value, $index)">
+                        + Follow
+                    </div>
+                    <a ng-if="media.value.isSubscribed()" ng-href="{{media.value.getLink('profile')}}">
+                        <div class="flow-btn">&#x2714; Following</div>
+                    </a>
+                </div>  
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+
+            </div>
+            <div class="news-pro-wrap mar-0-10" ng-show="nodata">No result found</div>
+        </div>
+    </div>
+</div>

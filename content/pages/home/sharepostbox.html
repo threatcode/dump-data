@@ -1,0 +1,25 @@
+<div class="popup-shared-post" ng-if="showSharePostBox">
+    <div class="float-left">
+        <div class="sr-thumbnail">
+            <div class="icon-logo-circle pss-logo">
+                <a >  <img class="responsive-all"   ng-src="{{ currentUser.avatar('crp')}}"></a>
+            </div>
+        </div>
+    </div>
+    <div class="post-t">
+        <form enctype="multipart/form-data">
+            <div class="style-1sharedpostbox">
+                <textarea id="d-textarea" auto-grow="" ng-model="$parent.feedText" ng-trim="" ng-disabled="inputDisabled"  placeholder="Say something about this..."></textarea>
+                <label ng-show="errorMessage" class="s-error" ng-cloak="true">{{errorMessage}}</label>
+            </div>
+            <div class="clear"></div>
+            <div>
+                <div class="post-box">
+                    <rg-emoticon></rg-emoticon>
+                    <input type="button" ng-disabled="inputDisabled" rg-click="shareFeed()"  class="c-button float-right" value="POST" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="clear"></div>
+</div>

@@ -1,0 +1,95 @@
+<div class="fixed-top top-0">
+    <div class="header-bg">
+        <div class="width-200 float-left hide-in-mobile">
+            <div class="logo">
+                <a ng-href="{{routes.home}}" ><img src="images/brand_name.png" /></a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="width-35 float-left show-in-mobile mar-right-10">
+            <div class="logo">
+                <a ng-href="{{routes.home}}" ><img src="images/icon/brand_name_sm.png" /></a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        
+        
+        
+        <div class="box-search border-radius-4px float-left width-450">
+            <span class="img_sprite width-25px height-25px search-icon-25 p-absolute search-icon-p"></span>
+            <rg-search placeholder="Search..."></rg-search>
+        </div>
+
+        <!-- Remove for now, need to do more testing on this -->
+        <!--<div ng-show="isOffline" class="offline_messages">-->
+            <!--<h2>Connection Problem!</h2>-->
+            <!--<p> Trying to reconnect to the Server...<i rg-click="retryToKeepAlive()" title="Reconnect now" class="off-retry-ico img_sprite cur-p h-w-14-13"></i></p>-->
+        <!--</div>-->
+
+        <rg-loading style="display:none"></rg-loading>
+        
+        
+        <div ng-controller="HeaderController as header" class="float-right">
+            <div class="top-menu">
+                <ul class="menu-list">
+                    <li  class="parent hide-on-600"  ng-class="{ active : header.getActiveMenu() == 'home' }">
+                        <a title="Home" reloadpage="true" rg-href="{{routes.home}}" >
+                            <div class="img_sprite home-ico width-25px height-25px m-t-14"></div>
+                        </a>
+                    </li>
+                    <li class="parent"  rg-dropdown="dropdown()"  dd-html="header.noti.ddHtml"
+                        dd-opened="header.noti.ddOpened()" dd-before-close="header.noti.ddBeforeClose()"
+                        ng-class="{ active : header.getActiveMenu() == 'notification' }">
+                        <a  title="Notification">
+                            <div class="img_sprite width-25px height-25px notification-ico m-t-14">
+                                <div class="ng-cloak counter-not"  ng-show="header.notiCount()" ng-cloak="true">{{header.notiCount()}}</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li  class="parent"  rg-dropdown="dropdown()" dd-html="header.chatHistory.ddHtml"
+                         dd-opened="header.chatHistory.ddOpened()" dd-before-close="header.chatHistory.ddBeforeClose()"
+                         ng-class="{ active : header.getActiveMenu() == 'chat_history' }" >
+                        <a  title="Chat History">
+
+                            <div class="img_sprite width-25px height-25px chat-ico m-t-14">
+
+                            
+<!--                             <div class="sprite top-ico-size chat-ico">
+                                 <div ng-bind="header.unreadChatConversationCount()" ng-show="header.unreadChatConversationCount() > 0" class="ng-cloak counter-not"></div>
+                            </div>
+                            
+                          <div class="tm-ico  icon-chat">-->
+
+                                <div ng-bind="header.unreadChatConversationCount()" ng-show="header.unreadChatConversationCount() > 0" class="ng-cloak counter-not"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li  class="parent"  rg-dropdown="dropdown()" dd-template="header.freq.ddTemplate"
+                         dd-opened="header.freq.ddOpened()" dd-before-close="header.freq.ddBeforeClose()"
+                         ng-class="{ active : header.getActiveMenu() == 'friend_request' }" >
+                        <a  title="Friend Request">
+                            <div class="img_sprite width-25px height-25px fri-ico m-t-14">
+                                <div ng-bind="header.requestCount()" ng-show="header.requestCount()" class="ng-cloak counter-not"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="parent"  rg-dropdown="dropdown()" dd-html="header.logout.ddHtml"
+                        dd-opened="header.logout.ddOpened()" dd-before-close="header.logout.ddBeforeClose()"
+                        dd-control="header.logout.ddControl" dd-action="header.logout.ddAction"
+                        ng-class="{ active : header.getActiveMenu() == 'logout' }" >
+                        <a title="Logout">
+                            <img class="pro-header-image m-t-10" ng-src="{{currentUser.avatar('thumb')}}"/>
+                        </a>
+                    </li>
+                    <li class="parent hide-on-600" ng-if="header.defaultSpan() > 1 && !hideColumn">
+                        <a><div  title="Feed View" class="img_sprite width-25px height-25px feed-view-ico p-rt mar-top-15" rg-column></div></a>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div  style="height:52px;"></div>
+<div  class="clear"></div>

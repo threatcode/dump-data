@@ -1,0 +1,57 @@
+<!--<ul class="mycircle-list" ng-show="mc.showRingCircle"  >-->
+<ul class="mycircle-list" >
+    <li class="top-title-bar">
+        <span style="font-size:25px;" class="icon-circle"></span>
+        <span>My Circles</span>
+        <!--<a style="margin:0;padding:0;vertical-align:top;float: right;padding-right:3px;width:72px; font-size: 12px" rg-click="mc.toggleRingCircle(false)"-->
+        <a style="margin:0;padding:0;vertical-align:top;float: right;padding-right:3px;width:72px; font-size: 12px" 
+           rg-ringbox="true" ringbox-controller="CirclePopupController" ringbox-type="remote"
+           ringbox-target="templates/partials/circle-popup.html" title="Create New">
+            <span style="font-size:18px;font-weight: 600;" class="img_sprite w-h-18px add-new-gr "></span>
+            <span style="font-size:13px;font-weight: 300; line-height: 18px; margin-top: 5px" >Create</span>
+        </a>
+    </li>
+    <li style="margin:0;padding:0;">
+        <div class="right-top-search" style="height:30px;">
+            <div class="chat-list" style="border-bottom:0;padding:2px 0;">
+                <div class="search-s float-left icon-search-d circle-serach-icon-size border-right-0">
+
+                </div>
+                <div class="float-left">
+                    <form on-submit="return false;" method="" action="">
+                        <input type="text" ng-model="searchText"  class="right-searchbar" placeholder="Search Circle" />
+                    </form>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </li>
+    <li class="height-of-nav-right" style="margin:0;padding:0;">
+        <ul class="height-and-overflow" rg-scrollbar="true">
+            <li style="font-weight:300;padding:10px;display:block;font-size:14px;color: #f47727;line-height: 20px;"
+                ng-show="ddControl.getCircles('true').length() === 0 && ddControl.getCircles('false').length() === 0">
+                You don't have any circle yet, to create your first circle
+                <!--<a style="margin:0;padding:0;width:80px;" rg-click="mc.toggleRingCircle(false)"-->
+                <a style="margin:0;padding:0;width:80px;" 
+                   rg-ringbox="true" ringbox-controller="CirclePopupController" ringbox-type="remote"
+                   ringbox-target="templates/partials/circle-popup.html" title="Create New">
+                    Click Here
+                </a>
+            </li>
+
+            <li  ng-repeat="c in ddControl.getCircles('true').all() | mapFilter:{mapApi: 'getName', value: searchText}" class="grp-array">
+                <a ng-href="{{c.value.getLink()}}" ng-cloak="true">{{c.value.getName()}}</a>
+            </li>
+            <li  ng-repeat="c in ddControl.getCircles('false').all() | mapFilter:{mapApi: 'getName', value: searchText}" class="grp-array">
+                <a ng-href="{{c.value.getLink()}}" ng-cloak="true">{{c.value.getName()}}</a>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+
+            <!--<li rg-click="mc.onCircleListItemClick($event,c.value.getLinkOnly())" ng-repeat="c in mc.getMyCircles().all()| mapFilter:{mapApi: 'getName', value: searchText}" class="grp-array">-->
+            <!--<li  ng-repeat="c in mc.getMyCircles().all()| mapFilter:{mapApi: 'getName', value: searchText}" class="grp-array">-->
+            <!--<li rg-click="mc.onCircleListItemClick($event,c.value.getLinkOnly())" ng-repeat="c in mc.getCirclesOfMe().all()| mapFilter:{mapApi: 'getName', value: searchText}" class="grp-array">-->
+            <!--<li  ng-repeat="c in mc.getCirclesOfMe().all()| mapFilter:{mapApi: 'getName', value: searchText}" class="grp-array">-->

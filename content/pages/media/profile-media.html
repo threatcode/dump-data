@@ -1,0 +1,102 @@
+<div  class="mar-10px">
+
+    <!-- Profile Album View Start -->
+    <div class="profile-media-album mar-0-5 " > 
+        <div class="friend-header">
+            <h2 >
+                <a ng-href="{{routes.audio}}" ><span rg-active-route route="{{routes.audio}}" active-class="fl-active" contain="true">Musics</span></a>
+                <a ng-href="{{routes.video}}"><span rg-active-route route="{{routes.video}}" active-class="fl-active" contain="true">Videos</span></a>
+            </h2>
+        </div>
+        <div class="clear"></div>
+        <div style="min-height: 500px; background: #fff"  ng-show="!showAlbumContents">
+            <!--Music -->
+            <div class="musics" >
+                <div class="music-container margin-0">
+                    <div  class="grid-view  active">                 
+                        <div class="my-album">
+                            <ng-repeat ng-repeat="album in albums | limitTo : limitItem track by album.value.getKey() ">
+                            <!-- <ng-repeat ng-repeat="album in albums track by album.getKey() | limitTo : limitItem "> -->
+                <rg-albumview album="album.value" for-profile="{{forProfile}}" template-path="templates/media/albumview.directive.html" ></rg-albumview>
+                            </ng-repeat>
+                            <div ng-show="state.albumsLoading" class="full_album-box music-loader-box">
+                                <div class="p-area-loader">
+                                    <div class="music-box-loader">
+                                        <div class="loader-id icon-id-s">
+                                            <span class="icon-logo-circle"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="full_album-box nab" ng-hide="!state.albumsLoading && albums.length == 0"></div>
+                            <div class="full_album-box nab" ng-hide="!state.albumsLoading && albums.length == 0"></div>
+                            <div class="full_album-box nab" ng-hide="!state.albumsLoading && albums.length == 0"></div>
+                            <div class="full_album-box nab" ng-hide="!state.albumsLoading && albums.length == 0"></div>
+
+                            <p ng-bind="statusText()" style="padding:10px;font-size:13px;text-align:left;"></p>
+                        </div>
+                            <li class="load-more" ng-show="!state.albumsLoading && albums.length > limitItem" rg-click="increaseLimit()">See More</li>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Profile Album View End -->
+
+    <!-- Profile Media Preview Start -->
+    <div class="profile-album-preview mar-0-5 "  ng-show="showAlbumContents">
+        <div class="mediapreview">
+            <div class="friend-bg music-container margin-0" >
+                <div class="browse-album grid-view active">
+                    <div class="friend-header">
+                        <div   class="albumtitle">
+                            <span ng-show="albumMap" ng-cloak="true">{{albumMap.getName()}} {{albumMap.getImages().length()}}</span>
+                        </div>
+
+                        <div class="ply">
+                            <a class="plybtn" ng-show="albumMap.getContents().length() > 1"
+                               class="music-box" rg-ringbox="true" ring-backdrop-close="false" show-close-btn="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"
+                               ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(true)">
+                                Play All
+                            </a>
+                            <a class="plybtn" ng-show="albumMap.getContents().length() > 1" ng-class="{'disable-click': selectedPlaylist.length() == 0}"
+                               rg-ringbox="true" ring-backdrop-close="false" show-close-btn="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"
+                               ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(false)">Play Selected</a>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="friends-list">
+
+                            <ng-repeat ng-repeat="media in albumMap.getContents().all()">
+                                <rg-mediaview album="albumMap" media="media.value" media-action="mediaAction(action, media, album)" select="selectMedia(mediaMap, status)" template-path="templates/media/mediaview.directive.html" ></rg-mediaview>
+                            </ng-repeat>
+
+
+                        <p ng-show="!state.contentsLoading && albumMap.getContents().length() == 0" style="padding:10px;font-size:13px;" ng-cloak="true">This album does not have any {{albumMap.getContentText()}}</p>
+
+                        <div class="music-box no-border">
+                            <div ng-show="state.albumsLoading || state.contentsLoading" class="full_album-box music-loader-box" style="margin: 0">
+                                <div class="p-area-loader">
+                                    <div class="music-box-loader">
+                                        <div class="loader-id icon-id-s">
+                                            <span class="icon-logo-circle"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="music-box no-border h-5"></div>
+                        <!-- <div class="music-box no-border" ng-show="state.albumsLoading || state.contentsLoading" ></div> -->
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <rg-bottom-reached load-more="loadMoreContent()" 
+        enabled="{{showAlbumContents && !state.contentsLoading && albumMap.getContentCount() < albums.length}}"></rg-bottom-reached>
+    <!-- - Profile Media Preview Start -->
+</div>

@@ -1,0 +1,53 @@
+<div  class="action pad-204 member-ac z-in-110 top-23" 
+      ng-clock 
+      >
+    <i class="drop-sprite curve-a curve-t-ico p-ab top11"></i>
+    <!--<div ng-show="ddControl.canChangeType(ddControl.member)" >-->
+
+        <div class="ac-top-line" ng-if="ddControl.member.isOwner() && ddControl.isCurrentUserOwner()"  ng-show="ddControl.canChangeType(ddControl.member)" >
+            <a class="pad-8-14"  class="border-0" 
+               rg-ringbox="true"
+               ringbox-type="remote"
+               ringbox-controller="TagChatMemberPagePopupController"
+               ringbox-target="templates/partials/tag-chat/owner-select-popup.html"
+               ringbox-data="{ 
+               tagId : ddControl.tagId, 
+               member : ddControl.member, 
+               action:'type_change', 
+               type: ddControl.memberTypeToChange['type']
+               }"
+
+               ng-cloak="true"><i class="drop-sprite w-h-13 make-admin-ico feed-font"></i>{{ddControl.memberTypeToChange['text']}}</a>
+
+        </div>
+
+        <div class="ac-top-line" ng-if="!ddControl.member.isOwner()"  ng-show="ddControl.canChangeType(ddControl.member)" >
+
+
+            <a class="pad-8-14" 
+               rg-click="ddAction()({
+               event: $event, 
+               action:'type_change', 
+               type: ddControl.memberTypeToChange['type'], 
+               member : ddControl.member,
+               tagId: ddControl.tagId 
+               })"
+
+               ng-cloak="true"><i class="drop-sprite w-h-13 make-admin-ico feed-font"></i> {{ ddControl.memberTypeToChange['text']}}</a>
+
+        </div>
+    <!--</div>-->
+
+    <div class="ac-top-line" ng-show="ddControl.canRemoveMember(ddControl.member)" >
+
+        <a class="pad-8-14"  
+           rg-click="ddAction()({
+           event: $event, 
+           action:'remove', 
+           member : ddControl.member,
+           tagId: ddControl.tagId
+           })" 
+
+           ><i class="drop-sprite w-h-13 remove-member-ico feed-font"></i>Remove From Chat</a> 
+    </div>
+</div>

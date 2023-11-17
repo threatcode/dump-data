@@ -1,0 +1,438 @@
+<style type="text/css">
+    body{background-color:#fcfdfd;}
+    h2,h1,p,a,span,div,ul,li{font-family:'Roboto'}  
+    .switch-text,.copyright-text,.s-option ul li{font-family:'Roboto'}
+    .sc-height {background-color:transparent;}
+    .mid-body-dashboard ng-view {
+        position: static;
+        z-index: 1;
+    }
+    .log-bg{
+
+        width:100%;height:100%;
+    }
+    .f-bg{
+        float:right;margin-right:150px;
+    }
+    .right-log{
+        height:610px;position: absolute;right:52px;top:50%;margin-top:-305px;
+    }
+    ul.feat{margin-top:132px;position:absolute;right:118px;}
+
+    ul.feat li{list-style: none;padding:0;margin:0;}
+    ul.feat li a{
+        font-family: 'Roboto';
+        font-size: 22px;
+        font-weight: 300;
+        color: #504f4e;
+        text-decoration: none;
+        margin: 0;
+        line-height: 22px;
+        text-align: right;
+        display: block;
+        padding: 5px 0 4px 0;
+        margin-bottom: 21px;
+    }
+    ul.feat li a:hover{
+        color:#f47727;
+        transition: color 0.5s ease;
+        -moz-transition: color 0.5s ease;
+        -webkit-transition: color 0.5s ease;
+        -o-transition: color 0.5s ease;
+        -ms-transition: color 0.5s ease;
+    }
+    .slider-bg-login{
+        background: url('images/static/slider_bg.png');
+        background-position: left bottom;
+        background-repeat: repeat-x;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        z-index: 4;
+        height: 110px;
+        left:0;
+    }
+    .left-bg-login{
+        background: url('images/static/left_bg.png');
+        background-position: left bottom;
+        background-repeat: no-repeat;
+        width: 100%;
+        position: absolute;
+        z-index: 1;
+        height: 100px;
+        left: 0;
+        bottom: 0;
+    }
+    .right-bg-login{
+        background: url('images/static/right_bg.png');
+        background-position: right bottom;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 135px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    .car-img{
+        height: 520px;
+        position: absolute;
+        left: 70px;
+        /*bottom: 100px;*/
+        top:50%;
+        margin-top:-260px;
+    }
+    .vertical-text{
+        -ms-transform: rotate(90deg);
+        -moz-transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        -ms-transform-origin: right bottom 0;
+        -moz-transform-origin: right bottom 0;
+        -webkit-transform-origin: right bottom 0;
+        transform-origin: right bottom 0;
+        float:right;padding:0;margin-top: 18px;
+    }
+    .vta{font-size:35px; font-weight: 100;display: block;}
+    .f-nav{
+        z-index: 3;position: absolute;width: 100%;bottom: 0;
+    }
+    .font-style img{
+        float:right;position:absolute;right:62px;
+    }
+    .responsive-pic-index {
+        border: 0 none;
+        display: inline-block;
+        height: auto;
+        max-width: 100%;
+        vertical-align: middle;
+    }
+    .s-top{
+        height:4px;line-height:0;
+    }
+    .sb {
+        background-image: none;
+    }
+    .width-400{margin:0 auto 0 auto;overflow: hidden;}
+    .login-pos{
+        width: 400px;
+        /*height: 360px;*/
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -200px;
+        margin-top: -180px;
+        z-index: 5;
+    }
+    .d-all{text-align: left;margin-left: 10px;margin-top:-20px;    z-index: 5;position: relative;}
+    .d-all img{vertical-align:middle;margin-left: 10px; cursor: pointer;}
+    .dd-sec{ width: 100px;}
+    .desktop-download{ width: 200px;}
+    .desktop-download:after{display: none;}
+    .dd-sec:hover{border:1px solid #f47727;}
+    @media only screen and (max-width: 1540px) {
+        .car-img{
+            height: 520px;
+            position: absolute;
+            left: 0px;
+            top: 65%;
+            margin-top: -260px;
+            width: 460px;
+
+        }
+    }
+</style>
+<div class="log-bg">
+    <div class="header-wrapper">
+        <div class="sc-height"></div>
+        <div class="fixed-top headersc">
+            <div class="col-5-12">
+                &nbsp;
+                <!--<a href="faq.html"><img class="f-bg" src="images/static/faq-nav.png"> </a>-->
+            </div>
+            <div class="col-2-12 ring-logo">
+                <div class="ring-logo-small">
+                    <a href="/">
+                        <img src="images/ring-logo-circle.png" alt="ringID" class="responsive-pic"/>
+                    </a>
+                </div>
+                &nbsp;
+            </div>
+            <div class="">
+                <ul class="nav">
+                    <li><a href="/faq.html" target="_self" >Help</a></li>
+                    <li><a href="/download.html"  target="_self" >Download</a></li>
+                    <li><a target="_blank" href="//media.ringid.com">Media</a></li>
+                    <li><a rg-click="reloadHome()" ng-href="/"  target="_self" class="active-top">Home</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="col-4-12">
+        <div  class="car-img hide-in-mobile">
+            <img class="responsive-pic-index"  src="images/static/car.png" alt="ringID Car Sticker"/>
+            <div class="clear"></div>
+            <div class="d-all" >
+                <span class="ring-color f-23" style="padding:10px 0;">Available in </span>
+                <div ng-click="showDownload = !showDownload" style="display:inline-block;">
+                    <img  title="Desktop" width="30px" height="30px"  src="images/static/slider/thumb-desktop.png"/>
+                    <div class="desktop-download" ng-show="showDownload" style="margin-top: -135px;margin-left: -75px;">
+                        <div class="dd-sec">
+                            <a href="//images.ringid.com/official/desktop/ringID.exe">
+                                <div class="exe"></div>
+                                <div class="dtxt">Exe File</div>
+                            </a>
+                        </div>
+                        <div class="dd-sec">
+                            <a href="//images.ringid.com/official/desktop/ringID.zip">
+                                <div class="zip"></div>
+                                <div class="dtxt">Zip File</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a href="//www.microsoft.com/store/apps/9WZDNCRCV6NB" target="_blank" title="Windows App"><img  width="30px" height="30px" src="images/static/slider/thumb-windows.png"/></a>
+                <a href="//play.google.com/store/apps/details?id=com.ringid.ring" target="_blank" title="Android App"><img width="30px" height="30px"  src="images/static/slider/thumb-android.png"/></a>
+                <a href="//itunes.apple.com/us/app/ringid/id925330759?mt=8" target="_blank" title="iPhone App"><img width="30px" height="30px"  src="images/static/slider/thumb-iphone.png"/></a>
+            </div>
+        </div>
+        &nbsp;
+    </div>
+    <div class="col-4-12">
+        <!--login form start-->
+        <rg-signin></rg-signin>
+        <!-- <div class="sb width-400 login-pos" > -->
+
+        <!--     <div class="s-top"></div> -->
+        <!--     <div class="s-option"> -->
+        <!--         <ul data-tabs> -->
+        <!--             <li >Phone<span class="s-line"></span></li> -->
+        <!--             <li >ringID<span class="s-line"></span></li> -->
+        <!--             <li >Email<span class="s-line"></span></li> -->
+        <!--             <li >Social</li> -->
+        <!--         </ul> -->
+        <!--     </div> -->
+        <!--     <div class="sign-in " ng-style="formStyle"> -->
+        <!--         <div  class="phone sign-in-box width-300"> -->
+        <!--             <div  class="sign-in-part "> -->
+        <!--                 <form   name="signinPhone" ng-submit="login(signinPhone.$valid, $event)"  action="#" method="post" novalidate="" > -->
+        <!--                     <div class="s-area"> -->
+        <!--                         <div class="s-input h-28 right-rad-0 float-left width-80" style="border-right: 0"> -->
+        <!--                             <button  tabindex="-1" class="prefix_code " -->
+        <!--                                       rg-dropdown dd-template="ddTemplate" dd-control="ddControl" dd-action="setPrefix" -->
+        <!--                                       type="button" toggle="dropdown" value="{{credentials.mblDc}}" > -->
+        <!--                                 <li class="flag {{credentials.flagcode}}"><span ng-bind="credentials.mblDc"></span></li> -->
+        <!--                             </button> -->
+        <!--                         </div> -->
+        <!--                         <div class=" s-input h-28 float-left   left-rad-0" style="overflow:hidden;width: 175px" > -->
+        <!--                             <input  tabindex="-1" ng-model="credentials.mbl" spellcheck="false" name="mbl" type="text" placeholder="Mobile Number" ng-required="true" ng-minlength="6" ng-maxlength="14" ng-pattern="/^\d+$/" autocomplete="off"/> -->
+        <!--                         </div> -->
+        <!--                         <span ng-show="!signinPhone.mbl.$pristine || signinClicked" ng-class="signinPhone.mbl.$valid ? 'l-success' : 'l-wrong'"></span> -->
+        <!--                     </div> -->
+        <!--                     <div class="clear"></div> -->
+        <!--                     <div class=" s-area"> -->
+        <!--                         <div class="s-input h-28 input-p"  style="overflow:hidden;"> -->
+        <!--                             <input tabindex="-1" class="hidethis" type="text" spellcheck="false" name="vungvangphone" value="{{credentials.mbl}}"> -->
+        <!--                             <input tabindex="-1"  ng-model="credentials.password" name="password" type="password" placeholder="Password" ng-required="true" ng-minlength="6"  /> -->
+        <!--                         </div> -->
+        <!--                         <span ng-show="!signinPhone.password.$pristine || signinClicked" ng-class="signinPhone.password.$valid ? 'l-success' : 'l-wrong'"></span> -->
+        <!--                     </div> -->
+        <!--                     <div class="forgot-t"> -->
+        <!--                         <div class="re-box chck-s"> -->
+        <!--                             <input tabindex="-1" type="checkbox" ng-model="credentials.remember" id="r2" name="remember" /> -->
+        <!--                             <label for="r2"><span  >Keep me logged in</span></label> -->
+        <!--                         </div> -->
+        <!--                         <div class="for-box" rg-ringbox="true" ringbox-type="remote" ring-backdrop-close="false"  ringbox-target="templates/welcome/forgot-password.html" ringbox-controller="PasswordRecoverController" -->
+        <!--                              >Forgot your password?</div> -->
+        <!--                     </div> -->
+        <!--                     <div class="input-bg-auto-width sign-sty"> -->
+        <!--                         <input tabindex="-1"   type="submit" value="Sign In" name="login" required="" > -->
+        <!--                     </div>                  -->
+        <!--                     <div ng-cloak="" ng-show="disableForm" class="ng-cloak log-loader">Logging</div> -->
+        <!--                     <p ng-clock="" ng-bind="errorMsg" ng-class="requestSuccess ? 'var-code-sent': 'err - msg' " class="ng-cloak invalid-text"></p> -->
+        <!--                     <div class="clear"></div> -->
+        <!--                     <div class="s-up">Don't have a ringID?  <span rg-click="noSignupAllowed()"> Sign-up</span> now</div> -->
+        <!--                     <br/> -->
+        <!--                 </form> -->
+        <!--             </div> -->
+        <!--             <div class="clear"></div> -->
+        <!--         </div> -->
+        <!--         <div class="clear"></div> -->
+        <!--         <div  class="ringid sign-in-box width-300 " > -->
+        <!--             <div  class="sign-in-part "> -->
+        <!--                 <form   name="signinRingid" ng-submit="login(signinRingid.$valid, $event)"  action="#" method="post" novalidate="" > -->
+
+        <!--                     <div class="s-area"> -->
+        <!--                         <div class="s-input h-28 right-rad-0 float-left w-36" style="border-right: 0"> -->
+        <!--                             <button  tabindex="-1" class="prefix_code" -->
+        <!--                                      type="button" toggle="dropdown" value="RingID" > -->
+        <!--                                 <li class="flag r878"></li> -->
+        <!--                             </button> -->
+        <!--                         </div> -->
+        <!--                         <div class=" s-input h-28 float-left width-220 left-rad-0" style="overflow:hidden;" > -->
+        <!--                             <input tabindex="-1" style="width: 192px"   ng-model="credentials.ringid" spellcheck="false" name="ringid" type="text" placeholder="Ringid Number" ng-required="true" ng-minlength="8" ng-maxlength="8" ng-pattern="/^\d+$/" autocomplete="off"/> -->
+        <!--                         </div> -->
+        <!--                         <span ng-show="!signinRingid.ringid.$pristine || signinClicked" ng-class="signinRingid.ringid.$valid ? 'l-success' : 'l-wrong'"></span> -->
+        <!--                     </div> -->
+        <!--                     <div class="clear"></div> -->
+        <!--                     <div class=" s-area"> -->
+        <!--                         <div class="s-input h-28 input-p"  style="overflow:hidden;"> -->
+        <!--                             <input tabindex="-1" class="hidethis" type="text" spellcheck="false'" name="vungvangringid" value="{{credentials.ringid}}"> -->
+        <!--                             <input  tabindex="-1" ng-model="credentials.password" name="password" type="password" placeholder=" Password" ng-required="true" ng-minlength="2"/> -->
+        <!--                         </div> -->
+        <!--                         <span ng-show="!signinRingid.password.$pristine || signinClicked" ng-class="signinRingid.password.$valid ? 'l-success' : 'l-wrong'"></span> -->
+        <!--                     </div> -->
+        <!--                     <div class="forgot-t"> -->
+        <!--                         <div class="re-box chck-s"> -->
+        <!--                             <input tabindex="-1" type="checkbox" ng-model="credentials.remember" id="r2" name="remember" /> -->
+        <!--                             <label for="r2"><span  >Keep me logged in</span></label> -->
+        <!--                         </div> -->
+        <!--                         <div class="for-box" rg-ringbox="true" ringbox-type="remote"  ring-backdrop-close="false" ringbox-target="templates/welcome/forgot-password.html" ringbox-controller="PasswordRecoverController"  -->
+        <!--                              >Forgot your password?</div> -->
+        <!--                     </div> -->
+        <!--                     <div class="input-bg-auto-width sign-sty"> -->
+        <!--                         <input tabindex="-1"   type="submit" value="Sign In" name="login" required="" > -->
+
+        <!--                     </div>                  -->
+        <!--                     <div ng-cloak="" ng-show="disableForm" class="ng-cloak log-loader">Logging</div> -->
+
+        <!--                     <p ng-clock="" ng-bind="errorMsg" ng-class="requestSuccess ? 'var-code-sent': 'err - msg' " class="ng-cloak invalid-text"></p> -->
+        <!--                     <div class="clear"></div> -->
+
+        <!--                     <div class="s-up">Don't have a ringID?  <span rg-click="noSignupAllowed()"> Sign-up</span> now</div> -->
+        <!--                 </form> -->
+        <!--             </div> -->
+        <!--             <div class="clear"></div> -->
+        <!--         </div> -->
+        <!--         <div class="clear"></div> -->
+        <!--         <div  class="email  sign-in-box width-300 " > -->
+        <!--             <div class="sign-in-part "> -->
+        <!--                 <form   name="signinEmail" ng-submit="login(signinEmail.$valid, $event)"  action="#" method="post" novalidate="" > -->
+        <!--                     <div class="s-area"> -->
+        <!--                         <div class="s-input h-28 right-rad-0 float-left w-48" style="border-right: 0"> -->
+        <!--                             <button tabindex="-1" class="prefix_code" -->
+        <!--                                      type="button" toggle="dropdown" value="Email" > -->
+        <!--                                 <li class="flag remail"></li> -->
+        <!--                             </button> -->
+        <!--                         </div> -->
+        <!--                         <div class=" s-input h-28 float-left w-207 left-rad-0" style="overflow:hidden;" > -->
+        <!--                             <input tabindex="-1" style="width: 180px"  ng-model="credentials.email" spellcheck="false"  name="email" type="email" placeholder="Email" ng-required="true"  autocomplete="off"/> -->
+        <!--                         </div> -->
+        <!--                         <span ng-show="!signinEmail.email.$pristine || signinClicked" ng-class="signinEmail.email.$valid ? 'l-success' : 'l-wrong'"></span> -->
+        <!--                     </div> -->
+        <!--                     <div class="clear"></div> -->
+        <!--                     <div class=" s-area"> -->
+        <!--                         <div class="s-input h-28 input-p"  style="overflow:hidden;"> -->
+        <!--                             <input  tabindex="-1" class="hidethis" type="text" spellcheck="false" name="vungvangemail" value="{{credentials.email}}"> -->
+        <!--                             <input   tabindex="-1" ng-model="credentials.password" name="password" type="password" placeholder=" Password" ng-required="true" ng-minlength="2"/> -->
+        <!--                         </div> -->
+        <!--                         <span ng-show="!signinEmail.password.$pristine || signinClicked" ng-class="signinEmail.password.$valid ? 'l-success' : 'l-wrong'"></span> -->
+        <!--                     </div> -->
+        <!--                     <div class="forgot-t"> -->
+        <!--                         <div class="re-box chck-s"> -->
+        <!--                             <input  tabindex="-1" type="checkbox" ng-model="credentials.remember" id="r2" name="remember" /> -->
+        <!--                             <label for="r2"><span  >Keep me logged in</span></label> -->
+        <!--                         </div> -->
+        <!--                         <div class="for-box" rg-ringbox="true" ringbox-type="remote"  ring-backdrop-close="false" ringbox-target="templates/welcome/forgot-password.html" ringbox-controller="PasswordRecoverController"  -->
+        <!--                              >Forgot your password?</div> -->
+        <!--                     </div> -->
+        <!--                     <div class="input-bg-auto-width sign-sty"> -->
+        <!--                         <input  tabindex="-1"   type="submit" value="Sign In" name="login" required="" > -->
+        <!--                     </div>                  -->
+        <!--                     <div ng-cloak="" ng-show="disableForm" class="ng-cloak log-loader">Logging</div> -->
+
+        <!--                     <p ng-clock="" ng-bind="errorMsg" ng-class="requestSuccess ? 'var-code-sent': 'err - msg' " class="ng-cloak invalid-text"></p> -->
+        <!--                     <div class="clear"></div> -->
+        <!--                     <div class="s-up">Don't have a ringID?  <span rg-click="noSignupAllowed()"> Sign-up</span> now</div> -->
+        <!--                 </form> -->
+        <!--             </div> -->
+        <!--             <div class="clear"></div> -->
+        <!--         </div> -->
+        <!--         <div class="clear"></div> -->
+        <!--         <div  class="social sign-in-box width-300 "  > -->
+        <!--             <div class="sign-in-part " > -->
+        <!--                 <div class="scl-link" > -->
+        <!--                     <a tabindex="-1" rg-click="socialLogin('facebook')" href=""> -->
+        <!--                         <div class="scl-icn icn-fb"> -->
+        <!--                             <span class="facebook-ico social-ico"></span> -->
+        <!--                         </div> -->
+        <!--                         <div class="scl-txt">Sign In with Facebook</div> -->
+        <!--                     </a> -->
+        <!--                 </div> -->
+        <!--                 <div class="scl-link" > -->
+        <!--                     <a tabindex="-1" rg-click="socialLogin('twitter')" href=""> -->
+        <!--                         <div class="scl-icn icn-tw"> -->
+        <!--                             <span class="twitter-ico social-ico"></span> -->
+        <!--                         </div> -->
+        <!--                         <div class="scl-txt">Sign In with Twitter</div> -->
+        <!--                     </a> -->
+        <!--                 </div> -->
+        <!--                 <div class="s-up">Don't have a ringID?  <span rg-click="noSignupAllowed()"> Sign-up</span> now</div> -->
+        <!--             </div> -->
+        <!--             <div class="clear"></div> -->
+        <!--         </div> -->
+        <!--         <div class="clear"></div> -->
+        <!--     </div> -->
+        <!-- </div> -->
+        <!--login form end-->
+    </div>
+    <div class="col-4-12">
+        &nbsp;
+        <div class="right-log hide-in-mobile">
+            <ul class="feat">
+                <li><a  target="_blank" href="/features.html/#free-call">Free Call</a></li>
+                <li><a  target="_blank" href="/features.html/#free-message">Free Message</a></li>
+                <li><a  target="_blank" href="/features.html/#free-video-call">Free Video Call</a></li>
+                <li><a  target="_blank" href="/features.html/#secret-chat">Secret Chat</a></li>
+                <li><a  target="_blank" href="/features.html/#stickers">Stickers</a></li>
+                <li><a  target="_blank" href="/features.html/#news-feed">News Feed</a></li>
+                <li><a style="padding-top:7px;" target="_blank" href="/features.html/#media-cloud">Media Cloud</a></li>
+            </ul>
+            <div class="font-style">
+                <h2 class="vertical-text" ><a class="vta" target="_blank" href="/features.html"> More than a Social network </a></h2>
+                <div class="rftr">
+                    <div class="rftr-itemwrapper">
+                        <a target="_blank" href="/features.html/#free-call" class="fc"></a>
+                        <a  target="_blank" href="/features.html/#free-message" class="fm"></a>
+                        <a  target="_blank" href="/features.html/#free-video-call" class="fv"></a>
+                        <a  target="_blank" href="/features.html/#secret-chat" class="sc"></a>
+                        <a  target="_blank" href="/features.html/#stickers" class="st"></a>
+                        <a  target="_blank" href="/features.html/#news-feed" class="nfd"></a>
+                        <a target="_blank" href="/features.html/#media-cloud" class="mc"></a>
+                    </div>
+                </div>
+                <!--<img class="responsive-pic-index" src="images/login-right-bg.png"/>-->
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="slider-bg-login">
+        <div class="left-bg-login">
+            <div class="right-bg-login">
+
+            </div>
+        </div>
+        <!--Footer Start-->
+        <div class="footer-r f-nav">
+            <div class="clear"></div>
+            <div class="switch-text"></div>
+            <div class="col-12-12">
+                <div class="col-3-12">&nbsp;</div>
+                <div class="col-6-12 col-mob-12-12 footer-mid-height">
+                    <a href="privacy.html"  target="_self" >Privacy Policy</a>
+                    <a href="javascript:void(0)" class="circle"  target="_self" ></a>
+                    <a href="terms.html"  target="_self" >Terms & Conditions</a>
+<!--                    <a href="javascript:void(0)" class="circle"  target="_self" ></a>
+                    <a href="accounts.html"  target="_self" >Pages Accounts</a>-->
+                    <div class="copyright-text">Copyright &copy; Ring Inc. 2016 All Rights Reserved</div>
+                </div>
+                <div class="col-3-12">&nbsp;</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--Footer End-->
+    </div>
+    <!--Slider End-->
+</div>

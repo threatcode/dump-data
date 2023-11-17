@@ -1,0 +1,366 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="language" content="EN"/>
+        <meta name="title" content="ringID: News portal dashboard"/>
+        <title>ringID: News portal dashboard</title>
+        <link rel="icon" href="images/favicon.ico"/>
+        <link type="text/css" rel="stylesheet" href="styles/common.css">
+        <link type="text/css" rel="stylesheet" href="styles/sprite.css"/>
+        <link type="text/css" rel="stylesheet" href="styles/dropdown.css"/>
+        <link type="text/css" rel="stylesheet" href="styles/top.css"/>
+        <link type="text/css" rel="stylesheet" href="styles/left.css"/>
+        <link rel='stylesheet' type='text/css' href='styles/sweetalert2.min.css'/>
+        <link type="text/css" rel="stylesheet" href="styles/profile_cover.css"/>
+        <link type="text/css" rel="stylesheet" href="styles/dashboard.css"/>
+        <link type="text/css" rel="stylesheet" href="styles/category.css"/>
+        <link type="text/css" rel="stylesheet" href="styles/profile.css"/>
+        <link type="text/css" rel="stylesheet" href="styles/js_team.css"/>
+        <link type="text/css" rel="stylesheet" href="styles/media.css"/>
+        <link type="text/css" rel="stylesheet" href="styles/pikaday.css"/>
+
+    </head>
+    <body>
+        <div class="p-fixed b-c-f37726 h-52 l-0 r-0 t-0 z-1030">
+            <div class="h-52">
+                <div class="w-200 float-left">
+                    <div class="w-77 m-l-5">
+                        <a href="dashboard.html"><img class="m-t-7" src="images/brand_name.png"/></a>
+                    </div>
+                </div>
+                <div class="float-right">
+                    <div class="top-menu">
+                        <ul class="menu-list">
+                            <li class="parent">
+                                <a title="Logout" class="profileLogout">
+                                    <img class="tm-img pro-header-image" src="images/prof.png"/>
+                                </a>
+                                <div class="drop-box r-0 w-150 t-52">
+                                    <a href="dashboard.html">News Feeds</a>
+                                    <a href="profile.html">Profile</a>
+                                    <a href="category.html">Manage Category</a>
+                                    <a id="logOutButton">Logout</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="h-52"></div>
+        <div class="clear"></div>
+        <div class="width-200 left-sidebar-min-height white-background left-fixed border-right">
+            <div class="row-responsive">
+                <div class="profile-box">
+                    <a>
+                        <div class="p-img" style="background-image: url('images/prof.png');"></div>
+                    </a>
+                    <div class="user-name">
+                        <a class="r-usernm" id="userProfileNameLeft"></a>
+                        <i class="news-portal icon-id-circle"></i>&nbsp;<span id="userRingIdLeft"></span>
+                    </div>
+                </div>
+                <ul  class="left-nav">
+                    <li><a title=""  href="dashboard.html"><i  class="news-portal pro-ico m-r-10"></i><b>News Feeds</b></a></li>
+                    <li><a title=""  href="profile.html"><i  class="news-portal  profile-ico m-r-10"></i><b>Profile</b></a> </li>
+
+                    <li><a title=""  href="category.html"><i  class="news-portal  cat-ico m-r-10"></i><b>Manage Category</b></a> </li>
+
+                    <li><a id="report" title="report"><i  class="news-portal  report-ico m-r-10"></i><b>Report</b></a> </li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--<a href="#inline" class="inline" style="color: red;">Show Me, I am here for U.....................</a>-->
+        <!--<div id="inline" style="display:none;">-->
+        <!--<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>-->
+        <!--</div>-->
+        <div class="right-wrapper">
+            <div class="w-700 m-0-auto">
+                <!--<div id="image-div-holder" class="component">-->
+
+
+                <div class="cover-photo component" id="outer-div-cover">
+                    <div id="draggable-element-cover"> </div>
+
+
+
+                    <a>
+                        <div id="outer-div-profile" class="profile-pic" style="background-image:url('images/lovebg.png');">
+
+                            <div id="draggable-element-profile"> </div>
+
+                            <div class="icon-bg-color p-ab"></div>
+
+                            <div class="fileUpload pro-pic-camera">
+                                <input type="file" name="image" class="upload profileImage cursor-pointer" multiple/>
+
+                                <span class="news-portal camera w-23 h-17 mar-6-0-4-0" ></span>
+                            </div>
+                        </div>
+                    </a>
+
+
+
+
+                    <div class="profile-shape">
+                        <div class="opacity-background">
+                            <div class="online-box-area">
+                                <div class="online-border-left-side">
+
+                                </div>
+                            </div>
+                            <div class="text-of-background"></div>
+                        </div>
+                        <div class="text-online-status">
+                            <span class="news-portal icon-id-circle-pro"></span>
+                            <span class="p-id-text name_of_profile" id="userRingId"></span>
+                            <div class="clear"></div>
+                            <span class="p-offline float-left top-r"></span>
+                            <span class="p-id-text name_of_profile" id="userProfileName"></span>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="setting">
+                        <div class="news-portal set-ico"></div>
+                        <div class="drop-box r-0  t-35 setting-box">
+                            <div class="fileUpload drp">
+                                <input style="cursor: pointer;" type="file" name="image" class="upload coverImage"/>
+                                <span>Change Cover</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="save-or-cancel">
+                        <button id="savecover">Save</button> <button id="cancelcover">Cancel</button>
+                    </div>
+
+
+
+                    <div class="save-or-cancel-profile">
+                        <button id="saveprofile">Save</button> <button id="cancelprofile">Cancel</button>
+                    </div>
+
+
+                </div>
+
+
+                <!--<div class="cover-photo component" id="image-div-holder">-->
+                    <!--<div id="draggable-element-cover"> </div>-->
+                    <!--<a>-->
+                        <!--<div class="profile-pic" style="background-image:url('images/lovebg.png');">-->
+
+                            <!--<div class="icon-bg-color p-ab"></div>-->
+
+                            <!--<div class="fileUpload pro-pic-camera">-->
+                                <!--<input type="file" name="image" class="upload articleImage cursor-pointer" multiple/>-->
+                                <!--<span class="news-portal camera w-23 h-17 mar-6-0-4-0" ></span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+
+                    <!--</a>-->
+                    <!--<div class="profile-shape">-->
+                        <!--<div class="opacity-background">-->
+                            <!--<div class="online-box-area">-->
+                                <!--<div class="online-border-left-side">-->
+
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="text-of-background"></div>-->
+                        <!--</div>-->
+                        <!--<div class="text-online-status">-->
+                            <!--<span class="news-portal icon-id-circle-pro"></span>-->
+                            <!--<span class="p-id-text name_of_profile" id="userRingId"></span>-->
+                            <!--<div class="clear"></div>-->
+                            <!--<span class="p-offline float-left top-r"></span>-->
+                            <!--<span class="p-id-text name_of_profile" id="userProfileName"></span>-->
+                            <!--<div class="clear"></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="setting">-->
+                        <!--<div class="news-portal set-ico"></div>-->
+                        <!--<div class="drop-box r-0  t-35 setting-box">-->
+                            <!--<div class="fileUpload drp">-->
+                                <!--<input style="cursor: pointer;" type="file" name="image" class="upload coverImage"/>-->
+                                <!--<span>Change Cover</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="save-or-cancel">-->
+                        <!--<button id="saveCoverImage">Save</button> <button>Cancel</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+
+
+
+
+
+
+                <div class="middle m-10">
+                    <div class="status-box">
+                        <div class="status-box-header">
+                            <span class="write-msg news-portal"></span>
+                            <span>Write Post</span>
+                        </div>
+                        <form id="postArticle">
+                            <div class="write-area">
+                                <div class="input-box">
+                                    <input class="text-with-i" type="text"  name="postUrl" id="postUrl" value="" placeholder="Enter news URL (optional)"/>
+                                    <span id="inputFromUrl" class="p-ab import-pos top-l" data-tool="Import from URL"><i class="news-portal import-icon"></i></span>
+                                </div>
+                                <div class="input-box  width-49p  float-left">
+                                    <input  type="text" class="text" id="postTitle" name="postTitle" value="" placeholder="Enter news title" required="">
+                                </div>
+                                <div class="input-box width-49p float-right">
+                                    <select class="text" name="categoryPost" id="categoryPost"> </select>
+                                    <!--<label  class="msg" for="categoryPost">You don't have any category! <a href='caegory.html'>Click here</a> to manage category</label>-->
+                                </div>
+                                <div class="clear"></div>
+                                <div class="input-box">
+                                    <label><input class=" float-left"  type="checkbox"  name="external" value="1">Open in external url</label>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="p-relative" id="postImageBoxWithNav">
+
+                                    <!--<div class="post-box-img">-->
+                                        <a id="leftArrow" class="news-portal h-40 w-23 prev-icon p-ab prev-icon-p"></a>
+                                            <div class="img-all" id="postImages"> </div>
+                                        <a id="rightArrow" class="news-portal h-40 w-23 next-icon p-ab next-icon-p"></a>
+                                    <!--</div>-->
+
+                                </div>
+                                <div class="clear"></div>
+
+                                <div class="input-box">
+                                    <textarea style="min-height: 70px;" name="shortDescription" id="shortDescription" placeholder="News short description" ></textarea>
+                                </div>
+                                <div class="input-box">
+                                    <textarea class="" name="longDescription" id="longDescription" placeholder="News long description"></textarea>
+                                </div>
+                            </div>
+                            <div class="status-bottom">
+                                <div class="top-r w-23" data-tool="Add Image">
+                                    <div class="fileUpload">
+                                        <input type="file" name="image" class="upload articleImage cursor-pointer" multiple/>
+                                        <span class="news-portal camera w-23 h-17 mar-6-0-4-0"></span>
+                                    </div>
+                                </div>
+                                <input class="float-right btn_h m-l-5"  id="submitArticle" type="submit" name="send" value="Post"/>
+                                <input class="float-right btn_h  m-l-5"  id="showPostPreview" type="button" name="send" value="Preview"/>
+                                <input class="float-right btn_h" type="reset" id="postArticleReset" name="reset" value="Reset"/>
+
+                                <div class="clear"></div>
+                            </div>
+
+                        </form>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="clear"></div>
+                    <div class="form-wrap">
+                        <div class="status-box-header">
+                            <span class="write-msg news-portal"></span>
+                            <span>Search</span>
+                        </div>
+                        <form action="" id="searchNews" method="post" class="b-c-f8fafb padd-8">
+                            <div class="input-box w-200  float-left m-r-0-10">
+                                <select class="text " name="category" id="categorySearch"></select>
+                            </div>
+                            <div class="input-box w-200  float-left m-r-0-10">
+                                <input class="text" readonly type="text" placeholder="From Date" name="from_date" id="from_date" value="">
+                            </div>
+                            <div class="input-box w-200  float-left m-r-0-10">
+                                <input class="text" readonly type="text" placeholder="To Date" name="to_date" id="to_date" value="">
+                            </div>
+                            <div class="float-left">
+                                <input class="btn" type="submit" name="search" value="Search">
+                            </div>
+                            <div class="clear"></div>
+                        </form>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="clear"></div>
+                    <div class="manualSelectionBox"> </div>
+                    <div id="hiddenDiv"></div>
+                    <div id="feedContainer"></div>
+
+                    <div class="clear"></div>
+                    <a class="btn" id="feedLoadMore">Load more</a>
+
+                </div>
+                <div id="noMorePostToShow" class="background-linear">No more news to show ! </div>
+            </div>
+
+
+        </div>
+
+
+        <!--SCRIPTS-->
+        <script src='js/vendor/js.cookie.min.js?v=0.14.01-1462438335325'></script>
+        <script src='js/vendor/q/q.js?v=0.14.01-1462438335325'></script>
+        <script src='js/vendor/dateformat.js'></script>
+        <script src='app/debug.tool.js?v=0.14.01-1462438335325'></script>
+        <script src='app/developer.config.dist.js?v=0.14.01-1462438335325'></script>
+        <script src='js/vendor/jquery/jquery.js?v=0.14.01-1462438335325'></script>
+        <script src='js/vendor/parsley/parsley.js?v=0.14.01-1462438335325'></script>
+        <script src='app/init-worker.js?v=0.14.01-1462438335325'></script>
+        <script src='app/wat.fall.js?v=0.14.01-1462438335325'></script>
+        <script src='app/config/settings.constant.js?v=0.14.01-1462438335325'></script>
+        <script src='app/config/attribute-codes.constant.js?v=0.14.01-1462438335325'></script>
+        <script src='app/config/app-constants.constant.js?v=0.14.01-1462438335325'></script>
+        <script src='app/config/actions.constant.js?v=0.14.01-1462438335325'></script>
+        <script src='app/config/newsportal.constant.js?v=0.14.01-1462438335325'></script>
+        <script src='app/language/default/default.js?v=0.14.01-1462438335325'></script>
+        <script src='app/language/language.module.js?v=0.14.01-1462438335325'></script>
+        <script src='app/common/factories/storage.factory.js?v=0.14.01-1462438335325'></script>
+        <script src='app/common/factories/map.factory.js?v=0.14.01-1462438335325'></script>
+        <script src='app/puller/channel.manager.js?v=0.14.01-1462438335325'></script>
+        <!--<script src='app/auth/auth.module.js?v=0.14.01-1462438335325'></script>-->
+        <script src='app/utils/portal.utils.js?v=0.14.01-1462438335325'></script>
+        <script src='app/category.module.js?v=0.14.01-1462438335325'></script>
+        <!--<script src='app/auth/news.portal.js?v=0.14.01-1462438335325'></script>-->
+        <script src='app/common/services/file-upload.service.js?v=0.14.01-1462438335325'></script>
+        <script src='app/common/services/ringhttp.service.js?v=0.14.01-1462438335325'></script>
+        <script src='app/common/services/image-quality.service.js?v=0.14.01-1462438335325'></script>
+        <!--<script src='js/vendor/modaal.min.js'></script>-->
+        <script src="js/vendor/sweetalert2.min.js"></script>
+        <!--<script src="js/vendor/readmore.min.js"></script>-->
+        <script src="js/vendor/jquery.validate.min.js"></script>
+        <script src="js/vendor/pikaday.js"></script>
+        <!--<script src="js/vendor/jquery.jWindowCrop.js"></script>-->
+        <script src='app/utils/factories/app.utils.factory.js?v=0.14.01-1462438335325'></script>
+        <script src='app/feed.js?v=0.14.01-1462438335325'></script>
+
+
+        <!--<script src="app/image_reposition.js"></script>-->
+        <!--<script src="app/image_reposition_profile.js"></script>-->
+
+        <script src="app/profile_cover.js"></script>
+
+
+
+
+
+        <script src="app/image_slider.js"></script>
+
+        <script src='app/auth/signup.module.js?v=0.14.01-1462438335325'></script>
+        <script src='app/portal.js?v=0.14.01-1462438335325'></script>
+        <script src='app/dashboard.js'></script>
+        <!--<script src='app/auth/signup.js?v=0.14.01-1462438335325'></script>-->
+        <!--SCRIPTS END-->
+
+
+    </body>
+</html>

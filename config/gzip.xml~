@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <gzip-encode>
+        <type>application/javascript</type>
+        <type>text/html; charset=utf-8</type>
+        <type>text/css</type>
+        <type>text/plain</type>
+        <type>text/xml</type>
+    </gzip-encode>
+</root>

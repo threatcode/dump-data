@@ -1,0 +1,15 @@
+<!--<div ng-show="showDropdown" class="gm-dorp action float-right">-->
+<div class="action circle-ac z-in-110 pad-204 top-23">
+    <i class="drop-sprite curve-a curve-t-ico p-ab top11"></i>
+    <div class="ac-top-line" ng-if="ddControl.isSuperAdmin && (!ddControl.member.isCurrentUser() && !ddControl.isMemberAdmin)">
+        <a class="pad-8-14" class="mar-top-8" rg-click="ddAction()({ action: 'changemember', admin: 1, member: ddControl.member, event:$event})" href="javascript:void(0);"><i class="drop-sprite w-h-13 make-admin-ico feed-font"></i>Make Admin</a>
+    </div>
+
+    <div class="ac-top-line" ng-if="ddControl.isSuperAdmin && (!ddControl.member.isCurrentUser() && ddControl.isMemberAdmin)">
+        <a class="pad-8-14" class="mar-top-8" rg-click="ddAction()({ action: 'changemember', admin: 0, member: ddControl.member, event:$event})" href="javascript:void(0);"><i class="drop-sprite w-h-13 remove-admin-ico feed-font"></i>Remove Admin</a>
+    </div>
+    <div class="ac-top-line" ng-if="(ddControl.isSuperAdmin && !ddControl.member.isCurrentUser()) || (ddControl.isCurrentUserAdmin && (!ddControl.member.isCurrentUser() && !ddControl.isMemberAdmin))">
+        <a class="pad-8-14" class="mar-top-8" rg-click="ddAction()({ action: 'remove', member: ddControl.member, event:$event})" href="#"><i class="drop-sprite w-h-13 remove-member-ico feed-font"></i>Remove</a>
+    </div>
+
+</div>

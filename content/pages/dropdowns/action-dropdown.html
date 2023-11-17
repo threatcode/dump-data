@@ -1,0 +1,12 @@
+            <!--<div ng-show="showDropdown"   class="ng-cloak action ab-drop">-->
+            <div class="ng-cloak action ab-drop pad-204 z-in-5">
+                <i class="drop-sprite curve-a curve-t-ico p-ab top11"></i>
+                <div class="ac-top-line">
+<!--                    <span class="drop-sprite feed-font edit-ico w-h-13" rg-click="enableEditMode($event)"></span>-->
+                    <a class="pad-8-14" rg-click="ddAction()({event: $event, action:'edit',  data: ddControl})" ng-cloak="true"><i class="drop-sprite feed-font edit-ico w-h-13" rg-click="enableEditMode($event)"></i>{{consType.edit}}</a>
+                </div>
+            <div class="ac-top-line">
+<!--                <span class="drop-sprite w-h-13 delete-ico feed-font" rg-click="enableEditMode($event)"></span>-->
+                <a class="pad-8-14" rg-click="ddAction()({event: $event, action:'delete', data: ddControl})" ng-cloak="true"><i class="drop-sprite w-h-13 delete-ico feed-font" rg-click="enableEditMode($event)"></i>{{consType.delete}}</a>
+            </div>
+            </div>

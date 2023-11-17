@@ -1,0 +1,62 @@
+<div class="chat-bottom" ng-hide="box.value.isMinimized || box.value.blocked">
+    <!--<rg-editor class="editor" send-message-directive="noneed" showEmoji="true" editor-content="messageText" new-line="ctrl" on-escape="closeShareBox" focus="showShareBox" placeholder="Type your message..."></rg-editor>-->
+    <div class="emo-area-chat">
+        <a class="imo-icon" href="javascript:void(0)">
+            <i class="img_sprite icon-emoticon ico-sty" rg-emoticon show-sticker="true" clicked="selectEmoticonChat"></i>
+        </a>
+    </div>
+
+    <span class="chat-ic-sty chat-area" chat-select-emo="noneed">
+        <textarea rows="3" cols="" ng-model="messageText" send-message-directive="noneed" name="chat" placeholder="Type your message..." ></textarea>
+        <!--<rg-editor></rg-editor>-->
+
+        <div style="max-width: 250px;">
+            <rg-url-og-fetcher data-fetched-og-info="messageData.ogData"
+                               editor-content="messageText"
+                               show-preview="ogStatus.preview"
+                               loading-data="ogStatus.loading"
+                               filter-on-progress="ogStatus.filterOnProgress">
+
+            </rg-url-og-fetcher>
+        </div>
+
+    </span>
+
+    <div ng-show="showBottomMenu" class="emo-area-chat-container"  >
+        <chat-box-bottom-menu></chat-box-bottom-menu>
+    </div>
+    
+    
+    <div class="bottom-right-menu-item exit-menu-item top-l" data-tool="Add Photos">
+        <a href="javascript:void(0)" class="p-ab" data-ng-click="toggleMenu()">
+            <div rg-upload upload-type="chat"
+                 upload-action="uploadAction"
+            ></div>
+        </a>
+    </div>
+    
+     <div class="bottom-right-menu-item exit-menu-item top-l" data-tool="Capture Image" ng-if="showMediaButton">
+
+        <a data-ng-click="resetBottomMenu()" rg-ringbox="true" ringbox-controller="ChatMediaUploadController"
+           ringbox-target="templates/partials/chat/media-upload.html"
+           ringbox-type="remote"
+           ringbox-data="{boxId : box.key}"  ><span class="chat-video-ico"></span></a>
+
+    </div> 
+    
+    
+       <div class="bottom-right-menu-item exit-menu-item top-l" data-tool="Share Location">
+        <a rg-click="selectedLocation();"           
+           class="p-ab" href="javascript:void(0)">
+            <span class="chat-location-ico"></span>
+        </a>
+    </div>
+
+    <div class="emo-area-chat left-border">
+        <a class="imo-icon" href="javascript:void(0)">
+            <i class="chat-btn-right" data-ng-mouseenter="bottomMenuButtonHover=true"
+               data-ng-mouseleave="bottomMenuButtonHover=false" data-ng-click="toggleMenu()"></i>
+        </a>
+    </div>
+
+</div>

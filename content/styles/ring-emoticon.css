@@ -1,0 +1,77 @@
+.emo_div {
+    position:fixed;
+    z-index:2500;
+    width:300px;
+    height:300px;
+    max-width:300px;
+    background:#fff;
+    overflow: hidden;
+    box-shadow: -1px 1px 8px 0 rgba(97, 97, 97, 0.6);
+    white-space: normal;
+}
+.emo_div .emo_div_body{position: relative;width:100%;height:250px;overflow-y: hidden;overflow-x:hidden; }
+.emo_div table td{vertical-align:middle;}
+.emo_div div.emocon{height:27px;width: 27px;cursor: pointer;background-repeat: no-repeat;background-position: 50% 50%;background-size: 22px 22px; margin: 2px 2px; display:inline-block}
+.emo_div .emocon:hover{background-color: #f2f2f2;}
+.emo_div .emostick{margin: 5px;width: 120px;height:120px;cursor: pointer;background-repeat: no-repeat;background-position: 50% 50%;background-size: 120px auto; display:inline-block;}
+.emo_div .emostick:hover{background-color: #f2f2f2;}
+.emo_div .emoblock{ width: 50%;float: left;}
+.emo_div .emoticon_bottom{
+    position:absolute;bottom:0;width:100%;height:40px;overflow:hidden;border-top: 1px solid #dcdcdc;
+}
+.emo_div .emo_body { text-align: center;}
+.emo_div .emoticon_bottom .emo_stage{position:relative;width:100%;height:40px;overflow:hidden;}
+.emo_div .emoticon_bottom .slider_stage{
+    background: white;
+    height: 40px;
+    margin-left: 31px;
+    overflow: hidden;
+    position: relative;
+    width: 205px;
+}
+.emo_div .emoticon_bottom .emo_cats{
+    height: 25px;
+    margin-top: 8px;
+    overflow: hidden;
+    position: relative;
+    line-height: 18px;
+}
+.emo-btn {
+    background-color:#f7f7f7;
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+    padding:8px 4px 8px 3px;
+}
+.emo-prev {
+    left: 32px;
+    width:30px;
+}
+.emo-prev i{    margin-left: 3px;}
+.emo-next {
+    right: 33px;
+    border-right: 1px solid #c3c3c3;
+    padding: 5px 3px 5px 7px;
+}
+.emo-next i{margin-right:0;}
+.emo-prev-p {
+    padding: 5px 0;
+    box-sizing: border-box;
+    border-left: 1px solid #c3c3c3;
+}
+.emo-add {
+    right: 0px;
+    padding: 12px 4px 13px 7px;
+}
+.emo_div .emoticon_bottom a{
+    display: inline-block;
+    height: auto;
+    outline: 0 none;
+    text-align: center;
+    width: 40px;
+}
+.emo_div .emoticon_bottom a.prev{position: absolute;left: 0;width:42px;border-right: 1px solid #666;display:none;}
+.emo_div .emoticon_bottom a.next{position: absolute;right: 40px;width:42px;border-left: 1px solid #666;display:none;}
+.emo_div .emoticon_bottom a.smarket{position: absolute;right: 0px;width:42px;border-left: 1px solid #666;}
+.emo_div .emoticon_bottom a img{height: 25px;max-height: 25px;max-width: 25px;vertical-align: middle;width: 25px;}
+.icon-emoticon{}

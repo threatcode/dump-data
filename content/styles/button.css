@@ -1,0 +1,333 @@
+
+.friend-btn{
+    background-color: #fff;
+    border: 1px solid #B5B5B5;
+    border-radius: 4px;
+    color: #535353;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 13px;
+    padding: 4px 4px 0px;
+    font-weight: 400;
+    line-height: 21px;
+    box-sizing: border-box;
+    height: 30px;
+}
+.friend-btn span{
+    font-size: 16px;
+    float: left;
+    vertical-align: bottom;
+}
+
+
+.friend-btn.acpt{
+    background-color: #f47727;
+    border: 1px solid #f47727;
+    color: #fff;
+}
+
+
+.friend-btn span:nth-child(2){
+    line-height: 21px;
+}
+.friend-btn:hover {
+    color: #f47727;
+    border: 1px solid #f47727;
+    text-decoration: none !important; 
+}
+.friend-btn.acpt{
+    background-color: #f47727;
+    text-decoration: none !important; 
+    color: #fff;
+}
+
+.friend-ico {
+    background: url(../images/friend-ico.png) no-repeat;
+    width: 22px;
+    height: 23px;
+    display: inline-block;
+}
+.addfnd{
+    background-position: 0px -3px;
+    height:18px;
+}
+.friend-btn:hover .addfnd {
+    background-position: 0px -26px;
+}
+.fnd{
+    background-position: -49px -3px;
+    height: 18px;
+}
+.friend-btn:hover .fnd {
+    background-position: -49px -25px;
+}
+.chat{
+    background-position: -143px -4px;
+    height: 18px;
+}
+.friend-btn:hover .chat {
+    background-position: -143px -26px;
+}
+.cancel-req{
+    background-position: -72px -3px;
+    height: 18px;
+}
+.friend-btn:hover .cancel-req {
+    background-position: -72px -26px;
+}
+.accept{
+    background-position: -97px -3px;
+    height: 19px;
+}
+.friend-btn:hover .accept {
+    background-position: -97px -3px
+}
+.reject{
+    background-position: -26px -3px;
+    height: 19px;
+    width: 20px;
+}
+.make-admin {
+    background-position:  -168px -3px;
+}
+.make-member {
+    background-position:  -190px -3px;
+}
+.friend-btn:hover .reject {
+    background-position: -26px -26px;
+}
+.cover-btn{
+    background: #fff;
+    border-radius: 5px;
+    bottom: 90px;
+    position: absolute;
+    right: 50px;
+    vertical-align: bottom;
+    width: auto;
+}
+.cv-btn{
+    background-color: #fff;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    color: #535353;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 13px;
+    padding: 4px 5px;
+    font-weight: 400;
+    line-height: 21px;
+}
+.cv-btn:hover .addfnd {
+    background-position: 0px -26px;
+}
+.friend-settings-dropdown span .cancel-req:hover {
+    background-position: -30px -3px;
+}
+.cv-btn span{
+    font-size: 16px;
+    float: left;
+    vertical-align: bottom;
+}
+/*.cv-btn span:nth-child(1){
+    width:18px;
+    height:18px;
+    margin-right: 5px;
+}*/
+.cv-btn span:nth-child(2){
+    line-height: 21px;
+}
+.cv-btn:hover {
+    color: #f47727;
+    border: 1px solid #f47727;
+    text-decoration: none !important; 
+}
+
+.cv-btn .add-friend{
+    background: url(../images/friend-ico.png) no-repeat;
+    background-position: 0 0;
+}
+.cv-btn:hover .add-friend{
+    background: url(../images/friend-ico.png) no-repeat;
+    background-position: 0 -18px;
+}
+.add-fnd{
+    height: 18px;
+    background-position: 0 -3px;
+}
+.invite-btn{
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #666666;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 6px 6px 0px 3px;
+    height: 27px;
+    box-sizing: border-box;
+    float: left;
+    margin-top: 12px;
+}
+.invite-btn:hover {
+    color: #f47727;
+    border: 1px solid #f47727;
+    text-decoration: none !important; 
+}
+.invite-btn span{
+    float: left;
+    width: 21px;
+    height: 18px;
+    margin-right: 3px;
+    margin-top: -3px;
+}
+.invite-btn:hover.invite-btn span {
+    color: #f47727;
+}
+.feed-edit-btn{
+    width: 100px;
+    background: #fff;
+    margin: 0 10px 0 0;
+    padding: 4px 0;
+    border: 1px solid #ededed;
+    font-size: 14px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #737373;
+}
+.feed-edit-btn:hover{
+    background: #f77727;
+    color:#fff;
+    cursor: pointer;
+}
+
+.editpopup .feed-edit-btn{
+    float:right;
+    margin: 8px 10px 0 0;
+}
+.editpopup .edit-feed-editor{margin-bottom:8px;border-bottom:0;}
+.editpopup .og-info-left-container{border-bottom:1px solid #d0d0d0;}
+.f-loading {
+    opacity: .65;
+    cursor: not-allowed;
+}
+.tag-cros{
+    padding: 2px 5px;
+    border-left: 1px solid #d0d0d0;
+    cursor: pointer;
+}
+.tag-cros:hover{
+    background-color: #f47727;
+    color: #fff;
+}
+.editpopup .feed-edit-btn:disabled{background-color:#f47727;opacity:0.4;color:#fff;}
+*
+
+
+/*added by rajib button new for all same design*/
+
+
+.butt{border-radius: 3px;display:inline-block;cursor: pointer;text-align: center;}
+.butt a{color:gray;display:inline-block;}
+.butt a:hover{text-decoration: none;}
+.butt button{width:auto;background-color: transparent;border:0;outline:0;cursor:pointer;color:#fff;}
+.butt:hover button{color:gray;}
+.butt i{vertical-align: middle;margin-right:5px;}
+.butt i.btn-m-r-0{margin-right:0;}
+
+
+.buttdr{border-radius: 3px;display:inline-block;cursor: pointer;text-align: center;}
+.buttdr a{color:gray;display:inline-block;}
+.buttdr a:hover{text-decoration: none;}
+.buttdr button{width:auto;background-color: transparent;border:0;outline:0;cursor:pointer;color:#fff;}
+.buttdr:hover button{color:gray;}
+.buttdr b{vertical-align: middle;margin-right:5px;}
+.buttdr b.btn-m-r-0{margin-right:0;}
+
+.butt a.c-default{cursor: default;}
+.bg-white-orange{
+    background-color:#fff;
+    color:gray;
+    border:1px solid #d0d0d0;
+}
+.bg-white-orange:hover{
+    background-color:#f47727;
+    color:#fff;
+    border:1px solid #f47727;
+}
+.bg-white-orange:hover a{color:#fff;}
+.bg-orange-white,.bg-orange-white-i{
+    background-color:#f47727;
+    color:#fff;
+    border:1px solid #f47727;
+}
+.bg-orange-white-i:hover{
+    background-color:#f36d18;
+}
+.bg-orange-white-i a{color:#fff;}
+.bg-orange-white:hover{
+    background-color:#fff;
+    color:gray;
+    border:1px solid #d0d0d0;
+}
+.border-gray-orange{
+    border:1px solid #d0d0d0;
+}
+.border-gray-orange:hover{
+    /*border:1px solid #f47727;*/
+    background-color: #eee;
+}
+.btn-bg-w{background-color:#fff;}
+.butt-text{
+    vertical-align: middle;
+    padding: 0;
+    line-height: 0;
+    font-size: 12px;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.btn-m-9-13-0-0{margin:9px 13px 0 0;}
+.btn-p-5-8{padding:5px 8px;}
+.btn-p-6-8{padding:6px 8px;}
+.btn-m-l-8{margin-left:8px;}
+.btn-m-r-8{margin-right:8px;}
+.btn-m-t-8{margin-top:8px;}
+.top-r-feed span.butt-text{font-weight: bold;color:gray;}
+.upper-mess span.butt-text{font-weight: bold;color:gray;}
+.top-r-feed .fr-b a:hover{text-decoration: none;}
+.bottom-90{bottom:90px;}
+.right-50{right:50px;}
+.right-minus-30{right:-30px;}
+.correct{    
+    background-position: -219px -5px;
+    height: 18px;
+    width: 13px;
+}
+.down-fb-arrow{
+    background-position: -242px -4px;
+    height: 18px;
+    width: 10px;
+}
+.cir-joined-icon{
+    background-position: -262px -5px;
+    height: 18px;
+    width: 9px;
+}
+.gr-leave-icon{
+    background-position: -279px -5px;
+    height: 18px;
+    width: 9px;
+}
+.edit-btn-icon{
+    background-position: -295px -5px;
+    height: 18px;
+    width: 12px;
+}
+.about-add-icon{
+    background-position: -295px -31px;
+    height: 12px;
+    width: 10px;
+}
+.buttdr b.report-btn {
+    display: inline-block;
+    vertical-align: top;
+    margin: 1px 4px 0px 0px;
+}

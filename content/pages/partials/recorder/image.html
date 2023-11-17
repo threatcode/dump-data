@@ -1,0 +1,23 @@
+<rg-loader-view2 is-loading="showLoader"></rg-loader-view2>
+
+<div ng-bind="errorText" style="padding: 10px;color: red;font-size: 10pt;"></div>
+<div ng-if="!connected && !showLoader"><input class="save-button  border-radius"  type="button" name="" data-rg-click="connect()" value="Re-Connect"></div>
+
+<div ng-show="errorText == ''">
+
+    <div class="camera" ng-show="!showLoader">
+
+        <div ng-show="!capturedMedia">
+            <div id="{{ videoId }}" style="min-height: 300px" ></div>
+        </div>
+
+        <div class="output" ng-show="!!capturedMedia">
+            <img ng-src="{{ capturedMedia }}" alt="The screen capture will appear in this box." />
+        </div>
+
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <input class="save-button  border-radius"  type="button" name="" data-rg-click="doCapture()" value="{{ captureText }}">
+
+</div>

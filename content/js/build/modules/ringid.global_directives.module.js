@@ -1,0 +1,1 @@
+(function(angular, window) { 'use strict';  angular.module('ringid.global_directives', [ 'ngRoute', 'ringid.config' ]); })(angular, window);

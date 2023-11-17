@@ -1,0 +1,30 @@
+<div class="middle news-portal-feed" > 
+    <!-- rg-repeat warning: starting and ending space in child element is not permitted -->
+    <div id="feeds-container" feed-repeat="feed in feeds"><div class="newsfeed-row newsfeed-opacity " ng-controller="FeedSubController"
+                                                               ng-init="feed = feed.value;
+                             feedstatus = feed.text();
+                             keyid = feed.getKey();
+                             imageslength = feed.getImages().length;"
+                                                               ng-class="{'half_opacity':feed.isPending()}">
+            <rg-common-feed-top 
+                feed="feed"
+                serial="serial"
+                dd-template="ddTemplate"
+                dropdown="dropdown"
+                action-feed-dropdown="actionFeedDropdown"
+                showdroparrow = "showdroparrow"
+                templatepath="templates/newsportal/portal-top.directive.html">
+            </rg-common-feed-top>
+            <rg-common-feed-bottom templatepath="templates/business/business-bottom.directive.html"></rg-common-feed-bottom> 
+
+            <div class="clear"></div>
+        </div>
+    </div>
+
+</div>
+<div rg-incoming-feed class="upward-feed">
+    <div class="feed-la"></div>
+    New Feeds
+</div>
+<div class="clear"></div>
+<!-- <div  ng-if="noMoreFeed" class="background-linear">No more feeds to show !</div> -->

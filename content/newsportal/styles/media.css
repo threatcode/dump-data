@@ -1,0 +1,8 @@
+@media screen and (max-width: 1400px) {
+    .w-700 {max-width:700px;}
+    .input-box.w-200 {width:150px;}
+    .w-300 {width: 230px;}
+    .right-tab{width:calc(100% - 230px);}
+    .about-list tr th{width:40%;}
+    .about-list tr td{width:60%;}
+}

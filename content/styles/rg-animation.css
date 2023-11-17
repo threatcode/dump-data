@@ -1,0 +1,14 @@
+.rg-hide,
+.rg-show {
+    -webkit-transition: opacity linear 1s, margin-left linear 0.5s;
+    transition: opacity linear 1s, margin-left linear 0.5s;
+}
+
+
+.rg-hide {
+    opacity: 0;
+}
+
+.rg-show {
+    opacity: 1;
+}

@@ -1,0 +1,36 @@
+<div class="chat-middle" 
+     ng-class="{bottomPad: (ogStatus.preview || ogStatus.filterOnProgress || ogStatus.loading), bg: !!box.value.getBackgroundImageType() !== 'no-image' }"
+     ng-style="{ 'background': box.value.getBackgroundImage()  }"
+     ng-hide="box.value.isMinimized"
+     chat-scroll-bottom="df" >
+
+    <div class="clear"></div>
+
+    <chat-history-loader ></chat-history-loader>
+
+    <div class="clear"></div>
+    <div message-directive="noneed"
+         message-box="box"
+         message-msg="message"
+         ng-class="{'c-right': (!message.showAvator && message.user.isCurrentUser() && message.status !== 'status_update'),
+                        'c-left':(!message.showAvator && !message.user.isCurrentUser() && message.status !== 'status_update'),
+                        'status-unread-container' : message.status == 'Unread' }"
+         ng-repeat="message in box.value.getMessages()"
+         ng-init="message = message.value" >
+        <!--<div ng-show=" ($index % 4) == 0 " class="box-message-date-line"><div class="line" ><div class="line-m">{{ message.messageDate | date }}</div></div><div class="clear"></div></div>-->
+        <!--<div class="line"><div class="line-m">{{ message.messageDate | date }}</div></div><div class="clear"></div>-->
+        <chat-single-message></chat-single-message>
+
+    </div>
+    <div class="clear"></div>
+
+    <!--        <div class="chat-box-typing" ng-if="box.value.isFriendTyping()" style="padding-top:10px" ng-cloak="true">-->
+    <div class="typing-h-mar" ng-if="box.value.isFriendTyping()" ng-cloak="true">
+    <div class="chat-box-typing">
+        <div class="log-loader type-load">{{ box.value.getTypingText()}}</div>
+    </div> 
+        </div>
+
+    <div class="clear"></div>
+</div>
+

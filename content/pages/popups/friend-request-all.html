@@ -1,0 +1,36 @@
+<div class="seeall sm-w-700">
+    <div class="all-hdr">Respond to Your Friend Requests <p class="ring-color float-right f-14" ng-show="requests.length() > 0" ng-cloak="true">{{ requests.length() }}</p></div>
+    <ul class="friend-req">
+            <rg-userview ng-repeat="user in requests.all() track by user.value.getKey()" 
+                         user="user.value" 
+                         hide-chat="true"
+                         template-path="templates/partials/usercards/userview.directive.html" >
+            </rg-userview>
+
+        <li ng-show="!state.loading" ng-bind="statusText()" style="text-align:center;padding:10px 0;font-size:14px;background-color:transparent"></li>
+        <li>
+            <a ng-show="!state.loading && !noMoreRequest()" class="load-more" rg-click="loadMoreRequests()">See More Requests &raquo;</a>
+            <a ng-show="state.loading" class="load-more-disabled">
+                <span class="load-circle">
+                    <span class="ld-cir1 ld-cir"></span>
+                    <span class="ld-cir2 ld-cir"></span>
+                    <span class="ld-cir3 ld-cir"></span>
+                    <span class="ld-cir4 ld-cir"></span>
+                    <span class="ld-cir5 ld-cir"></span>
+                    <span class="ld-cir6 ld-cir"></span>
+                    <span class="ld-cir7 ld-cir"></span>
+                    <span class="ld-cir8 ld-cir"></span>
+                    <span class="ld-cir9 ld-cir"></span>
+                    <span class="ld-cir10 ld-cir"></span>
+                    <span class="ld-cir11 ld-cir"></span>
+                    <span class="ld-cir12 ld-cir"></span>
+                </span>Loading...
+            </a>
+        </li>
+    </ul>
+    <div class="clear"></div>
+
+    <rg-friend-suggestions></rg-friend-suggestions>
+
+    <div class="clear"></div>
+</div>

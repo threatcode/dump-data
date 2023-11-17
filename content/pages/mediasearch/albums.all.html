@@ -1,0 +1,151 @@
+<div  class="music-mid-bg  mid-width  pro-page-width">
+    <div class="middle">
+        <!--FORM : if needed-->
+        <rg-media-slider></rg-media-slider>
+        <div class="music-container">
+            <!--<div class="media-slider-wrapper"></div>-->
+
+            <div  class="media-nav">
+
+                <!-- <ul>
+                    <li ng-class="{'active': activeNav === 'recent'}"><a href="/#/media">Recent</a></li>
+                    <li ng-class="{'active': activeNav === 'album'}"><a href="/#/media/myalbums">Album</a></li>
+                    <li ng-class="{'active': activeNav === 'upload'}"><a href="/#/media/upload">Upload</a></li>
+                </ul>  -->
+                <rg-tab-nav></rg-tab-nav>
+                <rg-media-search-directive></rg-media-search-directive>
+                <!-- <div class="media-search">
+                    <div class="float-left  icon-search-d fr-serach-icon-size"></div>
+                    <div class="float-left">
+                        <form class="friend-search ng-pristine ng-valid" action="" method="get">
+                            <input type="text" placeholder="Search...." name="q">
+                        </form>
+                    </div>
+                    <div class="clear"></div>
+                </div> -->
+            </div>
+
+            <div class="clear"></div>
+
+            <!--Grid view start-->
+            <div id="all" class="grid-view active">
+
+                <div class="album-header">
+                    <div>
+                        <div class="album-title">{{albumName}}</div>
+                        <div class="ply">
+                            <a class="plybtn" ng-show="songs.length() > 1"
+                               class="music-box" rg-ringbox="true" ring-backdrop-close="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"
+                               ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(true)">
+                                Play All
+                            </a>
+                            <a class="plybtn" ng-show="songs.length() > 1" ng-class="{'disable-click': selectedPlaylist.length() == 0}"
+                               rg-ringbox="true" ring-backdrop-close="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"
+                               ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(false)">Play Selected</a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="music-box" ng-repeat="song in songs.all()" title="{{song.value.getCaption()}}">
+                    <div class="music-thumb">
+                        <a  rg-ringbox="true" ring-backdrop-close="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"
+                            ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(true, song.value)">
+                            <img  ng-src="{{song.value.getThumbForMediaOnly()}}" alt="{{song.value.getCaption()}}"/>
+                            <div class="m-icn play" ng-class="song.value.isAudio() ? 'audio':'video'"></div>
+                            <div class="duration">{{song.value.getDuration(true)}}</div>
+                        </a>                
+
+                        <div class="song-select song-check">
+                            <input type="checkbox" id="{{song.value.getId()}}" ng-change="selectMedia(song.value, status)"  ng-model="status">
+                            <label for="{{song.value.getId()}}" ></label>
+                        </div>
+                        <!--<div class="song-select song-check">-->
+                        <!--<input type="checkbox" id="{{song.value.getId()}}" ng-change="selectSongs({cntntId:song.value.getId(),utid:song.value.getMediaUtId(),ttl:song.value.getCaption(),strmURL:song.value.getStreamUrlOnly(),thmbURL:song.value.getThumbUrlOnly(),drtn:song.value.getDuration()}, status)" ng-model="status">-->
+                        <!--<label for="{{song.value.getId()}}"></label>-->
+                        <!--</div>-->
+
+                    </div>
+                    <div class="music-right"   rg-ringbox="true" ring-backdrop-close="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"
+                         ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(true, song.value)">
+                        <a title="{{song.value.getCaption()}}">
+                            {{song.value.getCaption()}}
+                        </a>
+                        <!--if song-->
+                        <p>Album: {{song.value.getAlbumName()}}</p>
+                        <p class="views-music">{{song.value.getViewCount()}}</p>
+<!--                        <p>Duration: {{song.value.getDuration(true)}}</p>-->
+                    </div>
+                </div>
+
+
+
+                <div ng-if="userallalbum" class="music-box" ng-repeat="album in myAlbumsMap.all()" title="{{album.value.getName()}}"
+                     ng-click="goToAlbum({type: album.value.isAudio() ? 'audio' : 'video', utid: album.value.getALbumUtId(), albumid: album.value.getId(), name: album.value.getName(), mc: album.value.getContentCount()})">
+                    <div class="music-thumb">
+                        <a ng-show="album.value.isAudio()">
+                            <img  ng-src="{{album.value.getCover()}}" alt="{{album.value.getName()}}"/>
+                            {{album.value.getName()}}
+                        </a>
+                        <a  ng-show="album.value.isVideo()">
+                            <img  ng-src="{{album.value.getCover()}}" alt="{{album.value.getName()}}"/>
+                        </a>
+                    </div>
+                    <div class="music-right">
+                        <a  ng-show="album.value.isAudio()" title="{{album.value.getName()}}" >{{album.value.getName()}}</a>
+                        <a ng-show="album.value.isVideo()" title="{{album.value.getName()}}">{{album.value.getName()}}</a>
+
+                        <p>
+                            <span class="img_sprite w-h-22px icon-audio-album"></span>
+                            <span class="rg-color">{{album.value.getContentCount()}}</span>
+                            <span class="txt" ng-if="album.value.getContentCount() > 1"> Songs</span>
+                            <span class="txt" ng-if="album.value.getContentCount() <= 1"> Song</span></p>
+                    </div>
+
+                </div>
+
+                <div class="music-box no-border h-5"></div>
+                <div class="music-box no-border h-5"></div>
+
+                <div ng-show="userallalbum">
+                    <p ng-if="stoploader && myAlbumsMap.length() < 1"><img src="images/music-error.png"></p>
+                    <p ng-if="stoploader && myAlbumsMap.length() < 1" class="ndp" >No Data Found</p>
+                </div>
+                <div ng-show="!userallalbum">
+                    <p ng-if="stoploader && songs.length() < 1"><img src="images/music-error.png"></p>
+                    <p ng-if="stoploader && songs.length() < 1" class="ndp" >No Data Found</p>
+                </div>
+
+
+                <div class="loader-s" ng-hide="myAlbumsMap.length() > 0 || songs.length() > 0 || stoploader"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+                <div class="clear"></div>
+
+
+                <a class="load-more"  rg-click="loadMoreMedia(songs.length())" ng-show="songs.length() > 0 && songs.length() < mediaCount && !loadMoreSong">Load More &raquo;</a>
+                <a class="load-more-disabled"  ng-show="loadMoreSong"> 
+                    <span class="load-circle">
+                        <span class="ld-cir1 ld-cir"></span>
+                        <span class="ld-cir2 ld-cir"></span>
+                        <span class="ld-cir3 ld-cir"></span>
+                        <span class="ld-cir4 ld-cir"></span>
+                        <span class="ld-cir5 ld-cir"></span>
+                        <span class="ld-cir6 ld-cir"></span>
+                        <span class="ld-cir7 ld-cir"></span>
+                        <span class="ld-cir8 ld-cir"></span>
+                        <span class="ld-cir9 ld-cir"></span>
+                        <span class="ld-cir10 ld-cir"></span>
+                        <span class="ld-cir11 ld-cir"></span>
+                        <span class="ld-cir12 ld-cir"></span>
+                    </span>
+                    Loading...</a>
+                <div class="clear"></div>
+            </div>
+
+
+            <div class="clear"></div>
+            <!--Grid view end-->
+
+        </div>
+        <!--form end-->
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <!--
+        cache control time should be in second
+    -->
+    
+    <!--
+        Default cache control value
+    -->
+    <default-cache-control>172800</default-cache-control>
+    
+    <cache-control>
+        <type>text/html; charset=utf-8</type>
+        <time>10000</time>
+    </cache-control>
+    <cache-control>
+        <type>image/jpeg</type>
+        <time>31536000</time>
+    </cache-control>
+    <cache-control>
+        <type>image/gif</type>
+        <time>31536000</time>
+    </cache-control>
+    <cache-control>
+        <type>image/png</type>
+        <time>31536000</time>
+    </cache-control>
+    <cache-control>
+        <type>text/css</type>
+        <time>2592000</time>
+    </cache-control>
+    <cache-control>
+        <type>application/javascript</type>
+        <time>2592000</time>
+    </cache-control>
+    <cache-control>
+        <type>image/x-icon</type>
+        <time>31536000</time>
+    </cache-control>
+</root>

@@ -1,0 +1,74 @@
+    <div ng-controller="ChatController" chat-subscriber="asd"  style="position: fixed; bottom: 0;right: 200px;left:200px; z-index: 100; height: 400px;pointer-events: none;">
+
+        <!--<p> {{ boxlength }}</p> -{{  availableNo }}-{{ restNo}}-->
+        {{ boxes }}
+        <div ng-class="box.value.chatBoxClass" ng-repeat="box in boxes | filter : {value : {nonDomBox : true }} | limitTo : -availableNo " chat-focus="{{ box.value.getKey() }}" style="pointer-events: all;">
+            <div class="chat-top-bar" minimize-box="noneed" chat-blinker="asd">
+                <a ng-href="{{getProfileLink+box.value.getKey()}}" class="chat-name" ng-cloak="true">{{box.value.getTitle() | limitTo:20}}</a>
+                <div class="chat-top-sty">
+                    <set-timeout></set-timeout><!--<a set-timeout="asd"><span class="icon-timer-sg"></span></a>-->
+                    <!--<a ng-click="showTimeout = !!showTimeout === false ? true: false;"><span class="icon-timer-sg"></span></a>-->
+                    <!--<div setTimeoutValue="asd" ng-show="showTimeout" class="timeoutDiv">-->
+                    <!--<input type="text" ng-model="timeout" /><br/>-->
+                    <!--<input type="button" ng-click="done()" value="Done"/>-->
+                    <!--<input type="button" ng-click="cancel()" value="Cancel"/>-->
+                    <!--</div>-->
+                    <a close-box="noneed"><span class="icon-close"></span></a>
+                    <a minimize-box="noneed"><span class="icon-minimize"></span></a>
+                </div>
+            </div>
+            <div class="chat-middle" ng-hide="box.value.isMinimized" chat-scroll-bottom="df">
+                <div class="line">
+                    <div class="line-m">Today</div>
+                </div>
+                <div class="clear"></div>
+                <div message-directive="noneed" message-box="box" message-msg="message" ng-repeat="message in box.value.getMessages()" ng-init="message = message.value" ng-mouseover="message.deleteIcon=true" ng-mouseleave="message.deleteIcon=false">
+
+                    <div chat-message-react="message" ng-class="{'status_pending' : message.status ==0,'status_delivered': message.status ==1,'status_seen': message.status ==2,'status_sent': message.status ==3}">
+                        <a delete-message="noneed" ng-show="message.deleteIcon &#38;&#38; message.status !=='Deleted'" class="msgDeleteIcon"><span class="icon-close"></span></a>
+                        <p ng-bind-html="message.getTextPartition()"></p><br/>
+                        <div class="t-chat">
+                            <p ng-cloak="true">{{message.status}} : {{ message.hrtime }}</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div ng-if="box.value.progressValue" style="position: relative;bottom:175px;left: 12px;">
+                    <div class="status-photo-view-chat">
+                        <div ng-show="box.value.progressValue !== 100" class="progress-bar-placement-chat">
+                            <!--<img title="tempImage" width="100%" src="{{ box.value.tempImage }}" onError="this.src='images/prof.png'" style="opacity: 0.8" />-->
+                            <div class="percent" ng-cloak="true">{{box.value.progressValue}}%</div>
+                            <div class="progress-bar">
+                                <div class="uploaded" ng-style="{'width': box.value.progressValue + '%'}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="box.value.isFriendTyping()" style="position:fixed; bottom: 55px;">Typing...</div>
+
+            </div>
+
+            <div class="chat-bottom" ng-hide="box.value.isMinimized">
+                <div class="chat-cam" rg-upload upload-type="chatimage" upload-action="uploadAction" upload-box-value="uploadBoxValue">
+                </div>
+                    <span class="chat-ic-sty chat-area" chat-select-emo="noneed">
+                        <textarea rows="" cols="" ng-model="messageText" send-message-directive="noneed" name="chat"></textarea> </span>
+                <!--<a class="mar-top-10" href="javascript:void(0)"><span class="mar-top-3"><i class="icon-emoticon ico-sty" rg-emoticon="" clicked="selectEmoticon"></i></span></a>-->
+                <a class="mar-top-10" href="javascript:void(0)"><span class="mar-top-3"><i class="img_sprite icon-emoticon ico-sty" rg-emoticon show-sticker="true" clicked="selectEmoticonChat"></i></span></a>
+                <!--<div class="chat-cam">-->
+                    <!--<span class="chat-ic-sty emo-chat icon-emoticon"></span>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div ng-if="boxes.length > availableNo" class="extra-chat-box" style="pointer-events: all;">
+            <a class="extra-chat-box-no" chat-bind-outside-click="asd" ng-click="showHidden = !!showHidden === false ? true: false;c=boxes.length - availableNo;b=60 + c*32;" ng-cloak="true">{{boxes.length - availableNo}}</a>
+            <div class="show-hidded-boxes" ng-show="showHidden" ng-style="{'bottom': b + 'px'}">
+                <div class="extra-chat-box-names" ng-repeat="rbox in boxes | filter : {value : {nonDomBox : true }} | limitTo : (boxes.length - availableNo)" chat-blinker-h="asd" chat-r-focus="{{ rbox.value.getKey() }}" make-visible-chat-box="{{ rbox.value.getKey() }}" ng-cloak="true">{{rbox.value.getTitle()}}</div>
+            </div>
+        </div>
+        <!--<div ng-if="boxes.length > availableNo" class="extra-chat-box">-->
+        <!--<div class="show-hidded-boxes extra-chat-box" ng-show="showHidden">-->
+        <!--<div  ng-repeat="rbox in boxes | limitTo : (boxes.length - availableNo)">{{ boxes.length }} -{{  availableNo }}-{{ rboxS}}{{rbox.value.getTitle()}}</div>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>

@@ -1,0 +1,60 @@
+.expander {
+    /*border: 1px solid #2e6da4;*/
+    /*width: 350px;*/
+    /*border-radius: 5px;*/
+}
+
+.expander{
+    -webkit-transition:all linear 0.5s;
+    -moz-transition:all linear 0.5s;
+    -o-transition:all linear 0.5s;
+    -ms-transition:all linear 0.5s;
+    transition:all linear 0.5s;
+}
+
+.expander > .title {
+    background-color: #337ab7;
+    color: white;
+    padding: .5em .3em;
+    cursor: pointer;
+}
+.expander > .panel-body {
+    padding: .1em .3em;
+}
+.panel-body {
+    -webkit-transition: height 0.5s;
+    -moz-transition:all linear 0.5s;
+    -o-transition:all linear 0.5s;
+    -ms-transition:all linear 0.5s;
+    transition: height 0.5s;
+    opacity:1;
+}
+
+.panel-body.ng-hide {
+    -webkit-transition: height 0.5s;
+    -moz-transition:all linear 0.5s;
+    -o-transition:all linear 0.5s;
+    -ms-transition:all linear 0.5s;
+    transition: height 0.5s;
+    opacity:0;
+}
+
+
+.panel-body.ng-hide-add, .panel-body.ng-hide-remove {
+    -webkit-transition: height 0.5s;
+    -moz-transition:all linear 0.5s;
+    -o-transition:all linear 0.5s;
+    -ms-transition:all linear 0.5s;
+    transition: height 0.5s;
+    /*display:block!important;*/
+    opacity:1;
+}
+
+.panel-body.ng-hide-add.ng-hide-add-active,.panel-body.ng-hide-remove {
+    opacity:0;
+    transition: height .05s;
+    height:10px;
+}
+
+
+

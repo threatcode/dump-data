@@ -1,0 +1,7 @@
+<div class="arrows">
+    <ul class="icons_thumb" style="list-style: none;">
+        <li ng-repeat="image in images" ng-click="select(image.slide)" ng-click="mystyle=''" class="pr-5">
+            <img ng-class="{'active':isCurrentSlideIndex($index)}" ng-src="images/slider/{{image.thumb}}"/>
+        </li>
+    </ul>
+</div>

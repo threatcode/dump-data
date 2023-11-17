@@ -1,0 +1,39 @@
+<div class="middle single-page" ng-controller="SingleImageController" ng-cloak>
+    <rg-loader-view data-is-loading="!isReady"></rg-loader-view>
+    <div  ng-show="isReady" class="sinimg-img-page-wrapper" style="margin-top:0px;">
+        <div class="sinimg-area">
+            <rg-single-feed-body></rg-single-feed-body>
+
+            <rg-single-feed-header></rg-single-feed-header>
+            <div class="clear"></div>
+
+            <rg-single-feed-menu></rg-single-feed-menu>
+            <div class="clear"></div>
+        </div>
+
+        <rg-single-feed-comments
+            comment-type = "image"
+            user = "currentUser"
+            add-comment = "addComment(event)"
+            update-comment = "updateComment(comment)"
+            cancel-edit = "cancelEdit()"
+            like-comment = "likeImageComment(comment)"
+            fetch-who-likes = "fetchWhoLikes(commentId)"
+            can-comment = "canComment"
+            comment-error-class = "commentErrorClass"
+            comment-text = 'vm.commenttext'
+            all-comments = 'imageComments'
+            comment-key = "commentKey"
+            comment-editor-enabled = "commentEditorEnabled"
+            comment-edit-text = 'vm.commentedittext'
+            dd-comment-html = 'ddCommentHtml'
+            action-comment-dropdown='actionCommentDropdown(actionObj)'
+            show-comment-box='showCommentBox'
+            load-previous-comments="loadPreviousComments()"
+            load-more-comments="loadMoreComments()"
+            active-comment-id="activeCommentId"
+        >
+        </rg-single-feed-comments>
+    </div>
+</div>
+<div class="clear"></div>

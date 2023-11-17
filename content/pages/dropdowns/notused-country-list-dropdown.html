@@ -1,0 +1,10 @@
+ <!--<div class="country-wrapper" ng-show="showDropdown">-->
+ <div class="country-wrapper" >
+    <ul id="countrylist" class="ringdropdown" rg-scrollbar="scrollbar()">
+        <div class="count-s">
+        <input type="text" ng-model="countryName" placeholder="Search Country">
+        </div>
+        <a ng-repeat="item in ddControl.countryList() | filter:countryName" ><li class="flag {{item.flagcode}}" ng-click="ddAction()({event: $event, item: item})" > 
+        <span> {{ item.country }}</span></li></a>
+    </ul>
+  </div>

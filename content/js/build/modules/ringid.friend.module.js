@@ -1,0 +1,1 @@
+(function(angular, window) { 'use strict';  angular.module('ringid.friend', [ 'ringid.config', 'ringid.shared' ]); })(angular, window);

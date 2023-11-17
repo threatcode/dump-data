@@ -1,0 +1,97 @@
+<div class="single-box-container" id="box-{{ box.value.getKey() }}"  shared-content="" >
+    <chat-box-top-bar></chat-box-top-bar>
+    <div class="clear"></div>
+
+<div class="chatbox-mid-border" ng-hide="box.value.isMinimized">
+        <chat-box-top-bar-menu></chat-box-top-bar-menu>
+
+        <chat-box-middle></chat-box-middle>
+        
+        <div ng-if="box.value.unreadCount > 0 && scroll==true" class="unread-button" ng-click="showUnreadMessages()" ng-cloak="true">
+            <div class="chat-unread-down"></div>
+            {{ box.value.unreadCount }} new Messages
+        </div>
+
+
+        <chat-box-url-preview></chat-box-url-preview>
+
+        <!--<div class="clear"></div>-->
+        <!--<chat-box-location-info></chat-box-location-info>-->
+
+        <div class="clear"></div>
+        <chat-box-bottom></chat-box-bottom>
+
+        <div class="clear"></div>
+        <!-- div class="tag-chat-non-group-member" ng-if="box.value.isTagChat && !box.value.getTagItem().isTagSafeToShow()" >You are no longer member of this group</div -->
+        <div class="bottom-blocked" ng-if="!box.value.isTagChat && !box.value.isPublicChat && box.value.blocked" >Chat Permission is denied</div>
+    </div>
+
+    <style ng-if="!!box.value.dimension" >
+
+
+        .chat-fullscreen-open-animation #box-{{ box.value.getKey() }}.single-box-container{
+
+            left : {{ box.value.dimension.left - 5  }}px;
+            width:300px;
+            height:400px;
+
+            -webkit-animation-duration: .4s;
+            -moz-animation-duration: .4s;
+            -ms-animation-duration: .4s;
+            -o-animation-duration: .4s;
+            animation-duration: .4s;
+
+
+            -webkit-animation-name: chat_box_fullscreen_open_{{ box.value.getKey() }};
+                    animation-name: chat_box_fullscreen_open_{{ box.value.getKey() }};
+
+        }
+
+        .chat-fullscreen-close-animation #box-{{ box.value.getKey() }}.single-box-container{
+
+            left: calc(50% - 300px);
+            width:600px;
+            height:calc(100% - 80px);
+
+            -webkit-animation-duration: .4s;
+            -moz-animation-duration: .4s;
+            -ms-animation-duration: .4s;
+            -o-animation-duration: .4s;
+            animation-duration: .4s;
+            -webkit-animation-name: chat_box_fullscreen_close_{{ box.value.getKey() }};
+                    animation-name: chat_box_fullscreen_close_{{ box.value.getKey() }};
+        }
+
+
+        @-webkit-keyframes chat_box_fullscreen_open_{{ box.value.getKey() }}{
+
+          0% {
+            height: 400px;
+            width: 300px;
+            left : {{ box.value.dimension.left - 5 }}px;
+          }
+          100% {
+            height: calc(100% - 80px);
+            width: 600px;
+            left: calc(50% - 300px);
+          }
+        }
+
+
+        @-webkit-keyframes chat_box_fullscreen_close_{{ box.value.getKey() }}{
+            0% {
+                height: calc(100% - 80px);
+                width: 600px;
+                left: calc(50% - 300px);
+            }
+            100% {
+                height: 400px;
+                width: 300px;
+                left : {{ box.value.dimension.left - 5 }}px;
+            }
+        }
+    </style>
+
+
+</div>
+

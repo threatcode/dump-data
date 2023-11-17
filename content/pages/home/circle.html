@@ -1,0 +1,69 @@
+
+
+<!--<ng-include src="'templates/index-dashboard-headbar.html'"></ng-include>-->
+<!--[>Mid Body Start<]-->
+<!--<div class="mid-body">-->
+<!--[>Left Content Start<]-->
+<!--<ng-include src="'templates/index-dashboard-leftbar.html'"></ng-include>-->
+<!--[>Left Content End<]-->
+
+<div class="dashboard-bg  mid-width pro-page-width" ng-controller="CirclePageController as cp">
+
+    <div class="circle-cover cover-photo" style="max-height: 250px"   >
+
+        <div class="profile-menu-box">
+            <div class="group" >
+                <p class="group-name" ng-bind="cp.circle.getName()"></p>
+                <p class="member" ng-if="cp.circle.getMembersCount()"  ng-cloak="true">{{cp.circle.getMembersCount()}} members</p>
+                <!--<p class="member">sadmin : {{cp.circle.isSuperAdmin(currentUserUId)}}</p>-->
+            </div>
+            <ul class="group-menu">
+                <li ng-class="cp.subPage === 'post' ? 'active' : '' " ><a ng-href="{{cp.circle.getLink('post')}}">Post</a></li>
+                <li ng-class="cp.subPage === 'members' ? 'active' : '' "><a ng-href="{{cp.circle.getLink('members')}}">Members</a></li>
+            </ul>
+        </div>
+
+        <!--        <div class="group-join" ng-show="isPageReady" rg-dropdown="dropdown()" dd-html="cp.ddHtml" dd-action="cp.ddAction" dd-control="cp.ddControl">
+                    <span class="j-text">+ Joined</span> <div class=" img_sprite w-h-13 icon-ds-arrow j-ico"> 
+                        <span style="width:14px;position:absolute;left:0;height:14px;" class="icon-triangle-ico"  ></span> 
+                    </div>
+                </div>-->
+
+
+        <div class="btn-bg-w buttdr border-gray-orange float-right btn-m-l-8 p-absolute bottom-90 right-50" ng-show="isPageReady" >
+            <a class="btn-p-5-8" rg-dropdown="dropdown()" dd-html="cp.ddHtml" dd-action="cp.ddAction" dd-control="cp.ddControl">
+                <b class="btn-m-r-0 friend-ico cir-joined-icon"></b>
+                <span class="butt-text">Joined</span>
+                <b class="btn-m-r-0 friend-ico down-fb-arrow"></b>
+            </a>
+        </div>
+
+
+
+    </div>
+    <!--
+        <div ng-show="!cp.isPageReady" class="feedloader">
+            <div class="loader-id icon-id-s">
+                <span class="icon-logo-circle"></span>
+            </div>
+        </div>
+    -->
+    <div class="middle" ng-include="cp.subPageLink" ng-if="isPageReady">
+    </div>
+
+    <div class="clear"></div>
+</div>
+
+
+<!--Right content start-->
+<!--<ng-include src="'templates/index-dashboard-rightbar.html'"></ng-include>-->
+<!--right content end-->
+<!--</div>-->
+
+<!--monitor Mid body end-->
+
+
+<!--<div  class="clear"></div>-->
+<!--chatBox starts-->
+<!--<ng-include src="'templates/chatbox.html'"></ng-include>-->
+<!--chatBox ends-->

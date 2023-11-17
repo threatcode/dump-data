@@ -1,0 +1,86 @@
+
+<div class="feed_details main_feed">
+    <!-- Feed Text -->
+
+<div ng-if="feed.getImages().length">
+
+    <!-- <div ng-if="feed.hasExternalUrl() && feed.hasNewsPortalUrl()">
+        <div feed-image="main" portal="true" ex-url="true"></div>
+    </div> -->
+    <div ng-if="(!feed.hasExternalUrl() || feed.hasExternalUrl()) && feed.hasNewsPortalUrl()">
+        <div feed-image="main" portal="true" ex-url="false"></div>
+    </div>
+    <div ng-if="!feed.hasExternalUrl() && !feed.hasNewsPortalUrl()">
+        <div feed-image="main" portal="true" ex-url="false"></div>
+    </div>
+
+    <div class="clear"></div>
+</div>
+
+<div ng-if="feed.hasNewsPortalFeed()" class="news-portal-feed">
+<!-- <p>Ext : {{feed.hasExternalUrl()}}</p> -->
+<!-- <p>Url : {{feed.hasNewsPortalUrl()}}</p> -->
+    <!-- ng-if="!feed.hasExternalUrl() && feed.hasNewsPortalUrl()" -->
+    <p class="og-title"
+       ringbox-type="remote"
+       rg-ringbox="true"  
+       ringbox-scrollable="true"
+       loader-hide = "false"
+       rinbox-open="openNewsPortalPopup()"
+       ringbox-data="getFeedInfo(feed)"
+       ringbox-controller="PortalFeedPopUpController"
+       ringbox-target="templates/newsportal/portal-feed-popup.html" ng-cloak="true">{{feed.getNewsPortalTitle()}}</p>
+
+    <!-- <p class="og-title" ng-if="!feed.hasExternalUrl() && !feed.hasNewsPortalUrl()"
+       ringbox-type="remote"
+       rg-ringbox="true"  
+       ringbox-scrollable="true"
+       loader-hide = "false"
+       ringbox-data="getFeedInfo(feed)"
+       ringbox-controller="PortalFeedPopUpController"
+       ringbox-target="templates/newsportal/portal-feed-popup.html"
+       >{{feed.getNewsPortalTitle()}}</p>
+    
+
+    <p class="og-title" ng-if="feed.hasExternalUrl() && feed.hasNewsPortalUrl()"><a ng-href="{{feed.getNewsPortalUrl()}}" target="_blank">{{feed.getNewsPortalTitle()}}</a></p> -->
+
+
+    <!-- ng-if="!feed.hasExternalUrl() && feed.hasNewsPortalUrl()" -->
+    <p class="og-description"
+       ringbox-type="remote"
+       rg-ringbox="true"  
+       ringbox-scrollable="true"
+       loader-hide = "false"
+       ringbox-data="getFeedInfo(feed)"
+       ringbox-controller="PortalFeedPopUpController"
+       ringbox-target="templates/newsportal/portal-feed-popup.html" ng-cloak="true">{{feed.getNewsPortalShortDescription()}}</p>
+
+
+    <!-- <p class="og-description" ng-if="feed.hasExternalUrl() && feed.hasNewsPortalUrl()" ><a ng-href="{{feed.getNewsPortalUrl()}}" target="_blank">{{feed.getNewsPortalShortDescription()}}</a></p>
+
+    <p class="og-description" ng-if="!feed.hasExternalUrl() && !feed.hasNewsPortalUrl()"
+       ringbox-type="remote"
+       rg-ringbox="true"  
+       ringbox-scrollable="true"
+       loader-hide = "false"
+       ringbox-data="getFeedInfo(feed)"
+       ringbox-controller="PortalFeedPopUpController"
+       ringbox-target="templates/newsportal/portal-feed-popup.html">{{feed.getNewsPortalShortDescription()}}</p> -->
+
+    
+    <!-- <a class="news_link og-url" ng-if="feed.hasExternalUrl() && feed.hasNewsPortalUrl()" ng-href="{{feed.getNewsPortalUrl()}}" target="_blank">{{feed.getPortalBaseUrl()}}</a> -->
+
+      <a class="news_link og-url m-l-8"
+        ng-if="feed.hasExternalUrl() && feed.hasNewsPortalUrl()"
+        ringbox-type="remote"
+        rg-ringbox="true"  
+        ringbox-scrollable="true"
+        loader-hide = "false"
+        ringbox-data="getFeedInfo(feed)"
+        ringbox-controller="PortalFeedPopUpController"
+        ringbox-target="templates/newsportal/portal-feed-popup.html" ng-cloak="true">{{feed.getPortalBaseUrl()}}</a>
+  
+</div>
+
+
+</div>

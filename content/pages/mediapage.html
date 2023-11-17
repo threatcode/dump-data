@@ -1,0 +1,50 @@
+<div  class="dashboard-bg  mid-width pro-page-width">
+    <div class="middle" > 
+<rg-media-slider></rg-media-slider>
+<div class="media-wrapper">
+            <div  class="media-nav">
+                <ul>
+                    <li class="active"><span>Recent</span></li>
+                    <li><span>Album</span></li>
+                    <li><span>Upload</span></li>
+                </ul> 
+
+                <div class="media-search">
+                    <div class="float-left  icon-search-d fr-serach-icon-size"></div>
+                    <div class="float-left">
+                        <form class="friend-search ng-pristine ng-valid" action="" method="get">
+                            <input type="text" placeholder="Search...." name="q">
+                        </form>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            <div class="padding-10-20" >
+                <img ng-if="medias.length() === 0" src="images/music-error.png">
+                <div class="medialist"  ng-repeat="media in medias.all()| limitTo:6" title="{{media.value.getCaption()}}"
+                     rg-ringbox="true" ring-backdrop-close="true" show-close-btn="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"
+                     ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getRecentMediaData(media.value)">
+
+                    <div class="media-thumb">
+                        <img ng-src="{{media.value.getThumbForMediaOnly()}}" alt="{{media.value.getThumbForMediaOnly()}}"/>
+                        <div class="m-icn"></div>
+                        <div class="duration"></div>
+                    </div>
+                    <div class="music-right">
+                        <a title="{{media.value.getCaption()}}" ng-cloak="true">
+                            {{media.value.getCaption()}}
+                        </a>
+                        <p ng-cloak="true">Album: {{media.value.getAlbumName()}}</p>
+                        <p class="views-music" ng-cloak="true">{{media.value.getViewCount()}}</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>

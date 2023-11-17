@@ -1,0 +1,27 @@
+
+    <li ng-show="showUser" >
+        <div class="left">
+            <a class="frpic" ng-href='{{user.link()}}' class="imgdis">
+                <img ng-src="{{user.avatar('thumb')}}" width="45px" height="45px" onerror="this.src='images/prof.png';" />
+            </a>
+        </div>
+
+
+        <div class="right">
+            <div class="reqname">
+                <p><a class="nm" title="{{user.getName()}}" ng-bind="user.getName()" ng-href='{{user.link()}}'></a></p>
+                <p ng-show="user.commonFriends() > 0"><a class="mitualfnd" 
+                       style="cursor: pointer"
+                       rg-ringbox="true"
+                       ringbox-controller="mutualFriendsController"
+                       ringbox-target="templates/popups/user-list.html"
+                       ringbox-type="remote"
+        ringbox-data="getMutualFriend(user)" ng-cloak="true">{{user.commonFriends()}} mutual friends</a>
+                </p>
+            </div>
+            <div class="reqbtn">
+                <rg-addfriend user="user" hide-chat="{{hideChat}}" ></rg-addfriend>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </li>

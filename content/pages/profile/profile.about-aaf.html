@@ -1,0 +1,39 @@
+<!--  Privacy Settings  info DIV start -->
+<div id="privacy-settings">
+    <div class="ppinfo-action" >
+        <span class="img_sprite w-h-13 icon-edit-p-h"></span><a href="#" rg-click="enableAafEditMode($event)" ng-cloak="true">{{consType.change}}</a>
+    </div>
+
+    <div class="view pv-rm"  ng-show="!isEditAaf">
+
+        <div class="divider"></div>
+        <div class="ppinfo">
+            <div class="display_ib"><div class="ab_circle"><span class="img_sprite w-h-22px  ab_auto_ico"></span> </div><span class="prvc-txt ab-priv">Auto add friend</span></div>
+            <div ng-if="aafsettings.aaf == 0" class="allow_sty"> [ Allowed ]</div>
+            <div ng-if="aafsettings.aaf == 1" class="deny_sty" > [ Denied ]</div>
+            <div class="clear"></div>
+        </div>
+        <div class="divider"></div>
+
+    </div>
+
+    <div class="edit" ng-show="isEditAaf">
+        
+        <div class="ppinfo">
+            <div class="left"><div class="ab_circle"><span class="img_sprite w-h-22px ab_auto_ico"></span> </div><span class="prvc-txt ab-priv">Auto add friend</span></div>
+            <div class="right prvc-right-txt">
+                <input type="radio"  id="radio14" class="css-checkbox" ng-value="0" ng-model="aafsettings.aaf"/><label for="radio14" class="css-label radGroup2">Allow</label>
+                <input type="radio" id="radio15" class="css-checkbox"  ng-value="1" ng-model="aafsettings.aaf"/><label for="radio15" class="css-label radGroup2">Deny</label>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="ppinfo">
+            <div class="pp-btn mar-left-60">
+                <input class="pro-edit-btn" type="button" name="x" value="{{consType.save}}" rg-click="saveAafSettings(aafsettings)"/>
+                <input class="pro-edit-btn" type="button" name="y" value="{{consType.cancel}}" rg-click="cancelAafSettings()"/>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  Privacy Settings  info DIV END -->

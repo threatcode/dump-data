@@ -1,0 +1,79 @@
+<style>
+    .nav{
+        width: 33%;
+        padding: 10px;
+        border-right: 1px solid #eee;
+    }
+
+    .nav:last-child{
+        border-right: none;
+    }
+
+    .chat-media-nav{
+        padding-bottom: 10px;
+    }
+    
+    .content-container{
+        min-height: 300px;
+        border-bottom : 1px solid #ededed;
+        padding-bottom : 10px;
+    }
+
+    .chat-media-container{
+        width:800px;
+        min-height: 300px
+    }
+
+    .chat-media-footer{
+        /*width: 200px;*/
+        text-align: center;
+        margin: 0 auto;
+        padding: 10px;
+    }
+
+    .chat-media-footer input:first-child{
+        padding-right: 10px;
+    }
+
+    .audioRecorder button{margin:5px;}
+
+    .chat-media-container input[disabled="disabled"] {
+        background: #CCCCCC;
+    }
+</style>
+
+
+<div class="chat-media-container">
+    <div class="modal-header">
+        <h3 class="ng-binding">Capture Image</h3>
+        <!--<span class="icon-close mdl-close"  rg-click="$close()"></span>-->
+    </div>
+    <div class="scroll-wrapper">
+        <!--<div class="tag-chat-nav chat-media-nav"  >-->
+            <!--<span class="nav" data-ng-click="navSection=0" ng-class="{active:navSection == 0}" >Capture Image</span>-->
+            <!--&lt;!&ndash;<span class="nav" data-ng-click="navSection=1" ng-class="{active:navSection == 1}" >Record Video</span>&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="nav" data-ng-click="navSection=2" ng-class="{active:navSection == 2}" >Record Voice</span>&ndash;&gt;-->
+            <!--<div class="clear"></div>-->
+        <!--</div>-->
+
+        <div class="content-container">
+
+            <!--<div ng-show="navSection==0">-->
+            <rg-image-capture></rg-image-capture>
+            <!--</div>-->
+            <!--<div ng-if="navSection==1">-->
+                <!--<rg-video-capture></rg-video-capture>-->
+            <!--</div>-->
+            <!--<div ng-if="navSection==2">-->
+                <!--<rg-audio-capture></rg-audio-capture>-->
+            <!--</div>-->
+        </div>
+        <div class="clear"></div>
+        <div class="chat-media-footer">
+            <input ng-disabled="!capturedMedia" class="save-button border-radius" data-rg-click="sendMedia()" type="button" name="" value="Send">
+            <input rg-click="$close()" class="cancel-button  border-radius" type="button" name="" value="Cancel">
+            <div class="clear"></div>
+        </div>
+
+    </div>
+</div>

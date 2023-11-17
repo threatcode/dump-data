@@ -1,0 +1,90 @@
+
+<div  class="browse-album" rg-scrollbar disabled="{{forSelection !== 'true'}}"  bottom-reached="loadMoreImage()">
+    <div class="friend-header">
+        <h3 class="dis-inline-blok" rg-click="toggleAlbumPreview()" style="cursor: pointer">
+            <span ng-show="albums.length() > 1">Photo Albums</span>
+            <span ng-show="albums.length() < 2">Photo Album</span>
+            <span ng-show="activeAlbum"> &#8594; {{activeAlbum.getName()}}</span>
+        </h3>
+    </div>
+    <div class="clear"></div>
+    <div class="friends-list"  ng-show="showAlbumPreview">
+
+        <div  class="full_friend_icon" ng-repeat="album in albums.all()" >
+            <div style="background: url('{{album.value.getCoverImage('300')}}');height:200px;background-size: cover;cursor: pointer" 
+                 rg-click="toggleAlbumPreview(album.value)">
+                <div class="camera-bottom" title="{{album.value.getName()}}">{{album.value.getName()}}
+                    <div class="clear"></div>
+                    <a href="javascript:void(0)">{{album.value.getTotalImageCount()}} images</a><p>{{album.value.getUpdateTime()}}</p>
+                </div>
+            </div>
+        </div>
+
+        <p style="padding:10px;font-size:13px;" ng-show="!state.albumsLoading && albums.length() === 0" >There is no photo album available.</p>
+
+        <!---->
+        <!--right loader start here-->
+        <div  class="full_friend_icon" ng-show="state.albumsLoading">
+            <div class="p-area-loader">
+                <div class="p-area-loader-p">
+                    <div class="loader-id icon-id-s  p-area-loader-p">
+                        <span class="icon-logo-circle"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--right loader end here-->
+
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="friends-list text-center spc" ng-show="!showAlbumPreview" >
+
+        <div class="full_friend_icon" ng-repeat="image in activeAlbum.getImages().all()" >
+            <span ng-if="profileObj.isCurrentUser()" rg-click="deleteImage(image.value)" class="icon-close"></span>
+            <div ng-show="forSelection === 'true'" style="background: url('{{image.value.src('300')}}');height:200px;background-size: cover;cursor: pointer" 
+                 rg-click="selectPhoto(image.value)">
+                <div class="camera-bottom"><p ng-show="image.value.getCaption()" class="caption">{{image.value.getCaption()}}</p>
+                    <div class="clear"></div>
+                    <a href="javascript:void(0)">{{image.value.getLikes()}} likes </a><p  class="color-white">{{image.value.getTotalComment()}} comments</p>
+                </div>
+            </div>
+            <div ng-show="forSelection !== 'true'" style="background: url('{{image.value.src('300')}}');height:200px;background-size: cover;cursor: pointer" 
+                 rg-ringbox="true" ringbox-controller="RingBoxImageController" ringbox-type="remote" ringbox-animation="false"
+                 ringbox-target="templates/partials/notification/image-popup.html" ringbox-data="getImageData(image.value)" >
+                <div class="camera-bottom"><p ng-show="image.value.getCaption()" class="caption">{{image.value.getCaption()}}</p>
+                    <div class="clear"></div>
+                    <a href="javascript:void(0)">{{image.value.getLikes()}} likes </a><p class="color-white">{{image.value.getTotalComment()}} comments</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!--right loader start here-->
+        <!---->
+        <div  class="full_friend_icon" ng-show="state.imagesLoading">
+            <div class="p-area-loader">
+                <div class="p-area-loader-p">
+                    <div class="loader-id icon-id-s">
+                        <span class="icon-logo-circle"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div  class="full_friend_icon fltnon  no-border h-5"></div>
+        <div  class="full_friend_icon fltnon  no-border h-5"></div>
+        <div  class="full_friend_icon fltnon no-border h-5"></div>
+        <div  class="full_friend_icon fltnon no-border h-5"></div>
+        <!--right loader end here-->
+
+
+
+        <div class="clear"></div>
+        <rg-bottom-reached load-more="loadMoreImage()" enabled="{{!showAlbumPreview && !state.noMoreImage && forSelection !== 'true'}}"></rg-bottom-reached>
+    </div>
+    <div class="clear"></div>
+
+</div>
+
+

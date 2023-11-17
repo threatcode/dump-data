@@ -1,0 +1,64 @@
+<div class="upper-mess" ng-if="feed.hasActivityMessage()" rg-compile="feed.getActivityMessage()"></div>
+<div class="newsfeed-top" ng-class="{'specail-feed-top':feed.isSpecial()}">
+    <!--left user picture-->
+
+
+
+
+<!--    <div class="icon-logo-circle ps-logo float-left" ng-show="feed.user().avatar()">
+        <a ng-href="{{ ::feed.user().link()}}" > <img class="responsive-all" ng-src="{{ feed.user().avatar('thumb')}}" onError="this.src='images/prof.png';" alt=""> </a>
+    </div>-->
+
+    <a ng-href='{{ ::feed.user().link()}}' class="drop-shape-cover p-relative float-left" ng-show="feed.user().avatar()">
+        <!--<div class="img_sprite drop-shape-ico p-absolute"></div>-->
+        <img class="border-radius-100p" ng-src="{{ feed.user().avatar('thumb')}}" width="45px" height="45px" onError="this.src='images/prof.png';" alt=""/>
+    </a>
+
+
+
+
+    <!--middle text-->
+    <div class="top-r-feed">
+        <div feed-message="feed" >
+        </div>
+        <span class="time" style="padding: 5px 0;vertical-align: middle;"><i class="img_sprite w-h-13 icon-dt-ico"></i><b>{{feed.time()}}</b>
+        <span data-tooltip-post="{{::feed.getPrivacy().text}}" ng-class="feed.getPrivacy().iconfeed"></span>
+        </span>
+    </div>
+    <!--right serial number-->
+  <!--   <div class="top-right-con">
+    <a ng-href="{{::feed.getUrl() }}" ng-hide="hideSerial">
+        <span ng-class="{'special-serial':feed.isSpecial()}" class="img_sprite fed-num t-a-c fl-right mar-left-5 serial showpointer" feed-serial="true" data-rg-conditional-click="goToFeed(feed.getUrl())" ></span>
+    </a> -->
+    <!--right dropdown for own feed-->
+ <!--    <div ng-if="showdroparrow !== false" rg-dropdown="dropdown()"  dd-template="ddTemplate"
+         dd-control="feed.ddControl" dd-action="actionFeedDropdown">test test
+        <div class="drop-arrow m-r-3 mar-top-7 img_sprite fl-right icon-down-arrow f-500 f-12 w-h-13">
+            muri khai
+        </div>
+    </div> -->
+
+
+<!-- 
+    </div> -->
+
+
+<!--right serial number-->
+    <div class="top-right-con dooommmmmm">
+        <a ng-href="{{::feed.getUrl() }}" ng-hide="hideSerial">
+            <span ng-class="{'special-serial':feed.isSpecial()}" class="img_sprite fed-num t-a-c fl-right mar-left-5 serial showpointer" feed-serial="true" data-rg-conditional-click="goToFeed(feed.getUrl())" ></span>
+        </a>
+        <!--right dropdown for own feed-->
+        <div class="p-rt mar-top-7 w-h-13 fl-right cur-p drop-wrap">
+        <div ng-if="showdroparrow !== false" rg-dropdown="dropdown()"  dd-template="ddTemplate"
+             dd-control="feed.ddControl" dd-action="actionFeedDropdown">
+            <div class="drop-arrow img_sprite icon-down-arrow f-500 f-12 w-h-13"></div>
+        </div>
+        </div>
+            <div data-tool="Saved" class="drop-arrow img_sprite saved-ico saved w-h-13" ng-if="feed.isSaved()" ></div>
+    </div>
+
+
+
+</div>
+

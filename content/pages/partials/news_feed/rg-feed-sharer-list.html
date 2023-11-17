@@ -1,0 +1,34 @@
+<div ng-if="!isSingleContentFeed" class="newsfeed-row" ng-controller="FeedSubController" ng-repeat="feed in feeds track by $index"
+     style="opacity: 1;" ng-init="feedstatus = feed.text();
+                             keyid = feed.getKey();
+                             imageslength = feed.getImages().length;" >
+            <rg-news-feed-top feed="feed"
+                              serial="serial"
+                              hide-serial="hideSerial"
+                              dd-template="ddTemplate"
+                              dropdown="dropdown"
+                              action-feed-dropdown="actionFeedDropdown"
+                              showdroparrow = "showdroparrow">
+            </rg-news-feed-top>
+            <rg-news-feed-bottom></rg-news-feed-bottom>
+
+    <div class="clear"></div>
+
+</div>
+
+<div ng-if="isSingleContentFeed" class="newsfeed-row" ng-repeat="feed in feeds track by $index" style="opacity: 1;padding: 10px;">
+
+    <div>
+        <a ng-href='{{ ::feed.user().link()}}' class="drop-shape-cover p-relative float-left" ng-show="feed.user().avatar()">
+            <!--<div class="img_sprite drop-shape-ico p-absolute"></div>-->
+            <img class="border-radius-100p" ng-src="{{ feed.user().avatar('thumb')}}" width="45px" height="45px" onError="this.src='images/prof.png';" alt=""/>
+        </a>
+    </div>
+
+    <div class="t-a-l feed-s-p m-l-10 float-left m-t-10">
+        <div feed-message="feed"></div>
+    </div>
+
+    <div class="clear"></div>
+
+</div>

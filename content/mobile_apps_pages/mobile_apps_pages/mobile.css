@@ -1,0 +1,60 @@
+@font-face {
+    font-family: "helvetica_ceregular";
+    src: url('../fonts/helvetica_ce_regular-webfont.eot');
+}
+
+@font-face {
+    font-family: "helvetica_ceregular";
+    src: local('helvetica_ceregular'), local('helvetica_ceregular'),   url('../fonts/helvetica_ce_regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 100;
+    src: local('Roboto Thin'), local('Roboto-Thin'), url("../fonts/MMDEOSa6i6T9gBocjYCJkQ.woff") format('woff');
+}
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Roboto Light'), local('Roboto-Light'), url(../fonts/d-QWLnp4didxos_6urzFtg.woff) format('woff');
+}
+
+
+body{font-family: "Roboto",sans-serif; font-weight: normal; font-style: normal; margin: 0; padding: 0;}
+h2{margin: 10px 0px;}
+h3{margin: 8px 0px;}
+li{list-style: square}
+p{font-size: 1em; line-height: 1.4em; margin: 15px 0}
+.mobile-apps-main{padding: 20px 25px; text-align: justify}
+.txt_justify{text-align: justify; padding: 25px; font-size: 1.2em; line-height: 1.4em; color:#3f3e3e}
+
+span.ring-color{color:#f77727}
+
+
+.panel-title {
+    background-color: #f7f7f7;
+    border: 1px solid #e2e2e2;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    margin: 4px 0;
+    padding: 7px 15px;
+}
+.panel-title a {
+    color: #000000;
+    text-decoration: none;
+}
+.panel-body {
+    -webkit-transition: height 0s;
+    -moz-transition:all linear 0s;
+    -o-transition:all linear 0s;
+    transition: height 0s;
+    opacity:1;
+    border: 1px solid #eeeeee;
+}
+.padding-10 {
+    padding: 10px;
+}
+

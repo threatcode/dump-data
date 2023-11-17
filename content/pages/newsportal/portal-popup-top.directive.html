@@ -1,0 +1,38 @@
+
+<div class="newsfeed-top" ng-class="{'specail-feed-top':feed.isSpecial()}">
+    <!--left user picture-->
+
+
+
+
+<!--    <div class="icon-logo-circle ps-logo float-left" ng-show="feed.user().avatar()">
+        <a ng-href="{{ ::feed.user().link()}}" > <img class="responsive-all" ng-src="{{ feed.user().avatar('thumb')}}" onError="this.src='images/prof.png';" alt=""> </a>
+    </div>-->
+
+    <a ng-href='{{ ::feed.user().link()}}' class="drop-shape-cover p-relative float-left" ng-show="feed.user().avatar()">
+        <!--<div class="img_sprite drop-shape-ico p-absolute"></div>-->
+        <img class="border-radius-100p" ng-src="{{ feed.user().avatar('thumb')}}" width="45px" height="45px" onError="this.src='images/prof.png';" alt=""/>
+    </a>
+
+
+
+
+    <!--middle text-->
+    <div class="top-r-feed">
+        <div feed-message="feed" >
+        </div>
+        <span class="time" style="padding: 5px 0;vertical-align: middle;"><i class="img_sprite w-h-13 icon-dt-ico"></i><b ng-cloak="true">{{feed.time()}}</b>
+        <span data-tooltip-post="{{::feed.getPrivacy().text}}" ng-class="feed.getPrivacy().iconfeed"></span>
+        </span>
+    </div>
+    <!--right serial number-->
+    
+    <!--right dropdown for own feed-->
+    <div class="top-right-con">
+    <div rg-dropdown="dropdown()"  dd-template="ddTemplate"
+         dd-control="feed.ddControl" dd-action="actionFeedDropdown">
+        <div class="drop-arrow img_sprite fl-right icon-down-arrow f-500 f-12 w-h-13"></div>
+    </div>
+    </div>
+</div>
+

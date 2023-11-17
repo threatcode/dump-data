@@ -1,0 +1,1 @@
+(function(angular, window) { 'use strict';  angular.module('ringid.sticker', [ 'ringid.config' ]); })(angular, window);

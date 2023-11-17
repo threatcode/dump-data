@@ -1,0 +1,35 @@
+<div class="news-pro-wrap mar-0-5" >
+
+    <div ng-if="isCalled">
+        <div class="no-suggest mb25">
+            <p ng-cloak="true">{{message}}</p>
+        </div>
+    </div>
+
+    <div  class="news-pro-box" ng-repeat="portal in portalDiscoverMap.all()" ng-class="{followed: portal.value.isSubscribed()}">
+        <div class="news-pro-img" style="background: url('../images/default_cover.jpg') no-repeat; ">
+            <!--<img ng-src="{{portal.value.getProfileImage()}}">-->
+        </div>
+        <div class="dscv-img" style="background: url('{{portal.value.getProfileImage()}}') no-repeat;"></div>
+        <div class="flow-text" ng-cloak="true">{{ portal.value.getFollowerCountWithText() }}</div>
+        <a ng-href="#/newsportal/{{portal.value.getUid()}}"><div class="flow-text-name">{{portal.value.getFullName()}}</div></a>
+        <div class="flow-text-name flow-text-details" ng-cloak="true">
+            {{portal.value.getPortalSlogan()}}
+        </div>
+        <div class="flow-btn" ng-if="! portal.value.isSubscribed()"
+             rg-ringbox="true"
+             ringbox-controller="portalFollowController"
+             ringbox-target="templates/newsportal/portal-follow.popup.html"
+             ringbox-type="remote" 
+             ringbox-data="getCatList(portal.value,$index)">+ Follow
+        </div>
+        <a ng-if="portal.value.isSubscribed()" ng-href="{{portal.value.getProfileLink()}}">
+            <div class="flow-btn">&#x2714; Following</div>
+        </a>
+    </div>
+    <div  class="news-pro-box npb"></div>
+    <div  class="news-pro-box npb"></div>
+    <div  class="news-pro-box npb"></div>
+    <div  class="news-pro-box npb"></div>
+
+</div>

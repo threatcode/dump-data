@@ -1,0 +1,226 @@
+.sti-con {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+    height: 610px;
+}
+.sti-white {
+  background: white;  
+  height: 625px;
+}
+.sti-h {
+    background-color: #fff;
+  border-bottom: 1px solid #dbdbdb;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 15px;
+}
+.sti-f {
+    background-color: #fff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid #dbdbdb;
+    height: 15px;
+}
+.sti-banner {
+    display: flex;
+    height: 138px;
+    margin: 10px auto;
+    width: 670px;
+}
+.sti-banner img {
+    border-radius: 5px;
+}
+.store-banner {
+      display: inline-block;
+  height: auto;
+  margin: 10px 0;
+  width: 100%;
+  border-bottom: 1px solid #e7e8e9;
+}
+.pre-photo {
+     width: auto;
+  height: auto;
+  float: left;
+}
+.sti-mid {
+    height: 403px;
+/*    margin-bottom: 17px;*/
+    overflow: auto;
+}
+.sti-mid-p {
+    height: 470px;
+}
+
+.sti-box {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 4px 0px rgba(102,102,102,0.1);
+    -moz-box-shadow: 0px 0px 4px 0px rgba(102,102,102,0.1);
+    box-shadow: 0px 0px 4px 0px rgba(102,102,102,0.1);
+    background-color: rgba(255, 255, 255, 255.75);
+    border: 1px solid #fff;
+    display: inline-block;
+    height: 190px;
+    margin-bottom: 14px;
+    margin-left: 14px;
+    position: relative;
+    width: 47%;
+    float: left;
+}
+.img-b {
+    display: inline-block;
+  float: left;
+  height: 141px;
+  padding-top: 50px;
+  width: 97px;
+  background: url(../images/divider-tb.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  margin-right: 13px;
+}
+.img-b img {
+    display: list-item;
+    margin: auto;
+    max-height: 150px;
+    max-width: 117px;
+}
+.img-name {
+    color: #696f70;
+  font-family: "myriad Pro";
+  font-size: 13px;
+  font-weight: normal;
+  text-align: center;
+}
+.img-name p {
+    font-size: 11px;
+    color: #878d8e;
+}
+.emoti-box{
+    display: inline-block;
+    height: auto;
+    padding-top: 6px;
+    width: 206px;
+}
+.emoti-s {
+    display: inline-block;
+    height: 59px;
+    margin-top: 14px;
+    width: 68px;
+}
+.emoti-s img {
+    border: 0 none;
+    display: block;
+    margin: auto;
+    max-height: 57px;
+    max-width: 57px;
+}
+.emoti-btn-box {
+    display: inline-block;
+    height: 30px;
+    width: 184px;
+}
+.preview-btn {
+background: none repeat scroll 0 0 white;
+  border: 1px solid #e8e8e8;
+  border-radius: 11px;
+  color: #878d8e;
+  float: right;
+  font-size: 11px;
+  height: 17px;
+  line-height: 1.6;
+  margin: 9px 6px 0 0;
+  text-align: center;
+  cursor: pointer;
+  padding: 2px 8px;
+}
+.btn-back {
+    background: #f4f4f4;
+  color: #767676;
+  display: inline-block;
+  float: none;
+  margin-left: 13px;
+}
+.preview-btn:hover {
+    background: #f47727;
+    border: 1px solid #d95c0c;
+    color: #fff;
+    transition: background 0.5s ease;
+}
+.sti-mid-in{
+    padding: 5px 0;
+}
+.store-box {
+      background-color: rgba(255, 255, 255, 1);
+  border-radius: 5px;
+  display: inline-block;
+  float: left;
+  margin-bottom: 20px;
+  margin-left: 14px;
+  min-height: 300px;
+  padding-bottom: 12px;
+  position: relative;
+  width: 96%;
+}
+.store-box img{max-width: 100%; }
+.store-sti {
+    border: 1px solid transparent;
+    display: inline-block;
+    height: 140px;
+    margin: 15px 0 0 10px;
+    width: 140px;
+}
+.store-sti img {
+    border: 0 none;
+    display: block;
+    margin: auto;
+    max-height: 140px;
+    max-width: 140px;
+}
+.store-img {
+    display: table-cell;
+    flex-direction: column;
+    height: 80px;
+    justify-content: center;
+    overflow: visible;
+    padding: 20px;
+    vertical-align: middle;
+    width: 80px;
+    color: #f47727;
+    font-size: 21px;
+}
+.store-img img {
+     border: 0 none;
+    display: block;
+    margin: auto;
+    max-height: 114px;
+    max-width: 80px;
+    vertical-align: middle;
+}
+.store-text {
+     color: #f47727;
+  font-size: 21px;
+  height: 98px;
+  padding: 9px 12px 12px;
+  width: 450px;
+}
+.store-text p{
+    font-size: 14px;
+    color: #8a9698;
+}
+.store-text h3{
+    font-size: 11px;
+    color: #878d8e;
+    margin-top: 10px;
+}
+.sti-free {
+      display: inline-block;
+  float: none;
+}

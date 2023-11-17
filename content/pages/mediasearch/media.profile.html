@@ -1,0 +1,100 @@
+<div class="dashboard-bg  mid-width pro-page-width" ng-controller="MediaProfileController">
+    <div class="notification-loader-position" ng-show="! mediaMap" style="top: 0 !important;">
+        <div class="loader-s">
+            <div class="lr1"></div>
+            <div class="lr2"></div>
+            <div class="lr3"></div>
+        </div>
+    </div>
+
+    <div class="middle" ng-if="mediaMap">
+        <div class="profile news-pro-wrap">
+            <div style="position:relative;z-index: 1;background-size:cover;background-position:0px 0px;max-height: 250px;background-image:url({{mediaMap.getCoverImage()}});" id="coverPhoto" class="noselect cover-photo news-cover">
+                <div style="display:inline-block;width:100%;height:auto;">
+                    <div class="pr-pos-w-s" style="bottom: 50px;">
+                        <div class="profile-shape-cover" style="position:relative;">
+                            <div class=" img_sprite profile-shape-ico left-shape-ico-pro pids-logo">
+                                <div class="profile-pic" style="background-image:url({{mediaMap.getProfileImage()}});"></div>
+                            </div>
+                            <div class="profile-shape" style="top: 0;">
+                                <div class="opacity-background">
+                                    <div class="online-box-area">
+                                        <div class="online-border-left-side">
+
+                                        </div>
+                                    </div>
+                                    <div class="text-of-background"></div>
+                                </div>
+                                <div class="text-online-status">
+                                    <span class="p-id-text name_of_profile" ng-cloak="true">{{mediaMap.getFullName()}}</span>
+                                    <div class="clear"></div>
+                                    <span class="p-id-text name_of_profile ng-binding" ng-cloak="true">{{mediaMap.getPortalSlogan()}}</span>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class=" p-absolute bottom-90 right-50">
+
+
+                        <div class="btn-bg-w buttdr border-gray-orange float-right btn-m-l-8"  ng-cloak>
+
+                            <a class="btn-p-5-8"   ng-if="!mediaMap.isSubscribed()" rg-click="followPage(mediaMap)">
+                                <b class="btn-m-r-0 friend-ico cir-joined-icon"></b>
+                                <span class="butt-text">Follow</span>
+                            </a>
+                            <a class="btn-p-5-8"  ng-if="mediaMap.isSubscribed()" rg-dropdown="dropdown()"  dd-html="ddActionHtml"
+                               dd-control="{media:mediaMap}" dd-action="actionFollowingDropdown">
+                                <b class="btn-m-r-0 friend-ico correct"></b>
+                                <span class="butt-text">Following</span>
+                                <b class="btn-m-r-0 friend-ico down-fb-arrow"></b>
+                            </a>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+                <div class="profile-menu-box news-count-warp" ng-cloak>
+                    <span ng-cloak="true">{{ mediaMap.getFollowerCountWithText() }}</span>
+                </div>
+            </div> 
+        </div>
+        <div rg-feed-subscriber>
+        <div class="middle news-portal-feed" > 
+            <!-- rg-repeat warning: starting and ending space in child element is not permitted -->
+            <div id="feeds-container" feed-repeat="feed in feeds"><div class="newsfeed-row newsfeed-opacity " ng-controller="FeedSubController"
+                    ng-init="feed = feed.value;
+                                    feedstatus = feed.text();
+                                    keyid = feed.getKey();
+                                    imageslength = feed.getImages().length;"
+                    ng-class="{'half_opacity':feed.isPending()}">
+                    <rg-common-feed-top 
+                                    feed="feed"
+                                    serial="serial"
+                                    dd-template="ddTemplate"
+                                    dropdown="dropdown"
+                                    action-feed-dropdown="actionFeedDropdown"
+                                    showdroparrow = "showdroparrow"
+                                    templatepath="templates/mediasearch/media-page-feed-top.html">
+                    </rg-common-feed-top>
+                    <rg-common-feed-bottom templatepath="templates/mediasearch/media-profile-bottom.html"></rg-common-feed-bottom>
+
+                    <div class="clear"></div>
+            </div>
+      </div>
+    
+</div>
+<div rg-incoming-feed class="upward-feed">
+        <div class="feed-la"></div>
+        New Feeds
+    </div>
+<div class="clear"></div>
+<!-- <div  ng-if="noMoreFeed" class="background-linear">No more feeds to show !</div> -->
+        </div>
+    </div>
+</div>

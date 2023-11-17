@@ -1,0 +1,71 @@
+<div class='brknews m-0-5' ng-show="sliderElements.length() > 0">Breaking News</div>
+<div class="m-0-5"    ng-show="sliderElements.length() > 0">
+    <div class="media-slider-wrapper t-sl np-sl ">
+        <div class="media-slider" style="height:245px;">
+            <div class="photobanner">
+
+                <div id="feeds-container"  class="nps-cont t-sl-f" style="width:{{slideWidth}}px"   ng-repeat="element in sliderElements.all()">
+                    <div class="nps-box" >
+                        <div class="npsttl-box">
+                            <div class="npimg" style="background: url('{{element.value.getProfileImage()}}') no-repeat;">
+                                <a ng-href="{{element.value.getProfileLink(sliderType)}}"></a>
+                            </div>
+                            <div class="npinfo">
+                                <p class="npttl"><a title="{{element.value.getPortalTitle()}}" ng-href="{{element.value.getProfileLink(sliderType)}}"  ng-cloak="true">{{element.value.getPortalTitle()}}</a></p>
+                                <span class="time"><i class="img_sprite w-h-13 icon-dt-ico"></i><b class="ng-binding">June 11 2016 at 3:28 PM</b></span>
+                            </div>
+                        </div>
+                        <div class="nps-nbox">
+                            <p class="ntitle"
+                               ringbox-type="remote"
+                               rg-ringbox="true"  
+                               ringbox-scrollable="true"
+                               loader-hide = "false"
+                               ringbox-data="getFeedInfo(element.value)"
+                               ringbox-controller="{{popupController}}"
+                               ringbox-target="{{popupTemplate}}" ng-cloak="true">
+                                {{element.value.getNewsTitle()}}
+                            </p>          
+                            <p class="ndesc" ng-cloak="true">{{element.value.getDescription()}}</p>
+                        </div> 
+                    </div>
+                </div>
+
+                <!--                    <div class="npsld">
+                                        <div class="npsld-top">
+                                            <div class="left">
+                                                <a ng-href="{{element.value.getProfileLink(sliderType)}}"><img ng-src="{{element.value.getProfileImage()}}" alt="" style="width:100%;height: 100%;"></a>
+                                            </div>
+                                            <div class="right">
+                                                <a ng-href="{{element.value.getProfileLink(sliderType)}}" class="npttl">{{element.value.getPortalTitle()}}</a>
+                                                <p class="nttl"
+                                                   ringbox-type="remote"
+                                                   rg-ringbox="true"  
+                                                   ringbox-scrollable="true"
+                                                   loader-hide = "false"
+                                                   ringbox-data="getFeedInfo(element.value)"
+                                                   ringbox-controller="{{popupController}}"
+                                                   ringbox-target="{{popupTemplate}}">
+                                                    {{element.value.getNewsTitle()}}
+                                                </p>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <div class="npsld-bot"
+                                             ringbox-type="remote"
+                                             rg-ringbox="true"  
+                                             ringbox-scrollable="true"
+                                             loader-hide = "false"
+                                             ringbox-data="getFeedInfo(element.value)"
+                                             ringbox-controller="{{popupController}}"
+                                             ringbox-target="{{popupTemplate}}">
+                                            {{element.value.getDescription()}}
+                                        </div>
+                                    </div>-->            
+                <!--</ul>-->
+            </div>
+        </div>
+        <div ng-show="showLeftArrow" class="icon-left-arrow img_sprite sld-control news-sld-left" ng-click="left()"></div>
+        <div ng-show="showRightArrow" class="icon-right-arrow img_sprite sld-control  news-sld-right" ng-click="right()"></div>
+    </div>
+</div>

@@ -1,0 +1,1 @@
+(function(angular, window) { 'use strict';  angular.module('ringid.profile', [ 'ringid.config', 'ringid.digits', 'ringid.global_services', 'ringid.auth', 'ringid.media', 'ui.bootstrap', 'angular-svg-round-progress' ]); })(angular, window);

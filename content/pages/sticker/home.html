@@ -1,0 +1,18 @@
+<div class="mid-width sm-w-700 sticker-market" ng-class="{'sti-popup' : popup}" rg-scrollbar="!!popup">
+    <div class="stkmkt-hdr" ng-if="isHomeTab()">
+        <span class="icon-close stk-close" rg-click="$close()"></span>
+        <p>Sticker Market</p>
+    </div>
+
+    <rg-loader-view1 is-loading="loading" ></rg-loader-view1>
+
+    <div ng-if="!loading">
+        <rg-sticker-tabs ng-if="isHomeTab()" ></rg-sticker-tabs> 
+        <rg-sticker-category-details ng-if="isCategoryTab()" ></rg-sticker-category-details>
+        <rg-sticker-category-detail ng-if="isLanguageTab()" ></rg-sticker-category-detail>
+    </div>
+
+    <rg-loader-view3 is-loading="loading" ng-if="!loadMoreButtonHide && !isHomeTab() && type != 'single'" rg-click="loadMoreItems()"></rg-loader-view3>
+
+</div>
+

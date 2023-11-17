@@ -1,0 +1,93 @@
+<div class="stkmkt-nav">
+    <div class="stkmkt"> 
+        <ul>
+            <li ng-class="{active: type == 'home'}" >
+                <a ng-click='goTo("/sticker")'><span>Home</span></a>
+            </li>
+
+            <li ng-class="{active: type == 'collections'}" >
+                <a ng-click='goTo("/sticker/category/collections")'><span>Category</span></a>
+            </li>
+
+            <li ng-class="{active: type == 'languages'}" >
+                <a ng-click='goTo("/sticker/category/languages")'><span>Language</span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- HOME TAB -->
+<div class="stkmkt-detail-area" ng-if="type == 'home'">
+    <div class="sticker-category-area" style="display: block;">
+
+       <rg-sticker-page-category-list 
+            category-name='Popular Stickers' 
+            category-slug='details/popular' 
+            category-items="popularCategories"
+            go-to="goTo(urlPath)"
+        ></rg-sticker-page-category-list> 
+
+       <rg-sticker-page-category-list 
+            category-name='New Stickers' 
+            category-slug='details/new' 
+            category-items="newCategories"
+            go-to="goTo(urlPath)"
+        ></rg-sticker-page-category-list> 
+
+       <rg-sticker-page-category-list 
+            ng-if="myStickerCategories.length > 0"
+            show-icon="true"
+            category-name='My Stickers' 
+            category-slug='details/mystickers' 
+            category-items="myStickerCategories"
+            go-to="goTo(urlPath)"
+        ></rg-sticker-page-category-list> 
+
+       <rg-sticker-page-category-list 
+            show-icon="true"
+            category-name='All Stickers' 
+            category-slug='details/all' 
+            category-items="allCategories"
+            go-to="goTo(urlPath)"
+        ></rg-sticker-page-category-list> 
+
+    </div>
+    <div class="clear"></div>
+</div>
+
+<!-- CATEGORY TAB -->
+<div class="stkmkt-detail-area" ng-if="type == 'collections'">
+    <div class="sticker-category-area" style="display: block;">
+        <div ng-repeat="collection in allCollections | orderObjectBy:'getName'" 
+            ng-init="categories=getCollectionCategoryObjects(collection)" >
+
+            <rg-sticker-page-category-list 
+                show-icon="true"
+                go-to="goTo(urlPath)"
+                category-name="{{ collection.getName() }}"
+                category-slug="collection/{{ collection.getKey() }}"
+                category-items="categories" ></rg-sticker-page-category-list> 
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<!-- LANGUAGE TAB -->
+<div class="stkmkt-detail-area" ng-if="type == 'languages'">
+    <div class="sticker-category-area" style="display: block;">
+        <div ng-repeat="langCollection in allLanguages | orderObjectBy:'getName'" 
+            ng-init="categories=getCollectionCategoryObjects(langCollection)" >
+
+            <rg-sticker-page-category-list 
+                show-icon="true"
+                go-to="goTo(urlPath)"
+                category-name="{{ langCollection.getName() }}"
+                category-slug="language/{{ langCollection.getName()|lowercase }}"
+                category-items="categories" ></rg-sticker-page-category-list> 
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+
+<rg-loader-view3 is-loading="loading" ng-if="!loadMoreButtonHide && !isHomeTab() && type != 'single'" rg-click="loadMoreItems()"></rg-loader-view3>

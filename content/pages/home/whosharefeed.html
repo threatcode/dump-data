@@ -1,0 +1,18 @@
+<style>
+    .ringbox-inner {overflow: visible;}
+</style>
+
+<div class="sinimg-img-page-wrapper w-600 pad-0">
+    <div class="modal-header"><h3 class="ng-binding">People Who Shared This</h3>
+        <!--<span class="icon-close mdl-close" rg-click="$close()"></span>-->
+    </div>
+<div class="sinimg-area border-n pad-10">
+
+    <rg-feed-sharer-list  is-single-content-feed="isSingleContentFeed" feeds="feeds"></rg-feed-sharer-list>
+
+       <div ng-show="busy" class="share-c-l-p">
+        <div ng-show="boxIsLoading"  class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div></div>
+    </div>
+    
+</div>
+</div>

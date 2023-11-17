@@ -1,0 +1,15 @@
+
+
+<div class="dashboard-bg  mid-width ">
+    <div class="middle" >
+        <h1 ng-cloak="true">All Images --> {{allimages.length}}</h1>
+        <ul>
+            <li ng-repeat="image in allImages">
+                <div>
+                    <img style="max-height: 200px;max-width: 200px" alt="image" ng-src="{{image.src()}}"/>
+                    <span ng-cloak="true"><b><i>Caption : {{image.getCaption()}}</i></b></span>
+                </div>
+            </li>
+        </ul>
+    </div>  
+</div>

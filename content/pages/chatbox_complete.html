@@ -1,0 +1,244 @@
+<style>
+    .status_update{
+        margin-top: 10px;
+        /*margin-bottom: 5px;*/
+        /*width: 220px;*/
+        text-align: center;
+        background-color: #fff;
+        padding: 4px 15px 4px 15px;
+        height: auto;
+        display: inline-block;
+        /*position: relative;*/
+        word-wrap: break-word;
+        -moz-border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -o-border-radius: 8px;
+        -ms-border-radius: 8px;
+        border-radius: 8px;
+        box-shadow: 1px 1px 3px #ddd;
+    }
+
+    .status_update a{
+        text-decoration: underline;
+    }
+
+    .old-tag-box .chat-middle{
+        height: 304px;
+    }
+
+    .old-tag-box .chat-bottom{
+        display: none;
+    }
+
+    .old-tag-box .chat-middle.bottomPad{
+        padding-bottom: 50px;
+    }
+
+    .old-tag-box .tag-chat-non-group-member{
+        color: red;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+
+
+
+</style>
+<div ng-controller="ChatController" chat-subscriber="asd"  style="position: fixed; bottom: 0;right: 200px;left:200px; z-index: 100; height: 400px;pointer-events: none;padding-right:6px;">
+    <div class="{{ box.value.chatBoxClass}}" ng-class="{ 'old-tag-box' : (box.value.isTagChat && !box.value.getTagItem().isTagSafeToShow()) }" ng-repeat="box in boxes| filter : {value : {nonDomBox : true }} | limitTo : - availableNo " ng-init="box.value.previousDate = ''" chat-focus="{{ box.value.getKey()}}" style="pointer-events: all;">
+
+        <div class="single-box-container"  shared-content="" >
+            <div class="chat-top-bar" minimize-box="noneed" chat-blinker="asd">
+                <span ng-class="{'online-status-image' : box.value.offlineStatus == false , 'offline-status-image' : box.value.offlineStatus == true }"></span>
+                <!--<span ng-hide="box.value.isTagChat" ng-class="{ 'web':box.value.platform==5,'android':box.value.platform==2,'iphone':box.value.platform==3 }"></span>-->
+                <!--<a ng-href="{{getProfileLink+box.value.getKey()}}" class="chat-name">-->
+
+                <span class="chat-name" ng-cloak="true">{{ box.value.getTitleString() }} </span><!--</a>-->
+
+                <div class="chat-top-sty">
+                    <a close-box="noneed"><span class="img_sprite w-h-16 chat-normal-ico"></span></a>
+                    <a minimize-box="noneed"><span class="ico-mini chat-font"></span></a>
+                    <div ng-if="!box.value.isTagChat"><set-timeout></set-timeout></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+
+
+            <div class="chatbox-mid-border" ng-hide="box.value.isMinimized">
+                <div  ng-show="!box.value.isTagChat && (box.value.offlineStatus || (!box.value.hideSuggestion && box.value.getUser().friendshipStatus() != 1))" class="last-seen-pop  chat-pop">
+                    <div class="d-in-b pad-9 f-12 m-t-2" ng-if="box.value.offlineStatus" ng-cloak="true">{{ box.value.getUser().lastOnline()}}</div>
+                    <div class="clear"></div>
+                    <div class="d-in-b pad-9 f-12 m-t-2" ng-if="box.value.isTagChat && (!box.value.port || !box.value.isBoxBindingPortValid())">Connecting...</div>
+                    <div class="clear"></div>
+                    <div class="d-in-b  f-12 m-t-2"  style="width:265px;" ng-if="!box.value.hideSuggestion && !box.value.offlineStatus">
+                        <div ng-switch on="box.value.getUser().friendshipStatus()">
+                            <!--{{box.value.getUser().friendshipStatus()}}-->
+                            <span style="text-align: left;padding: 6px 10px;display: inline-block;">This is not your friend.</span>
+                            <a class="friend-btn float-right" ng-switch-when="0" ng-click="addFriend({friend: box.value.getUser(), action:'add'})"><span class="friend-ico addfnd"></span>Add Friend</a>
+                            <a class="friend-btn  float-right" ng-switch-when="2" ng-click="acceptFriend({friend: box.value.getUser(), action: 'accept_incoming'})"><span class="friend-ico accept"></span>Accept</a>
+
+                            <a class="friend-btn float-right" ng-switch-when="3" href="javascript:void(0);">Request sent</a>
+
+
+                            <!--<span ng-switch-default></span>-->
+                            <span class="img_sprite w-h-16 chat-close-p-ico c-top-opa" ng-click="box.value.hideSuggestion = true"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-middle" ng-class="{bottomPad: (ogStatus.preview || ogStatus.filterOnProgress || ogStatus.loading) }" ng-hide="box.value.isMinimized" chat-scroll-bottom="df" rg-scrollbar="true">
+                    <!--{{ box.value.previousDate }}-->
+                    <!--<div class="line">-->
+                    <!--<div class="line-m">Today</div>-->
+                    <!--</div>-->
+                    <!--<div class="clear"></div>-->
+                    <div class="clear"></div>
+                    <div message-directive="noneed" message-box="box" message-msg="message" ng-repeat="message in box.value.getMessages()" ng-init="message = message.value" ng-mouseover="message.deleteIcon = true" ng-mouseleave="message.deleteIcon = false">
+                        <!--<div ng-if="box.value.previousDate != (message.messageDate | date)"  class="line">-->
+                        <!--<div class="line-m">{{ box.value.previousDate = (message.messageDate | date)}}</div>-->
+                        <!--</div>-->
+
+                        <div chat-message-react="message" ng-class="{'status_pending' : message.status == 0,'status_delivered': message.status == 1,'status_seen': message.status == 2,'status_sent': message.status == 3, 'status_update' : message.status == 'status_update' }" style="margin-left:5px;">
+
+                            <div ng-if="message.status != 'status_update' ">
+
+                                <div class="t-set" ng-if="!message.user.isCurrentUser() && message.timeout > 0">
+                                    <div class="timer-l">
+                                        <p ng-cloak="true">{{message.timeout}}</p>
+                                        <h3>sec</h3>
+                                    </div>
+                                </div>
+                                <a edit-message="{{box.value.getKey()}}" ng-show="message.user.isCurrentUser() && message.messageType != 7 && message.messageType != 6 && message.deleteIcon && message.status !== 'Deleted' && message.status !== 'status_update'" class="msgDeleteIcon">
+                                    <span class="icon-edit-p ab-edit pos-edit-c f-11"></span>
+                                </a>
+                                <a delete-message="noneed" ng-show="message.deleteIcon && message.status !== 'Deleted' && message.status !== 'status_update'" class="msgDeleteIcon">
+                                    <span class="icon-close c-close"></span>
+                                </a>
+
+                                <div ng-if="message.messageType != 5 && message.messageType != 8 && message.messageType != 9">
+                                    <p ng-bind-html="message.getTextPartition()"></p>
+                                </div>
+
+                                <div ng-if="message.messageType == 5 && !!message.ogData">
+                                    <p ng-bind="message.plainText"></p>
+                                    <rg-url-og-preview template="templates/partials/chat/url-og-preview.html" og-data="message.ogData" show-preview="true" loading-data="false"></rg-url-og-preview>
+                                </div>
+
+                                <div ng-if="message.messageType == 8 || message.messageType == 9">
+
+                                    <rg-player id="chat-media-{{ message.key }}" is-video="{{::message.isVideo}}" auto-play="false" width="150" height="150" url="{{::message.mediaUrl}}" ></rg-player>
+
+                                </div>
+
+
+
+                                <div class="clear"></div>
+
+                                <div class="t-chat" ng-if="!box.value.isTagChat">
+                                    <p ng-cloak="true">{{message.status ? message.status : 'Pending'}} : {{ message.getMessageTime()}}</p>
+                                </div>
+
+                                <div class="t-chat" ng-if="box.value.isTagChat">
+                                    <p  >
+                                        <span ng-if="message.status == 0">Pending</span>
+                                        <span ng-if="message.status == 'Sent' || message.status == 'Delivered'">Delivered</span>
+                                        <span ng-if="message.status == 'Received'">Received</span>
+                                        <span ng-if="message.status == 'Edited'">Edited</span>
+                                        <span ng-if="message.status == 'Seen'">Seen</span>
+
+                                        <span ng-cloak="true"> {{ message.getMessageTime()}} </span>
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <div ng-if="message.status == 'status_update'">
+
+                                <p ng-bind-html="message.getTextPartition()"></p>
+                                <div class="clear"></div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+
+                    <div ng-if="box.value.progressValue" style="position: relative; bottom: 165px; left:54px; font-size:10px;">
+                        <div class="status-photo-view-chat">
+                            <div ng-show="box.value.progressValue !== 100" class="progress-bar-placement-chat">
+                                <!--<img title="tempImage" width="100%" src="{{ box.value.tempImage }}" onError="this.src='images/prof.png'" style="opacity: 0.8" />-->
+                                <div class="percent" ng-cloak="true">{{box.value.progressValue}}%</div>
+                                <div class="progress-bar">
+                                    <div class="uploaded"  ng-style="{'width': box.value.progressValue + '%'}"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div ng-if="box.value.isFriendTyping()" style="position:fixed; bottom: 50px;font-size:10px;">Typing...</div>
+
+                    <div class="clear"></div>
+
+
+
+                </div>
+
+                <div class="single-preview-container" style="position: absolute;max-height: 150px; width: 98%; bottom:50px;overflow: hidden">
+
+                    <div class="chat-preview" ng-if="messageText != '' && (ogStatus.preview || ogStatus.filterOnProgress || ogStatus.loading)">
+
+                        <rg-url-og-preview template="templates/partials/chat/url-og-preview.html"
+                                og-data="messageData.ogData" edit-mode="true"
+                                show-preview="ogStatus.preview" filter-on-progress="ogStatus.filterOnProgress"
+                                loading-data="ogStatus.loading" >
+                        </rg-url-og-preview>
+
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+
+
+                <div class="chat-bottom" ng-hide="box.value.isMinimized"  >
+
+                    <!--<div ng-if="box.value.isTagChat" class="chat-cam" rg-upload upload-type="tagchatimage" upload-action="uploadAction" upload-box-value="uploadBoxValue"></div>-->
+
+                    <div class="chat-cam" rg-upload upload-type="chatimage" upload-action="uploadAction" upload-box-value="uploadBoxValue"></div>
+
+
+                    <span class="chat-ic-sty chat-area" chat-select-emo="noneed">
+                        <textarea rows="" cols="" ng-model="messageText" send-message-directive="noneed" name="chat"></textarea>
+
+                        <div style="max-width: 250px;">
+                            <rg-url-og-fetcher data-fetched-og-info="messageData.ogData"
+                                               editor-content="messageText"
+                                               show-preview="ogStatus.preview"
+                                               loading-data="ogStatus.loading"
+                                               filter-on-progress="ogStatus.filterOnProgress"></rg-url-og-fetcher>
+                        </div>
+
+                    </span>
+                    <div class="emo-area-chat">
+                        <a class="imo-icon" href="javascript:void(0)">
+                            <i class="img_sprite icon-emoticon ico-sty" rg-emoticon show-sticker="true" clicked="selectEmoticonChat"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="tag-chat-non-group-member" ng-if="box.value.isTagChat && !box.value.getTagItem().isTagSafeToShow()" >You are no longer member of this group</div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div ng-if="domBoxLength() > availableNo" class="extra-chat-box" style="pointer-events: all;">
+        <a class="extra-chat-box-no" chat-bind-outside-click="asd" ng-click="showHidden = !!showHidden === false ? true: false; c = domBoxLength() - availableNo; b = 60 + c * 32;" ng-cloak="true">{{domBoxLength() - availableNo}}</a>
+        <div class="show-hidded-boxes" ng-show="showHidden" ng-style="{'bottom': b + 'px'}">
+            <div class="extra-chat-box-names" ng-repeat="rbox in boxes| filter : {value : {nonDomBox : true }} | limitTo : (domBoxLength() - availableNo)" chat-blinker-h="asd" chat-r-focus="{{ rbox.value.getKey()}}" make-visible-chat-box="{{ rbox.value.getKey()}}" ng-cloak="true">{{rbox.value.getTitle() ? (rbox.value.getTitle() | limitTo:15) : rbox.value.getKey()}}</div>
+        </div>
+    </div>
+</div>

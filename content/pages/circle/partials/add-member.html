@@ -1,0 +1,55 @@
+ <div class="member-box"  style="border:1px solid #e6e6e6; padding: 0; min-height: 110px" >
+                <!-- <div class="member-box-list" ng-repeat="member in selectedItems.all()">
+                    {{member.value.getName()}}
+                    <div class="m-close" rg-click="removeItem()(member.value)">
+                        <span class="cir-ico m-add-close"></span>
+                    </div>
+                </div> -->
+                <span class="tag-name"  ng-repeat="usr in selectedItems.all() track by usr.value.getKey()" style="position: relative;">
+                    <span class="tag-title"  ng-cloak="true">{{::usr.value.getName()}}</span>
+                    <span class="close-ico tagclose" ng-click="removeItem()(usr, $event)" style="color: red;"></span>
+                </span>
+                <div class="select-search" >
+                   
+                    <!-- <rg-circle-edit></rg-circle-edit> -->
+                    <input data-selector-input ng-model="filterText" type="text" name="fs" placeholder="Search friends">
+                    <!-- <input id="circle-select" type="text" id="friendinput" name="fs" ng-model="friendsNameFilter" placeholder="Search friends"> -->
+                    <!-- <rg-friend-dropdown ng-show="friendDropdown" template-url="templates/circle-partials/friend-list-dropdown.html" tag-items="selectedMembers" filter-text="friendsNameFilter" tag-friend="true" on-close="closeFriendDd" on-select="addToCircle"></rg-friend-dropdown> -->
+                </div>
+
+<!--                <div class="add-member-box margin-re"  ng-show="memberList.length() < 1">
+                    <span>Add members for your circle</span>
+                    <div class="clear"></div>
+                    <div class="select-search">
+                        <input type="text" name="fs" ng-model="friendsNameFilter" placeholder="Search friends">
+                        <rg-friend-dropdown ng-show="friendDropdown" template-url="templates/circle-partials/friend-list-dropdown.html" tag-items="selectedMembers" filter-text="friendsNameFilter"  on-close="closeFriendDd" on-select="addToCircle"></rg-friend-dropdown>
+                    </div>
+                </div>-->
+            </div>
+<div data-selector-dropdown class="m-s-height tag-dd active" style="display:none;" >
+    <div class="loader-s" ng-show="loading">
+        <div class="lr1"></div>
+        <div class="lr2"></div>
+        <div class="lr3"></div>
+    </div>
+    <div class="ringscroll" style="position:relative;width:auto;overflow:hidden;height:100%;" >
+        <ul class="tagfnd"  style="overflow: hidden;">
+                <!-- <li class="unread" ng-repeat="user in itemList | mapListFilter:selectedItems track by user.value.getKey()"  -->
+                <li  ng-repeat="user in itemList track by user.value.getKey()" 
+                    ng-class="{'selected':$index==selectedIndex}"  rg-click-all="select(user, $event)" rg-mouseover="mouseoverSelect($index)">
+                    <!-- show feed image popup -->
+                    <a>
+                        <div class="left">
+                            <div class="pic"><img rg-src="user.value.avatar()" onerror="this.src='images/prof.png'" /></div>
+                        </div>
+                        <div class="right">
+                            <p class="tagfnd-txt" ng-cloak="true">{{::user.value.getName()}}</p>
+                        </div>
+                        <div class="clear"></div>
+                    </a>
+
+                </li>
+
+        </ul>
+    </div>
+</div>

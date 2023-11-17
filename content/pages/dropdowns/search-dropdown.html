@@ -1,0 +1,27 @@
+<input type="text" ng-change="doTheSearch()" ng-model="searchText" ng-model-options="{debounce:1000}"  placeholder={{placeholder}} />
+<div id="search-dropdown" class="fnd-search-box " style="display:none;">
+    <div class="fnd-req-title">Search</div>
+    <div class="clear"></div>
+    <div ng-show="noResult && !showLoadbar" class="ser-found">No Result Found</div>
+
+    <div class="fnd-search-scroll-wrapper">
+        <!--        <div ng-show="showLoadbar" class="feedloader top-50-percent"> 
+                    <div  class="loader-id"></div>   
+                </div>-->
+        <ul class="friend-req" rg-scrollbar="scrollbar()" bottom-reached="doSearch()">
+
+            <rg-userview ng-repeat="user in listData.all() track by user.value.getKey()" 
+                         user="user.value" hide-currentuser="true"
+                        template-path="templates/partials/usercards/userview.directive.html" >
+            </rg-userview>
+
+        </ul>
+    </div>
+
+    <div ng-show="gotAllResult && !showLoadbar" class="ser-found">No more search result</div>
+    <div class="notification-loader-position">
+        <div ng-show="showLoadbar" class="">
+            <div class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+        </div>
+    </div>
+</div>

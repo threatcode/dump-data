@@ -1,0 +1,474 @@
+.pro-edit-btn {
+    background: #fff;
+    border: 1px solid #ededed;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    color: #868686;
+    cursor: pointer;
+    font-size: 12px;
+    height: 25px;
+    width: 100px;
+    text-align: center;
+    text-transform: capitalize;
+}
+.close,.icon-close{background-image:url("../images/cl.png");display:inline-block;width:14px;height:14px;background-repeat: no-repeat;vertical-align: middle;}
+.modal-header .icon-close{background-image:url("../images/cl.png");display:inline-block;width:14px;height:14px;}
+.editor-parent-r .icon-close{background-image:url("../images/clh.png");display:inline-block;width:14px;height: 14px;vertical-align: middle;}
+.post-area-box .icon-close{background-image:url("../images/cl.png");}
+.editor-parent-r .icon-close:hover,.post-area-box .icon-close:hover,.status-box .icon-close:hover{background-image:url("../images/clh.png");}
+.pt-top .icon-close,.em-top .icon-close{background-image:url("../images/clh.png");display:inline-block;width:14px;height:14px;vertical-align: middle;}
+.modal-header .icon-close:hover{background-image:url("../images/clh.png");}
+.chat-close {
+    background-image:url("../images/clw.png");
+}
+.pop-close{
+    background-image:url("../images/clw.png");
+}
+.sti-white .icon-close{top:10px;right:10px;}
+.pop-close:hover,.sti-close:hover{
+    background-image:url("../images/clh.png");
+}
+.status-photo-view-thumb-hover .close{
+    background-image: url("../images/clw.png");
+}
+.og_area .icon-close{background-image:url("../images/cls.png");}
+
+
+.ui-notification .icon-close{background-image:url("../images/noti-close.png");width:8px;}
+
+.pro-edit-btn:hover {
+    background: #f47727;
+    border: 1px solid transparent;
+    color:#fff;
+
+}
+.post-b-ico{
+    width: 40px;
+    height: 34px;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    overflow: hidden;
+}
+.post-b-ico:hover{
+    border-bottom: 2px solid #f47727;
+}
+.post-b-ico .icon-emoticon {
+    line-height: 1.2;
+}
+.status-ico {
+    /*background-image: url("../images/status-i.png");*/
+    display: inline-block;
+    height: 17px;
+    width: 26px;
+    cursor: pointer;
+    margin-left: 8px;
+    margin-top: 11px;
+}
+.pro-f {
+    font-size: 16px;
+    margin: 0 2px;
+    vertical-align: bottom;
+}
+.camera-ico {
+    background-position: -141px -595px;
+}
+.video-ico {
+    background-position: -239px -595px;
+    height: 20px;
+    margin-top: 8px;
+}
+.audio-ico {
+    background-position: -216px -595px;
+}
+.emo-ico {
+    background-position: -68px 0;
+}
+.feeling-ico {
+    background-position: -165px -595px;
+    height: 18px;
+}
+.tag-f-ico {
+    background-position: -192px -595px;
+}
+.location-ico {
+    background-position: -261px -595px;
+    width: 24px;
+    height: 19px;
+    margin-top: 9px;
+}
+.post-b-ico:hover .camera-ico{
+    background-position: -141px -624px;
+}
+.post-b-ico:hover .video-ico{
+    background-position: -239px -620px;
+}
+.post-b-ico:hover .audio-ico{
+    background-position: -216px -623px;
+}
+.post-b-ico:hover .emo-ico{
+    background-position: -68px -29px;
+}
+.post-b-ico:hover .tag-f-ico{
+    background-position: -192px -624px;
+}
+.post-b-ico:hover .feeling-ico{
+    background-position: -165px -622px;
+}
+.post-b-ico:hover .location-ico{
+    background-position: -261px -621px;
+}
+
+.pico-sty{
+    color: #bababa;
+    display: inline-block;
+    font-size: 30px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.settings-icon{
+    cursor: pointer;
+    float: right;
+    height: 20px;
+    margin: 6px;
+    width: 20px;
+}
+.feed_comment .ico-sty{
+    color: #bababa;
+    display: inline-block;
+    font-size: 26px;
+    text-decoration: none;
+    /*    margin-top: -1px;*/
+    bottom:2px;
+}
+.feed_comment .ico-sty:hover{
+    font-size: 26px;
+    color: #bababa;
+    text-decoration: none;
+}
+.ico-sty{
+    color: #bababa;
+    display: inline-block;
+    font-size: 21px;
+    text-decoration: none;
+    vertical-align:top;
+    cursor: pointer;
+    position: relative;
+}
+.ico-sty:hover{
+    /*font-size: 21px;*/
+    /*color: #bababa;*/
+    text-decoration: none;
+}
+.ico-sty:active{
+    color: #f47727;
+}
+.ico-sty a{
+    text-decoration: none;
+    outline: none;
+}
+.ico-sty a:hover{
+    text-decoration: none;
+}
+.ico-sty a:focus{
+    text-decoration: none;
+}
+.ico-sty:focus{
+    text-decoration: none;
+}
+.post-box a.active span i.ico-sty:hover{color:#f47727;}
+.post-box a.active span i.ico-sty{color:#f47727;}
+.c-button {
+    background-color: #fbfbfb;
+    border: 1px solid #bababa;
+    color: #727272;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: 0.9px;
+    line-height: 1;
+    padding: 3px 5px 2px;
+    text-align: center;
+    cursor: pointer;
+}
+.p-btn {
+    background-color: #FFFFFF;
+    border: 1px solid #b3b3b3;
+    color: #929292;
+    letter-spacing: .4px;
+    text-align: center;
+    cursor: pointer;
+    height: 23px;
+    border-radius: 3px;
+    padding: 0px 4px
+}
+.p-btn:active {
+    border: 1px solid #b3b3b3;
+}
+.post-ico {
+    /*background-image: url(../images/p-ico.png);*/
+    height: 14px;
+    width: 13px;
+    display: inline-block;
+    margin-top: 2px;
+}
+.post-ico-gray {
+    /*background-image: url(../images/p-ico-gray.png);*/
+    height: 14px;
+    width: 13px;
+    display: inline-block;
+}
+
+.a-box:hover a {
+    color: #f47727; 
+}
+
+.c-button:hover {
+    border: 1px solid transparent;
+    background-color: #f5853d;
+    color:#fff;
+    cursor: pointer;
+
+}
+.dissable:hover {
+    border: 1px solid #bababa;
+    color: #727272;
+    background-color: #fbfbfb;
+    cursor: progress;
+}
+.p-btn-bg {
+    background-color: #f47727; 
+    border: none;
+
+}
+input.p-btn-bg {
+    color: white;
+    font-weight: bold;
+    letter-spacing: normal;
+}
+input.p-btn-bg:hover {
+    background-color: #f58f4c; 
+    border: none;
+}
+.icon-close{cursor:pointer;}
+.full_friend_icon span.icon-close{
+    position: absolute;
+    right: 0;
+    margin: 5px;
+    display:none;
+    color:#fff;
+    text-shadow:1px 1px 2px #030303;
+}
+.full_friend_icon:hover span.icon-close{
+    display:block;
+}
+.full_friend_icon:hover span.icon-close:hover{
+    color:#f47727;
+    transition: color .5s ease;
+    -moz-transition: color .5s ease;
+    -webkit-transition: color .5s ease;
+    -o-transition: color .5s ease;
+    -ms-transition: color .5s ease;
+}
+.c-close {
+    border-radius: 50%;
+    box-sizing: border-box;
+    color: gray;
+    font-size: 9px;
+    line-height: 1;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+}
+.j-ico {
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 11px;
+    height: 14px;
+    line-height: 1.9;
+    position: relative;
+    text-align: right;
+    vertical-align: middle;
+    width: 17px;
+    right: -4px;
+}
+.p-ico {
+    color: #5a5a5a;
+    display: inline-block;
+    font-size: 12px;
+    height: 20px;
+    width: 17px;
+}
+.fr-serach-icon-size{
+    color: #9C9C9C;
+    font-size: 18px;
+    padding: 5px 10px;
+}
+.icon-video{font-size: 18px;}
+.not-color {
+    color: #8b8b8b;
+}
+.not-close:hover {
+    color: #f47727;
+    transition: color .5s ease;
+}
+.feed-view-ico {
+    background-position: -79px -193px;
+    margin-top: 14px;
+}
+.f-Block, .fr-dorp, .pro-f, .block-ic{ margin: 0 2px;}
+.adg-f{font-size: 16px; margin-right: 3px}
+.f-Block {
+    vertical-align: middle;   
+}
+.drop-sprite {
+    background-image: url(../images/drop-down.png);
+}
+.unfollow-ico {
+    background-position: 0 -68px;
+}
+.save-ico {
+    background-position: 0px -41px;
+}
+.arrow-d {
+    background-position: -29px -12px;
+}
+.edit-ico {
+    background-position: 0px -13px;
+}
+.add-tag-ico {
+    background-position: -29px -40px;
+}
+.delete-ico {
+    background-position: -29px -55px;
+}
+.down-ico {
+    background-position: 0px -54px;
+}
+.report-ico {
+    background-position: -30px 2px;
+}
+.hide-feed-ico {
+    background-position: -86px -107px;
+}
+.hide-up-user-ico {
+    background-position: -85px -121px;
+}
+.dropdown-ico {
+    background-position: 0px -80px;
+}
+.add-album-ico {
+    background-position: 0px 1px;
+    width: 15px;
+}
+.fb-share-ico {
+    background-position: -68px 0px;
+}
+.share-ico {
+    background-position: 1px -26px;
+}
+.make-admin-ico {
+    background-position: -42px -141px;
+}
+.remove-admin-ico {
+    background-position: -68px -70px;
+}
+.remove-member-ico {
+    background-position: -68px -70px;
+}
+.block-ico {
+    background-position: -42px -124px;
+}
+.unblock-ico {
+    background-position: -58px -124px;
+}
+.feed-line:hover a {
+    color:#f47727;
+}
+.request-cancel-ico  {
+    background-position: -53px -88px;
+}
+.request-accept-ico {
+    background-position: -69px -87px;
+}
+.social-ico {
+    background-image: url('../images/social.png');
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+.twitter-ico {
+    margin:5px 7px;
+}
+.facebook-ico {
+    background-position: -21px 0px;
+    margin: 5px 10px;
+    width: 15px; 
+}
+.star-ico {
+    width: 10px;
+    height: 10px;
+    background-position: 0px -408px;
+}
+.icon-upload-pro{background-position: -85px 0px;}
+.icon-camera-f{background-position: -84px -15px;}
+.icon-move{background-position: -85px -30px;}
+/* .drop-h:hover .icon-upload-pro{background-position: -102px 0px;}
+.drop-h:hover .icon-camera-f{background-position: -101px -15px;}
+.drop-h:hover .icon-move{background-position: -102px -30px;} */
+.curve-t-ico{
+    background-position: -65px -49px;
+}
+.curve-b-ico{
+    background-position: -91px -49px;
+}
+.cr-drop-ico {
+    background-position: -86px -70px;
+    width: 20px;
+    height: 20px;
+}
+.close-s-ico {
+    background-position: -73px -35px;
+    width: 10px;
+    height: 10px;
+}
+.close-s-ico:hover {
+    background-position: -61px -35px;
+}
+
+.settings-ico {
+    background-position: 2px -631px;
+}
+.timmer-ico {
+    background-position: -84px -592px;
+}
+.chat-bg-ico {
+    background-position: -84px -606px;
+}
+.leave-ico {
+    background-position: -84px -622px;
+}
+.mini-ico {
+    background-position: 0px -615px;
+}
+.chat-normal-ico {
+    background-position: 0px -648px;
+}   
+.chat-close-ico {
+    background-position: 0px -664px;
+}
+.max-ico {
+    background-position: -11px -506px;
+}
+.max-ico-sm {
+    background-position: 0 -708px;
+}
+.saved-ico {
+    background-position: 0px -470px;
+}

@@ -1,0 +1,26 @@
+<div class="news-pro-wrap mar-0-5" >
+
+    <div ng-if="isCalled">
+        <div class="no-suggest mb25">
+           <p ng-cloak="true">{{message}}</p>
+        </div>
+    </div>
+
+    <div  class="news-pro-box h240" ng-repeat="celebrity in celebrityDiscoverMap.all() track by $index" ng-class="{followed: celebrity.value.isSubscribed()}">
+        <div class="news-pro-img"  style="background: url('../images/default_cover.jpg') no-repeat; ">
+            <!--<img ng-src="{{celebrity.value.getProfileImage()}}">-->
+        </div>
+        <div class="dscv-img" style="background: url('{{celebrity.value.getProfileImage()}}') no-repeat;"></div>
+        <div class="flow-text" ng-cloak="true">{{ celebrity.value.getFollowerCountWithText() }}</div>
+        <div class="flow-text-name"><a ng-href="{{celebrity.value.getProfileLink()}}" ng-cloak="true">{{celebrity.value.getFullName()}}</a></div>
+
+        <div class="flow-btn" ng-if="! celebrity.value.isSubscribed()" rg-click="doneFollow(celebrity.value.getKey())">+ Follow</div>
+        <a ng-if="celebrity.value.isSubscribed()" ng-href="{{celebrity.value.getProfileLink()}}">
+            <div class="flow-btn">&#x2714; Following</div>
+        </a>
+    </div>
+    <div  class="news-pro-box npb"></div>
+    <div  class="news-pro-box npb"></div>
+    <div  class="news-pro-box npb"></div>
+    <div  class="news-pro-box npb"></div>
+</div>

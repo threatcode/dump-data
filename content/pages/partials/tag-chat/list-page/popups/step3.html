@@ -1,0 +1,47 @@
+<div class="circle-part3" ng-class="{'cr-opacity' : currentStep == 2}">
+    
+    <div class="modal-header">
+        <h3 class="ng-binding">  <span class="cir-ico mh-ico"></span>Select Admin</h3>
+        <!--<span class="icon-close mdl-close" rg-click="$close()"></span>-->
+    </div>
+
+    <div class="cir-select-mid">
+        <div class="member-box" rg-scrollbar="scrollbar()" style="max-height: 120px;min-height: 50px;">
+            <div class="member-box-list" ng-repeat="admin in adminList.all()">
+                <span ng-cloak="true"> {{admin.value.getName()}}</span>
+                <div class="m-close" rg-click="removeMember(admin.value)">
+                    <span class="cir-ico m-add-close"></span>
+                </div>
+            </div>
+            <div class="cri-error" ng-show="adminList.length() < 1"> No admin added yet. Add admin from selected members. </div>
+         
+        </div>
+        <div class="search-admin-box">
+            <span class="cir-head-text f-left">Selected Group Members</span>
+            <div class="box-search border-radius-4px float-right width-192 bg-eaeaec" style="margin:9px 12px 5px 12px">
+                <span class="img_sprite width-25px height-25px search-icon-25 p-absolute search-icon-p"></span>
+                <input type="text" name="" ng-model="memberfilter" placeholder="Search members">
+            </div>
+
+
+        </div>
+        <div class="member-box" rg-scrollbar="scrollbar()" style="max-height: 130px;min-height: 50px;">
+
+            <div class="member-admin-box" ng-repeat="member in memberList.all()| mapFilter:{mapApi: 'getName', value: memberfilter, compare: 'regex'} | mapListFilter:adminList as filteredList " rg-click="selectMemberAsAdmin(member.value)">
+                <div class="member-admin-pro">
+                    <img ng-src="{{ member.value.getUser().avatar() }}" onerror="this.src='images/prof.png';">
+                </div>
+                <div class="member-admin-name" ng-cloak="true">{{member.value.getName()}}</div>
+                <div class="member-set" rg-click="removeMember(member.value)">
+                    <span class="cir-ico m-set-close"></span>
+                </div>
+            </div>
+
+            <!--
+             <div class="cri-error" ng-show="memberList.length() < 1"> Member list can not be empty </div>-->
+        </div>
+    </div>
+    <rg-wizard-step-list steps="rgWizardData.steps" ></rg-wizard-step-list>
+</div>
+
+

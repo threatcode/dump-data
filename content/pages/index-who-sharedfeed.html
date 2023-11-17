@@ -1,0 +1,27 @@
+<div data-ng-controller="FeedSingleWhoShareController" class="w-600 margin-0-auto min-h-200">
+    <div ng-show="!isReady" class="feedloader">
+        <div class="loader-id icon-id-s">
+            <span class="icon-logo-circle"></span>
+        </div>
+    </div>
+
+    <div ng-if="isReady">
+        <div data-ng-controller="FeedSubController" class="mar-12 pad-12">
+            <div class="feed pad-bottom-15 mar-0 white-b">
+                <rg-news-feed-top feed="feed"
+                                  hide-serial="true" showdroparrow="false">
+                </rg-news-feed-top>
+
+                <rg-single-feed-details></rg-single-feed-details>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <rg-feed-sharer-list is-single-content-feed="isSingleContentFeed" feeds="feeds"></rg-feed-sharer-list>
+    </div>
+
+</div>
+
+
+

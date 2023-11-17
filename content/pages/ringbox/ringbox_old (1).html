@@ -1,0 +1,18 @@
+
+<div id="ringbox" class="ringbox" ng-style="ringboxStyle">
+    <div id="ringbox-outerContainer" ng-style="containerStyle" class="ringbox-outerContainer">
+        <div  id="ringbox-container" class="ringbox-container">
+            <div id="ringbox-content" ng-hide="boxIsLoading" class="ringbox-content" ng-transclude compile="content">
+               
+            </div>
+            <div class="ringbox-nav" ng-show="navigation">
+                <a id="ringbox-prev" class="ringbox-prev" href=""></a>
+                <a id="ringbox-next" class="ringbox-next" href=""></a>
+            </div>
+            <div class="ringbox-loader" ng-show="boxIsLoading" xyzasd="asdasd">
+                <a class="ringbox-loading">&nbsp;</a>
+            </div>
+        </div>
+    </div>
+
+</div>

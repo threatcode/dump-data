@@ -1,0 +1,141 @@
+<div class="shared_feed" ng-if="feed.hasSharedFeed()" ng-init="shared_feed = feed.getOrginalFeed()" >
+    <a ng-href="{{ ::shared_feed.getUrl() }}"  ng-show="!singleFeed">
+        <span class="share-link"  data-rg-conditional-click="goToFeed(shared_feed.getUrl())" ></span>
+    </a>
+    <div class="newsfeed-top">
+        <div class="icon-logo-circle ps-logo float-left">
+            <a ng-href="{{ ::shared_feed.user().link() }}"> <img class="responsive-all"
+                                                                 ng-src="{{ ::shared_feed.user().avatar('thumb')}}" alt="">
+            </a>
+        </div>
+        <div class="status_title p-name">
+            <h3 feed-message="shared_feed">
+
+            </h3>
+
+            <span class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i>{{::shared_feed.time()}}</span>
+        </div>
+    </div>
+    <div class="newsfeed-bottom">
+        <div class="feed">
+            <div class="feed_details main_feed">
+                <p ng-if="shared_feed" class="feed_value" rg-more-feed="shared_feed"></p>
+
+                <!-- Feed Location Start -->
+
+                <p class="location" ng-if="!editorEnabled && shared_feed.hasLocationInfo()" >
+                <feed-location-preview target="shared_feed"></feed-location-preview>
+                </p>
+
+                <!-- Feed Location End -->
+
+                <p ng-if="!$parent.editorEnabled && shared_feed.hasOgData()" ng-init="ogData = shared_feed.getOgData()" >
+                <rg-url-og-preview og-data="ogData" show-preview="shared_feed.hasOgData()" loading-data="false"  ></rg-url-og-preview></p>
+
+                <div class="feed-shared" ng-if="shared_feed.getImages().length">
+                    <!-- Need Refactoring to Separate directive -->
+                    <!--                    <a ng-if="singleFeed" ng-href="#{{ image.getUrl() }}" ng-repeat="image in shared_feed.getImages()" ng-init="image = image.value;imageslength = shared_feed.getImages().length;"  >
+                                            <div style="display:inline-block"
+                                                 class="width-height-of-picture" feed-image feed-image-responsive="false"  rg-ringbox="true" ringbox-controller="RingBoxImageController"
+                                                 ringbox-type="remote" ringbox-target="templates/partials/notification/image-popup.html"
+                                                 ringbox-data="getImageData(image, shared_feed)"></div>
+                                        </a>-->
+
+                    <!-- <div feed-image="shared"></div> -->
+
+                    <div ng-if="!shared_feed.hasNewsPortalFeed()">
+                        <div  feed-image="shared"></div>
+                    </div>
+
+                    <div ng-if="shared_feed.hasNewsPortalFeed()">
+                        <div ng-if="(!shared_feed.hasExternalUrl() || shared_feed.hasExternalUrl()) && shared_feed.hasNewsPortalUrl()">
+                            <div feed-image="shared" portal="true" ex-url="false"></div>
+                        </div>
+                        <div ng-if="!shared_feed.hasExternalUrl() && !shared_feed.hasNewsPortalUrl()">
+                            <div feed-image="shared" portal="true" ex-url="false"></div>
+                        </div>
+                    </div>
+                    <!-- <div ng-repeat="image in shared_feed.getImages()" ng-init="image = image.value;imageslength = shared_feed.getImages().length;"  feed-image rg-ringbox="true" ringbox-controller="RingBoxImageController"
+                         ringbox-type="remote" ringbox-target="templates/partials/notification/image-popup.html"
+                         ringbox-data="getImageData(image, shared_feed)"></div> -->
+                </div>
+
+                <div ng-if="shared_feed.hasNewsPortalFeed()" class="news-portal-feed">
+
+                    <p class="og-title"
+                       ringbox-type="remote"
+                       rg-ringbox="true"
+                       ringbox-scrollable="true"
+                       loader-hide = "false"
+                       ringbox-data="getFeedInfo(shared_feed)"
+                       ringbox-controller="PortalFeedPopUpController"
+                       ringbox-target="templates/newsportal/portal-feed-popup.html" ng-cloak="true">
+                        {{shared_feed.getNewsPortalTitle()}}
+                    </p>
+                    <!-- <p class="og-title" ng-if="!shared_feed.hasExternalUrl() && !shared_feed.hasNewsPortalUrl()">{{shared_feed.getNewsPortalTitle()}}</p>
+                    <p class="og-title" ng-if="shared_feed.hasExternalUrl() && shared_feed.hasNewsPortalUrl()">{{shared_feed.getNewsPortalTitle()}}</p> -->
+
+                    <p class="og-description"
+                       ringbox-type="remote"
+                       rg-ringbox="true"
+                       ringbox-scrollable="true"
+                       loader-hide = "false"
+                       ringbox-data="getFeedInfo(shared_feed)"
+                       ringbox-controller="PortalFeedPopUpController"
+                       ringbox-target="templates/newsportal/portal-feed-popup.html" ng-cloak="true">{{shared_feed.getNewsPortalShortDescription()}}</p>
+                    <!-- <p ng-if="shared_feed.hasExternalUrl()" class="news_link">
+                        <a ng-href="{{shared_feed.getNewsPortalUrl()}}" target="_blank">{{shared_feed.getNewsPortalUrl()}}</a>
+                    </p> -->
+                    <span class="float-left m-l-8"><a class="news_link og-url"
+                        ng-if="shared_feed.hasExternalUrl()"
+                        ringbox-type="remote"
+                        rg-ringbox="true"  
+                        ringbox-scrollable="true"
+                        loader-hide = "false"
+                        ringbox-data="getFeedInfo(shared_feed)"
+                        ringbox-controller="PortalFeedPopUpController"
+                        ringbox-target="templates/newsportal/portal-feed-popup.html" ng-cloak="true">{{shared_feed.getPortalBaseUrl()}}</a></span>
+                </div>
+
+                <rg-video ng-if="shared_feed.getMedias().length()" feed="shared_feed"
+                          get-media-data="getMediaData(mediavalue, shared_feed)" select-album="selectAlbum(mediavalue)"
+                          no-download="noDownload($event)" get-media-first-data="getMediaFirstData(shared_feed)">
+
+                </rg-video>
+
+                <rg-audio ng-if="shared_feed.getAudios().length()" feed="shared_feed"
+                          get-media-data="getMediaData(mediavalue, shared_feed)" select-album="selectAlbum(mediavalue)"
+                          no-download="noDownload($event)" get-audio-first-data="getAudioFirstData(shared_feed)">
+
+                </rg-audio>
+
+                <!-- <div class="video-dec" ng-if="shared_feed.getMedias().length" ng-init="medialength=shared_feed.getMedias().length">
+                    <a ng-repeat="media in shared_feed.getMedias()" ng-init="media = media.value;" style="position: relative;
+                    margin-bottom: 5px;">
+
+                <!--<p>{{media.getKey()}}</p>-->
+                <!--        <div feed-video rg-ringbox="true" ring-backdrop-close="false" ringbox-controller="RingBoxMediaController"
+                            ringbox-type="remote"
+                            ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(media, shared_feed)">
+                           <div class="play-ico"><span class="play-btn"></span></div>
+                       </div>
+                   </a>
+               </div>
+
+               <div class="audio-dec" ng-if="shared_feed.getAudios().length" ng-init="medialength=shared_feed.getAudios().length">
+                   <a ng-repeat="media in shared_feed.getAudios()" ng-init="media = media.value;" style="position: relative;
+                   margin-bottom: 5px;"> -->
+
+                <!--<p>{{media.getKey()}}</p>-->
+                <!--  <div feed-video rg-ringbox="true" ring-backdrop-close="false" ringbox-controller="RingBoxMediaController"
+                      ringbox-type="remote"
+                      ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(media, shared_feed)">
+                     <div class="play-ico"><span class="play-btn"></span></div>
+                 </div>
+             </a>
+         </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

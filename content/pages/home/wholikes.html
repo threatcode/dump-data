@@ -1,0 +1,57 @@
+<div style="width:360px">
+    <div class="modal-header">
+        <h3 class="ng-binding">People who liked this</h3>
+        <span class="icon-close mdl-close"  rg-click="$close()"></span>
+    </div>
+    <div class="fnd-search-scroll-wrapper">
+        <ul class="fnd-search" rg-scrollbar="scrollbar()" bottom-reached="loadmore()">
+            <li ng-repeat="item in users track by $index">
+                <!--<p>frns:'{{item.friendshipStatus()}}  nct:{{item.newFriendType()}} ct:{{item.friendType()}}</p>-->
+                 <!--style="width: 60%" by rajib-->
+                <div class="left">
+                    <div class="pic"><a ng-href='{{item.link()}}'><img rg-src="item.avatar('thumb')"/></a></div>
+                    <p class="name"><a ng-href='{{item.link()}}'>{{item.getName()}}</a></p>
+                    <!--<p ng-if="item.commonFriends() > 0" class="common-fnd">{{item.commonFriends()}} mutual friends</p>-->
+                </div>
+                <div class="right-f" ng-if="!isCurrentUser(item)">
+                    
+                    <a class="friend-btn" ng-class="{'f-loading' : item.isLoading()}" ng-show="item.friendshipStatus() === 0"
+                           rg-click="contactListAction({friend: item, action:'addfriend'})"><span class="friend-ico addfnd"></span>Add Friend</a>
+                    <a class="friend-btn" ng-show="item.friendshipStatus() === 1"><span class="friend-ico fnd"></span>Friend</a>
+                    
+                    <a class="friend-btn" ng-class="{'f-loading' : item.isLoading()}" ng-show="item.friendshipStatus() === 2"
+                           rg-click="contactListAction({friend: item, action: 'accept'})"><span class="friend-ico accept"></span>Accept</a>
+                    <a class="friend-btn" ng-class="{'f-loading' : item.isLoading()}" ng-show="item.friendshipStatus() === 2"
+                           rg-click="contactListAction({friend: item, action: 'reject'})"><span class="friend-ico reject"></span>Reject</a>
+                    <a class="friend-btn" ng-class="{'f-loading' : item.isLoading()}" ng-show="item.friendshipStatus() === 3"
+                           rg-click="contactListAction({friend: item, action: 'reject'})"><span class="friend-ico cancel-req"></span>Cancel Request</a> 
+                    <div class="clear"></div>
+                    <!--<div  class="common-fnd"> {{item.commonFriends()}} mutual friends</div>-->
+
+
+                    <p class="mar-top-10" ng-show="item.commonFriends() > 0"><a class="mitualfnd"
+                       rg-ringbox="true"
+                       ringbox-controller="mutualFriendsController"
+                       ringbox-target="templates/home/mutual-friends.html"
+                       ringbox-type="remote"
+                       ringbox-data="getMutualFriend(item)">{{item.commonFriends()}} mutual friends</a>
+                    </p>
+                    <p ng-show="item.commonFriends() < 1">0 mutual friend</p>
+                </div>
+
+                <div class="right-f" ng-if="isCurrentUser(item)">
+                    <p>It's you</p>
+                </div>
+
+
+                <!--<div class="rignt-fa">                
+                    <div  class="common-fnd"> {{item.commonFriends()}} mutual friends</div>                        
+                </div> -->
+                <div class="clear"></div>
+            </li>
+            <div class="ng-cloak notification-loader-position mar-top-15"  ng-show="loading">
+                <div class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+            </div>
+        </ul>
+    </div>
+</div>

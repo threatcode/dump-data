@@ -1,0 +1,100 @@
+<div class="modal-container border-radius" style="width: 605px;height:80%">
+    <div class="modal-header">
+        <h3 ng-cloak="true">{{models.popupTitle}}</h3>
+        <!--<span class="icon-close mdl-close"  rg-click="$close()"></span>-->
+    </div>
+    <div id="content" class="pad-0-35">
+        <div class="modal-search gray-bdr">
+            <input ng-if="canUpdateTagInfo()"  style="" ng-model="models.tagName"   type="text" placeholder="Type Group Name" value="" name="" >
+            <p ng-if="!canUpdateTagInfo()" ng-cloak="true">{{ models.tagName}}</p>
+        </div>
+        <p class="errmsg" ng-show="models.errTagName" ng-bind="models.errTagName"></p>
+        <div class="clear"></div>
+        
+        <p class="errmsg" ng-show="models.errTagPicture" ng-cloak="true">{{ models.errTagPicture}}</p>
+        <div ng-if="canUpdateTagInfo()" class="modal-search tag-p">
+            <div ng-hide="editMode && !models.pictureFileName" class="g-text">Group Picture</div>
+            <div class="img-con">
+                <div class="icon-tag-chat"  ng-if="canUpdateTagInfo() && !uploading"  rg-upload upload-type="tagchat" upload-action="uploadAction" upload-box-value="models.tagId"></div>
+                <img style="height:100px;float:right;margin-bottom:2px;"  ng-if="models.pictureFileName || uploading" ng-src="{{ models.pictureUrl}}"  />
+                <rg-loader-view is-loading="uploading"></rg-loader-view>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        <p class="errmsg" ng-show="models.errMemberList">You need to select at least 2 participants.</p>
+
+        <div class="modal-list-box"  style="height: 70px;overflow: hidden"  ng-class="{'m-box-empt': models.errMemberList }">
+            <div class="modal-friend-list-wrapper"  >
+                <div class="m-right" rg-scrollbar="scrollbar()" >
+
+                    <ul class="modal-friend-list">
+                        <li class="popup-type">Members:</li>
+                        <li ng-repeat="memberObj in memberList.all()" ng-init="tagMemberObj = memberObj.value">
+                            <a href="{{ tagMemberObj.getUser().link()}}" target="_blank" ng-cloak="true">{{ tagMemberObj.getName()}}</a>
+                            <a ng-if="canRemoveMember(tagMemberObj)" rg-click="removeMember(tagMemberObj)" class="icon-close" href="javascript:void(0);"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-list-box"  style="height: 70px;overflow: hidden"  ng-class="{'m-box-empt': models.errMemberList }">
+            <div class="modal-friend-list-wrapper"  >
+                <div class="m-right" rg-scrollbar="scrollbar()" >
+
+                    <ul class="modal-friend-list">
+                        <li class="popup-type">Admins:</li>
+                        <li ng-repeat="admin in adminList.all()" ng-init="tagAdminObj = admin.value">
+                            <a href="{{ tagAdminObj.getUser().link()}}" target="_blank">{{ tagAdminObj.getName()}}</a>
+                            <a ng-if="canRemoveMember(tagAdminObj)" rg-click="removeMember(tagAdminObj)" class="icon-close" href="javascript:void(0);"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-search" style="margin-top: 10px; text-align: center">
+            <div class="modal-friend-search gray-bdr">
+                <input style="width:100%;box-sizing: border-box;padding: 10px;" ng-model="friendName" ng-model-options="{debounce:500}" name="q" type="text" placeholder=" Search..."/>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="modal-friend-box-wrapper">
+            <div class="modal-friend-box " rg-scrollbar="scrollbar()" bottom-reached="loadMoreFriends()">
+                <div class="modal-friends">
+                    <rg-loader-view2 is-loading="state.isFriendsLoading" ></rg-loader-view2>
+                    <div class="clear"></div>
+                    <div ng-repeat="friend in friends.all()| mapFilter:{mapApi: 'getName', value: friendName, compare: 'regex'} | mapListFilter:memberList | mapListFilter:adminList as filteredList "
+                         class="modal-pro-pic-full float-left">
+
+                        <div class="cirle-toolbar">
+                            <a class="tool-btn" rg-click="addToTag(friend.value, 'member')" href="javascript:void(0);">Member</a>
+                            <a class="tool-btn1" rg-click="addToTag(friend.value, 'admin')" href="javascript:void(0);">Admin</a>
+                        </div>
+                        <div class="friend-pic">
+                            <div class="icon-logo-circle pid-logo"><a href="{{friend.value.link()}}#">
+                                    <img  src="{{ friend.value.avatar('thumb')}}" alt="{{friend.value.getName()}}"/></a></div>
+                        </div>
+                        <div class="clear"></div>
+                        <a class="modal-username"
+                           href="{{friend.value.link()}}" ng-cloak="true">{{friend.value.getName()}}</a>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- <div class="ng-cloak not-yet" ng-show="friendName && !state.isFriendsLoading && filteredList.length == 0">Your search returned no result</div> -->
+                    <div class="clear"></div>
+                    <div class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <input ng-disabled="uploading" ng-if="editMode" rg-click="updateChatTag()" class="save-button tag-update-button float-left border-radius" type="button" name="" value="Update">
+            <input ng-disabled="uploading"  ng-if="!editMode" rg-click="createChatTag()" class="save-button tag-update-button float-left border-radius" type="button" name="" value="Create">
+            <input rg-click="cancel()" class="cancel-button float-right border-radius" type="button" name="" value="Cancel">
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

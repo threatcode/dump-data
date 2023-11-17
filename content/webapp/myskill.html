@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="work">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <style>
+        .add_new_skill {
+            border: 3px solid #008000;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="add_new_skill">
+    <form action="secure/APISkill" method="post">
+        <input type="hidden" name="operation" value="1"/>
+        <table>
+            <tr>
+                <td>Description (desc)</td>
+                <td><input type="text" name="desc" class="desc"/></td>
+            </tr>
+            <tr>
+                <td>Skill (skl)</td>
+                <td><input type="text" name="skl" class="skl"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Add new Skill"/></td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+
+<div class="add_new_skill">
+    <form action="secure/APISkill" method="post">
+        <input type="hidden" name="operation" value="2"/>
+        <table>
+            <tr>
+                <td>Skill id (id)</td>
+                <td><input type="text" name="id" class="id"/></td>
+            </tr>
+            <tr>
+                <td>Description (desc)</td>
+                <td><input type="text" name="desc" class="desc"/></td>
+            </tr>
+            <tr>
+                <td>Skill (skl)</td>
+                <td><input type="text" name="skl" class="skl"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="update Skill"/></td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+
+<div class="add_new_skill">
+    <form action="secure/APISkill" method="post">
+        <input type="hidden" name="operation" value="3"/>
+        <input type="submit" value="Get all Skill"/>
+    </form>
+
+</div>
+
+<div class="add_new_skill">
+    <form action="secure/APISkill" method="post">
+        <input type="hidden" name="operation" value="4"/>
+        <input type="text" name="id" class="id" />
+        <input type="submit" value="Get one Skill"/>
+    </form>
+</div>
+
+<div class="add_new_skill">
+    <form action="secure/APISkill" method="post">
+        <input type="hidden" name="operation" value="5"/>
+        <input type="text" name="id" class="id" />
+        <input type="submit" value="remove Skill"/>
+    </form>
+</div>
+
+
+<script type="text/javascript">
+
+</script>
+
+
+</body>
+</html>

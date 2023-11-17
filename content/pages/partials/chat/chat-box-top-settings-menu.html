@@ -1,0 +1,85 @@
+<div ng-if="shouldShowBoxSettingsView" > 
+    <div class="action z-in-110 chat-ac" ng-if="activeMenu == 'options'">
+        <i class="drop-sprite curve-a curve-t-ico p-ab top11"></i>
+        <div class="ac-top-line ac-post-c" ng-if="!box.value.isTagChat && !box.value.isPublicChat">
+            <a class="pad-8-14 ng-binding" ng-click="showMenu($event, 'secret_chat')">
+                <i class="drop-sprite h-w-14-13 timmer-ico feed-font"></i>
+                Secret chat</a>
+        </div>
+        <div class="ac-top-line ac-post-c">
+            <a class="pad-8-14 ng-binding" ng-click="showMenu($event, 'chat_background_change')">
+                 <i class="drop-sprite h-w-14-13 chat-bg-ico feed-font"></i>
+                Change background</a>
+        </div>
+        <div class="ac-top-line ac-post-c" ng-if="box.value.isTagChat">
+
+             <a class="pad-8-14 ng-binding" ng-if="isCurrentUserOwner()" rg-ringbox="true"
+               ringbox-type="remote"
+               ringbox-controller="TagChatMemberPagePopupController"
+               ringbox-target="templates/partials/tag-chat/owner-select-popup.html"
+               ringbox-data="{ 
+               tagId : box.value.getKey(),
+               action:'leave'
+               }">
+                <i class="drop-sprite h-w-14-13 leave-ico feed-font"></i>
+                Leave group</a>
+
+            <a class="pad-8-14 ng-binding" ng-if="!isCurrentUserOwner()" ng-click="doAction($event, 'leave_group')">
+                <i class="drop-sprite h-w-14-13 leave-ico feed-font"></i>
+                Leave group</a>
+
+
+        </div>
+        <!-- <div class="ac-top-line ac-post-c" ng-if="!box.value.isTagChat && !box.value.isPublicChat">
+            <a class="pad-8-14 ng-binding" ng-click="doAction($event, 'toggle_block')">
+                <i class="drop-sprite h-w-14-13 leave-ico feed-font"></i>
+                Block</a>
+        </div> -->
+    </div>
+
+    <div class="timeout-area-with-popup chat-pop" ng-if="activeMenu == 'secret_chat'" >
+        <span class="img_sprite cur-p w-h-16 chat-close-p-ico" ng-click="close($event)" ></span>
+
+        <div class="timeoutDivnew">
+            <span class="secret-visible w-104 f-11 fl-left">Show Self Timer:</span>
+            <div class="switch-secret-visible">
+                <input class="float-left" 
+                       ng-model="box.value.isSecretVisible" 
+                       type="checkbox" /><label><i></i></label>
+            </div>
+        </div>
+
+        <div class="timeoutDivnew">
+            <span class="enable-secret-chat w-104 f-11 fl-left">Enable Secret Chat:</span>
+
+            <div class="switchnew">
+                <input class="float-left" ng-model="box.value.secretChat" type="checkbox" /> <label><i></i></label>
+            </div>
+    
+        </div>
+        
+<!--<div class="timeoutDivnew chat-pop">
+            <span class="enable-secret-chat w-104 f-11 fl-left">Timer set time</span>
+            <a href="javascript:void(0);" ng-click="showValueBox($event)" 
+               class="img_sprite timeout-sec icon-time"><p>sec</p><span>{{ timeout>4 ? timeout : 5}}</span></a> 
+        </div>-->
+
+    </div>
+
+    <div class="chat-setting-popup p-ab t-a-c chat-pop" ng-if="activeMenu == 'chat_background_change'">
+       <span class="img_sprite cur-p w-h-16 chat-close-p-ico" ng-click="close($event)" ></span>
+        <h1 class="t-a-l">Change Background</h1>
+        <div title="No images" class="chat-bg-box" ng-click="doAction($event, 'set_background', {image: -1})" > <img src="images/chat_bg/no-img.png"/></div>
+       <div class="chat-bg-box" ng-repeat="imageIndex in [1,2,3,4,5,6,7,8]" ng-click="doAction($event, 'set_background', {image: imageIndex})" >
+           
+           <img ng-cloak ng-src="{{ box.value.getBackgroundImageUrl(imageIndex) }}" />
+            <div class="chat-bg-hov"></div>
+        </div>
+        <div class="color-box cur-p dis_ib Green200" ng-click="doAction($event, 'set_background', {image: '#addfae'})"  ></div>
+        <div class="color-box cur-p dis_ib BlueGrey600" ng-click="doAction($event, 'set_background', {image: '#536879'})" ></div>
+        <div class="color-box cur-p dis_ib Grey600" ng-click="doAction($event, 'set_background', {image: '#6d6d6d'})"  ></div>
+        <div class="color-box cur-p dis_ib RedA200" ng-click="doAction($event, 'set_background', {image: '#fc5e53'})" ></div>
+        <div class="color-box cur-p dis_ib Brown700" ng-click="doAction($event, 'set_background', {image: '#654320'})" ></div>
+        <div class="color-box cur-p dis_ib LightBlue300" ng-click="doAction($event, 'set_background', {image: '#00ccff'})" ></div>
+    </div>
+</div>

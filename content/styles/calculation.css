@@ -1,0 +1,285 @@
+.margin-0-auto{
+    margin:0 auto;
+}
+.width-77{
+    width:77px;
+}
+.w-120 {
+    width: 120px;
+}
+.w-90 {
+    width: 90px;
+}
+.w-140 {
+    width: 140px;
+}
+.w-578 {
+  width: 578px;
+}
+.h-w-20-26 {
+    width: 26px;
+    height: 20px;
+}
+.w-h-16 {
+    width: 16px;
+    height: 16px;
+}
+.w-21 {
+    width: 21px;
+}
+.w-1200 {
+    width: 1200px;
+}
+.h-w-14-13 {
+    height: 14px;
+    width: 13px;
+}
+.h-34px {
+    height: 34px;
+}
+.h-100p {
+    height: 100%;
+}
+.mar-top-0 {
+    margin-top: 0px;
+}
+.mar-top-10 {
+    margin-top: 10px;
+}
+.mb25{margin-top:25px !important;}
+.mar-top-3{
+    margin-top: 3px;
+}
+.pad-top-3{
+    padding-top: 3px;
+}
+.pad-204 {
+    padding: 2px 0 4px;
+}
+.pad-2-2 {
+    padding: 2px 0 2px;
+}
+.pad-8-14 {
+    padding: 8px 14px;
+}
+.m-t-2{margin-top:2px;}
+.m-t-4{margin-top:4px;}
+.mar-top-5 {
+    margin-top: 5px;
+}
+.mar-bottom-7 {
+    margin-bottom: 7px;
+}
+.top-3 {
+    top: 3px;
+}
+.pad-7-0{padding:7px 0;}
+.m-0-5{margin:0 5px;}
+.m-13-a{margin:13px auto;}
+.pad-bottom-15 {
+    padding-bottom: 15px;
+}
+.mar-12 {
+    margin-bottom: 12px;
+}
+.pad-12 {
+    padding-top: 12px;
+}
+.mr-9{margin-right:9px;}
+.pad-7 {
+    padding: 7px 17px;
+}
+.mar-top-7 {
+    margin-top: 7px;
+}
+.mar-top-8{
+    margin-top: 8px;
+}
+
+.width-popup{width:600px;}
+.pad-0-35{
+    padding:0 35px;
+}
+.pad-0{
+    padding:0 !important;
+}
+.mar-15-0{margin-top:15px;}
+.zero-relative{position:relative;margin:0;padding:0;left:10px;top:0}
+.mar-right-15 {
+    margin-right: 15px;
+}
+.mar-top-15 {
+    margin-top: 15px;
+}
+.mar-top-12{
+    margin-top:12px;
+}
+.margin-15-auto{
+    margin:12px auto 0 auto;
+}
+.mar-left-3 {
+    margin-left: 3px;
+}
+.mar-left-2 {
+    margin-left: 2px;
+}
+.width-100-percent {
+    width: 100%;
+}
+/*.w-100-p {*/
+.w-100-per {
+    width: 100%;
+}
+.width-305 {
+    width: 305px !important;
+}
+.w-104 {
+    width: 104px;
+}
+.w-250-px {
+    width: 250px;
+}
+.pad-9 {
+    padding: 9px;
+}
+.pad-3 {
+    padding: 3px;
+}
+.full-story a:hover{text-decoration: underline;}
+.display_ib {
+    display: inline-block;
+}
+.dis_ib {
+    display: inline-block;
+}
+.dis-b {
+    display: block;
+}
+.bs-box {
+    box-sizing: border-box;
+}
+.margin-10{
+    margin:10px 10px 10px 0px;
+}
+.margin-0 {
+    margin: 0;
+}
+.mar-left-15 {
+    margin-left: 15px;
+}
+.mar-left-30 {
+    margin-left: 30px;
+}
+.mar-left-5 {
+    margin-left: 5px;
+}
+.m-l-10 {
+    margin-left: 10px;
+}
+.m-l-5 {
+    margin-left: 5px;
+}
+.m-l-8 {
+    margin-left: 8px;
+}
+.m-r-3 {
+    margin-right: 3px;
+}
+.mar-6 {
+    margin: 6px;
+}
+.mar-6-2-0-4 {
+    margin: 6px 2px 0 4px;
+}
+.p-10{
+    padding: 8px 10px;
+    position: absolute;
+}
+.padd-10{
+    padding:10px;
+}
+.p-ab{
+    position: absolute;
+}
+.p-rt{
+    position: relative;
+}
+.top11 {
+    top: -11px;
+}
+.bottom11 {
+    bottom: -11px;
+}
+.r-m-10 {
+     right: -10px;
+}
+.v-a-t {
+    vertical-align: top;
+}
+.mar-right-5 {
+    margin-right: 5px;
+}
+.f-8{font-size:8px;}
+.f-11{font-size:11px;}
+.f-12{font-size:12px;}
+.f-13{font-size:13px;}
+.f-14{font-size:14px;}
+.f-15{font-size:15px;}
+.f-16{font-size:16px;}
+.f-23{font-size:23px;}
+.f-24{font-size:24px;}
+.fl-right {
+    float: right;
+}
+.fl-left {
+    float: left;
+}
+.box-s-b {
+    box-sizing:border-box;
+}
+.cur-p {
+    cursor:pointer;
+}
+.margin0{margin:0;}
+/*.height75{height:75%}
+.height15{height:15%;}*/
+.alert-w-h{width:450px;}
+.alert-body p{padding:15px 10px 15px 10px;font-size:13px;text-align:left;}
+.alert-w-h .title{
+    margin:0;    
+    color: #4b4a49;
+    font-size: 17px;
+    font-weight: 400;
+    text-align:left;
+}
+.alert-w-h .save-button{width:auto;font-size:12px;padding:3px 10px;}
+.f-500{font-weight:500;}
+.f-400{font-weight:400;}
+.w-bg {
+    background-color: white;
+}
+.tx-elps {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.white-b {
+    background-color: white;
+}
+.min-h-200 {
+    min-height: 200px;
+}
+.l-h-p2 {
+    line-height: 0.2;
+}
+.report {
+    display: block;
+    text-align: left;
+    margin: 24px 12px;
+}
+.report span {
+    margin-left: 6px;
+}
+.report span:hover {
+    color: #f47724;
+}

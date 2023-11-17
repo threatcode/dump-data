@@ -1,0 +1,79 @@
+<div class="tag" ng-controller="TagChatController as tcc" style="height:calc(100% - 40px);">
+    <div class="box-search border-radius-4px float-left width-190 mar-5 bg-eaeaec"
+         ng-show="tcc.allTags.length() > 0"
+            >
+        <span class="img_sprite width-25px height-25px search-icon-25 p-absolute search-icon-p"></span>
+        <input ng-show="tcc.allTags.length() > 0"
+               type="text"
+               name="tagserach"
+               value=""
+               placeholder="Search Group..."
+               ng-model="tagSearch.name"
+                />
+    </div>
+    <div style="min-height:40px;max-height:50px" ng-if="shouldShow()">
+        <p class="ng-cloak not-yet" style="padding:5px 10px;"
+               ng-show="tcc.allTags.length() === 0">You don't have any group yet.
+
+                <a  rg-ringbox="true" 
+                                    ringbox-controller="TagChatMemberPagePopupController" 
+                                    ringbox-type="remote"
+                                    ringbox-target="templates/partials/tag-chat/list-page/popups/create-tag-popup.html" 
+                                    title="Create New Group">Create Group
+                </a>
+
+            </p>
+    </div>
+    <div class="clear"></div>
+
+    <div ng-show="shouldShow()" style="overflow: hidden;height:calc(100% - 72px);">
+        <div style="overflow:hidden;height:100%;outline:0;" rg-scrollbar="true">
+            
+
+            <div class="clear"></div>
+            <div ng-repeat="aTagObj in tcc.allTags.all()| mapFilter:{mapApi: 'getTagName', value: tagSearch.name, compare: 'regex'}
+                 as groupChatList track by aTagObj.key"
+                 class="circle-p a-tag-list-container "
+                 ng-init="aTag = aTagObj.value"
+                 ng-class="{'tag-owner': tcc.isCurrentUserOwner(aTag)}"
+                 ng-if="aTagObj.value.isTagSafeToShow()">
+                <div>
+                    <div ng-if="aTag.getPictureUrl() !== ''">
+                        <img class="pro-header-image float-left" ng-src="{{ aTag.getPictureFullUrl()}}"/>
+                    </div>
+                    <div ng-if="aTag.getPictureUrl() === ''">
+                        <img class="pro-header-image float-left" src="images/prof.png"/>
+                    </div>
+                    <div ng-cloak="" class="ng-cloak circle-name">
+                        <p ng-if="aTag.hasObjectLock()"
+                           title="{{ aTag.getTagName()}}" ng-cloak="true">{{ aTag.getTagName()}}</p>
+
+                        <p ng-if="!aTag.hasObjectLock()"
+                           open-tag-chat-box="{{ aTag.getTagId()}}"
+                           title="{{ aTag.getTagName()}}" ng-cloak="true">{{ aTag.getTagName()}}</p>
+
+                        <a ng-href='{{ aTag.link()}}'
+                           class="count"
+                           ng-cloak="true">{{ aTag.membersLength() || aTag.getMembersCount()}} members</a>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+            <div class="ng-cloak not-yet" ng-show="tagSearch.name && groupChatList.length === 0">Your search returned no
+                result
+            </div>
+        </div>
+        
+    </div>
+    <p ng-show="tcc.allTags.length() > 0"  
+        class="manage c-gray f-12">Manage your groups - <a class="f-12" ng-href="{{tcc.chatRoute}}">Click here</a></p>
+
+    <div class="clear"></div>
+    <div ng-show="!shouldShow()">
+            <rg-loader-view2 is-loading="true" class="group-load"></rg-loader-view2>
+        </div>
+    &nbsp;
+</div>

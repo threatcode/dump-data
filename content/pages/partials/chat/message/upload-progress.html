@@ -1,0 +1,10 @@
+<div ng-show="message.uploading">
+    <div class="status-photo-view-chat">
+        <div ng-show="message.uploadProgress !== 100" class="progress-bar-placement-chat">
+            <div class="chatPercent" style="width:150px;" ng-cloak="true">{{message.uploadProgress() }}%</div>
+            <div class="progress-bar" >
+                <div class="uploaded"   ng-style="{'width': message.uploadProgress()*1.62 + '%'}"></div>
+            </div>
+        </div>
+    </div>
+</div>

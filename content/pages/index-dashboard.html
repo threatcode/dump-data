@@ -1,0 +1,11 @@
+<div ng-show="!isLoggedIn" style="margin: auto;" class="feedloader">
+    <div class="loader-id icon-id-s">
+        <span class="icon-logo-circle"></span>
+    </div>
+</div>
+
+<div ng-show="isLoggedIn" ng-controller="FeedDashboardController"
+     window-resize ng-include src="'templates/home/feed.html'"
+     rg-feed-subscriber  class="dashboard-bg mid-width "
+     ></div>
+

@@ -1,0 +1,45 @@
+<div style="max-width:462px">
+    <div class="modal-header">
+        <h3>Edit Tagged People</h3>
+        <!--<span class="icon-close mdl-close f-12"  rg-click="$close()"></span>-->
+    </div>
+    <div class="clear"></div>
+    <div class="edit-tag t-a-l">
+        <div class="tag-search">
+            <span class="icon-search"></span><span><input  class="f-12" ng-model="filterText" type="text" placeholder="Search..." /></span>
+        </div>
+        <ul class="tag-btn t-a-r" style="">
+            <li ng-class="{'save-button selected':currentType === 'a','save-button':currentType !== 'a'}" class="save-button selected" rg-click="toggle('a')">All</li>
+            <li ng-class="{'save-button selected':currentType === 'c','save-button':currentType !== 'c'}" rg-click="toggle('c')">Checked</li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="fnd-search-scroll-wrapper" style="border-bottom:1px solid #e1e1e1;">
+        <ul class="fnd-search tag-fr" rg-scrollbar="scrollbar()" bottom-reached="lodeMore()" style="text-align:left;">
+            <li style="min-height:60px;" ng-repeat="item in users|orderBy:'getName()' track by $index">
+                <!--<p>frns:'{{item.friendshipStatus()}}  nct:{{item.newFriendType()}} ct:{{item.friendType()}}</p>-->
+                <div class="t-a-c">
+                    <div class="tag-pic">
+
+                        <img ng-src="{{ item.avatar()}}"/>
+
+                        <div class="chck-tag">
+                            <input style="" id="uid_{{item.link()}}" type="checkbox" ng-checked="checked(item)" ng-click="addRemoveTag($event, item)">
+                            <label style="" for="uid_{{item.link()}}"><span  name="remember" type="checkbox" title="{{item.getName()}}" ng-cloak="true">{{item.getName()}}</span></label>
+                            <div class="clear"></div>
+                            <!--<p>No Mutual Friends</p>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </li>
+        </ul>
+        <div ng-show="loading" class="notification-loader-position">
+            <div class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+        </div>
+    </div>
+    <div class="edit-tag t-a-r">
+        <button  class="save-button f-12" type="button" rg-click="saveTagUser()">Save</button>
+    </div>
+
+</div>

@@ -1,0 +1,19 @@
+<div class=" icon-popup-area" style="z-index:3">
+    <!-- settings icon -->
+    <div class="settings-icon" >
+        <div class="img_sprite icon-down-arrow  w-h-13" 
+            rg-dropdown="dropdown()" 
+            dd-html="memberDDHtml"
+            dd-action="memberDDActions"  
+            dd-control="{
+                tagId: tag.getTagId(),
+                member: member,
+                canRemoveMember : canRemoveMember,
+                canChangeType : canChangeType,
+                memberTypeToChange : member.isAdmin() ? 'member' : 'admin'
+            }" 
+        ></div>
+    </div>
+</div>
+
+

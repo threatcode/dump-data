@@ -1,0 +1,6 @@
+<li ng-repeat="(categoryName, stickerCategoryIdList ) in categories"  >
+    <input type="radio" name="css3-tabstrip-0" ng-checked="!$index" id="css3-tabstrip-0-{{ $index }}" /><label for="css3-tabstrip-0-{{ $index }}" ng-cloak="true">{{ categoryName | uppercase}}</label>
+    <div class="sticker-tab-container">
+        <rg-sticker-category categories="stickerCategoryIdList"></rg-sticker-category>
+    </div>
+</li>

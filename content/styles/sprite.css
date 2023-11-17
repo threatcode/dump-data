@@ -1,0 +1,251 @@
+.img_sprite{background-image:url("../images/img_sprite.png");display:inline-block;}
+.p-absolute{position:absolute;}
+.w-h-13{width:13px;height:13px;}
+.w-h-19{height:19px; width:19px;}
+.w-h-18-19{height:18px; width:19px;}
+.width-25px{width:25px;}
+.w-h-25px{width:25px;height:25px;}
+.height-25px{height:25px;}
+.w-h-22px{width:22px;height:22px;}
+.w-h-19px{width:19px;height:19px;}
+.w-h-18px{width:18px;height:18px;}
+.h-18px{height:18px;}
+.w-h-16px{width:16px;height:16px;}
+.w-h-36px{width:36px;height:36px;}
+.w-h-40px{width:40px;height:40px;}
+.search-icon-25{background-position: -79px -731px;}
+.home-ico{background-position: -79px -97px;}
+.fri-ico{background-position: -79px -168px;}
+.chat-ico{background-position: -79px -143px;}
+.notification-ico{background-position: -79px -121px;}
+.left-shape-ico{background-position: -232px -188px;width: 77px;height: 94px;}
+.left-in-shape-ico{background-position: -309px -210px;width: 52px;height: 68px;left: 0;top: 0px;}
+.drop-shape-ico{background-position: -236px -286px;width: 45px;height: 52px;}
+.feed-shape-ico{background-position: -362px -218px;width: 36px;height: 45px;}
+.id-circle{background-position: -32px -277px;}
+.id-circle-h{background-position: -54px -276px;}
+.id-circle-a{background-position: -32px -309px;}
+.home-ico-left{background-position: -82px -754px;}
+.my-feeds-ico{background-position: -79px 4px;}
+.music-video-ico{background-position: -79px -20px;}
+.music-feed-ico{ background-position: -82px -754px;}
+.media-cloud-ico{ background-position: -82px -778px;}
+.circle-ico{background-position: -79px -45px;}
+.news-portal-ico{ background-position: -82px -809px;}
+.pages-ico{ background-position: -82px -844px;}
+.sticker-ico {
+    background-position: -80px -909px;
+}
+.cele-ico{ background-position:-80px -878px;}
+.call-ico{ background-position: -138px -97px;}
+.call-ico:hover{background-position: -185px -24px;}
+.f-chat-ico{background-position: -138px -60px;}
+.f-chat-ico:hover{background-position: -185px -97px;}
+.info-ico{background-position: -138px -24px;}
+.info-ico:hover{background-position: -185px -60px;}
+.r-icon-msg-circle{background-position: -79px -249px;}
+.add-new-gr{background-position: -10px -276px;margin-right:3px;}
+.gr-edit-ico{background-position: 0 -95px;}
+.gr-leave-ico{background-position: 0 -181px;}
+.icon-dt-ico{background-position: 0 -197px;vertical-align:bottom;margin-left:3px;}
+.icon-close-ico{background-position: 0 -181px;cursor:pointer;}
+.icon-close-ico:hover{background-position: -16px -181px;}
+.feel{top:3px;right:-20px;}
+.rmv-fnd-sugg.icon-close-ico,.feel.icon-close-ico{background-position: 0 -375px;}
+.rmv-fnd-sugg.icon-close-ico:hover,.feel.icon-close-ico:hover{background-position: -15px -261px;}
+
+.icon-down-arrow{background-position: -33px -296px;}
+.icon-down-arrow:hover{background-position: -56px -296px;}
+.icon-edit-p{background-position: 0 -93px;}
+.icon-edit-p:hover{background-position: -16px -93px;}
+.feed-line:hover .icon-edit-p,.a-box:hover .icon-edit-p{background-position: -16px -93px;}
+.icon-edit-p-h{background-position: -16px -93px;}
+.icon-add-tag{background-position: 0 -107px; width: 12px; height: 16px;}
+.icon-add-tag:hover{background-position: -16px -109px;}
+.feed-line:hover .icon-add-tag,.a-box:hover .icon-add-tag{background-position: -16px -107px}
+.icon-delete-p{background-position: 0 -125px;width:15px;}
+.icon-delete-p:hover{background-position: -16px -125px;}
+.feed-line .icon-delete-p{background-position: 2px -125px; height: 16px;}
+.feed-line:hover .icon-delete-p{background-position: -14px -125px}
+.a-box:hover .icon-delete-p{background-position: -16px -125px}
+.icon-ds-arrow{background-position: -33px -296px;margin-left: 5px;}
+
+.group-join .icon-ds-arrow{background-position: -3px -393px;margin-left: 5px;}
+
+.m-download-ico{ background-position: -16px -140px;height: 12px;width:10px;}
+.icon-settings{background-position: -78px -327px;}
+.icon-id-circle{background-position: -13px -308px;}
+.parent.icon-camera{background-position: -78px -353px;}
+.profile-shape-ico{background-position: -237px 18px;width: 182px;height: 201px;}
+.write-msg{background-position: -32px -763px;}
+.pst-val-ico{background-position:-30px -792px;}
+.pst-val-ico:hover, .post-val a.active span.pst-val-ico{background-position:-56px -792px;}
+.pub-i {background-position: 0 -29px;}
+.fri-i {background-position: 0 -13px;width: 16px;}
+.only-i {background-position: 0 2px;}
+.a-box:hover .only-i {background-position: -16px 2px;}
+.a-box:hover .fri-i {background-position: -16px -13px;}
+.a-box:hover .pub-i {background-position: -16px -29px;}
+.post-ico-gray.pub-i{background-position: 0 -76px;}
+.post-ico-gray.fri-i{background-position: 0 -61px;}
+.post-ico-gray.only-i{background-position: 0 -45px;}
+.fed-num{background-position: -78px -299px;}
+/* .up-img p:hover .icon-upload-pro{background-position: -232px -645px;vertical-align:middle;}
+.action  a:hover .icon-camera-f{background-position: -248px -646px;vertical-align:middle;}
+.action  a:hover .icon-move{background-position: -267px -646px;vertical-align:middle;} */
+.action  a:hover .icon-delete-p{background-position: -16px -125px;}
+.action a .icon-close{margin-top:-3px;}
+.action a:hover .icon-close{background-image: url("../images/clh.png");}
+
+.icon-info-pro{background-position: -28px -467px;}
+.icon-education{background-position: -31px -505px;}
+.icon-work{background-position: -31px -525px;}
+.icon-recovery-set{background-position: -32px -546px;}
+.icon-skills{background-position: -30px -567px;}
+.icon-privacy-ab{background-position: -30px -588px;}
+.abw_auto_ico {background-position: -205px -486px;}
+.abw_friend_ico {background-position: -183px -486px;}
+.abw_incoming_ico {background-position: -160px -486px;}
+.abw_chat_ico {background-position: -139px -485px;}
+
+
+.auto_frn_ico {background-position: -69px -19px;}
+
+
+.chat_set_ico {background-position: 0px -19px;}
+
+
+
+
+
+.pp-sml-header .icon-info-pro{background-position: -276px -359px;}
+.pp-sml-header .icon-education{background-position: -280px -398px;}
+.pp-sml-header .icon-work{background-position: -281px -417px;}
+.pp-sml-header .icon-recovery-set{background-position: -281px -439px;}
+.pp-sml-header .icon-skills{background-position: -279px -460px;}
+.pp-sml-header .icon-privacy-ab{background-position: -279px -482px;}
+.pp-sml-header .abw_auto_ico {background-position: -246px -442px;}
+.pp-sml-header .abw_friend_ico {background-position: -247px -417px;}
+.pp-sml-header .abw_incoming_ico {background-position: -245px -387px;}
+.pp-sml-header .abw_chat_ico {background-position: -247px -468px;}
+
+.pp-ddmenu-box ul li:hover span i.icon-info-pro{background-position: -28px -467px;}
+.pp-ddmenu-box ul li:hover span i.icon-education{background-position: -31px -505px;}
+.pp-ddmenu-box ul li:hover span i.icon-work{background-position: -31px -525px;}
+.pp-ddmenu-box ul li:hover span i.icon-recovery-set{background-position: -32px -546px;}
+.pp-ddmenu-box ul li:hover span i.icon-skills{background-position: -30px -567px;}
+.pp-ddmenu-box ul li:hover span i.icon-privacy-ab{background-position: -30px -588px;}
+.pp-ddmenu-box ul li:hover span i.abw_auto_ico {background-position: -205px -486px;}
+.pp-ddmenu-box ul li:hover span i.abw_friend_ico {background-position: -183px -486px;}
+.pp-ddmenu-box ul li:hover span i.abw_incoming_ico {background-position: -160px -486px;}
+.pp-ddmenu-box ul li:hover span i.abw_chat_ico {background-position: -139px -485px;}
+
+
+
+.ab_circle {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #f47727;
+    display: inline-block;
+    border-radius: 24px;
+    vertical-align: top;
+    margin-top: 3px;
+    float:left;
+}
+.ab_incoming_ico  {background-position: -23px -19px;margin-top: 5px;}
+.ab_friend_ico {background-position: -46px -19px;margin-top: 4px;}
+.ab_auto_ico {background-position: -205px -506px;margin: 4px;}
+.icon-full-name{background-position: -32px -329px;}
+.icon-current-city{background-position: -33px -349px;}
+.icon-home-city{background-position: -33px -368px;}
+.icon-gender{background-position: -31px -386px;}
+.icon-birthday{background-position: -31px -405px;}
+.icon-wedding{background-position:-31px -425px;}
+.icon-about-ab{background-position: -32px -445px;}
+.icon-add-border{background-position:-10px -331px}
+.icon-education-ab{background-position: -139px -137px;}
+.icon-dc-arrow{background-position: -32px -611px;}
+.icon-job-ab{background-position: -139px -308px;}
+.icon-very-mail{background-position: -186px -395px;}
+.icon-very-phone{background-position: -186px -351px;}
+.icon-skills-w{background-position: -141px -437px;}
+.chat_set_ico{background-position: -139px -510px;}
+.ab_incoming_ico_r{background-position: -162px -508px;margin: 8px 6px;}
+.ab_friend_ico_r{background-position: -184px -508px;margin: 6px 5px;}
+.icon-call-f{background-position: -139px -180px;}
+.icon-chat-r{background-position: -139px -223px;}
+.icon-feed-ab-r{background-position: -139px -266px;}
+
+.icon-video-album{background-position: -32px -646px;}
+.icon-audio-album{background-position: -32px -666px;}
+.addtoalbm{ background-position: -109px -448px;}
+.mshare-icon{ background-position: 0px -275px;}
+.mshare-icon:hover{ background-position: 0px -299px;}
+/*.pop-close{background-position:2px -257px}
+.pop-close:hover{background-position:-14px -259px;}*/
+.view-ico{background-position:-10px -354px;}
+/*.close:hover{background-position:-14px -259px}*/
+.icon-emoticon{background-position:-77px -271px;width:25px;height:25px;}
+.bottom-right-menu-item .icon-camera{background-position:-76px -355px;width:30px;height:25px;}
+.icon-into-border{background-position:0px -227px;}
+.icon-block{background-position:0px -243px}
+.icon-right{background-position:0 -47px;}
+.action a:hover .icon-into-border{background-position:-16px -227px;}
+.action a:hover .icon-block{background-position:-16px -244px;}
+.action a:hover .icon-right{background-position:-16px -47px;}
+.chat-top-sty .icon-timer-s{background-position:-10px -486px;}
+.icon-time{background-position:-238px -495px;}
+.icon-close-b{background-position:-178px -789px;}
+.correct-sec:hover, .correct-sec:active {background-position:-204px -789px;}
+/*.icon-right-arrow{background-position:-204px -789px;}*/
+.icon-left-arrow{background-position: -137px -687px;width: 18px;height: 30px;margin-left: 10px;}
+.icon-left-arrow:hover{background-position: -137px -656px;}
+.icon-right-arrow{background-position: -160px -687px;width: 18px;height: 30px;margin-right: 10px;}
+.icon-right-arrow:hover{background-position: -160px -655px;}
+
+.status-photo-box .icon-left-arrow:hover{background-position: -137px -687px;}
+.status-photo-box .icon-right-arrow:hover{background-position: -160px -687px;}
+
+.icon-play-list-about{background-position: -236px -349px;}
+.icon-tag-chat .icon-camera{width:27px;height:22px;background-position: -76px -355px;}
+.og_p_n .icon-left-arrow{background-position: -135px -684px;width: 15px;height: 25px;cursor:pointer;}
+.og_p_n .icon-right-arrow{background-position: -155px -685px;width: 15px;height: 25px;cursor:pointer;}
+.glyphicon.glyphicon-chevron-right.icon-right-arrow{width: 12px;height: 18px;background-position: 0 0;margin-right: 0;}
+.glyphicon.glyphicon-chevron-left.icon-left-arrow{width: 12px;height: 18px;background-position: 0 0;margin-left: 0;}
+.sm-about-ico{background-position:-46px -463px;}
+.sm-friend-ico{background-position:-181px -505px;}
+.sm-photo-ico{background-position: -108px -597px;height: 22px;}
+.border-0{border:none;}
+.icon-logo-circle{
+    background-image:url("../images/loader_shape.png");display:inline-block;background-repeat: no-repeat;
+}
+.smc-arw{background-position: 0px -446px; width: 12px; height: 18px;}
+.smc-arw:hover{background-position: -15px -446px;}
+.t-sl .icon-right-arrow{
+    background-position: -160px -835px;
+}
+.t-sl .icon-left-arrow{
+	 background-position: -137px -835px;
+}
+
+
+
+.t-sl .icon-left-arrow:hover{background-position: -137px -687px;}
+.t-sl .icon-right-arrow:hover{background-position: -160px -687px;}
+
+
+
+.profile-dropdown-icon{background-image:url("../images/profile-dropdown.png");display:inline-block;background-repeat: no-repeat;}
+.account-settings-drop{background-position: -3px 0;}
+.saved-ico-drop{background-position: -3px -239px;}
+.stcker-drop{background-position: -5px -31px;}
+.my-chat-drop{background-position: -4px -63px;}
+.chat-room-drop{background-position: -4px -100px;}
+.faq-help-drop{background-position: -4px -134px;height: 30px;}
+.report-drop{background-position: -5px -207px;}
+.logout-drop{background-position: -5px -180px;}
+
+
+.close-ico{background-image:url("../images/cls_10_set.png");display:inline-block;}
+.tagclose{ background-position: -13px -1px; width: 8px; height: 8px; position: absolute; right: 5px; top: 7px; cursor: pointer;}
+.tagclose:hover{ background-position: -25px -1px; }

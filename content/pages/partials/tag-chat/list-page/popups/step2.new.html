@@ -1,0 +1,23 @@
+<div class="circle-part2" ng-class="{'cr-opacity' : currentStep == 1}">
+    <div class="modal-header">
+        <h3 class="ng-binding"> <span class="cir-ico mh-ico"></span>Select Members</h3>
+        <!--<span class="icon-close mdl-close" rg-click="$close()"></span>-->
+    </div>
+
+    <div class="cir-select-mid">
+        <rg-selector ng-show="true" 
+                     template-url="templates/partials/tag-chat/list-page/popups/add-friend.html" 
+                     select-any="false"
+                     selected-items="memberList" 
+                     fetch-items="fetchFriends" 
+                     select-item="selectFriend" 
+                     remove-item="removeFriend">
+        </rg-selector>
+    </div>
+
+    <rg-wizard-step-list steps="rgWizardData.steps" ></rg-wizard-step-list>
+</div>
+
+
+
+

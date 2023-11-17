@@ -1,0 +1,1 @@
+(function(angular, window) { 'use strict';  angular.module('ringid.global_services', [ 'ringid.config', 'ringid.connector', 'ringid.utils', 'ui-notification' ]); })(angular, window);

@@ -1,0 +1,121 @@
+rg-editor {
+    display: block;
+    height: auto;
+    position: relative;
+    border: 1px solid #eee;
+}
+
+div.editor {
+    box-sizing: border-box;
+    display: inline-block;
+    outline: none;
+    overflow: hidden; 
+    width: 100%;
+    text-align: left;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    min-height: 50px;
+    font-size: 14px;
+    position: relative;
+    line-height: 18px;
+    max-height: 500px;
+    padding: 5px;
+    color: #4e4e4e;
+}
+rg-editor span[data-placeholder]:empty{
+visibility:visible;
+}
+rg-editor span[data-placeholder]:empty:before {
+    content: attr(data-placeholder);
+    color: #777777;
+    font-size: 14px;
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    left: 0;
+    text-indent: 0;
+    text-align: left;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+rg-editor span[data-placeholder] {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 90%;
+    visibility:hidden;
+}
+
+rg-editor span.active[data-placeholder]:empty:before {
+    color: #b3b2b2;
+}
+
+div.editor {
+    overflow-y: auto;
+}
+div.editor::-webkit-scrollbar{
+    background-color: #e6e7e8;
+    width:7px;
+}
+div.editor::-webkit-scrollbar-thumb {
+    background-color:#f47727;
+    border-radius:3px;
+}
+
+
+div.editor a{text-decoration: none; outline: 0;}
+a.emo { padding: 1px 5px;}
+
+div.editor a.tag {
+    background-color: #E6E6E6;
+    margin: 0 1px;
+    cursor: text;
+    color:#333;
+}
+
+div.editor a.em_list{
+    cursor: text;
+    display: inline;
+    font-family: arial;
+    letter-spacing: 12.3px;
+    background-repeat: no-repeat;
+    margin-left: 1px;
+}
+
+div.editor a.em_list b {
+    position: absolute !important;
+    left: -1000% !important;
+    width: 0px !important;
+    height: 0px !important;
+    font-size: 0px !important;
+    line-height: 0 !important;
+}
+
+rg-editor.with_emo {
+    /*width: 99%;*/
+}
+
+rg-editor.with_emo .editor {
+    padding-right: 65px;
+    min-height: 22px;
+}
+
+rg-editor.with_emo .icon-emoticon {
+    position: absolute;
+    right: 3px;
+    top: 6px;
+}
+.inline-share-box rg-editor {
+    background: #fff;
+}
+
+/*.newsfeed-bottom rg-editor {
+    margin-bottom: 5px;
+}*/
+.pv-c-top  .editor{max-height: 45px !important}

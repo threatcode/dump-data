@@ -1,0 +1,85 @@
+<div ng-show="sliderFeeds.length() > 0">
+    <div class='brknews'>Trending Media</div>
+    <div class="news_banner-wrapper t-sl">
+        <div class="news_banner_wrap">
+            <div class="news_banner_con cele">
+                <ul>
+                    <li ng-repeat="feed in sliderFeeds.all()" class="t-a-l cele-box" style="width:{{liWidth}}px;">
+                        <div class="row"
+                             ng-init="feed = feed.value;
+                                 feedstatus = feed.text();
+                                 keyid = feed.getKey();
+                                 imageslength = feed.getImages().length;
+                                 media = feed.getMedias().length() > 0 ? feed.getMedias().all()[0] : feed.getAudios().all()[0]">
+                            <div class="col-5-12 p-relative media-icn">
+                                <a class="cele-img dis-b" rg-ringbox="true" ring-backdrop-close="false" show-close-btn="false" ringbox-controller="RingBoxMediaController"
+                                   ringbox-animation="true" ringbox-type="remote" ringbox-target="templates/partials/notification/media-popup.html"
+                                   ringbox-data="getMediaData(media.value, feed)"
+                                   ringbox-open="isMinimized()"
+                                   ringbox-falsy-func="falsyMethod(media.value)"
+                                   media-key="{{::feed.getKey()}}-{{::media.value.getKey()}}"
+                                   style="background-image:url('{{media.value.getThumb()}}');
+                                   background-repeat: no-repeat;background-size: cover">
+                                   <div class="m-icn play" ng-class="media.value.isAudio() ? 'audio':'video'"></div>
+                                   <p class="duration" ng-cloak="true">{{media.value.getDuration(true)}}</p>
+                                </a>
+                            </div>
+
+                            <div class="col-7-12">
+                                <div class="cele-l-b">
+                                    <div class="cele-name-area padd-10">
+                                        <div class="t-in-one" feed-message="feed"></div>
+                                        <!--<p class="f-12">256K Follower</p>-->
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="cele-btn-area">
+                                        <h3 class="ellipsis f-15" title="{{media.value.getCaption()}}"  ng-cloak="true">{{media.value.getCaption()}}</h3>
+                                        <p class="ellipsis f-12" ng-cloak="true">{{media.value.getArtistName()}}</p>
+                                        <p class="ellipsis f-12" ng-cloak="true">{{media.value.getAlbumName()}}</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div ng-show="showLeftArrow" class="img_sprite icon-left-arrow sld-control sld-left" ng-click="left()"></div>
+        <div ng-show="showRightArrow" class="img_sprite icon-right-arrow sld-control  sld-right" ng-click="right()"></div>
+    </div>
+</div>
+
+
+
+<!--<div class="media-slider-wrapper t-sl">-->
+    <!--<div class="media-slider">-->
+        <!--<div class="photobanner">-->
+            <!--<div id="feeds-container" ng-repeat="feed in sliderFeeds.all()" class="float-left t-sl-f" style="width:{{liWidth}}px;">-->
+                <!--<div class="newsfeed-row"-->
+                     <!--ng-init="feed = feed.value;-->
+                             <!--feedstatus = feed.text();-->
+                             <!--keyid = feed.getKey();-->
+                             <!--imageslength = feed.getImages().length;"-->
+                     <!--ng-class="{'half_opacity':feed.isPending()}">-->
+                    <!--<rg-common-feed-top feed="feed"-->
+                                        <!--serial="serial"-->
+                                        <!--dd-template="ddTemplate"-->
+                                        <!--dropdown="dropdown"-->
+                                        <!--action-feed-dropdown="actionFeedDropdown"-->
+                                        <!--showdroparrow = "showdroparrow"-->
+                                        <!--templatepath='templates/mediasearch/trending-slider-top.html'>-->
+                    <!--</rg-common-feed-top>-->
+                    <!--<rg-common-feed-details templatepath='templates/mediasearch/trending-slider-details.html'></rg-common-feed-details>-->
+                    <!--<div class="clear"></div>-->
+                    <!--<div class="button-area">-->
+                        <!--<span class="save-button  border-radius dis-b m-13-a center">Follow</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div ng-show="showLeftArrow" class="img_sprite icon-left-arrow sld-control sld-left" ng-click="left()"></div>-->
+    <!--<div ng-show="showRightArrow" class="img_sprite icon-right-arrow sld-control  sld-right" ng-click="right()"></div>-->
+<!--</div>-->
+

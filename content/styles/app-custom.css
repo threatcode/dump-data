@@ -1,0 +1,253 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+li.countrylist img {
+    width:50px;
+    height:50px;
+}
+
+
+button#prefix_code {
+    background-color: transparent;
+    border: 0px;
+    color: white;
+    display: inline-block;
+    height: 35px;
+    width:100%;
+    vertical-align: middle;
+}
+.ng-binding{margin-left: 3px}
+
+ul#countrylist {
+    overflow:hidden;
+    width: 240px;
+    height: 230px;
+    position: absolute;
+    background-color: #fff;
+}
+
+ul#countrylist a {
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration:none;
+    line-height: 24px;
+}
+
+ul#countrylist a:hover {
+    font-weight:bold;
+}
+
+ul#countrylist:after {
+    border-color: #ffffff rgba(0, 0, 0, 0);
+    border-style: solid;
+    border-width: 0 7px 10px;
+    content: "";
+    display: block;
+    left: 12px;
+    position: absolute;
+    top: -9px;
+    width: 0;
+    z-index: 1;
+}
+
+ul#countrylist:before {
+    border-style: solid;
+    border-width: 0 7px 10px;
+    border-color: transparent;
+    display: block;
+    content: "";    
+    left: 250px;
+    position: absolute;
+    top: -16px;    
+    width: 0;
+    z-index: 0;
+}
+.half_opacity {
+    /* IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+
+    /* IE 5-7 */
+    filter: alpha(opacity=50);
+
+    /* Netscape */
+    -moz-opacity: 0.5;
+
+    /* Safari 1.x */
+    -khtml-opacity: 0.5;
+
+    /* Good browsers */
+    opacity: 0.5;
+}
+.inputerror{
+    border: 1px solid rgb(239, 167, 167) !important;
+
+}
+.animate-enter,
+.animate-leave
+{
+    -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    position: relative;
+    display: block;
+}
+
+.animate-enter.animate-enter-active,
+.animate-leave {
+    opacity: 1;
+    top: 0;
+
+}
+
+.animate-leave.animate-leave-active,
+.animate-enter {
+    opacity: 0;
+}
+.feedloader{
+    border-radius: 50%;
+    color: #a5a5a5;
+    height: 40px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100px;
+}
+/*.feedloader{
+    background: none repeat scroll 0 0 #f47727;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 14px;
+    height: 40px;
+    margin: 0 auto;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+}*/
+.feedloader .loader{
+    height: 100%;
+}
+
+.tagchat-tag-list {
+    height:340px;
+    max-height:340px;
+}
+
+.circleofme-list {
+    max-height: 140px;
+}
+
+
+.fnd-req-box li {
+    width:100%;
+    list-style:none;
+}
+
+ul.logout li {
+    list-style: none;
+}
+
+.showpointer {
+    cursor: pointer;
+}
+
+.friend-settings-dropdown {
+    right: 0;
+    width: 70%;
+}
+.friend-settings-dropdown:before {
+    right: 5px;
+}
+
+.friend-settings-dropdown:after {
+    right: 5px;
+}
+
+ul.image-comments {
+    height: 540px;
+}
+
+.terms-conditions {
+    width:800px;
+}
+
+.feed_comment {
+    height:inherit;
+}
+
+.feed_comment ul.media-list {
+    max-height:400px;
+}
+
+.mar-right-8 {
+    margin-right:8px;
+}
+
+.comment-dd {
+   margin-top: 3px;
+    right: 12px;
+}
+
+ul.dropdown-menu {
+    position:absolute;
+
+}
+
+.dim-invite {
+    opacity: .2;
+}
+
+
+
+/*
+.image-popup .imgcomments {
+    width: 40%;
+    height:560px;
+    float:left;
+}
+
+.image-popup .feed-image {
+    width: 60%;
+    height:560px;
+    float:left;
+    position:relative;
+}
+
+
+.image-popup .feed-image img {
+
+    position: absolute;
+    margin: auto;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    max-height:100%;
+    max-width:100%;
+}
+
+.feed-image .img-next, .feed-image .img-prev {
+    height: 100%;
+    display:block;
+    width:50px;
+    position:absolute;
+    opacity:0;
+    z-index:999;
+}
+
+.feed-image .img-next:hover, .feed-image .img-prev:hover {
+    opacity:1;
+}
+.feed-image .img-next {
+    right:0px;
+    background: url("../images/ringbox/next.png") center center no-repeat rgba(0,0,0,0.8);
+}
+.feed-image .img-prev {
+    left:0px;
+    background: url("../images/ringbox/prev.png") center center no-repeat rgba(0,0,0,0.8);
+}
+*/
+
+
+

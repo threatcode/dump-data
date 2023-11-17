@@ -1,0 +1,33 @@
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<h1>Music & Video</h1>
+		<video width="400" controls>
+		  
+		</video>
+		<script>
+			var video         = document.getElementsByTagName('video')[0];
+			var baseVideoLink = 'http://devvodres.ringid.com/cloud/';
+
+			function getParameterByName(name, url) {
+			    if (!url) url = window.location.href;
+			    name = name.replace(/[\[\]]/g, "\\$&");
+			    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+			        results = regex.exec(url);
+			    if (!results) return null;
+			    if (!results[2]) return '';
+			    return decodeURIComponent(results[2].replace(/\+/g, " "));
+			}
+
+			var link = getParameterByName('q');
+
+			video.src = baseVideoLink + link;
+
+			video.load();
+			// video.play();
+
+		</script>
+	</body>
+</html>

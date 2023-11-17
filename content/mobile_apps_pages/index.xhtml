@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
+    <h:head>
+
+        <script type="text/javascript">
+            function getMobileOperatingSystem() {
+                var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                //console.dir(userAgent);
+                if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i) || userAgent.match(/iPod/i))
+                {
+
+                    window.location = 'https://itunes.apple.com/us/app/ringid/id925330759?mt=8';
+                }
+                else if (userAgent.match(/Android/i))
+                {
+
+                    window.location = 'https://play.google.com/store/apps/details?id=com.ringid.ring';
+
+                }
+                else if (userAgent.match(/Windows Phone/i) || userAgent.match(/IEMobile/i))
+                {
+                    window.location = 'http://www.windowsphone.com/s?appid=7e163976-45c6-4bd6-b64c-24639d44193a';
+                }
+            }
+            // getMobileOperatingSystem();
+        </script>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <link rel="icon" href="../images/ico/favicon.ico" />
+
+        <title>ringID</title>
+
+        <link href="../login/css/bootstrap.css" rel="stylesheet" />
+
+        <link href="../login/css/my_style.css" rel="stylesheet" />
+        <link href="mobile.css" rel="stylesheet" />
+
+        <!--<link href="css/video-js.css" rel="stylesheet" />-->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:700,300,400,100,500' rel='stylesheet' type='text/css' />
+
+        <!--[if lt IE 9]><script src="login/js/ie8-responsive-file-warning.js"></script><![endif]-->
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <!-- Custom styles for this template -->
+        <style>
+            @media screen and (min-width: 768px) and (max-width: 1024px){
+                .banner{background: url(images/background_slider_1024.png) no-repeat 20% 20%; width: 100%; height: 250px; margin-top: 90px; color:#fff; padding-top: 40px}
+                .container-mobile img{height:auto; width:auto; margin-bottom: 20px;}
+                .txt_justify{font-size: 18px; font-weight: 300; text-align: justify}
+                h1{font-size: 24px; margin: 0 0 10px}
+            }  
+        </style>
+    </h:head>
+
+
+
+    <h:body>
+        <div class="navbar navbar-inverse navbar-fixed-top position_fixed " role="navigation">
+            <div class="container" style="width:100%">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="index.xhtml">
+                        <img  src="images/ring_logo.png" alt="ringID" />
+                    </a>
+
+
+                </div>
+
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <div class="navbar-right">
+
+                        <ul style="background:#f8f8f9; font-size: 13px;float: right;" class="nav navbar-nav ">
+                            <li><a href="index.xhtml">Home</a></li>
+                            <li><a href="info-mobile.html">Feature</a></li>
+                            <li><a href="faq-mobile.html">FAQ &#38; Help</a></li>
+                            <li><a href="privacy-mobile.html">Privacy</a></li>
+                            <li><a href="blog-mobile.html">Blog</a></li>
+                        </ul>
+
+
+                    </div>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </div>
+        <!-- Start container -->
+
+        <div class="container-mobile">
+            <div class="banner">
+                <div class="wel-text">  Welcome to ringID </div>
+                <a id="sbtn" onclick="getMobileOperatingSystem();" class="btn btn-primary">Download App</a>  
+            </div>
+
+            <h3 class="switch-text">Why switch to ringID</h3>
+            <div style="height: 2px; width: 100%"><img src='images/border.png' /></div>
+            <div class="white-bg">
+                <h1> All in One </h1>
+                <div class="">
+                    <img src='images/invisible.png' />
+                </div>
+                <div class="txt_justify">
+                    <span class="ring-color">ringID</span> makes you versatile! It gives you the hottest Messaging &amp; Calling features in one single application with Fun Stickers, Secret Chat and Encrypted Mail 
+                    for Free. If you want to forget the hassle of maintaining numerous apps and use one dynamic application for all your social need then <span class="ring-color">ringID</span> is perfect for you.
+                </div>
+            </div>
+
+            <div class="orange-bg">
+                <h1> Free Call </h1>
+                <div class="">
+                    <img  src='images/free-call.png'/>
+                </div>
+                <div class="txt_justify">
+                    Who said good things do not 
+                    come free? Enjoy free calls to 
+                    other <span class="ring-color">ringID</span> users. You will love 
+                    the lucid voice clarity. 
+                    No charges, 
+                    no regretful surprises!
+                </div>
+            </div>                
+
+            <div class="white-bg">
+                <h1>  Chat </h1>
+                <div class="">
+                    <img  src='images/chat.png'/>
+                </div>
+                <div class="txt_justify">
+                    Discover the hottest 
+                    messaging feature in <span class="ring-color">ringID</span>. 
+                    Say it louder with 
+                    Amazing Stickers and 
+                    Exciting Emojis in the 
+                    Collection. Make your Mood
+                    right and Comfortable with 
+                    perfectly designed Chat Themes. 
+                    Tired of Chatting?? Place a call 
+                    directly from the chat screen and 
+                    enjoy the warmth of the voice of 
+                    your loved ones for that extra perk 
+                    in your conversations.
+                </div>
+            </div>
+
+            <div class="orange-bg">
+                <h1> Secret Chat </h1>
+                <div class="">
+                    <img  src='images/secret-chat.png'/> 
+                </div>
+                <div class="txt_justify ">      
+                    Express yourself more fluently than ever with ringID’s fun stickers. 
+                    They are cool, unlimited and free! Make your messages come alive! 
+                    Speak out more than a thousand words with our highly expressive stickers.
+                </div> 
+            </div>
+
+            <div class="white-bg">
+                <h1> <span class="ring-color">ringID's</span> Stickers </h1>
+                <div class="">
+                    <img  src='images/fun_sticker-01.png'/>
+                </div>
+                <div class=" txt_justify">
+                    <span class="ring-color">ringID's</span> Studio is an useful Apps 
+                    which lets you personalize your 
+                    messages with fun design 
+                    elements. We have the best 
+                    Emojis available, you will surely 
+                    be surprised at your own 
+                    creative skills once you 
+                    nurturer it through 
+                    <span class="ring-color">ringID</span> Studio.
+                </div>
+            </div>
+            
+            <div class="orange-bg">
+                <h1> ringID Studio </h1>
+                <div class="">
+                    <img  src='images/ring-studio.png'/>
+                </div>
+                <div class=" txt_justify">
+                    <span class="ring-color">ringID's</span> Studio is an useful Apps 
+                    which lets you personalize your 
+                    messages with fun design 
+                    elements. We have the best 
+                    Emojis available, you will surely 
+                    be surprised at your own 
+                    creative skills once you 
+                    nurturer it through 
+                    <span class="ring-color">ringID</span> Studio.
+                </div>
+            </div>                
+
+            <div class="white-bg">
+                <h1>ringID Newsfeed </h1>
+                <div class="">
+                    <img  src='images/ring-newsfeed.png'/>
+                </div>
+                <div class="txt_justify">
+                    Get Connected always with 
+                    <span class="ring-color">ringID's</span> Newsfeed that lets you 
+                    read the feeds and post! Share 
+                    all the updates and don't lose 
+                    the circles you care for. Share 
+                    status photos, send stickers 
+                    greetings, Love and Comment 
+                    on friend's posts. Find friends 
+                    near and far in 
+                    "People in your ring".
+                </div>
+            </div>
+
+            <div class="orange-bg">
+                <h1> Video Call </h1>
+                <div class="">
+                    <img  src='images/video-call.png'/>
+                </div>
+                <div class="txt_justify">
+                    <span class="ring-color">ringID</span> Video calling is 
+                    fabricated to be smooth 
+                    as silk. Our video calls are 
+                    aimed to be easy to operate, 
+                    low on data and of 
+                    uncompromising quality. 
+                    No matter how far you are, 
+                    our videos will keep you up 
+                    and close with your 
+                    loved ones.
+                </div>
+            </div>                
+
+            <div class="white-bg">
+                <h1 class="lend-hl"> ringID Secured Mail </h1>
+                <div class="">
+                    <img  src='images/secured-mail.png'/>
+                </div>
+                <div class="txt_justify">
+                    Only <span class="ring-color">ringID</span> gives you encrypted mailing service. <span class="ring-color">ringID</span> cares for your security and has 
+                    designed its mail service which operates within the <span class="ring-color">ringID</span> servers that ensures maximum security of your mail with no 
+                    other entity to intercept your confidential data in the middle. Now you can ignore old mail only applications.
+                </div>
+
+
+            </div>
+
+            <div class="orange-bg">
+                <h1> Security  </h1>  
+                <div class="">
+                    <img  src='images/security.png'/>
+                </div>
+                <div class="txt_justify">                    
+                    It is easier to grasp a shadow than Intercepting <span class="ring-color">ringID</span> communications. We have done our best on keeping things 
+                    as solid as a rock. <span class="ring-color">ringID</span> keeps you safe from the unwelcome stalkers and phishing scams. Our extra layers of security 
+                    enable safe exchange of data, giving you peace of mind.
+                </div>
+
+
+            </div>                
+        </div>
+
+
+        <footer class="footer_row">
+            <div class="container">
+                <div style="width: 280px; margin: 0 auto">   
+                    <ul class="social-icons">
+                        <li>
+                            <a class="facebook" target="_blank" data-original-title="facebook" href="https://www.facebook.com/ringidapp">
+                            </a>
+                        </li>
+                        <li>
+                            <a class="twitter" target="_blank" data-original-title="Twitter" href="https://twitter.com/RingIDApp">
+                            </a>
+                        </li>
+                        <li>
+                            <a class="youtube" target="_blank" data-original-title="Youtube" href="https://www.youtube.com/channel/UC_kbi3VNdmCystBNVM2Y4eA">
+                            </a>
+                        </li>
+                        <li>
+                            <a class="google-plus" target="_blank" data-original-title="Google plus" href="https://plus.google.com/b/111477874096089651448/111477874096089651448">
+                            </a>
+                        </li>
+                        <li>
+                            <a class="instagram" target="_blank" data-original-title="Instagram" href="http://instagram.com/ringIDapp">
+                            </a>
+                        </li>
+                        <li>
+                            <a class="pinterest" target="_blank" data-original-title="Pinterest" href="http://www.pinterest.com/ringidapp/">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="copy">
+                    <section class="copyright">
+                        <div> @Copyright 2014 by Ring Inc.</div>
+                    </section>
+                </div>
+            </div>
+        </footer>
+
+        <script type="text/javascript">
+            var base_url = '#{facesContext.externalContext.requestContextPath}';
+            var pageName = '#{appConstants.PAGE_NAME_INDEX}';
+        </script> 
+        <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/scripts/socket_ready.js"></script> 
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js" ></script>
+        <!-- Bootstrap-->
+
+    </h:body>
+
+</html>

@@ -1,0 +1,41 @@
+<div class="news-popup-warp">
+    <div class="news-popup-content">
+
+        <h1 ng-cloak="true">{{feed.getNewsPortalTitle()}}</h1>
+
+        <div class="news-popup-sld" ng-if="feed.getImages().length">
+
+        <img ng-src="{{feed.getImages()[0].value.src()}}" width="{{imageSize.width}}" height="{{imageSize.height}}" alt="">
+        <div class="more_news_photo" ng-if="feed.getImages().length>1"
+            rg-ringbox="true" 
+            ringbox-controller="RingBoxImageController" 
+            ringbox-type="remote" 
+            ringbox-target="templates/newsportal/image-popup-portal.html" 
+            ringbox-data="getImageData(feed.getImages()[0].value, feed)">+{{imageShowMoreLength}}
+         </div>
+            
+
+            <!-- <div feed-image="main" popup-template="true"></div> -->
+
+            <div class="clear"></div>
+        </div>
+
+
+        <div class="full-story" ng-if="feed.hasNewsPortalFeed()">
+            <p ng-cloak="true">{{feed.getNewsPortalDescription()}}</p>
+            <div class="clear"></div>
+            <div ng-if="feed.hasExternalUrl()" class="news_link og-url mar-top-10" ng-cloak="true">{{feed.getPortalBaseUrl()}}</div>
+            <a  ng-if="feed.hasExternalUrl()" ng-href="{{feed.getNewsPortalUrl()}}" target="_blank" class="pad-9 float-right"><span class="ring-color">Read Full Story</span></a>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+

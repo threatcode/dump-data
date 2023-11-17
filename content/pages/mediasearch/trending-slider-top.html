@@ -1,0 +1,14 @@
+<div class="newsfeed-top">
+    <!--left user picture-->
+    <a ng-href='{{ ::feed.user().link()}}' class="float-left m-r-10" ng-show="feed.user().avatar()">
+        <img class="border-eaeaea" ng-src="{{ feed.user().avatar('thumb')}}" width="70px" height="70px" onError="this.src='images/prof.png';" alt=""/>
+    </a>
+    <!--middle text-->
+    <div class="top-r-feed float-left">
+        <div class="t-in-one" feed-message="feed"></div>
+        <span class="time dis-b"><i class="img_sprite w-h-13 icon-dt-ico m-l-0"></i><b ng-cloak="true">{{feed.time()}}</b></span>
+        <span class="time dis-b"><b>256K Follower</b></span>
+        <span class="time dis-b"><b>Viewed by 55 user</b></span>
+    </div>
+</div>
+

@@ -1,0 +1,15 @@
+<div>
+    <h2>Sticker Market</h2>
+    <div class="stickers">
+        <ul>
+            <li ng-repeat="sticker in getStickers()" ng-init="sticker=sticker.value" >
+                <p ng-cloak="true">Key: {{sticker.getKey()}}</p>
+                <ul>
+                    <li ng-repeat="image in sticker.getImages() | limitTo:4" ng-init="image=image.value" >
+                        <p ng-cloak="true">Link: {{image.link()}}</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

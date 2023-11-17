@@ -1,0 +1,283 @@
+.info-title #prefix-code li{
+    border:1px solid red;
+}
+.ab-error{
+    font-size: 15px;
+    color: #E60000;
+    display: inline-block;
+    vertical-align: middle;
+    height: 6px;
+    line-height: 1;
+    font-weight: 500;
+    margin-left: 4px;
+}
+.ppinfo-action{
+    position: absolute;
+    right: -30px;
+    top: 0px;
+    height: 27px;
+    width: 100px;
+    padding: 3px 0;
+    box-sizing: border-box;
+    text-align: right;
+    cursor: pointer;
+}
+.ppinfo-action .icon-add-border {
+    margin: 0px; 
+}
+.prof-about .right {
+    overflow: hidden;
+}
+/*.prof-about .right:hover .ppinfo-action {
+    right: -30px;
+    transition:  right 0.6s ease-out;
+}*/
+.ab-drop-arrow {
+    color: #909090;
+    font-size: 17px;
+    cursor: pointer;
+    position: absolute;
+    right: -40px;
+    top: 16px;
+}
+.action .icon-edit-p {
+    margin-right: 3px;
+}
+.action .icon-delete-p {
+    margin: 0px 0px 0 2px;
+}
+.cir-friend .icon-delete-p {
+    margin: 4px 0px 0 2px;
+    vertical-align: top;
+}
+.action .icon-minus-cr {
+    margin: 0 2px;
+}
+.action .icon-into-border {
+    font-weight: bold;
+    color: #AFAFAF;
+}
+.action .icon-block {
+    color: #AFAFAF;
+    margin: 0px 2px;
+    font-size: 14px;
+}
+.action .icon-addf {
+    margin-right: 2px;
+}
+.ppinfo .left .icon-chat {
+    padding: 7px 4px;
+}
+.ab-drop {
+    right: -50px;
+    top: 42px;
+    width: 130px;
+}
+.ab-priv {
+    margin-left: 10px;
+    color: #545454;
+}
+.deny_sty {
+    display: inline-block;
+    width: 66px;
+    color: #FF6161;
+    margin-left: 30px;
+}
+.allow_sty {
+    display: inline-block;
+    width: 80px;
+    color: #018806;
+    margin-left: 30px;
+}
+.info-title select {
+    background: url(../images/downarrow.png) no-repeat 95%  50%   transparent;
+    border: 1px solid #ededed;
+    width: 200px;
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+    color: #777;
+    height: 25px;
+    outline: 0 none;
+    padding: 0 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+ul.profileinfo li.selected .ppt-txt {
+    color: #f47727;
+    transition: 0.2s ease-in-out;
+    -webkit-transition: 0.2s ease-in-out;
+    -moz-transition: 0.2s ease-in-out;
+}
+input[type=radio].css-checkbox {
+    position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+}
+
+input[type=radio].css-checkbox + label.css-label {
+    padding-left:21px;
+    height:16px;
+    display:inline-block;
+    line-height:16px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    font-size:16px;
+    vertical-align:middle;
+    cursor:pointer;
+    color: #6c676a;
+    font-size: 15px;
+    margin-right: 5px;
+}
+.pab-ico {
+    color: #a5a5a5;
+    font-size: 16px;
+    margin-right: 8px;
+    vertical-align: top;
+    margin-top: -1px;
+}
+.pab-text, .pab-text .left, .pab-text .right {
+    color: #4d4d4d;
+    font-size: 15px;
+    word-break: break-all;
+}
+input[type=radio].css-checkbox:checked + label.css-label {
+    background-position: 0 -16px;
+}
+label.css-label {
+    background-image:url("../images/radio.png");
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.dis-none{display:none}
+.bdr{border:1px solid redd}
+.cur-pntr{cursor: pointer}
+.a-box {
+    border-bottom: 1px solid #e1e1e1;
+    display: inline-block;
+    height: 18px;
+    padding: 5px;
+    width: 90px;
+}
+.a-box:last-child {
+    border-bottom: 1px solid transparent;
+}
+.about-action{position: absolute; right: 0px; margin-top: -5px; color:#f77727; 
+              /*border: 1px solid #f77727;    padding: 3px;    border-radius: 50%;*/
+}
+.pp-btn{width: 300px; margin: 0 auto}
+.pro-edit-btn{width: 100px !important; font-size: 14px; color:#737373; margin: 0 10px; border-radius: 0}
+.pro-edit-btn:hover{color: #fff}
+.rcvry-set{width: 320px; margin: 50px auto}
+.verify-email{width: 150px ; border:1px solid #ededed; color: #6c676a; padding:5px; box-sizing: border-box; text-align: center; border-radius: 5px; display: inline-block}
+.verify-email:hover{background: #f77727; color:#fff; cursor: pointer}
+.verify-phn{width: 150px ; border:1px solid #ededed; color: #6c676a; padding:5px; box-sizing: border-box; text-align: center; border-radius: 5px; display: inline-block}
+.verify-phn:hover{background: #f77727; color:#fff; cursor: pointer}
+.verified{ color: #649100 !important}
+.verified:hover{color:#649100; border-color:  #649100;}
+.prof-about .divider{
+    height: 2px; width: 300px;
+    background: #ffffff;
+    background: -moz-linear-gradient(left, #ffffff 0%, #ededed 20%, #e6e6e6 50%, #ededed 80%, #ffffff 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, #ffffff), color-stop(20%, #ededed), color-stop(50%, #e6e6e6), color-stop(80%, #ededed), color-stop(100%, #ffffff));
+    background: -webkit-linear-gradient(left, #ffffff 0%, #ededed 20%, #e6e6e6 50%, #ededed 80%, #ffffff 100%);
+    background: -o-linear-gradient(left, #ffffff 0%, #ededed 20%, #e6e6e6 50%, #ededed 80%, #ffffff 100%);
+    background: -ms-linear-gradient(left, #ffffff 0%, #ededed 20%, #e6e6e6 50%, #ededed 80%, #ffffff 100%);
+    background: linear-gradient(to right, #ffffff 0%, #ededed 20%, #e6e6e6 50%, #ededed 80%, #ffffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=1 );
+}
+.prof-about .edit-dvdr{
+    width:100%; margin: 35px 0;
+}
+.ppinfo  textarea:focus, select:focus{outline: none;}
+.ppinfo  .select{padding: 0px 10px}
+.pass-txt{font-size: 18px; margin: 10px 0; text-align: center}
+.pass-txt{font-size: 18px; margin: 14px 0; text-align: center}
+.prof-about .calender-design{width: 250px}
+.no-edu{
+    /*width: 350px;*/
+    width:100%;
+    color: #9E9E9E;
+    font-weight: 400;
+    margin-top: 88px;
+}
+.no-edu-icon{
+    background-image: url('../images/ab-error.png');
+    height: 90px;
+    width: 90px;
+    margin: 0px auto;
+}
+.no-edu-txt{
+    font-size: 22px;
+    margin: 14px 0;
+    text-align: center;
+}
+.pass-change{width: 350px;  color: #9E9E9E; margin: 0 auto; font-weight: 400}
+.wes-title, .wes-sttle, .wes-desc {
+    width: 436px;
+}
+.wes-title{    
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 38px;
+    color: #F77727;
+    word-wrap: break-word;
+}
+.wes-sttle{font-size: 15px; margin: 8px 0; font-weight: 400;  line-height: 18px; color:#5A5A5A}
+.wes-desc{font-size: 14px; margin: 8px 0; font-weight: 400; line-height: 18px; color:#5A5A5A; text-align: justify}
+.title-txt{margin: 8px 0}
+.ppinfo .flag {margin:0}
+.ppinfo .vmp-code{height:29px;border:1px solid #ededed;background-color:transparent; }
+
+
+button.vmp-code{
+    background-color: transparent;
+    color: #fff;
+    width: 83px;
+    -moz-appearance: button;
+    border: 0;
+    display: inline-block;
+    vertical-align: middle;
+    outline: 0;
+}
+
+.w-165{width:165px !important;}
+.w-200{width: 200px !important}
+.rcvry-txt{ width: 250px !important; float: left; margin-left:20px}
+.prvc-right-txt{line-height: 40px; font-size: 18px !important}
+.about-action{position: absolute; right: 10px; margin-top: -5px; color:#f77727; }
+.ppinfo-action span{
+    margin: -5px 3px 0 3px;
+    color: #F77727;
+    font-size: 17px;
+    vertical-align: middle;
+    /*height: 19px;*/
+    display: inline-block;
+}
+.ppinfo-action a{font-weight:400; font-size: 16px}
+.ppinfo .ppt-txt{ width: 220px !important; font-size: 16px; font-weight: 400; line-height: 20px; }
+.ppinfo .allow_sty, .ppinfo .deny_sty{vertical-align: top; line-height: 45px;}
+
+.ppinfo .error-class {
+    border:1px solid #FFC4C4;
+}
+.wes-view .left{width: 60px !important;float:left;}
+.wes-view  .right{width: calc(100% - 60px)!important; font-size: 16px; font-weight: 400;float:right;}
+.right-0{right:0;}
+.top-minus-50{
+    top:-50px;
+}
+.rcvsec .rcvedtbtn{display:none}
+.rcvsec:hover .rcvedtbtn{display:block}
+.input-error{
+    display: block;
+    margin-top: 5px;
+    color: red;
+}
+input[type=button]:disabled {
+    cursor: not-allowed !important;
+    opacity: .5 !important;
+}

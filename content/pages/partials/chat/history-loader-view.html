@@ -1,0 +1,7 @@
+<div class="history-btn-container">
+    <!--<div ng-if="!box.value.hasHistoryMessage" ng-bind="noMoreHistoryMessageText"></div>-->
+    <div ng-if="box.value.hasHistoryMessage">
+        <button ng-if="!historyLoading" class="c-button bg-pad-his">Previous Messages...</button>
+        <rg-loader-view2 is-loading="historyLoading"></rg-loader-view2>
+    </div>
+</div>

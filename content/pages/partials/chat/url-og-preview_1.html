@@ -1,0 +1,38 @@
+<div class="og-preview-container showpointer">
+    <rg-loader-view2 ng-if="!showPreview" is-loading="loadingData"></rg-loader-view2>
+
+    <div ng-show="showPreview && (!!ogData.title || !!ogData.description || !!ogData.image)" class="og_area" >
+        <rg-loader-view2 ng-if="!!editMode" is-loading="filterOnProgress"></rg-loader-view2>
+
+        <div class="og-info-left-container" ng-if="!!ogData.image">
+            <div class="og-image-container" >
+
+                <div ng-if="isYoutubeUrl() && editMode" class="play-area"><span class="play-icon"></span></div>
+
+                <p ng-if="isYoutubeUrl() && !editMode">
+                    <iframe ng-src="{{ getYoutubeUrl() }}" width="375" height="315" frameborder="0" allowfullscreen ></iframe>
+                </p>
+
+                <p ng-if="!isYoutubeUrl() || editMode"  style="text-align: center !important">
+                    <img  style="width: 200px; height: auto" ng-if="!filterOnProgress" ng-src="{{ ogData.image}}" onerror="this.onerror=null;this.src='/images/ping.jpg';" alt="" />
+                </p>
+
+                <div class="og-img-ic" ng-show="!!editMode"><span class="icon-close" rg-click="onImageCloseClick($event)"></span></div>
+                <div class="og_p_n" ng-show="ogData.images.length > 1 && !!editMode">
+                    <span ng-show="shouldShowPreviousButton()" class="img_sprite icon-left-arrow" rg-click="selectPreviousImage($event)" ></span>
+                    <span ng-show="shouldShowNextButton()" class="img_sprite icon-right-arrow" rg-click="selectNextImage($event)" ></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div ng-if="!!ogData.title || !!ogData.description" class="og-info-right-container">
+            <div class="text-i-c" ng-show="!!editMode"><span class="icon-close" rg-click="onDetailCloseClick($event)"></span></div>
+            <div  class="og-title" ng-if="!!ogData.title" ng-cloak="true">{{ ogData.title}}</div>
+            <div class="og-description" ng-if="!!ogData.description" ng-cloak="true" ng-cloak="true">{{ ogData.description}}</div>
+            <div class="og-url">
+                <span  class="og-url" ng-if="!!ogData.lnkDmn" ng-cloak="true">{{ ogData.lnkDmn}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

@@ -1,0 +1,35 @@
+ <div class="middle single-page"  style="margin:0 auto;min-width:310px;max-width:980px;" ng-cloak>
+    <div class="" style="display: block;">
+        <!-- <rg-loader-view data-is-loading="!isReady"></rg-loader-view> -->
+        <!-- <div  ng-if="noData" class="n-data"><p class="background-linear" >Content not found!</p></div> -->
+
+        <div style="margin-top:0px;">
+            <div style="margin-top:0px;">
+                <div class="newsfeed-row" style="border:0;margin-bottom:0;">
+                    <rg-common-feed-top feed="feed"
+                                      dd-template="ddTemplate"
+                                      dropdown="dropdown"
+                                      action-feed-dropdown="actionFeedDropdown"
+                                      single-feed="singleFeed"
+                                      templatepath="templates/newsportal/portal-popup-top.directive.html"
+                                      ></rg-common-feed-top>
+
+                    <div class="newsfeed-bottom" data-feed-bottom>
+                            <rg-common-feed-details templatepath="templates/newsportal/portal-single-details.directive.html">
+                            </rg-common-feed-details>
+                            <!-- <rg-news-feed-shared-feed></rg-news-feed-shared-feed> -->
+                            <div class="clear"></div>
+                        <rg-portal-news-feed-menu></rg-portal-news-feed-menu>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="clear"></div>

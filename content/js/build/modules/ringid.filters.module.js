@@ -1,0 +1,1 @@
+(function(angular, window) { 'use strict';  angular.module('ringid.filters', [ 'ringid.config' ]); })(angular, window);

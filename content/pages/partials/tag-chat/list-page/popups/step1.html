@@ -1,0 +1,22 @@
+<div class="circle-part1" ng-class="{'cr-opacity' : currentStep == 0}">
+    <div class="modal-header">
+        <h3 class="ng-binding"><span class="cir-ico mh-ico"></span>Group Name</h3>
+        <!--<span class="icon-close mdl-close" rg-click="$close()"></span>-->
+    </div>
+
+    <div class="cir-select-mid">
+
+        <div class="create-circle-box">
+            <span class="left-align">Enter your group name</span>
+        </div>
+        <div class="circle-name-in">
+            <input type="text" ng-model="models.tagName" maxlength="100" placeholder="Type your Group name">
+        </div>
+
+    </div>
+
+    <rg-wizard-step-list steps="rgWizardData.steps" ></rg-wizard-step-list>
+
+</div>
+
+

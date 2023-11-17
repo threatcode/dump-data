@@ -1,0 +1,229 @@
+
+
+<div class="media-bg" ng-show="showMediaPreview">
+    <div class="browse-album">
+        <!-- <div class="friend-header">
+            <h3  class="dis-inline-blok" style="cursor: pointer">Audio Albums</h3>
+        </div> -->
+        <div class="clear"></div>
+        <div class="media-list">
+
+
+            <!-- <div  class="full_album-box" ng-repeat="album in getAlbums('audio')| mediaFilter:'audio' as audioAlbums"  rg-click="toggleAlbumPreview( album.value)">
+                
+                <div class="pro-thum-box" rg-click="toggleAlbumPreview( album.value)">
+                    <div class="pro-video-img">
+                        <img ng-src="{{album.value.getCover()}}" alt="{{album.value.getName()}}">
+                    </div>
+                    <div class="pro-video-text-title" title="{{album.value.getName()}}">{{album.value.getName()}}
+                        <div class="clear"></div>
+                        <a class="pro-video-count" href="javascript:void(0)">{{album.value.getContentCount()}} musics</a>
+                        <p>{{album.value.getUpdateTime()}}</p>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="music-container margin-0">
+                <div  class="grid-view active">            		
+                    <div class="my-album">
+                        <h2>My Music Albums</h2>
+                        <!-- [limitTo:limitItem] will use it later if requred later. api available in rg.media.directive -->
+                        <div class="full_album-box" ng-repeat="album in getAlbums('audio')| mediaFilter:'audio' as audioAlbums" ng-click="toggleAlbumPreview(album.value, 'audio')">
+                            <div class="music-thumb">
+                                <a  rg-click="toggleAlbumPreview( album.value)" ng-show="profilePage === 'true'">
+                                    <img ng-src="{{album.value.getCover()}}" alt="{{album.value.getCover()}}">
+                                </a>
+                                <a href="/#/media/audio/{{album.value.getALbumUtId()}}/{{album.value.getKey()}}" ng-show="profilePage === 'false'">
+                                    <img ng-src="{{album.value.getCover()}}" alt="{{album.value.getCover()}}">
+                                    <div class="m-icn audio"></div>
+                                </a>
+                            </div>
+                            <div class="music-right">
+                                <a title="{{media.value.getCaption()}}">
+                                    {{album.value.getName()}}
+                                </a>
+                                <p>
+                                    <span class="img_sprite w-h-22px icon-video-album"></span>
+                                    <span class="rg-color">{{album.value.getContentCount()}}</span>
+                                    <span class="txt" ng-if="album.value.getContentCount() > 1"> Songs</span>
+                                    <span class="txt" ng-if="album.value.getContentCount() === 1"> Song</span>
+                                    <span class="txt" ng-show="!album.value.getContentCount()"> Song</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- <div ng-show="getAlbums('audio').length > 4 && profilePage === 'false'" class="v-all"><a href="/#/media/audio" ng-click="goToMyAlbums('audio')">View All</a></div> -->
+                    </div>
+                </div>
+            </div>
+
+            <p ng-show="!state.showMediaPreview && !state.albumsLoading && audioAlbums.length == 0" style="padding:10px;font-size:13px;">No music albums</p>
+
+            <div ng-show="state.albumsLoading" class="full_album-box music-loader-box">
+                <div class="p-area-loader">
+                    <div class="music-box-loader">
+                        <div class="loader-id icon-id-s">
+                            <span class="icon-logo-circle"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="media-bg" ng-show="showMediaPreview">
+    <div class="browse-album">
+        <!-- <div class="friend-header">
+            <h3 class="dis-inline-blok" style="cursor: pointer">Video Albums</h3>
+        </div> -->
+        <div class="clear"></div>
+        <div class="">
+
+
+            <!-- <div  class="full_album-box" ng-repeat="album in getAlbums('video')| mediaFilter:'video' as videoAlbums"   rg-click="toggleAlbumPreview(album.value)">
+                
+                <div style="pro-thum-box" rg-click="toggleAlbumPreview( album.value)">
+                    <div class="pro-video-img">
+                        <img ng-src="images/n-video.jpg" alt="images/n-audio.jpg" src="images/n-audio.jpg">
+                    </div>
+                    <div class="pro-video-text-title" title="{{album.value.getName()}}">{{album.value.getName()}}
+                        <div class="clear"></div>
+                        <a class="pro-video-count" href="javascript:void(0)">{{album.value.getContentCount()}} Videos</a>
+                        <p>{{album.value.getUpdateTime()}}</p>
+                    </div>
+                </div>
+                
+            </div> -->
+            <div class="music-container margin-0">
+                <div  class="grid-view active">            		
+                    <div class="my-album">
+                        <h2>My Video Albums</h2>
+                        <!-- [limitTo:limitItem] will use it later if requred later. api available in rg.media.directive -->
+                        <div class="full_album-box" ng-repeat="album in getAlbums('video')| mediaFilter:'video' as videoAlbums" ng-click="toggleAlbumPreview(album.value, 'video')">
+                            <div class="music-thumb">
+                                <a  rg-click="toggleAlbumPreview( album.value)" ng-show="profilePage === 'true'">
+                                    <img ng-src="{{album.value.getCover()}}" alt="{{album.value.getCover()}}">
+                                </a>
+                                <a href="/#/media/video/{{album.value.getALbumUtId()}}/{{album.value.getKey()}}" ng-show="profilePage === 'false'">
+                                    <img ng-src="{{album.value.getCover()}}" alt="{{album.value.getCover()}}">
+                                    <div class="m-icn video"></div>
+                                </a>
+                            </div>
+                            <div class="music-right">
+                                <a title="{{media.value.getCaption()}}">
+                                    {{album.value.getName()}}
+                                </a>
+                                <p>
+                                    <span class="img_sprite w-h-22px  icon-video-album"></span>
+                                    <span class="rg-color">{{album.value.getContentCount()}}</span>
+                                    <span class="txt" ng-if="album.value.getContentCount() > 1"> Videos</span>
+                                    <span class="txt" ng-if="album.value.getContentCount() === 1"> Video</span>
+                                    <span class="txt" ng-show="!album.value.getContentCount()"> Video</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- <div ng-show="getAlbums('video').length > 4 && profilePage === 'false'" class="v-all"><a href="/#/media/video" ng-click="goToMyAlbums('video')">View All</a></div> -->
+                    </div>
+                </div>
+            </div>
+
+            <p ng-if="!state.showMediaPreview && !state.albumsLoading && videoAlbums.length == 0" style="padding:10px;font-size:13px;">No video albums </p>
+
+            <div ng-show="state.albumsLoading" class="full_album-box music-loader-box">
+                <div class="p-area-loader">
+                    <div class="music-box-loader">
+                        <div class="loader-id icon-id-s">
+                            <span class="icon-logo-circle"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+<div class="media-bg music-container margin-0" ng-if="!showMediaPreview">
+    <div class="browse-album grid-view active">
+        <div class="friend-header">
+            <h3   class="dis-inline-blok" rg-click="toggleAlbumPreview()" style="cursor: pointer">Album
+                <span ng-show="activeAlbum"> &#8594; {{activeAlbum.getName()}} {{activeAlbum.getImages().length()}}</span></h3>
+
+            <div class="ply" >
+                <a class="plybtn" ng-show="activeAlbum.getContents().length() > 1"
+                   class="music-box" rg-ringbox="true" ring-backdrop-close="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"
+                   ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(true)">
+                    Play All
+                </a>
+                <a class="plybtn" ng-show="activeAlbum.getContents().length() > 1" ng-class="{'disable-click': selectedPlaylist.length() == 0}"
+                   rg-ringbox="true" ring-backdrop-close="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"
+                   ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(false)">Play Selected</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="friends-list">
+
+
+            <div class="music-box" ng-repeat="song in activeAlbum.getContents().all()" title="{{song.value.getCaption()}}">
+                <div class="music-thumb">
+                    <a  rg-ringbox="true" ring-backdrop-close="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"
+                        ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(true, song.value)"  ringbox-animation="false">
+                        <img  ng-src="{{song.value.getThumbForMediaOnly()}}" alt="{{song.value.getCaption()}}"/>
+                        <div class="m-icn audio"></div>
+                    </a>                
+
+                    <div class="song-select song-check">
+                        <input type="checkbox" id="{{song.value.getId()}}" ng-change="selectMedia(song.value, status)"  ng-model="status">
+                        <label for="{{song.value.getId()}}" ></label>
+                    </div>
+
+                </div>
+                <div class="music-right"   rg-click="mediaPlayerPopup(albumMap,song)">
+                    <a title="{{song.value.getCaption()}}">
+                        {{song.value.getCaption()}}
+                    </a>
+                    <!--if song-->
+                    <p>Album: {{activeAlbum.getName()}}</p>
+                    <p class="views-music">{{song.value.getViewCount()}}</p>
+                    <p>Duration: {{song.value.getDuration(true)}}</p>
+                </div>
+            </div>
+
+
+            <!--<div>-->
+            <!--<div class="full_friend_icon" ng-repeat="media in activeAlbum.getContents().all()" >-->
+            <!--[><span ng-if="isOwner" rg-click="activeAlbum.deleteContent(media.value)" class="icon-close"></span><]-->
+            <!--<div style="background: url('{{media.value.getThumb()}}');height:210px;background-size: cover;cursor: pointer"  -->
+            <!--rg-ringbox="true" ring-backdrop-close="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"-->
+            <!--ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(media.value, activeAlbum)"  ringbox-animation="false"-->
+            <!--<div class="camera-bottom"><p ng-show="media.value.getCaption()" class="caption">{{media.value.getCaption()}}</p>-->
+            <!--<div class="clear"></div>-->
+            <!--[><a href="javascript:void(0)">{{media.value.getLikes()}} likes </a><p class="color-white">{{media.value.getTotalComment()}} comments</p><]-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <p ng-show="!state.contentsLoading && activeAlbum.getContents().length() == 0" style="padding:10px;font-size:13px;">There is  no {{activeAlbum.getType()}}</p>
+
+            <div class="music-box no-border">
+                <div ng-show="state.albumsLoading || state.contentsLoading" class="full_album-box music-loader-box" style="margin: 0">
+                    <div class="p-area-loader">
+                        <div class="music-box-loader">
+                            <div class="loader-id icon-id-s">
+                                <span class="icon-logo-circle"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="music-box no-border h-5"></div>
+
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,40 @@
+<div class="sb">
+    <div class="s-top"> Sign Up</div>
+    <div rg-click="close()" class="icon-close s-cl not-close" style="z-index:4"></div>
+
+
+    <div class="sign-in-part ">
+        <!--<div class="scl-link">-->
+            <!--<a href="" ring-backdrop-close="false" rg-ringbox="true" ringbox-type="remote" ringbox-data="signupData('phone')" ringbox-target="templates/welcome/ring-signup-popup.html" ringbox-controller="SignUpController">-->
+                <!--<div class="scl-icn icn-rg">-->
+                    <!--<span class="icon-phn  icn-cmn"></span>-->
+                <!--</div>-->
+                <!--<div class="scl-txt ring-bdr">Sign Up using phone number</div>-->
+            <!--</a>-->
+        <!--</div>-->
+        <div class="scl-link">
+            <a href="" ring-backdrop-close="false" rg-ringbox="true" ringbox-type="remote" ringbox-data="signupData('email')" ringbox-target="templates/welcome/ring-signup-popup.html" ringbox-controller="SignUpController">
+                <div class="scl-icn icn-rg">
+                    <span class="icon-email  icn-cmn"></span>
+                </div>
+                <div class="scl-txt ring-bdr">Sign Up using email address</div>
+            </a>
+        </div>
+        <div class="scl-link">
+            <a rg-click="socialSignup('facebook')" href="">
+                <div class="scl-icn icn-fb">
+                    <span class="icon-t-face icn-cmn"></span>
+                </div>
+                <div class="scl-txt fb-bdr">Sign Up with Facebook</div>
+            </a>
+        </div>
+        <div class="scl-link">
+            <a rg-click="socialSignup('twitter')" href="">
+                <div class="scl-icn icn-tw">
+                    <span class="icon-l-twi  icn-cmn"></span>
+                </div>
+                <div class="scl-txt tw-bdr">Sign Up with Twitter</div>
+            </a>
+        </div>
+    </div>
+</div>

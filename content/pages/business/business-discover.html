@@ -1,0 +1,112 @@
+<div  class="dashboard-bg  mid-width pro-page-width">
+    <div class="middle"> 
+        <div class="profile news-pro-wrap">
+            <!-- <rg-business-slider></rg-business-slider> -->
+            <div  class="media-nav">
+                <rg-business-tab-nav></rg-business-tab-nav> 
+                <div style="position:relative; float: right; ">
+                    <div class="box-search media-search">
+                        <span class="img_sprite width-25px height-25px search-icon-25 p-absolute search-icon-p"></span>
+                        <input type="text" name="search" 
+                               ng-change="doSearch()" 
+                               ng-model="searchParam" 
+                               ng-model-options="{ debounce: 500 }" 
+                               value="" 
+                               autocomplete="off" 
+                               placeholder="Search discover"/>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-show="!searching" class="news-pro-wrap mar-0-5">
+
+                <div  class="news-pro-box " ng-repeat="business in businessDiscoverMap.all() track by $index" ng-class="{followed: business.value.isSubscribed()}">
+                    <div class="news-pro-img" style="background: url('../images/default_cover.jpg') no-repeat; ">
+                        <!--<img ng-src="{{business.value.getProfileImage()}}">-->
+                    </div>
+                    <div class="dscv-img" style="background: url('{{business.value.getProfileImage()}}') no-repeat;"></div>
+                    <div class="flow-text"  ng-cloak="true">{{ business.value.getFollowerCountWithText()}}</div>
+                    <div class="flow-text-name"><a ng-href="{{business.value.getLink('profile')}}" title='{{business.value.getFullName()}}'  ng-cloak="true">{{business.value.getFullName()}}</a></div>
+                    <div class="flow-text-name flow-text-details"  ng-cloak="true">
+                        {{business.value.getSlogan()}}
+                    </div>
+                    <!-- <div class="flow-btn" 
+                            rg-ringbox="true"
+                            ringbox-controller="businessFollowController"
+                            ringbox-target="templates/newsportal/portal-follow.popup.html"
+                            ringbox-type="remote" 
+                            ringbox-data="getDiscoverBusinessCatList(business.value,$index)">+ Follow</div> -->
+                    <div class="flow-btn" ng-if="! business.value.isSubscribed()" rg-click="followPage(business.value, $index)">
+                        + Follow
+                    </div>
+                    <a ng-if="business.value.isSubscribed()" ng-href="{{business.value.getLink('profile')}}">
+                        <div class="flow-btn">&#x2714; Following</div>
+                    </a>
+                </div>
+                <div ng-if="discoverSuggestion" class="no-suggest">
+                    <p>No suggestions available at this moment</p>
+                </div>
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+
+                <div class="news-load" ng-show="loadmore">
+                    <!--<button ng-show="loadmore && portalDiscoverMap.length() > 1" ng-click="loadMorePortal()">Load More</button>-->
+                    <a class="load-more"  rg-click="loadMorePortal()" ng-show="businessDiscoverMap.length() > 1 && !showloadmore">Load More &raquo;</a>
+                    <a class="load-more-disabled"  ng-show="showloadmore"> 
+                        <span class="load-circle">
+                            <span class="ld-cir1 ld-cir"></span>
+                            <span class="ld-cir2 ld-cir"></span>
+                            <span class="ld-cir3 ld-cir"></span>
+                            <span class="ld-cir4 ld-cir"></span>
+                            <span class="ld-cir5 ld-cir"></span>
+                            <span class="ld-cir6 ld-cir"></span>
+                            <span class="ld-cir7 ld-cir"></span>
+                            <span class="ld-cir8 ld-cir"></span>
+                            <span class="ld-cir9 ld-cir"></span>
+                            <span class="ld-cir10 ld-cir"></span>
+                            <span class="ld-cir11 ld-cir"></span>
+                            <span class="ld-cir12 ld-cir"></span>
+                        </span>
+                        Loading...</a>
+                </div>
+
+            </div>
+
+            <div ng-show="searching" class="news-pro-wrap mar-0-10">
+                <div  class="news-pro-box " ng-repeat="business in searchResultMap.all() track by $index" ng-class="{followed: business.value.isSubscribed()}">
+                    <div class="news-pro-img" style="background: url('../images/default_cover.jpg') no-repeat; ">
+                        <!--<img ng-src="{{business.value.getProfileImage()}}">-->
+                    </div>
+                    <div class="dscv-img" style="background: url('{{business.value.getProfileImage()}}') no-repeat;"></div>
+                    <div class="flow-text"  ng-cloak="true">{{ business.value.getFollowerCountWithText()}}</div>
+                    <div class="flow-text-name"><a ng-href="{{business.value.getLink('profile')}}" title='{{business.value.getFullName()}}'  ng-cloak="true">{{business.value.getFullName()}}</a></div>
+                    <div class="flow-text-name flow-text-details"  ng-cloak="true">
+                        {{business.value.getSlogan()}}
+                    </div>
+                    <!-- <div class="flow-btn" 
+                         ng-if="!business.value.isSubscribed()"
+                         rg-ringbox="true"
+                         ringbox-controller="portalFollowController"
+                         ringbox-target="templates/newsportal/portal-follow.popup.html"
+                         ringbox-type="remote" 
+                         ringbox-data="getSearchPortalCatList(business.value,$index)">+ Follow</div> -->
+                    <div class="flow-btn" ng-if="! business.value.isSubscribed()" rg-click="followPage(business.value, $index)">
+                        + Follow
+                    </div>
+                    <a ng-if="business.value.isSubscribed()" ng-href="{{business.value.getLink('profile')}}">
+                        <div class="flow-btn">&#x2714; Following</div>
+                    </a>
+                    <div class="flow-btn" ng-if="business.value.isSubscribed()">Following</div>
+                </div>  
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+                <div  class="news-pro-box npb"></div>
+            </div>
+            <!--<div class="news-pro-wrap mar-0-10" ng-show="nodata">No result found</div>-->
+        </div>
+    </div>
+</div>

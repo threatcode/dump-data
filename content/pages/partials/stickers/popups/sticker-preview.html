@@ -1,0 +1,34 @@
+<div class="sti-con sti-white">
+    <div class="icon-close sti-close" ng-click="close()"></div>
+    <div id="content">
+
+        <div  class="store-banner">
+            <div class="pre-photo">
+            <div class="store-img">
+                <img ng-src="{{sticker.getIconImageUrl()}}">
+            </div>
+                </div>
+            <div class="store-text" ng-cloak="true">
+                {{ sticker.getName() }}
+                <p ng-cloak="true">{{ sticker.getDescription() }}</p>
+
+                <h3>Say more with less, no matter what the language.</h3>
+
+                <div rg-click="addSticker(sticker)"class="preview-btn sti-free" ng-if="!isInstalled(sticker.getKey())" >Free</div>
+                <div rg-click="removeSticker(sticker)" class="preview-btn sti-free" ng-if="isInstalled(sticker.getKey())" >Delete</div>
+                <div class="preview-btn btn-back" ng-click="close()" >Back</div>
+            </div>
+        </div>
+        <div class="sti-mid sti-mid-p scrollbar-design" rg-scrollbar="scrollbar()">
+            <div  class="sti-mid-in">
+                <div class="store-box">
+                    <img ng-src="{{ sticker.getDetailImageUrl() }}" alt="StickerDetailImage">
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

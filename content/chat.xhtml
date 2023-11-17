@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        
+        
+    </head>
+    <body>
+       
+        #{loggedUserProfile.userIdentity}
+            <script type="text/javascript">
+        
+        var userIdentity='#{loggedUserProfile.userIdentity}';
+        
+        var val= '{"tag_chat":true,"friendName":"1519","message":"gfhgfhfh","type":3,"key":329585542037,"timeOut":0}';
+        
+          var chatSocket  = {
+            wsocket: {},
+            init : function(){
+               var url = window.location.href;
+               var arr = url.split("/");
+               var api = "ws://" + arr[2]  + "/socket/chat";
+               this.wsocket = new WebSocket(api);
+               this.wsocket.onopen = this.onOpen;
+               this.wsocket.onclose = this.onClose;
+               this.wsocket.onmessage = this.onMessage;
+               this.wsocket.onerror = this.onError; 
+            },
+            onOpen : function (evt){ try { console.log("chat on open called");   } catch (e) { console.dir(e); } },
+            onClose : function (evt){ try { console.log("chat on clolse called"); } catch (e) { console.dir(e); } },
+            onError : function (evt){  try { console.dir(evt); } catch (e) { console.dir(e); } },
+            doSend : function (m) { try {  this.wsocket.send(m); } catch (e) { console.dir(e); } },
+            onMessage : function(evt){
+                try {
+                    
+                    var data = evt.data;
+console.log(data);
+                 //   console.log("got data on chat socket >>" + data)
+                   // messenger.agent(data);
+
+
+                } catch (e) {
+                   // console.dir(e);
+                }
+            }
+
+        };
+
+    chatSocket.init();
+        
+        
+        
+        
+        
+        
+    </script>
+          <script src="js/vendor/jquery/jquery.js"></script>
+        <!-- <script src="utils_script.js"></script>
+        <script src="chatwindow.js"></script>
+        -->
+         <div onclick="chatSocket.doSend(val)">TODO write content</div>
+        
+        
+    </body>
+
+    
+  
+</html>

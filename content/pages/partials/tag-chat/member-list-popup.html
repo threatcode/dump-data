@@ -1,0 +1,44 @@
+<div style="width:360px">
+    <div class="modal-header">
+        <h3 class="ng-binding">Group Members</h3>
+        <!--<span class="icon-close mdl-close"  rg-click="$close()"></span>-->
+    </div>
+    <div class="tagchat-member-scroll-wrapper">
+        <ul class="tagchat-member" rg-scrollbar="scrollbar()" >
+            <li ng-repeat="item in memberAdminList.all()" ng-init="item = item.value"  >
+                <div class="left ">
+                    <div class="pic"><img ng-src="{{ item.getUser().avatar('thumb') }}"/></div>
+                    <p class="tagmbr "><a ng-href='{{item.getUser().link()}}'>{{ item.getName()}}</a></p>
+                    <p class="tagmbr " ng-cloak="true">{{item.getStatusValue()}}</p>
+
+                </div>
+                
+                    <div class="right " ng-if="!item.getUser().isCurrentUser()">
+                        <a class="friend-btn" ng-class="{'f-loading' : item.getUser().isLoading()}" ng-show="item.getUser().friendshipStatus() === 0"
+                           rg-click="contactListAction({friend: item.getUser(), action:'addfriend'})"><span class="friend-ico addfnd"></span>Add Friend</a>
+                        <a class="friend-btn" ng-class="{'f-loading' : item.getUser().isLoading()}" ng-show="item.getUser().friendshipStatus() === 1"><span class="friend-ico fnd"></span>Friend</a>
+                        <a class="friend-btn" ng-class="{'f-loading' : item.getUser().isLoading()}" ng-show="item.getUser().friendshipStatus() === 2"
+                           rg-click="contactListAction({friend: item.getUser(), action: 'accept'})"><span class="friend-ico accept"></span>Accept</a>
+                        <a class="friend-btn" ng-class="{'f-loading' : item.getUser().isLoading()}" ng-show="item.getUser().friendshipStatus() === 2"
+                           rg-click="contactListAction({friend: item.getUser(), action: 'reject'})"><span class="friend-ico reject"></span>Reject</a>
+                        <a class="friend-btn" ng-class="{'f-loading' : item.getUser().isLoading()}" ng-show="item.getUser().friendshipStatus() === 3"
+                           rg-click="contactListAction({friend: item.getUser(), action: 'reject'})"><span class="friend-ico cancel-req"></span>Cancel Request</a>
+
+                        <div class="clear"></div>
+                        <!-- <p class="tagmbr ">It's me</p> -->
+                        <p class="tagmbr" ng-if="!!item.getAddedByUserName()"> Added By <a class="tg-mbr-lnk" href="" ng-cloak="true"> {{item.getAddedByUserName()}}</a></p>
+                   
+                    </div>
+
+                    <div class="right " ng-if="item.getUser().isCurrentUser() && !!item.getAddedByUserName()">
+                        <p class="tagmbr "> It's Me</p>
+                        <p class="tagmbr " > Added By <a class="tg-mbr-lnk" ng-href="{{  item.getAddedByUser().link() }}" ng-cloak="true"> {{item.getAddedByUserName()}}</a></p>
+                    </div>
+
+                    <div class="clear"></div>
+            
+                <div class="clear"></div>
+            </li>
+        </ul>
+    </div>
+</div>

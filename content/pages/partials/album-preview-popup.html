@@ -1,0 +1,18 @@
+<div class="dashboard-bg  mid-width ">
+    <div class="middle" >
+        <h1 ng-cloak="true">Album Preview --> {{albumList.length}}</h1>
+        <ul>
+            <li ng-repeat="album in albumList">
+                <div>
+                    <h2 ng-cloak="true"> {{album.getAlbumName()}} </h2>
+                </div>
+                <div>
+                    <img style="max-height: 200px;max-width: 200px" alt="Cover Image" ng-src="{{album.getCoverImage()}}"/>
+                    <span ng-cloak="true">albId :: {{album.getAlbumId()}}</span>
+                    <span ng-cloak="true">Total Image :: {{album.getTotalImageCount()}}</span>
+                    <span ng-cloak="true">Update Time :: {{album.getUpdateTime()}}</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

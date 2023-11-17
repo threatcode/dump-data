@@ -1,0 +1,99 @@
+<!--  Privacy Settings  info DIV start -->
+<div id="privacy-settings">
+<!--    <div class="ppinfo-action" >
+        <span class="img_sprite w-h-13 icon-edit-p-h"></span><a href="#" rg-click="enableSettingsEditMode($event)">{{consType.change}}</a>
+    </div>-->
+
+
+<div class="butt border-gray-orange float-right btn-m-l-8">
+    <a class="btn-p-5-8"  rg-click="enableSettingsEditMode($event)" ng-show="!isEditSetting">
+        <i class="friend-ico edit-btn-icon"></i>
+        <span class="butt-text" ng-cloak="true">{{consType.change}}</span>
+    </a>
+</div>
+
+
+
+    <div class="view pv-rm"  ng-show="!isEditSetting">
+
+       
+        <div class="ppinfo">
+            <div class="display_ib w70"><div class="ab_circle"><span class="img_sprite w-h-18px chat_set_ico mar-6"></span> </div> <span class="prvc-txt ab-priv">Allow Incoming Chat</span> </div>
+            <div ng-if="settings.achat == 1" class="allow_sty"> [ Everyone ]</div>
+            <div ng-if="settings.achat == 0" class="allow_sty"> [ Friends ]</div>
+            <div class="clear"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="ppinfo">
+            <div class="display_ib w70"><div class="ab_circle"><span class="abn_icon img_sprite w-h-22px  ab_incoming_ico_r"></span> </div><span class="prvc-txt ab-priv">Allow Incoming Friend Request</span></div>
+            <div ng-if="settings.ainfndreq == 0" class="allow_sty"> [ Allowed ]</div>
+            <div ng-if="settings.ainfndreq == 1" class="deny_sty" > [ Denied ]</div>
+            <div class="clear"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="ppinfo">
+            <div class="display_ib w70"><div class="ab_circle"><span class="abn_icon img_sprite w-h-22px  ab_friend_ico_r"></span> </div> <span class="prvc-txt ab-priv">Allow Friend to add me</span></div>
+            <div ng-if="settings.afam == 0" class="allow_sty"> [ Allowed ]</div>
+            <div ng-if="settings.afam == 1" class="deny_sty" > [ Denied ]</div>
+            <div class="clear"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="ppinfo">
+            <div class="display_ib w70"><div class="ab_circle"><span class="img_sprite w-h-22px  ab_auto_ico"></span> </div><span class="prvc-txt ab-priv">Auto add friend</span></div>
+            <div ng-if="settings.aaf == 0" class="allow_sty"> [ Allowed ]</div>
+            <div ng-if="settings.aaf == 1" class="deny_sty" > [ Denied ]</div>
+            <div class="clear"></div>
+        </div>
+     
+
+    </div>
+
+    <div class="edit" ng-show="isEditSetting">
+        
+        <div class="ppinfo">
+            <div class="left"><div class="ab_circle"><span class="img_sprite w-h-18px chat_set_ico mar-6"></span> </div><span class="prvc-txt ab-priv">Allow Incoming Chat</span></div>
+            <div class="right prvc-right-txt">
+                <input type="radio"  id="radio7" class="css-checkbox" ng-value="1" ng-model="settings.achat"/><label for="radio7" class="css-label radGroup2">Everyone</label>
+                <input type="radio" id="radio8" class="css-checkbox"  ng-value="0" ng-model="settings.achat"/><label for="radio8" class="css-label radGroup2">Friends</label>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="ppinfo">
+            <div class="left"><div class="ab_circle"><span class="abn_icon img_sprite w-h-22px  ab_incoming_ico_r"></span> </div><span class="prvc-txt ab-priv">Allow In Friend Req</span></div>
+            <div class="right prvc-right-txt">
+                <input type="radio"  id="radio9" class="css-checkbox" ng-value="0" ng-model="settings.ainfndreq"/><label for="radio9" class="css-label radGroup2">Allow</label>
+                <input type="radio" id="radio10" class="css-checkbox"  ng-value="1" ng-model="settings.ainfndreq"/><label for="radio10" class="css-label radGroup2">Deny</label>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="ppinfo">
+            <div class="left"><div class="ab_circle"><span class="abn_icon img_sprite w-h-22px  ab_friend_ico_r"></span> </div><span class="prvc-txt ab-priv">Allow Friend to add me</span></div>
+            <div class="right prvc-right-txt">
+                <input type="radio"  id="radio11" class="css-checkbox" ng-value="0" ng-model="settings.afam"/>
+                <label for="radio11" class="css-label radGroup2">Allow</label>
+                <input type="radio" id="radio12" class="css-checkbox"  ng-value="1" ng-model="settings.afam"/>
+                <label for="radio12" class="css-label radGroup2">Deny</label>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="ppinfo">
+            <div class="left"><div class="ab_circle"><span class="img_sprite w-h-22px ab_auto_ico"></span> </div><span class="prvc-txt ab-priv">Auto add friend</span></div>
+            <div class="right prvc-right-txt">
+                <input type="radio"  id="radio14" class="css-checkbox" ng-value="0" ng-model="settings.aaf"/><label for="radio14" class="css-label radGroup2">Allow</label>
+                <input type="radio" id="radio15" class="css-checkbox"  ng-value="1" ng-model="settings.aaf"/><label for="radio15" class="css-label radGroup2">Deny</label>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="ppinfo">
+            <div class="pp-btn mar-left-60">
+                <input class="pro-edit-btn" type="button" name="x" value="{{consType.save}}" rg-click="saveSettings(settings)"/>
+                <input class="pro-edit-btn" type="button" name="y" value="{{consType.cancel}}" rg-click="cancelSettings()"/>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  Privacy Settings  info DIV END -->

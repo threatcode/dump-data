@@ -1,0 +1,17 @@
+<div ng-show="showDropdown"  class="ng-cloak action pad-204 feed-ac z-in-110 top-23">
+    <i class="drop-sprite curve-a curve-t-ico p-ab top11"></i>
+    <!--<a rg-ringbox="true" ringbox-type="remote" ringbox-controller="TagChatPopupController"-->
+    <!--ringbox-target="templates/partials/tag-chat/tag-chat-popup.html" ringbox-data="ddAction()({action:'view', tagId:ddControl.tagId})" >View</a>-->
+
+    <div class="ac-top-line">
+        <a class="pad-8-14" rg-ringbox="true" ringbox-type="remote" ringbox-controller="TagChatPopupController"
+           ringbox-target="templates/partials/tag-chat/tag-chat-popup.html" ringbox-data="ddAction()({event: $event, action:'edit', tagId:ddControl.tagId})"><i class="drop-sprite w-h-13 edit-ico feed-font"></i>Edit</a>
+    </div>
+
+    <div class="ac-top-line">
+        <a class="pad-8-14" ng-if="!ddControl.isOwner" rg-click="ddAction()({event: $event, action:'delete', tagId: ddControl.tagId})"><i class="img_sprite w-h-13 icon-close-b feed-font"></i>Leave</a>
+
+        <a class="pad-8-14" ng-if="ddControl.isOwner" rg-ringbox="true" ringbox-type="remote" ringbox-controller="TagChatPopupController"
+           ringbox-target="templates/partials/tag-chat/owner-select-popup.html" ringbox-data="ddAction()({event: $event, action:'edit', tagId:ddControl.tagId})"><i class="img_sprite w-h-13 icon-close-b feed-font"></i>Leave</a>
+    </div>
+</div>

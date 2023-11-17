@@ -1,0 +1,87 @@
+<div class="status-box inline-share">
+    <form enctype="multipart/form-data">
+        <div style="padding:10px">
+            <div class="float-left">
+                <div class="thumbnail">
+                    <div class="icon-logo-circle pss-logo">
+                        <a >  <img class="responsive-all"   rg-src="currentUser.avatar('thumb')"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="post-t float-right">
+                <div class="inline-share-box">
+                    <rg-editor class="editor" editor-content="feedText" new-line="on" on-escape="closeShareBox" focus="showShareBox"  placeholder="Write something...."  ></rg-editor>
+                    <span class="esc-cancel" rg-click="closeShareBox()">Press Esc to <a>Cancel</a></span>
+                    <!--<p ng-if="emotions.length" class="pst-loc-txt"> <span class="feelings-text"> feeling </span> <img class="feed_emo" rg-src="{{emotions[0].url}}" /> {{emotions[0].nm}} &nbsp;<span class="icon-close f-8" rg-click="emotions.length = 0"></span></p>-->
+                    <p ng-if="emotions.length" class="feelings-text">
+                        <span>— Feeling </span>
+                        <img class="status_emo" ng-src="{{emotions[0].url}}"> 
+                        <span class="feel-sty" ng-cloak="true">{{emotions[0].nm}}
+                            <span class="p-relative" ng-click="emotions.length = 0"><i class="p-ab feel img_sprite icon-close-ico w-h-13"></i></span>
+                        </span>
+                    </p>
+                    <div ng-if="friendTags.length()">
+                        <ul  class="tag-fnd-lst">
+                            <span class="tag-with">&mdash; With&nbsp;</span>
+                            <li ng-if="friendTags.length() < 3" ng-repeat="usr in friendTags.all()" ><span class="tag-title" ng-cloak="true">{{::usr.value.getName()}}</span>&nbsp;</li>
+                            <li ng-if="friendTags.length() > 2" ><span class="tag-title" ng-cloak="true">{{::friendTags.bottom().getName()}}</span></li>
+                            <span ng-if="friendTags.length() > 2" class="tag-with" ng-cloak="true"> and {{friendTags.length() - 1}} others</span>
+
+                        </ul>
+                    </div>
+
+                    <p ng-if="feedLocation.description" class="status-loc-txt " ng-cloak="true">&mdash; {{ feedLocation.description}} <span class=" showpointer p-relative" rg-click="resetFeedLocation()" ><i class="p-ab feel img_sprite icon-close-ico w-h-13"></i></span></span></p>
+
+                    <!--<p ng-if="!!feedLocation.description" class="status-loc-txt ">&mdash; {{ feedLocation.description}} <span class=" showpointer p-relative" ng-click="resetFeedLocation()" ><i class="p-ab feel img_sprite icon-close-ico w-h-13"></i></span></p>-->
+
+
+                    <p ng-show="!boxIsLoading && errorMessage" class="s-error" ng-cloak="true">{{errorMessage}}</p>
+                    <!--<p ng-show="!boxIsLoading && !errorMessage" class="s-info"><b>Enter</b> to SHARE, <b>ESC</b> to Cancel</p>-->
+                    <rg-loader-view2 is-loading="boxIsLoading"></rg-loader-view2>
+                </div>
+            </div>
+            <div class="clear"></div>
+
+            <rg-selector ng-show="showFriendTag" 
+                         template-url="templates/feed/tag-friends.html"
+                         placeholder="Tag friends"
+                         identifier="friendtag"
+                         select-any="false"
+                         selected-items="friendTags" 
+                         fetch-items="fetchFriends" 
+                         select-item="selectFriendTag" 
+                         remove-item="removeFriendTag">
+            </rg-selector>
+        </div>
+        <div class="status-photo-box" style="margin:0;padding:0;border-top:1px solid #ebebeb;width:100%;">
+            <div>
+                <!--<div class="post-b-ico m-l-5" style="display:none;">
+                    <a data-tooltip-post="Add Emoticon"  href="javascript:void(0)" class="p-ab" style="margin-top:-1px;">
+                        <span  class="icon-emoticon ico-sty f-27" rg-emoticon clicked="insertEmoji" show-sticker="false"></span>
+                    </a>
+                </div>-->
+                <div  data-tooltip-post="Add Feeling" rg-emotion on-select="chooseEmotion(item)" class="p-abc m-l-5">
+                    <div class="post-b-ico">
+                        <span class="img_sprite status-ico feeling-ico"></span>
+                    </div>
+                </div>    
+
+                <div data-tooltip-post="Tag Friends"   class="p-abc" >
+                    <div class="post-b-ico"  rg-click="toggleShowFriendTag()">
+                        <span class="img_sprite status-ico tag-f-ico"></span>
+                    </div>
+                </div>
+                <div data-tooltip-post="Add Location"  class="p-abc z101 m-l-5">
+                    <div class="post-b-ico" feed-location-menu="" feed-location-menu-on-select="updateFeedLocation(location)" selected-value="feedLocation" >
+                        <span class="img_sprite status-ico location-ico"></span>
+                    </div>
+                </div>
+                <div class="float-right pad-7-0">
+                    <input type="button" ng-disabled="inputDisabled" rg-click="shareFeed()"  class="share_btn float-right" value="Share"/>
+                </div>
+                <!--<p>Press escape to cancel</p>-->
+            </div>
+        </div>
+    </form>
+    <div class="clear"></div>
+</div>

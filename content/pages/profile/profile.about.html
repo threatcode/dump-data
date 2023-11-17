@@ -1,0 +1,118 @@
+<!--<div ng-controller="ProfileAboutController-->
+<!--as-->
+<!--pabout" class="prof-about ">-->
+<div class="prof-about" ng-if="viewport.x >= 1280">
+    <div class="left">
+        <ul class="profileinfo">
+            <li ng-class="{'selected': activeNav === 'basic'}" rg-click="activeNav='basic'" ><span class="ppt-icon"><i class="img_sprite w-h-18px icon-info-pro"></i></span> <span class="ppt-txt">Basic Info</span></li>
+            <li ng-class="{'selected': activeNav === 'education'}" rg-click="activeNav='education'" ><span class="ppt-icon "><i class="img_sprite w-h-18px icon-education"></i></span> <span class="ppt-txt">Education</span></li>
+            <li ng-class="{'selected': activeNav === 'work'}" rg-click="activeNav='work'" ><span class="ppt-icon "><i class="img_sprite w-h-18px icon-work"></i></span> <span class="ppt-txt">Professional Career</span></li>
+            <li ng-show="profileObj.isCurrentUser()" ng-class="{'selected': activeNav === 'recovery'}" rg-click="activeNav='recovery'" ><span class="ppt-icon"><i class="img_sprite w-h-18px icon-recovery-set"></i></span> <span class="ppt-txt">Recovery Settings</span></li>
+            <li ng-class="{'selected': activeNav === 'skill'}" rg-click="activeNav='skill'" ><span class="ppt-icon "><i class="img_sprite w-h-18px icon-skills"></i></span> <span class="ppt-txt">Skills</span></li>
+            <li ng-show="profileObj.isCurrentUser()" ng-class="{'selected': activeNav === 'password'}" rg-click="activeNav='password'" ><span class="ppt-icon "><i class="img_sprite w-h-18px icon-privacy-ab"></i></span> <span class="ppt-txt">Password Settings</span></li>
+            <li ng-show="profileObj.isCurrentUser()" ng-class="{'selected': activeNav === 'achat'}" rg-click="activeNav='achat'" ><span class="ppt-icon"><i class="img_sprite w-h-18px abw_chat_ico"></i></span> <span class="ppt-txt">Privacy Settings</span></li>
+            <li ng-hide="profileObj.isCurrentUser()" ng-class="{'selected': activeNav === 'privacy'}" rg-click="activeNav='privacy'" ><span class="ppt-icon"><i class="img_sprite w-h-18px icon-privacy-ab"></i></span> <span class="ppt-txt">Privacy Settings</span></li>
+<!--            <li ng-show="profileObj.isCurrentUser()" ng-class="{'selected': activeNav === 'allowIncomingFriendReq'}" rg-click="activeNav='allowIncomingFriendReq'" ><span class="ppt-icon  pad-0"><i class="img_sprite w-h-22px abw_incoming_ico"></i></span> <span class="ppt-txt">Allow Incoming Friend Request</span></li>
+            <li ng-show="profileObj.isCurrentUser()" ng-class="{'selected': activeNav === 'aFrndToAddMe'}" rg-click="activeNav='aFrndToAddMe'" ><span class="ppt-icon  pad-0"><i class="img_sprite w-h-22px abw_friend_ico"></i></span><span class="ppt-txt">Allow Friend To Add Me</span></li>
+            <li ng-show="profileObj.isCurrentUser()" ng-class="{'selected': activeNav === 'autoaddfrnd'}" rg-click="activeNav='autoaddfrnd'" ><span class="ppt-icon pad-0"><i class="img_sprite w-h-22px abw_auto_ico"></i></span> <span class="ppt-txt">Auto add friend</span></li>-->
+        </ul>
+        <div class="clear"></div>
+    </div>
+
+    <!--ng-class="activeNav == 'basic'?'ab-ani':''"-->
+    <div class=" right">
+        <div class="profileinfo-content">
+            <div>
+                <rg-profile-basic ng-show="activeNav === 'basic'"></rg-profile-basic>
+
+                <rg-profile-privacy ng-show="activeNav === 'privacy'"></rg-profile-privacy>
+
+                <rg-profile-education ng-show="activeNav === 'education'"></rg-profile-education>
+
+                <rg-profile-work ng-show="activeNav === 'work'"></rg-profile-work>
+
+                <rg-profile-recovery ng-show="activeNav === 'recovery'"></rg-profile-recovery>
+
+                <rg-profile-skill ng-show="activeNav === 'skill'"></rg-profile-skill>
+
+                <rg-profile-password ng-show="activeNav === 'password'"></rg-profile-password>
+
+                <rg-profile-achat ng-show="activeNav === 'achat'"></rg-profile-achat>
+
+<!--                <rg-profile-ainfndreq ng-show="activeNav === 'allowIncomingFriendReq'"></rg-profile-ainfndreq>
+
+                <rg-profile-allowaddme ng-show="activeNav === 'aFrndToAddMe'"></rg-profile-allowaddme>
+
+                <rg-profile-autoaddfrnd ng-show="activeNav === 'autoaddfrnd'"></rg-profile-autoaddfrnd>-->
+
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="prof-about-sml-res" ng-if="viewport.x < 1280">
+
+    <div class="pp-sml-header">
+        <div class="pp-sml-hdr-title" ng-show="activeNav === 'basic'"><span class="ppt-icon"><i class="img_sprite w-h-18px icon-info-pro"></i></span><span> Basic Info</span></div>
+
+        <div class="pp-sml-hdr-title" ng-show="activeNav === 'education'"><span class="ppt-icon "><i class="img_sprite w-h-18px icon-education"></i></span><span> Education</span></div>
+        <div class="pp-sml-hdr-title" ng-show="activeNav === 'work'"><span class="ppt-icon "><i class="img_sprite w-h-18px icon-work"></i></span><span> Professional Career</span></div>
+        <div class="pp-sml-hdr-title" ng-show="activeNav === 'recovery'"><span class="ppt-icon"><i class="img_sprite w-h-18px icon-recovery-set"></i></span><span> Recovery Settings</span></div>
+        <div class="pp-sml-hdr-title" ng-show="activeNav === 'skill'"><span class="ppt-icon "><i class="img_sprite w-h-18px icon-skills"></i></span><span> Skill</span></div>
+        <div class="pp-sml-hdr-title" ng-show="activeNav === 'password'"><span class="ppt-icon "><i class="img_sprite w-h-18px icon-privacy-ab"></i></span><span> Password Settings</span></div>
+        <div class="pp-sml-hdr-title" ng-show="activeNav === 'achat'"><span class="ppt-icon"><i class="img_sprite w-h-18px abw_chat_ico"></i></span><span> Privacy Settings</span></div>
+        <div class="pp-sml-hdr-title" ng-show="activeNav === 'privacy'"><span class="ppt-icon"><i class="img_sprite w-h-18px icon-privacy-ab"></i></span><span> Privacy Settings</span></div>
+        
+<!--        <div class="pp-sml-hdr-title" ng-show="activeNav === 'allowIncomingFriendReq'"><span class="ppt-icon"><i class="img_sprite w-h-22px h-18px abw_incoming_ico"></i></span><span> Allow Incoming Friend Request</span></div>
+        <div class="pp-sml-hdr-title" ng-show="activeNav === 'aFrndToAddMe'"><span class="ppt-icon"><i class="img_sprite w-h-22px h-18px abw_friend_ico"></i></span><span> Allow Friend To add me</span></div>
+        <div class="pp-sml-hdr-title" ng-show="activeNav === 'autoaddfrnd'"><span class="ppt-icon"><i class="img_sprite w-h-22px h-18px abw_auto_ico"></i></span><span> Auto add friend</span></div>-->
+
+        <div class="img_sprite w-h-22px icon-play-list-about " style="position: relative; float: right; width: 40px; height: 40px; border-left: 1px solid #eee; font-size: 20px; line-height: 40px; cursor: pointer" rg-click="toggleMenuItem()">
+            <div class="pp-ddmenu-box" ng-show="showMenuItems">
+                <ul ng-mouseleave="closeDropdown()">
+                    <li ng-class="{'selected': activeNav === 'basic'}" rg-click="activeNav='basic'" ><span class="ppt-icon"><i class="img_sprite w-h-18px icon-info-pro"></i></span><span>Profile Basic Info</span></li>
+                    
+
+                    <li ng-class="{'selected': activeNav === 'education'}" rg-click="activeNav='education'" ><span class="ppt-icon "><i class="img_sprite w-h-18px icon-education"></i></span><span>Education</span></li>
+                    <li ng-class="{'selected': activeNav === 'work'}" rg-click="activeNav='work'" ><span class="ppt-icon "><i class="img_sprite w-h-18px icon-work"></i></span><span>Professional Career</span></li>
+                    <li ng-show="profileObj.isCurrentUser()" ng-class="{'selected': activeNav === 'recovery'}" rg-click="activeNav='recovery'" ><span class="ppt-icon"><i class="img_sprite w-h-18px icon-recovery-set"></i></span><span>Recovery Settings</span></li>
+                    <li ng-class="{'selected': activeNav === 'skill'}" rg-click="activeNav='skill'" ><span class="ppt-icon "><i class="img_sprite w-h-18px icon-skills"></i></span><span>Skills</span></li>
+                    <li ng-show="profileObj.isCurrentUser()" ng-class="{'selected': activeNav === 'password'}" rg-click="activeNav='password'" ><span class="ppt-icon "><i class="img_sprite w-h-18px icon-privacy-ab"></i></span><span>Password Settings</span></li>
+                    <li ng-show="profileObj.isCurrentUser()" ng-class="{'selected': activeNav === 'achat'}" rg-click="activeNav='achat'" ><span class="ppt-icon"><i class="img_sprite w-h-18px abw_chat_ico"></i></span><span class="ppt-txt">Settings</span></li>
+                    <li ng-hide="profileObj.isCurrentUser()" ng-class="{'selected': activeNav === 'privacy'}" rg-click="activeNav='privacy'" ><span class="ppt-icon"><i class="img_sprite w-h-18px icon-privacy-ab"></i></span><span>Privacy Settings</span></li>
+<!--                    <li ng-show="profileObj.isCurrentUser()" ng-class="{'selected': activeNav === 'allowIncomingFriendReq'}" rg-click="activeNav='allowIncomingFriendReq'" ><span class="ppt-icon"><i class="img_sprite w-h-22px h-18px abw_incoming_ico"></i></span><span class="ppt-txt">Allow Incoming Friend Request</span></li>
+                    <li ng-show="profileObj.isCurrentUser()" ng-class="{'selected': activeNav === 'aFrndToAddMe'}" rg-click="activeNav='aFrndToAddMe'" ><span class="ppt-icon"><i class="img_sprite w-h-22px h-18px abw_friend_ico"></i></span><span class="ppt-txt">Allow Friend to add me</span></li>
+                    <li ng-show="profileObj.isCurrentUser()" ng-class="{'selected': activeNav === 'autoaddfrnd'}" rg-click="activeNav='autoaddfrnd'" ><span class="ppt-icon"><i class="img_sprite w-h-22px h-18px abw_auto_ico"></i></span><span class="ppt-txt">Auto add friend</span></li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div style="min-height: 600px; padding: 50px 20px; box-sizing: border-box; text-align: left ; position: relative">
+
+        <rg-profile-basic ng-show="activeNav === 'basic'"></rg-profile-basic>
+
+        
+
+        <rg-profile-education ng-show="activeNav === 'education'"></rg-profile-education>
+
+        <rg-profile-work ng-show="activeNav === 'work'"></rg-profile-work>
+
+        <rg-profile-recovery ng-show="activeNav === 'recovery'"></rg-profile-recovery>
+
+        <rg-profile-skill ng-show="activeNav === 'skill'"></rg-profile-skill>
+
+        <rg-profile-password ng-show="activeNav === 'password'"></rg-profile-password>
+
+        <rg-profile-achat ng-show="activeNav === 'achat'"></rg-profile-achat>
+        <rg-profile-privacy ng-show="activeNav === 'privacy'"></rg-profile-privacy>
+
+<!--        <rg-profile-ainfndreq ng-show="activeNav === 'allowIncomingFriendReq'"></rg-profile-ainfndreq>
+
+        <rg-profile-allowaddme ng-show="activeNav === 'allowIncomingFriendReq'"></rg-profile-allowaddme>
+
+        <rg-profile-autoaddfrnd ng-show="activeNav === 'autoaddfrnd'"></rg-profile-autoaddfrnd>-->
+
+    </div>
+
+</div>
+

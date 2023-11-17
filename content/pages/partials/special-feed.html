@@ -1,0 +1,55 @@
+<div class="newsfeed-row rg-featured" ng-controller="FeedSubController" style="padding: 0px;">
+    <rg-news-feed-top feed="feed"
+                      serial="serial">
+    </rg-news-feed-top>
+    <div data-feed-bottom class="newsfeed-bottom">
+        <div class="feed">
+            <div class="feed_details main_feed">
+                <!-- Feed Text -->
+                <p class="feed_value" rg-more-feed="feed"></p>
+                <!-- Editor Disabled Start -->
+                <!-- Feed Location Start -->
+                <p class="location" ng-if="feed.hasLocationInfo()">
+                    <span ng-if="!!feed.getLocationInfo().lat">
+                        <a ng-href="{{ feed.getLocationEmbedUrl()}}" target="_blank"><img height="170px" width="100%" ng-src="{{ feed.getLocationStaticEmbedUrl()}}" alt="location-hover" /></a>
+                    </span>
+                    -<a style="text-decoration: underline;" ng-href="{{ feed.getLocationEmbedUrl()}}" target="_blank" ng-cloak="true">{{ ::feed.getLocationText()}}</a>
+                </p>
+                <!--<p ng-repeat="video in feed.getVideos()">{video.value.getVideoUrl()}</p>-->
+                <!--<video ng-repeat="video in feed.getVideos()" vidurl="video.value.getVideoUrl()">-->
+
+                <!--</video>-->
+
+                <!-- Feed Location End -->
+
+
+                <rg-url-og-preview ng-if="feed.hasOgData()"  og-data="feed.getOgData()" show-preview="feed.hasOgData()" loading-data="ogDataLoading"></rg-url-og-preview>
+                </p>
+                <!-- Editor Disabled End -->
+
+                <div ng-if="feed.getImages().length">
+                    <div feed-image="main" popup-template="special"></div>
+
+                    <div class="clear"></div>
+                </div>
+
+
+            </div>
+
+            <rg-video ng-if="feed.getMedias().length()" feed="feed" feed-category="special"
+                      get-media-data="getMediaData(mediavalue, feed)" select-album="selectAlbum(mediavalue)"
+                      no-download="noDownload($event)" get-media-first-data="getMediaFirstData()">
+
+            </rg-video>
+
+            <rg-audio ng-if="feed.getAudios().length()" feed="feed" feed-category="special"
+                      get-media-data="getMediaData(mediavalue, feed)" select-album="selectAlbum(mediavalue)"
+                      no-download="noDownload($event)" get-audio-first-data="getAudioFirstData()">
+
+            </rg-audio>
+
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

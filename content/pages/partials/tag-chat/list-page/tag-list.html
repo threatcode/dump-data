@@ -1,0 +1,100 @@
+<div class="circle-list-rep mid-width pro-page-width  sm-w-700">
+    <div class="modal-header" style="border-radius:0">
+        <h3 class="ng-binding cr-lst"><span class="cir-ico"></span>Group Chat</h3>
+        
+        
+        
+<!--        <div class="add_circle_btn f-right" rg-ringbox="true" rg-ringbox="true" ringbox-controller="TagChatMemberPagePopupController" ringbox-type="remote"
+             ringbox-target="templates/partials/tag-chat/list-page/popups/create-tag-popup.html" title="Create New Group">
+            <span class="img_sprite w-h-18px add-new-gr"></span>
+            <h2>Create Group</h2>
+        </div>-->
+        
+         <div class="butt bg-orange-white-i float-right btn-m-9-13-0-0">
+            <a class="btn-p-5-8"  
+                rg-ringbox="true" 
+                ringbox-controller="TagChatMemberPagePopupController" 
+                ringbox-type="remote"
+                ringbox-target="templates/partials/tag-chat/list-page/popups/create-tag-popup.html" 
+                title="Create New Group"><i class="img_sprite w-h-18px add-new-gr"></i><span class="butt-text">Create Group</span>
+            </a>
+        </div>
+        
+        <div ng-show="tcc.allTags.length() > 0"  class="box-search border-radius-4px float-right width-192" style="margin:9px 12px 5px 12px">
+            <span class="img_sprite width-25px height-25px search-icon-25 p-absolute search-icon-p"></span>
+            <input style="background-color:#fff;" type="text" ng-model="tagSearch.name" name="s" placeholder="Search Group...">
+
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="cir-select-mid"  style="padding-bottom: 100px; min-height: 1000px">
+
+        <div ng-show="!shouldShow()">
+            <rg-loader-view2 is-loading="true"  ></rg-loader-view2>
+        </div>
+
+        <div ng-if="shouldShow()">
+            <div class="ng-cloak not-yet t-a-c"
+               ng-show="tcc.allTags.length() === 0">You don't have any group yet.
+                <a  rg-ringbox="true" 
+                                    ringbox-controller="TagChatMemberPagePopupController" 
+                                    ringbox-type="remote"
+                                    ringbox-target="templates/partials/tag-chat/list-page/popups/create-tag-popup.html" 
+                                    title="Create New Group">Create Group
+                </a>
+
+            </div>
+
+
+            <div ng-repeat="aTagObj in tcc.allTags.all()| mapFilter:{mapApi: 'getTagName', value: tagSearch.name, compare: 'regex'}
+                    as groupChatList track by aTagObj.key  "  
+                class="cir-member-p a-tag-list-container " 
+                ng-init="aTag = aTagObj.value"  
+                ng-class="{'tag-owner': tcc.isCurrentUserOwner(aTag)}" 
+                ng-if="aTagObj.value.isTagSafeToShow()" >
+
+                <a title="{{ aTag.getTagName()}}" ng-href="/#/chat/group/{{ aTag.getTagId()}}">
+
+<!--                    <div  ng-if="aTag.getPictureUrl() != ''">
+                        <img class="pro-header-image float-left" ng-src="{{ aTag.getPictureFullUrl()}}"/>
+                    </div>
+                    <div  ng-if="aTag.getPictureUrl() == ''">
+                        <img class="pro-header-image float-left" src="images/prof.png"/>
+                    </div>
+
+                    <span class="c-t">{{aTag.getTagName()}}</span>
+
+                    <rg-loader-view2 is-loading="aTag.hasObjectLock()" class="lp-load" ></rg-loader-view2> 
+                    <span style="display:block;text-align:left">{{ aTag.getMembersCount()}} members</span>-->
+
+
+
+                    <span class="cir-area pad-0" ng-if="aTag.getPictureUrl() != ''">
+                        <img class="cht-grp-img" ng-src="{{ aTag.getPictureFullUrl()}}"/>
+                    </span>
+                    <span class="cir-area pad-0" ng-if="aTag.getPictureUrl() == ''">
+                       <img class="cht-grp-img" src="images/prof.png"/>
+                    </span>
+                    <p>
+                        <span class="c-t" ng-cloak="true">{{aTag.getTagName()}}</span>
+                        <rg-loader-view2 is-loading="aTag.hasObjectLock()" class="lp-load" ></rg-loader-view2> 
+                        <span  style="display:block;" ng-cloak="true">{{ aTag.getMembersCount()}} members</span>
+                    </p>
+
+
+
+                </a>
+            </div>
+            <div class="ng-cloak not-yet" ng-show="tagSearch.name && groupChatList.length === 0">Your search returned no
+                result
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+

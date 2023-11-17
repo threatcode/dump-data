@@ -1,0 +1,42 @@
+<!-- this div will open for newsportal, pages and celebrities page 
+ <div class="feed_details main_feed">
+    <p class="feed_value">This is the title for news portal and pages</p>
+</div> 
+-->
+
+
+
+<ul class="audio-r"  ng-if="feed.getMedias().length()" ng-init="medialength = feed.getMedias().length()">
+    <li ng-repeat="media in feed.getMedias().all()| limitTo:1" class="item">
+        <div class="click_area" rg-ringbox="true" ring-backdrop-close="false" show-close-btn="false" ringbox-controller="RingBoxMediaController" ringbox-animation="true"
+             ringbox-type="remote" ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(media.value, feed)">
+            <div class="left-thumb float-left" style="background-image:url('{{media.value.getThumb()}}'); background-repeat: no-repeat;background-size: cover;">
+                <div class="play-ico-s"><span class="play-btn-s"></span></div>
+            </div>
+            <div class="h_opa"></div>
+            <h3 title="{{media.value.getCaption()}}" ng-bind="media.value.getCaption()"></h3>
+            <p><span ng-bind="media.value.getArtistName()"></span></p>
+            <p><span ng-bind="media.value.getAlbumName()"></span></p>
+            <p><span ng-bind="media.value.getDuration(true)"></span></p>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </li>
+</ul>
+
+<ul class="audio-r"  ng-if="feed.getAudios().length()" ng-init="medialength = feed.getAudios().length()">
+    <li ng-repeat="media in feed.getAudios().all()| limitTo:1" class="item">
+        <div class="click_area" rg-ringbox="true" ring-backdrop-close="false" show-close-btn="false" ringbox-controller="RingBoxMediaController"i ringbox-animation="true"
+             ringbox-type="remote" ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(media.value, feed)">
+            <div class="left-thumb float-left" style="background-image:url('{{media.value.getThumb()}}'); background-repeat: no-repeat;background-size: cover;">
+                <div class="play-ico-s"><span class="play-btn-s"></span></div>
+            </div>
+            <h3 title="{{media.value.getCaption()}}" ng-bind="media.value.getCaption()"></h3>
+            <p><span ng-bind="media.value.getArtistName()"></span></p>
+            <p><span ng-bind="media.value.getAlbumName()"></span></p>
+            <p><span ng-bind="media.value.getDuration(true)"></span></p>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </li>
+</ul>

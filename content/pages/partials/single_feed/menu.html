@@ -1,0 +1,31 @@
+<div class="lcs_menu">
+    <ul>
+        <li>
+            <a class="showpointer" ng-class="{
+                        active:image.like() > 0
+                    }" ><i class="icon-like lc-ico"></i></a>
+            <a  class="lcs_button" ng-class="{
+                        active:image.like() > 0
+                    }" rg-click="likeImage()" >Like</a>
+            <a ng-cloak="true" class="count showpointer" ng-class="{
+                        active:image.like() > 0
+                    }"
+               rg-ringbox="{{image.getTotalLikes() > 0}}" ringbox-controller="fetchLikeController" ringbox-target="templates/home/wholikes.html" ringbox-type="remote"
+               ringbox-data="fetchWhoLikes(comment.getKey())" > {{image.getLikes()}}</a>
+        </li>
+        <li style="float:right;width:150px;">
+            <a class="img_sprite icon-comments-str ico-f active "></a>
+            <a class="lcs_button" ng-class="{
+                        active:image.selfComment() > 0
+                    }" >Comments</a>
+            <a  class="count" ng-class="{
+                        active:image.selfComment() > 0
+                    }" ng-cloak="true">{{image.getTotalComment()}}</a>
+        </li>
+        <!--<li>-->
+            <!--<a class="icon-share ico-f "></a>-->
+            <!--<a class="lcs_button ">Share</a>-->
+            <!--<a class="count">0</a>-->
+        <!--</li>-->
+    </ul>
+</div>

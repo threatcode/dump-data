@@ -1,0 +1,82 @@
+<div class="fixed-top dashboard-position-fixed">
+    <div class="row-responsive header-bg">
+        <div class="width-200 float-left hide-on-600">
+            <div class="margin-0-auto width-77">
+                <a ng-href="/#/" class="brand-l"><img src="images/icon/brand_name.png" /></a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="width-35 float-left show-on-600">
+            <div class="margin-0-auto">
+                <a ng-href="/#/" class="brand-l"><img src="images/icon/brand_name_sm.png" /></a>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="box-search" style="width:450px;">
+            <div class="icon-search serach-icon-size">
+
+            </div>
+            <div class="hed-search">
+                <form method="get" action="">
+                    <rg-search placeholder="Search..."></rg-search>
+                </form>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div ng-controller="HeaderController as header" class="float-right">
+            <div class="top-menu">
+                <ul class="menu-list">
+                    <li class="parent  hide-on-600"  ng-class="{ active : header.getActiveMenu() == 'home' }"><a reloadpage="true" rg-href="#/" >
+                            <div class="tm-ico icon-home"></div>
+                        </a>
+                    </li>
+                    <!--<rg-requests></rg-requests>-->
+                    <li  class="parent"  rg-dropdown="dropdown()" dd-html="header.freq.ddHtml"
+                         dd-opened="header.freq.ddOpened()" dd-before-close="header.freq.ddBeforeClose()"
+                         ng-class="{ active : header.getActiveMenu() == 'friend_request' }" >
+                        <a  title="Friend Request">
+                            <div class="tm-ico  icon-contact-b">
+                                <div ng-bind="header.requestCount()" ng-show="header.requestCount() > 0"
+                                     class="ng-cloak counter-not"></div>
+                            </div>
+                        </a>
+                    </li>
+                     <li class="parent"  rg-dropdown="dropdown()"  dd-html="header.noti.ddHtml"
+                         dd-opened="header.noti.ddOpened()" dd-before-close="header.noti.ddBeforeClose()"
+                         ng-class="{ active : header.getActiveMenu() == 'notification' }"
+                         >
+                        <a  title="Notification">
+                            <div class="tm-ico icon-notification">
+                                <div class="ng-cloak counter-not"  ng-show="header.notiCount() > 0">{{header.notiCount()}}</div>
+                            </div>
+                        </a>
+                    </li>
+                     <li class="parent"  rg-dropdown="dropdown()" dd-html="header.logout.ddHtml"
+                         dd-opened="header.logout.ddOpened()" dd-before-close="header.logout.ddBeforeClose()"
+                         dd-control="header.logout.ddControl" dd-action="header.logout.ddAction"
+                         ng-class="{ active : header.getActiveMenu() == 'logout' }" >
+                        <a>
+                            <img class="tm-img pro-header-image" ng-src="{{currentUser.avatar('thumb')}}"/>
+                        </a>
+                    </li>
+                    <li class="parent  hide-on-600" >
+                    <a><div  title="Feed View" class="lba" rg-column></div></a>
+                    </li>
+                </ul>
+            </div>
+
+
+
+            <div class="clear"></div>
+
+
+        </div>
+
+
+    </div>
+</div>
+
+</div>
+<div  class="header-bg"></div>
+<div  class="clear"></div>

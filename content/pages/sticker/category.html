@@ -1,0 +1,57 @@
+<div class="mid-width sm-w-700">
+
+    <rg-loader-view-1 is-loading="loading"></rg-loader-view-1>
+    <div ng-if="!loading">
+        <div class="stkmkt-hdr">
+            <div class="backbtn" ng-click="goBack()">Back</div>
+            <p ng-cloak="true" ng-cloak="true">{{ pageTitle  }}</p>
+            <span class="icon-close stk-close" rg-click="$close()"></span>
+        </div>
+
+        <div  class="sm-slider"> 
+            <div class="sm-slider-wrapper" style="width: 2100px">
+                <div class="sm-sld-item"  ng-if="pageBanner" style="width: 700px; background-image: url({{ pageBanner}});"></div>
+            </div>
+<!--            <div class="img_sprite icon-left-arrow sld-control sld-left "></div>
+            <div class="img_sprite icon-right-arrow sld-control sld-right"></div>-->
+        </div>
+        <div ng-if="!pageBanner" class="sm-slider" > </div>
+
+        <div class="stkmkt-detail-area">
+
+            <div class="sticker-category-menu" style="display: block; ">
+                <ul class="smc-manu"> 
+                    <li ng-repeat="aSticker in pageStickers| orderBy:aSticker.getName()">
+                        <div class="catpic">
+                            <a rg-href='/sticker/detail/single/{{ aSticker.getKey()}}'>
+                                <img ng-src="{{ aSticker.getIconImageUrl()}}" alt="{{ aSticker.getName()}} Icon Image" />
+                            </a>
+                        </div>
+                        <div class="stmc">
+                            <p><span><a ng-cloak="true" rg-href='/sticker/detail/single/{{ aSticker.getKey()}}'>{{ aSticker.getName()}}</a></span></p>
+                        </div>
+
+                        <div class="stmkbtn" 
+                             ng-if="!isInstalled(aSticker.getKey())" 
+                             rg-click="addSticker(aSticker)" >
+                            <span class="dwico"></span><span class="dwtx">Download</span>
+                        </div>
+
+                        <div class="stmkbtn" 
+                             ng-if="isInstalled(aSticker.getKey())" 
+                             rg-click="removeSticker(aSticker)" >
+                            <span class="rmico"></span><span class="dwtx">Remove</span>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+
+
+    </div>
+
+
+</div>
+

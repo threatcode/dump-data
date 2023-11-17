@@ -1,0 +1,30 @@
+
+        <div class="music-box h105" title="{{media.getCaption()}}">
+            <div class="music-thumb">
+                <a  rg-ringbox="true" ring-backdrop-close="false" show-close-btn="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"
+                    ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(true, media)"  ringbox-animation="false"
+                    ringbox-open="isMinimized()" ringbox-falsy-func="falsyMethod(media)">
+                    <img  ng-src="{{media.getThumbForMedia()}}" alt="{{media.getCaption()}}"/>
+                     <div class="m-icn play" ng-class="media.isAudio() ? 'audio':'video'"></div> <!--  Add condition for audio/video class -->
+                     <div class="duration" ng-cloak="true">{{media.getDuration(true)}}</div>
+                </a>                
+
+                <div class="song-select song-check">
+                    <input type="checkbox" id="{{media.getId()}}" ng-change="select({mediaMap: media, status: status})"  ng-model="status">
+                    <label for="{{media.getId()}}" ></label>
+                </div>
+
+            </div>
+            <div class="music-right">
+                <a title="{{media.getCaption()}}" ng-cloak="true">
+                    {{media.getCaption()}}
+                </a>
+                <!--if song-->
+                <p ng-cloak="true">Album: {{media.getAlbumName()}}</p>
+                <p class="views-music" ng-cloak="true">{{media.getViewCount()}}</p>
+                <!--<p>Duration: {{media.getDuration(true)}}</p>-->
+            </div>
+            <div class="mdlt" ng-show="album.canEdit()">
+                <div rg-dropdown dd-action="ddAction" dd-control="ddControl" dd-html="ddHtml" class="img_sprite icon-down-arrow w-h-13"></div>
+            </div>
+        </div>

@@ -1,0 +1,87 @@
+<div class="friend-header">
+    <h2 ng-if="isOwner">
+        <span  rg-click="toggleShowPending(false)" ng-class="{'fl-active' : !showPending}" ng-cloak="true">Total Friends: {{totalFriends('friends')}}</span>
+        <span ng-show="getPendingCount() > 0"  rg-click="toggleShowPending(true)" ng-class="{'fl-active' : showPending}">Pending Requests: {{getPendingCount()}}</span>
+    </h2>
+    <h2 ng-if="!isOwner">
+        <span rg-click="toggleShowMutual(false)" ng-class="{'fl-active' : !showMutual}" ng-cloak="true">Total Friends: {{totalFriends('userfriends')}}</span> 
+        <span ng-show="profileObj.commonFriends() > 0" rg-click="toggleShowMutual(true)" ng-class="{'fl-active' : showMutual}" ng-cloak="true">Mutual Friends: {{profileObj.commonFriends()}}</span>
+    </h2>
+    <div class="friend-search-background border-radius-search float-right mar-right-15 mar-top-15">
+        <div class="float-left  icon-search-d fr-serach-icon-size">
+
+        </div>
+        <div class="float-left">
+            <form method="get" action="" class="friend-search">
+                <input ng-change="searchContact()" ng-model="friendName" ng-model-options="{debounce:500}" name="q" type="text"  placeholder="Search Friend" />
+            </form>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="clear"></div>
+<div class="friends-list">
+    <!--Friend Box this will continue in loop-->
+    <div  ng-repeat="frnd in friends.all()| friendListFilter:{name: friendName, showMutual: showMutual} as results track by frnd.value.getKey()" ng-init="friend = frnd.value" class="pro_friend_box" >
+        <div class=" icon-popup-area" ng-show="(isOwner || friend.friendshipStatus() !== 1) & amp;
+                    & amp;
+                    friend.friendType() !== 3" style="z-index:3">
+            <div class="p-rt mar-top-7 w-h-13 cur-p drop-wrap">
+                <div dd-control="friend" dd-action="ddAction" dd-template="ddTemplate" rg-dropdown="dropdown()" class="icon-dc-arrow ng-isolate-scope"></div>
+            </div>
+        </div>
+        <div class="fnd-info-box card front" >
+            <div class="fnd-img">
+                <a ng-href="{{(friend.friendType() !== 3) ? friend.link() : '#'}}"><img class="responsive-all" ng-src="{{::friend.avatar('thumb')}}" ng-alt="{{::friend.getName()}}" onerror="this.src='images/prof.png';"/> </a>
+            </div>
+            <div class="fnd-info">
+                <p class="fnd-name"><a  ng-href="{{(friend.friendType() !== 3) ? friend.link() : '#'}}" title="{{::friend.getName()}}" ng-cloak="true">{{::friend.getName()}}</a><p>
+                <p class="fnd-rid"><span><i class="img_sprite id-circle-h rid"></i></span> <span ng-cloak="true"> : {{friend.getRingNumber()}} </span></p>
+                <p> <a ng-if="friend.commonFriends() > 0"
+                       class="count"
+                       style="cursor: pointer"
+                       rg-ringbox="true"
+                       ringbox-controller="mutualFriendsController"
+                       ringbox-target="templates/home/mutual-friends.html"
+                       ringbox-type="remote"
+                       ringbox-data="getMutualFriend(friend)" ng-cloak="true">{{friend.commonFriends()}} mutual friends</a></p>
+
+                <p class="mar-top-5"><a class="friend-btn" ng-show="friend.friendshipStatus() === 1"><span class="friend-ico fnd"></span>Friend</a></p>
+                <p class="mar-top-5"><a class="friend-btn" ng-show="friend.friendshipStatus() === 2"><span class="friend-ico accept"></span>Accept</p>
+                <p class="mar-top-5"><a class="friend-btn" ng-show="friend.friendshipStatus() === 3"><span class="friend-ico cancel-req"></span>Cancel Request</a></p>
+                <p class="mar-top-5"><a class="friend-btn" ng-show="friend.friendshipStatus() === 0"><span class="friend-ico addfnd"></span>Add Friend</a></a></p>
+            </div>
+        </div>
+        <div class="fnd-action-box card back" >
+            <div  class="f-name" ng-cloak="true">{{::friend.getName()}}</div>
+            <div class="logout-divider mar-top-5"></div>
+            <div class="actn-wrapper">
+                <!--<a ng-href="{{(friend.friendType() !== 3) ? friend.link() : '#'}}"><img class="responsive-all" ng-src="{{::friend.avatar('thumb')}}" ng-alt="{{::friend.getName()}}"/> </a>-->
+                <div class="chat-circle icon-logo-circle" title="info"><div class="icon-id-s on-icon"><a class="fnd-pro-img" ng-href="{{(friend.friendType() !== 3) ? friend.link() : '#'}}"><img class="responsive-all" ng-src="{{::friend.avatar('thumb')}}" ng-alt="{{::friend.getName()}}" onerror="this.src='images/prof.png';" /> </a></div></div>
+                <div class="chat-circle icon-logo-circle" title="Voice Call"><div class="icon-call on-icon"></div></div>
+                <div class="chat-circle icon-logo-circle" title="Video Call"><div class="icon-video on-icon"></div></div>
+                <div  class="chat-circle icon-logo-circle" title="Chat" open-chat-box="{{friend.getKey()}}" utId="{{friend.getUtId()}}"><div class="icon-chat on-icon"></div></div>
+                <div class="chat-circle icon-logo-circle"  title="Profile info"><div class="icon-info-pro on-icon"></div></div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--right loader start here-->
+    <div  class="pro_friend_box" ng-show="state.loading || state.isUserFriendsLoading">
+        <div class="p-area-loader">
+            <div class="p-area-loader-p">
+                <div class="loader-id icon-id-s">
+                    <span class="icon-logo-circle"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div  class="pro_friend_box no-border  h-5"></div>
+    <div  class="pro_friend_box no-border  h-5"></div>
+    <div  class="pro_friend_box no-border  h-5"></div>
+    <div class="clear"></div>
+</div>

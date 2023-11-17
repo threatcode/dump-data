@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--<script src="js/vendor/jquery/jquery.js"></script>-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>-->
+    <!--<script src="js/vendor/angular/angular-websocket.js"></script>-->
+    <!--<script src="app/app.config.js"></script>-->
+    <!--<script src="chatwindow.js"></script>-->
+    <title>Broadcast target</title>
+</head>
+
+<body>
+sadjkadsjaskdlkasdkahskdj
+<script>
+    function onStorage() { // Note: IE and FF lags on large numbers of windows
+        // Note: IE limits/delays broadcast range (number of windows)
+        var cmd = localStorage.getItem('command');
+        document.getElementById("result").innerHTML = cmd;
+
+        if (cmd.match(/close/)) {
+            window.close();
+        } else {
+            document.body.style.backgroundColor = 'rgb(' + ~~(cmd * 255) + ',' + ~~(cmd * 255) + ',' + ~~(cmd * 255) +  ')';
+            document.body.style.color = 'rgb(' + ~~(Math.random() * 255) + ',' + ~~(Math.random() * 255) + ',' + ~~(Math.random() * 255) +  ')';
+        }
+    }
+
+    var webkit = !!navigator.userAgent.match(/AppleWebKit\/(\d+\.\d+)/);
+
+    if ('v'=='\v') { // Note: IE listens on document
+        document.attachEvent('onstorage', onStorage, false);
+    } else if (window.opera || webkit){ // Note: Opera and WebKits listens on window
+        window.addEventListener('storage', onStorage, false);
+    } else { // Note: FF listens on document.body or document
+        document.body.addEventListener('storage', onStorage, false);
+    }
+
+    function broadcast(cmd){
+        localStorage.setItem('command', cmd);
+        if (window.opera || webkit) {
+            // Note: Opera and WebKits don't fire storage event on event source window
+            // Do it manually
+            onStorage();
+        }
+    }
+
+    function removeit(ds){
+        localStorage.removeItem('command');
+    }
+
+</script>
+<button onclick="broadcast(Math.random());">Broadcast</button>
+<button onclick="broadcast('close-'+Math.random());">Close all</button>
+<button onclick="removeit(Math.random());">Remove it</button>
+<pre id="result"></pre>
+</body>

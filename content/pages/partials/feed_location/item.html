@@ -1,0 +1,10 @@
+<div>
+    <div class="float-left location-img" style="width: 50px;" ng-if="location.icon">
+        <img width="50px" height="50px" ng-src="{{ location.icon }}" alt="">
+    </div>
+    <div class="float-right location-text f-view-loc">
+        <p ng-cloak="true">{{  location.name }} </p>
+        <p ng-cloak="true">{{  location.description}}</p>
+    </div>
+    <div class="clear"></div>
+</div>

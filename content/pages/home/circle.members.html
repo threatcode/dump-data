@@ -1,0 +1,199 @@
+
+<!--Friends tab start-->
+
+<div class="friend-bg" >
+    <div class="friend-header">
+        <h3 >Total Members  <span ng-bind="cp.circle.getMembersCount()"></span></h3>
+
+
+
+        <div class="butt bg-orange-white-i float-right btn-m-9-13-0-0" style="margin-top:14px;">
+            <a class="btn-p-5-8"  rg-ringbox="true" ng-show="cp.isCurrentUserSuperAdmin || cp.isCurrentUserAdmin"
+               ringbox-controller="circleEditPopupController"
+               ringbox-target="templates/circle-partials/edit-circle-popup.html"
+               ringbox-type="remote"
+               ringbox-data="getCircleId()"><i class="img_sprite w-h-18px add-new-gr"></i><span class="butt-text">Add Member</span></a>
+        </div>
+
+
+<!--        <div class="add_circle_btn" style="margin-top:14px;" rg-ringbox="true" ng-show="cp.isCurrentUserSuperAdmin || cp.isCurrentUserAdmin"
+             ringbox-controller="circleEditPopupController"
+             ringbox-target="templates/circle-partials/edit-circle-popup.html"
+             ringbox-type="remote"
+             ringbox-data="getCircleId()">
+            <span class="img_sprite w-h-18px add-new-gr"></span>
+            <h2>Add Member</h2>
+        </div>-->
+
+
+
+        <!--        <div class="friend-search-background border-radius-search float-right mar-right-15 mar-top-15">
+                    <div class="float-left icon-search-d fr-serach-icon-size">
+        
+                    </div>
+                    <div class="float-left">
+                        <form method="get" action="" class="friend-search">
+                            <input ng-change="cMemberSearch()" ng-model="cp.searchParam" ng-model-options="{ debounce: 500 }" name="q" type="text"  placeholder="Search people" />
+                        </form>
+                    </div>
+                    <div class="clear"></div>
+                </div>-->
+
+        <div class="box-search border-radius-4px float-right width-192 bg-eaeaec" style="margin:14px 12px 5px 12px">
+            <span class="img_sprite width-25px height-25px search-icon-25 p-absolute search-icon-p"></span>
+            <input ng-change="cMemberSearch()" ng-model="cp.searchParam" ng-model-options="{ debounce: 500 }" name="q" type="text"  placeholder="Search people" />
+        </div>
+
+
+
+
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <div class="friends-list">
+        <!--Friend Box this will continue in loop-->
+        <!--<div ng-repeat="aMemberObj in circleMembers.all() | mapFilter:{mapApi: 'getName', value: cp.searchParam, compare: 'regex'}" class="full_friend_icon"-->
+        <div ng-repeat="aMemberObj in circleMembers.all()| mapFilter:{mapApi: 'getName', value: cp.searchParam, compare: 'regex'} as sresult" class="pro_friend_box" 
+             ng-init="member = aMemberObj.value" ng-class="{'fndz-action': showBackKey === member.getKey()}">
+
+            <div class=" icon-popup-area" style="z-index:3">
+                <div class="settings-icon" >
+                    <div ng-if="cp.shouldShowMemberEditMenu(member)" class="img_sprite icon-down-arrow  w-h-13" rg-dropdown="dropdown()" dd-html="cp.ddMemberHtml"
+                         dd-action="cp.ddMemberAction"  dd-control="{ isMemberAdmin: member.isAdmin(cp.circle.getKey()),
+                         isSuperAdmin: cp.isCurrentUserSuperAdmin,
+                         isCurrentUserAdmin: cp.isCurrentUserAdmin,
+                         member: member }"  ></div>
+                </div>
+            </div>
+
+            <div class="fnd-info-box card front" >
+                <div class="fnd-img" rg-click="showBack(member.getKey(), $event)">
+                    <a href="#"><img class="responsive-all" ng-src="{{member.avatar('thumb')}}" ng-alt="{{member.getName()}}" onerror="this.src='images/prof.png';"/></a>
+                </div>
+                <div class="fnd-info">
+                    <p class="fnd-name">  <a  ng-href="{{member.link()}}" ng-cloak="true">{{member.getName()}}</a><p>
+                    <p class="fnd-rid"><span><i class="img_sprite id-circle-h rid"></i></span> <span ng-cloak="true"> : {{member.getRingNumber()}} </span></p>
+                    <!--                    <p> <a ng-if="friend.commonFriends() > 0"
+                                               class="count"
+                                               style="cursor: pointer"
+                                               rg-ringbox="true"
+                                               ringbox-controller="mutualFriendsController"
+                                               ringbox-target="templates/home/mutual-friends.html"
+                                               ringbox-type="remote"
+                                               ringbox-data="getMutualFriend(friend)">{{friend.commonFriends()}} mutual friends</a></p>-->
+                    <div class="member-type" ng-if="!member.isAdmin(cp.circle.getKey())">Member</div>
+
+                    <div class="member-type" ng-if="member.isAdmin(cp.circle.getKey()) && !cp.circle.isSuperAdmin(member.getKey())">Admin</div>
+                    <div class="member-type" ng-if="cp.circle.isSuperAdmin(member.getKey())">Super Admin</div>
+
+
+                    <!--                    <p class="mar-top-5" rg-click="showBack(member.getKey(), $event)" ng-if="!member.isCurrentUser()">
+                                            <a class="friend-btn"  ng-show="member.friendshipStatus() === 1"><span class="friend-ico fnd"></span>Friend</a>
+                                        </p>
+                                        <p class="mar-top-5" rg-click="cp.ddMemberAction({ action: 'accept', friend: member, event:$event  })" ng-show="!member.isCurrentUser() && member.friendshipStatus() === 2">
+                                            <a class="friend-btn" ng-class="{'f-loading' : member.isLoading()}"><span class="friend-ico accept"></span>Accept</a>
+                                        </p>
+                                        <p class="mar-top-5" rg-click="cp.ddMemberAction({ action: 'reject', friend: member , event: $event })" ng-show="!member.isCurrentUser() && member.friendshipStatus() === 3">
+                                            <a class="friend-btn" ng-class="{'f-loading' : member.isLoading()}"  >
+                                                <span class="friend-ico cancel-req"></span>Cancel Request</a>
+                                        </p>
+                                        <p class="mar-top-5" rg-click="cp.ddMemberAction({ action: 'addfriend', friend: member, event:$event  })" ng-show="!member.isCurrentUser() && member.friendshipStatus() === 0" >
+                                            <a class="friend-btn" ng-class="{'f-loading' : member.isLoading()}"  >
+                                                <span class="friend-ico addfnd"></span>Add Friend</a></a>
+                                        </p>-->
+
+
+
+                    <div class="butt border-gray-orange  float-left btn-m-r-8"  ng-if="!member.isCurrentUser()"  ng-show="member.friendshipStatus() === 1">
+                        <a class="btn-p-5-8"  rg-click="showBack(member.getKey(), $event)">
+                            <i class="friend-ico fnd btn-m-r-0"></i>
+                            <span class="butt-text">Friend</span>
+                        </a>
+                    </div>
+                    <div class="butt border-gray-orange   float-right btn-m-l-8" ng-show="!member.isCurrentUser() && member.friendshipStatus() === 2">
+                        <a class="btn-p-5-8" rg-click="cp.ddMemberAction({ action: 'accept', friend: member, event:$event  })"  ng-class="{'f-loading' : member.isLoading()}">
+                            <i class="friend-ico fnd btn-m-r-0"></i>
+                            <span class="butt-text">Accept</span>
+                        </a>
+                    </div>
+                    <div class="butt border-gray-orange  float-left btn-m-r-8" ng-show="!member.isCurrentUser() && member.friendshipStatus() === 3">
+                        <a class="btn-p-5-8"  rg-click="cp.ddMemberAction({ action: 'reject', friend: member , event: $event })"  ng-class="{'f-loading' : member.isLoading()}">
+                            <i class="friend-ico cancel-req btn-m-r-0"></i>
+                            <span class="butt-text">Cancel Request</span>
+                        </a>
+                    </div>
+                    <div class="butt border-gray-orange  float-left btn-m-r-8" ng-show="!member.isCurrentUser() && member.friendshipStatus() === 0">
+                        <a class="btn-p-5-8"  rg-click="cp.ddMemberAction({ action: 'addfriend', friend: member, event:$event  })"  ng-class="{'f-loading' : member.isLoading()}">
+                            <i class="friend-ico addfnd btn-m-r-0"></i>
+                            <span class="butt-text">Add Friend</span>
+                        </a>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="fnd-action-box card back" rg-click="showBack(0, $event)">
+                <div  class="f-name" ng-cloak="true">{{::member.getName()}}</div>
+                <div class="logout-divider mar-top-5"></div>
+                <div class="actn-wrapper" >
+
+
+                    <a ng-href="{{(member.friendType() !== 3) ? member.link() : '#'}}" class="feed-shape-cover p-relative mar-right-10" style="display:inline-block;">
+                        <div class="img_sprite feed-shape-ico p-absolute"></div>
+                        <img data-is-anchor="true"  class="border-radius-100p"  width="35px" height="35px" alt="" ng-src="{{::member.avatar('thumb')}}" ng-alt="{{::member.getName()}}" onerror="this.src='images/prof.png';">
+                    </a>
+                    <div  ng-if="friend.value.friendType() !== 3" rg-click="showComingSoon($event)"  class="img_sprite w-h-36px call-ico showpointer m-l-10"  title="Call"></div>
+                    <div   open-chat-box="{{member.getKey()}}" utId="{{member.getUtId()}}" class="img_sprite w-h-36px f-chat-ico showpointer m-l-10" title="Chat"></div>
+                    <a  ng-href="{{member.link()}}" class="showpointer m-l-10" title="Profile info"><i data-is-anchor="true" class="img_sprite w-h-36px info-ico "></i></a>
+
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <div  class="pro_friend_box no-border h-5"></div>
+        <div class="pro_friend_box no-border  h-5"></div>
+        <p ng-show="cp.searchParam && sresult.length < 1">No Member Found</p>
+
+
+        <div  class="full_friend_icon" ng-if="showSearchLoader">
+            <rg-loader-view1 is-loading="true"></rg-loader-view1>
+        </div>
+        <div class="clear"></div>
+
+    </div>
+
+    <!--<div  class="ng-cloak notification-loader-position mar-top-15" ng-show="showSearchLoader">SEARCH RESULT-->
+    <!--<div class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>-->
+    <!--</div>-->
+    <div ng-show="circleMembers.length() > 0 && !hideLoadButton" style="margin: 30px 0">
+        <a class="load-more" rg-click="loadMoreMembers()" ng-show="circleMembers.length() < cp.circle.getMembersCount() && !loadMoreCircleMember">Load More &raquo;</a>
+        <a class="load-more-disabled"  ng-show="loadMoreCircleMember">
+            <span class="load-circle">
+                <span class="ld-cir1 ld-cir"></span>
+                <span class="ld-cir2 ld-cir"></span>
+                <span class="ld-cir3 ld-cir"></span>
+                <span class="ld-cir4 ld-cir"></span>
+                <span class="ld-cir5 ld-cir"></span>
+                <span class="ld-cir6 ld-cir"></span>
+                <span class="ld-cir7 ld-cir"></span>
+                <span class="ld-cir8 ld-cir"></span>
+                <span class="ld-cir9 ld-cir"></span>
+                <span class="ld-cir10 ld-cir"></span>
+                <span class="ld-cir11 ld-cir"></span>
+                <span class="ld-cir12 ld-cir"></span>
+            </span>
+            Loading...</a>
+    </div>
+</div>
+
+
+<!--Friends tab end-->
+
+
+</div>
+<div class="clear"></div>

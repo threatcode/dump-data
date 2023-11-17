@@ -1,0 +1,10 @@
+<div class="dashboard-bg  mid-width pro-page-width" ng-controller="FeedMediasController">
+    <div class="mfeedtab">
+        <ul>
+            <li ng-class="{active:a_f_m == 'f'}"><a rg-click="setTrending(0)">Friend's Media</a></li>
+            <li ng-class="{active:a_f_m == 't'}"><a rg-click="setTrending(1)">Trending Media</a></li>
+        </ul>
+    </div>
+    <div ng-include src="'templates/home/feed.html'"  rg-feed-subscriber>
+    </div>
+</div>

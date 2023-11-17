@@ -1,0 +1,58 @@
+<div style="width: 600px;max-height: 600px;">
+
+    <div ng-if="!nocontent"  style="margin-top:0px;">
+        <div class="sinimg-area" style="margin-top:0px;">
+            <div class="newsfeed-row">
+                <rg-news-feed-top feed="feed"
+                                  dd-html="ddHtml"
+                                  dropdown="dropdown"
+                                  action-feed-dropdown="actionFeedDropdown"
+                                  single-feed="singleFeed"
+                        ></rg-news-feed-top>
+
+                <div class="newsfeed-bottom">
+                    <div class="feed">
+                        <rg-single-feed-details></rg-single-feed-details>
+
+                        <rg-news-feed-shared-feed></rg-news-feed-shared-feed>
+                        <rg-news-feed-menu></rg-news-feed-menu>
+
+                        <div class="clear"></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+        <rg-single-feed-comments
+                comment-type = "feed"
+                feed = "feed"
+                user = "currentUser"
+                add-comment = "addComment(feed)"
+                update-comment = "updateComment(comment)"
+                cancel-edit = "cancelEdit()"
+                like-comment = "likeComment(feedKey, commentKey)"
+                fetch-who-likes = "fetchWhoLikes(commentId)"
+                can-comment = "$parent.canComment"
+                comment-error-class = "$parent.commentErrorClass"
+                comment-text = '$parent.commenttext'
+                all-comments = 'feedComments'
+                comment-key = "commentKey"
+                comment-editor-enabled = 'commentEditorEnabled'
+                comment-edit-text = 'models.commentedittext'
+                dd-comment-html = 'ddCommentHtml'
+                action-comment-dropdown='actionCommentDropdown(actionObj)'
+                show-comment-view='$parent.showCommentView'
+                load-previous-comments="loadPreviousComments()"
+                load-more-comments="loadMoreComments()"
+                active-comment-id="activeCommentId"
+
+                >
+        </rg-single-feed-comments>
+    </div>
+
+    </div>
+
+
+</div>

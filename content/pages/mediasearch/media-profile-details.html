@@ -1,0 +1,11 @@
+<rg-video ng-if="feed.getMedias().length()" feed="feed"
+          get-media-data="getMediaData(mediavalue, feed)" select-album="selectAlbum(mediavalue)"
+          no-download="noDownload($event)" get-media-first-data="getMediaFirstData()">
+
+</rg-video>
+
+<rg-audio ng-if="feed.getAudios().length()" feed="feed"
+          get-media-data="getMediaData(mediavalue, feed)" select-album="selectAlbum(mediavalue)"
+          no-download="noDownload($event)" get-audio-first-data="getAudioFirstData()">
+
+</rg-audio>

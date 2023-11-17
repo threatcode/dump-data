@@ -1,0 +1,16 @@
+<div class="t-a-l">
+    <div class="width_fr popupbox">
+        <div class="modal-header"><h3>Send To Chat</h3></div>
+        <div class="clear"></div>
+        <!--<div class="send-to-chat-wrapper" style="height: 450px !important;">-->
+        <rg-friends ng-show="active_menu === 'send_to_friend'" rg-friends-tpl="templates/media/send-to-friend.html" rg-friends-type="friendslist" share-data="{{data}}" box-close="close()"></rg-friends>
+        <rg-tag-chat-list template-path="templates/media/send-to-group.html" ng-show="active_menu === 'send_to_group_chat'" share-data="{{data}}" box-close="close()"></rg-tag-chat-list>
+        <div class="clear"></div>
+        <div class="r-f-icon  p-absolute bottom-0">
+            <a href="#" class="top-r" ng-class="{ active: active_menu === 'send_to_friend'}" data-tool="Chat with friend" rg-click="setSendToChatList('send_to_friend')"><img src="images/friend-list.png"/></a>
+            <a href="#" class="top-l" ng-class="{ active: active_menu === 'send_to_group_chat'}" data-tool="Group chat" rg-click="setSendToChatList('send_to_group_chat')"><img src="images/group-list.png"/></a>
+        </div>
+        <div class="clear"></div>
+        <!--</div>-->
+    </div>
+</div>

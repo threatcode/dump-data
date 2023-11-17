@@ -1,0 +1,185 @@
+<div class="middle">
+    <div class="cell">
+        <div ng-include src="'templates/home/postbox.html'" ng-controller="FeedAddController"></div>
+    </div>
+    <div class="cell" ng-if="getFeeds().length === 0">
+
+        <div class="newsfeed-row" ng-if="noMoreFeed()" >
+            <p class="not-found">No data yet!</p>
+            <img height="100%" width="100%" src="images/not-found.png" />
+        </div>
+    </div>
+    <div class="cell" ng-repeat="row in getFeeds()">
+        <!--<div ng-if="$index == 0" ng-include src="'templates/home/postbox.html'" ng-controller="FeedAddController"></div>-->
+
+
+        <div class="newsfeed-row"  ng-controller="FeedSubController" ng-repeat="feed in row"
+             ng-init="serial = feed.serial;
+                                     feed = feed.value;
+                                     feedstatus = feed.text();
+                                     keyid = feed.getKey();
+                                     imageslength = feed.getImages().length;">
+            <div class="top-right-con">
+                <span  class="img_sprite fed-num serial" ng-cloak="true">{{ serial}}</span>
+            </div>
+            <div class="newsfeed-top" >
+                <div class="icon-logo-circle ps-logo float-left">
+                    <a ng-href="{{ feed.user().link()}}"> <img class="responsive-all" ng-src="{{ feed.user().avatar()}}" alt=""> </a>
+                </div>
+                <div class="status_title p-name">
+                    <p ng-bind-html="feed.getMessageText()"></p>
+                    <span class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i>{{feed.time()}}</span>
+                </div>
+                <!--should be moved to css file-->
+
+                <!--should be moved to css file-->
+
+                <div ng-show="feed.user().isCurrentUser()" rg-dropdown="dropdown()"  dd-html="ddHtml"
+                     dd-control="feed.ddControl" dd-action="actionFeedDropdown" class="p-arrow mar-top-5">
+                    <div  class="drop-arrow  img_sprite icon-down-arrow  w-h-13">
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="newsfeed-bottom">
+                <div class="feed">
+                    <div class="feed_details main_feed">
+                        <p class="feed_value" rg-repeat-status="feed.getDynamicText()" ng-hide="editorEnabled"></p>
+                        <p class="" ng-show="editorEnabled">
+                            <!--<span>edit me!!</span>-->
+                            <!--<input type="text" ng-model="feedText" name="" >-->
+                            <textarea auto-grow="" ng-model="feedText"  ng-trim="" ng-disabled="inputDisabled" ></textarea>
+                            <input class="pro-edit-btn" type="button" name="" value="update" rg-click="updateFeed()"/>
+                            <input class="pro-edit-btn" type="button" name="" value="Cancel" rg-click="cancelEdit()"/>
+                        </p>
+                        <div class="img-dec" >
+                            <div  ng-repeat="image in feed.getImages()" ng-init="image = image.value;" feed-image rg-ringbox="true"
+                                  ringbox-controller="RingBoxImageController" ringbox-type="remote"
+                                  ringbox-target="templates/partials/notification/image-popup.html" ringbox-data="getImageData(image, feed)" >
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                    </div>
+                    <ul class="feed_lcs_menu" id="test_menu">
+                        <li class="float-left" ng-class="{'active':feed.like() > 0}">
+
+                            <i  class="icon-like ico-f"   rg-click="like()" ></i>
+                            <a class="lcs_button " rg-click="like()" ng-class="{'active':feed.like() > 0}" >Like&nbsp;</a>
+                            <a class="count" rg-ringbox="{{ feed.getTotalLikes() > 0}}" ringbox-controller="fetchLikeController" ringbox-target="templates/home/wholikes.html" ringbox-type="remote" ringbox-data="fetchWhoLikes()"  ng-cloak="true">{{ feed.getTotalLikes()}}</a>
+                        </li>
+
+                        <li>
+                            <a class="lcs_button" rg-click="toggleCommentBox()" ng-class="{'active':feed.selfComment() > 0}">Comments</a>
+                            <a class="img_sprite icon-comments-str ico-f" rg-click="toggleCommentBox()" ng-class="{'active':feed.getTotalComment() > 0}"></a>
+                            <a class="count" rg-click="toggleCommentBox()" ng-class="{'active':feed.getTotalComment() > 0}" ng-cloak="true">{{ feed.getTotalComment()}}</a>
+                        </li>
+
+                        <li style="width: 24%; float: right;">
+                            <a class="icon-share ico-f" rg-ringbox="true" ringbox-controller="feedShareController" ringbox-type="remote"
+                               ringbox-target="templates/home/sharefeed.html" ringbox-data="getShareData()"></a>
+                            <a class="lcs_button" rg-ringbox="true" ringbox-controller="feedShareController" ringbox-type="remote"
+                               ringbox-target="templates/home/sharefeed.html" ringbox-data="getShareData()"
+                               > Share</a>
+                            <a class="" href="javascript:void(0)" ng-cloak="true">{{ feed.getTotalShare()}}</a>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="feed_comment">
+                    <ul class="media-list">
+
+                        <li class="item" ng-repeat="comm in feed.getComments()"
+                            ng-init="comment = comm.value" ng-class="{half_opacity:comment.isPending()}" >
+                            <div class="pad-7 caction-area">
+                                <div class="pro_img_bg_40 float-left">
+                                    <img ng-src="{{ comment.user().avatar('thumb')}}" alt="">
+                                </div>
+                                <div class="status_title p-name">
+                                    <p><a ng-href="{{comment.user().link()}}" ng-cloak="true">{{comment.user().getName()}}</a> <p>
+                                    <p ng-hide="(commentEditorEnabled && commentKey == comment.getKey())" ng-cloak="true"> {{comment.text()}}  </p>
+
+                                    <!--<p class="" ng-show="(commentEditorEnabled && commentKey == comment.getKey())">-->
+                                    <!--<input  ng-trim=""-->
+                                    <!--type="text" name=""  ng-model="models.commentedittext" />-->
+
+                                    <p  ng-show="(commentEditorEnabled && commentKey == comment.getKey())">
+                                        <textarea auto-grow="" class="edit-comments-inner" ng-trim="" type="text" name="" ng-model="models.commentedittext"></textarea>
+
+                                        <input class="pro-edit-btn" type="button" name="" value="update" rg-click="updateComment(comment)"/>
+                                        <input class="pro-edit-btn" type="button" name="" value="Cancel" rg-click="cancelEdit()"/>
+                                    </p>
+
+                                    <ul class="comment_like_menu">
+                                        <li><a class="like_button" ng-class="{active:comment.like()}" rg-click="likeComment(keyid,comment.getKey())"><i class="icon-like lc-ico"></i></a></li>
+                                        <li><a ng-class="{active:comment.like()}" rg-click="likeComment(keyid,comment.getKey())">Like</a></li>
+                                        <li><a ng-class="{active:comment.like()}" rg-click="likeComment(keyid,comment.getKey())">Like</a></li>
+                                        <li class="counter"><a href="javascript:void(0)" rg-ringbox="{{ comment.getTotalLikes() > 0}}" ringbox-controller="fetchLikeController" ringbox-target="templates/home/wholikes.html" ringbox-type="remote" ringbox-data="fetchWhoLikes(comment.getKey())" ng-cloak="true">{{comment.getTotalLikes()}}</a></li>
+                                        <li class="mar-top-7 feed-m">
+                                            <span class="time" ng-cloak="true">
+                                                <i class="img_sprite icon-dt-ico w-h-13"></i> {{comment.time()}}
+                                            </span></li>
+                                    </ul>
+
+                                </div>
+                                <div ng-show="comment.user().isCurrentUser() || feed.user().isCurrentUser()"
+
+                                     class="float-right mar-top-5">
+                                    <div  rg-dropdown="dropdown()" dd-html="ddCommentHtml"
+                                          dd-control="comment" dd-action="actionCommentDropdown"
+                                          class="icon-ds-arrow ico-f arrow-b">
+
+                                    </div>
+                                </div>
+
+                                <div class="clear"></div>
+                            </div>
+
+                        </li>
+
+                        <li class="item" ng-show="feed.getTotalComment() > feed.getComments().length">
+                            <div class="float-right gray font-12 margin-10">
+                                <a class="view_more" rg-click="fetchComments()">View comments</a></div>
+                            <div class="clear"></div>
+                        </li>
+
+
+                        <li ng-if="feed.getTotalComment() > feed.getComments().length" class="divider"></li>
+                        <li class="comment mar-top-10"  ng-show="showCommentBox">
+                            <div  class="comment-w">
+                                <div class="comment float-left com-wid" >
+                                    <input  ng-keyup="addComment({event:$event, feed: feed})" ng-disabled="!canComment" ng-trim="" class="{{ commentErrorClass}}"
+                                            type="text" name="" ng-model="commenttext" placeholder="Add a Comment" autocomplete="off" />
+                                </div>
+
+                                <div  class="float-right width-25">
+                                    <rg-emoticon></rg-emoticon>
+                                    <!--                                                        <a class="mar-top-10" href="javascript:void(0)">
+                                                                                                <span class="float-right mar-top-3">
+                                                                                                    <i class="icon-emoticon ico-sty"></i>
+                                                                                                </span>
+                                                                                            </a>-->
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+
+</div>
+
+<div ng-if="noMoreFeed()" class="feedloader">No More Feed !</div>
+<div ng-if="busy && !noMoreFeed()" class="feedloader"> 
+    <div class="loader-id icon-id-s">
+        <span class="icon-logo-circle"></span>
+    </div>
+</div>
+<div class="clear"></div>

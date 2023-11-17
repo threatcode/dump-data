@@ -1,0 +1,45 @@
+<div ng-controller="ChatCircleController as cc" class="circle" ng-show="shouldShow()">
+
+    <div class="circle-title">
+        <span class="icon-msg-circle"></span><span class="circle-text" ng-cloak="true">Group Chat ({{ allFactoryCircles.length() }})</span>
+        <a rg-ringbox="true" ringbox-controller="ChatCirclePopupController" ringbox-type="remote"
+           ringbox-target="templates/partials/chat-circle-popup.html">
+            <span class="icon-plus float-right"></span>
+        </a>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="chatcircle-list" rg-scrollbar="scrollbar()">
+        <p class="ng-cloak not-yet" ng-show="allFactoryCircles.length() === 0">You don't have any group yet.
+            <a class="showpointer"
+               rg-ringbox="true" ringbox-controller="ChatCirclePopupController" ringbox-type="remote"
+               ringbox-target="templates/partials/chat-circle-popup.html">
+                Create New
+            </a>
+        </p>
+
+        <div ng-repeat="circle in allFactoryCircles.all()" class="circle-p" ng-init="ddControl=getCircleData(circle).ddControl" >
+            <div class="pro-header-image float-left">
+                <div ng-class="{'right-group-pic1': getCircleData(circle).images.length === 1,
+                                             'right-group-pic2': getCircleData(circle).images.length === 2,
+                                              'right-group-pic3': getCircleData(circle).images.length > 2}">
+
+                    <img ng-repeat="thumb_image in getCircleData(circle).images track by $index" ng-src="{{::thumb_image}}"/>
+                </div>
+            </div>
+
+            <div ng-cloak="" class="ng-cloak circle-name" open-tag-chat-box="{{ getCircleData(circle).key }}"><p ng-cloak="true">
+                {{getCircleData(circle).name}}<span ng-cloak="true">{{getCircleData(circle).noOfMembers}} members</span></p></div>
+
+            <a href="javascript:void(0);">
+                                    <span class="icon-dc-arrow float-right"
+                                          rg-dropdown dd-html="ddHtml"
+                                          dd-control="ddControl" dd-action="ddAction">
+                                    </span>
+            </a>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

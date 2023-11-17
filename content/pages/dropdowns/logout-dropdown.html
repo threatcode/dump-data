@@ -1,0 +1,68 @@
+<!--<div class="logout-box " ng-show="showDropdown" >-->
+<div class="logout-box">
+    <div class="float-left pad-10 logout-profile-top">
+        <a ng-href="{{ ddControl.currentUser.link()}}" class="shape-cover p-relative">
+            <div class="img_sprite left-in-shape-ico p-absolute"></div>
+            <img class="border-radius-100p" ng-src="{{ddControl.currentUser.avatar('thumb')}}"  width="55px" height="55px" />
+        </a>
+        <div class="pro-info">
+            <a href="{{ ddControl.currentUser.link()}}" title="{{ddControl.currentUser.getName()}}">
+                <p class="name logout-drop"  ng-bind="ddControl.currentUser.getName()"></p>
+            </a>
+            <div class="mar-top-7 lg-id"> <i class="img_sprite id-circle w-h-18px"></i><span ng-bind="ddControl.currentUser.getRingNumber()"></span></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="friend-req-scroll-wrapper">
+        <ul class="left-nav icons-color-size" rg-scrollbar>
+            <li>
+                <a title="Account Settings"   ng-href="{{ddControl.routes.accountSetting}}">
+                    <i class="profile-dropdown-icon account-settings-drop width-25px height-25px"></i><b class="b-circle">Account Settings</b>
+                </a>
+            </li>
+            <li>
+                <a title="Saved Feeds"   ng-href="{{ddControl.routes.savedFeeds}}">
+                    <i class="profile-dropdown-icon saved-ico-drop width-25px height-25px"></i><b class="b-circle">Saved Feeds</b>
+                </a>
+            </li>
+            <li>
+                <a title="Sticker Market"  ng-href="{{ddControl.routes.stickerMarket}}" >
+                    <i class="profile-dropdown-icon stcker-drop height-25px"></i><b class="b-circle">Sticker Market</b>
+                    <b ng-cloak ng-if="ddControl.getNewStickerCount() > 0" 
+                       class="b-circle m-l-10 sticker-counter border-radius-100p top-l" 
+                       data-tool="{{ ::ddControl.getNewStickerCount() }} New Sticker">{{ ::ddControl.getNewStickerCount() }}</b>
+                </a>
+            </li>
+            <li>
+                <a title="My Chat Groups"  ng-href="{{ddControl.routes.chatGroups}}" >
+                    <i class="profile-dropdown-icon my-chat-drop width-25px height-25px"></i><b class="b-circle">My Chat Groups</b>
+                    <span>Chat group let's you communicate to all group members at once.</span>
+                </a>
+            </li>
+            <li>
+                <a title="Chat Rooms"  ng-href="{{ddControl.routes.chatRooms}}" >
+                    <i class="profile-dropdown-icon chat-room-drop width-25px height-25px"></i><b class="b-circle">Chat Rooms</b>
+                    <span>Chat rooms are public chat group, anyone can join and leave any time.</span>
+                </a>
+            </li>
+            <li>
+                <a  ng-href="{{ddControl.routes.faq}}"  target="_blank" title="FAQ & Help">
+                    <i class="profile-dropdown-icon faq-help-drop width-25px height-25px"></i><b class="b-circle">FAQ & Help</b>
+                </a>
+            </li>
+            <li>
+                <a title="Report a bug" ng-href="{{ddControl.routes.contact}}" target="_blank">
+                    <i class="profile-dropdown-icon report-drop width-25px height-25px"></i><b class="b-circle">Report a bug</b>
+                    <span>Tell us about your ringID experience, let us know if something isn't working.</span>
+                </a>
+            </li>
+            <li>
+                <a title="Logout"  rg-click="ddAction()({event:$event})" >
+                    <i class="profile-dropdown-icon logout-drop width-25px height-25px"></i><b class="b-circle">Logout</b>
+                </a>
+            </li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+</div>

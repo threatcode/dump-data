@@ -1,0 +1,115 @@
+<style>
+    .fnd-search .left{
+        font-weight: 500;
+    }
+
+</style>
+
+
+<div style="width:360px">
+    <div class="modal-header">
+        <h3 class="ng-binding">Tag Properties </h3>
+        <!--<span class="icon-close mdl-close"  rg-click="$close()"></span>-->
+    </div>
+    <div class="fnd-search-scroll-wrapper">
+
+        <ul class="fnd-search" rg-scrollbar="scrollbar()" >
+
+            <li>
+                <div class="left"> tagId</div>
+                <div class="right-f" ng-cloak="true"> {{ tag.getTagId() }} </div>
+                <div class="clear"></div>
+                <div>
+                    <button data-rg-click="registerTag()">Force Register</button>
+                    <button data-rg-click="unregisterTag()">Force UnRegister</button>
+                </div>
+            </li>
+            <li>
+                <div class="left"> chatIp </div>
+                <div class="right-f" ng-cloak="true"> {{ tag.getChatIp() }} </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="left"> chatPort </div>
+                <div class="right-f" ng-cloak="true"> {{ tag.getChatRegisterPort() }} </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="left"> chatBindingPort </div>
+                <div class="right-f" ng-cloak="true"> {{ tag.getChatBindingPort() }} </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="left"> membersCount </div>
+                <div class="right-f" ng-cloak="true"> {{ tag.getMembersCount() }} </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="left"> received Tag Member Map Count </div>
+                <div class="right-f" ng-cloak="true"> {{ tag.getMembersObjectMap().length() }} </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="left"> Am I in Member List </div>
+                <div class="right-f" ng-cloak="true"> {{ tag.isUserMember(currentUserUId) }} </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="left"> Server Date </div>
+                <div class="right-f" ng-cloak="true"> {{ tag.getServerDate() }} </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="left"> IsRegistered </div>
+                <div class="right-f" ng-cloak="true"> {{ tagDebugInfo.isTagRegistered }} </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="left"> ChatBox Open </div>
+                <div class="right-f" ng-cloak="true"> {{ chatBox.nonDomBox }} </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="left"> ChatBox Ip </div>
+                <div class="right-f" ng-cloak="true"> {{ chatBox.getIp() }} </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="left"> ChatBox Port </div>
+                <div class="right-f" ng-cloak="true"> {{ chatBox.getPort() }} </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="left"> ChatBox RPort </div>
+                <div class="right-f" ng-cloak="true"> {{ chatBox.getRPort() }} </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="left"> ChatBox Last Communication time </div>
+                <div class="right-f" ng-cloak="true"> {{ chatBox.lastCommunicationTime }} </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="left"> ChatBox Remaining Session Time </div>
+                <div class="right-f" ng-cloak="true"> {{ chatBox.getRemainingRegisteredTime() }} </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="left"> ChatBox title </div>
+                <div class="right-f" ng-cloak="true"> {{ chatBox.getTitle() }} </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="left"> ChatBox Waiting time Passed </div>
+                <div class="right-f" ng-cloak="true"> {{ chatBox.checkWaitingTimePassed() }} </div>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <div class="left"> ChatBox Temp Message Count</div>
+                <div class="right-f" ng-cloak="true"> {{ chatBox.tempMessageArray.length }} </div>
+                <div class="clear"></div>
+            </li>
+
+        </ul>
+    </div>
+</div>

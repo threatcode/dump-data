@@ -1,0 +1,44 @@
+<div class="tag" style="height:calc(100% - 40px);">
+    <div class="box-search border-radius-4px float-left width-190 mar-5 bg-eaeaec">
+        <span class="img_sprite width-25px height-25px search-icon-25 p-absolute search-icon-p"></span>
+        <input ng-change="searchRoom()" ng-model="searchParams.roomName" ng-model-options="{debounce:500}" name="roomName"
+               type="text" placeholder="Search Room"/>
+    </div>
+    <div class="clear"></div>
+
+    <div style="overflow: hidden;height:calc(100% - 62px);">
+        <div style="overflow:hidden;height:100%;outline:0;" rg-scrollbar="true" bottom-reached="loadMoreRooms()">
+
+            <div ng-repeat="room in rooms | mapFilter:{ mapApi: 'getName', value: searchParams.roomName, compare: 'regex'}
+                as publicChatList track by room.key" open-box box-id="{{ room.value.getId() }}" is-public-chat="true"
+                 class="circle-p a-tag-list-container">
+                <div>
+                    <div ng-if="room.value.getUrl() !== ''">
+                        <img class="pro-header-image float-left" ng-src="{{ room.value.getUrl() }}"/>
+                    </div>
+                    <div ng-if="room.value.getUrl() === ''">
+                        <img class="pro-header-image float-left" src="images/prof.png"/>
+                    </div>
+                    <div ng-cloak="" class="ng-cloak circle-name">
+                        <p title="{{ room.value.getName() }}" ng-cloak="true">{{ room.value.getName() }}</p>
+                        <a href='javascript:void(0);'
+                           style="cursor:default;"
+                           class="count" ng-cloak="true">{{ room.value.getNoOfMember() }} {{room.value.getNoOfMember() > 0 ? 'members' :
+                            'member'}}
+                        </a>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+            <div class="ng-cloak not-yet" ng-show="roomSearchName && publicChatList.length === 0">Your search returned
+                no result
+            </div>
+        </div>
+    </div>
+    <p class="manage c-gray f-12">For full list of rooms - <a class="f-12" ng-href="{{chatRoomRoute}}">Click here</a></p>
+
+    <div class="clear"></div>
+</div>

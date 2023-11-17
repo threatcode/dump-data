@@ -1,0 +1,85 @@
+<!--  Privacy Settings  info DIV start -->
+<div id="privacy-settings">
+    <!--                <div class="ppinfo-action" ng-if="isOwner || profileObj.isFriend() && !profileObj.isBlocked()" >
+                        <span class="img_sprite w-h-13 icon-edit-p-h"></span><a href="#"  rg-click="enablePrivacyEditMode($event)">{{consType.change}}</a>
+                    </div>-->
+
+
+    <div class="float-left dis-inline-blok">
+        <h3 ng-cloak="true">Your privacy settings with {{::profileObj.getName()}}</h3>  
+
+        <div class="fnd-prvc t-a-l m-t-10" ng-cloak="true">Enabling these settings will permit {{::profileObj.getName()}} to call you, chat with you and browse your newsfeed.</div>
+    </div>
+
+
+    <div class="butt border-gray-orange float-right btn-m-l-8"  ng-if="isOwner || profileObj.isFriend() && !profileObj.isBlocked()" >
+        <a class="btn-p-5-8"  rg-click="enablePrivacyEditMode($event)" ng-show="!isEditProfilePrivacy">
+        <i class="friend-ico edit-btn-icon"></i>
+        <span class="butt-text" ng-cloak="true">{{consType.change}}</span>
+        </a>
+    </div>
+
+<div class="clear"></div>
+
+
+    <!--<div ng-show="profileObj.isBlocked()">This user is blocked by you.</div>-->
+    <!--<div class="view pv-rm"  ng-show="!isEditProfile && !profileObj.isBlocked()">-->
+    <div class="view pv-rm"  ng-show="!isEditProfilePrivacy">
+        <div class="ppinfo" ng-hide="callPvcEdit">
+            <div class="left"><span class="prvc-icon  img_sprite w-h-40px   icon-call-f border-0"></span> <span class="prvc-txt ab-priv">Call</span></div>
+            <div ng-if="fPrivacyInfo.callPrivacy == 1" class="right prvc-right-txt">Enable</div>
+            <div ng-if="fPrivacyInfo.callPrivacy == 0" class="right prvc-right-txt">Disable</div>
+            <div class="clear"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="ppinfo" ng-hide="chatPvcEdit">
+            <div class="left"><span class="prvc-icon img_sprite w-h-40px  icon-chat-r border-0"></span> <span class="prvc-txt ab-priv">Chat</span></div>
+            <div ng-if="fPrivacyInfo.chatPrivacy == 1" class="right prvc-right-txt">Enable</div>
+            <div ng-if="fPrivacyInfo.chatPrivacy == 0" class="right prvc-right-txt" >Disable</div>
+            <div class="clear"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="ppinfo" ng-hide="feedPvcEdit">
+            <div class="left"><span class="prvc-icon img_sprite w-h-40px   icon-feed-ab-r border-0"></span> <span class="prvc-txt ab-priv">Feed</span></div>
+            <div ng-show="fPrivacyInfo.feedPrivacy == 1" class="right prvc-right-txt">Enable</div>
+            <div ng-show="fPrivacyInfo.feedPrivacy == 0" class="right prvc-right-txt">Disable</div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="edit" ng-show="isEditProfilePrivacy && !profileObj.isBlocked()">
+
+        
+        <div class="ppinfo">
+            <div class="left"><span class="prvc-icon img_sprite w-h-40px  icon-call-f  border-0"></span> <span class="prvc-txt ab-priv">Call</span></div>
+            <div class="right prvc-right-txt">
+                <input type="radio"  id="radio1" class="css-checkbox" ng-value="1" ng-model="fPrivacyInfo.callPrivacy"/><label for="radio1" class="css-label radGroup2">On</label>
+                <input type="radio" id="radio2" class="css-checkbox"  ng-value="0" ng-model="fPrivacyInfo.callPrivacy"/><label for="radio2" class="css-label radGroup2">Off</label>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="ppinfo">
+            <div class="left"><span class="prvc-icon img_sprite w-h-40px  icon-chat-r border-0"></span> <span class="prvc-txt ab-priv">Chat</span></div>
+            <div class="right prvc-right-txt">
+                <input type="radio"  id="radio3" class="css-checkbox" ng-value="1" ng-model="fPrivacyInfo.chatPrivacy"/><label for="radio3" class="css-label radGroup2">On</label>
+                <input type="radio" id="radio4" class="css-checkbox"  ng-value="0" ng-model="fPrivacyInfo.chatPrivacy"/><label for="radio4" class="css-label radGroup2">Off</label>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="ppinfo">
+            <div class="left"><span class="prvc-icon img_sprite w-h-40px   icon-feed-ab-r border-0"></span> <span class="prvc-txt ab-priv ab-priv">Feed</span></div>
+            <div class="right prvc-right-txt">
+                <input type="radio"  id="radio5" class="css-checkbox" ng-value="1" ng-model="fPrivacyInfo.feedPrivacy"/><label for="radio5" class="css-label radGroup2">On</label>
+                <input type="radio" id="radio6" class="css-checkbox"  ng-value="0" ng-model="fPrivacyInfo.feedPrivacy"/><label for="radio6" class="css-label radGroup2">Off</label>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="ppinfo">
+            <div class="pp-btn mar-left-60">
+                <input class="pro-edit-btn" type="button" name="" value="{{consType.save}}" rg-click="savePvcEdit(fPrivacyInfo)"/>
+                <input class="pro-edit-btn" type="button" name="" value="{{consType.cancel}}" rg-click="cancelPvcEdit()"/>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  Privacy Settings  info DIV END -->

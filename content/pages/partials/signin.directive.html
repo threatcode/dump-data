@@ -1,0 +1,180 @@
+
+        <!--login form start-->
+        <div class="sb width-400 login-pos" >
+
+            <div class="s-top"></div>
+            <div class="s-option">
+                <ul data-tabs>
+                    <li data-tabname="phone">Phone<span class="s-line"></span></li>
+                    <li data-tabname="ringid">ringID<span class="s-line"></span></li>
+                    <li data-tabname="email">Email<span class="s-line"></span></li>
+                    <li data-tabname="social">Social</li>
+                </ul>
+            </div>
+            <div class="sign-in" >
+                <!-- <div  class="phone sign-in-box width-300" ng-show="activeTab === 'phone'"> -->
+                <div  class="sign-in-box width-300" data-tabbody="phone" rg-signin-tab >
+                    <div  class="sign-in-part ">
+                        <form   name="signinPhone" ng-submit="login(signinPhone.$valid, $event)"  action="#" method="post" novalidate="" >
+                            <div class="s-area">
+                                <div class="s-input h-28 right-rad-0 float-left width-80" style="border-right: 0">
+                                    <span   class="prefix_code phone-flag"
+                                              rg-dropdown dd-template="ddTemplate" dd-control="ddControl" dd-action="setPrefix"
+                                              type="button" toggle="dropdown" value="{{credentials.mblDc}}" >
+                                        <li class="flag {{credentials.flagcode}}"><span ng-bind="credentials.mblDc"></span></li>
+                                    </span>
+                                </div>
+                                <div class=" s-input h-28 float-left left-rad-0" style="overflow:hidden;width: 175px" >
+                                    <input   ng-model="credentials.mbl" spellcheck="false" name="mbl" type="text" placeholder="Mobile Number" ng-required="true" ng-minlength="6" ng-maxlength="14" ng-pattern="/^\d+$/" autocomplete="none"/>
+                                </div>
+                                <span ng-show="!signinPhone.mbl.$pristine || signinClicked" ng-class="signinPhone.mbl.$valid ? 'l-success' : 'l-wrong'"></span>
+                            </div>
+                            <div class="clear"></div>
+                            <div class=" s-area">
+                                <div class="s-input h-28 input-p"  style="overflow:hidden;">
+                                    <input  class="hidethis" type="text" spellcheck="false" name="vungvangphone" value="{{credentials.mbl}}">
+                                    <input   ng-model="credentials.password" name="password" type="password" placeholder="Password" ng-required="true" ng-minlength="6"  />
+                                </div>
+                                <span ng-show="!signinPhone.password.$pristine || signinClicked" ng-class="signinPhone.password.$valid ? 'l-success' : 'l-wrong'"></span>
+                            </div>
+                            <div class="forgot-t">
+                                <div class="for-box" rg-ringbox="true" 
+                                                     ringbox-type="remote"  
+                                                     ring-backdrop-close="false" 
+                                                     ringbox-target="templates/welcome/forgot-password.html" 
+                                                     ringbox-controller="PasswordRecoverController" 
+                                     >Forgot your password?</div>
+                            </div>
+                            <div class="input-bg-auto-width sign-sty">
+                                <input    type="submit" value="Sign In" name="login" required="" >
+                            </div>                 
+                            <div ng-cloak="" ng-show="disableForm" class="ng-cloak log-loader">Logging</div>
+                            <p ng-clock="" ng-bind="errorMsg" ng-class="requestSuccess ? 'var-code-sent': 'err-msg' " class="ng-cloak invalid-text"></p>
+                            <div class="clear"></div>
+                            <div class="s-up">Don't have a ringID?  <span rg-click="noSignupAllowed()"> Sign-up</span> now</div>
+                            <br/>
+                        </form>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+                <!-- <div  class="ringid sign-in-box width-300 "  ng-show="activeTab === 'ringid'"> -->
+                <div  class="sign-in-box width-300 "  data-tabbody="ringid" rg-signin-tab >
+                    <div  class="sign-in-part ">
+                        <form   name="signinRingid" ng-submit="login(signinRingid.$valid, $event)"  action="#" method="post" novalidate="" >
+
+                            <div class="s-area">
+                                <div class="s-input h-28 right-rad-0 float-left w-36" style="border-right: 0">
+                                    <button   class="prefix_code"
+                                             type="button" toggle="dropdown" value="RingID" >
+                                        <li class="flag r878"></li>
+                                    </button>
+                                </div>
+                                <div class=" s-input h-28 float-left width-220 left-rad-0" style="overflow:hidden;" >
+                                    <input  style="width: 192px"   ng-model="credentials.ringid" spellcheck="false" name="ringid" type="text" placeholder="Ringid Number" ng-required="true" ng-minlength="8" ng-maxlength="8" ng-pattern="/^\d+$/" autocomplete="none"/>
+                                </div>
+                                <span ng-show="!signinRingid.ringid.$pristine || signinClicked" ng-class="signinRingid.ringid.$valid ? 'l-success' : 'l-wrong'"></span>
+                            </div>
+                            <div class="clear"></div>
+                            <div class=" s-area">
+                                <div class="s-input h-28 input-p"  style="overflow:hidden;">
+                                    <input  class="hidethis" type="text" spellcheck="false'" name="vungvangringid" value="{{credentials.ringid}}">
+                                    <input   ng-model="credentials.password" name="password" type="password" placeholder="Password" ng-required="true" ng-minlength="2"/>
+                                </div>
+                                <span ng-show="!signinRingid.password.$pristine || signinClicked" ng-class="signinRingid.password.$valid ? 'l-success' : 'l-wrong'"></span>
+                            </div>
+                            <div class="forgot-t">
+                                <div class="for-box" rg-ringbox="true" 
+                                                     ringbox-type="remote"  
+                                                     ring-backdrop-close="false" 
+                                                     ringbox-target="templates/welcome/forgot-password.html" 
+                                                     ringbox-controller="PasswordRecoverController" 
+                                     >Forgot your password?</div>
+                            </div>
+                            <div class="input-bg-auto-width sign-sty">
+                                <input    type="submit" value="Sign In" name="login" required="" >
+
+                            </div>                 
+                            <div ng-cloak="" ng-show="disableForm" class="ng-cloak log-loader">Logging</div>
+
+                            <p ng-clock="" ng-bind="errorMsg" ng-class="requestSuccess ? 'var-code-sent': 'err-msg' " class="ng-cloak invalid-text"></p>
+                            <div class="clear"></div>
+
+                            <div class="s-up">Don't have a ringID?  <span rg-click="noSignupAllowed()"> Sign-up</span> now</div>
+                        </form>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+                <!-- <div  class="email  sign-in-box width-300"  ng-show="activeTab === 'email'"> -->
+                <div  class="sign-in-box width-300"  data-tabbody="email" rg-signin-tab >
+                    <div class="sign-in-part ">
+                        <form   name="signinEmail" ng-submit="login(signinEmail.$valid, $event)"  action="#" method="post" novalidate="" >
+                            <div class="s-area">
+                                <div class="s-input h-28 right-rad-0 float-left w-48" style="border-right: 0">
+                                    <button  class="prefix_code"
+                                             type="button" toggle="dropdown" value="Email" >
+                                        <li class="flag remail"></li>
+                                    </button>
+                                </div>
+                                <div class=" s-input h-28 float-left w-207 left-rad-0" style="overflow:hidden;" >
+                                    <input  style="width: 180px"  ng-model="credentials.email" spellcheck="false"  name="email" type="email" placeholder="Email" ng-required="true"  autocomplete="none"/>
+                                </div>
+                                <span ng-show="!signinEmail.email.$pristine || signinClicked" ng-class="signinEmail.email.$valid ? 'l-success' : 'l-wrong'"></span>
+                            </div>
+                            <div class="clear"></div>
+                            <div class=" s-area">
+                                <div class="s-input h-28 input-p"  style="overflow:hidden;">
+                                    <input  class="hidethis" type="text" spellcheck="false" name="vungvangemail" value="{{credentials.email}}">
+                                    <input  ng-model="credentials.password" name="password" type="password" placeholder="Password" ng-required="true" ng-minlength="2"/>
+                                </div>
+                                <span ng-show="!signinEmail.password.$pristine || signinClicked" ng-class="signinEmail.password.$valid ? 'l-success' : 'l-wrong'"></span>
+                            </div>
+                            <div class="forgot-t">
+                                <div class="for-box" rg-ringbox="true" 
+                                                     ringbox-type="remote"  
+                                                     ring-backdrop-close="false" 
+                                                     ringbox-target="templates/welcome/forgot-password.html" 
+                                                     ringbox-controller="PasswordRecoverController" 
+                                     >Forgot your password?</div>
+                            </div>
+                            <div class="input-bg-auto-width sign-sty">
+                                <input     type="submit" value="Sign In" name="login" required="" >
+                            </div>                 
+                            <div ng-cloak="" ng-show="disableForm" class="ng-cloak log-loader">Logging</div>
+
+                            <p ng-clock="" ng-bind="errorMsg" ng-class="requestSuccess ? 'var-code-sent': 'err-msg' " class="ng-cloak invalid-text"></p>
+                            <div class="clear"></div>
+                            <div class="s-up">Don't have a ringID?  <span rg-click="noSignupAllowed()"> Sign-up</span> now</div>
+                        </form>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+                <!-- <div  class="social sign-in-box width-300"  ng-show="activeTab === 'social'"> -->
+                <div  class="sign-in-box width-300" ng-class="{'disable': disableForm === true }"  data-tabbody="social" rg-signin-tab >
+                    <div class="sign-in-part " >
+                        <div class="scl-link" >
+                            <a  rg-click="socialLogin('facebook')" href="">
+                                <div class="scl-icn icn-fb">
+                                    <span class="facebook-ico social-ico"></span>
+                                </div>
+                                <div class="scl-txt">Sign In with Facebook</div>
+                            </a>
+                        </div>
+                        <div class="scl-link" >
+                            <a  rg-click="socialLogin('twitter')" href="">
+                                <div class="scl-icn icn-tw">
+                                    <span class="twitter-ico social-ico"></span>
+                                </div>
+                                <div class="scl-txt">Sign In with Twitter</div>
+                            </a>
+                        </div>
+                        <div class="s-up">Don't have a ringID?  <span rg-click="noSignupAllowed()"> Sign-up</span> now</div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <!--login form end-->

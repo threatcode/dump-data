@@ -1,0 +1,11 @@
+<div class="ng-cloak action pad-204 feed-drop_top">
+    <i class="drop-sprite curve-a p-ab curve-b-ico bottom11"></i>
+    <div class="ac-top-line" ng-if="ddControl.showReportButton()">
+        <a class="pad-8-14" rg-report spam-type="{{ddControl.getSpamType()}}" spam-id="ddControl.getSpamId()">
+            <i class="drop-sprite media-report-mar w-h-13 report-ico feed-font"></i>Report</a>
+    </div>
+    <div class="ac-top-line" rg-click="ddAction()({event: $event, action:'sendtochat',  data: ddControl})">
+        <a class="pad-8-14">
+            <i class="drop-sprite z-in-110 w-h-13 share-ico feed-font"></i>Send To Chat</a>
+    </div>
+</div>

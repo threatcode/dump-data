@@ -1,0 +1,73 @@
+::-moz-selection {
+    color: #000;
+    background: #ffdec8;
+}
+::selection {
+    color: #000;
+    background: #ffdec8;
+}
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.no-content {
+    height: 50px;
+    text-align: center;
+    padding-top: 20px;
+}
+.dashboard-bg {
+/*    background-color: #e4e5e4;*/
+    margin-left:200px;
+    min-height:1500px;
+    position: relative;
+}
+.special-bg .cell {
+    z-index: 5;
+}
+.special-bg .middle {
+    z-index: 5 !important;
+}
+.special-bg {
+    background-image: url(../images/special.png);
+    position: relative;
+}
+.special-bg:before {
+    content: "";
+    position: absolute;
+    left: 200px;
+    display: inline-block;
+    height: 100%;
+    width: 200px;
+    top: 0;
+    background-image: url(../images/special-l.png);
+}
+.special-bg:after {
+    content: "";
+    position: absolute;
+    right: 200px;
+    display: inline-block;
+    height: 100%;
+    width: 200px;
+    top: 0;
+    z-index: 0;
+    background-image: url(../images/special-r.png);  
+}
+
+
+.row-responsive{
+    margin:0;
+    padding:0;
+    width:100%; 
+}
+.rotate-nav-arrow{
+    transform: rotate(270deg);
+    margin-top: 5px;
+}
+.mid-body-dashboard ng-include:first-child{position:relative;/* z-index:101; */}
+.mid-body-dashboard ng-view{position:relative;z-index:1;}
+
+

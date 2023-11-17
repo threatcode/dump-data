@@ -1,0 +1,65 @@
+<div class="chat-top-bar" 
+        ng-class="{'chat-active' : box.value.isFocused == true}"
+        maximize-box
+        chat-blinker >
+
+    <span class="online-status-indicator"  
+            ng-class="{'online-status-image' : box.value.offlineStatus === false , 'offline-status-image' : box.value.offlineStatus === true }"
+    ></span>
+
+    <span 
+        class="chat-name" 
+        title="{{ box.value.getTitleString() }}"
+        ng-if="!box.value.isMinimized && !box.value.isPublicChat" 
+        ng-click="goToPage($event, box.value.getProfileLink())" ng-cloak="true">{{ box.value.getTitleString() }} </span>
+
+    <span 
+        class="chat-name" 
+        title="{{ box.value.getTitleString() }}"
+        ng-if="box.value.isMinimized || box.value.isPublicChat" 
+        ng-cloak="true">{{ box.value.getTitleString() }} </span>
+
+    <div class="chat-top-sty">
+                <a data-tooltip-post="Close" 
+            href="javascript:void(0);" 
+            close-box ><span class="img_sprite w-h-16 chat-close-ico"></span></a>
+
+        <a data-tooltip-post="Restore Down" 
+            class="normar-hide" 
+            href="javascript:void(0);" 
+            ng-show="box.value.isFullScreen" 
+            full-screen-box ><span class="img_sprite w-h-16 max-ico"></span></a>
+
+        <a class="max-hide" 
+            href="javascript:void(0);" 
+            ng-if="!box.value.isFullScreen && !box.value.isMinimized" 
+            data-tooltip-post="Fullscreen" 
+            full-screen-box 
+        ><span class="img_sprite w-h-16 chat-normal-ico"></span></a>
+
+        <a ng-show="!box.value.isMinimized"
+            href="javascript:void(0);" 
+            ng-if="!box.value.isFullScreen" 
+            data-tooltip-post="Minimize"  
+            minimize-box ><span class="img_sprite w-h-16 mini-ico"></span></a>
+
+        <a ng-show="!!box.value.isMinimized"
+            href="javascript:void(0);" 
+            ng-if="!box.value.isFullscreen" 
+            data-tooltip-post="Maximize"  
+            miximize-box ><span class="img_sprite w-h-16 max-ico-sm"></span></a>
+
+        <a  ng-show="!box.value.isMinimized"
+            href="javascript:void(0);" 
+            data-tooltip-post="Settings"
+            chat-box-settings
+        ><span class="img_sprite w-h-16 settings-ico chat-font"></span></a>
+
+        <a data-tooltip-post="Set Timer Time"
+            ng-show="!!box.value.secretChat && !box.value.isMinimized"
+            href="javascript:void(0);" ng-click="showValueBox($event)"
+            class="img_sprite timeout-sec timeout-wrap icon-time"><p>sec</p><span ng-cloak="true">{{ timeout>4 ? timeout : 5}}</span></a> 
+
+
+    </div>
+</div>

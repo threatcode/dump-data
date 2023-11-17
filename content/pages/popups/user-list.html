@@ -1,0 +1,16 @@
+<div class="width_fr popupbox">
+    <div class="modal-header"><h3  ng-bind="listTitle"></h3></div>
+    <div class="clear"></div>
+    <div class="friend-req-scroll-wrapper">
+        <ul class="friend-req" rg-scrollbar  bottom-reached="loadMore()">
+            <rg-userview ng-repeat="user in users.all() track by user.value.getKey()" 
+                         user="user.value" 
+                         hide-chat="true"
+                         template-path="templates/partials/usercards/userview.directive.html" >
+            </rg-userview>
+        </ul>
+    </div>
+    <div ng-show="state.loading" class="notification-loader-position ng-hide">
+        <div class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+    </div>
+</div>

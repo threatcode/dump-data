@@ -1,0 +1,51 @@
+<div class="chat-box-ch" style="border:15px solid #eee;margin:20px 0 0 0;text-align: left;">
+    <form enctype="multipart/form-data">
+        <div style="padding:10px;">
+            <div class="float-left" style="position:relative;">
+                <div class="thumbnail">
+                    <div class="icon-logo-circle pss-logo">
+                        <a><img class="responsive-all"   ng-src="{{ currentUser.avatar('thumb')}}"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-t float-right">
+                <div class="style-1">
+                    <textarea style="width:100%;height: 50px;resize: none;" ></textarea>
+
+
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+
+
+        <div class="status-photo-box c-h-bottom">
+            <rg-upload upload-type="status" upload-action="" upload-enabled="!ogData.url"></rg-upload>
+            <div class="post-b-ico m-l-5">
+                <a data-tooltip-post="Add Emoticon" href="javascript:void(0)" class="p-ab">
+                    <span class="emo-ico" rg-emoticon show-sticker="false" attached="#post-box-id"></span>
+                </a>
+            </div>
+            <div class="post-b-ico m-l-10">
+                <a data-tooltip-post="Tag Friends"  rg-tag-friend="{{::showAddTag}}"  tag-items="tagList" on-select="addTag(item)"  class="p-ab">
+                    <span class="tag-f-ico"></span>
+                </a>
+            </div>
+            <div class="post-b-ico m-l-10">
+                <a data-tooltip-post="Feed Duration"  feed-timeout-menu="" ring-on-option-select="selectedTimeout(item)" selected-value="validity" class="p-ab">
+                    <span class="timmer-ico"></span>
+                </a>
+            </div>
+            <div class="post-b-ico m-l-5">
+                <a data-tooltip-post="Add Location" feed-location-menu="" feed-location-menu-on-select="selectedLocation(location)" selected-value="feedLocation" class="p-ab">
+                    <span class="location-ico"></span>
+                </a>
+            </div>
+            <div class="float-right">
+                <input type="button" ng-disabled="shouldDisableInput()" rg-click="addFeed()"  rg-click-noapply="true" class="c-button float-right" value="Reply" style="margin-right:10px;margin-top:3px"/>
+            </div>
+        </div>
+    </form>
+</div>

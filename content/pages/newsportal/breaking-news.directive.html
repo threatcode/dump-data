@@ -1,0 +1,25 @@
+<style>
+.breaking-title-box{position:relative;}
+.breaking-title{opacity:0;position:absolute;background-color:#fff;}
+.breaking-title.news-active{opacity: 1;transition: ease-in-out .5s}
+    
+</style>
+<div class="breaking-wrap">
+    <div class="breaking-name">BREAKING NEWS</div>
+    <div class="breaking-title-box" ng-mouseenter="resetInterval()" ng-mouseleave="startInterval()">
+        <div class="breaking-left-ico img_sprite breaking-ico" ng-click="prev()"></div>
+        <div class="breaking-title" ng-repeat="news in newsItems" ng-class="{'news-active':$index === activeId}">
+            <span class="img_sprite star-ico"></span>
+            <!-- <img src="../../images/ring-logo-circle.png"> -->
+            <!-- <span ringbox-type="remote"
+                   rg-ringbox="true"  
+                   ringbox-scrollable="true"
+                   loader-hide = "false"
+                   ringbox-data="getFeedInfo(news.id)"
+                   ringbox-controller="PortalFeedPopUpController"
+                   ringbox-target="templates/newsportal/portal-feed-popup.html">{{news.nTtl}}</span> -->
+            <span ng-cloak="true">{{news.nTtl}}</span>
+        </div>
+        <div class="breaking-right-ico img_sprite breaking-ico" ng-click="next()"></div>
+    </div>
+</div>

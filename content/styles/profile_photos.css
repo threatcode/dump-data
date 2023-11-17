@@ -1,0 +1,37 @@
+.camera-bottom{
+    background: rgba(0, 0, 0, 0.50);
+    width: 100%;
+    box-sizing: border-box;
+    padding:5px 10px;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    font-weight: 300;
+    font-size: 16px;
+    color: white;
+    margin-left:0;
+    left: 0;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.camera-bottom a{
+    text-align:left;
+    font-size:12px;
+    color:#fff;
+    margin:0;
+    padding:3px 0;
+    display:inline-block;
+}
+/*.camera-bottom p{
+    text-align:right;
+    font-size:12px;
+    color:#fff;
+    margin:0;
+    padding:3px 0;
+    display:inline-block;
+    width:70%;
+}*/
+.camera-bottom p.caption{ width: 95%; text-align: left; height: 20px; font-size: 14px; font-weight: bolder; color:#fff;white-space: nowrap;     overflow: hidden;    text-overflow: ellipsis; }
+.bg-p-v{background-color:#000;}

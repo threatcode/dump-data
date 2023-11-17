@@ -1,0 +1,4 @@
+<div ng-repeat="step in steps" class="circle-part" ng-show="step.id == currentStep"
+    ng-class="{'partone' : step.id == 0, 'parttwo' : step.id == 1, 'partthree' : step.id == 2}">
+    <div rg-template template-url="{{ step.template }}" ng-clock></div>
+</div>

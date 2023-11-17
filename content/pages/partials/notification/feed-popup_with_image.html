@@ -1,0 +1,234 @@
+<div class="w-532" ng-if="!nocontent">
+    <!--<span rg-click="$close($event)" class="icon-close popup-close"></span>-->
+    <div class="newsfeed-top np-top" ng-init="imageslength = feed.getImages().length;">
+        <div class="icon-logo-circle ps-logo float-left" ng-show="feed.user().avatar()">
+            <a ng-href="{{ ::feed.user().link()}}" > <img class="responsive-all" ng-src="{{ feed.user().avatar('thumb')}}" alt=""> </a>
+        </div>
+        <div class="status_title p-name">
+            <h3 feed-message="feed">
+
+            </h3>
+            <span class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i>{{::feed.time()}}</span>
+        </div>
+
+        <!-- <div ng-show="feed.user().isCurrentUser()" rg-dropdown="dropdown()"  dd-html="ddHtml"
+             dd-control="feed.ddControl" dd-action="actionFeedDropdown" class="p-arrow mar-top-5">
+            <div class="news-arrow drop-arrow  img_sprite icon-down-arrow  w-h-13"></div>
+        </div> -->
+    </div>
+    <div class="feed_details">
+        <div class="main_feed">
+            <p class="feed_value"  rg-more-feed="feed"  ng-hide="editorEnabled || !feed.text()"  style="text-align:left;padding:5px 0px; margin-bottom: 15px"></p>
+
+            <p ng-if="!editorEnabled && feed.hasOgData()" ng-init="ogData = feed.getOgData()">
+                <rg-url-og-preview og-data="ogData" show-preview="feed.hasOgData()" loading-data="false"></rg-url-og-preview>
+            </p>
+
+            <p class="" ng-show="editorEnabled">
+                <textarea auto-grow="" ng-model="feedText"  ng-trim="" ng-disabled="inputDisabled" ></textarea>
+                <input class="pro-edit-btn" type="button" name="" value="update" ng-click="updateFeed()"/>
+                <input class="pro-edit-btn" type="button" name="" value="Cancel" ng-click="cancelEdit()"/>
+            </p>
+        </div>
+
+        <div ng-if="feed.getImages().length">
+            <div feed-image="main">
+            </div>
+        </div>
+
+<!-- <rg-video ng-if="feed.getMedias().length()" feed="feed" -->
+          <!-- get-media-data="getMediaData(mediavalue, feed)" select-album="selectAlbum(mediavalue)" -->
+          <!-- no-download="noDownload($event)" get-media-first-data="getMediaFirstData()"> -->
+
+<!-- </rg-video> -->
+
+<!-- <rg-audio ng-if="feed.getAudios().length()" feed="feed" -->
+          <!-- get-media-data="getMediaData(mediavalue, feed)" select-album="selectAlbum(mediavalue)" -->
+          <!-- no-download="noDownload($event)" get-audio-first-data="getAudioFirstData()"> -->
+
+<!-- </rg-audio> -->
+
+
+
+   <ul class="video-r"  ng-if="feed.getMedias().length()" ng-init="medialength = feed.getMedias().length()">
+            <li ng-repeat="media in feed.getMedias().all()| limitTo:3" class="item" 
+                rg-ringbox="true" ring-backdrop-close="false" show-close-btn="false" ringbox-controller="RingBoxMediaController" ringbox-animation="true"
+                ringbox-type="remote" ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(media.value, feed)">
+                <div class="left-thumb float-left" style="background-image:url('{{media.value.getThumb()}}'); background-repeat: no-repeat;background-size: cover;">
+                    <div class="m-icn video play"></div>
+                </div>
+                <h3 ng-bind="media.value.getCaption()"></h3>
+
+                <p><span ng-bind="media.value.getArtistName()"></span></p>
+                <p><span ng-bind="media.value.getAlbumName()"></span></p>
+                <p>
+                    <span ng-bind="media.value.getDuration(true)"></span>
+                    <span ng-if="medialength > 3 && $index === 2" class="text-right"><a href="#" ng-cloak="true">+{{medialength - 3}} more</a></span>
+                </p>
+                <div class="clear"></div>
+            </li>
+        </ul>
+
+        <ul class="audio-r"  ng-if="feed.getAudios().length()" ng-init="medialength = feed.getAudios().length()">
+            <li ng-repeat="media in feed.getAudios().all()| limitTo:3" class="item" 
+                rg-ringbox="true" ring-backdrop-close="false" show-close-btn="false" ringbox-controller="RingBoxMediaController" ringbox-animation="true"
+                ringbox-type="remote" ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(media.value, feed)">
+
+                <div class="left-thumb float-left" style="background-image:url('{{media.value.getThumb()}}'); background-repeat: no-repeat;background-size: cover;">
+                    <div class="m-icn audio play"></div>
+                </div>
+                <h3 ng-bind="media.value.getCaption()"></h3>
+                <p><span ng-bind="media.value.getArtistName()"></span></p>
+                <p><span ng-bind="media.value.getAlbumName()"></span></p>
+                <p>
+                    <span ng-bind="media.value.getDuration(true)"></span>
+                    <span ng-if="medialength > 3 && $index === 2" class="text-right"><a href="#" ng-cloak="true">+{{medialength - 3}} more</a></span>
+                </p>
+                <div class="clear"></div>
+            </li>
+        </ul>
+
+
+        <!--<div class="video-dec" ng-if="templateType == 'feed_with_image'" ng-if="feed.getMedias().length" ng-init="medialength = feed.getMedias().length">-->
+        <!--<a ng-repeat="media in feed.getMedias()" ng-init="media = media.value;"  style="position: relative;-->
+        <!--margin-bottom: 5px;display: block;">-->
+
+        <!--<div feed-video rg-ringbox="true" ring-backdrop-close="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"-->
+        <!--ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(media)"><div class="play-area"><span class="play-icon"></span></div></div>-->
+        <!--</a>-->
+        <!--</div>-->
+        <!--<div class="audio-dec" ng-if="templateType == 'feed_with_image'" ng-if="feed.getAudios().length" ng-init="medialength = feed.getAudios().length">-->
+        <!--<a ng-repeat="media in feed.getAudios()" ng-init="media = media.value;"  style="position: relative;-->
+        <!--margin-bottom: 5px" >-->
+
+        <!--<div feed-video rg-ringbox="true" ring-backdrop-close="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"-->
+        <!--ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(media)"> <div class="play-ico"><span class="play-btn"></span></div></div>-->
+        <!--</a>-->
+        <!--</div>-->
+
+
+
+
+        <div ng-show="feed.user().isCurrentUser()" rg-dropdown="dropdown()"  dd-html="ddHtml"
+             dd-control="feed.ddControl" dd-action="actionFeedDropdown" class="p-arrow mar-top-5" style="margin-right: 20px;">
+        </div>
+        <div class="shared_feed" ng-if="feed.hasSharedFeed()" ng-init="shared_feed = feed.getOrginalFeed()">
+            <div class="newsfeed-top">
+                <div class="icon-logo-circle ps-logo float-left">
+                    <a ng-href="{{ shared_feed.user().link()}}"> <img class="responsive-all" ng-src="{{ shared_feed.user().avatar()}}" alt=""> </a>
+                </div>
+                <div class="status_title p-name">
+                    <h3 feed-message="shared_feed"></h3>
+                    <span class="time"><i class="img_sprite icon-dt-ico w-h-13"></i> {{shared_feed.time()}}</span>
+                </div>
+            </div>
+            <div class="newsfeed-bottom">
+               <p ng-if="shared_feed" class="feed_value" rg-more-feed="shared_feed"></p>
+
+                <!-- Feed Location Start -->
+
+                <p class="location" ng-if="!editorEnabled && shared_feed.hasLocationInfo()" >
+                <feed-location-preview target="shared_feed"></feed-location-preview>
+                </p>
+
+                <!-- Feed Location End -->
+
+                <p ng-if="!$parent.editorEnabled && shared_feed.hasOgData()" ng-init="ogData = shared_feed.getOgData()" >
+                <rg-url-og-preview og-data="ogData" show-preview="shared_feed.hasOgData()" loading-data="false"  ></rg-url-og-preview></p>
+
+                <div class="feed-shared" ng-if="shared_feed.getImages().length">
+                    <!-- Need Refactoring to Separate directive -->
+                    <!--                    <a ng-if="singleFeed" ng-href="#{{ image.getUrl() }}" ng-repeat="image in shared_feed.getImages()" ng-init="image = image.value;imageslength = shared_feed.getImages().length;"  >
+                                            <div style="display:inline-block"
+                                                 class="width-height-of-picture" feed-image feed-image-responsive="false"  rg-ringbox="true" ringbox-controller="RingBoxImageController"
+                                                 ringbox-type="remote" ringbox-target="templates/partials/notification/image-popup.html"
+                                                 ringbox-data="getImageData(image, shared_feed)"></div>
+                                        </a>-->
+
+                    <div feed-image="shared"></div>
+                    <!-- <div ng-repeat="image in shared_feed.getImages()" ng-init="image = image.value;imageslength = shared_feed.getImages().length;"  feed-image rg-ringbox="true" ringbox-controller="RingBoxImageController"
+                         ringbox-type="remote" ringbox-target="templates/partials/notification/image-popup.html"
+                         ringbox-data="getImageData(image, shared_feed)"></div> -->
+
+                </div>
+              
+
+                <ul class="video-r"  ng-if="shared_feed.getMedias().length()" ng-init="medialength = shared_feed.getMedias().length()">
+                    <li ng-repeat="media in shared_feed.getMedias().all()| limitTo:3" class="item" 
+                        rg-ringbox="true" ring-backdrop-close="false" show-close-btn="false" ringbox-controller="RingBoxMediaController"i ringbox-animation="true"
+                        ringbox-type="remote" ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(media.value, shared_feed)">
+                        <div class="left-thumb float-left" style="background-image:url('{{media.value.getThumb()}}'); background-repeat: no-repeat;background-size: cover;">
+                             <div class="m-icn video play"></div>
+                        </div>
+                        <h3 ng-bind="media.value.getCaption()"></h3>
+
+                        <p><span ng-bind="media.value.getArtistName()"></span></p>
+                        <p><span ng-bind="media.value.getAlbumName()"></span></p>
+                        <p>
+                            <span ng-bind="media.value.getDuration(true)"></span>
+                            <span ng-if="medialength > 3 && $index === 2" class="text-right"><a href="#">+{{medialength - 3}} more</a></span>
+                        </p>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+
+                <ul class="audio-r"  ng-if="shared_feed.getAudios().length()" ng-init="medialength = feed.getAudios().length()">
+                    <li ng-repeat="media in shared_feed.getAudios().all()| limitTo:3" class="item" 
+                        rg-ringbox="true" ring-backdrop-close="false" show-close-btn="false" ringbox-controller="RingBoxMediaController"i ringbox-animation="true"
+                        ringbox-type="remote" ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(media.value, shared_feed)">
+
+                        <div class="left-thumb float-left" style="background-image:url('{{media.value.getThumb()}}'); background-repeat: no-repeat;background-size: cover;">
+                             <div class="m-icn audio play"></div>
+                        </div>
+                        <h3 ng-bind="media.value.getCaption()"></h3>
+
+                        <p><span ng-bind="media.value.getArtistName()"></span></p>
+                        <p><span ng-bind="media.value.getAlbumName()"></span></p>
+
+                        <p>
+                            <span ng-bind="media.value.getDuration(true)"></span>
+                            <span ng-if="medialength > 3 && $index === 2" class="text-right"><a href="#">+{{medialength - 3}} more</a></span>
+                        </p>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="newsfeed-bottom">
+        <div class="feed">
+            <ul class="feed_lcs_menu">
+                <li rg-likes="" target="feed" like-type="feed">
+
+                </li>
+                <li ng-class="{'active':feed.getTotalComment() > 0}">
+                    <!--<a class="icon-comments-str ico-f" ></a>-->
+                    <a class="lcs_button" ng-class="{'active':feed.selfComment() > 0}"> 
+                        <i  class="img_sprite icon-comments-str"></i>
+                        <b>Comments</b>
+                    </a>
+
+
+                    <a class="count"  ng-class="{'active':feed.getTotalComment() > 0}" ng-cloak="true">{{ feed.getTotalComment()}}</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <rg-comments
+        target = "feed"
+        comment-type = "feed"
+        show-comment-box="showCommentBox"
+        comment-order = "desc"
+        active-comment-id="{{::activeCommentId}}"
+        hide-scroll="true"
+        ></rg-comments>
+
+</div>

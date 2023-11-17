@@ -1,0 +1,22 @@
+<div class="alert-w-h">
+    <div class="title"><span ng-cloak="true">{{::title}}</span></div>
+    <div ng-if="error"><span class="error" ng-cloak="true">{{error}}</span></div>
+    <div class="alert-body">
+        
+         <div class="report" ng-repeat="spam in spamList">
+     <input type="radio" id="{{spam.id}}" class="css-checkbox" ng-model="$parent.reason" name="reason" value="{{spam.id}}" /><label for="{{spam.id}}" class="css-label radGroup2"><span ng-bind="spam.rsn"></span></label>
+ </div>
+        
+<!--        <div class="report" ng-repeat="spam in spamList">
+            
+<input type="radio" ng-model="$parent.reason" name="reason" value="{{spam.id}}" /><span ng-bind="spam.rsn"></span>
+    </div>-->
+    
+    
+    </div>
+    <div class="button-area">
+       <button  class="float-right margin-10 save-button border-radius" rg-click="$close()">Cancel</button>
+        <button  class="float-right margin-10 save-button border-radius" rg-click="report()">Continue</button>
+
+    </div>
+</div>

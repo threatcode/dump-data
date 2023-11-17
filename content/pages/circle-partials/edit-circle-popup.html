@@ -1,0 +1,64 @@
+<style>
+    .ringbox-content {
+        overflow: visible;
+    }
+
+    .select-search .tag-wrapper {
+        border-top:none;
+    }
+
+    .select-search .tag-wrapper  .tag-input input {
+        width: 157px;
+    }
+</style>
+
+
+<div class="circle-part parttwo" >
+
+
+    <div class="circle-part2 cr-opacity" >
+        <!--        <div class="cir-head cir-top">
+                    <div class="cir-head-text f-left">
+                       
+                    </div>
+                </div>-->
+
+        <div class="modal-header">
+            <h3 class="ng-binding"> <span class="cir-ico mh-ico"></span>Select Members</h3>
+            <!--<span class="icon-close mdl-close" rg-click="$close()"></span>-->
+        </div>
+
+        <div class="cir-select-mid" style="text-align: left;    padding: 0px 14px 14px 14px; box-sizing: border-box;">
+            <!--rg-scrollbar="scrollbar()" style="max-height: 150px;min-height: 50px;"-->
+            <div style="margin:15px 0px;">Add members for your circle</div>
+            <div class="member-box"  style="border:1px solid #e6e6e6; padding: 0; min-height: 110px">
+                
+                <div class="select-search" >
+                    <rg-selector
+                         template-url="templates/feed/tag-friends.html" 
+                         select-any="false"
+                         placeholder="Search friends to add"
+                         selected-items="memberList" 
+                         fetch-items="fetchFriends" 
+                         select-item="addToCircle" 
+                         remove-item="removeMember">
+                    </rg-selector>
+                </div>
+
+<!--                <div class="add-member-box margin-re"  ng-show="memberList.length() < 1">
+                    <span>Add members for your circle</span>
+                    <div class="clear"></div>
+                    <div class="select-search">
+                        <input type="text" name="fs" ng-model="friendsNameFilter" placeholder="Search friends">
+                        <rg-friend-dropdown ng-show="friendDropdown" template-url="templates/circle-partials/friend-list-dropdown.html" tag-items="selectedMembers" filter-text="friendsNameFilter"  on-close="closeFriendDd" on-select="addToCircle"></rg-friend-dropdown>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+        <div class="cir-head cir-bottom">
+            <button class="circle-next f-right" ng-disabled="memberList.length() < 1" rg-click="updateCircle()">Update</button>
+        </div>
+    </div>
+
+
+</div>

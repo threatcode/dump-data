@@ -1,0 +1,8 @@
+<div class="alert-w-h">
+      <div class="title"><span ng-cloak="true">{{title}}</span></div>
+      <div class="alert-body"><p ng-cloak="true">{{message}}</p></div>
+      <div class="button-area">
+            <button  class="float-right margin-10 save-button border-radius" rg-click="$close('ok');" ng-if="showOk" ng-cloak="true">{{textOk}}</button>
+            <button  class="float-right margin-10 save-button border-radius" rg-click="$close('cancel')" ng-if="showCancel" ng-cloak="true">{{textCancel}}</button>
+      </div>
+</div>

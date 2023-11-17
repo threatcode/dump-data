@@ -1,0 +1,26 @@
+<div class="tag-wrapper">
+    <span class="tag-name" ng-repeat="tag in selectedItems">
+        <span class="tag-title" ng-bind="tag.sk" ></span>&nbsp;
+        <span class="close-ico tagclose" rg-click="removeItem()($index, $event)"></span> 
+    </span>
+    <span class="tag-input">
+        <input  data-selector-input ng-model="filterText"  type="text"  placeholder="Add Hashtag"  />
+    </span>
+</div>
+
+<div data-selector-dropdown class="mtag-dd active" style="display:none;">
+    <div class="loader-s" ng-show="loading">
+        <div class="lr1"></div>
+        <div class="lr2"></div>
+        <div class="lr3"></div>
+    </div>
+    <div class="ringscroll" style="position:relative;width:auto;overflow:hidden;height:100%;">
+        <ul class="mtag" style="overflow: hidden;">
+            <li ng-repeat="tag in itemList 
+                track by tag.ukey" ng-class="{'selected': $index == selectedIndex}"   all-click="true" 
+                rg-click-all="select({sk: tag.sk, ukey: tag.ukey}, $event)" rg-mouseover="mouseoverSelect($index)">
+                <a href="javascript:void(0)" title="{{tag.sk}}" ng-bind="tag.sk" > abc</a>
+            </li>
+        </ul>
+    </div>
+</div>

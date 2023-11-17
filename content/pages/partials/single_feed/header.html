@@ -1,0 +1,10 @@
+<div class="status-img-info">
+    <div class="status-img-avater icon-logo-circle ps-logo" ng-show="image.user().avatar()">
+        <a ng-href="{{ image.user().link()}}"> <img class="responsive-all" ng-src="{{ image.user().avatar('thumb')}}" alt=""> </a>
+    </div>
+    <div class="status-user-info">
+        <h3><a ng-href="{{ image.user().link()}}" ng-cloak="true">{{::image.user().getName()}}</a></h3>
+        <span class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i>{{image.time()}}</span>
+    </div>
+</div>
+<div  class="img-cap" ng-cloak="true">{{image.getCaption()}} </div>

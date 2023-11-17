@@ -1,0 +1,48 @@
+<div class="news_banner-wrapper t-sl" ng-show="sliderElements.length() > 0">
+    <div class="news_banner_wrap">
+        <div class="news_banner_con cele">
+            <ul>
+
+                <li class="t-a-l cele-box" ng-repeat="singleElement in sliderElements.all() track by $index" style="width:{{liWidth}}px;">
+                    <div class="row">
+                        <div class="col-5-12">
+                            <a class="cele-img dis-b" ng-href="{{singleElement.value.getProfileLink()}}" style="background-image:url({{singleElement.value.getFollowAndSliderImage()}});"></a>
+                        </div>
+                        <div class="col-7-12">
+                            <div class="cele-l-b">
+                                <div class="cele-name-area pad-25-10 h-105">
+                                    <a class="cele-name f-14" title="{{singleElement.value.getFullName()}}" ng-href="{{singleElement.value.getProfileLink()}}" ng-cloak="true">{{singleElement.value.getFullName()}}</a>
+                                    <p class="f-12" ng-cloak="true">{{ singleElement.value.getFollowerCountWithText() }}</p>
+                                </div>
+                                <div class="cele-btn-area">
+                                    <div class="butt border-gray-orange"  ng-if="!singleElement.value.isSubscribed()"><a class="btn-p-5-8"  rg-click="doneFollow(singleElement.value.getKey())"><span class="butt-text">Follow</span></a></div>
+                                    <div class="butt border-gray-orange"   ng-if="singleElement.value.isSubscribed()"><a class="btn-p-5-8"  rg-click="unFollow(singleElement.value.getKey())"><span class="butt-text">Unfollow</span></a></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="rmv-fnd-sugg img_sprite icon-close-ico w-h-13 top-l" data-tool="Remove celebrity from the list" rg-click="removeCelebrityFromSliderList(singleElement.value.getKey())"></span>
+
+                    </div>
+                </li>
+
+                <li class="t-a-l cele-box"  style="width:{{liWidth}}px; border: 0 !important;box-shadow:none;-webkit-box-shadow:none;" ng-if="isFindMoreNeeded === true" >
+                    <div class="row">
+                        <div class="col-5-12">
+                            <a class="cele-img dis-b t-a-c" style="border:1px solid #eee;background-image:url('images/more-cele.png')" rg-click="findMoreSliderImage()">
+                                <span class="butt-text find-more-text">Find more</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+                
+
+
+            </ul>
+        </div>
+    </div>
+    <div ng-show="showLeftArrow" class="icon-left-arrow img_sprite sld-control news-sld-left" rg-click="left()"></div>
+    <div ng-show="showRightArrow" class="icon-right-arrow img_sprite sld-control  news-sld-right"
+         rg-click="right()"></div>
+</div>

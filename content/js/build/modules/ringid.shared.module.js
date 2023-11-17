@@ -1,0 +1,1 @@
+(function(angular, window) { 'use strict';  angular.module('ringid.shared', [ 'ringid.filters', 'ringid.auth', 'ringid.global_services', 'ringid.config' ]); })(angular, window);

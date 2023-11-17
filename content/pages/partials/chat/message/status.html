@@ -1,0 +1,7 @@
+<div class="t-chat" >
+    <p rg-click='showSeenUserList()' ng-cloak="true"><span title="{{ message.statusUserName }}" ng-cloak="true">{{ message.statusUserName }}</span>  {{ message.statusDate }}
+        <a data-tooltip-post=" {{message.statusText}} " class=" {{message.statusText}} ">
+            <div ng-if="message.statusText == 'Pending'" class="chat-ani"></div>
+        </a>
+    </p>
+</div>

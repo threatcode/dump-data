@@ -1,0 +1,36 @@
+<div class="tag-wrapper">
+    <span class="tag-name"  ng-repeat="usr in selectedItems.all() track by usr.value.getKey()" >
+        <span class="tag-title" ng-cloak="true">{{::usr.value.getName()}}</span>
+        <span class="close-ico tagclose" ng-click="removeItem()(usr, $event)"></span>
+    </span>
+    <span class="tag-input">
+        <input data-selector-input ng-model="filterText" type="text" name=""  placeholder="Type a friend name..."  />
+    </span>
+    <span class="clear"></span>
+</div>
+
+<div data-selector-dropdown class="m-s-height tag-dd active" style="display:none;" >
+    <rg-loader-view2 is-loading="loading"></rg-loader-view2>
+    <div class="ringscroll" style="position:relative;width:auto;overflow:hidden;height:100%;" >
+        <ul class="tagfnd"  style="overflow: hidden;">
+                <!-- <li class="unread" ng-repeat="user in itemList | mapListFilter:selectedItems track by user.value.getKey()"  -->
+                <li  ng-repeat="user in itemList track by user.value.getKey()" 
+                    ng-class="{'selected':$index==selectedIndex}"  rg-click-all="select(user, $event)" rg-mouseover="mouseoverSelect($index)">
+                    <!-- show feed image popup -->
+                    <a>
+                        <div class="left">
+                            <div class="pic"><img rg-src="user.value.avatar()" onerror="this.src='images/prof.png'" /></div>
+                        </div>
+                        <div class="right">
+                            <p class="tagfnd-txt" ng-cloak="true">{{::user.value.getName()}}</p>
+                        </div>
+                        <div class="clear"></div>
+                    </a>
+
+                </li>
+
+        </ul>
+    </div>
+</div>
+
+

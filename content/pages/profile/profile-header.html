@@ -1,0 +1,228 @@
+<!-- <a rg-ringbox="true" ringbox-controller="RingBoxImageController" ringbox-type="remote"
+   ringbox-target="templates/partials/notification/image-popup.html" ringbox-data="getImageData(profileObj.getCoverImageId())" style="display: block;"> -->
+<div  style="position:relative;z-index:1;" id="coverPhoto"
+      class="noselect cover-photo"
+      ng-style="coverPhotoStyle"
+      rg-img-reposition
+      elem-style="coverPhotoStyle"
+      img-type="{{::upload.cover}}"
+      upload-file="coverUpload"
+      enabled="coverPicDragEnable"
+      toggle-resize-show="toggleResizeShow"
+      >
+    <a rg-ringbox ringbox-controller="RingBoxImageController" ringbox-type="remote" ringbox-open="openRingbox(upload.cover)"
+       ringbox-target="templates/partials/notification/image-popup.html" ringbox-data="getImageData(profileObj.getCoverImageId())" style="display: block;position: absolute;left:0px;right:0px;top:0px;bottom:0px;z-index: 1px;" 
+       ></a>
+    <!--<a rg-ringbox="true" ringbox-controller="RingBoxImageController" ringbox-type="remote"-->
+    <!--ringbox-target="templates/partials/notification/image-popup.html" ringbox-data="getImageData(profileObj.getProfileImageId())">profile image : {{profileObj.getProfileImageId()}}</a>-->
+    <!--<a rg-ringbox="true" ringbox-controller="RingBoxImageController" ringbox-type="remote"-->
+    <!--ringbox-target="templates/partials/notification/image-popup.html" ringbox-data="getImageData(profileObj.getCoverImageId())">cover image : {{profileObj.getCoverImageId()}}</a>-->
+
+    <div style="display:inline-block;width:100%;height:auto;">
+        <div class="cover-loa-bg" ng-cloak ng-show="cvUploadProgressShow">
+            <div class="cover-loadding" ng-style="uploadStyle(upload.cover)"></div>
+        </div>
+        <div ng-cloak ng-show="coverPicDragEnable && !cvResizeProgressShow" class="cover-set">
+            <div class="cover-text">Drag to Reposition Cover</div>
+            <div class="cover-button" rg-click="uploadPicture(upload.cover, $event)">Save</div>
+            <div class="cover-button cancel-c" rg-click="toggleCoverPhotoReposition(null,$event)">Cancel</div>
+        </div>
+        <div class="setting" ng-cloak ng-show="isOwner && !coverPicDragEnable && !cvResizeProgressShow && !cvUploadProgressShow">
+<!--            <div class="cover-menu">-->
+<!--                <div class="cmenu">-->
+                    <div rg-dropdown dd-html="coverDdHtml" dd-action="coverDdAction" dd-control="profileDdControl">
+                        <!--<div class="click"></div>-->
+                        <div class="img_sprite w-h-25px icon-settings"></div>
+                    </div>
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+
+        <div class="pr-pos-w-s" >
+            <a rg-ringbox ringbox-open="openRingbox('profile')" ringbox-controller="RingBoxImageController" ringbox-type="remote" ringbox-open="openRingbox('profile')"
+               ringbox-target="templates/partials/notification/image-popup.html" ringbox-data="getImageData(profileObj.getProfileImageId())"  style="position:absolute;">
+                <!--profile image : {{profileObj.getProfileImageId()}}-->
+                <div class="profile-shape-cover" style="position:relative;">
+                    <div class=" img_sprite profile-shape-ico left-shape-ico-pro pids-logo">
+                        <div class="profile-pic"
+                             ng-style="profilePhotoStyle"
+                             rg-img-reposition
+                             elem-style="profilePhotoStyle"
+                             img-type="{{::upload.avatar}}"
+                             upload-file="profileUpload"
+                             enabled="profilePicDragEnable"
+                             toggle-resize-show="toggleResizeShow"
+                             >
+
+                            <div ng-cloak ng-if="ppUploadProgressShow">
+                                <div class="progress" ng-cloak="true" ng-style="getRoundedProgressTextStyle()" ng-cloak="true">{{ roundProgressData().label}}</div>
+                                <div
+                                    round-progress
+                                    max="uploadImageFileSize()"
+                                    current="roundProgressData().percentage"
+                                    color="#f77727"
+                                    bgcolor="#eaeaea"
+                                    radius="100"
+                                    stroke="3"
+                                    semi="false"
+                                    rounded="true"
+                                    clockwise="true"
+                                    responsive="true"
+                                    duration="800"
+                                    animation="easeInOutQuart"></div>
+
+                            </div>
+                            <div class="pro-pic-set" ng-cloak ng-show="profilePicDragEnable && !ppResizeProgressShow">
+                                <div class="pro-pic-load" ng-show="false"></div>
+                                <div class="pro-pic-text">Drag to Reposition</div>
+                                <div class="pro-pic-button" rg-click="uploadPicture(upload.avatar, $event)">Save</div>
+                                <div class="pro-pic-button cancel-c" rg-click="toggleProfilePhotoReposition(null, $event)">Cancel</div>
+                            </div>
+                            <div ng-cloak ng-show="isOwner && !profilePicDragEnable" class="profile-pic-change">
+                                
+                                        <div class="cwra" rg-dropdown dd-html="profileDdHtml" dd-action="profileDdAction" dd-control="profileDdControl">
+                                            <div class="img_sprite w-h-25px parent icon-camera"></div>
+                                        </div>
+                                    
+                            </div>
+                            <!--</span>-->
+                            <!--<a href=""> <img alt="{{basicInfo.firstName}}" ng-src="{{profileObj.avatar()}}" class="responsive-all"></a>-->
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </a>
+            <div class="profile-shape">
+                <div class="opacity-background">
+                    <div class="online-box-area">
+                        <div class="online-border-left-side">
+
+                        </div>
+                    </div>
+                    <div class="text-of-background"></div>
+                </div>
+                <div class="text-online-status">
+                    <span class="img_sprite w-h-18px icon-id-circle"></span>
+                    <span class="p-id-text name_of_profile" ng-bind="profileObj.getRingNumber()"></span>
+                    <div class="clear"></div>
+                    <span ng-class="profileObj.isOnline() ? profileObj.onlineDevice() + '-online float-left top-r' : 'p-offline float-left  top-r'"  data-tool="{{profileObj.isOnline() ? 'Online in ' + profileObj.onlineDevice() : profileObj.lastOnline()}}"></span>
+                    <span class="p-id-text name_of_profile" ng-bind="profileObj.getName()"></span>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <div ng-if="!isOwner && profileObj.friendshipStatus() == 0" class="cover-btn " style="z-index:100">
+            <!--<a class="cv-btn" ng-class="{'f-loading' : profileObj.isLoading()}"  ng-if="profileObj.friendshipStatus() == 0" rg-click="frndAction({ action: 'addfriend', friend: profileObj, event: $event})" href="/#"><span class="friend-ico addfnd"></span><span class="txt">Add Friend</span></a>-->
+            
+            <div class="buttdr border-gray-orange">
+                    <a class="btn-p-5-8"  rg-click="frndAction({ action: 'addfriend', friend: profileObj, event: $event})" ng-class="{'f-loading' : profileObj.isLoading()}" >
+                        <b class="friend-ico addfnd btn-m-r-0"></b>
+                        <span class="butt-text">Add Friend</span>
+                    </a>
+            </div>
+            <div class="buttdr border-gray-orange" ng-if="!profileObj.isCurrentUser()">
+                <a class="btn-p-5-8" rg-report spam-type="user" spam-id="profileObj.getUtId()"><b class="drop-sprite report-btn dis_ib w-h-13 btn-m-r-0 report-ico"></b><span class="butt-text">Report</span></a>
+            </div>
+
+            
+            <!--<a  ng-if="profileObj.friendshipStatus()==1" rg-click="frndAction({ action: 'unfriend', friend: profileObj})" href="#"> <span class="icon-close-b f-Block"></span><span class="txt">Unfriend</span></a>-->
+            <!--<a  ng-if="profileObj.friendshipStatus()==2" rg-click="frndAction({ action: 'accept', friend: profileObj})" href="#"><span class="icon-incoming pro-f"></span><span class="txt">Accept</span></a>-->
+            <!--<a  ng-if="profileObj.friendshipStatus()==3" rg-click="frndAction({ action: 'remove', friend: profileObj})" href="#"><span class="icon-minus fr-dorp"></span><span class="txt">Remove</span></a>-->
+            <!--<a  ng-if="profileObj.isBlocked()===0 && !profileObj.isCurrentUser() && profileObj.friendshipStatus()==1" rg-click="frndAction({ action: 'block', friend: profileObj})" class="border-0" href="#"><span class="block-ic"></span><span class="txt">Block</span></a>-->
+            <!--<a  ng-if="profileObj.isBlocked()===1 && !profileObj.isCurrentUser() && profileObj.friendshipStatus()==1" rg-click="frndAction({ action: 'unblock', friend: profileObj})" class="border-0" href="#"><span class="icon-right f-Block"></span><span class="txt">Unblock</span></a>-->
+
+        </div>
+
+        
+        
+        <div class="btn-bg-w buttdr border-gray-orange float-right btn-m-l-8 p-absolute bottom-90 right-50"  
+            ng-if="!isOwner && profileObj.friendshipStatus() != 0">
+            <a class="btn-p-5-8"  rg-dropdown="dropdown()" dd-html="profileActionHtml" dd-action="frndAction" dd-control="profileObj">
+                <b class="btn-m-r-0 friend-ico correct"></b>
+                <span class="butt-text" ng-cloak="true">{{profileObj.friendshipStatusText()}}</span>
+                <b class="btn-m-r-0 friend-ico down-fb-arrow"></b>
+            </a>
+        </div>
+                
+        
+        
+        
+        
+    </div>
+    <!--</div>-->
+    <div class="profile-menu-box hide-in-mobile">
+        <ul class="profile-menu">
+
+            <!-- <li  ng-class="subPage == 'post' ? 'active' : '' "> -->
+            <!--     <a ng-href="{{routes.post}}" >Post</a> -->
+            <!-- </li> -->
+            <!-- <li ng-class="subPage == 'about' ? 'active' : '' "> -->
+            <!--     <a ng-href="{{routes.about}}" >About</a> -->
+            <!-- </li> -->
+            <!-- <li  ng-class="subPage == 'friends' ? 'active' : '' "> -->
+            <!--     <a ng-href="{{routes.friends}}" >Friends</a> -->
+            <!-- </li> -->
+            <!-- <li ng-show="profileObj.isFriend() || isOwner" ng-class="subPage == 'photos' ? 'active' : '' "> -->
+            <!--     <a ng-href="{{routes.photos}}" >Photos</a> -->
+            <!-- </li> -->
+            <!-- <li ng-show="profileObj.isFriend() || isOwner" ng-class="subPage == 'media' ? 'active' : '' "> -->
+            <!--     <a ng-href="{{routes.media}}" >Music & Video</a> -->
+            <!-- </li> -->
+            <li  rg-active-route route="{{routes.post}}" >
+                <a ng-href="{{routes.post}}" >Post</a>
+            </li>
+            <li rg-active-route route="{{routes.about}}" >
+                <a ng-href="{{routes.about}}" >About</a>
+            </li>
+            <li  ng-class="subPage == 'friends' ? 'active' : '' ">
+                <a ng-href="{{routes.friends}}" >Friends</a>
+            </li>
+            <li ng-show="profileObj.isFriend() || isOwner" rg-active-route route="{{routes.photos}}" >
+                <a ng-href="{{routes.photos}}" >Photos</a>
+            </li>
+            <li ng-show="profileObj.isFriend() || isOwner" rg-active-route route="{{routes.media}}" contain="true">
+                <a ng-href="{{routes.media}}" >Music & Video</a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<!-- </a> -->
+<!--</div>-->
+
+
+<div style="clear: both"></div>
+<div class="m-p-box show-in-mobile">
+
+
+
+
+    <ul class="m-p-menu">
+        <!--<li ng-show="profileObj.isFriend() || isOwner" ng-class="subPage == 'post' ? 'active' : '' "><a-->
+        <li  ng-class="subPage == 'post' ? 'active' : '' ">
+            <a ng-href="{{routes.post}}" >
+                <span class="icon-my-feeds"><i class="img_sprite my-feeds-ico width-25px height-25px"></i></span>Post</a>
+        </li>
+        <li ng-class="subPage == 'about' ? 'active' : '' "><a ng-href="{{routes.about}}" ><span class="icon-info-pro"><i class="img_sprite sm-about-ico width-25px height-25px"></i></span>About</a></li>
+        <!--<li ng-show="profileObj.isFriend() || isOwner" ng-class="subPage == 'friends' ? 'active' : '' "><a-->
+        <li ng-class="subPage == 'friends' ? 'active' : '' "><a
+            ng-href="{{routes.friends}}" ><span class="icon-contact-b"><i class="img_sprite sm-friend-ico width-25px height-25px"></i></span>Friends</a></li>
+        <li ng-show="profileObj.isFriend() || isOwner" ng-class="subPage == 'photos' ? 'active' : '' "><a
+                                                       ng-href="{{routes.photos}}" ><span class="icon-image-cloud"><i class="img_sprite sm-photo-ico width-25px height-25px"></i></span>Photos</a></li>
+        <li ng-show="profileObj.isFriend() || isOwner" ng-class="subPage == 'media' ? 'active' : '' "><a
+                                                       ng-href="{{routes.media}}" >
+                <span class="icon-player-stock"><i class="img_sprite media-cloud-ico width-25px height-25px"></i></span>
+                Music & Video
+            </a>
+        </li>
+
+    </ul>
+</div>
+<div style="clear: both"></div>
+
+<div class="middle"  style="position:relative;z-index:0;" data-ng-include="subPageLink">
+</div>

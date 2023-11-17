@@ -1,0 +1,62 @@
+/*top*/
+.top-menu {
+
+    height: 52px;
+    float: right;
+}
+.top-menu ul.menu-list {
+    margin: 0 5px 0 0;
+    padding: 0;
+    float: right;
+}
+.top-menu  ul.menu-list  li.parent  {
+    display: inline-block;
+    list-style: outside none none;
+    height: 50px;
+    width: 50px;
+    position: relative;
+    border: 1px solid transparent;
+    font-weight: 300;
+    font-style: normal;
+}
+.top-menu ul.menu-list  li.parent > a{
+    color: #fff;
+    float: left;
+    font-size: 25px;
+    margin-left: 0;
+    text-align: center;
+    text-decoration: none;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+.top-menu ul.menu-list  li.active {
+    background-color: #f88841;
+    border-left: 1px solid #eb620a;
+    border-right: 1px solid #eb620a;
+}
+.top-menu ul.menu-list  li.parent:hover {
+    background-color: #f88841;
+    border-left: 1px solid #eb620a;
+    border-right: 1px solid #eb620a;
+}
+
+.tm-img {
+    margin: 10px 0;
+    height: 29px;
+    width: 29px;
+}
+.pro-header-image{
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -o-border-radius: 100px;
+    -ms-border-radius: 100px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    height: 30px;
+    margin-left: 4px;
+    margin-top: 6px;
+    overflow: hidden;
+    width: 30px;
+    cursor:pointer;
+}

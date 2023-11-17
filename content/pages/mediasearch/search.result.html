@@ -1,0 +1,264 @@
+<div  class="music-mid-bg  mid-width  pro-page-width">
+    <div class="middle">
+        <!-- <rg-media-slider></rg-media-slider> -->
+        <div class="music-container m-cloud-s">
+            <!--<div class="media-slider-wrapper"></div>-->
+            <div  class="media-nav">
+                <rg-tab-nav></rg-tab-nav>
+                <rg-media-search-directive></rg-media-search-directive>
+            </div>
+            <div ng-if="hideSearchTabs">
+                <div class="brknews">Search Result for<span class="src-kewrd" ng-cloak="true"> {{searchkey}}</span></div>
+                <div class="stkmkt-nav">
+                    <div class="stkmkt">
+                        <ul class="m-cloud">
+                            <li ng-class="{'active': allTabSearch}"><a href="/media/all/{{searchkey}}"><span>All</span></a></li>
+                            <li ng-class="{'active': songsTabSearch}"><a href="/media/songs/{{searchkey}}"><span>Songs</span></a></li>
+                            <li ng-class="{'active': albumsTabSearch}"><a href="/media/albums/{{searchkey}}"><span>Albums</span></a></li>
+                            <li ng-class="{'active': tagsTabSearch}"><a href="/media/tags/{{searchkey}}"><span>Tags</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+            <!--Grid view start-->
+            <div class="loader-s pad-20-0" ng-hide="searchedSongs().length() > 0 || searchedAlbums().length() > 0 || searchedTags.length > 0 || noresultfound"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+
+            <div  class="grid-view active" style="position: relative;">
+
+                <!--
+                if you want to see grid view  then  class list-view will replace by grid-view and
+                calss active and innactive will show and hide tab
+                and id
+                will indicate you which tab will be active and inactive
+                -->
+                <!-- <div class="album-header">
+                    <div>
+                        <div ng-show="showSearchTitle" class="album-title">Songs</div>
+                        <div class="clear"></div>
+                    </div>
+                </div> -->
+                
+                <div ng-if="allresultsection">
+
+                    <!-- songs in all tab -->
+
+                    <div class="smcat">
+                        <div class="smcathdr">
+                            <div class="catname ng-binding">Songs</div>
+                            <a class="smr" ng-if="searchedSongs().length() > 3" href="/media/songs/{{searchkey}}">See more</a>
+                        </div>
+                    </div>
+                    <p class="pad-7-0 t-a-c" ng-if="searchedSongs().length()==0">No Songs found!</p>
+
+                    <div  class="music-box" ng-repeat="song in searchedSongs().all()| limitTo:3" rg-ringbox="true" ring-backdrop-close="true" show-close-btn="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"
+                          ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(song.value)" title="{{song.value.getCaption()}}">
+                        <div class="music-thumb">
+                            <a>
+                                <img  ng-src="{{song.value.getThumbForMedia()}}" alt="{{song.value.getCaption()}}"/>
+                                <div class="m-icn audio"></div>
+                                <div class="duration" ng-cloak="true">{{song.value.getDuration(true)}}</div>
+                            </a>
+                        </div>
+                        <div class="music-right">
+                            <a rg-ringbox="true" ring-backdrop-close="true" ringbox-controller="RingBoxMediaController" show-close-btn="false" ringbox-type="remote"
+                               ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(song.value)" title="{{song.value.getCaption()}}" ng-cloak="true">
+                                {{song.value.getCaption()}}
+                            </a>
+                            <p ng-cloak="true">Album: {{song.value.getAlbumName()}}</p>
+                            <p class="views-music" ng-cloak="true">{{song.value.getViewCount()}}</p>
+                            <p ng-cloak="true">Duration: {{song.value.getDuration(true)}}</p>
+
+                        </div>
+                    </div>
+
+
+                   
+                    <!-- albums in all tab -->
+                    
+                    <div class="smcat">
+                        <div class="smcathdr">
+                            <div class="catname ng-binding">Albums</div>
+                            <a class="smr" ng-if="searchedAlbums().length() > 3" href="/media/albums/{{searchkey}}">See more</a>
+                        </div>
+                    </div>
+                    
+                    <p ng-if="searchedAlbums().length()==0" class="pad-7-0 t-a-c">No Albums found!</p>
+
+                    <a ng-href="{{album.value.link(null, true)}}" class="music-box" ng-repeat="album in searchedAlbums().all()| limitTo:3" title="{{album.value.getName()}}" ng-cloak="true">
+                        {{album.video.getCover()}}
+                        <div class="music-thumb">
+
+                            <div class="thumb" ng-show="album.value.isAudio()"  >
+                                <img  ng-src="{{album.value.getCover()}}" alt="{{album.value.getName()}}"/>
+                                <div class="m-icn audio"></div>
+                            </div>
+                            <!--if video-->
+                            <div class="thumb" ng-show="album.value.isVideo()">
+                                <img  ng-src="{{album.value.getCover()}}" alt="{{album.value.getName()}}"/>
+                                <!--<div class="play-ico"><span class="play-btn"></span></div>-->
+                                <div class="m-icn video"></div>
+                            </div>
+                        </div>
+                        <div class="music-right">
+                            <div class="max-height-35 oveflow-hidden"  ng-show="album.value.isAudio()" title="{{album.value.getName()}}"  ng-cloak="true">{{album.value.getName()}}</div>
+                            <div class="max-height-35 oveflow-hidden" ng-show="album.value.isVideo()" title="{{album.value.getName()}}"  ng-cloak="true">{{album.value.getName()}}</div>
+
+                            <!--if album-->
+                            <p><span class="img_sprite w-h-22px  icon-audio-album"></span><span class="rg-color">{{album.value.getContentCount()}}</span><span class="txt"> Songs</span></p>
+                        </div>   
+                    </a>
+
+
+                    
+                    <!-- tags in all tab -->
+                    
+                    <div class="smcat">
+                        <div class="smcathdr">
+                            <div class="catname ng-binding">Tags</div>
+                            <a class="smr" ng-if="searchedTagArr.length > 3" href="/media/tags/{{searchkey}}">See more</a>
+                        </div>
+                    </div>
+                    
+                    <p ng-if="searchedTagArr.length==0" class="pad-7-0 t-a-c">No Tags found!</p>
+
+                    <div class="music-box" ng-repeat="tag in searchedTagArr| limitTo:3"  ng-click="getTaggedMedia({htid: tag.htid})" title="{{tag.htn}}">
+                        <div class="music-thumb">
+                            <a href="/media/tag/{{tag.htid}}"><img src="images/tag-music.png" alt="audio-preview.jpg"/></a>
+                        </div>
+                        <div class="music-right">
+                            <a ng-cloak="true">
+                                {{tag.htn}}
+                            </a>
+                            <!-- <p>
+                                <span class="img_sprite w-h-22px  icon-audio-album"></span>
+                                <span class="rg-color">{{tag.mdc}}</span>
+                                <span class="txt" ng-if="tag.mdc > 1">Songs</span>
+                                <span class="txt" ng-if="tag.mdc <== 1">Song</span>
+                            </p> -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <div ng-if="searchsongsection">
+                    <!-- <div class="album-header">
+                        <div>
+                            <div class="album-title">Songs</div>
+                            <div class="clear"></div>
+                        </div>
+                    </div> -->
+                    <div  class="music-box" ng-repeat="song in searchedSongs().all()" rg-ringbox="true" ring-backdrop-close="true" show-close-btn="false" ringbox-controller="RingBoxMediaController" ringbox-type="remote"
+                          ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(song.value)" title="{{song.value.getCaption()}}">
+                        <div class="music-thumb">
+                            <a>
+                                <img  ng-src="{{song.value.getThumbForMedia()}}" alt="{{song.value.getCaption()}}"/>
+                                <div class="m-icn audio"></div>
+                                <div class="duration" ng-cloak="true">{{song.value.getDuration(true)}}</div>
+                            </a>
+                        </div>
+                        <div class="music-right">
+                            <a rg-ringbox="true" ring-backdrop-close="true" ringbox-controller="RingBoxMediaController" show-close-btn="false" ringbox-type="remote"
+                               ringbox-target="templates/partials/notification/media-popup.html" ringbox-data="getMediaData(song.value)" title="{{song.value.getCaption()}}" ng-cloak="true">
+                                {{song.value.getCaption()}}
+                            </a>
+                            <p ng-cloak="true">Album: {{song.value.getAlbumName()}}</p>
+                            <p class="views-music" ng-cloak="true">{{song.value.getViewCount()}}</p>
+                            <p ng-cloak="true">Duration: {{song.value.getDuration(true)}}</p>
+
+                        </div>
+                    </div>
+                    <div class="music-box no-border h-5"></div>
+                    <div class="music-box no-border  h-5"></div>
+                </div>
+                <a class="load-more" style="position: absolute;bottom: 5px;left: 46%;" rg-click="loadMoreSuggestedSongs()" ng-if="searchsongsection && searchedSongs().length() > 0 && !noresultfound && !loadMoreSongs">Load More</a>
+
+
+
+                <div ng-if="searchalbumsection" >
+                    <a ng-href="{{album.value.link(null, album.value.getALbumUtId())}}" class="music-box" ng-repeat="album in searchedAlbums().all()" title="{{album.value.getName()}}" ng-cloak="true">
+                        {{album.video.getCover()}}
+                        <div class="music-thumb">
+
+                            <div class="thumb" ng-show="album.value.isAudio()"  >
+                                <img  ng-src="{{album.value.getCover()}}" alt="{{album.value.getName()}}"/>
+                                <div class="m-icn audio"></div>
+                            </div>
+                            <!--if video-->
+                            <div class="thumb" ng-show="album.value.isVideo()">
+                                <img  ng-src="{{album.value.getCover()}}" alt="{{album.value.getName()}}"/>
+                                <!--<div class="play-ico"><span class="play-btn"></span></div>-->
+                                <div class="m-icn video"></div>
+                            </div>
+                        </div>
+                        <div class="music-right">
+                            <div class="max-height-35 oveflow-hidden"   ng-show="album.value.isAudio()" title="{{album.value.getName()}}"  ng-cloak="true">{{album.value.getName()}}</div>
+                            <div class="max-height-35 oveflow-hidden"  ng-show="album.value.isVideo()" title="{{album.value.getName()}}"  ng-cloak="true">{{album.value.getName()}}</div>
+
+                            <!--if album-->
+                            <p><span class="img_sprite w-h-22px  icon-audio-album"></span><span class="rg-color" ng-cloak="true">{{album.value.getContentCount()}}</span><span class="txt"> Songs</span></p>
+                        </div>
+
+                    </a>
+                    <div class="music-box no-border h-5"></div>
+                    <div class="music-box no-border  h-5"></div>
+                </div>
+                <a class="load-more" style="position: absolute;bottom: 5px;left: 46%;" rg-click="loadMoreSuggestedAlbums()" ng-if="searchalbumsection && searchedAlbums().length() > 0 && !noresultfound && !loadMoreAlbums">Load More</a>
+
+                <div ng-if="searchtagsection">
+                    <div class="music-box" ng-repeat="tag in searchedTagArr"  ng-click="getTaggedMedia({htid: tag.htid})" title="{{tag.htn}}">
+                        <div class="music-thumb">
+                            <a href="/#/media/tag/{{tag.htid}}"><img src="images/tag-music.png" alt="audio-preview.jpg"/></a>
+                        </div>
+                        <div class="music-right">
+                            <a ng-cloak="true">
+                                {{tag.htn}}
+                            </a>
+                            <!-- <p>
+                                <span class="img_sprite w-h-22px  icon-audio-album"></span>
+                                <span class="rg-color">{{tag.mdc}}</span>
+                                <span class="txt" ng-if="tag.mdc > 1">Songs</span>
+                                <span class="txt" ng-if="tag.mdc <== 1">Song</span>
+                            </p> -->
+                        </div>
+                    </div>
+                    <div class="music-box no-border h-5"></div>
+                    <div class="music-box no-border  h-5"></div>
+                </div>
+
+                <a class="load-more-disabled" style="position: absolute;bottom: 5px;left: 46%;" ng-show="loadMoreSongs || loadMoreAlbums"> 
+                    <span class="load-circle">
+                        <span class="ld-cir1 ld-cir"></span>
+                        <span class="ld-cir2 ld-cir"></span>
+                        <span class="ld-cir3 ld-cir"></span>
+                        <span class="ld-cir4 ld-cir"></span>
+                        <span class="ld-cir5 ld-cir"></span>
+                        <span class="ld-cir6 ld-cir"></span>
+                        <span class="ld-cir7 ld-cir"></span>
+                        <span class="ld-cir8 ld-cir"></span>
+                        <span class="ld-cir9 ld-cir"></span>
+                        <span class="ld-cir10 ld-cir"></span>
+                        <span class="ld-cir11 ld-cir"></span>
+                        <span class="ld-cir12 ld-cir"></span>
+                    </span>
+                    Loading...</a>
+
+
+                <div class="t-a-c" ng-show="searchedSongs().length() < 1 && searchsongsection && noresultfound">
+                    <img src="images/music-error.png">
+                </div>
+                <div class="t-a-c" ng-show="searchedAlbums().length() < 1 && searchalbumsection && noresultfound">
+                    <img src="images/music-error.png">
+                </div>
+                <div class="t-a-c" ng-show="searchedTagArr.length < 1 && searchtagsection && noresultfound">
+                    <img src="images/music-error.png">
+                </div>
+
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <!--Grid view end-->
+        </div>
+    </div>
+</div>

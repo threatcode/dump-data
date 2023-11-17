@@ -1,0 +1,13 @@
+<li>
+    <img class="float-left c-h-image" src="images/prof.png"/>
+    <div class="m-content float-left">
+        <div class="hover-cart-area">
+            <a class="c-h-u" href="javacript:void(0);" ng-cloak="true">{{ aMessage.user.getName() || aMessage.userId }} </a>
+            <user-card></user-card>
+        </div>
+        <p ng-cloak="true">{{ aMessage.text }}</p>
+        <!--<img src="images/thumb.png" alt=""/>-->
+        <span class="time"><i class="img_sprite icon-dt-ico w-h-13"></i ng-cloak="true"> {{ getMessageTime(aMessage) }}</span>
+    </div>
+    <div class="clear"></div>
+</li>

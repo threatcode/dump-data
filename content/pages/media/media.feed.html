@@ -1,0 +1,21 @@
+<div class="dashboard-bg  mid-width pro-page-width" ng-controller="FeedMediasController">
+
+    <div class="media-wrapper">
+        <div  class="media-nav">
+            <rg-tab-nav></rg-tab-nav>
+            <rg-media-search-directive></rg-media-search-directive>                
+        </div>
+        
+
+
+        <!-- <rg-media-slider></rg-media-slider> -->
+        <rg-media-trend-slider></rg-media-trend-slider>
+    </div>
+
+
+    <!-- <div ng-include src="'templates/home/feed.html'"  rg-feed-subscriber></div> -->
+    <div ng-include src="'templates/mediasearch/media-page-feed.html'"  rg-feed-subscriber></div>
+</div>
+
+
+

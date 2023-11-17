@@ -1,0 +1,104 @@
+<!--  Education Settings  info DIV start -->
+<div id="education">
+
+
+    <div class="butt border-gray-orange float-right btn-m-l-8 p-absolute right-minus-30"  ng-if="isOwner">
+        <a class="btn-p-5-8" rg-click="addNewEducation()" ng-show="!isaddNewEducation">
+            <i class="friend-ico about-add-icon"></i><span class="butt-text">Add</span></a>
+    </div>
+
+    <!--                <div class="ppinfo-action" ng-if="isOwner">
+                        <a rg-click="addNewEducation()" ng-show="!isaddNewEducation"><span class="img_sprite w-h-22px icon-add-border"></span> Add</a>
+    
+                    </div>-->
+
+    <div class="wes-view-wrapper ">
+        <form name="eduForm">
+            <div class="add" ng-show="isaddNewEducation || isEditEducation > -1">
+                <input type="hidden" ng-model="eduObjInfo.id"/>
+                <div class="ppinfo">
+                    <div class="left"> <span class="ppt-txt">Name of Institution: </span> <span class="ab-error" ng-show="eduForm.school.$error.required">*</span></div>
+                    <div class="right">
+                        <input type="text" name="school" ng-class="edusclerror?'error-class':''" ng-model="eduObjInfo.scl"  value="" required>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="ppinfo">
+                    <div class="left"> <span class="ppt-txt">Name of Degree:</span><span class="ab-error" ng-show="eduForm.degree.$error.required">*</span></div>
+                    <div class="right">
+                        <input type="text" name="degree" ng-class="edudgrerror?'error-class':''" ng-model="eduObjInfo.dgr"  value="" required>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="ppinfo">
+                    <div class="left"> <span class="ppt-txt">Field of Study:</span><span class="ab-error" ng-show="eduForm.concentration.$error.required">*</span></div>
+                    <div class="right">
+                        <input type="text" name="concentration" ng-class="educntnerror?'error-class':''" ng-model="eduObjInfo.cntn"  value="" required>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="ppinfo">
+                    <div class="left"> <span class="ppt-txt">From:</span></div>
+                    <div class="right">
+                        <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="eduObjInfo.fromTimeE"
+                               is-open="model.ecalendar" name="ecalendar"
+                               datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                               rg-click="open($event, 'ecalendar')"
+                               close-text="Close"/>
+                        <span class="input-group-btn"></span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="ppinfo">
+                    <div class="left"> <span class="ppt-txt">To:</span></div>
+                    <div class="right">
+                        <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="eduObjInfo.toTimeE"
+                               is-open="model.ecalendarTo" name="ecalendarTo"
+                               datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                               rg-click="open($event, 'ecalendarTo')"
+                               close-text="Close"/>
+                        <span class="input-group-btn"></span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="ppinfo">
+                    <div class="pp-btn">
+                        <input ng-show="isEditEducation == -1" class="pro-edit-btn" type="button"  value="{{consType.save}}" ng-disabled="processing"   rg-click="submitNewEducation()"/>
+                        <input ng-show="isEditEducation > -1" class="pro-edit-btn" type="button"  value="{{consType.save}}" ng-disabled="processing"   rg-click="updateEducation()"/>
+                        <input ng-show="isEditEducation == -1" class="pro-edit-btn" type="button"   value="{{consType.cancel}}"  rg-click="cancelAddEducation()"/>
+                        <input ng-show="isEditEducation > -1" class="pro-edit-btn" type="button"  value="{{consType.cancel}}"  rg-click="cancelUpdateEducation()"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="divider edit-dvdr" ng-show="isaddNewEducation && educationlist.length > 0">  </div>
+
+
+        <div class="no-edu" ng-show="educationlist.length == 0 && !isaddNewEducation">
+            <div class="no-edu-icon"></div>
+            <div class="no-edu-txt">No education added</div>
+        </div>
+
+        <div class="wes-view" ng-if="!isaddNewEducation" ng-repeat="edu in educationlist track by $index">
+            <div  ng-show="(isEditEducation !== $index)" >
+                <div ng-if="isOwner" rg-dropdown="dropdown()"  dd-html="ddActionHtml"
+                     dd-control="{index:$index,obj:edu}" dd-action="actionEduDropdown" class="about-action">
+                    <div class="ab-drop-arrow img_sprite w-h-18px icon-dc-arrow"></div>
+                </div>
+                <div class="left"><span class="img_sprite w-h-40px icon-education-ab"></span></div>
+                <div class="right"> 
+                    <div class="wes-title" ng-cloak="true">{{edu.scl}}</div>
+                    <div class="wes-sttle" ng-cloak="true">{{edu.dgr}}  <span ng-if="edu.ft != '1'" ng-cloak="true"> {{edu.ft| date:'mediumDate'}}</span><span ng-if="edu.tt != '1' && edu.ft != '1'" ng-cloak="true"> to {{edu.tt| date:'mediumDate'}}</span></div>
+                    <div class="wes-desc" ng-cloak="true">{{edu.cntn}}</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+
+    </div>
+
+</div>
+<!--  Education Settings  info DIV END -->

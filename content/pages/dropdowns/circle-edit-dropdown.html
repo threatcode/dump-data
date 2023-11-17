@@ -1,0 +1,22 @@
+<!--<div ng-show="showDropdown" class="action friend-settings-dropdown cir-friend">-->
+<!--<div class="action friend-settings-dropdown cir-friend">-->
+    <div class="z-in-110 action cir-edit-ac">
+        <i class="drop-sprite curve-a curve-t-ico p-ab top11"></i>
+    
+    <!--<a ng-if="ddControl.isAdmin || ddControl.isSuperAdmin"-->
+       <!--rg-ringbox="true" ringbox-controller="CirclePopupController" ringbox-type="remote" ringbox-data="ddControl.getCircleData"-->
+       <!--ringbox-target="templates/partials/circle-popup.html"><sapn class="icon-edit-p cir-font"></sapn>Edit Circle-->
+    <!--</a>-->
+    
+    <div class="ac-top-line" ng-if="ddControl.isSuperAdmin">
+        <a class="pad-8-14"  rg-click="ddAction()({ action: 'delete'})"> <i class="drop-sprite w-h-13 delete-ico feed-font"></i>Delete Circle</a>
+     </div>
+    
+      <div class="ac-top-line" ng-if="!ddControl.isSuperAdmin">
+        <a class="pad-8-14" rg-click="ddAction()({ action: 'leave'})"><i class="drop-sprite w-h-13 delete-ico feed-font"></i>Leave Group</a>
+     </div>
+
+<!--    <div class="ac-top-line drop-h" ng-if="ddControl.isSuperAdmin"  rg-click="ddAction()({ action: 'delete'})"><div class="drop-sprite w-h-13 delete-ico feed-font"></div><a class="mar-top-7">Delete Circle</a></div>
+    <div class="ac-top-line drop-h" ng-if="!ddControl.isSuperAdmin" rg-click="ddAction()({ action: 'leave'})"><div class="icon-close f-Block feed-font"></div><a class="mar-top-7">Leave Group</a></div>-->
+
+    </div>

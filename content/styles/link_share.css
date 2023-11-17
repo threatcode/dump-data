@@ -1,0 +1,110 @@
+.og-preview-container{
+    margin:5px 0 10px 0;
+}
+.og-image-container iframe{
+    width: 100%;
+}
+.og_area{padding:0;background-color: #fff; word-wrap: break-word;}
+.og-image-container{    text-align: center;
+                        position: relative;
+                        border-bottom: 1px solid #e4e4e4;
+                        width: 100%;
+                        /*                        padding-bottom: 5px;*/
+                        border-top: 1px solid #e4e4e4;
+}
+/*border-top: 1px solid #ebebeb;border-bottom: 1px solid #ebebeb;*/
+.og-image-container img{max-width:100%;max-height:300px;position:relative;z-index:0;}
+.og-img-ic{position:absolute;z-index:1;right:5px;top:5px;color:gray;}
+.og_p_n{position:absolute;z-index:1;right:10px;bottom:20px;}
+.og_p_n span{background-color:#eee;color:#f47727;font-size:25px;padding:5px;font-weight:600;margin-top:-10px;margin-left:2px;}
+
+.og-info-right-container{width: 96%;position:relative;padding:0 10px;}
+.text-i-c{position:absolute;z-index:1;right:5px;top:5px;color:gray;}
+.og-title{font-size: 14pt;font-weight: 400;padding: 0 15px 5px 0; text-align: left}
+.og-description{font-size: 13px;font-weight: 400;padding-bottom: 5px;color: #585858;text-align: justify;padding-right: 0;width:96%;max-height: 50px;overflow: hidden;line-height: 18px;/*text-overflow: ellipsis;white-space: nowrap;*/}
+.og-description a {
+    color: #464646;
+    font-size: 13px;
+}
+.og-url{font-size: 9pt;padding-bottom: 5px;}
+.location-search{position:relative;}
+.location-search input{
+    /*    background-image: url("../images/search-c.png");
+        background-position: 374px center;
+        background-repeat: no-repeat;*/
+    border: 1px solid #eee;
+    outline: 0 none;
+    padding: 5px;
+    width: 97%;
+}
+.location-search i.icon-search{
+    position: absolute;
+    right: 7px;
+    margin-top: 8px;
+    font-size: 12px;
+}
+.location-img img{margin-top:14px;}
+
+.play-area{border:2px solid #fff;border-radius: 50px;width:50px;height:50px;position:absolute;z-index: 2;left: 50%;top: 50%;margin-left: -25px;margin-top: -25px;cursor:pointer;}
+.play-area-mv-album{border:2px solid #fff;border-radius: 50px;width:50px;height:50px;position:absolute;z-index: 2;left: 50%;top: 35%;margin-left: -25px;margin-top: -25px;cursor:pointer;}
+.play-icon{margin: 16px 0 0 20px;border-style: transparent;width: 0;height: 0;border-top: 10px solid transparent;border-bottom: 10px solid transparent;border-left: 13px solid #fff;display: block;content:'';position: absolute;}
+.p-v-a{border:2px solid #adadad;}
+.p-v-a img{
+    top: 50%;
+    position: absolute;
+    margin-top: -10px;
+    left: 50%;
+    margin-left: -10px;
+}
+.p-video{border-left: 13px solid gray;}
+.play-ico {
+    -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+    background-color: rgba(215, 215, 215, 0.5);
+    border: 2px solid #ffffff;
+    border-radius: 100%;
+    cursor: pointer;
+    height: 40px;
+    left: 50%;
+    margin-left: -22px;
+    margin-top: -22px;
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    z-index: 1;
+}
+.play-btn {
+    border-bottom: 10px solid transparent;
+    border-left: 13px solid #fff;
+    border-top: 10px solid transparent;
+    content: "";
+    display: block;
+    height: 0;
+    margin: 10px 0 0 16px;
+    position: absolute;
+    width: 0;
+}
+.bg-pad-his{padding:5px 10px;background-color:#fff;color:#f47727;}
+
+.og_area{background-color:#fff;}
+.og-image-container{border-top:0;border-bottom:0;}
+.status-box .for_s_p{padding:0 9px;}
+.og_area{background-color:#fff;}
+.og-preview-container{border:1px solid #ddd;box-shadow: 0px 1px 1px #ddd;}
+.og-image-container{border-top:0;border-bottom:0;}
+.og-image-container img{
+    margin:0;padding:0;
+    border-bottom:1px solid #ddd;
+    width: 100%;
+}
+.og-title a{
+    color: #3D3D3D;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: helvetica, arial, sans-serif;
+    display: block;
+    padding-top: 5px;
+}
+.og-url a{font-size:11px;}
+.og-image-container p{line-height:0;}

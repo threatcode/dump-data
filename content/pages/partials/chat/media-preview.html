@@ -1,0 +1,20 @@
+<style>
+
+</style>
+<div>
+    <div ng-if="message.messageType == 8 || message.messageType == 9">
+        <rg-player id="chat-media-{{ message.key }}"
+                   is-video="{{::message.isVideo}}"
+                   auto-play="true"
+                   auto="false"
+                   width="640"
+                   height="480"
+                   duration="{{message.mediaInfo.height}}"
+                   url="{{::message.mediaUrl}}" >
+
+        </rg-player>
+    </div>
+    <div class="chat-pic large" ng-if="message.messageType == 7 || message.messageType == 10">
+        <img style="max-width:100%;max-height:90vh;" ng-style="{'width': message.mediaInfo.width + 'px', 'height': message.mediaInfo.height + 'px'}" ng-src="{{ message.mediaUrl }}" alt="" />
+    </div>
+</div>

@@ -1,0 +1,83 @@
+.box-shadow{
+    width:300px;
+    margin-top:5px;
+}
+.box-shadow:focus{
+    outline:0;
+}
+.calender-design{
+    border-bottom:2px solid #f47726;
+    background-color:#fff;
+    font-size:10px;
+    box-shadow: 0 0 2px #000;
+    position: absolute;
+    z-index: 100;
+}
+.title-background{
+    background-color:#f47726;
+    color:#fff;
+}
+gits.title-background th button{
+    background-color:transparent;
+    border:0;
+    margin:0;
+    padding:7px;
+    font-size:12px;
+    color:#fff;
+    cursor:pointer;
+}
+ul.dropdown-menu li{
+    list-style:none;
+}
+ul.dropdown-menu li span button{
+    background-color:transparent;
+    border:0;
+    margin:0;
+}
+ul.dropdown-menu li button{
+    background-color:transparent;
+    border:0;
+    margin:0;
+}
+ul.dropdown-menu li button i{
+    font-weight:bold;
+}
+.child-background td{}
+.child-background td[aria-disabled="true"] {
+    color: green;
+}
+.child-background td button {
+    padding: 7px;
+    font-size: 11px;
+    color: #3e3e3e;
+}
+.child-background td button:hover {
+    background-color: #f47726;
+    color: #fff;
+    cursor: pointer;
+}
+.child-background td button.active-day{
+    background-color:#f47726;
+    border:0;
+    margin:0;
+    border-radius:50%;
+    padding:5px;
+    font-size:10px;
+    color:#fff;
+}
+table.calender-design tr th{
+    text-align:center;
+    vertical-align: middle;
+}
+.glyphicon.glyphicon-chevron-right.icon-right-arrow{background-image: url("../images/cal-r.png");display: inline-block;background-repeat: no-repeat;margin-top: 2px;cursor:pointer;}
+.glyphicon.glyphicon-chevron-left.icon-left-arrow{background-image: url("../images/cal-l.png");display: inline-block;background-repeat: no-repeat;margin-top: 2px;cursor:pointer;}
+
+table.calender-design tr th small {
+    color: #737373;
+    line-height: 2;
+    font-size: 11px;
+    font-weight: 600;
+}
+ul.dropdown-menu li button input[type="button"]:disabled, input[type="submit"]:disabled, button:disabled, select:disabled {
+    opacity: 0.2;
+}

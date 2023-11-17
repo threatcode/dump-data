@@ -1,0 +1,25 @@
+<!--<div class="fnd-req-box " ng-show="showDropdown" >-->
+<div class="fnd-req-box width_fr"  >
+    <div class="notification-title">Friend Requests </div>
+    <div class="clear"></div>
+    <div class="friend-req-scroll-wrapper">
+        <ul class="friend-req" rg-scrollbar  bottom-reached="loadMoreRequests()">
+            <!-- <li ng-show="notFriendRequest()" class="ng-cloak" style="padding:10px 5px 5px 10px;">No friend request yet.</li> -->
+
+            <rg-userview ng-repeat="user in requests.all() track by user.value.getKey()" 
+                         user="user.value" 
+                         hide-chat="true"
+                        template-path="templates/partials/usercards/userview.directive.html" >
+            </rg-userview>
+            <li ng-show="!state.loading" ng-bind="statusText()" style="padding:10px 5px 5px 10px; text-align: center" ></li>
+            <!-- <li ng-show="!state.loading" ng-bind="statusText" style="padding:10px 5px 5px 10px; text-align: center" ></li> -->
+        </ul>
+
+    </div>
+    <div ng-show="state.loading" class="notification-loader-position ng-hide">
+        <div class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+    </div>
+    <div class="see-all">
+        <a ng-href="{{routes.requests}}" ng-show="requests.length() > 0">See All</a>
+    </div>
+</div>

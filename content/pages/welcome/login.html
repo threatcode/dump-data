@@ -1,0 +1,227 @@
+<!--Slider Start-->
+<div class="slider-repeat-bg">
+    <div class="slider-bg">
+        <h1>Welcome to ringID</h1>
+        <div class="col-3-12 col-mob-12-12">
+            <div class="pad-50">
+                <div class="sign-in-part">
+                    <img src="images/sign-img.png" class="responsive-pic" alt="sign-img.png"/>
+                    <div class="clear"></div>
+                    <div class="step1 margin-minus" >
+                        <form data-ng-show="signIn" data-ng-controller="LoginController as login" action="#" method="post">
+                            <div class="input-bg right-rad-0 float-left width-85">
+                                <button ng-click="login.toggleDropdown($event)"  id="prefix_code"  
+                                        type="button" data-toggle="dropdown" value="{{login.credentials.login_type}}">
+                                    <img style="vertical-align: sub" src="images/countries/{{login.countryFlag}}.png"/> {{login.credentials.login_type}}
+                                </button>
+                                <rg-dropdown show-dropdown="login.showDropdown" dd-control="login.ddControl"  
+                                             do-action="login.setPrefix"></rg-dropdown> 
+                            </div>
+                            <div class="input-bg float-left width-160 left-rad-0 height-35">
+                                <input data-ng-model="login.credentials.username" type="text" placeholder="Mobile Number ">
+                            </div>
+                            <div class="clear"></div>
+                            <div class="input-bg"><input data-ng-model="login.credentials.password" type="password" placeholder="password"></div>
+                            <div class="input-bg-auto-width float-left"><input data-ng-click="login.login($event)" type="submit" value="Sign in" name="login"></div>
+                            <div class="input-bg-auto-width float-right"><a data-ng-click="login.showSignup()" href="#">Sign Up</a></div>
+                        </form>
+                        <form data-ng-show="signUp" data-ng-controller="RegisterController as register" action="#" method="post">
+                            <div data-ng-show="register.signupStep1">
+                                <div class="input-bg"><input data-ng-model="register.email" name="email" type="email" placeholder="e-mail address"></div>
+                                <div class="input-bg-auto-width "><a data-ng-click="register.sendEmail()" href="#">Send Verification Code</a></div>
+                            </div>
+                            <div data-ng-show="register.signupStep2">
+                                <div class="input-bg"><input data-ng-model="register.verificationCode" name="code" type="text" placeholder=""></div>
+                                <div class="input-bg-auto-width "><a data-ng-click="register.verifyEmail()" href="#">Enter</a></div>
+                            </div>
+                            <div data-ng-show="register.signupStep3">
+                                <div clas="input-bg">
+                                    <h1>Congratulation</h1>
+                                    <p> Your id: <span id="uid">{{register.newUid}}</span></p>
+                                </div>
+                                <div class="input-bg"><input data-ng-model="register.credentials.name" name="name" type="text" placeholder="Your Name"></div>
+                                <div class="input-bg"><input data-ng-model="register.credentials.password" name="password" type="password" placeholder="Password"></div>
+                                <div class="input-bg"><input  name="repassword" type="password" placeholder="Repassword"></div>
+                                <div class="input-bg-auto-width float-left"><a data-ng-click="register.reset($event)" href="#">Reset</a></div>
+                                <div class="input-bg-auto-width float-right"><input data-ng-click="register.signUp($event)" type="submit" value="Submit" name="submit"></div>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div   ng-controller="SliderController">
+            <div class="col-9-12 hide-on-mob ">
+                <div class="row-responsive">
+                    <div class="col-12-12 col-mob-12-12 col-md-12-12">
+                        <div class="pad-80-50">
+                            <div class="col-6-12 col-md-12-12 col-mob-12-12">
+                                <rg-slider images="images" mystyle="mystyle" sliderval="slideno"  current-index="currentIndex"></rg-slider>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <br/><br/><br/><br/><br/>
+            <div class="col-12-12 col-mob-12-12 col-md-12-12  hide-on-mob">
+                <navigation images="images" mystyle="mystyle" sliderval="slideno"  current-index="currentIndex"></navigation>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!--Slider End-->
+
+<!--Slider Start
+
+           
+                                   <form action="#" method="post">
+                                       <div class="input-group-btn" style="background:none; border:none;width: 35%">
+                                                                               </div>
+                                       <div class="input-bg float-left left-rad-0">
+                                                                                        <button ng-click="login.toggleDropdown($event)"  id="prefix_code"  
+                                                                                                       type="button" data-toggle="dropdown" value="{{login.credentials.login_type}}">
+                                                                                               <img src="images/countries/{{login.countryFlag}}.png"/>{{login.credentials.login_type}}
+                                                                                       </button>
+                                                                                       <rg-dropdown list-data="login.countryList" list-data-html="login.countryListHtml" dd-control="login.ddControl"  
+                                                                                                                do-action="login.setPrefix"></rg-dropdown> 
+                                                                                       <input class="mobileno" data-ng-model="login.credentials.username" type="text" placeholder="Mobile Number "> 
+                                                                               </div>
+                                       <div class="clear"></div>
+                                       <div class="input-bg"><input class="password" data-ng-model="login.credentials.password" type="password" placeholder="password"></div>
+                                       <div class="input-bg-auto-width float-left"><input data-ng-click="login.login($event)" type="submit" value="Sign in" name="login"></div>
+                                       <div class="input-bg-auto-width float-right"><a href="javascript:void(0)" onclick="goto_step2();">Sign Up</a></div>
+                                   </form>
+                               
+Slider End-->
+<!--Mid Body Start-->
+<div class="mid-body">
+    <div class="switch-text">Why switch to ringID </div>
+    <div class="clear"></div>
+    <!--First Row-->
+    <div class="col-12-12 white-background">
+        <div class="col-6-12 col-mob-12-12  orange-background">
+            <div class="area-bg-right padding_50">
+                <div class="invisible">
+                    <h1> All in One </h1>
+                    <p> <span class="ring-color">ringID</span> makes you versatile! It gives you the hottest Messaging & Calling features in one single application with Fun Stickers, Secret Chat and Encrypted Mail 
+                        for Free. If you want to forget the hassle of maintaining numerous apps and use one dynamic application for all your social need then <span class="ring-color">ringID</span> is perfect for you.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6-12 col-mob-12-12  white-background">
+            <div class="area-bg-right padding_50">
+                <div class="free-call">
+                    <h1> Free Call </h1>
+                    <p> Who said good things do not  come free? Enjoy free calls to other <span class="ring-color">ringID</span> users. You will love the lucid voice clarity. No charges, no regretful surprises! </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--First row end-->
+    <!--second row Start-->
+    <div class="col-12-12 col-mob-12-12  orange-background">
+        <div class="col-6-12 col-mob-12-12  white-background">
+            <div class="area-bg-right padding_50">
+                <div class="chat">
+                    <h1>  Chat </h1>
+                    <p> Discover the hottest messaging feature in <span class="ring-color">ringID</span>. Say it louder with Amazing Stickers and Exciting Emojis in the Collection. Make your Mood right and Comfortable with 
+                        perfectly designed Chat Themes. Tired of Chatting?? Place a call directly from the chat screen and enjoy the warmth of the voice of your loved ones for that extra perk in your conversations.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6-12 col-mob-12-12  orange-background">
+            <div class="area-bg-right padding_50">
+                <div class="secret-chat">
+                    <h1>Secret Chat </h1>
+                    <p>Poof! <span class="ring-color">ringID</span> secret chats disappear within the set timeframe. Have fun with your friends by removing your message once your predefined time has elapsed. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Third row End-->
+    <!--Third row Start-->
+    <div class="col-12-12 col-mob-12-12  orange-background">
+        <div class="col-6-12 col-mob-12-12  orange-background">
+            <div class="area-bg-right padding_50">
+                <div class="fun-sticker">
+                    <h1> Ring Stickers </h1>
+                    <p> Express yourself more fluently than ever with <span class="ring-color">ringID's</span>'’s fun stickers. They are cool, unlimited and free! Make your messages come alive! 
+                        Speak out more than a thousand words with our highly expressive stickers.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6-12 col-mob-12-12  white-background">
+            <div class="area-bg-right padding_50">
+                <div class="ring-studio">
+                    <h1><span class="ring-color">ringID</span> Studio </h1>
+                    <p> <span class="ring-color">ringID's</span> Studio is an useful Apps which lets you personalize your messages with fun design elements. We have the best Emojis available, you will surely 
+                        be surprised at your own creative skills once you nurturer it through <span class="ring-color">ringID</span> Studio.
+                    </p> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Third row End-->
+
+    <!--Fourth row Start-->
+    <div class="col-12-12 col-mob-12-12  orange-background">
+        <div class="col-6-12 col-mob-12-12  white-background">
+            <div class="area-bg-right padding_50">
+                <div class="ring-newsfeed">
+                    <h1><span class="ring-color">ringID</span> Newsfeed </h1>
+                    <p>Get Connected always with <span class="ring-color">ringID's</span> Newsfeed that lets you read the feeds and post! Share all the updates and don't lose the circles you care for. Share status photos, send stickers greetings, Love and Comment on friend's posts. Find friends near and far in "People in your ring". <span class="ring-color">ringID</span> Studio.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6-12 col-mob-12-12  orange-background">
+            <div class="area-bg-right padding_50">
+                <div class="video-call">
+                    <h1> Video Call </h1>
+                    <p><span class="ring-color">ringID</span> Video calling is fabricated to be smooth as silk. Our video calls are aimed to be easy to operate, low on data and of uncompromising quality. No matter how far you are, our videos will keep you up and close with your loved ones.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Fourth row End-->
+    <!--Fifth row Start-->
+    <div class="col-12-12 col-mob-12-12  white-background">
+        <div class="col-6-12 col-mob-12-12  orange-background">
+            <div class="area-bg-right  padding_0_50_0_50">
+                <div class="ring-id-secured-mail">
+                    <h1><span class="ring-color">ringID</span> Secured Mail </h1>
+                    <p> Only <span class="ring-color">ringID</span> gives you encrypted mailing service. <span class="ring-color">ringID</span> cares for your security and has designed its mail service which operates within the <span class="ring-color">ringID</span> 
+                        servers that ensures maximum  security of your mail with no other entity to intercept your confidential data in the middle. Now you can ignore  old mail only applications. 
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6-12 col-mob-12-12  white-background">
+            <div class="area-bg-right  padding_0_50_0_50">
+                <div class="security">
+                    <h1> Security  </h1>                       
+                    <p> It is easier to grasp a shadow than Intercepting <span class="ring-color">ringID</span> communications. We have done our best on keeping things as solid as a rock. 
+                        <span class="ring-color">ringID</span> keeps you safe from the unwelcome stalkers and phishing scams. Our extra layers of security enable safe exchange of data, giving you peace of mind.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Fifth row End-->
+</div>
+<!--Mid body end-->

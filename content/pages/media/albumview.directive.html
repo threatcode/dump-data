@@ -1,0 +1,27 @@
+
+    <div class="full_album-box" >
+        <a ng-href="{{album.link(forProfile)}}" rg-click="noContent()">
+            <div class="music-thumb">
+                <div class="thumb">
+                    <img ng-src="{{album.getCover()}}" alt="{{album.getCover()}}">
+                    <div class="m-icn" ng-class="activeTab"></div>
+                </div>
+            </div>
+
+            <div class="album-info " ng-class="activeTab">
+                <div class="alb-ttl" title="{{album.getCaption()}}" ng-cloak="true">
+                    {{album.getName()}}
+                </div>
+                <p>
+                    <span class="txt" ng-cloak="true">{{album.getContentCount()}}</span>
+                    <span class="txt" ng-bind="album.getContentText()" ></span>
+                </p>
+            </div>
+        </a>
+        <div class="m-set" ng-if="album.canEdit()">
+            <div class="pos-rel" rg-dropdown dd-template="ddTemplate" dd-action="ddAction">
+                <span class="img_sprite icon-down-arrow  w-h-13"></span>
+            </div>
+
+        </div>
+    </div>

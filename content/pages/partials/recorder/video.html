@@ -1,0 +1,24 @@
+<rg-loader-view2 is-loading="showLoader"></rg-loader-view2>
+
+<div ng-bind="errorText"></div>
+<div ng-show="errorText == ''">
+
+    <div class="camera" ng-show="!showLoader">
+
+        <div ng-show="!capturedMedia">
+            <div id="{{ videoId }}" style="min-height: 300px" ></div>
+        </div>
+
+        <div class="output" ng-show="!!capturedMedia">
+            <div id="{{ previewVideoId }}" ></div>
+        </div>
+
+        <div class="clear"></div>
+        <div ng-show="showTimer">{{ timerText }}</div>
+
+    </div>
+    <div class="clear"></div>
+
+    <input class="save-button  border-radius"  type="button" name="" data-rg-click="doCapture()" value="{{ captureText }}">
+    <input class="save-button  border-radius"  type="button" name="" data-rg-click="togglePlayPause()" value="Play/Pause">
+</div>

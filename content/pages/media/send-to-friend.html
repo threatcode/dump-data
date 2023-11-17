@@ -1,0 +1,61 @@
+<div class="box-search border-radius-4px float-left width-420 mar-5 bg-eaeaec">
+    <span class="img_sprite width-25px height-25px search-icon-25 p-absolute search-icon-p"></span>
+    <input autocomplete="off" ng-change="searchContact()" ng-model="friendName" ng-model-options="{debounce:500}" type="text" name="q"  placeholder="Search..." />
+    <button ng-show="friendName.length > 0" class="right-close-ico" type="reset" rg-click="friendName=''">X</button>
+</div>
+<div class="clear"></div>
+<div class="all-friends-online" style="height:420px">
+    <div style="overflow-x:hidden;height:100%;outline:0;" rg-scrollbar="true" keyboard="true" thumb-height="70" bottom-reached="loadMoreFriends()">
+        <ul class="r-menu">
+
+            <li class="ng-cloak not-yet" ng-show="!friendName && state.noData && specialFriends.length() === 0">No friends yet.</li>
+
+
+            <li title="{{ friend.value.lastOnline() }}"
+                ng-repeat="friend in specialFriends.all() |
+                                mapFilter:{mapApi: 'getName', value: friendName} |
+                                mapOrderBy: ['isOnline', 'getLastOnlineTime']:{reverse:true, freeze: stopOrdering}
+                                as filteredList track by friend.value.getKey()"  rg-user-track="{{ friend.value.getUId() }}">
+
+
+                <a class="frien-sub"  ng-href="{{(friend.value.friendType() !== 3) ? friend.value.link() : '#/'}}">
+
+                    <img class="float-left pro-header-image m-t-6"
+                         onError="this.src='images/prof.png';"
+                         ng-src="{{ friend.value.avatar('thumb')}}"/></a>
+
+                <h3 open-chat-box="{{ friend.value.getUtId()}}" utId="{{ friend.value.getUtId()}}" share-data="{{ shareData }}"  box-close="boxClose()">{{::friend.value.getName('f')}}</h3>
+
+            </li>
+
+            <li title="{{ friend.value.lastOnline() }}"
+                ng-repeat="friend in friends.all() |
+                                mapFilter:{mapApi: 'getName', value: friendName} |
+                                mapOrderBy: ['isOnline', 'getLastOnlineTime']:{reverse:true, freeze: stopOrdering}
+                                as filteredList track by friend.value.getKey()"  rg-user-track="{{ friend.value.getUId() }}">
+
+
+                <a class="frien-sub"  ng-href="{{(friend.value.friendType() !== 3) ? friend.value.link() : '#/'}}">
+
+                    <img class="float-left pro-header-image m-t-6"
+                         onError="this.src='images/prof.png';"
+                         ng-src="{{ friend.value.avatar('thumb')}}"/></a>
+
+                <h3 open-chat-box="{{ friend.value.getUtId()}}" utId="{{ friend.value.getUtId()}}" share-data="{{ shareData }}" box-close="boxClose()">{{::friend.value.getName('f')}}</h3>
+
+                <friend-online-status user="friend.value" ></friend-online-status>
+            </li>
+
+            <li class="ng-cloak not-yet"
+                ng-show="friendName && !state.loading && filteredList.length == 0">Your search returned no result</li>
+
+            <div  class="ng-cloak notification-loader-position" style="bottom:0;"  ng-show="state.loading">
+                <div class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+            </div>
+
+        </ul>
+        &nbsp;
+    </div>
+    
+</div>
+

@@ -1,0 +1,107 @@
+<div class="pv-area">
+    <div class="pv-profile">
+        <div class="newsfeed-top" style="padding:10px;">
+            <div class="icon-logo-circle ps-logo float-left">
+                <a href="#"> <img class="responsive-all" ng-src="{{feed.user().avatar('thumb')}}" alt=""> </a>
+            </div>
+            <div class="status_title p-name">
+                <p><a ng-href="{{feed.user().link()}}" ng-cloak="true">{{feed.user().getName()}}</a><p>
+                <span class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i>{{feed.time()}}</span>
+            </div>
+        </div>
+        <div class="nf nfw">
+            <ul class="co_menu">
+                <li class="float-left w-140">
+                    <a class="icon-comments active showpointer"  ></a>
+                    <a class="showpointer" ng-class="{active:image.selfComment() > 0}" >Comments</a>
+                    <a class="showpointer" ng-class="{active:image.selfComment() > 0}" ng-cloak="true">{{image.getTotalComment()}}</a>
+                </li>
+                <li class="float-right" style="margin-right:15px;">
+                    <a ng-hide="image.getComments().length() == image.getTotalComment()" class="view_more" href='#' rg-click="loadMoreComments()" rg-stop-event>More comments</a>
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="feed_comment"  rg-scrollbar="scrollbar()" style="height:335px;">
+            <ul class="media-list">
+                <li class="item pv-item" ng-repeat="comm in getComments()"
+                    ng-init="comment = comm.value" ng-class="{half_opacity:comment.isPending()}">
+                    <div class="pro_img_bg_40 float-left" style="padding:10px 0 10px 10px;display:block">
+                        <img ng-src="{{::comment.user().avatar('thumb')}}" alt="{{comment.user().getName()}}">
+                    </div>
+                    <div class="status_title p-name" style="width:70%;padding:5px 0;">
+                        <p><a ng-href="{{::comment.user().link()}}" ng-cloak="true">{{::comment.user().getName()}}</a> </p>
+                        <p ng-hide="(commentEditorEnabled && commentKey == comment.getKey())" ng-cloak="true">{{comment.text()}}</p>
+                        <p class="" ng-show="(commentEditorEnabled && commentKey == comment.getKey())" class="mar-5-0">
+                             <rg-editor class="editor" editor-content="vm.commentedittext" new-line="false" edit-mode="comment.text" on-enter="updateComment" on-enter-arg="comment" show-emoji="true" placeholder="Enter updated comment" ></rg-editor>                        
+                            <span class="esc-to-cancel">Press Esc to <a rg-click="cancelEdit()">cancel</a></span>
+                         <!--   <rg-editor editor-content="vm.commentedittext" new-line="false" edit-mode="true" placeholder="Enter updated comment" ></rg-editor>
+                            <input class="pro-edit-btn" type="button" name="" value="update" rg-click="updateComment(comment)"/>
+                            <input class="pro-edit-btn" type="button" name="" value="Cancel" rg-click="cancelEdit()"/> -->
+                        </p>
+                       <ul class="comment_like_menu">
+                            <li><a rg-click="likeImageComment(comment)" rg-stop-event class="like_button" ng-class="{active:comment.like() > 0}" ><i  class="icon-like ico-f"></i></a></li>
+                            <li><a rg-click="likeImageComment(comment)" rg-stop-event ng-class="{active:comment.like() > 0}" >Like</a></li>
+                            <li><a  href="#" data-toggle="modal" data-target="#likeModal"  ng-cloak="true">{{comment.getTotalLikes()}}</a></li>
+                            <li class="mar-left-60"><span class="time" ng-cloak="true"><i class="img_sprite icon-dt-ico w-h-13"></i>{{comment.time()}}</span></li>
+                        </ul>
+                    </div>
+                    <div ng-show="comment.user().isCurrentUser()"
+                         class="float-right mar-top-5 mar-right-8">
+                        <div  rg-dropdown="true" dd-html="ddCommentHtml"
+                              dd-control="comment" dd-action="actionCommentDropdown"
+                              class="icon-ds-arrow ico-f arrow-b">
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </li>
+            </ul>
+        </div>
+        <div style="padding:5px 10px;height:20%;">
+            <ul  class="media-list">
+                <li class="mar-top-10" >
+                    <div  class="width-100-percent">
+                        <div class="pv-pro float-left">
+                            <img ng-src="{{currentUser.avatar('thumb')}}" alt="">
+                        </div>
+                        <div class="pv-texarea float-left" >
+                            <input ng-keyup="addComment($event)" ng-disabled="!canComment" ng-trim="" class="{{ commentErrorClass }}"
+                                   ng-model="vm.commenttext" type="text" name="" placeholder="Add a Comment" autocomplete="off" />
+                        </div>
+                        <div  class="float-right"><i class="img_sprite icon-emoticon pico-sty"></i></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="pro-pv">
+        <div class="like-bottom">
+            <div class="nf">
+                <ul class="co_menu">
+                    <li class="float-left">
+                        <a class="icon-like ico-f" ng-class="{active:image.like() > 0}" href="#"></a>
+                        <a href="#" ng-class="{active:image.like() > 0}" rg-click="likeImage()" rg-stop-event >Like </a>
+                        <a href="#" ng-class="{active:image.like() > 0}" >{{image.getLikes()}}</a>
+                    </li>
+                    <li class="float-left img-caption">{{::image.getCaption()}}</li>
+                </ul>
+            </div>
+        </div>
+        <a href="#" ng-show="prevImg != -1" rg-click="changeImage(prevImg)" rg-stop-event> <div class="pv-left-ico img_sprite icon-left-arrow"></div> </a>
+        <a href="#" ng-show="nextImg != -1" rg-click="changeImage(nextImg)" rg-stop-event > <div class="pv-right-ico img_sprite icon-right-arrow"></div> </a>
+        <a href="#" rg-click="close($event)" rg-stop-event> <div class="icon-close pv-close"></div> </a>
+        <div class="photo-wrap">
+            <img src="{{image.src()}}" class="responsive-pic">
+        </div>
+    </div>
+</div>
+
+
+

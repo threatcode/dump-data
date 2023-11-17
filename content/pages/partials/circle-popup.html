@@ -1,0 +1,126 @@
+<div  class="modal-container border-radius width-popup"> 
+    <div class="modal-header">
+        <h3 ng-cloak="true">{{models.popupTitle}}</h3>
+        <!--<span class="icon-close mdl-close"  rg-click="$close()"></span>-->
+    </div>
+    <div id="content" class="pad-0-35">
+        <form name="circleForm" action="#" method="post">
+
+
+            <div class="mar-15-0">
+                <div class="modal-search gray-bdr" ng-if="!editMode">
+                    <input ng-model="models.circleName" ng-class="{'m-box-empt': models.errCircleName }" 
+                           class="album-serach-icon-size"  type="text" placeholder="Type Name" value="" name="circleName">
+                    <p class="errmsg" ng-show="models.errCircleName" ng-bind="models.errCircleName"></p>
+                </div>
+                <p class="errmsg" ng-show="models.errTagName" ng-bind="models.errTagName"></p>
+
+                <div class="modal-search gray-bdr" ng-if="editMode">
+                    <input class="album-serach-icon-size"  type="text" value="{{ ::circle.getName() }}" >
+                </div>
+                <div class="clear"></div>
+
+                <!--                <div class="modal-search">
+                                    <div class="float-left width-100-mobile" ng-if="!editMode">
+                                        <input ng-model="models.circleName" ng-class="{'m-box-empt': models.errCircleName }" 
+                                               class="radius album-serach-icon-size"  type="text" placeholder="Type Name" value="" name="circleName"> <br/>
+                                        <p class="errmsg" ng-show="models.errCircleName" ng-bind="models.errCircleName"></p>
+                                    </div>
+                                    <div class="float-left width-100-mobile" ng-if="editMode">
+                                        <p class="radius album-serach-icon-size" >{{ ::circle.getName() }}</p>
+                                    </div>
+                                    <div class="float-right modal-search-bg  width-100-mobile">
+                                        <div class="float-left icon-search modal-serach-icon-size hide-in-mobile">
+                
+                                        </div>
+                                        <div class="float-left  width-100-mobile">
+                                            <div  class="modal-friend-search">
+                                                <input ng-model="friendName" ng-model-options="{debounce:500}"  name="q" type="text"  placeholder="Search..." />
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>-->
+            </div>
+
+
+
+
+            <div class="mar-15-0">
+                <div class="create-new-group-wrapper">
+                    <div class="modal-list-create-circle-box " rg-scrollbar="scrollbar()" ng-class="{'m-box-empt': models.errAdminList}">
+                        <ul class="modal-friend-list">
+                            <li class="popup-type">Admins:</li>
+                            <li ng-repeat="admin in adminList.all()">
+                                <a href="#" target="_blank" ng-cloak="true">{{admin.value.getName()}}</a>
+                                <a ng-show="isCurrentUserSuperAdmin || circleAddMode" rg-click="removeAdmin(admin.value)" class="icon-close" href="#"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="errmsg" ng-show="models.errAdminList">Admin List Empty</p>
+            </div>
+
+
+            <div class="mar-15-0">
+                <div class="create-new-group-wrapper">
+                    <div class="modal-list-create-circle-box" rg-scrollbar="scrollbar()" ng-class="{'m-box-empt': models.errMemberList}">
+                        <ul class="modal-friend-list">
+                            <li class="popup-type">Members:</li>
+                            <li ng-repeat="member in memberList.all()">
+                                <a  ng-href="{{member.value.link()}}" target="_blank" ng-cloak="true">{{member.value.getName()}}</a>
+                                <a rg-click="removeMember(member.value)" class="icon-close" href="#"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="errmsg" ng-show="models.errMemberList">Member List Empty</p>
+            </div>
+            
+            <div class="modal-search" style="margin-top: 10px; text-align: center">
+                <div class="modal-friend-search gray-bdr">
+                    <input style="width:100%;box-sizing: border-box;padding: 10px;" ng-model="friendName" ng-model-options="{debounce:500}"  name="q" type="text" placeholder=" Search..."/>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="mar-15-0">
+                <div class="modal-friend-box-wrapper">
+                    <div class="modal-friend-box" rg-scrollbar="scrollbar()" bottom-reached="loadMoreFriends()">
+                        <div class="modal-friends">
+                            <div ng-repeat="friend in friends.all()| mapFilter:{mapApi: 'getName', value: friendName, compare: 'regex'} | mapListFilter:memberList | mapListFilter:adminList" class="modal-pro-pic-full float-left">
+                                <div class="cirle-toolbar">
+                                    <a class="tool-btn" rg-click="addToCircle(friend.value)" href="#">Member</a>
+                                    <a ng-show="isCurrentUserSuperAdmin || circleAddMode" class="tool-btn1" rg-click="addToAdmin(friend.value)" href="#">Admin</a>
+                                </div>
+                                <div class="friend-pic">
+                                    <div class="icon-logo-circle pid-logo"><a href="{{friend.value.link()}}#">
+                                            <img  src="{{ friend.value.avatar('thumb')}}" alt="{{friend.value.getName()}}"/></a></div>
+                                </div>
+                                <div class="clear"></div>
+                                <a class="modal-username"
+                                   href="{{friend.value.link()}}" ng-cloak="true">{{friend.value.getName()}}</a>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="mar-15-0">
+                <div class="modal-footer">
+                    <input  ng-show="editMode" rg-click="updateCircle()" class="save-button float-left border-radius" type="submit" name="" value="Update">
+                    <input  ng-hide="editMode" rg-click="createCircle()" class="save-button float-left border-radius" type="submit" name="" value="Create">
+                    <input rg-click="close()" class="cancel-button float-right border-radius" type="submit" name="" value="Cancel">
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>

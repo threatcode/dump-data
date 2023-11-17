@@ -1,0 +1,59 @@
+
+<div class="circle-list-rep" style="width:624px;">
+    <div class="modal-header">
+        <h3 class="float-left dis-inline-blok ng-binding">Add to album</h3>
+
+
+        <div class="box-search border-radius-4px float-right width-192 mar-5 btn-m-r-8">
+            <span class="img_sprite width-25px height-25px search-icon-25 p-absolute search-icon-p"></span>
+            <input type="text" placeholder="Search album" focus-me="focusFilter" ng-model="filterText" class="ng-pristine ng-untouched ng-valid"> 
+        </div>
+
+
+        <div class="clear"></div>
+    </div>
+    <!--    <div class="alb-search">
+            <input type="text" placeholder="Search album" focus-me="focusFilter" ng-model="filterText" class="ng-pristine ng-untouched ng-valid"> 
+        </div>-->
+
+    <div class="cir-select-mid" rg-scrollbar="scrollbar()" style="height: 400px">
+        <ul class="cr-list">
+            <!--active class active-lb-->
+            <li ng-class="{'active-lb': existsInAlbum(album.value.getId()) }" rg-click="selectAlbum({action: 'select', albumMap: album.value})" 
+                ng-repeat="album in albums | mapFilter:{mapApi: 'getName', value: filterText}">
+                <a ng-bind="album.value.getName()"></a></li>
+        </ul>
+    </div>
+
+
+    <div class="cir-head cir-bottom">
+
+
+        <div  class="cir-bottom-text btn-p-5-8" style="margin:0;">
+            <!--            <a class=" f-right cr-new-al" rg-click="createAlbumPopup()"  
+                         title="Create New Album" ><span class="icon-plus-sg mar-right-5"></span>Create New Album </a>-->
+            <!--            <div class="crt-new-alb" rg-click="createAlbumPopup()"  
+                             title="Create New Album" >
+                            <span class="img_sprite w-h-18px add-new-gr"></span>
+                            <h2></h2>
+                        </div>-->
+            <div class="butt bg-orange-white-i float-left">
+                <a class="btn-p-6-8" rg-click="addToAlbum()"><span class="butt-text">Done</span></a>
+            </div>
+            <div class="butt bg-orange-white-i float-right">
+                <a class="btn-p-5-8" rg-click="createAlbumPopup()"  title="Create New Album" ><i class="img_sprite w-h-18px add-new-gr"></i><span class="butt-text">Create Album</span></a>
+            </div>
+
+            <div class="clear"></div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,73 @@
+<div class="news-popup-warp">
+    <div class="news-popup-content">
+
+        <h1 ng-cloak="true">{{feed.getNewsPortalTitle()}}</h1>
+
+        <div class="news-popup-sld" ng-if="feed.getImages().length">
+
+            <img ng-src="{{feed.getImages()[0].value.src()}}" width="{{imageSize.width}}" height="{{imageSize.height}}" alt="">
+            <div class="more_news_photo" ng-if="feed.getImages().length>1"
+                rg-ringbox="true" 
+                ringbox-controller="RingBoxImageController" 
+                ringbox-type="remote" 
+                ringbox-target="templates/newsportal/image-popup-portal.html" 
+                ringbox-data="getImageData(feed.getImages()[0].value, feed)"
+                ng-cloak="true">+{{imageShowMoreLength}}
+             </div>
+            
+
+            <!-- <div feed-image="main" popup-template="true"></div> -->
+
+            <div class="clear"></div>
+        </div>
+
+        <!-- {{feed.getAudios().all()[0].value.media.poster}} -->
+
+
+
+        <div class="news-popup-sld" ng-if="audio">
+            <div class="click_area" rg-ringbox="true" ring-backdrop-close="false" show-close-btn="false" ringbox-controller="RingBoxMediaController"i ringbox-animation="true"
+                 ringbox-type="remote" ringbox-target="templates/business/business-media-popup.html" ringbox-data="getMediaData(audio, feed)">
+                <div class="left-thumb float-left" style="background-image:url('{{audio.media.poster}}'); background-repeat: no-repeat;background-size: cover;height: 300px;width: 100%;">
+                    <div class="m-icn audio play"></div>
+                </div>
+                <div class="clear"></div>
+               <!--  <h3 title="{{media.value.getCaption()}}" ng-bind="media.value.getCaption()"></h3>
+                <p><span ng-bind="media.value.getArtistName()"></span></p>
+                <p><span ng-bind="media.value.getAlbumName()"></span></p>
+                <p><span ng-bind="media.value.getDuration(true)"></span></p> -->
+            </div>
+        </div>
+
+        <div class="news-popup-sld" ng-if="media">
+            <div class="click_area" rg-ringbox="true" ring-backdrop-close="false" show-close-btn="false" ringbox-controller="RingBoxMediaController"i ringbox-animation="true"
+                 ringbox-type="remote" ringbox-target="templates/business/business-media-popup.html" ringbox-data="getMediaData(media, feed)">
+                <div class="left-thumb float-left" style="background-image:url('{{media.media.poster}}'); background-repeat: no-repeat;background-size: cover;height: 300px;width: 100%;">
+                    <div class="m-icn audio play"></div>
+                </div>
+                <div class="clear"></div>
+               <!--  <h3 title="{{media.value.getCaption()}}" ng-bind="media.value.getCaption()"></h3>
+                <p><span ng-bind="media.value.getArtistName()"></span></p>
+                <p><span ng-bind="media.value.getAlbumName()"></span></p>
+                <p><span ng-bind="media.value.getDuration(true)"></span></p> -->
+            </div>
+        </div>
+
+
+        <div ng-if="feed.hasNewsPortalFeed()">
+            <p ng-cloak="true">{{feed.getNewsPortalDescription()}}</p>
+
+            <a class="news_link" ng-if="feed.hasExternalUrl()" ng-href="{{feed.getNewsPortalUrl()}}" target="_blank" ng-cloak="true">{{feed.getNewsPortalUrl()}}</a>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+

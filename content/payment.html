@@ -1,0 +1,48 @@
+<html>
+<head></head>
+<body>
+<form id="payment_gw" name="payment_gw" method="POST" action="https://securepay.sslcommerz.com/gwprocess/v3/process.php">
+	<input type="text" name="tran_id" value="Transaction ID" /> </br>
+	<input type="text" name="total_amount" value="Amount" /> </br>
+        
+        <select name="currency">
+           <option value="BDT">BDT</option>
+           <option value="USD">USD</option>
+        </select></br>
+	<input type="hidden" name="success_url" value="https://www.ringid.com/status" />
+        <input type="hidden" name="fail_url" value="https://www.ringid.com/status" />
+	<input type="hidden" name="cancel_url" value="https://www.ringid.com/status" />
+
+	<input type="hidden" name="store_id" value="ipvision001live" />
+
+	
+	<input type="hidden" name="version" value="3.00" />	
+
+	<!-- Customer Information !-->
+	<input type="text" name="cus_name" value="Client name"></br>
+	<input type="text" name="cus_email" value="Client email address"></br>
+	<input type="hidden" name="cus_add1" value="Address Line One">
+	<input type="hidden" name="cus_add2" value="Address Line Two">
+	<input type="hidden" name="cus_city" value="City Name">
+	<input type="hidden" name="cus_state" value="State Name">
+	<input type="hidden" name="cus_postcode" value="Post Code">
+	<input type="hidden" name="cus_country" value="Country">
+	<input type="text" name="cus_phone" value="Client phone number"></br>
+	<input type="hidden" name="cus_fax" value="01711111111">
+
+	<!-- Shipping Information !-->
+	<input type="hidden" name="ship_name" value="ABC XYZ">
+	<input type="hidden" name="ship_add1" value="Address Line One">	
+	<input type="hidden" name="ship_add2" value="Address Line Two">
+	<input type="hidden" name="ship_city" value="City Name">
+	<input type="hidden" name="ship_state" value="State Name">
+	<input type="hidden" name="ship_postcode" value="Post Code">
+	<input type="hidden" name="ship_country" value="Country">
+
+
+	<!-- SUBMIT REQUEST  !-->
+	<input type="submit" name="submit" value="Pay Now" />
+</form>				  
+		
+</body>
+</html>

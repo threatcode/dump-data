@@ -1,0 +1,84 @@
+<!-- <div class="dashboard-bg  mid-width pro-page-width" ng-controller="FeedNewsportalController">
+    
+    <div ng-include src="'pages/home/feed.html'"  rg-feed-subscriber>
+    </div>
+</div> -->
+ <div  class="dashboard-bg  mid-width pro-page-width">
+
+    <div class="middle pad-top15"> 
+        <div class="profile news-pro-wrap">
+            <div class="news_banner-wrapper">
+                <div class="news_banner_wrap">
+                    <div class="news_banner_con">
+                        <ul>
+                            <li>
+                                <a href="#"><img src="../../../images/test/1.png"></a>
+                                <div class="banner-flow-w">299k follower</div>
+                                <div class="banner-flow">+ Follow</div>
+                            </li>
+                            <li>
+                                <a href="#"><img src="../../../images/test/2.png"></a>
+                                <div class="banner-flow-w">299k follower</div>
+                                <div class="banner-flow">+ Follow</div>
+                            </li>
+                            <li>
+                                <a href="#"><img src="../../../images/test/3.png"></a>
+                                <div class="banner-flow-w">299k follower</div>
+                                <div class="banner-flow">+ Follow</div>
+                            </li>
+                            <li><a href="#"><img src="../../../images/test/4.png"></a>
+                                <div class="banner-flow-w">299k follower</div>
+                                <div class="banner-flow">+ Follow</div>
+                            </li>
+                            <li><a href="#"><img src="../../../images/test/2.png"></a>
+                                <div class="banner-flow-w">299k follower</div>
+                                <div class="banner-flow">+ Follow</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="icon-left-arrow sld-control news-sld-left" ng-click="left()"></div>
+                <div class="icon-right-arrow sld-control  news-sld-right" ng-click="right()"></div>
+            </div>
+
+            <div  class="media-nav">
+
+                <ul>
+                    <li><a href="">News</a></li>
+                    <li><a href="">Discover</a></li>
+                    <li><a href="">Following</a></li>
+                    <li><a href="">Saved</a></li>
+                </ul> 
+
+                <div style="position:relative; width: 300px; float: right; ">
+                    <div class="media-search">
+                        <div class="float-left  icon-search-d fr-serach-icon-size"></div>
+                        <div class="float-left">
+                            <form class="friend-search w-236 ng-pristine ng-valid " action="" method="get">
+                                <input  ng-focus="fetchTrendingKeyword()" 
+                                        ng-blur="hideDropdown()" 
+                                        type="text" name="search" 
+                                        ng-change="doSearch()" 
+                                        ng-model="searchParam" 
+                                        ng-model-options="{ debounce: 500 }" 
+                                        value="" 
+                                        autocomplete="off" 
+                                        placeholder="Search.."/>
+                            </form>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="dashboard-bg  mid-width pro-page-width" ng-controller="FeedNewsportalController">
+    
+                <div ng-include src="'pages/home/feed.html'"  rg-feed-subscriber>
+                </div>
+            </div>
+        </div>
+
+</div>

@@ -1,0 +1,19 @@
+<div class="c-h-left float-left">
+    <div class="c-h-seacrh">
+        <form method="get" action="" class="ng-pristine ng-valid">
+            <i class="icon-search search-c-h"></i><input type="text" class="right-searchbar" ng-model="historySearch.key" placeholder="Search...">
+        </form>
+        <div class="clear"></div>
+    </div>
+
+    <div class="c-h-l-height" style="height:730px;" >
+        <ul class="c-h-result" rg-scrollbar="true">
+
+            <div data-ng-repeat="singleBox in boxes.all() track by singleBox.key "
+                 ng-class="singleBox.value.unreadCount() > 0 ? 'unseen' : 'seen'" >
+                <chat-left-single-box ng-show="singleBox.value.shouldVisible()" ng-click="selectLeftBox(singleBox.value)" singleBox="singleBox.value"></chat-left-single-box>
+            </div>
+
+        </ul>
+    </div>
+</div>

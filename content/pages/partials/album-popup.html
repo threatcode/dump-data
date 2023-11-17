@@ -1,0 +1,81 @@
+<div  class="modal-container border-radius"> 
+    <div class="modal-header">
+        <h3 ng-cloak="true">Total Albums : {{albumList.length}}</h3>
+         <!--<span class="icon-close mdl-close"  rg-click="$close()"></span>-->
+    </div>
+    <div id="content" class="pad-0-35">
+        <!--<form action="#" method="post">-->
+        <div class="modal-search pad-20-0">
+            <input ng-model="models.circleName" class="float-left radius album-serach-icon-size"  type="text" placeholder="Type Name" value="" name="">
+            <div class="float-right modal-search-bg">
+                <div class="float-left icon-search modal-serach-icon-size">
+
+                </div>
+                <div class="float-left">
+                    <div  class="modal-friend-search">
+                        <input ng-model="friendName" name="q" type="text"  placeholder="Search..." />
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <!--<input class="float-right" type="text" placeholder="Search Friend" value="" name="">-->
+            <div class="clear"></div>
+        </div>
+        <div class="modal-input">
+            <div class="modal-friend-box-wrapper">
+                <div class="modal-list-box" rg-scrollbar="scrollbar()">
+                    <div class="m-left">
+                        <p>Admins:</p>
+                    </div>
+                    <div class="m-right " >
+                        <ul class="modal-friend-list">
+                            <li ng-repeat="admin in getAdminList()">
+                                <a href="#" target="_blank" ng-cloak="true">{{admin.value.getName()}}</a>
+                                <a ng-click="removeAdmin($event, admin.value)" class="icon-close" href="#"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-friend-box-wrapper">
+                <div class="modal-list-box" rg-scrollbar="scrollbar()">
+                    <div class="m-left">
+                        <p>Members:</p>
+                    </div>
+                    <div class="m-right " >
+                        <ul class="modal-friend-list">
+                            <li ng-repeat="member in getMemberList()">
+                                <a ng-click="addToAdmin($event, member.value)" href="{{member.value.link()}}" target="_blank" ng-cloak="true">{{member.value.getName()}}</a>
+                                <a ng-click="removeMember($event, member.value)" class="icon-close" href="#"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-friend-box-wrapper">
+                <div class="modal-friend-box " rg-scrollbar="scrollbar()">
+                    <div class="modal-friends">
+                        <div ng-repeat="friend in getFriends() | mapFilter:{mapApi: 'getName', value: friendName, compare: 'regex'} " class="modal-pro-pic-full float-left">
+                            <div ng-click="addToCircle($event, friend.value)" class="friend-pic">
+                                <div class="icon-logo-circle pid-logo"><a href="{{friend.value.link()}}#">
+                                        <img  src="{{ friend.value.avatar('thumb')}}" alt="{{friend.value.getName()}}"/></a></div>
+                            </div>
+                            <div class="clear"></div>
+                            <a ng-click="addToCircle($event, friend.value)" class="modal-username"
+                               href="{{friend.value.link()}}" ng-cloak="true">{{friend.value.getName()}}</a>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input ng-click="createCircle($event)" class="save-button float-left border-radius" type="submit" name="" value="Create">
+            <input ng-click="$close()" class="cancel-button float-right border-radius" type="submit" name="" value="Cancel">
+            <div class="clear"></div>
+        </div>
+        <!--</form>-->
+    </div>
+</div>

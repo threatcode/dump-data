@@ -1,0 +1,168 @@
+/*utf8 list*/
+
+.emo_list{background-image:url("../images/emo-list.jpg");width:20px;height:22px;display:inline-block;vertical-align: middle;}
+.U_1f601{background-position:0 0;}
+.U_1f602{background-position:0 -22px;}
+.U_1f603{background-position:0 -44px;}
+
+.U_1f604{background-position:0 -66px;}
+.U_1f605{background-position:0 -88px;}
+.U_1f606{background-position:0 -110px;}
+.U_1f609{background-position:0 -132px;}
+.U_1f60a{background-position:0 -154px;}
+.U_1f60b{background-position:0 -176px;}
+.U_1f60c{background-position:0 -198px;}
+.U_1f60d{background-position:0 -220px;}
+.U_1f60f{background-position:0 -442px;}
+
+
+.U_1f612{background-position:0 -264px;}
+.U_1f613{background-position:0 -286px;}
+.U_1f614{background-position:0 -308px;}
+.U_1f616{background-position:0 -330px;}
+.U_1f618{background-position:0 -352px;}
+.U_1f61a{background-position:0 -374px;}
+.U_1f61c{background-position:0 -396px;}
+.U_1f61d{background-position:0 -418px;}
+.U_1f61e{background-position:0 -440px;}
+
+
+.U_1f620{background-position:0 -462px;}
+.U_1f621{background-position:0 -484px;}
+.U_1f622{background-position:0 -506px;}
+.U_1f623{background-position:0 -528px;}
+.U_1f624{background-position:0 -550px;}
+.U_1f625{background-position:0 -572px;}
+.U_1f628{background-position:0 -594px;}
+.U_1f629{background-position:0 -616px;}
+.U_1f62a{background-position:0 -638px;}
+.U_1f62b{background-position:0 -660px;}
+.U_1f62d{background-position:0 -682px;}
+
+
+
+.U_1f630{background-position:0 -704px;}
+.U_1f631{background-position:0 -726px;}
+.U_1f632{background-position:0 -748px;}
+.U_1f633{background-position:0 -770px;}
+.U_1f635{background-position:0 -792px;}
+.U_1f637{background-position:0 -814px;}
+.U_1f638{background-position:0 -836px;}
+.U_1f639{background-position:0 -858px;}
+.U_1f63a{background-position:0 -880px;}
+.U_1f63b{background-position:0 -902px;}
+.U_1f63c{background-position:0 -924px;}
+.U_1f63d{background-position:0 -946px;}
+.U_1f63e{background-position:0 -968px;}
+.U_1f63f{background-position:0 -990px;}
+
+
+.U_1f640{background-position:0 -1012px;}
+.U_1f645{background-position:0 -1034px;}
+.U_1f646{background-position:0 -1056px;}
+.U_1f647{background-position:0 -1078px;}
+.U_1f648{background-position:0 -1100px;}
+.U_1f649{background-position:0 -1122px;}
+.U_1f64a{background-position:0 -1144px;}
+.U_1f64b{background-position:0 -1166px;}
+.U_1f64c{background-position:0 -1188px;}
+.U_1f64d{background-position:0 -1210px;}
+.U_1f64e{background-position:0 -1232px;}
+.U_1f64f{background-position:0 -1254px;}
+
+
+.U_1f600{background-position:0 -1276px;}
+.U_1f607{background-position:0 -1298px;}
+.U_1f608{background-position:0 -1320px;}
+.U_1f60e{background-position:0 -1342px;}
+.U_1f610{background-position:0 -1364px;}
+.U_1f611{background-position:0 -1386px;}
+.U_1f615{background-position:0 -1408px;}
+.U_1f617{background-position:0 -1430px;}
+.U_1f619{background-position:0 -1452px;}
+.U_1f61b{background-position:0 -1474px;}
+.U_1f61f{background-position:0 -1496px;}
+.U_1f626{background-position:0 -1518px;}
+.U_1f627{background-position:0 -1540px;}
+.U_1f62c{background-position:0 -1562px;}
+.U_1f62e{background-position:0 -1584px;}
+.U_1f62f{background-position:0 -1606px;}
+.U_1f634{background-position:0 -1628px;}
+.U_1f636{background-position:0 -1650px;}
+
+
+
+
+
+
+/*ring emoticon*/
+
+/*html format is 
+<div class="em_list awesome"></div>*/
+
+
+
+.em_list{background-image:url("../images/ring_emo.png");width:16px;height:16px;list-style:none;cursor:pointer;display:inline-block;margin: 0 2px;}
+.awesome{background-position:0 0;}
+.loved{background-position:0 -16px;}
+.excited{background-position:0 -32px;}
+.happy{background-position:0 -48px;}
+.alone{background-position:0 -64px;}
+.cool{background-position:0 -80px;}
+.angry{background-position:0 -96px;}
+.fresh{background-position:0 -112px;}
+.sick{background-position:0 -128px;}
+.confused{background-position:0 -144px;}
+.thoughtful{background-position:0 -160px;}
+.fantastic{background-position:0 -176px;}
+.upset{background-position:0 -192px;}
+.blah{background-position:0 -208px;}
+.amused{background-position:0 -224px;}
+.hot{background-position:0 -240px;}
+.motivated{background-position:0 -256px;}
+.satisfied{background-position:0 -272px;}
+.hurt{background-position:0 -288px;}
+.ill{background-position:0 -304px;}
+.cute{background-position:0 -320px;}
+.relived{background-position:0 -336px;}
+.shoked{background-position:0 -352px;}
+.beautiful{background-position:0 -368px;}
+.hyper{background-position:0 -384px;}
+.pumped{background-position:0 -400px;}
+.drunk{background-position:0 -416px;}
+.impatient{background-position:0 -432px;}
+.restless{background-position:0 -448px;}
+.emotional{background-position:0 -464px;}
+.hungry{background-position:0 -480px;}
+.nostalgic{background-position:0 -496px;}
+.blessed{background-position:0 -512px;}
+.heartboken{background-position:0 -528px;}
+.naughty{background-position:0 -544px;}
+.entertained{background-position:0 -560px;}
+.broken{background-position:0 -576px;}
+.cold{background-position:0 -592px;}
+.down{background-position:0 -608px;}
+.sorry{background-position:0 -624px;}
+.frustrated{background-position:0 -640px;}
+.scared{background-position:0 -656px;}
+.fuming{background-position:0 -672px;}
+.run{background-position:0 -688px;}
+.crying{background-position:0 -704px;}
+.laughing{background-position:0 -720px;}
+.soreness{background-position:0 -736px;}
+.boiling{background-position:0 -752px;}
+.xmode{background-position:0 -768px;}
+.cheeky{background-position:0 -784px;}
+.laughing-inside{background-position:0 -800px;}
+.yawn{background-position:0 -816px;}
+.devil{background-position:0 -832px;}
+.zipped-lip{background-position:0 -848px;}
+.clap{background-position:0 -864px;}
+.heart{background-position:0 -880px;}
+.pink-heart{background-position:0 -896px;}
+.pink-lip{background-position:0 -912px;}
+.sun{background-position:0 -928px;}
+.star{background-position:0 -944px;}
+.gift{background-position:0 -960px;}
+.red-lip{background-position:0 -976px;}
+.rose{background-position:0 -992px;}

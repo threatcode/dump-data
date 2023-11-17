@@ -1,0 +1,20 @@
+<div class="pst-val-box">
+    <div class="pt-top">
+        Delete after selected days
+    </div>
+    <div class="pt-middle">
+        <table>
+            <tbody>
+            <tr ng-repeat="row in ::rows">
+                <td ng-repeat="col in ::cols" ng-class="{'active' : value==(row + col)}" feed-timeout-select="{{ row + col }}">{{row + col }} </td>
+            </tr>
+            <tr>
+                <td ng-repeat="col in ::lastCols" ng-class="{'active' : value==col}" feed-timeout-select="{{ col }}">{{ col }} </td>
+                <td feed-timeout-select="-1" ng-class="{'active' : value==-1}" colspan="2">Unlimited</td>
+            </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+</div>

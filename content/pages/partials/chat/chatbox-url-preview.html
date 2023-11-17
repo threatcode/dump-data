@@ -1,0 +1,12 @@
+<div class="single-preview-container" >
+
+    <div class="chat-preview" ng-if="messageText != '' && (ogStatus.preview || ogStatus.filterOnProgress || ogStatus.loading)">
+
+        <rg-url-og-preview template="templates/partials/chat/url-og-preview.html"
+                           og-data="messageData.ogData" edit-mode="true"
+                           show-preview="ogStatus.preview" filter-on-progress="ogStatus.filterOnProgress"
+                           loading-data="ogStatus.loading" >
+        </rg-url-og-preview>
+
+    </div>
+</div>

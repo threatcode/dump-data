@@ -1,0 +1,30 @@
+<div class="middle" ng-controller="SingleFeedSubController">
+
+    <div ng-show="!isReady" class="feedloader">
+        <div class="loader-id icon-id-s">
+            <span class="icon-logo-circle"></span>
+        </div>
+    </div>
+
+    <div class="cell feed-first-cell" ng-show="isReady" style="position: relative;
+         float: none;
+         margin: 15px auto;
+         height: 100%;"
+         >
+
+        <div class="newsfeed-row" >
+
+            <rg-news-feed-top feed="feed"
+                              dd-html="ddHtml"
+                              dropdown="dropdown"
+                              action-feed-dropdown="actionFeedDropdown"
+                              single-feed="singleFeed"
+                              ></rg-news-feed-top>
+
+            <rg-news-feed-bottom></rg-news-feed-bottom>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>

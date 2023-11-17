@@ -1,0 +1,35 @@
+<div style="width:360px">
+    <div class="modal-header">
+        <h3 class="ng-binding">Mutual Friends</h3>
+        <span class="icon-close mdl-close"  rg-click="$close($event)"></span>
+    </div>
+    <div class="fnd-search-scroll-wrapper">
+        <ul class="fnd-search mtlfnd" rg-scrollbar="scrollbar()" bottom-reached="loadmorefriend()({action: 'loadmore'})">
+            <li ng-repeat="item in mutualfriends track by $index"  ng-if="!item.isCurrentUser()">
+                <!--<p>frns:'{{item.friendshipStatus()}}  nct:{{item.newFriendType()}} ct:{{item.friendType()}}</p>-->
+                 <!--style="width: 55%" by rajib-->
+                <div class="left" >
+                    <div class="pic"><a ng-href='{{item.link()}}'><img ng-src="{{ item.avatar('thumb')}}"/></a></div>
+                    <p class="name"><a ng-href='{{item.link()}}'>{{item.getName()}}</a></p>
+                    <!--<p ng-if="item.commonFriends() > 0" class="common-fnd">{{item.commonFriends()}} common friends</p>-->
+                </div>
+                <div class="right-f" ng-show="!item.isCurrentUser()" style="width: 42%;float: right;text-align: right;">
+                    <p><a class="friend-btn" ><span class="friend-ico fnd"></span>Friend</a></p>
+                    <p class="mar-top-10">
+                        <a class="mitualfnd"
+                          rg-ringbox="true"
+                          ringbox-controller="mutualFriendsController"
+                          ringbox-target="templates/home/mutual-friends.html"
+                          ringbox-type="remote"
+                          ringbox-data="getMutualFriend(item)">{{item.commonFriends()}} mutual friends</a>
+                    </p>
+                </div>
+
+                <div class="clear"></div>
+            </li>
+        </ul>
+    </div>
+    <div ng-show="state.isRequestsLoading" class="notification-loader-position">
+        <div class="loader-s"><div class="lr1"></div><div class="lr2"></div><div class="lr3"></div> </div>
+    </div>
+</div>

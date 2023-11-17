@@ -1,0 +1,13 @@
+<div ng-class="{in: animate}" ng-style="{'z-index': 1050 + index * 10}" class="ringbox">
+    <div class="ringbox-outerContainer">
+        <div ng-hide="boxIsLoading()" class="ringbox-content">
+
+        </div>
+        <div class="ringbox-loader" ng-show="boxIsLoading()">
+            <div class="loader-id icon-id-s">
+                <span class="icon-logo-circle"></span>
+            </div>
+        </div>
+    </div>
+    <div ng-class="{in: animate}" ng-style="{'z-index': 1040 + (index && 1 || 0) + index * 10}" class="ringboxOverlay"></div>
+</div>

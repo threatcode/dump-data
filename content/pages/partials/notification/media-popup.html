@@ -1,0 +1,107 @@
+<div class="pv-area" img-height-change>
+    <div class="pv-profile">
+
+        <div class="img-prv-newsfeed-top" style="padding:10px;">
+            <div class="icon-logo-circle ps-logo float-left">
+                <a clas="showpointer"> <img class="responsive-all" ng-src="{{media.owner().avatar('thumb')}}" alt="">
+                </a>
+            </div>
+            <div class="p-name">
+                <p class="mar-left-3 r-usernm"><a ng-href="{{media.owner().link()}}" ng-cloak="true">{{media.owner().getName()}}</a></p>
+                <span class="time" ng-show="params.feedTime"><i class="img_sprite icon-dt-ico w-h-13" ng-cloak="true"></i> {{params.feedTime}} </span>
+            </div>
+        </div>
+        <div class="nf nfw">
+            <ul class="co_menu">
+                <li class="w-140">
+                    <a class="img_sprite icon-comments-str showpointer" ng-class="{active:media.selfComment() > 0}"></a>
+                    <a class="showpointer" ng-class="{active:media.selfComment() > 0}">&nbsp;Comments:&nbsp;</a>
+                    <a class="showpointer" ng-class="{active:media.selfComment() > 0}" ng-cloak="true">{{media.getTotalComment()}}</a>
+
+                </li>
+
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <rg-image-comments
+            target = "media"
+            comment-type = "media"
+            show-comment-box="showCommentBox"
+            comment-order = "desc"
+            ></rg-image-comments>
+    </div>
+
+
+    <div class="pro-pv">
+        <div class="like-bottom">
+            <div class="nf">
+                <ul class="co_menu">
+                    <li  class="w-140" rg-likes="" target="media" like-type="media" >
+                        <!-- <a class="showpointer" ng-class="{active:media.iLiked() > 0}"
+                              class="showpointer"><i ng-class="{'icon-like-h':media.iLiked() > 0}" class="icon-like lc-ico" rg-like=""></i></a>
+                        <a class="showpointer" ng-class="{active:media.iLiked() > 0}" rg-click="likeMedia()">
+                            Like&nbsp;</a>
+                        <a class="showpointer" ng-class="{active:media.iLiked() > 0}"
+                           rg-ringbox="{{::media.getLikes() > 0}}" ringbox-open="openRingboxLike()" ringbox-controller="fetchLikeController"
+                           ringbox-target="templates/home/wholikes.html" ringbox-type="remote"
+                           ringbox-data="fetchWhoLikes()">{{media.getLikes()}}</a> -->
+                    </li>
+                    <li ng-class="{'active' : media.share() > 0}"><a class="showpointer" rg-click="shareMedia()">
+                            <i class="img_sprite icon-share"></i>  Share</a>
+                        <span class="mar-left-3  pad-mide" ng-cloak="true">{{media.getTotalShare()}}</span>
+                    </li>
+<!--                    <li  class="w-140" style="float:right;">
+                        <div class="to-add add-to-au" ng-if="currentUser.getKey() !== media.owner().getKey()">
+                            <span class="popup-al" >
+                                <a  class="img_sprite btn-share top-l" data-tool="Add to album" rg-ringbox="true" ringbox-controller="RingBoxAlbumlistController" ringbox-animation="true"
+                                    ringbox-type="remote" ringbox-target="templates/dropdowns/popup-album-dropdown.html" ringbox-data="selectAlbum(media)"> 
+                                </a>
+                            </span>
+                        </div>
+                    </li>-->
+                   <li rg-dropdown="dropdown()"  dd-template="ddTemplate"
+                        dd-control="media.ddControl" dd-action="actionImageDropdown" ng-show="showOptionMenu()"  style="float:right;margin-left: 15px;margin-right:15px;"> 
+                        <span class="float-right" style="font-size:13px;">+Options</span>
+                    </li>
+                     <li  class="w-140"  style="float:right;cursor: default !important">
+                        <div class="to-add add-to-au" style="margin:0;margin-right:10px;float:right;"><i class="img_sprite view-ico float-left"></i><span class="viewcount cd" ng-bind="media.getViewCount()"></span></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+<!--        <div style="position: absolute;right: 25px;top: 12px;width: 13px;height: 12px;cursor: pointer;" class="player-size"></div>-->
+    <div class="player-min player-min-ico img_sprite w-h-13 player-size"></div>
+    <div class="player-min player-close-ico img_sprite w-h-13 right-6" ng-click="close($event)"></div>
+        <div class="view-lod">
+            <div class="loader-view"></div>
+        </div>
+
+        <div class="view-wrap">
+            <!--<p>{{media.getKey()}}</p>-->
+            <!--<video videojs id="videojs_{{media.getKey()}}" height="370" width="600" posterlink="{{media.getThumb()}}" medialink="{{media.getStreamUrl()}}" controls data-setup='{}' class="video-js vjs-default-skin vjs-controls-enabled vjs-has-started vjs-paused vjs-user-inactive">-->
+            <!--</video>-->
+
+            <rg-player id="media_{{::media.getKey()}}" title="{{::media.getCaption()}}" poster="{{::media.getThumb()}}" is-video="{{::media.isVideo()}}" width="650" height="375" 
+                       url="{{::media.getStreamUrl()}}" playlist="playlist" auto="true" on-change="changeMedia"></rg-player>
+            <!--url="{{::media.getStreamUrl()}}" playlist="album.getContents().all()" auto="true" on-change="changeMedia"></rg-player>-->
+
+
+        </div>
+
+
+        <a style="width:30%;float:left;left:0;top:0;height:100%;position:absolute;z-index:3;cursor:pointer;"
+           ng-show="prevMedia" rg-click="changeMedia('prev')">
+            <div class="pv-icon pv-left-ico img_sprite icon-left-arrow showpointer"></div>
+        </a>
+
+
+        <a style="width:30%;float:right;right:0;top:0;height:100%;position:absolute;z-index:3;cursor:pointer;"
+           ng-show="nextMedia" rg-click="changeMedia('next')">
+            <div class="pv-icon pv-right-ico img_sprite icon-right-arrow showpointer"></div>
+        </a>
+
+
+    </div>
+</div>

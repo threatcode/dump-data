@@ -1,0 +1,1 @@
+(function(angular, window) { 'use strict';  angular.module('ringid.directives', [ 'ringid.config', 'ringid.connector', 'ringid.global_services' ]); })(angular, window);

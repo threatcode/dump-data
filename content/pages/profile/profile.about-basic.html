@@ -1,0 +1,135 @@
+            <!--  Profile basic info DIV start -->
+            <div id="profile-basic-info" ng-class="{'dis-none': activeNav !== 'basic'}" >
+                <!--<div id="enable-edit-Mode" class="ppinfo-action" ng-if="isOwner && !isEditProfile" rg-click="enableEditBasic($event)"><span class="img_sprite w-h-13 icon-edit-p-h"></span>Edit</div>-->
+                
+                
+                <div class="butt border-gray-orange float-right btn-m-l-8 p-absolute right-0"  id="enable-edit-Mode"   ng-if="isOwner && !isEditProfile"><a class="btn-p-5-8"  rg-click="enableEditBasic($event)"><i class="friend-ico edit-btn-icon"></i><span class="butt-text">Edit</span></a></div>
+                <div class="clear"></div>
+                <div class="view pab-text"  ng-show="!isEditProfile">
+                    <div class="ppinfo">
+                        <div class="left"><span class="pab-ico img_sprite id-circle-a w-h-18px"></span><span class="pba-t pba-ta">ringID</span></div>
+                        <div class="right" ng-bind="profileObj.getRingNumber()"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ppinfo">
+                        <div class="left"><span class="pab-ico img_sprite w-h-18px icon-full-name"></span>Full Name</div>
+                        <div class="right" ng-bind="profileObj.getBasicInfo().fn"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ppinfo">
+                        <div class="left"><span class="pab-ico img_sprite w-h-18px icon-current-city"></span>Current City</div>
+                        <div class="right" ng-bind="profileObj.getBasicInfo().cc"></div>
+                        <div class="right" ng-show="profileObj.getBasicInfo().cc == ''">N/A</div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ppinfo">
+                        <div class="left"><span class="pab-ico  img_sprite w-h-18px  icon-home-city"></span>Home City</div>
+                        <div ng-bind="profileObj.getBasicInfo().hc" class="right"></div>
+                        <div class="right" ng-show="profileObj.getBasicInfo().hc == ''">N/A</div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ppinfo">
+                        <div class="left"><span class="pab-ico  img_sprite w-h-18px icon-gender"></span>Gender</div>
+                        <div ng-bind="profileObj.getBasicInfo().gr" class="right"></div>
+                        <div class="right" ng-show="profileObj.getBasicInfo().gr == ''">N/A</div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ppinfo">
+                        <div class="left"><span class="pab-ico  img_sprite w-h-18px icon-birthday"></span>Birthday</div>
+                        <div class="right" ng-hide="profileObj.getBasicInfo().birthDay == '1'" ng-cloak="true">{{profileObj.getBasicInfo().birthDay | date:'mediumDate'}}</div>
+                        <div class="right" ng-show="profileObj.getBasicInfo().birthDay == '1' || profileObj.getBasicInfo().birthDay == ''">N/A</div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ppinfo">
+                        <div class="left"><span class="pab-ico  img_sprite w-h-18px icon-wedding"></span>Wedding Day</div>
+                        <div class="right" ng-hide="profileObj.getBasicInfo().mDay == '1'" ng-cloak="true">{{profileObj.getBasicInfo().mDay | date:'mediumDate'}}</div>
+                        <div class="right" ng-show="profileObj.getBasicInfo().mDay == '1' || profileObj.getBasicInfo().mDay == ''">N/A</div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ppinfo">
+                        <div class="left"><span class="pab-ico  img_sprite w-h-18px icon-about-ab"></span>About</div>
+                        <div ng-bind="profileObj.getBasicInfo().am" class="right"></div>
+                        <div class="right" ng-show="profileObj.getBasicInfo().am == ''">N/A</div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+
+                <div class="edit" ng-show="isEditProfile">
+                    <form name="basicinfo">
+                    <div class="ppinfo">
+
+                        <div class="left"><span class="pab-ico img_sprite w-h-18px icon-full-name"></span> <span class="pab-text">Full Name</span>
+                            <!--<span class="error" ng-show="basicinfo.full_name.$error.required || fullnameRegex">*</span>-->
+                            <span class="error" ng-show="basicinfo.full_name.$error.required || nameError">*</span>
+                        </div>
+                        <div class="right">
+                            <!--<input type="text" ng-class="(basicinfo.full_name.$error.required || fullnameRegex) ? 'error-class' : '' " class="full_name" name="full_name" minlength="1" maxlength="50" ng-model="tmpBasic.fn"  required>-->
+                            <input type="text" ng-class="basicinfo.full_name.$error.required || nameError ? 'error-class' : '' " class="full_name" name="full_name" minlength="1" maxlength="100" ng-model="tmpBasic.fn"  required>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ppinfo">
+                        <div class="left"><span class="pab-ico img_sprite w-h-18px icon-current-city"></span> <span class="pab-text">Current City</span></div>
+                        <div class="right"><input type="text" class="current_city" name="current_city" ng-model="tmpBasic.cc"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ppinfo">
+                        <div class="left"><span class="pab-ico  img_sprite w-h-18px  icon-home-city"></span> <span class="pab-text">Home City</span></div>
+                        <div class="right"><input type="text" class="home_city" name="home_city" ng-model="tmpBasic.hc"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ppinfo">
+                        <div class="left"><span class="pab-ico  img_sprite w-h-18px icon-gender"></span> <span class="pab-text">Gender</span></div>
+                        <div class="right">
+                            <select class="styled-select" ng-model="tmpBasic.gr" >
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ppinfo">
+                        <div class="left"><span class="pab-ico  img_sprite w-h-18px icon-birthday"></span> <span class="pab-text">Birthday</span></div>
+                        <div class="right" >
+                            <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="tmpBasic.birthday"
+                                   is-open="model.bcalendar"  max-date="maxBirthDate" name="bcalendar"
+                                   datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                                   rg-click="open($event, 'bcalendar')"
+                                   close-text="Close"/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ppinfo">
+                        <div class="left">
+                            <span class="pab-ico  img_sprite w-h-18px icon-wedding"></span> <span class="pab-text">Wedding Day</span>
+                        </div>
+                        <div class="right">
+                            <input type="text"
+                                   ng-class="weddingDateError ? 'error-class' : '' "
+                                   class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="tmpBasic.marriageDay"
+                                   is-open="model.mcalendar" max-date="maxWeddingDate"  name="mcalendar"
+                                   datepicker-options="dateOptions"
+                                   rg-click="open($event, 'mcalendar')"
+                                   close-text="Close"/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ppinfo">
+                        <div class="left"><span class="pab-ico  img_sprite w-h-18px icon-about-ab"></span> <span class="pab-text">About</span></div>
+                        <div class="right">
+                            <textarea ng-model="tmpBasic.am" style="height: 80px; resize: none;"></textarea>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="ppinfo">
+                        <div class="pp-btn">
+                            <!--<input class="pro-edit-btn" type="button" ng-disabled="basicinfo.$invalid || processing || fullnameRegex" value="{{consType.update}}" rg-click="updateMyBasicInfo()"/>-->
+                            <input class="pro-edit-btn" type="button" ng-disabled="basicinfo.$invalid || processing || weddingDateError" value="{{consType.update}}" rg-click="updateMyBasicInfo()"/>
+                            <input class="pro-edit-btn" type="button" value="{{consType.cancel}}" rg-click="cancelUpdateMyBasicInfo()" />
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <!---------------------------------------  Profile basic info DIV END -------------------------------- ----------->

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="styles/framework.css" />
+        <style>
+            .file_browse_wrapper {
+                width: 100px;
+                /*height: 28px;*/
+                background: url('images/normal.png') 0 0 no-repeat;
+                border:none;
+                overflow:hidden;
+            }
+            .file_browse_wrapper:hover {
+                background: url('images/hover.png') 0 0 no-repeat;
+            }
+            .file_browse{
+                margin-left:-145px;
+                opacity:0.0;
+                -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+                filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+                border:1px solid red;
+            }
+            .camera-area {
+                background: rgb(241, 242, 242);
+                background: -moz-linear-gradient(48deg, rgb(241, 242, 242) 50%, rgb(237, 237, 238) 0%);
+                background: -webkit-linear-gradient(48deg, rgb(241, 242, 242) 50%, rgb(237, 237, 238) 0%);
+                background: -o-linear-gradient(48deg, rgb(241, 242, 242) 50%, rgb(237, 237, 238) 0%);
+                background: -ms-linear-gradient(48deg, rgb(241, 242, 242) 50%, rgb(237, 237, 238) 0%);
+                background: linear-gradient(138deg, rgb(241, 242, 242) 50%, rgb(237, 237, 238) 0%);
+                border: 1px solid #dcdcdb;
+                cursor: pointer;
+                display: inline-block;
+                height: 210px;
+                margin: 7px 0 24px 29px;
+                position: relative;
+                width: 236px;
+            }
+            .camera-bottom{
+                background: rgba(0, 0, 0, 0.50);
+                width: 216px;
+                padding:5px 10px;
+                display: inline-block;
+                position: absolute;
+                bottom: 0;
+                font-family: 'helvetica_ceregular';
+                font-weight: normal;
+                font-style: normal;
+                font-size: 20px;
+                color: white;
+                margin-left:0;
+
+            }
+            .camera-container{
+                margin: auto;
+                height:600px;
+                width:836px;
+                background-color: #e6e6e6;
+                border:1px solid #969696;
+            }
+            .camera-area a{text-align:left;font-size:12px;color:#fff;margin:0;padding:3px 0;display:inline-block;width:30%;}
+            .camera-area p{text-align:right;font-size:12px;color:#fff;margin:0;padding:3px 0;display:inline-block;width:70%;}
+        </style>
+    </head>
+    <body>
+        <div class="camera-container border-radius" ng-controller="AlbumController">
+            <div class="like-header pad-0-10">
+                <h3 class="dis-inline-blok" ng-click="loadAlbumPreview()" style="cursor: pointer">My Album <span ng-show="getAlbumId().length > 0"  ng-cloak="true"> &#8594; {{getAlbumId()}} </span></h3>
+            </div>
+            <div style="padding:20px 0;height:470px;" rg-scrollbar="scrollbar()"  bottom-reached="loadMoreData()" ng-show="albumPreview">
+                <div class="camera-area" ng-repeat="album in getItemsList()" >
+                    <div style="background: url('{{album.getCoverImage('600')}}');height:210px;background-size: cover;" ng-click="showAlbumDetails(album.getAlbumId(), true)">
+                        <div class="camera-bottom" ng-cloak="true">{{album.getAlbumName()}} 
+                            <div class="clear"></div>
+                            <a href="#" ng-cloak="true">{{album.getTotalImageCount()}} images</a><p ng-cloak="true">{{album.getUpdateTime()}}</p>
+                        </div>
+                    </div>                            
+                </div>
+            </div>
+            <div style="padding:20px 0;height:470px;" rg-scrollbar="scrollbar()"  bottom-reached="loadMoreData()"  ng-show="!albumPreview">
+                <div class="camera-area" ng-repeat="image in getItemsList()">
+                    <div style="background: url('{{image.src('300')}}');height:210px;background-size: cover;" ng-click="selectImage($event, image.src());
+                                    close($event);" rg-stop-event>
+                                                <div class="camera-bottom"><p class="caption" ng-cloak="true">{{image.getCaption()}} </p>
+                            <div class="clear"></div>
+                            <a href="#" ng-cloak="true">{{image.getLikes()}} likes ({{$index}})</a><p> ng-cloak="true"{{image.getTotalComment()}} comments</p>
+                        </div>
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
