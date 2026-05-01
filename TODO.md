@@ -195,10 +195,10 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
   - Current: `templateUrl: 'templates/home/feed.html'`
   - Should be: `templateUrl: '@templates/home/feed.html'`
   - Affects 100+ template references in JS files
-- [ ] **Fix hardcoded `pages/` paths**
+- [x] **Fix hardcoded `pages/` paths**
   - Some templates use `pages/index.html`, `pages/profile/profile.html`
   - Should consolidate to `@templates/` structure
-- [ ] **Template cache not properly populated**
+- [x] **Template cache not properly populated**
   - `template-loader.js` created but not integrated with AngularJS `$templateCache`
   - Need to call `loadTemplates()` during app bootstrap
 
