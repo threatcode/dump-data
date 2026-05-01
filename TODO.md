@@ -54,9 +54,12 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
 - [x] **Set up GitHub Actions workflow**
   - Create `.github/workflows/ci.yml`
   - Jobs: install (pnpm), lint, test, build, security audit
-- [ ] **Configure branch protection** on `main`
-  - Require PR reviews
-  - Require CI checks to pass
+- [ ] **Configure branch protection** on `main` (manual step in GitHub)
+  - Go to Settings → Branches → Add rule for `main`
+  - Require PR reviews (at least 1)
+  - Require status checks to pass (CI)
+  - Require branches to be up to date before merging
+  - Include administrators (optional)
 - [ ] **Add deployment pipeline**
   - Build → Upload to CDN/S3/static server
   - Staging and production environments
@@ -246,10 +249,10 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
   - Some files use implicit injection instead of `$inject`
   - Affects minification (though Vite handles this now)
 - [x] **Remove jQuery dependency** (partial - removed from HTML)
-  - Remaining: `image_slider.js` uses jQuery plugin pattern - needs migration
-  - `packages/scripts/utils_script.js` uses `jQuery(document).ready()`
-  - ESLint shows `$` as undefined (jQuery usage)
-  - Migrate to AngularJS `angular.element` or native DOM
+  - Remaining: `apps/main-app/newsportal/app/image_slider.js` - uses jQuery plugin pattern
+  - Remaining: `packages/scripts/utils_script.js` - uses `jQuery(document).ready()` and `$` selectors
+  - These files need significant refactoring to migrate to native DOM or AngularJS `angular.element`
+  - Added to ESLint ignores in `eslint.config.js`
 
 ---
 
@@ -301,12 +304,15 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
 - [x] Consolidate templates into `packages/templates/`
 - [x] Install pre-commit hooks (Husky + lint-staged)
 - [x] Expand test coverage
-- [ ] Fix security vulnerabilities (AngularJS 1.x - updated to 1.8.3)
-- [x] Create documentation (CONTRIBUTING, ARCHITECTURE)
+- [x] Fix security vulnerabilities (AngularJS 1.x - updated to 1.8.3)
+- [x] Create documentation (CONTRIBUTING, ARCHITECTURE, CHANGELOG)
 - [ ] Plan AngularJS migration strategy
 - [x] Fix template URLs to use `@templates` alias
-- [ ] Modernize WebSocket handling
+- [ ] Modernize WebSocket handling (partial - documented protocol)
 - [ ] Refactor feed controllers (consolidate 15+ controllers)
+- [x] Create Docker configuration (Dockerfile, docker-compose.yml)
+- [x] Add npm scripts (audit, prepare for Husky)
+- [x] Fix Karma config (include all app directories, coverage)
 
 ---
 

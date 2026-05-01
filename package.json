@@ -22,10 +22,12 @@
     "test:e2e:ui": "playwright test --ui",
     "lint": "eslint apps/*/app/**/*.js packages/**/*.js",
     "format": "prettier --write apps/*/app/**/*.js packages/**/*.js",
+    "audit": "pnpm audit --audit-level moderate",
     "prepare": "husky"
   },
   "lint-staged": {
     "*.js": [
+      "eslint --fix",
       "prettier --write"
     ],
     "*.{json,md,yml,yaml}": [

@@ -11,6 +11,7 @@ module.exports = function(config){
       'apps/main-app/app/**/*.js',
       'apps/main-app/newsportal/**/*.js',
       'apps/main-app/mobile/**/*.js',
+      'apps/main-app/webapp/**/*.js',
       // Shared packages
       'packages/scripts/**/*.js',
       'packages/templates/template-loader.js',
@@ -22,6 +23,9 @@ module.exports = function(config){
 
     preprocessors: {
       'apps/main-app/app/**/*.js': ['coverage'],
+      'apps/main-app/newsportal/**/*.js': ['coverage'],
+      'apps/main-app/mobile/**/*.js': ['coverage'],
+      'apps/main-app/webapp/**/*.js': ['coverage'],
       'packages/scripts/**/*.js': ['coverage']
     },
 
@@ -37,6 +41,9 @@ module.exports = function(config){
         flags: ['--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage']
       }
     },
+
+    // Use ChromeHeadlessCI when running in CI environment
+    browsers: [process.env.CI ? 'ChromeHeadlessCI' : 'ChromeHeadless'],
 
     plugins : [
       'karma-chrome-launcher',
