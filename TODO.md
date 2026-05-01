@@ -85,7 +85,7 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
 - [ ] **Add test coverage tool** (karma-coverage or vite-plugin-istanbul)
 
 ### Cleanup
-- [ ] **Remove legacy backup files**
+- [x] **Remove legacy backup files**
   - `*_old*.html`, `*_backup*.html`, `*_old*.css`, `*_old*.js`
   - Examples: `index-dashboard-headbar_backup_1_2_2016.html`
 - [ ] **Fix package.json files**
