@@ -39,7 +39,7 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
 - [ ] **Consolidate templates** - Remove duplication between:
   - `apps/main-app/templates/` and `packages/templates/`
   - Keep in `packages/templates/`, update Vite alias `@templates`
-- [ ] **Remove legacy minified files** from source (should be in `dist/`)
+- [x] **Remove legacy minified files** from source (should be in `dist/`)
   - `apps/main-app/newsportal/app.min.js`, `styles.min.css`
   - `apps/main-app/mobile/`, `m.ringid.com/` minified files
 
@@ -113,13 +113,13 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
   - Archive obsolete migration script
 
 ### Environment Configuration
-- [ ] **Create `.env.example`**
+- [x] **Create `.env.example`**
   ```
   VITE_API_URL=http://localhost:3000
   VITE_WS_URL=ws://localhost:3000
   VITE_DEBUG=false
   ```
-- [ ] **Add environment modes** to Vite
+- [x] **Add environment modes** to Vite
   - `.env.development`, `.env.staging`, `.env.production`
   - Use `mode` parameter: `vite build --mode staging`
 - [ ] **Move debug flags** from `developer.config.js`
