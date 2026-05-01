@@ -11,18 +11,18 @@ export default [
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
       'no-console': 'off',
       'no-undef': 'error',
-      // AngularJS best practices
-      'angular/directive-restrict': ['error', { restrict: 'EAC' }],
-      'angular/no-service-method': 'error',
-      'angular/timeout-service': 'warn',
-      'angular/typecheck-array': 'error',
-      'angular/typecheck-date': 'error',
-      'angular/typecheck-function': 'error',
-      'angular/typecheck-number': 'error',
-      'angular/typecheck-object': 'error',
-      'angular/typecheck-string': 'error',
-      'angular/controller-as': 'error',
-      'angular/di-order': 'warn'
+      // AngularJS best practices (disabled - migrating to React)
+      'angular/directive-restrict': 'off',
+      'angular/no-service-method': 'off',
+      'angular/timeout-service': 'off',
+      'angular/typecheck-array': 'off',
+      'angular/typecheck-date': 'off',
+      'angular/typecheck-function': 'off',
+      'angular/typecheck-number': 'off',
+      'angular/typecheck-object': 'off',
+      'angular/typecheck-string': 'off',
+      'angular/controller-as': 'off',
+      'angular/di-order': 'off'
     },
     languageOptions: {
       globals: {
