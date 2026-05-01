@@ -1,0 +1,212 @@
+# RingID Frontend - TODO List
+
+Comprehensive gap analysis and action items for the modernized RingID web frontend.
+
+## Priority Levels
+- **P0 (Critical)**: Security vulnerabilities, blocking issues
+- **P1 (High)**: Code quality, CI/CD, major cleanup
+- **P2 (Medium)**: Modernization, documentation
+- **P3 (Low)**: Nice-to-have improvements
+
+---
+
+## P0 - Critical Issues
+
+### Security Vulnerabilities
+- [ ] **Fix AngularJS 1.x XSS vulnerabilities** - Plan migration to modern framework (Angular/React/Vue)
+  - Current versions have known XSS via `$resource`, ReDoS vulnerabilities
+  - Workaround: Implement strict CSP, DOM sanitization
+- [ ] **Upgrade Bootstrap 3.x** - Vulnerable to XSS in Popover/Tooltip
+  - Migrate to Bootstrap 4/5 or modern CSS framework (Tailwind)
+- [ ] **Fix angular-ui-notification XSS** - Version 0.3.6 vulnerable
+  - Find alternative (ngToast, angular-toastr) or upgrade
+
+### Duplicate Content (Maintenance Burden)
+- [ ] **Consolidate templates** - Remove duplication between:
+  - `apps/main-app/templates/` and `packages/templates/`
+  - Keep in `packages/templates/`, update Vite alias `@templates`
+- [ ] **Remove legacy minified files** from source (should be in `dist/`)
+  - `apps/main-app/newsportal/app.min.js`, `styles.min.css`
+  - `apps/main-app/mobile/`, `m.ringid.com/` minified files
+
+---
+
+## P1 - High Priority
+
+### CI/CD Setup
+- [ ] **Set up GitHub Actions workflow**
+  - Create `.github/workflows/ci.yml`
+  - Jobs: install (pnpm), lint, test, build, security audit
+- [ ] **Configure branch protection** on `main`
+  - Require PR reviews
+  - Require CI checks to pass
+- [ ] **Add deployment pipeline**
+  - Build → Upload to CDN/S3/static server
+  - Staging and production environments
+
+### Code Quality
+- [ ] **Install pre-commit hooks** (Husky + lint-staged)
+  ```bash
+  pnpm add -D husky lint-staged
+  ```
+  - Run ESLint + Prettier on staged files
+- [ ] **Expand ESLint configuration**
+  - Add `eslint-plugin-angular`
+  - Enable more rules, update to `ecmaVersion: 2020`
+  - Remove conflicting `.eslintrc.json` if exists
+- [ ] **Align EditorConfig with Prettier**
+  - Both should use 2 spaces for JS files
+- [ ] **Remove legacy linter configs**
+  - Delete `.jshintrc`, `.bowerrc`, `.tern-project`
+
+### Testing Infrastructure
+- [ ] **Expand test coverage** (currently only 1 test file)
+  - Create tests for: auth, chat, feed, notification modules
+  - Target: 60%+ coverage
+- [ ] **Fix Karma configuration**
+  - Include all app directories (newsportal, mobile, etc.)
+  - Ensure ChromeHeadless works in CI
+- [ ] **Add E2E tests** (Playwright or Cypress)
+  - Puppeteer is installed but not configured
+- [ ] **Add test coverage tool** (karma-coverage or vite-plugin-istanbul)
+
+### Cleanup
+- [ ] **Remove legacy backup files**
+  - `*_old*.html`, `*_backup*.html`, `*_old*.css`, `*_old*.js`
+  - Examples: `index-dashboard-headbar_backup_1_2_2016.html`
+- [ ] **Fix package.json files**
+  - Add `main`/`exports` fields to packages
+  - Remove `"setup": "grunt build"` from apps
+
+---
+
+## P2 - Medium Priority
+
+### Documentation
+- [ ] **Update README.md**
+  - Fix Node.js version (≥18, not ≥4)
+  - Document pnpm commands (not npm)
+  - Update migration notes
+- [ ] **Create CONTRIBUTING.md**
+  - Branch naming, commit conventions, PR template
+- [ ] **Create CHANGELOG.md**
+  - Document changes from v0.1.0 to v0.2.0
+- [ ] **Create ARCHITECTURE.md**
+  - Explain AngularJS module structure
+  - Document shared services, WebSocket protocol
+- [ ] **Update MIGRATION.md**
+  - Reflect actual monorepo structure (not `content/` → `src/`)
+  - Archive obsolete migration script
+
+### Environment Configuration
+- [ ] **Create `.env.example`**
+  ```
+  VITE_API_URL=http://localhost:3000
+  VITE_WS_URL=ws://localhost:3000
+  VITE_DEBUG=false
+  ```
+- [ ] **Add environment modes** to Vite
+  - `.env.development`, `.env.staging`, `.env.production`
+  - Use `mode` parameter: `vite build --mode staging`
+- [ ] **Move debug flags** from `developer.config.js`
+  - Use `import.meta.env.VITE_DEBUG_*` instead of hardcoded values
+
+### Modernization (Pre-Migration)
+- [ ] **Refactor to AngularJS components**
+  - Use `.component()` method (available in 1.5+)
+  - Eases future migration to Angular/React
+- [ ] **Enable modern JS features**
+  - Arrow functions, template literals, destructuring
+  - Update ESLint `ecmaVersion` to 2020
+- [ ] **Add CSS preprocessing** (Sass/PostCSS)
+  - Vite has built-in Sass support
+  - Migrate from 50+ plain CSS files
+- [ ] **Optimize images**
+  - Add `vite-plugin-imagemin`
+  - Compress images in `apps/main-app/images/`
+
+### Build Improvements
+- [ ] **Expand Vite configuration**
+  - Add template cache plugin for AngularJS
+  - Configure bundle analyzer (`rollup-plugin-visualizer`)
+  - Fix HMR for AngularJS (replace `require.context` with dynamic imports)
+- [ ] **Add build validation**
+  - Check `dist/` contains expected files
+  - Smoke test with local HTTP server
+
+---
+
+## P3 - Low Priority
+
+### Code Quality
+- [ ] **Consider TypeScript gradual adoption**
+  - Add `allowJs: true` initially
+  - Rename files to `.ts` gradually
+- [ ] **Add JSDoc documentation**
+  - Document functions, services, factories
+  - Set up documentation generation (jsdoc)
+
+### Nice-to-Have
+- [ ] **Create Docker configuration**
+  - `Dockerfile` for production (multi-stage build)
+  - `docker-compose.yml` for local development
+- [ ] **Add state management** (for future framework migration)
+  - Consider `angular-redux` for current setup
+- [ ] **Set up bundle size monitoring**
+  - Track JS/CSS bundle sizes over time
+  - Alert on significant increases
+
+---
+
+## Quick Wins (Can be done today)
+
+1. **Delete legacy files**: `.bowerrc`, `.jshintrc`, `.tern-project`
+2. **Fix `.npmrc`**: Remove non-standard npm settings (move pnpm settings to `pnpm-workspace.yaml`)
+3. **Align EditorConfig/Prettier**: Both use 2 spaces for JS
+4. **Add npm scripts**: `prepare` for Husky, `audit` for security
+5. **Update README**: Fix Node version, document pnpm commands
+6. **Consolidate templates**: Delete `apps/main-app/templates/` (after Vite alias works)
+7. **Create `.env.example`**: Basic Vite environment variables
+
+---
+
+## Migration Strategy (Long-term)
+
+### AngularJS → Modern Framework
+1. **Research phase** (1-2 weeks)
+   - Evaluate: Angular (2+), React, Vue
+   - Consider team expertise, ecosystem, migration tools
+2. **Prototype phase** (2-4 weeks)
+   - Create small app in chosen framework
+   - Identify migration patterns
+3. **Incremental migration** (3-6 months)
+   - Use micro-frontends or iframes to run both versions
+   - Migrate module-by-module
+4. **Deprecation** (1 month)
+   - Sunset AngularJS version
+   - Redirect to new app
+
+**Recommendation**: Angular (if staying Google ecosystem) or React (larger ecosystem, easier hiring)
+
+---
+
+## Progress Tracking
+
+- [x] Migrate Bower → npm
+- [x] Migrate Grunt → Vite
+- [x] Add ESLint + Prettier
+- [x] Migrate npm → pnpm
+- [x] Create `pnpm-workspace.yaml`
+- [x] Flatten nested package directories
+- [x] Add `package.json` to all workspace packages
+- [x] Update `.nvmrc` (Node 18)
+- [ ] Set up CI/CD (GitHub Actions)
+- [ ] Configure pre-commit hooks
+- [ ] Expand test coverage
+- [ ] Fix security vulnerabilities
+- [ ] Create documentation (CONTRIBUTING, ARCHITECTURE)
+- [ ] Plan AngularJS migration strategy
+
+---
+
+*Last updated: 2026-05-01*
