@@ -158,6 +158,82 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
 
 ---
 
+## P0 - AngularJS Specific Issues (From Code Analysis)
+
+### Module Architecture
+- [ ] **Fix module registration pattern**
+  - Current: `try { module('ringid.feed') } catch { module('ringid.feed', [...]) }`
+  - Better: Check if module exists before registering
+  - Affects: `feed`, `profile`, `newsportal` modules
+- [ ] **Consolidate sub-modules**
+  - `ringid.feed` registered in 30+ files with try/catch
+  - `ringid.profile` registered in multiple directive files
+  - Create a single module definition file for each sub-module
+- [ ] **Remove circular dependencies**
+  - `lazyload.config.js` references `js/build/modules/` (non-existent paths)
+  - Digits SDK loaded from CDN but also configured in lazyload
+
+### Template References
+- [ ] **Update template URLs to use `@templates` alias**
+  - Current: `templateUrl: 'templates/home/feed.html'`
+  - Should be: `templateUrl: '@templates/home/feed.html'`
+  - Affects 100+ template references in JS files
+- [ ] **Fix hardcoded `pages/` paths**
+  - Some templates use `pages/index.html`, `pages/profile/profile.html`
+  - Should consolidate to `@templates/` structure
+- [ ] **Template cache not properly populated**
+  - `template-loader.js` created but not integrated with AngularJS `$templateCache`
+  - Need to call `loadTemplates()` during app bootstrap
+
+### Real-time Communication (WebSocket)
+- [ ] **Modernize WebSocket handling**
+  - Current: Custom binary protocol in `worker/`
+  - Consider: Socket.io client (already in node_modules/.ignored)
+  - Document WebSocket message types (OPERATION_TYPES)
+- [ ] **Fix worker files**
+  - `worker.js` has syntax errors (fixed `ipip` typo, but may have more)
+  - `wat.fall.js` and `sender.js` use legacy patterns
+  - Consider migrating to modern Web Worker API
+- [ ] **WebSocket dependency in `packages/scripts/`**
+  - `chatwindow.js` (2279 lines) contains WebSocket logic
+  - Should be in a dedicated service/factory
+
+### Feed System
+- [ ] **Refactor feed controllers**
+  - 15+ feed controllers in `app/feed/controllers/`
+  - Many are near-identical (share, edit, tag, who-share)
+  - Consolidate into a single feed controller with parameters
+- [ ] **Fix feed directive registration**
+  - Directives register `angular.module('ringid.feed')` repeatedly
+  - Should import the module once and add directives
+- [ ] **Remove commented lazy-load code**
+  - `app.routes.js` has 50+ lines of commented `$ocLazyLoad` code
+  - Either implement lazy loading properly or remove comments
+
+### Authentication & User Management
+- [ ] **Consolidate auth modules**
+  - Auth logic scattered: `app/auth/`, `app/global/`, `app/friend/`
+  - Create unified auth service
+- [ ] **Fix social login flow**
+  - Digits SDK loaded from CDN (deprecated)
+  - `digit.service.js` and `rg-verify-phone.directive.js` need update
+- [ ] **Remove hardcoded debug flags**
+  - `developer.config.js` has `ALL_CHAT = true/false`
+  - Move to environment variables
+
+### Code Quality (AngularJS-Specific)
+- [ ] **Remove global variable pollution**
+  - Files use `var app;` then `app = angular.module(...)`
+  - Should use IIFE or strict mode consistently
+- [ ] **Fix AngularJS injection**
+  - Some files use implicit injection instead of `$inject`
+  - Affects minification (though Vite handles this now)
+- [ ] **Remove jQuery dependency**
+  - ESLint shows `$` as undefined (jQuery usage)
+  - Migrate to AngularJS `angular.element` or native DOM
+
+---
+
 ## Quick Wins (Can be done today)
 
 1. **Delete legacy files**: `.bowerrc`, `.jshintrc`, `.tern-project`
