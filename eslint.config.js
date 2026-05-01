@@ -79,12 +79,14 @@ export default [
         // WebSocket state
         KeepAliveInterval: 'readonly',
         keepAlivePacket: 'readonly',
+        keepAlive: 'readonly',
         PingPongMap: 'readonly',
-        floodRequest: 'readonly',
+        floodingRequest: 'readonly',
         floodingData: 'readonly',
-        floodDataInterval: 'readonly',
+        floodingDataInterval: 'readonly',
         brokenRequest: 'readonly',
         brokenData: 'readonly',
+        brokenRequestInterval: 'readonly',
         ProccessRunning: 'readonly',
         chatRequestMap: 'readonly',
         toIgnorePacketIds: 'readonly',
@@ -94,7 +96,10 @@ export default [
         buildPacketAndSend: 'readonly',
         SocketProvider: 'readonly',
         isString: 'readonly',
-        isElement: 'readonly'
+        isElement: 'readonly',
+        i: 'readonly',
+        settings: 'readonly',
+        connection: 'readonly'
       },
       ecmaVersion: 5,
       sourceType: 'script'
