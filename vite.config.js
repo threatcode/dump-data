@@ -29,7 +29,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@app': '/apps/main-app/app',
-      '@packages': '/packages'
+      '@packages': '/packages',
+      '@templates': '/packages/templates'
     }
   }
 });
