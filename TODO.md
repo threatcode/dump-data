@@ -88,7 +88,7 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
 - [x] **Remove legacy backup files**
   - `*_old*.html`, `*_backup*.html`, `*_old*.css`, `*_old*.js`
   - Examples: `index-dashboard-headbar_backup_1_2_2016.html`
-- [ ] **Fix package.json files**
+- [x] **Fix package.json files**
   - Add `main`/`exports` fields to packages
   - Remove `"setup": "grunt build"` from apps
 

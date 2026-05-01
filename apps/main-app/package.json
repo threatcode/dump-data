@@ -4,8 +4,8 @@
   "private": true,
   "description": "Main RingID web application",
   "scripts": {
-    "dev": "echo \"Use root npm start\"",
-    "build": "echo \"Use root grunt build\""
+    "dev": "echo \"Use root pnpm start\"",
+    "build": "echo \"Use root pnpm build\""
   },
   "dependencies": {
     "angular": "^1.3.15"
