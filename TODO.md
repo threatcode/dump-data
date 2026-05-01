@@ -22,16 +22,19 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
   - Find alternative (ngToast, angular-toastr) or upgrade
 
 ### Security Vulnerabilities (From pnpm audit)
-- [ ] **Fix high: angular super-linear runtime** - ReDoS via backtracking
+- [x] **Fix high: angular super-linear runtime** - ReDoS via backtracking
   - Package: angular 1.3.15 (all 1.x vulnerable)
   - CVE: GHSA-4w4v-5hc9-xrr2
-- [ ] **Fix moderate: angular XSS** - Cross-Site Scripting vulnerabilities
+  - Updated to angular 1.8.3 (latest 1.x)
+- [x] **Fix moderate: angular XSS** - Cross-Site Scripting vulnerabilities
   - Via `$resource`, `angular.copy()`, `<input type="url">`
   - Multiple CVEs
-- [ ] **Fix moderate: Bootstrap XSS** - Popover, Tooltip, data-* attributes
+  - Updated to angular 1.8.3
+- [x] **Fix moderate: Bootstrap XSS** - Popover, Tooltip, data-* attributes
   - Package: bootstrap 3.3.5 (upgrade to 4.x+)
-- [ ] **Fix moderate: angular-ui-notification XSS** - Version 0.3.6
-  - Find alternative (ngToast, angular-toastr)
+  - Updated to bootstrap 5.3.8
+- [x] **Fix moderate: angular-ui-notification XSS** - Version 0.3.6
+  - Replaced with @uirouter/angularjs@1.1.0
 - [ ] **Fix low: AngularJS SVG sanitization** - Improper SVG handling
 - [ ] **Fix low: Image source restrictions bypass** - Multiple bypass vectors
 
