@@ -1,0 +1,13 @@
+{
+  "name": "@ringid/main-app",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Main RingID web application",
+  "scripts": {
+    "dev": "echo \"Use root npm start\"",
+    "build": "echo \"Use root grunt build\""
+  },
+  "dependencies": {
+    "angular": "^1.3.15"
+  }
+}

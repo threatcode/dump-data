@@ -11,37 +11,37 @@ module.exports = function(grunt) {
       build: ['dist/']
     },
 
-    // Copy task for static assets
+    // Copy task for static assets (monorepo paths)
     copy: {
       fonts: {
         expand: true,
-        cwd: 'src/fonts',
+        cwd: 'packages/resources/fonts',
         src: '**/*',
         dest: 'dist/fonts/'
       },
       images: {
         expand: true,
-        cwd: 'src/images',
+        cwd: 'apps/main-app/images',
         src: '**/*',
         dest: 'dist/images/'
       },
       feature_image: {
         expand: true,
-        cwd: 'src/feature-image',
+        cwd: 'apps/main-app/feature-image',
         src: '**/*',
         dest: 'dist/feature-image/'
       }
     },
 
-    // Concat CSS
+    // Concat CSS (monorepo paths)
     concat_css: {
       options: {
-        bases: ['src/styles/']
+        bases: ['packages/styles/']
       },
       all: {
         src: [
-          'src/styles/**/*.css',
-          '!src/styles/**/*.min.css'
+          'packages/styles/**/*.css',
+          '!packages/styles/**/*.min.css'
         ],
         dest: 'dist/css/styles.min.css'
       }
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // Concat JS (exclude worker files - they are loaded separately)
+    // Concat JS (monorepo paths, exclude worker files)
     concat: {
       options: {
         separator: ';'
@@ -72,9 +72,9 @@ module.exports = function(grunt) {
           'bower_components/angular-animate/angular-animate.js',
           'bower_components/angular-loader/angular-loader.js',
           'bower_components/ngstorage/ngStorage.js',
-          'src/app/**/*.js',
-          'src/scripts/**/*.js',
-          '!src/**/worker/**/*.js'
+          'apps/main-app/app/**/*.js',
+          'packages/scripts/**/*.js',
+          '!apps/main-app/**/worker/**/*.js'
         ],
         dest: 'dist/js/app.min.js'
       }

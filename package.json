@@ -2,18 +2,22 @@
     "name": "dump-data",
     "version": "0.2.0",
     "private": true,
-    "description": "Legacy Ringid web frontend - migrated to src/dist layout with config/ for server configuration.",
+    "description": "RingID Monorepo - Legacy web frontend with monorepo structure",
     "engines": {
         "node": ">=4"
     },
-  "scripts": {
-    "setup": "npm install && bower install",
-    "install:bower": "bower install",
-    "start": "npx http-server -p 8080 --cors -c-1",
-    "build": "grunt build",
-    "migrate": "bash scripts/migrate-content.sh",
-    "test": "cd tests && karma start karma.conf.js --single-run"
-  },
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ],
+    "scripts": {
+        "setup": "npm install && bower install",
+        "install:bower": "bower install",
+        "start": "npx http-server -p 8080 --cors -c-1",
+        "build": "grunt build",
+        "migrate": "bash scripts/migrate-content.sh",
+        "test": "cd tests && karma start karma.conf.js --single-run"
+    },
     "devDependencies": {
         "angular-mocks": "^1.8.3",
         "bower": "^1.8.8",
