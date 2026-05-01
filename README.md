@@ -1,42 +1,52 @@
 # dump-data
 
-Legacy Ringid web frontend — migrated to a cleaner `src/` + `dist/` layout.
+Legacy RingID web frontend in a monorepo structure. Modernized with Vite build system.
 
-## Project structure
+## Project Structure
 
-- `config/` — server-side rewrite, gzip, cache and virtual-host configuration files
-- `src/` — active application source (app, pages, styles, scripts, images, templates, apidocfiles)
-- `dist/` — generated build assets, downloads, and scripts/dist output
-- `tests/` — test files, karma config, and test media
-- `legacy/` — archived backup and deprecated files pending cleanup
-- `content/` — original dump location; nearly emptied after migration
+This is a monorepo using npm workspaces with the following structure:
 
-## How to run (original instructions)
+- `apps/` — Application code
+  - `main-app/` — Main RingID web application (AngularJS)
+- `packages/` — Shared packages
+  - `scripts/` — Shared JavaScript utilities
+  - `styles/` — Shared CSS styles
+  - `templates/` — Shared HTML templates
+  - `common/` — Common resources (fonts, images, apidocfiles)
+- `config/` — Server configuration files (rewrite, gzip, cache, vhost)
+- `scripts/` — Migration and utility scripts
+- `tests/` — Test files and karma configuration
+
+## Development Setup
 
 1. Clone the repository
 2. Ensure Node.js ≥ 4 is installed
-3. Run `npm install` (or `npm run setup`)
-4. Run `grunt local` from the `content/` directory (or `npm start` for convenience)
-5. Browse http://localhost:8080/#/
+3. Run `npm run setup` to install dependencies
+4. Run `npm start` to start Vite development server on port 8080
+5. Run `npm run build` to build the application with Vite
+6. Run `npm run preview` to preview the production build
+7. Run `npm test` to run tests
 
-> **Note:** The original project used `grunt` and `bower`. The `content/` directory may still be needed for development until tooling is moved to root level.
+## Build Process
 
-## Migration status
+The project uses Vite for fast modern builds:
+- Development server with HMR (Hot Module Replacement)
+- Optimized production builds
+- Asset handling and bundling
 
-The `npm run migrate` script has moved:
-- Source directories → `src/`
-- Build artifacts → `dist/`
-- Test files → `tests/`
-- API docs → `src/apidocfiles/`
-- Legacy/backup files → `legacy/`
-- Downloadable binaries → `dist/downloads/`
-- Static files (robots.txt, sitemap.xml) → repository root
+## Code Quality
 
-For full details, see `MIGRATION.md`.
+- `npm run lint` — Lint JavaScript files with ESLint
+- `npm run format` — Format code with Prettier
 
-## Remaining action items
+## Migration Notes
 
-- Move or consolidate remaining `content/.gitignore` and `content/README.md`
-- Standardize build tooling at root level (`Gruntfile.js`, `bower.json` already moved)
-- Review `legacy/` and remove obsolete files once confirmed unused
-- Consider removing `content/` entirely once the migration is fully verified
+This project has been migrated to a monorepo structure. Recent improvements:
+- Migrated from Bower to npm for dependency management
+- Replaced Grunt with Vite for modern build tooling
+- Added ESLint and Prettier for code quality
+- Removed legacy backup files
+
+## TODO
+
+- Consider migrating from AngularJS to a modern framework

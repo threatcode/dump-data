@@ -1,6 +1,5 @@
 # Node and frontend tooling
 node_modules/
-bower_components/
 
 # Build output
 dist/
@@ -27,7 +26,6 @@ Thumbs.db
 *.bak
 
 # Dependency directories
-bower_components/
 vendor/
 
 # Test coverage
