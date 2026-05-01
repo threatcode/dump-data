@@ -80,7 +80,7 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
 - [ ] **Fix Karma configuration**
   - Include all app directories (newsportal, mobile, etc.)
   - Ensure ChromeHeadless works in CI
-- [ ] **Add E2E tests** (Playwright or Cypress)
+- [x] **Add E2E tests** (Playwright or Cypress)
   - Puppeteer is installed but not configured
 - [x] **Add test coverage tool** (karma-coverage or vite-plugin-istanbul)
 
