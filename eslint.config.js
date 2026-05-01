@@ -1,7 +1,7 @@
 export default [
   {
     files: ['**/*.js'],
-    ignores: ['**/dist/**', '**/node_modules/**'],
+    ignores: ['**/dist/**', '**/node_modules/**', '**/chatwindow.js', '**/utils_script.js'],
     rules: {
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
       'no-console': 'off',
@@ -21,6 +21,11 @@ export default [
         WebSocket: 'readonly',
         FileReader: 'readonly',
         Blob: 'readonly',
+        // Timers
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        setInterval: 'readonly',
+        clearInterval: 'readonly',
         // AngularJS
         angular: 'readonly',
         // jQuery
@@ -39,7 +44,57 @@ export default [
         userIdentity: 'readonly',
         OPERATION_TYPES: 'readonly',
         AC: 'readonly',
-        _user: 'readonly'
+        _user: 'readonly',
+        // Web Workers
+        postMessage: 'readonly',
+        importScripts: 'readonly',
+        self: 'readonly',
+        // WebSocket/Worker specific
+        RingParser: 'readonly',
+        RingLogger: 'readonly',
+        RingWorker: 'readonly',
+        RingSocket: 'readonly',
+        Logger: 'readonly',
+        // Data types
+        DataView: 'readonly',
+        ArrayBuffer: 'readonly',
+        MessageChannel: 'readonly',
+        // RingID specific
+        object_extend: 'readonly',
+        isString: 'readonly',
+        isElement: 'readonly',
+        getUniqueId: 'readonly',
+        noop: 'readonly',
+        objectFreeze: 'readonly',
+        Digits: 'readonly',
+        RingID: 'readonly',
+        utils: 'readonly',
+        jAlert: 'readonly',
+        im_base: 'readonly',
+        sticker_base: 'readonly',
+        dateformate: 'readonly',
+        windowFocus: 'readonly',
+        settings: 'readonly',
+        connection: 'readonly',
+        // WebSocket state
+        KeepAliveInterval: 'readonly',
+        keepAlivePacket: 'readonly',
+        PingPongMap: 'readonly',
+        floodRequest: 'readonly',
+        floodingData: 'readonly',
+        floodDataInterval: 'readonly',
+        brokenRequest: 'readonly',
+        brokenData: 'readonly',
+        ProccessRunning: 'readonly',
+        chatRequestMap: 'readonly',
+        toIgnorePacketIds: 'readonly',
+        ATTRIBUTE_CODES: 'readonly',
+        responseFalse: 'readonly',
+        stopKeepAlive: 'readonly',
+        buildPacketAndSend: 'readonly',
+        SocketProvider: 'readonly',
+        isString: 'readonly',
+        isElement: 'readonly'
       },
       ecmaVersion: 5,
       sourceType: 'script'

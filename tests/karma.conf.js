@@ -7,9 +7,17 @@ module.exports = function(config){
       'node_modules/angular/angular.js',
       'node_modules/angular-route/angular-route.js',
       'node_modules/angular-mocks/angular-mocks.js',
+      // App source files
       'apps/main-app/app/**/*.js',
+      'apps/main-app/newsportal/app.js',
+      'apps/main-app/mobile/app.js',
+      // Shared packages
       'packages/scripts/**/*.js',
-      'tests/common/**/*.js'
+      'packages/templates/template-loader.js',
+      // Test files
+      'tests/common/**/*.js',
+      'tests/**/*.Spec.js',
+      'tests/**/*.spec.js'
     ],
 
     autoWatch : true,
@@ -19,15 +27,25 @@ module.exports = function(config){
     browsers : ['ChromeHeadless'],
 
     plugins : [
-            'karma-chrome-launcher',
-            'karma-jasmine',
-            'karma-junit-reporter'
-            ],
+      'karma-chrome-launcher',
+      'karma-jasmine',
+      'karma-junit-reporter',
+      'karma-coverage'
+    ],
 
     junitReporter : {
       outputFile: 'test_out/unit.xml',
       suite: 'unit'
-    }
+    },
+
+    coverageReporter: {
+      type: 'html',
+      dir: 'coverage/'
+    },
+
+    singleRun: true,
+
+    reporters: ['progress', 'junit', 'coverage']
 
   });
 };

@@ -74,7 +74,7 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
   - Delete `.jshintrc`, `.bowerrc`, `.tern-project`
 
 ### Testing Infrastructure
-- [ ] **Expand test coverage** (currently only 1 test file)
+- [ ] **Expand test coverage** (currently 4 test files)
   - Create tests for: auth, chat, feed, notification modules
   - Target: 60%+ coverage
 - [ ] **Fix Karma configuration**
@@ -82,7 +82,7 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
   - Ensure ChromeHeadless works in CI
 - [ ] **Add E2E tests** (Playwright or Cypress)
   - Puppeteer is installed but not configured
-- [ ] **Add test coverage tool** (karma-coverage or vite-plugin-istanbul)
+- [x] **Add test coverage tool** (karma-coverage or vite-plugin-istanbul)
 
 ### Cleanup
 - [x] **Remove legacy backup files**
