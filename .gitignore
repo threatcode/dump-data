@@ -1,1 +1,40 @@
-**/.DS_Store
+# Node and frontend tooling
+node_modules/
+bower_components/
+
+# Build output
+dist/
+build/
+public/
+**/build/
+**/dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Generated files
+*.log
+*.map
+*.zip
+*.exe
+
+# Editor backups and temp files
+*~
+*.swp
+*.swo
+*.xml~
+*.bak
+
+# Dependency directories
+bower_components/
+vendor/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*

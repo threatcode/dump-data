@@ -1,1 +1,0 @@
-(function(angular, window) { 'use strict';  angular.module('ringid.ui_player', []); })(angular, window);

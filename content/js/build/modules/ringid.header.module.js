@@ -1,1 +1,0 @@
-(function(angular, window) { 'use strict';  angular.module('ringid.header', [ 'ringid.config', 'ringid.auth', 'ringid.shared', 'ringid.notification', 'ringid.friend', 'ringid.chat' ]); })(angular, window);

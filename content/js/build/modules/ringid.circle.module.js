@@ -1,1 +1,0 @@
-(function(angular, window) { 'use strict';  angular.module('ringid.circle', [ 'ringid.global_services', 'ringid.global_directives', 'ringid.shared' ]); })(angular, window);

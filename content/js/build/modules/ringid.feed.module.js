@@ -1,1 +1,0 @@
-(function(angular, window) { 'use strict';  angular.module('ringid.feed', [ 'ngWebSocket', 'ringid.utils', 'ringid.config', 'ringid.connector', 'ringid.directives', 'ringid.postbox' ]); })(angular, window);

@@ -1,1 +1,0 @@
-(function(angular, window) { 'use strict';  angular.module('ringid.business', [ 'ringid.filters', 'ringid.config', 'ringid.controllers' ]); })(angular, window);

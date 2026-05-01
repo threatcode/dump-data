@@ -1,1 +1,0 @@
-(function(angular, window) { 'use strict';  angular.module('ringid.chat', [ 'ringid.config', 'ringid.sticker', 'ngWebSocket', 'ringid.utils', 'ringid.connector', 'angularAudioRecorder' ]); })(angular, window);
