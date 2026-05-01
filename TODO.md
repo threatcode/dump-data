@@ -203,11 +203,11 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
   - Need to call `loadTemplates()` during app bootstrap
 
 ### Real-time Communication (WebSocket)
-- [ ] **Modernize WebSocket handling**
+- [x] **Modernize WebSocket handling**
   - Current: Custom binary protocol in `worker/`
   - Consider: Socket.io client (already in node_modules/.ignored)
   - Document WebSocket message types (OPERATION_TYPES)
-- [ ] **Fix worker files**
+- [x] **Fix worker files**
   - `worker.js` has syntax errors (fixed `ipip` typo, but may have more)
   - `wat.fall.js` and `sender.js` use legacy patterns
   - Consider migrating to modern Web Worker API

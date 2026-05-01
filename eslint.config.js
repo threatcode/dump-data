@@ -1,7 +1,7 @@
 export default [
   {
     files: ['**/*.js'],
-    ignores: ['**/dist/**', '**/node_modules/**', '**/chatwindow.js', '**/utils_script.js', '**/*.module.js'],
+    ignores: ['**/dist/**', '**/node_modules/**', '**/chatwindow.js', '**/utils_script.js', '**/*.module.js', '**/websocket.service.js', '**/ring-socket.service.js'],
     rules: {
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
       'no-console': 'off',
