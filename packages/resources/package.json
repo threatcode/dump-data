@@ -1,0 +1,7 @@
+{
+  "name": "@ringid/resources",
+  "version": "0.2.0",
+  "private": true,
+  "description": "RingID shared resources (fonts, configs)",
+  "main": "index.js"
+}

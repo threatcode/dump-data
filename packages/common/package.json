@@ -1,0 +1,7 @@
+{
+  "name": "@ringid/common",
+  "version": "0.2.0",
+  "private": true,
+  "description": "RingID common resources (API doc files)",
+  "main": "index.js"
+}

@@ -4,7 +4,7 @@
     "private": true,
     "description": "RingID Monorepo - Legacy web frontend with monorepo structure",
     "engines": {
-        "node": ">=4"
+        "node": ">=18"
     },
     "workspaces": [
         "apps/*",
