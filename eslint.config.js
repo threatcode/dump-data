@@ -1,7 +1,7 @@
 export default [
   {
     files: ['**/*.js'],
-    ignores: ['**/dist/**', '**/node_modules/**', '**/chatwindow.js', '**/utils_script.js'],
+    ignores: ['**/dist/**', '**/node_modules/**', '**/chatwindow.js', '**/utils_script.js', '**/*.module.js'],
     rules: {
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
       'no-console': 'off',
@@ -26,6 +26,7 @@ export default [
         clearTimeout: 'readonly',
         setInterval: 'readonly',
         clearInterval: 'readonly',
+        requestAnimationFrame: 'readonly',
         // AngularJS
         angular: 'readonly',
         // jQuery
@@ -79,7 +80,6 @@ export default [
         // WebSocket state
         KeepAliveInterval: 'readonly',
         keepAlivePacket: 'readonly',
-        keepAlive: 'readonly',
         PingPongMap: 'readonly',
         floodingRequest: 'readonly',
         floodingData: 'readonly',
@@ -99,14 +99,16 @@ export default [
         isElement: 'readonly',
         i: 'readonly',
         settings: 'readonly',
-        connection: 'readonly'
+        connection: 'readonly',
+        fastdom: 'readonly',
+        keepAlive: 'readonly'
       },
       ecmaVersion: 5,
       sourceType: 'script'
     }
   },
   {
-    files: ['packages/templates/template-loader.js'],
+    files: ['**/*.module.js', 'packages/templates/template-loader.js'],
     languageOptions: {
       ecmaVersion: 2020,
       sourceType: 'module'
