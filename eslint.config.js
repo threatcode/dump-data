@@ -1,8 +1,9 @@
 export default [
   {
     files: ['**/*.js'],
+    ignores: ['**/dist/**', '**/node_modules/**'],
     rules: {
-      'no-unused-vars': 'warn',
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
       'no-console': 'off',
       'no-undef': 'error'
     },
@@ -32,10 +33,23 @@ export default [
         // Underscore/Lodash
         _: 'readonly',
         // Console
-        console: 'readonly'
+        console: 'readonly',
+        // App-specific globals
+        base_url: 'readonly',
+        userIdentity: 'readonly',
+        OPERATION_TYPES: 'readonly',
+        AC: 'readonly',
+        _user: 'readonly'
       },
       ecmaVersion: 5,
       sourceType: 'script'
+    }
+  },
+  {
+    files: ['packages/templates/template-loader.js'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      sourceType: 'module'
     }
   }
 ];
