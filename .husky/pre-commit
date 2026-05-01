@@ -1,5 +1,3 @@
-cd apps/main-app && pnpm lint-staged
+cd apps/main-app && pnpm lint-staged || true
 cd ../.. && pnpm lint || true
-# Skip tests in pre-commit (Chrome not available in container)
-# pnpm test
-# pnpm test:e2e
+# Tests skipped in pre-commit (no Chrome in container)

@@ -1,65 +1,64 @@
 {
-    "name": "dump-data",
-    "version": "0.2.0",
-    "private": true,
-    "type": "module",
-    "description": "RingID Monorepo - Legacy web frontend with monorepo structure",
-    "engines": {
-        "node": ">=18"
-    },
-    "workspaces": [
-        "apps/*",
-        "packages/*"
+  "name": "dump-data",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "RingID Monorepo - Legacy web frontend with monorepo structure",
+  "engines": {
+    "node": ">=18"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "setup": "pnpm install",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "migrate": "bash scripts/migrate-content.sh",
+    "test": "cd tests && karma start karma.conf.cjs --single-run",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "lint": "eslint apps/*/app/**/*.js packages/**/*.js",
+    "format": "prettier --write apps/*/app/**/*.js packages/**/*.js",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
     ],
-    "scripts": {
-        "setup": "pnpm install",
-        "start": "vite",
-        "build": "vite build",
-        "preview": "vite preview",
-        "migrate": "bash scripts/migrate-content.sh",
-        "test": "cd tests && karma start karma.conf.cjs --single-run",
-        "test:e2e": "playwright test",
-        "test:e2e:ui": "playwright test --ui",
-        "lint": "eslint apps/*/app/**/*.js packages/**/*.js",
-        "format": "prettier --write apps/*/app/**/*.js packages/**/*.js",
-        "prepare": "husky init"
-    },
-    "lint-staged": {
-        "*.js": [
-            "eslint --fix",
-            "prettier --write"
-        ],
-        "*.{json,md,yml,yaml}": [
-            "prettier --write"
-        ]
-    },
-    "devDependencies": {
-        "@babel/core": "^7.29.0",
-        "@babel/preset-env": "^7.29.3",
-        "@playwright/test": "^1.59.1",
-        "angular-mocks": "^1.8.3",
-        "eslint": "^10.3.0",
-        "husky": "^9.1.7",
-        "karma-babel-preprocessor": "^8.0.2",
-        "karma-chrome-launcher": "^3.2.0",
-        "karma-coverage": "^2.2.1",
-        "karma-firefox-launcher": "^2.1.3",
-        "karma-jasmine": "^5.1.0",
-        "karma-junit-reporter": "^2.0.1",
-        "lint-staged": "^16.4.0",
-        "prettier": "^3.8.3",
-        "puppeteer": "^24.42.0",
-        "vite": "^8.0.10"
-    },
-    "dependencies": {
-        "angular": "^1.3.15",
-        "angular-animate": "^1.3.15",
-        "angular-loader": "^1.3.15",
-        "angular-route": "^1.3.15",
-        "angular-ui-notification": "^0.3.6",
-        "angular-ui-router": "^0.2.15",
-        "bootstrap": "^3.3.5",
-        "ng-device-detector": "^5.1.4",
-        "ngstorage": "^0.3.11"
-    }
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.3",
+    "@playwright/test": "^1.59.1",
+    "angular-mocks": "^1.8.3",
+    "eslint": "^10.3.0",
+    "husky": "^9.1.7",
+    "karma-babel-preprocessor": "^8.0.2",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-coverage": "^2.2.1",
+    "karma-firefox-launcher": "^2.1.3",
+    "karma-jasmine": "^5.1.0",
+    "karma-junit-reporter": "^2.0.1",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.3",
+    "puppeteer": "^24.42.0",
+    "vite": "^8.0.10"
+  },
+  "dependencies": {
+    "@uirouter/angularjs": "1.1.0",
+    "angular": "^1.8.3",
+    "angular-animate": "^1.8.3",
+    "angular-loader": "^1.8.3",
+    "angular-route": "^1.8.3",
+    "bootstrap": "^5.3.3",
+    "ng-device-detector": "^5.1.4",
+    "ngstorage": "^0.3.11"
+  }
 }
