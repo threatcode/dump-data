@@ -23,7 +23,7 @@
                     showdroparrow: '='
                 },
                restrict: 'E',
-               templateUrl: 'pages/newsportal/portal-popup-top.directive.html'
+               templateUrl: '@templates/newsportal/portal-popup-top.directive.html'
             }
      }
 

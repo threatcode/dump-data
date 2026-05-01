@@ -22,7 +22,7 @@
     function rgPortalSingleFeedDetails() {
         return {
             restrict: 'E',
-            templateUrl: 'pages/newsportal/portal-single-details.directive.html',
+            templateUrl: '@templates/newsportal/portal-single-details.directive.html',
             link: function(scope) {
                 scope.$rgDigest();
             },

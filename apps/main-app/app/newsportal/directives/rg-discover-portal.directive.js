@@ -76,6 +76,6 @@ angular
             restrict: 'E',
             controller: discoverPortalController,
             link: linkFunc,
-            templateUrl: 'pages/newsportal/discover.portal.directive.html'
+            templateUrl: '@templates/newsportal/discover.portal.directive.html'
         };
     }

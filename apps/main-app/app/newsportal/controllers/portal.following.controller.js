@@ -18,7 +18,7 @@
             $scope.showloadmore = false;
             $scope.isEmptyFollow = false;
 
-            $scope.ddActionHtml = 'pages/dropdowns/portal-follow-action-dropdown.html';
+            $scope.ddActionHtml = '@templates/dropdowns/portal-follow-action-dropdown.html';
 
             portalHttpService.getPortalFollowingList().then(function(json){
                 if ( json.sucs === true ) {
@@ -87,7 +87,7 @@
                                     }
                                     
                                 },
-                                templateUrl : 'pages/newsportal/portal-follow.popup.html'
+                                templateUrl : '@templates/newsportal/portal-follow.popup.html'
                         });
                         break;
                     case 'unfollow':

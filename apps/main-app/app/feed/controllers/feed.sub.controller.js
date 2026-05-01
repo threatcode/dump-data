@@ -203,7 +203,7 @@
                             controller: 'FeedEditController',
                             scrollable: true,
                             resolve :requestData,
-                            templateUrl : 'pages/partials/news_feed/edit.html'
+                            templateUrl : '@templates/partials/news_feed/edit.html'
                     });
 
                     boxInstance.result.then(function(confirmed){

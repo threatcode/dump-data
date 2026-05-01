@@ -21,7 +21,7 @@
                     showdroparrow: '='
                 },
                restrict: 'E',
-               templateUrl: 'pages/newsportal/portal-top.directive.html'  
+               templateUrl: '@templates/newsportal/portal-top.directive.html'  
             }
      }
 

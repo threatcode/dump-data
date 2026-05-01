@@ -195,19 +195,19 @@
                             templateUrl: '@templates/circle-partials/all-circle.html',
                             controller : 'allCirclePopupController'
                         }).when('/newsportal',{
-                            templateUrl :'pages/newsportal/portal-index.html',
+                            templateUrl :'@templates/newsportal/portal-index.html',
                             controller  : 'FeedNewsportalController'
                         }).when('/newsportal/following',{
-                            templateUrl : 'pages/newsportal/following.html',
+                            templateUrl : '@templates/newsportal/following.html',
                             controller : 'portalFollowingController'
                         }).when('/newsportal/discover',{
-                            templateUrl : 'pages/newsportal/discover.html',
+                            templateUrl : '@templates/newsportal/discover.html',
                             controller : 'portalDiscoverController'
                         }).when('/newsportal/saved',{
-                            templateUrl : 'pages/newsportal/saved.html',
+                            templateUrl : '@templates/newsportal/saved.html',
                             controller : 'portalSaveController'
                         }).when('/newsportal/:uid',{
-                            templateUrl : 'pages/newsportal/profilenews.html',
+                            templateUrl : '@templates/newsportal/profilenews.html',
                             controller : 'portalSaveController',
                         }).when('/allnotification',{
                             templateUrl: '@templates/partials/all-notification.html'

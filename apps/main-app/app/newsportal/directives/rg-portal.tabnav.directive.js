@@ -25,7 +25,7 @@
             restrict: 'E',
             controller: tabNavController,
             link: linkFunc,
-            templateUrl: 'pages/newsportal/portal.tabnav.directive.html'
+            templateUrl: '@templates/newsportal/portal.tabnav.directive.html'
         };
     }
 

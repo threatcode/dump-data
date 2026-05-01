@@ -115,7 +115,7 @@
                               return feedFactory.moreFeedText(feed);
                             }
                         },
-                        templateUrl : 'pages/home/popup-feed.html'
+                        templateUrl : '@templates/home/popup-feed.html'
                     });
 				} else {
 				  element.html(content);

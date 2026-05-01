@@ -10,7 +10,7 @@ angular.module('ringid.feed')
             helperob = "newsportal";
             action = OPERATION_TYPES.SYSTEM.TYPE_FRIEND_NEWSFEED;
 
-            $scope.ddActionHtml = 'pages/dropdowns/portal-cover-follow-action-dropdown.html';
+            $scope.ddActionHtml = '@templates/dropdowns/portal-cover-follow-action-dropdown.html';
             
             mapkey = action +"."+ uId+".3";
 
@@ -61,7 +61,7 @@ angular.module('ringid.feed')
                                     }
                                     
                                 },
-                                templateUrl : 'pages/newsportal/portal-follow.popup.html'
+                                templateUrl : '@templates/newsportal/portal-follow.popup.html'
                         });
                         break;
                     case 'unfollow':

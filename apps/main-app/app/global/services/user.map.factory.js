@@ -159,9 +159,9 @@
                                 },
                                 getCardTemplate:function(){
                                     if(this.user.isnp){
-                                        return 'pages/partials/hovercards/portal-profile-hover.html';
+                                        return '@templates/partials/hovercards/portal-profile-hover.html';
                                     }else{
-                                        return 'pages/partials/hovercards/profile-hover.html';
+                                        return '@templates/partials/hovercards/profile-hover.html';
                                     }                                    
                                 },
                                 avatar:  function (size){

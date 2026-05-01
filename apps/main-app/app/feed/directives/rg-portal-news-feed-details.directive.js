@@ -11,7 +11,7 @@
     function rgPortalNewsFeedDetails() {
         return {
             restrict: 'E',
-            templateUrl: 'pages/newsportal/portal-details.directive.html',
+            templateUrl: '@templates/newsportal/portal-details.directive.html',
             link: function(scope) {
                 scope.$rgDigest();
             }

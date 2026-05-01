@@ -196,7 +196,7 @@
             restrict: 'E',
             controller: portalSliderController,
             link: linkFunc,
-            templateUrl: 'pages/newsportal/portal-slider-directive.html'
+            templateUrl: '@templates/newsportal/portal-slider-directive.html'
         };
     }
 

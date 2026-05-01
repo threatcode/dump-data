@@ -10,7 +10,7 @@
             
             return {
                 restrict: 'E',
-                templateUrl: 'pages/newsportal/portal-bottom.directive.html'
+                templateUrl: '@templates/newsportal/portal-bottom.directive.html'
             };
         }
 
