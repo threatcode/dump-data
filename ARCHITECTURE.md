@@ -1,153 +1,279 @@
-# RingID Architecture
+# RingID Frontend Architecture
+
+This document describes the architecture of the RingID web frontend application.
 
 ## Overview
 
-RingID is a real-time social networking application built with AngularJS 1.x. It uses WebSocket for real-time communication and follows a modular monorepo structure.
+RingID is a social networking platform built with **AngularJS 1.8.3** (legacy, planned migration to modern framework). The application follows a modular monorepo structure using **pnpm workspaces**.
 
-## Monorepo Structure
+## Technology Stack
+
+| Layer | Technology |
+|-------|------------|
+| Framework | AngularJS 1.8.3 |
+| Build Tool | Vite 6.x |
+| Package Manager | pnpm 10.x |
+| Styling | Bootstrap 5.3, CSS |
+| Real-time | WebSocket (custom binary protocol) |
+| Testing | Karma + Jasmine, Playwright |
+| Linting | ESLint, Prettier |
+
+## Project Structure
 
 ```
 dump-data/
 ├── apps/
-│   └── main-app/          # Main AngularJS application
-│       ├── app/           # Application code
-│       │   ├── chat/      # Chat module
-│       │   ├── feed/      # News feed module
-│       │   ├── profile/   # User profile module
-│       │   ├── auth/      # Authentication
-│       │   ├── circle/    # Friend circles
-│       │   ├── common/    # Shared components
-│       │   ├── friend/    # Friend management
-│       │   ├── global/    # Global services
-│       │   ├── header/    # Header/navigation
-│       │   ├── media/     # Media handling
-│       │   ├── notification/ # Notifications
-│       │   ├── shared/    # Shared directives
-│       │   ├── sticker/   # Sticker pack
-│       │   └── utils/     # Utilities
-│       └── images/        # Application images
-├── packages/
-│   ├── scripts/          # Shared JavaScript utilities
-│   ├── styles/           # Shared CSS styles
-│   ├── templates/        # Shared HTML templates
-│   ├── common/           # Common resources
-│   └── resources/        # Shared resources
-├── config/               # Server configurations
-├── tests/                # Test files
-└── scripts/              # Migration scripts
+│   └── main-app/              # Main RingID application
+│       ├── app/               # Application code
+│       │   ├── auth/          # Authentication module
+│       │   ├── chat/          # Chat functionality
+│       │   ├── feed/          # News feed
+│       │   ├── friend/        # Friends management
+│       │   ├── global/        # Shared services/utilities
+│       │   ├── profile/       # User profiles
+│       │   └── ...
+│       ├── newsportal/        # News portal sub-app
+│       ├── mobile/            # Mobile web version
+│       └── webapp/            # Web app variant
+├── packages/                  # Shared packages
+│   ├── scripts/               # Shared JavaScript modules
+│   └── templates/             # Shared HTML templates
+├── tests/                     # Test suites
+├── worker/                    # Web Workers
+└── dist/                      # Build output
 ```
 
-## AngularJS Module Structure
+## AngularJS Module Architecture
 
 ### Core Modules
-- `ringid` — Main application module
-- `ringid.chat` — Chat functionality
-- `ringid.feed` — News feed
-- `ringid.profile` — User profiles
-- `ringid.auth` — Authentication
-- `ringid.circle` — Friend circles
-- `ringid.friend` — Friend management
-- `ringid.notification` — Notifications
-- `ringid.media` — Media handling
-- `ringid.sticker` — Stickers
-- `ringid.newsportal` — News portal
 
-### Module Registration Pattern
-
-Modules use a try/catch pattern for registration:
+The application uses AngularJS modules with a try/catch pattern for registration:
 
 ```javascript
 try {
   angular.module('ringid.feed');
 } catch (e) {
-  angular.module('ringid.feed', [
-    'ringid.services',
-    'ngRoute',
-    // dependencies
-  ]);
+  angular.module('ringid.feed', []);
 }
 ```
 
-## WebSocket Communication
+**Note**: This pattern is being consolidated. See [TODO.md](./TODO.md) for migration progress.
 
-Real-time communication uses a custom binary protocol:
+### Main Modules
 
-- **worker.js** — Main WebSocket handler
-- **sender.js** — Message sending utilities
-- **wat.fall.js** — Fallback handling
+| Module | Description | Registration Location |
+|--------|-------------|----------------------|
+| `ringid` | Main application module | `app.js` |
+| `ringid.feed` | News feed functionality | `app/feed/` (30+ files) |
+| `ringid.chat` | Chat and messaging | `app/chat/` |
+| `ringid.auth` | Authentication | `app/auth/` |
+| `ringid.profile` | User profiles | `app/profile/` |
+| `ringid.friend` | Friends management | `app/friend/` |
+| `ringid.notification` | Notifications | `app/notification/` |
+| `ringid.media` | Media upload/display | `app/media/` |
+| `ringid.search` | Search functionality | `app/search/` |
+
+### Module Dependencies
+
+```
+ringid
+├── ringid.auth
+├── ringid.chat
+├── ringid.feed
+├── ringid.friend
+├── ringid.notification
+├── ringid.profile
+├── ringid.media
+├── ringid.search
+└── ngRoute, ngStorage, etc.
+```
+
+## Shared Services
+
+### Location: `app/global/services/`
+
+| Service | Description |
+|---------|-------------|
+| `AuthService` | Authentication and session management |
+| `WebSocketService` | Real-time communication |
+| `UserService` | User data management |
+| `FeedService` | Feed data and operations |
+| `ChatService` | Chat message handling |
+| `NotificationService` | Push notifications |
+| `StorageService` | Local/session storage wrapper |
+
+### Service Pattern
+
+Services are defined as AngularJS factories or services:
+
+```javascript
+angular.module('ringid.global')
+  .factory('AuthService', ['$http', '$q', function($http, $q) {
+    // Service implementation
+  }]);
+```
+
+## WebSocket Protocol
+
+The application uses a custom binary WebSocket protocol for real-time communication.
+
+### Location: `worker/`
+
+| File | Description |
+|------|-------------|
+| `worker.js` | Main Web Worker for WebSocket |
+| `sender.js` | Message sending logic |
+| `wat.fall.js` | Message queue/fallback handling |
 
 ### Message Types (OPERATION_TYPES)
 
-Defined in `packages/scripts/operationtypes.js`:
-- `ACTION_ADD` — Add new item
-- `ACTION_UPDATE` — Update existing item
-- `ACTION_DELETE` — Delete item
-- `ACTION_GET` — Retrieve data
-- `ACTION_LIST` — List items
+WebSocket messages use operation type codes defined in the application. See `packages/scripts/` for operation type constants.
 
-## Services and Factories
+### WebSocket Flow
 
-### Core Services
-- `AuthService` — Authentication and session management
-- `ChatService` — Chat message handling
-- `FeedService` — News feed operations
-- `UserService` — User data management
-- `NotificationService` — Notification handling
-- `MediaService` — Media upload and processing
-
-### Shared Services (packages/scripts/)
-- `ringalert.factory.js` — Alert notifications
-- `ringapicall.factory.js` — API calls
-- `utils.factory.js` — Utility functions
+```
+Client (AngularJS) → Worker (worker.js) → Server (WebSocket)
+                    ↓
+Client ← Worker ← Server
+```
 
 ## Template System
 
-Templates are stored in `packages/templates/` and referenced using the `@templates/` alias:
+### Template Aliases (Vite)
+
+Configured in `vite.config.js`:
 
 ```javascript
-// In directives
-templateUrl: '@templates/dropdowns/action-dropdown.html'
-
-// In controllers
-$scope.templateUrl = '@templates/popups/create-album-popup.html'
+resolve: {
+  alias: {
+    '@app': '/apps/main-app/app',
+    '@packages': '/packages',
+    '@templates': '/packages/templates'
+  }
+}
 ```
 
-Vite resolves the `@templates` alias to `packages/templates/`.
+### Template Cache
 
-## Build System
+Templates are cached using AngularJS `$templateCache`. The Vite configuration includes a custom plugin to automatically cache HTML templates.
 
-### Development
-- Command: `pnpm start`
-- Tool: Vite with HMR
-- Port: 8080
-- Proxy: API requests to `localhost:3000`
+### Template URL Pattern
 
-### Production
-- Command: `pnpm build`
-- Output: `dist/`
-- Tool: Vite with Rollup bundler
+```javascript
+// Use alias in directives/components
+templateUrl: '@templates/home/feed.html'
+```
+
+## Build System (Vite)
+
+### Configuration: `vite.config.js`
+
+Key features:
+- **Dev Server**: Port 8080, proxies `/api` to backend
+- **Build**: Outputs to `dist/`, chunks with hash
+- **Aliases**: `@app`, `@packages`, `@templates`
+- **Template Cache**: Custom plugin for AngularJS
+- **Bundle Analysis**: `rollup-plugin-visualizer`
+
+### Build Commands
+
+```bash
+pnpm start          # Dev server with HMR
+pnpm build          # Production build
+pnpm preview        # Preview production build
+```
 
 ## Environment Configuration
 
-Environment variables (Vite):
-- `VITE_API_URL` — Backend API URL
-- `VITE_WS_URL` — WebSocket URL
-- `VITE_DEBUG` — Debug mode flag
+Environment variables are managed through Vite's `.env` files:
 
-See `.env.example` for configuration options.
+| File | Purpose |
+|------|---------|
+| `.env.development` | Local development |
+| `.env.staging` | Staging environment |
+| `.env.production` | Production environment |
 
-## Testing
+### Accessing Environment Variables
 
-- Test runner: Karma
-- Framework: Jasmine
-- E2E: Playwright (configured but not implemented)
+```javascript
+// In application code
+const apiUrl = import.meta.env.VITE_API_URL;
+const debugMode = import.meta.env.VITE_DEBUG;
+```
 
-Run tests: `pnpm test`
+## State Management
 
-## Security Considerations
+Currently uses AngularJS services with local state. For the planned migration to a modern framework, consider:
+- Redux (via angular-redux)
+- MobX
+- Or framework-native state management
 
-- AngularJS 1.x has known XSS vulnerabilities
-- Bootstrap 3.x has XSS in Popover/Tooltip
-- Plan migration to modern framework (Angular/React/Vue)
-- Implement strict CSP headers
-- Sanitize user input
+## Authentication Flow
+
+1. User initiates login (email/password or social)
+2. `AuthService.login()` sends credentials to API
+3. On success, token stored in `ngStorage`
+4. WebSocket connection established with auth token
+5. User session maintained via token refresh
+
+## Testing Architecture
+
+### Unit Tests (Karma + Jasmine)
+
+- Configuration: `tests/karma.conf.cjs`
+- Test files: `tests/**/*.spec.js`
+- Coverage: `coverage/`
+
+### E2E Tests (Playwright)
+
+- Configuration: `playwright.config.js`
+- Test files: `tests/e2e/`
+
+## Future Architecture (Migration)
+
+The application is planning migration from AngularJS to a modern framework. See [TODO.md](./TODO.md) for the migration strategy.
+
+### Recommended Migration Path
+
+1. **Angular** - If staying in Google ecosystem
+2. **React** - Larger ecosystem, easier hiring
+3. **Vue** - Progressive, easier learning curve
+
+### Micro-Frontend Approach
+
+During migration, consider:
+- Running both versions via iframes
+- Using module federation
+- Gradual route-by-route migration
+
+## Performance Considerations
+
+- **Bundle Splitting**: Vite handles automatic code splitting
+- **Lazy Loading**: Planned via `$ocLazyLoad` (currently commented)
+- **Image Optimization**: `vite-plugin-imagemin` available
+- **Tree Shaking**: Enabled by Vite/Rollup
+
+## Security
+
+See [TODO.md](./TODO.md) for security-related items.
+
+Current security measures:
+- Content Security Policy (CSP) planned
+- `$sce` for XSS protection
+- Angular 1.8.3 (latest 1.x, but still legacy)
+- Regular `pnpm audit` checks
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Module registration errors**: Check try/catch pattern in module files
+2. **Template not found**: Verify `@templates` alias is used
+3. **WebSocket disconnects**: Check worker.js logs
+4. **Build failures**: Clear `node_modules` and `pnpm install`
+
+### Debug Tools
+
+- `developer.config.js` - RingLogger configuration
+- Browser DevTools - Network, Console
+- Vite DevTools - HMR, build analysis

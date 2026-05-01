@@ -49,7 +49,6 @@
                   return query.length ? query.substr(0, query.length - 1) : query;
                 };
 
-                // Override $http service's default transformRequest
                 $httpProvider.defaults.transformRequest = [function(data) {
                   return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
                 }];
@@ -58,34 +57,8 @@
                 $routeProvider.
                         when(RING_ROUTES.HOME, {
                             templateUrl: '@templates/index.html',
-                            //resolve: {
-                                //// load necessary modules
-                                //loadFriendsModule: ['$ocLazyLoad', 'Auth', '$q', function($ocLazyLoad, Auth, $q) {
-                                    //if (Auth.isLoggedIn()) {
-                                        //return $ocLazyLoad.load('ringidFriends');
-                                    //} else {
-                                        //var defer = $q.defer();
-                                        //defer.resolve();
-                                        //return defer.promise;
-                                    //}
-
-                                //}],
-                                //loadFeedModule: ['$ocLazyLoad', 'Auth', '$q', function($ocLazyLoad, Auth, $q) {
-                                    //if (Auth.isLoggedIn()) {
-                                        //return $ocLazyLoad.load('ringidFeed');
-                                    //} else {
-                                        //var defer = $q.defer();
-                                        //defer.resolve();
-                                        //return defer.promise;
-                                    //}
-                                //}]
-                            //}
                         }).when(RING_ROUTES.LOGIN_SOCIAL, {
                             templateUrl: '@templates/index.html'
-                            //resolve: {
-                                //'urlfix': ['$location', function($location) {
-                                //}]
-                            //}
                         }).when(RING_ROUTES.SIGNUP_SOCIAL, {
                             templateUrl: '@templates/index.html'
                         }).when(RING_ROUTES.USER_PROFILE, {
@@ -243,12 +216,7 @@
 
                      //to know more about setting base URL visit: https://docs.angularjs.org/error/$location/nobase
 
-                     //if you don't wish to set base URL then use this
-                    //$locationProvider.html5Mode({
-                        //enabled: true,
-                        //requireBase: false
-                    //});
-                //}
+                     }
 
             }])
         .run(['$rootScope', '$location', 'Auth', 'rgDropdownService', '$ringbox','PAGE_TITLES','Utils',
@@ -264,33 +232,19 @@
 					 routeChangeCounter++;
                 });
                 $rootScope.$on('$routeChangeStart', function(event, next, current) {
-                    //var loginDoneInterval;
-                    //function loginDone() {
-                        if(!Auth.isPending() && !Auth.isLoggedIn() && !$rootScope.doingSilentLogin &&  $location.url() !==  '/' )  {
-                            $location.path('/');
-                            revertScopes(true);
-                        } else {
-                            $ringbox.closeAll();
-                            // close any dropdown if any is open
-                            rgDropdownService.close();
-                            // close search dropdown if open
-                            // IMPORTANT BELOW SERVICE NEEDS TO BE DEPENDENCY CLEARED AND USED HERE. module_isolation branch changes
-                            //rgSearchService.close();
-                            revertScopes(true);
-                        }
+                    if(!Auth.isPending() && !Auth.isLoggedIn() && !$rootScope.doingSilentLogin &&  $location.url() !==  '/' )  {
+                        $location.path('/');
+                        revertScopes(true);
+                    } else {
+                        $ringbox.closeAll();
+                        // close any dropdown if any is open
+                        rgDropdownService.close();
+                        // close search dropdown if open
+                        // IMPORTANT BELOW SERVICE NEEDS TO BE DEPENDENCY CLEARED AND USED HERE. module_isolation branch changes
+                        //rgSearchService.close();
+                        revertScopes(true);
+                    }
 
-                    //}
-                    //// if not logged in go to login page
-                    //if (Auth.isPending() ) {
-                        //loginDoneInterval = setInterval(function() {
-                            //if (!Auth.isPending()) {
-                                //clearInterval(loginDoneInterval);
-                                //loginDone();
-                            //}
-                        //}, 2000);
-                    //} else {
-                        //loginDone();
-                    //}
                 });
 
                 //$rootScope.$on('$routeChangeSuccess', function() {

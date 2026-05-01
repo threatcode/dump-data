@@ -112,6 +112,7 @@ Recommended approach:
 3. Sunset AngularJS version
 
 ### Security Updates
-- Upgrade AngularJS 1.3.15 → Latest 1.x (or migrate framework)
-- Upgrade Bootstrap 3.3.5 → 4.x/5.x or Tailwind
-- Fix known XSS vulnerabilities
+- Upgraded AngularJS 1.3.15 → 1.8.3 (latest 1.x)
+- Upgraded Bootstrap 3.3.5 → 5.3.8
+- Replaced angular-ui-notification with @uirouter/angularjs
+- See `TODO.md` for remaining security items

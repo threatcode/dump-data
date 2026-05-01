@@ -51,7 +51,7 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
 ## P1 - High Priority
 
 ### CI/CD Setup
-- [ ] **Set up GitHub Actions workflow**
+- [x] **Set up GitHub Actions workflow**
   - Create `.github/workflows/ci.yml`
   - Jobs: install (pnpm), lint, test, build, security audit
 - [ ] **Configure branch protection** on `main`
@@ -71,7 +71,7 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
   - Add `eslint-plugin-angular`
   - Enable more rules, update to `ecmaVersion: 2020`
   - Remove conflicting `.eslintrc.json` if exists
-- [ ] **Align EditorConfig with Prettier**
+- [x] **Align EditorConfig with Prettier**
   - Both should use 2 spaces for JS files
 - [ ] **Remove legacy linter configs**
   - Delete `.jshintrc`, `.bowerrc`, `.tern-project`
@@ -104,14 +104,14 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
   - Fix Node.js version (≥18, not ≥4)
   - Document pnpm commands (not npm)
   - Update migration notes
-- [ ] **Create CONTRIBUTING.md**
+- [x] **Create CONTRIBUTING.md**
   - Branch naming, commit conventions, PR template
 - [ ] **Create CHANGELOG.md**
   - Document changes from v0.1.0 to v0.2.0
-- [ ] **Create ARCHITECTURE.md**
+- [x] **Create ARCHITECTURE.md**
   - Explain AngularJS module structure
   - Document shared services, WebSocket protocol
-- [ ] **Update MIGRATION.md**
+- [x] **Update MIGRATION.md**
   - Reflect actual monorepo structure (not `content/` → `src/`)
   - Archive obsolete migration script
 
@@ -125,7 +125,7 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
 - [x] **Add environment modes** to Vite
   - `.env.development`, `.env.staging`, `.env.production`
   - Use `mode` parameter: `vite build --mode staging`
-- [ ] **Move debug flags** from `developer.config.js`
+- [x] **Move debug flags** from `developer.config.js`
   - Use `import.meta.env.VITE_DEBUG_*` instead of hardcoded values
 
 ### Modernization (Pre-Migration)
@@ -223,7 +223,7 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
 - [ ] **Fix feed directive registration**
   - Directives register `angular.module('ringid.feed')` repeatedly
   - Should import the module once and add directives
-- [ ] **Remove commented lazy-load code**
+- [x] **Remove commented lazy-load code**
   - `app.routes.js` has 50+ lines of commented `$ocLazyLoad` code
   - Either implement lazy loading properly or remove comments
 
@@ -245,7 +245,9 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
 - [ ] **Fix AngularJS injection**
   - Some files use implicit injection instead of `$inject`
   - Affects minification (though Vite handles this now)
-- [ ] **Remove jQuery dependency**
+- [x] **Remove jQuery dependency** (partial - removed from HTML)
+  - Remaining: `image_slider.js` uses jQuery plugin pattern - needs migration
+  - `packages/scripts/utils_script.js` uses `jQuery(document).ready()`
   - ESLint shows `$` as undefined (jQuery usage)
   - Migrate to AngularJS `angular.element` or native DOM
 
@@ -254,7 +256,7 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
 ## Quick Wins (Completed ✓)
 
 1. ✓ **Delete legacy files**: `.bowerrc`, `.jshintrc`, `.tern-project`
-2. **Fix `.npmrc`**: Add comments about pnpm settings (partially done)
+2. ✓ **Fix `.npmrc`**: Add comments about pnpm settings
 3. ✓ **Align EditorConfig/Prettier**: Both use 2 spaces for JS
 4. **Add npm scripts**: `prepare` for Husky, `audit` for security
 5. ✓ **Update README**: Fix Node version, document pnpm commands
@@ -298,11 +300,11 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
 - [x] Fix `.npmrc` (added comments)
 - [x] Consolidate templates into `packages/templates/`
 - [x] Install pre-commit hooks (Husky + lint-staged)
-- [ ] Expand test coverage
-- [ ] Fix security vulnerabilities (AngularJS 1.x)
-- [ ] Create documentation (CONTRIBUTING, ARCHITECTURE)
+- [x] Expand test coverage
+- [ ] Fix security vulnerabilities (AngularJS 1.x - updated to 1.8.3)
+- [x] Create documentation (CONTRIBUTING, ARCHITECTURE)
 - [ ] Plan AngularJS migration strategy
-- [ ] Fix template URLs to use `@templates` alias
+- [x] Fix template URLs to use `@templates` alias
 - [ ] Modernize WebSocket handling
 - [ ] Refactor feed controllers (consolidate 15+ controllers)
 

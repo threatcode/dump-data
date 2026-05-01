@@ -9,8 +9,8 @@ module.exports = function(config){
       'node_modules/angular-mocks/angular-mocks.js',
       // App source files
       'apps/main-app/app/**/*.js',
-      'apps/main-app/newsportal/app.js',
-      'apps/main-app/mobile/app.js',
+      'apps/main-app/newsportal/**/*.js',
+      'apps/main-app/mobile/**/*.js',
       // Shared packages
       'packages/scripts/**/*.js',
       'packages/templates/template-loader.js',
@@ -20,11 +20,23 @@ module.exports = function(config){
       'tests/**/*.spec.js'
     ],
 
+    preprocessors: {
+      'apps/main-app/app/**/*.js': ['coverage'],
+      'packages/scripts/**/*.js': ['coverage']
+    },
+
     autoWatch : true,
 
     frameworks: ['jasmine'],
 
     browsers : ['ChromeHeadless'],
+
+    customLaunchers: {
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage']
+      }
+    },
 
     plugins : [
       'karma-chrome-launcher',
@@ -40,7 +52,11 @@ module.exports = function(config){
 
     coverageReporter: {
       type: 'html',
-      dir: 'coverage/'
+      dir: 'coverage/',
+      reporters: [
+        { type: 'html' },
+        { type: 'text-summary' }
+      ]
     },
 
     singleRun: true,
