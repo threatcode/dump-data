@@ -249,10 +249,12 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
   - Some files use implicit injection instead of `$inject`
   - Affects minification (though Vite handles this now)
 - [x] **Remove jQuery dependency** (partial - removed from HTML)
-  - Remaining: `apps/main-app/newsportal/app/image_slider.js` - jQuery plugin pattern (101 lines)
-  - Remaining: `packages/scripts/utils_script.js` - uses `jQuery(document).ready()` and `$` selectors
-  - These files need significant refactoring (or deletion if migrating to React)
+  - ✅ Deleted: `apps/main-app/newsportal/app/image_slider.js` (jQuery plugin)
+  - ✅ Removed: Script reference from `dashboard.html`
+  - Partial: `packages/scripts/utils_script.js` - removed `jQuery(document).ready()`
+  - Remaining: `utils_script.js` still has `$.cookie()` dependency
   - ESLint rules disabled in `eslint.config.js` (migrating to React)
+  - Note: Mobile HTML files still reference `image_slider` ID (cleanup during React migration)
 
 ---
 
