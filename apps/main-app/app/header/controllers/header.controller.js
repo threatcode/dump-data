@@ -16,7 +16,7 @@
         LOGOUT Dropdown section
        */
       vm.logout = {
-        ddHtml: 'templates/dropdowns/logout-dropdown.html', //$templateCache.get('logout-dropdown.html'),
+        ddHtml: '@templates/dropdowns/logout-dropdown.html', //$templateCache.get('logout-dropdown.html'),
         ddControl: Auth,
         ddAction: function() {
             rgDropdownService.close();
@@ -39,7 +39,7 @@
         FRIEND REQUEST Dropdown section
        */
       vm.freq = {
-        //ddHtml:'templates/partials/requests-directive.html', // $templateCache.get('friend-request-dropdown.html'),
+        //ddHtml:'@templates/partials/requests-directive.html', // $templateCache.get('friend-request-dropdown.html'),
         ddTemplate:'<rg-requests load-on-scroll="true" load-count="10" ></rg-requests>',
         ddOpened: function() {
           setActiveMenu('friend_request');
@@ -62,7 +62,7 @@
          Chat History  Dropdown section
          */
         vm.chatHistory = {
-            ddHtml:'templates/partials/chat/chat-history-dropdown.html', // $templateCache.get('friend-request-dropdown.html'),
+            ddHtml:'@templates/partials/chat/chat-history-dropdown.html', // $templateCache.get('friend-request-dropdown.html'),
             ddOpened: function() {
                 chatHistoryFactory.resetConversationCount();
                 setActiveMenu('chat_history');
@@ -92,8 +92,8 @@
        */
 
         vm.noti = {
-            //ddHtml: 'templates/partials/notification-directive.html',
-            ddTemplate: '<rg-notification load-count="10" template-url="templates/dropdowns/notification-dropdown.html"></rg-notification>',
+            //ddHtml: '@templates/partials/notification-directive.html',
+            ddTemplate: '<rg-notification load-count="10" template-url="@templates/dropdowns/notification-dropdown.html"></rg-notification>',
             //ddTemplate: '<rg-notification ></rg-notification>',
             ddOpened: function() {
               NotificationFactory.clearCounter();

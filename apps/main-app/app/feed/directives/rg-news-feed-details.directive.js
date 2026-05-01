@@ -11,7 +11,7 @@
     function rgNewsFeedDetails() {
         return {
             restrict: 'E',
-            templateUrl: 'templates/partials/news_feed/details.html',
+            templateUrl: '@templates/partials/news_feed/details.html',
             link: function(scope) {
                 scope.$rgDigest();
             }

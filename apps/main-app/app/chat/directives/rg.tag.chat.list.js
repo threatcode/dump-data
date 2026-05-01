@@ -6,7 +6,7 @@
             function () {
                 return {
                     restrict: 'E',
-                    templateUrl: 'templates/partials/tag-chat/tag-chat-list.html'
+                    templateUrl: '@templates/partials/tag-chat/tag-chat-list.html'
                 };
             }
         );

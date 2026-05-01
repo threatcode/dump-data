@@ -12,7 +12,7 @@
             scope : {
                 isLoading : '='
             },
-            templateUrl: 'templates/partials/loading_view.html'
+            templateUrl: '@templates/partials/loading_view.html'
         };
     }
 
@@ -23,7 +23,7 @@
             scope : {
                 isLoading : '='
             },
-            templateUrl: 'templates/partials/loading_view1.html'
+            templateUrl: '@templates/partials/loading_view1.html'
         };
     }
 
@@ -33,7 +33,7 @@
             scope : {
                 isLoading : '='
             },
-            templateUrl: 'templates/partials/loading_view2.html'
+            templateUrl: '@templates/partials/loading_view2.html'
         };
     }
 

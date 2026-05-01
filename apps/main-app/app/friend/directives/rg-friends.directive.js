@@ -187,7 +187,7 @@
 
             function setDropdown() {
                 // settings dropdown data
-                //$scope.ddHtml = 'templates/dropdowns/friend-settings-dropdown.html';
+                //$scope.ddHtml = '@templates/dropdowns/friend-settings-dropdown.html';
                 $scope.ddTemplate =
                     '<div class="action friend-settings-dropdown float-right">' +
                         '<a  ng-if="ddControl.friendshipStatus()==1" rg-click="ddAction()({ action: \'unfriend\', friend: ddControl, event: $event})" href="#"> <span class="img_sprite w-h-13 icon-into-border f-Block"></span><span class="txt">{{consType.unfriend}}</span></a>' +

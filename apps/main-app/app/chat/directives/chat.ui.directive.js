@@ -93,7 +93,7 @@
     chatBoxUi.$inject = ['Utils', 'SystemEvents', 'ChatFactory', '$rootScope', 'chatRequestProcessor', 'chatTabSync', 'StickerFactory', '$document'];
     function chatBoxUi(Utils, SystemEvents, ChatFactory, $rootScope, chatRequestProcessor, chatTabSync, StickerFactory, $document){
 
-        var templateUrl = 'templates/chatbox.html';
+        var templateUrl = '@templates/chatbox.html';
 
         return {
             restrict: 'E',
@@ -173,7 +173,7 @@
         return {
             restrict: 'E',
             replace: true,
-            templateUrl: 'templates/partials/chat/extra-chatboxes.html'
+            templateUrl: '@templates/partials/chat/extra-chatboxes.html'
 
         };
     }
@@ -183,7 +183,7 @@
         return {
             restrict: 'E',
             replace: true,
-            templateUrl: 'templates/partials/chat/single-chatbox.html',
+            templateUrl: '@templates/partials/chat/single-chatbox.html',
             link : function(scope, elem, attr){
 
                     var GENERAL_CONSTANTS = CHAT_APP.Constants.GENERAL_CONSTANTS;
@@ -299,7 +299,7 @@
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'templates/partials/chat/chatbox-topbar.html'
+                templateUrl: '@templates/partials/chat/chatbox-topbar.html'
 
             };
         }
@@ -307,7 +307,7 @@
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'templates/partials/chat/chatbox-topbar-menu.html',
+                templateUrl: '@templates/partials/chat/chatbox-topbar-menu.html',
                 link : function(scope){
 
                     var box = scope.box.value;
@@ -349,7 +349,7 @@
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'templates/partials/chat/chatbox-url-preview.html'
+                templateUrl: '@templates/partials/chat/chatbox-url-preview.html'
 
             };
         }
@@ -358,7 +358,7 @@
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'templates/partials/chat/chatbox-bottom.html',
+                templateUrl: '@templates/partials/chat/chatbox-bottom.html',
                 link : function(scope, elem, attr){
 
                     scope.toggleMenu = function(){
@@ -390,7 +390,7 @@
                 link : function(scope){
 
                 },
-                templateUrl: 'templates/partials/chat/chatbox-location-info.html'
+                templateUrl: '@templates/partials/chat/chatbox-location-info.html'
 
             };
         }
@@ -416,7 +416,7 @@
                     });
 
                 },
-                templateUrl: 'templates/partials/chat/chatbox-bottom-menu.html'
+                templateUrl: '@templates/partials/chat/chatbox-bottom-menu.html'
 
             };
         }
@@ -426,7 +426,7 @@
                 return {
                     restrict: 'E',
                     replace: true,
-                    templateUrl: 'templates/partials/chat/chatbox-middle.html',
+                    templateUrl: '@templates/partials/chat/chatbox-middle.html',
                     link : function(scope){
 
 
@@ -474,7 +474,7 @@
                                 data : {}
                             },
                             onBackDropClickClose: true,
-                            templateUrl : 'templates/partials/chat/media-preview.html'
+                            templateUrl: '@templates/partials/chat/media-preview.html'
                         });
                     };
 
@@ -506,7 +506,7 @@
                     });
 
                 },
-                templateUrl: 'templates/partials/chat/message/single.html'
+                templateUrl: '@templates/partials/chat/message/single.html'
 
             };
         }
@@ -515,7 +515,7 @@
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'templates/partials/chat/message/upload-progress.html'
+                templateUrl: '@templates/partials/chat/message/upload-progress.html'
 
             };
         }
@@ -561,7 +561,7 @@
                     });
 
                 },
-                templateUrl: 'templates/partials/chat/message/status.html'
+                templateUrl: '@templates/partials/chat/message/status.html'
             };
         }
 
@@ -588,7 +588,7 @@
 
                     });
                 },
-                templateUrl: 'templates/partials/chat/history-loader-view.html'
+                templateUrl: '@templates/partials/chat/history-loader-view.html'
 
             };
         }
@@ -599,7 +599,7 @@
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'templates/partials/chat/single-page/home.html',
+                templateUrl: '@templates/partials/chat/single-page/home.html',
                 controller : 'ChatHistoryController'
 
             };
@@ -609,7 +609,7 @@
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'templates/partials/chat/single-page/top.html'
+                templateUrl: '@templates/partials/chat/single-page/top.html'
 
             };
         }
@@ -618,7 +618,7 @@
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'templates/partials/chat/single-page/left.html'
+                templateUrl: '@templates/partials/chat/single-page/left.html'
 
             };
         }
@@ -627,7 +627,7 @@
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'templates/partials/chat/single-page/right.html'
+                templateUrl: '@templates/partials/chat/single-page/right.html'
 
             };
         }
@@ -636,7 +636,7 @@
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'templates/partials/chat/single-page/left-single-box.html'
+                templateUrl: '@templates/partials/chat/single-page/left-single-box.html'
 
             };
         }
@@ -645,7 +645,7 @@
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'templates/partials/chat/single-page/right-single-box.html'
+                templateUrl: '@templates/partials/chat/single-page/right-single-box.html'
 
             };
         }
@@ -654,7 +654,7 @@
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'templates/partials/chat/single-page/message-box.html'
+                templateUrl: '@templates/partials/chat/single-page/message-box.html'
 
             };
         }
@@ -663,7 +663,7 @@
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'templates/partials/chat/chatbox-topbar-status.html',
+                templateUrl: '@templates/partials/chat/chatbox-topbar-status.html',
                 link : function(scope, elem){
 
                 }

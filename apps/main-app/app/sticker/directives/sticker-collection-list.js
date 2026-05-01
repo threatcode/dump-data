@@ -10,7 +10,7 @@
         function () {
             return {
                 restrict: 'E',
-                templateUrl: 'templates/partials/stickers/sticker-collection-list.html',
+                templateUrl: '@templates/partials/stickers/sticker-collection-list.html',
                 scope : {
                     'collections' : '='
                 },

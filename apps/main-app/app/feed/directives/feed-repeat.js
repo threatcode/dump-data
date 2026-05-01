@@ -117,7 +117,7 @@
                 }
 
                 if($scope.showSpecialFeed()){
-                $http.get("templates/partials/special-feed.html", {cache: $templateCache}).then(function (result) {
+                $http.get("@templates/partials/special-feed.html", {cache: $templateCache}).then(function (result) {
                     specialTpl = result.data;
                  });
                 }

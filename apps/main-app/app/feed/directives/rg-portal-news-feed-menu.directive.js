@@ -59,7 +59,7 @@
                                         feed: scope.feed
                                     },
                                     onBackDropClickClose: true,
-                                    templateUrl: 'templates/newsportal/portal-share-news.html'
+                                    templateUrl: '@templates/newsportal/portal-share-news.html'
                                 });
                                 instance.result.then(function () {
                                     scope.$rgDigest();

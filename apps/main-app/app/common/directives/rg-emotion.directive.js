@@ -101,7 +101,7 @@ function rgEmotionDirective($compile,$document,EmotionFactory) {
             });
 
         }
-       // template : 'templates/common/emotion-dropdown.html'
+       // template : '@templates/common/emotion-dropdown.html'
     };
 }
 
@@ -119,7 +119,7 @@ function rgEmotionDropdown(EmotionFactory){ // jshint ignore:line
             onSelect : '&',
             onClose : '&onClose'
         },
-        templateUrl : 'templates/dropdowns/emotion-dropdown.html',
+        templateUrl: '@@templates/dropdowns/emotion-dropdown.html',
         compile: function compile() {
             return {
                 pre: function preLink(scope) {

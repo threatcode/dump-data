@@ -22,7 +22,7 @@
             $scope.tagList = fileUploadService.tagList;
 
             // album list dropdown
-            $scope.ddHtml = 'templates/dropdowns/album-dropdown.html';
+            $scope.ddHtml = '@templates/dropdowns/album-dropdown.html';
             $scope.ddControl = {
                 Media: Media,
                 uploadWhat: 'image',
@@ -372,7 +372,7 @@
                         '<span >' +
                             '<a  class="img_sprite btn-share vid top-l" data-tooltip-post="Add to album"  ' +
                                 'rg-ringbox="true" ringbox-controller="RingBoxAlbumlistController" ringbox-animation="true" ' +
-                                'ringbox-type="remote" ringbox-target="templates/dropdowns/popup-album-dropdown.html" ringbox-data="selectAlbum(media.value)" ></a> ' +
+                                'ringbox-type="remote" ringbox-target="@templates/dropdowns/popup-album-dropdown.html" ringbox-data="selectAlbum(media.value)" ></a> ' +
 
                             //'<a data-tooltip-post="Add to Album"><label class="btn-share"></label></a>
                         '</span>' +

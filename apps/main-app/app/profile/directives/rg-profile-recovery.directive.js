@@ -169,7 +169,7 @@
             return {
                 restrict: 'E',
                 //scope: true,
-                templateUrl: 'templates/profile/profile.about-recovery.html',
+                templateUrl: '@templates/profile/profile.about-recovery.html',
                 controller: ProfileRecoveryController,
                 link: linkFunc
             };

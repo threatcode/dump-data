@@ -7,7 +7,7 @@
     function rgSingleFeedDetails() {
         return {
             restrict: 'E',
-            templateUrl: 'templates/partials/single_feed/details.html'
+            templateUrl: '@templates/partials/single_feed/details.html'
 
             //scope : {
             //    feed : '=',

@@ -182,7 +182,7 @@
             return {
                 restrict: 'E',
                 //scope: true,
-                templateUrl: 'templates/profile/profile.about-privacy.html',
+                templateUrl: '@templates/profile/profile.about-privacy.html',
                 controller: ProfilePrivacyController,
                 link: linkFunc
             };

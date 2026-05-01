@@ -1711,7 +1711,7 @@
                            }
 
                            if(scope.filterFriend && !DropdownFriendElement){
-                              DropdownFriendElement = $compile('<rg-friend-dropdown template-url="templates/dropdowns/tag-editor-dropdown.html" tag-items="[]" filter-text="filterFriend" focus-filter="" on-close="closeDropdownFriend" on-select="chooseFriend"></rg-friend-dropdown>')(scope);
+                              DropdownFriendElement = $compile('<rg-friend-dropdown template-url="@templates/dropdowns/tag-editor-dropdown.html" tag-items="[]" filter-text="filterFriend" focus-filter="" on-close="closeDropdownFriend" on-select="chooseFriend"></rg-friend-dropdown>')(scope);
                               element.after(DropdownFriendElement);
 
                               var pos = editor.getPosition();

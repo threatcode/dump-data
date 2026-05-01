@@ -353,13 +353,13 @@
                     var templatePath = '';
                     switch(this.noti.popupType) {
                       case 'image' :
-                            templatePath = 'templates/partials/notification/image-popup.html'; // IMPORTANT this template is preloaded inside auth factory
+                            templatePath = '@templates/partials/notification/image-popup.html'; // IMPORTANT this template is preloaded inside auth factory
                             break;
                       case 'media' :
-                            templatePath = 'templates/partials/notification/media-popup.html'; // IMPORTANT this template is preloaded inside auth factory
+                            templatePath = '@templates/partials/notification/media-popup.html'; // IMPORTANT this template is preloaded inside auth factory
                             break;
                       case 'feed' :
-                            templatePath = 'templates/partials/notification/feed-popup_with_image.html'; // IMPORTANT this template is preloaded inside auth factory
+                            templatePath = '@templates/partials/notification/feed-popup_with_image.html'; // IMPORTANT this template is preloaded inside auth factory
                             break;
                       default:
                           templatePath = '';

@@ -11,7 +11,7 @@
         return {
             restrict: 'E',
             replace : true,
-            templateUrl : 'templates/partials/feed-timeout-option.html',
+            templateUrl: '@templates/partials/feed-timeout-option.html',
             link : function(scope){
                     scope.$rgDigest();
             },

@@ -168,7 +168,7 @@
             restrict: 'E',
             controller: mediaSliderController,
             link: linkFunc,
-            templateUrl: 'templates/mediasearch/media-slider-directive.html'
+            templateUrl: '@templates/mediasearch/media-slider-directive.html'
         };
     }
 

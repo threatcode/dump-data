@@ -204,7 +204,7 @@
         return {
             restrict: 'A',
             //controller: InviteController,
-            templateUrl: 'templates/partials/friend-invite.html',
+            templateUrl: '@templates/partials/friend-invite.html',
             link : linkFunc
         };
 

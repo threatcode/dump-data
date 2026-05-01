@@ -63,7 +63,7 @@
         return {
             restrict: 'E',
             //scope: true,
-            templateUrl: 'templates/profile/profile.about-incoming-frnd-req.html',
+            templateUrl: '@templates/profile/profile.about-incoming-frnd-req.html',
             controller: ProfileAinfndreqController,
             link: linkFunc
         };

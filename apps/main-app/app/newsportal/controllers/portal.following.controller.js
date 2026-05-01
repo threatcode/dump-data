@@ -103,7 +103,7 @@
                                         message : message
                                     }
                                 },
-                                templateUrl : 'templates/partials/ringbox-confirm.html'
+                                templateUrl: '@templates/partials/ringbox-confirm.html'
                         });
 
                         boxInstance.result.then(function(confirmed){

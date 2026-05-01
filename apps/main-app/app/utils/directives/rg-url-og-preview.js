@@ -43,7 +43,7 @@
             templateUrl: '',
             link : function(scope, element, attr){
 
-                var templateUrl = "templates/partials/url-og-preview.html";
+                var templateUrl = '@templates/partials/url-og-preview.html";
 
                 if( !!attr.template) {
                     templateUrl = attr.template;

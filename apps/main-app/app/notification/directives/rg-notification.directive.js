@@ -157,7 +157,7 @@
         }
 
         function linkFunc(scope, element, attr) {
-            var templateUrl =  attr.templateUrl ? attr.templateUrl : 'templates/dropdowns/notification-dropdown.html';
+            var templateUrl =  attr.templateUrl ? attr.templateUrl: '@templates/dropdowns/notification-dropdown.html';
 
             $ringhttp.get(templateUrl).success(function(template) {
                 element.append($compile(template)(scope));
@@ -169,7 +169,7 @@
         return {
             restrict: 'AE',
             controller: NotificationController,
-            //templateUrl: 'templates/dropdowns/notification-dropdown.html', // IMPORTANT template preloaded inside auth factory
+            //templateUrl: '@templates/dropdowns/notification-dropdown.html', // IMPORTANT template preloaded inside auth factory
             //scope: true,
             scope: {
                  loadCount: '@',

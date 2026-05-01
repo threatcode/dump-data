@@ -30,7 +30,7 @@
 
         $scope.activePath = null; // for active menu link
         $scope.currentUser = Auth.currentUser();
-        $scope.templatePath = 'templates/index-login.html';
+        $scope.templatePath = '@templates/index-login.html';
         $scope.isLoggedIn = false;
         $scope.isPending = function() {
             return loginPending;
@@ -52,7 +52,7 @@
                 RingLogger.warning('USER LOGGED IN appInit()', RingLogger.tags.AUTH);
 
                 $scope.currentUser = Auth.currentUser();
-                $scope.templatePath = 'templates/index-dashboard.html';
+                $scope.templatePath = '@templates/index-dashboard.html';
                 $$connector.resume();
                 $$connector.keepAlive();
 
@@ -68,7 +68,7 @@
 
             } else {
                 RingLogger.warning('USER NOT LOGGED IN appInit()', RingLogger.tags.AUTH);
-                $scope.templatePath = 'templates/index-login.html';
+                $scope.templatePath = '@templates/index-login.html';
             }
 
             $scope.$rgDigest();

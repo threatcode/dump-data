@@ -136,7 +136,7 @@
 
 
         function linkFunc(scope, element, attr) {
-            var templateUrl =  attr.templateUrl ? attr.templateUrl : 'templates/dropdowns/friend-request-dropdown.html';
+            var templateUrl =  attr.templateUrl ? attr.templateUrl: '@templates/dropdowns/friend-request-dropdown.html';
 
             $ringhttp.get(templateUrl).success(function(template) {
                 element.append($compile(template)(scope));
@@ -147,7 +147,7 @@
 
         return {
             restrict: 'AE',
-            //templateUrl: 'templates/dropdowns/friend-request-dropdown.html', // IMPORTANT this template is preloaded from auth factory
+            //templateUrl: '@templates/dropdowns/friend-request-dropdown.html', // IMPORTANT this template is preloaded from auth factory
             //template:
                     //'<li  rg-dropdown="dropdown()" dd-html="header.freq.ddHtml"' +
                          //' dd-control="header.freq.ddControl" dd-action="header.freq.ddAction"' +

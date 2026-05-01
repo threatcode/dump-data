@@ -66,7 +66,7 @@
         return {
             restrict: 'E',
             //scope: true,
-            templateUrl: 'templates/profile/profile.about-afam.html',
+            templateUrl: '@templates/profile/profile.about-afam.html',
             controller: ProfileAllowaddmeController,
             link: linkFunc
         };

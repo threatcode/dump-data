@@ -49,7 +49,7 @@
                 $scope.cancelUpdateSkill = cancelUpdateSkill;
                 $scope.skillObjInfo = {};
 
-                $scope.ddActionHtml = 'templates/dropdowns/action-dropdown.html';
+                $scope.ddActionHtml = '@templates/dropdowns/action-dropdown.html';
                 $scope.actionSkillDropdown = function(actionObj) {
                     switch(actionObj.action) {
                         case 'edit':
@@ -239,7 +239,7 @@
             return {
                 restrict: 'E',
                 //scope: true,
-                templateUrl: 'templates/profile/profile.about-skill.html',
+                templateUrl: '@@templates/profile/profile.about-skill.html',
                 controller: ProfileSkillController,
                 link: linkFunc
             };

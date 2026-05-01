@@ -13,21 +13,21 @@
     function rgSingleFeedBody() {
         return {
             restrict: 'E',
-            templateUrl: 'templates/partials/single_feed/body.html'
+            templateUrl: '@templates/partials/single_feed/body.html'
         };
     }
 
     function rgSingleFeedHeader() {
         return {
             restrict: 'E',
-            templateUrl: 'templates/partials/single_feed/header.html'
+            templateUrl: '@templates/partials/single_feed/header.html'
         };
     }
 
     function rgSingleFeedMenu() {
         return {
             restrict: 'E',
-            templateUrl: 'templates/partials/single_feed/menu.html'
+            templateUrl: '@templates/partials/single_feed/menu.html'
         };
     }
 

@@ -69,7 +69,7 @@
         return {
             restrict: 'E',
             //scope: true,
-            templateUrl: 'templates/profile/profile.about-achat.html',
+            templateUrl: '@templates/profile/profile.about-achat.html',
             controller: ProfileAchatController,
             link: linkFunc
         };

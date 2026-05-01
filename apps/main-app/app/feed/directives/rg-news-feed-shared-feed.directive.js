@@ -11,7 +11,7 @@
     function rgNewsFeedSharedFeed() {
         return {
             restrict: 'E',
-            templateUrl: 'templates/partials/news_feed/shared_feed.html'
+            templateUrl: '@templates/partials/news_feed/shared_feed.html'
         };
     }
 

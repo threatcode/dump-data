@@ -28,6 +28,6 @@
             restrict: 'E',
             controller: tabNavController,
             link: linkFunc,
-            templateUrl: 'templates/partials/media.tabnav.dir.html'
+            templateUrl: '@templates/partials/media.tabnav.dir.html'
         };
     }

@@ -163,7 +163,7 @@
         return {
             restrict: 'E',
             //scope: true,
-            templateUrl: 'templates/profile/profile.about-basic.html',
+            templateUrl: '@templates/profile/profile.about-basic.html',
             controller: ProfileBasicController
         };
 

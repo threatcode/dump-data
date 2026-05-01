@@ -72,7 +72,7 @@
             return {
                 restrict: 'E',
                 //scope: true,
-                templateUrl: 'templates/profile/profile.about-password.html',
+                templateUrl: '@templates/profile/profile.about-password.html',
                 controller: ProfilePasswordController,
                 link: linkFunc
             };

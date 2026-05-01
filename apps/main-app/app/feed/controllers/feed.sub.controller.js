@@ -87,7 +87,7 @@
             //};
 
             // feed dropdown data
-            //$scope.ddHtml = 'templates/dropdowns/feed-edit-dropdown.html';//$templateCache.get('feed-edit-dropdown.html');
+            //$scope.ddHtml = '@templates/dropdowns/feed-edit-dropdown.html';//$templateCache.get('feed-edit-dropdown.html');
             $scope.ddTemplate =
 				'<div class="ng-cloak action feed-ac float-right">' +
 					'<div class="feed-line" ng-if="ddControl.showEdit()">' +
@@ -311,7 +311,7 @@
                                     message : message
                                 }
                             },
-                            templateUrl : 'templates/partials/ringbox-confirm.html'
+                            templateUrl: '@@templates/partials/ringbox-confirm.html'
                     });
 
                     boxInstance.result.then(function(confirmed){
@@ -466,7 +466,7 @@
                                 }
                             }
                         },
-                        templateUrl : 'templates/home/feed-tag-user-edit.html'
+                        templateUrl: '@@templates/home/feed-tag-user-edit.html'
                 });
 
 

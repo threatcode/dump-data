@@ -95,7 +95,7 @@
                                     message : message
                                 }
                             },
-                            templateUrl : 'templates/partials/ringbox-confirm.html'
+                            templateUrl: '@templates/partials/ringbox-confirm.html'
                     });
 
                     boxInstance.result.then(function(confirmed){
@@ -290,7 +290,7 @@
                 restrict: 'E',
                 controller: MediaController,
                 link: linkFunc,
-                // templateUrl: 'templates/partials/media.html'
+                // templateUrl: '@templates/partials/media.html'
                 templateUrl: function(element,attrs) {
                     return attrs.templatepath;
                 }

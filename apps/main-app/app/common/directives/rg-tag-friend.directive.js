@@ -133,7 +133,7 @@
                 });
 
             }
-            // template : 'templates/common/emotion-dropdown.html'
+            // template : '@templates/common/emotion-dropdown.html'
         }
     }
 

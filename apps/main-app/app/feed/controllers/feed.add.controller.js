@@ -22,7 +22,7 @@
                 rgDropdownService.close(actionObj.event);
                 $scope.$rgDigest();
             };
-            //$scope.privacyHtml = 'templates/dropdowns/privacy-dropdown.html';
+            //$scope.privacyHtml = '@templates/dropdowns/privacy-dropdown.html';
             $scope.privacyTemplate =
                     '<div class="ng-cloak action  ab-drop postbox-action">'+
                         '<div class="a-box" ><a rg-click="ddAction()({event: $event, privacy:ddControl.PVC1.value})" href="#"><span class="{{::ddControl.PVC1.icon}} ab-delete"></span> {{::ddControl.PVC1.text}}</a></div>' +

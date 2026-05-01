@@ -64,7 +64,7 @@
                         type : 'remote',
                         scope:false,
                         scopeData : ob,
-                        templateUrl : ob.templateUrl || 'templates/popups/ring-alert.html'
+                        templateUrl : ob.templateUrl || '@templates/popups/ring-alert.html'
                       });
 
                boxInstance.result.then(function(data){

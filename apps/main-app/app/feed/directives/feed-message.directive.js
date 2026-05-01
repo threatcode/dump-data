@@ -13,7 +13,7 @@
             scope : {
               feed : '='
             },
-            template : '<span class="location">&nbsp;at&nbsp;<a ng-href="{{ ::feed.getLocationUrl() }}"  rg-ringbox="true" ringbox-type="remote" ringbox-target="templates/partials/google-map-preview.html" scope-data="{url : feed.getLocationEmbedUrl() }">{{::feed.getLocationShortText()}}</a></span>'
+            template : '<span class="location">&nbsp;at&nbsp;<a ng-href="{{ ::feed.getLocationUrl() }}"  rg-ringbox="true" ringbox-type="remote" ringbox-target="@templates/partials/google-map-preview.html" scope-data="{url : feed.getLocationEmbedUrl() }">{{::feed.getLocationShortText()}}</a></span>'
           };
         })
         .directive('userCard',function(){
@@ -155,7 +155,7 @@
                   +'<span ng-if="::feed.getTotalTag() > 1">'
                   +'&nbsp;and&nbsp;<span class="tag-people" ng-if="::feed.getTotalTag() == 2"><user-card user="feed.getTagUsers()[1]"></user-card></span>'
                   +'<span class="" ng-if="::feed.getTotalTag() > 2"><a rg-ringbox="true" ringbox-controller="feedTagUserListController" ringbox-type="remote"'
-                  +'ringbox-target="templates/home/tag-user-list.html"'
+                  +'ringbox-target="@templates/home/tag-user-list.html"'
                   +'ringbox-data="getTagUsers(feed)" class="tag-f-msg" data-tooltip="{{::tooltip}}"'
                   +'>{{::feed.getTotalTag() -1}} others peoples</a></span></span>'
 

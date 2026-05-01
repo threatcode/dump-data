@@ -110,7 +110,7 @@
 
                 });
             },
-            templateUrl : 'templates/partials/recorder/image.html'
+            templateUrl: '@templates/partials/recorder/image.html'
         }
 
     }
@@ -123,7 +123,7 @@
     //        link : function(scope, elem, attr){
     //
     //        },
-    //        templateUrl : 'templates/partials/recorder/audio.html'
+    //        templateUrl: '@templates/partials/recorder/audio.html'
     //
     //    }
     //
@@ -251,7 +251,7 @@
     //                recorder.destroy();
     //            });
     //        },
-    //        templateUrl : 'templates/partials/recorder/video.html'
+    //        templateUrl: '@templates/partials/recorder/video.html'
     //    }
     //
     //}

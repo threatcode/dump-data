@@ -34,7 +34,7 @@ function rgFriendDropdown(friendsFactory, $filter) {
             tagItems: '=',
         },
         templateUrl: function(elem,attrs) {
-              return attrs.templateUrl || 'templates/dropdowns/tag-friend-dropdown.html';
+              return attrs.templateUrl || '@templates/dropdowns/tag-friend-dropdown.html';
         },
         compile: function compile(tElement, tAttrs, transclude) {
             return {

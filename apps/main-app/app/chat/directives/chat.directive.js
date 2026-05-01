@@ -312,7 +312,7 @@
 
 
                     $scope.tagMemberDDActions = tagMemberDDActions;
-                    $scope.tagMemberDDHtml = 'templates/partials/tag-chat/member-actions-dropdown.html';
+                    $scope.tagMemberDDHtml = '@templates/partials/tag-chat/member-actions-dropdown.html';
 
                     // edit, view or delete
                     function tagMemberDDActions(actionObj) {

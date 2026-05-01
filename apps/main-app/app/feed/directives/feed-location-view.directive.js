@@ -15,7 +15,7 @@
                 onSelect : '&',
                 location : '='
             },
-            templateUrl : 'templates/partials/feed_location/item.html',
+            templateUrl: '@@templates/partials/feed_location/item.html',
             link : function(scope, element, attr){
 
                 element.on("click",function(e){
@@ -50,7 +50,7 @@
         return {
             restrict: 'E',
             replace : true,
-            templateUrl : 'templates/partials/feed_location/view.html',
+            templateUrl: '@@templates/partials/feed_location/view.html',
             compile: function(tElement, tAttrs, transclude) {
                 return {
                     pre: function preLink(scope, iElement, iAttrs, controller) {
@@ -321,7 +321,7 @@
     function feedLocationPreview(){
         return {
             replace : true,
-            template : '<span ng-if="!!feed.getLocationInfo().lat" ><a ng-href="{{ ::feed.getLocationUrl() }}"  rg-ringbox="true" ringbox-type="remote" ringbox-target="templates/partials/google-map-preview.html" scope-data="{url : feed.getLocationEmbedUrl() }">  <img height="170px" width="100%" ng-src="{{ ::feed.getLocationStaticEmbedUrl() }}" alt="location-hover" /> </a>'
+            template : '<span ng-if="!!feed.getLocationInfo().lat" ><a ng-href="{{ ::feed.getLocationUrl() }}"  rg-ringbox="true" ringbox-type="remote" ringbox-target="@templates/partials/google-map-preview.html" scope-data="{url : feed.getLocationEmbedUrl() }">  <img height="170px" width="100%" ng-src="{{ ::feed.getLocationStaticEmbedUrl() }}" alt="location-hover" /> </a>'
         }
     }
     feedApp.directive('feedLocationPreview', feedLocationPreview);

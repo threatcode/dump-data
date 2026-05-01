@@ -57,7 +57,7 @@
 
                 $routeProvider.
                         when(RING_ROUTES.HOME, {
-                            templateUrl: 'templates/index.html',
+                            templateUrl: '@templates/index.html',
                             //resolve: {
                                 //// load necessary modules
                                 //loadFriendsModule: ['$ocLazyLoad', 'Auth', '$q', function($ocLazyLoad, Auth, $q) {
@@ -81,15 +81,15 @@
                                 //}]
                             //}
                         }).when(RING_ROUTES.LOGIN_SOCIAL, {
-                            templateUrl: 'templates/index.html'
+                            templateUrl: '@templates/index.html'
                             //resolve: {
                                 //'urlfix': ['$location', function($location) {
                                 //}]
                             //}
                         }).when(RING_ROUTES.SIGNUP_SOCIAL, {
-                            templateUrl: 'templates/index.html'
+                            templateUrl: '@templates/index.html'
                         }).when(RING_ROUTES.USER_PROFILE, {
-                            templateUrl: 'templates/profile/profile.html',
+                            templateUrl: '@templates/profile/profile.html',
                             resolve: {
                                 user: ['Api', 'userFactory', '$route', '$location', '$q', 'Ringalert', 'Auth', function(Api, userFactory, $route, $location, $q, Ringalert, Auth) {
                                     var deferred = $q.defer();
@@ -120,44 +120,44 @@
                                    return Auth.isPendingAsync();
                                 }]
                             },
-                            templateUrl: 'templates/home/circle.html'
+                            templateUrl: '@templates/home/circle.html'
                         }).when(RING_ROUTES.SINGLE_FEED, {
                             resolve: {
                                 pending: ['Auth', function(Auth) {
                                    return Auth.isPendingAsync();
                                 }]
                             },
-                            templateUrl: 'templates/index-singlefeed.html'
+                            templateUrl: '@templates/index-singlefeed.html'
                         }).when(RING_ROUTES.MEDIA_FEEDS, {
-                            templateUrl: 'templates/home/media.feed.html'
+                            templateUrl: '@templates/home/media.feed.html'
                         }).when(RING_ROUTES.WHO_SHARED_FEED, {
                             resolve: {
                                 pending: ['Auth', function(Auth) {
                                    return Auth.isPendingAsync();
                                 }]
                             },
-                            templateUrl: 'templates/index-who-sharedfeed.html'
+                            templateUrl: '@templates/index-who-sharedfeed.html'
                         }).when(RING_ROUTES.MEDIA_CLOUD, {// for media page test pupose
                             resolve: {
                                 pending: ['Auth', function(Auth) {
                                    return Auth.isPendingAsync();
                                 }]
                             },
-                            templateUrl: 'templates/media-list.html'
+                            templateUrl: '@templates/media-list.html'
                         }).when(RING_ROUTES.MEDIA_CLOUD_MYALBUM,{
                             resolve: {
                                 pending: ['Auth', function(Auth) {
                                    return Auth.isPendingAsync();
                                 }]
                             },
-                            templateUrl:'templates/mediasearch/my.albums.html',
+                            templateUrl: '@templates/mediasearch/my.albums.html',
                         }).when(RING_ROUTES.MEDIA_POST, {
                             resolve: {
                                 pending: ['Auth', function(Auth) {
                                    return Auth.isPendingAsync();
                                 }]
                             },
-                            templateUrl:'templates/mediasearch/media.upload.html',
+                            templateUrl: '@templates/mediasearch/media.upload.html',
                             controller: 'MediaPostController'
                         }).when(RING_ROUTES.MEDIA_CLOUD_ALBUM,{
                             resolve: {
@@ -165,7 +165,7 @@
                                    return Auth.isPendingAsync();
                                 }]
                             },
-                            templateUrl:'templates/mediasearch/albums.all.html',
+                            templateUrl: '@templates/mediasearch/albums.all.html',
                             controller:'allAlbumTypeController'
                         }).when(RING_ROUTES.MEDIA_CLOUD_SEARCH, {// for media page test pupose
                             resolve: {
@@ -173,7 +173,7 @@
                                    return Auth.isPendingAsync();
                                 }]
                             },
-                            templateUrl: 'templates/mediasearch/search.result.html',
+                            templateUrl: '@templates/mediasearch/search.result.html',
                             controller:'mSearchResultController'
                         }).when(RING_ROUTES.MEDIA_CLOUD_USERMEDIA,{
                             resolve: {
@@ -181,7 +181,7 @@
                                    return Auth.isPendingAsync();
                                 }]
                             },
-                            templateUrl:'templates/mediasearch/albums.all.html',
+                            templateUrl: '@templates/mediasearch/albums.all.html',
                             controller:'allAlbumTypeController'
                         }).when('/chat',{
                             resolve: {
@@ -189,10 +189,10 @@
                                    return Auth.isPendingAsync();
                                 }]
                             },
-                            templateUrl: 'templates/partials/chat/single-page/home.html',
+                            templateUrl: '@templates/partials/chat/single-page/home.html',
                             controller : 'ChatHistoryController'
                         }).when(RING_ROUTES.CIRCLE,{
-                            templateUrl: 'templates/circle-partials/all-circle.html',
+                            templateUrl: '@templates/circle-partials/all-circle.html',
                             controller : 'allCirclePopupController'
                         }).when('/newsportal',{
                             templateUrl :'pages/newsportal/portal-index.html',
@@ -210,20 +210,20 @@
                             templateUrl : 'pages/newsportal/profilenews.html',
                             controller : 'portalSaveController',
                         }).when('/allnotification',{
-                            templateUrl: 'templates/partials/all-notification.html'
+                            templateUrl: '@templates/partials/all-notification.html'
                         }).when('/allfriendrequest',{
-                            templateUrl: 'templates/partials/all-friend-request.html'
+                            templateUrl: '@templates/partials/all-friend-request.html'
                         }).when('/medianew', {// for media page test pupose
                             resolve: {
                                 pending: ['Auth', function(Auth) {
                                    return Auth.isPendingAsync();
                                 }]
                             },
-                            templateUrl: 'templates/mediapage.html'
+                            templateUrl: '@templates/mediapage.html'
                         })
 
                         // .when(RING_ROUTES.SINGLE_IMAGE, {
-                        //     templateUrl: 'templates/index-singleimage.html'
+                        //     templateUrl: '@templates/index-singleimage.html'
 
                         // })
                         .when(RING_ROUTES.FAQ, {
@@ -231,7 +231,7 @@
                                 window.location.href = location.protocol + '//' + location.host + '/faq.xhtml';
                             }
                         }).when(RING_ROUTES.API_DASHBOARD, {
-                            templateUrl: 'app/apidashboard/templates/api.index.html'
+                            templateUrl: '@templates/api.index.html'
                         }).otherwise({
                             redirectTo: '/'
                         });

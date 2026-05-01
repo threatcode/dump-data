@@ -26,7 +26,7 @@
                 $scope.worklist = [];
 
                 // dropdown
-                $scope.ddActionHtml = 'templates/dropdowns/action-dropdown.html';//$templateCache.get('action-dropdown.html');
+                $scope.ddActionHtml = '@templates/dropdowns/action-dropdown.html';//$templateCache.get('action-dropdown.html');
                 $scope.actionWorkDropdown = actionWorkDropdown;
 
                 // models and methods
@@ -376,7 +376,7 @@
             return {
                 restrict: 'E',
                 //scope: true,
-                templateUrl: 'templates/profile/profile.about-work.html',
+                templateUrl: '@@templates/profile/profile.about-work.html',
                 controller: ProfileWorkController,
                 link: linkFunc
             };

@@ -15,7 +15,7 @@
             function getImageTemplate(index,template){
                 return '<div class="img'+(index+1)+'" style="background-image:url(\'{{::feedimages['+index+'].value.src(600)}}\')" rg-ringbox="true"'
                         +'ringbox-controller="RingBoxImageController" ringbox-type="remote" ringbox-animation="true" '
-                        +'ringbox-target="templates/partials/notification/'+(template || 'image-popup.html')+'"'
+                        +'ringbox-target="@templates/partials/notification/'+(template || 'image-popup.html')+'"'
                         +' ringbox-data="getImageData(feedimages['+index+'].value, feed)"></div>';
             }
             var layoutHtmls = {

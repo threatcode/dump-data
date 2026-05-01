@@ -143,7 +143,7 @@
         .directive('setTimeoutValue', ['ChatFactory', function (ChatFactory) {
             return {
                 restrict: 'EA',
-                templateUrl: 'templates/partials/chat-timeout-value-box.html',
+                templateUrl: '@templates/partials/chat-timeout-value-box.html',
                 link: function (scope, element, attrs) {
                     //element.on('click', function (event) {
                     //    //console.log('cl');

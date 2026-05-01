@@ -22,7 +22,7 @@
         $scope.nocontent = false;
 
         // dropdown specific data and methods
-        $scope.ddHtml = 'templates/dropdowns/feed-edit-dropdown.html';
+        $scope.ddHtml = '@templates/dropdowns/feed-edit-dropdown.html';
 
 
         // methods

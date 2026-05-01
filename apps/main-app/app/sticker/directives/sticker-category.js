@@ -12,7 +12,7 @@
         function rgStickerCategory(StickerFactory) {
             return {
                 restrict: 'E',
-                templateUrl: 'templates/partials/stickers/sticker-category.html',
+                templateUrl: '@templates/partials/stickers/sticker-category.html',
                 scope : {
                     categories : '=categories'
                 },

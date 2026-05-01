@@ -168,7 +168,7 @@ function ReportController($scope,remoteData,ReportHttpService,Ringalert){
                                   resolve : {
                                       remoteData : ReportHttpService.getSpamReasonList(scope.spamType)
                                   },
-                                  templateUrl : 'templates/popups/rg-report.html'
+                                  templateUrl: '@templates/popups/rg-report.html'
                           });
 
                           boxInstance.result.then(function(confirmed){

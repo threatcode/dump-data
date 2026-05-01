@@ -20,7 +20,7 @@
 
             var OTYPES = OPERATION_TYPES.SYSTEM.MEDIA;
 
-            $scope.recentMediaDropdown = 'templates/dropdowns/recent-media-dropdown.html';
+            $scope.recentMediaDropdown = '@templates/dropdowns/recent-media-dropdown.html';
 
             $scope.searchedMedia = $$stackedMap.createNew();
             $scope.trendingArr = [];
@@ -101,7 +101,7 @@
                                     }
 
                                 },
-                                templateUrl : 'templates/dropdowns/popup-album-dropdown.html'
+                                templateUrl: '@templates/dropdowns/popup-album-dropdown.html'
                         });
                         break;
                     case 'sendtofriend':
@@ -116,7 +116,7 @@
                             media: actionObject.data.obj
                         },
                         onBackDropClickClose: true,
-                        templateUrl: 'templates/home/share-media.html',
+                        templateUrl: '@templates/home/share-media.html',
                     });
                     instance.result.then(function() {
                         $scope.$rgDigest();
@@ -203,6 +203,6 @@
             restrict: 'E',
             controller: MediaSearchController,
             link: linkFunc,
-            templateUrl: 'templates/partials/media-search.html'
+            templateUrl: '@templates/partials/media-search.html'
         };
     }

@@ -294,7 +294,7 @@ function LikeController($scope,LikeHttpService,Ringalert,$ringbox,feedFactory){
                               type : 'remote',
                               scope:$scope,
                               controller: 'WhoLikeController',
-                              templateUrl : 'templates/home/wholikes.html'
+                              templateUrl: '@templates/home/wholikes.html'
                           });
 
                // boxInstance.result.then(function(updatedFeed){

@@ -64,7 +64,7 @@
         return {
             restrict: 'E',
             //scope: true,
-            templateUrl: 'templates/profile/profile.about-aaf.html',
+            templateUrl: '@templates/profile/profile.about-aaf.html',
             controller: ProfileAafController,
             link: linkFunc
         };

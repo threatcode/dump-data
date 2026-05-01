@@ -41,7 +41,7 @@
                     '<div class="ac-top-line" ng-if="ddControl.showAddToAlbum()">'+
                             '<span class="share-ico"></span>'+
                                 '<a rg-ringbox="true" ringbox-controller="RingBoxAlbumlistController" ringbox-animation="true"'+
-                                    'ringbox-type="remote" ringbox-target="templates/dropdowns/popup-album-dropdown.html" ringbox-data="ddControl.getRingboxData()">Add to Album</a>'+
+                                    'ringbox-type="remote" ringbox-target="@templates/dropdowns/popup-album-dropdown.html" ringbox-data="ddControl.getRingboxData()">Add to Album</a>'+
                     '</div> '+
                 '</div>';
 
@@ -122,7 +122,7 @@
                         media: $scope.media
                     },
                     onBackDropClickClose: true,
-                    templateUrl: 'templates/home/share-media.html',
+                    templateUrl: '@@templates/home/share-media.html',
                 });
                 instance.result.then(function() {
                     $scope.$rgDigest();

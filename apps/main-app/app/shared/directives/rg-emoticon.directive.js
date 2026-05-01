@@ -13,7 +13,7 @@
     function rgEmoticon($compile, $timeout, $document, Utils, StickerFactory, rgScrollbarService, $templateCache, $ringhttp) { //jshint ignore:line
         var linkFunc = function (scope, element, attrs) {
             var
-                emoticonListTemplate = 'templates/partials/emoticon-window.html',
+                emoticonListTemplate = '@templates/partials/emoticon-window.html',
                 showEmoticon = false,
                 emoBoxLimit = 400,
                 emoBoxWidth = 300,

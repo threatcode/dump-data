@@ -61,7 +61,7 @@
                         $scope.activeNav = 'basic';
                     }
                 }
-                $scope.subPageLink = 'templates/profile/profile.' + $scope.subPage + '.html';
+                $scope.subPageLink = '@templates/profile/profile.' + $scope.subPage + '.html';
 
                 // get profile details
                 profileFactory.init($scope.profileObj).then(function() {
@@ -112,7 +112,7 @@
                 /* cover photo dropdown */
                 $scope.repositionExisting = false; // reposition existing pro pic or cover.
 
-                $scope.coverDdHtml = 'templates/dropdowns/coverphoto-dropdown.html'; //$templateCache.get('coverphoto-dropdown.html');
+                $scope.coverDdHtml = '@templates/dropdowns/coverphoto-dropdown.html'; //$templateCache.get('coverphoto-dropdown.html');
                 $scope.coverDdAction = function(actionObj) {
                     rgDropdownService.close(actionObj.event);
                     switch(actionObj.action) {
@@ -147,8 +147,8 @@
 
                 /* Profile photo Dropdown */
 
-                $scope.profileDdHtml = 'templates/dropdowns/profilephoto-dropdown.html'; //$templateCache.get('profilephoto-dropdown.html');
-                //$scope.frndActionHtml = 'templates/dropdowns/friend-settings-dropdown.html'; //$templateCache.get('profilephoto-dropdown.html');
+                $scope.profileDdHtml = '@templates/dropdowns/profilephoto-dropdown.html'; //$templateCache.get('profilephoto-dropdown.html');
+                //$scope.frndActionHtml = '@templates/dropdowns/friend-settings-dropdown.html'; //$templateCache.get('profilephoto-dropdown.html');
                 $scope.frndActionTemplate =
                     '<div class="action friend-settings-dropdown float-right">' +
                         '<a  ng-if="ddControl.friendshipStatus()==0 && !ddControl.isCurrentUser()" rg-click="ddAction()({ action: \'addfriend\', friend: ddControl, event:$event})" href="#"><span class="icon-addf pro-f"></span><span class="txt">{{consType.add_friend}}</span></a>' +
@@ -514,7 +514,7 @@
             return {
                 restrict: 'E',
                 scope: true,
-                templateUrl: 'templates/profile/profile-header.html',
+                templateUrl: '@@templates/profile/profile-header.html',
                 controller: ProfileController,
                 link: linkFunc
             };

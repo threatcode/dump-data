@@ -77,7 +77,7 @@ angular
                                 message : message
                             }
                         },
-                        templateUrl : 'templates/partials/ringbox-confirm.html'
+                        templateUrl: '@templates/partials/ringbox-confirm.html'
                 });
 
                 boxInstance.result.then(function(confirmed){
@@ -201,7 +201,7 @@ angular
             restrict: 'E',
             controller: PhotosController,
             link: linkFunc,
-            templateUrl: 'templates/partials/photos.html',
+            templateUrl: '@templates/partials/photos.html',
             scope: {
                 forSelection: '@forSelection',
                 $close : '&boxClose'

@@ -23,7 +23,7 @@
 
         var viewModel = this;
 
-        viewModel.memberDDHtml = 'templates/partials/tag-chat/member-actions-dropdown.html';//$templateCache.get('tag-chat-dropdown.html');
+        viewModel.memberDDHtml = '@templates/partials/tag-chat/member-actions-dropdown.html';//$templateCache.get('tag-chat-dropdown.html');
         viewModel.memberDDActions = memberDDActions;
         viewModel.getTagDDControl = getTagDDControl;
 

@@ -193,7 +193,7 @@
 				scope: {
 					placeholder: '@'
 				},
-				templateUrl: 'templates/dropdowns/search-dropdown.html', // IMPORTANT this tempalte is preloaded inside auth factory
+				templateUrl: '@templates/dropdowns/search-dropdown.html', // IMPORTANT this tempalte is preloaded inside auth factory
 				link: linkFunc,
 				controller: SearchController
 			};

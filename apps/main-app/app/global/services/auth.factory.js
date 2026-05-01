@@ -611,7 +611,7 @@
                                         },
                                         remoteData : angular.noop //initializeSignup(socialData, true)
                                     },
-                                    templateUrl : 'templates/welcome/ring-signup-popup.html'
+                                    templateUrl: '@@templates/welcome/ring-signup-popup.html'
                             });
                             deferred.resolve();
                         } else {
@@ -810,17 +810,17 @@
 
              // preloading templates
             var preloadTemplates = [
-                '/templates/dropdowns/notification-dropdown.html',
-                '/templates/dropdowns/friend-request-dropdown.html',
-                '/templates/partials/emoticon-window.html',
-                '/templates/dropdowns/circle-list-dropdown.html',
-                '/templates/dropdowns/search-dropdown.html',
-                '/templates/partials/hovercards/profile-hover.html',
+                '/@templates/dropdowns/notification-dropdown.html',
+                '/@templates/dropdowns/friend-request-dropdown.html',
+                '/@templates/partials/emoticon-window.html',
+                '/@templates/dropdowns/circle-list-dropdown.html',
+                '/@templates/dropdowns/search-dropdown.html',
+                '/@templates/partials/hovercards/profile-hover.html',
 
-                '/templates/partials/notification/image-popup.html',
-                '/templates/partials/notification/media-popup.html',
-                '/templates/partials/notification/feed-popup_with_image.html',
-                '/templates/partials/stickers/popups/sticker-market.html'
+                '/@templates/partials/notification/image-popup.html',
+                '/@templates/partials/notification/media-popup.html',
+                '/@templates/partials/notification/feed-popup_with_image.html',
+                '/@templates/partials/stickers/popups/sticker-market.html'
             ];
 
             function preLoad(templateUrl) {

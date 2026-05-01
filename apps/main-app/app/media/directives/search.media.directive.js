@@ -196,7 +196,7 @@
             restrict: 'E',
             controller: searchDirectiveController,
             link: linkFunc,
-            templateUrl: 'templates/mediasearch/media-search-directive.html'
+            templateUrl: '@templates/mediasearch/media-search-directive.html'
         };
     }
 

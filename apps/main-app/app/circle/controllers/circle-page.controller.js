@@ -55,7 +55,7 @@
             };
 
 			/* Fixed Data to Init */
-			vm.ddHtml = 'templates/dropdowns/circle-edit-dropdown.html';//$templateCache.get('circle-edit-dropdown.html');
+			vm.ddHtml = '@templates/dropdowns/circle-edit-dropdown.html';//$templateCache.get('circle-edit-dropdown.html');
 			vm.ddAction = openConfirmation;
 			vm.ddControl = {
 				isAdmin : $scope.isCurrentUserAdmin,
@@ -67,7 +67,7 @@
 			};
 
 
-			vm.ddMemberHtml = 'templates/dropdowns/circle-member-dropdown.html';//$templateCache.get('circle-member-dropdown.html');
+			vm.ddMemberHtml = '@templates/dropdowns/circle-member-dropdown.html';//$templateCache.get('circle-member-dropdown.html');
 			vm.ddMemberAction = circleMemberAction;
 
 			vm.removeMember = removeMember;
@@ -78,7 +78,7 @@
 				vm.subPage = $routeParams.subpage;
 			}
 
-			vm.subPageLink = 'templates/home/circle.' + vm.subPage + '.html';
+			vm.subPageLink = '@templates/home/circle.' + vm.subPage + '.html';
 
 			/* Dynamic Data */
 
@@ -313,7 +313,7 @@
                                 message : message
                             }
                         },
-                        templateUrl : 'templates/partials/ringbox-confirm.html'
+                        templateUrl: '@@templates/partials/ringbox-confirm.html'
                 });
 
                 boxInstance.result.then(function(confirmed){

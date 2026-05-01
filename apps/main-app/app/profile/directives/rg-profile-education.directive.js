@@ -50,7 +50,7 @@
 
 
                 // dropdown
-                $scope.ddActionHtml = 'templates/dropdowns/action-dropdown.html';//$templateCache.get('action-dropdown.html');
+                $scope.ddActionHtml = '@templates/dropdowns/action-dropdown.html';//$templateCache.get('action-dropdown.html');
                 $scope.actionEduDropdown = function(actionObj) {
                     //actionObj.event.preventDefault();
                     rgDropdownService.close(actionObj.event);
@@ -359,7 +359,7 @@
             return {
                 restrict: 'E',
                 //scope: true,
-                templateUrl: 'templates/profile/profile.about-education.html',
+                templateUrl: '@@templates/profile/profile.about-education.html',
                 controller: ProfileEducationController,
                 link: linkFunc
             };

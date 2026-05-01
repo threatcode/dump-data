@@ -294,7 +294,7 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
 - [x] Set up CI/CD (GitHub Actions)
 - [x] Fix `.npmrc` (added comments)
 - [x] Consolidate templates into `packages/templates/`
-- [ ] Configure pre-commit hooks
+- [x] Install pre-commit hooks (Husky + lint-staged)
 - [ ] Expand test coverage
 - [ ] Fix security vulnerabilities (AngularJS 1.x)
 - [ ] Create documentation (CONTRIBUTING, ARCHITECTURE)
