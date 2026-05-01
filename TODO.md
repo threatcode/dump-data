@@ -249,10 +249,10 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
   - Some files use implicit injection instead of `$inject`
   - Affects minification (though Vite handles this now)
 - [x] **Remove jQuery dependency** (partial - removed from HTML)
-  - Remaining: `apps/main-app/newsportal/app/image_slider.js` - uses jQuery plugin pattern
+  - Remaining: `apps/main-app/newsportal/app/image_slider.js` - jQuery plugin pattern (101 lines)
   - Remaining: `packages/scripts/utils_script.js` - uses `jQuery(document).ready()` and `$` selectors
-  - These files need significant refactoring to migrate to native DOM or AngularJS `angular.element`
-  - Added to ESLint ignores in `eslint.config.js`
+  - These files need significant refactoring (or deletion if migrating to React)
+  - ESLint rules disabled in `eslint.config.js` (migrating to React)
 
 ---
 

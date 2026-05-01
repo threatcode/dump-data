@@ -996,10 +996,9 @@ var emoticons_map = {
     type: 1,
   },
 };
-var _p__ = $.cookie('__p__');
-jQuery(document).ready(function () {
-  utils.init();
-});
+var _p__ = $.cookie('__p__'); // TODO: Migrate to React - remove jQuery cookie dependency
+// jQuery(document).ready removed - AngularJS handles initialization
+utils.init();
 
 var utils = {
   base: base_url,
@@ -1052,18 +1051,8 @@ var utils = {
         return this.slice(-suffix.length) === suffix;
       };
     }
-    $('.notificationLink').click(function () {
-      //$(".notificationPanel").scrollTop(0);
-      //            $('.notificationPanel').scrollTop(0);
-      //            $("div.notificationPanel").scrollTop(0);
-    });
-    $('.cmn-left-menu').click(function () {
-      if (!$(this).find('ul').first().hasClass('in')) {
-        $('.cmn-left-menu').each(function () {
-          $(this).find('ul').first().removeClass('in');
-        });
-      }
-    });
+    // jQuery click handlers removed - AngularJS handles events
+    // TODO: Migrate to React event handlers during migration
   },
   base: base_url,
   getNfPrefix: function () {
