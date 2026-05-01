@@ -18,15 +18,22 @@
         "migrate": "bash scripts/migrate-content.sh",
         "test": "cd tests && karma start karma.conf.js --single-run",
         "lint": "eslint apps/*/app/**/*.js packages/**/*.js",
-        "format": "prettier --write apps/*/app/**/*.js packages/**/*.js"
+        "format": "prettier --write apps/*/app/**/*.js packages/**/*.js",
+        "prepare": "husky init"
+    },
+    "lint-staged": {
+        "*.js": ["eslint --fix", "prettier --write"],
+        "*.{json,md,yml,yaml}": ["prettier --write"]
     },
     "devDependencies": {
         "angular-mocks": "^1.8.3",
         "eslint": "^10.3.0",
+        "husky": "^9.1.7",
         "karma-chrome-launcher": "^3.2.0",
         "karma-firefox-launcher": "^2.1.3",
         "karma-jasmine": "^5.1.0",
         "karma-junit-reporter": "^2.0.1",
+        "lint-staged": "^16.4.0",
         "prettier": "^3.8.3",
         "puppeteer": "^24.42.0",
         "vite": "^8.0.10"
