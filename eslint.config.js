@@ -12,15 +12,17 @@ export default [
       'no-console': 'off',
       'no-undef': 'error',
       // AngularJS best practices
-      'angular/directive-restrict': ['error', 'EAC'],
+      'angular/directive-restrict': ['error', { restrict: 'EAC' }],
       'angular/no-service-method': 'error',
-      'angular/no-USER-TIMER': 'warn',
+      'angular/timeout-service': 'warn',
       'angular/typecheck-array': 'error',
       'angular/typecheck-date': 'error',
       'angular/typecheck-function': 'error',
       'angular/typecheck-number': 'error',
       'angular/typecheck-object': 'error',
-      'angular/typecheck-string': 'error'
+      'angular/typecheck-string': 'error',
+      'angular/controller-as': 'error',
+      'angular/di-order': 'warn'
     },
     languageOptions: {
       globals: {
