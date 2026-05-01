@@ -23,7 +23,8 @@
     "lint": "eslint apps/*/app/**/*.js packages/**/*.js",
     "format": "prettier --write apps/*/app/**/*.js packages/**/*.js",
     "audit": "pnpm audit --audit-level moderate",
-    "prepare": "husky"
+    "prepare": "husky",
+    "validate-build": "bash scripts/validate-build.sh"
   },
   "lint-staged": {
     "*.js": [
@@ -53,7 +54,8 @@
     "puppeteer": "^24.42.0",
     "rollup-plugin-visualizer": "^7.0.1",
     "sass": "^1.99.0",
-    "vite": "^8.0.10"
+    "vite": "^8.0.10",
+    "vite-plugin-imagemin": "^0.6.1"
   },
   "dependencies": {
     "@uirouter/angularjs": "1.1.0",

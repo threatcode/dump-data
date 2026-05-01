@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import { visualizer } from 'rollup-plugin-visualizer';
+import imagemin from 'vite-plugin-imagemin';
 import fs from 'fs';
 import path from 'path';
 
@@ -94,6 +95,13 @@ export default defineConfig({
     angularTemplateCache({
       templateDir: 'packages/templates',
       prefix: ''
+    }),
+    imagemin({
+      gifsicle: { optimizationLevel: 7 },
+      optipng: { optimizationLevel: 7 },
+      mozjpeg: { quality: 80 },
+      pngquant: { quality: [0.8, 0.9] },
+      svgo: true
     })
   ],
   optimizeDeps: {

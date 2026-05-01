@@ -1,31 +1,15 @@
 
-
     angular
         .module('ringid.newsportal')
-        .directive('rgPortalTabNav', rgPortalTabNav);
+        .component('rgPortalTabNav', {
+            bindings: {},
+            controller: ['$location', function($location) {
+                var $scope = this;
 
-    rgPortalTabNav.$inject = [ ];
-    function rgPortalTabNav( ) { // jshint ignore:line
-
-        tabNavController.$inject = [ '$scope','$location' ];
-        function tabNavController ( $scope, $location ) { //jshint ignore:line
-
-            $scope.isCurrentPath = function (path,contain) {
-                return contain ?$location.path().indexOf(path) > -1 : $location.path() == path;
-            };
-      
-        }
-
-        var linkFunc = function(scope,element) {
-           
-
-        };
-
-        return {
-            restrict: 'E',
-            controller: tabNavController,
-            link: linkFunc,
-            templateUrl: '@templates/newsportal/portal.tabnav.directive.html'
-        };
-    }
-
+                $scope.isCurrentPath = function (path, contain) {
+                    return contain ? $location.path().indexOf(path) > -1 : $location.path() == path;
+                };
+            }],
+            templateUrl: '@templates/newsportal/portal.tabnav.directive.html',
+            restrict: 'E'
+        });
