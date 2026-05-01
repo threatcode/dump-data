@@ -9,7 +9,7 @@ try {
   angular.module('ringid.newsportal', [
     'ringid.services',
     'ngRoute',
-    'ngStorage'
+    'ngStorage',
   ]);
 }
 

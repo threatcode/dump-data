@@ -6,11 +6,7 @@
 try {
   angular.module('ringid.feed');
 } catch (e) {
-  angular.module('ringid.feed', [
-    'ringid.services',
-    'ngRoute',
-    'ngStorage'
-  ]);
+  angular.module('ringid.feed', ['ringid.services', 'ngRoute', 'ngStorage']);
 }
 
 // Export for use in other files

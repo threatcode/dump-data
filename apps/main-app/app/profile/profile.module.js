@@ -6,11 +6,7 @@
 try {
   angular.module('ringid.profile');
 } catch (e) {
-  angular.module('ringid.profile', [
-    'ringid.services',
-    'ngRoute',
-    'ngStorage'
-  ]);
+  angular.module('ringid.profile', ['ringid.services', 'ngRoute', 'ngStorage']);
 }
 
 // Export for use in other files

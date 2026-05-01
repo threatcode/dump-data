@@ -6,11 +6,7 @@
 try {
   angular.module('ringid.chat');
 } catch (e) {
-  angular.module('ringid.chat', [
-    'ringid.services',
-    'ngRoute',
-    'ngStorage'
-  ]);
+  angular.module('ringid.chat', ['ringid.services', 'ngRoute', 'ngStorage']);
 }
 
 // Export for use in other files

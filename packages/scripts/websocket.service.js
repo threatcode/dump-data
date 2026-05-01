@@ -18,7 +18,7 @@ export class RingSocket {
   connect() {
     try {
       this.ws = new WebSocket(this.url);
-      
+
       this.ws.onopen = () => {
         console.log('[RingSocket] Connected');
         this.isConnected = true;
@@ -62,7 +62,11 @@ export class RingSocket {
     try {
       const view = new DataView(buffer);
       // TODO: Implement binary protocol parsing based on legacy parser.js
-      console.log('[RingSocket] Binary data received:', buffer.byteLength, 'bytes');
+      console.log(
+        '[RingSocket] Binary data received:',
+        buffer.byteLength,
+        'bytes'
+      );
     } catch (error) {
       console.error('[RingSocket] Binary parse error:', error);
     }
@@ -128,7 +132,7 @@ export class RingSocket {
 
   notify(event, data) {
     const handlers = this.handlers.get(event) || [];
-    handlers.forEach(handler => {
+    handlers.forEach((handler) => {
       try {
         handler(data);
       } catch (error) {
@@ -141,7 +145,10 @@ export class RingSocket {
     if (this.reconnectDelay <= this.maxReconnectDelay) {
       console.log(`[RingSocket] Reconnecting in ${this.reconnectDelay}ms`);
       setTimeout(() => {
-        this.reconnectDelay = Math.min(this.reconnectDelay * 2, this.maxReconnectDelay);
+        this.reconnectDelay = Math.min(
+          this.reconnectDelay * 2,
+          this.maxReconnectDelay
+        );
         this.connect();
       }, this.reconnectDelay);
     } else {
