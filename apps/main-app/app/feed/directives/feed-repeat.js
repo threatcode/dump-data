@@ -2,9 +2,9 @@
  * © Ipvision
  */
 
-
+    // Use imported module definition
     angular.module('ringid.feed')
-    .directive('feedRepeat', feedRepeat);
+        .directive('feedRepeat', feedRepeat);
 
     feedRepeat.$inject = ['$parse', '$compile', '$templateCache', '$http', 'Utils','$rootScope', 'SystemEvents','$sniffer', 'feedFactory'];
 
