@@ -1,103 +1,117 @@
 # Migration Guidance
 
-This file describes a safe refactor path from the current `content/` layout to a cleaner `src/` + `dist/` repository structure.
+This file describes the actual migration performed on the RingID codebase from legacy tooling to modern tooling.
 
-## Current state
+## Migration Completed (2026-05-01)
 
-- `content/` contains application source, static HTML pages, generated assets, and legacy files mixed together.
-- `config/` contains server configuration.
-- There is no root-level source tree for active frontend code.
+### From → To
+- **Bower → pnpm** (with workspaces)
+- **Grunt → Vite** (with HMR and fast builds)
+- **Legacy structure → Monorepo** (apps/ + packages/)
 
-## Goal state
+## Final Structure
 
-- `src/` contains all active application source files.
-- `dist/` contains generated production assets.
-- `legacy/` holds archived or deprecated content pending cleanup.
-- `content/` can be removed or kept as a migration fallback until the transition is complete.
-
-## Recommended structure
-
-```text
+```
 /README.md
 /package.json
-/.gitignore
-/bower.json
-/config/
-/src/
-  /app/
-  /pages/
-  /styles/
-  /scripts/
-  /images/
-  /templates/
-  /apidocfiles/
-/legacy/
-/dist/
-  /downloads/
-  /scripts/dist/
-/tests/
-  /testmedia/
+/pnpm-workspace.yaml
+/.npmrc
+/eslint.config.js
+/.prettierrc
+/.husky/
+/apps/
+  /main-app/        # Main AngularJS application
+/packages/
+  /scripts/         # Shared JavaScript utilities
+  /styles/          # Shared CSS styles
+  /templates/       # Shared HTML templates
+  /common/          # Common resources
+  /resources/       # Shared resources
+/config/            # Server configurations
+/tests/             # Test files
+/scripts/           # Migration scripts
 ```
 
-## Safe migration steps
+## What Was Done
 
-1. Inventory current application source under `content/`.
-   - `content/app/`, `content/styles/`, `content/templates/`, `content/images/`, `content/fonts/`
-   - `content/js/`, `content/css/`
-   - `content/pages/`, `content/error/`, `content/mobile/`, `content/newsportal/`, `content/player/`, `content/webapp/`
-   - `content/chatwindow.js`, `content/utils_script.js`
-   - `content/*.html`, `content/*.xhtml`
+### 1. Package Manager Migration
+- Deleted `bower.json`, `.bowerrc`
+- Created `pnpm-workspace.yaml`
+- Migrated all dependencies to `package.json` files
+- Used pnpm workspaces for monorepo management
 
-2. Create the new `src/` tree and move active source files there.
-   - Move only active source files first; leave legacy content in `content/`.
-   - Update any build or runtime paths before removing the original files.
+### 2. Build System Migration
+- Deleted `Gruntfile.js`
+- Created `vite.config.js` with:
+  - AngularJS support
+  - Template alias (`@templates/` → `packages/templates/`)
+  - Proxy for API requests
+  - Build optimization
 
-3. Move generated build artifacts into `dist/`.
-   - `content/build/` → `dist/`
-   - `content/css/` → `dist/css/`, `content/js/` → `dist/js/`
-   - `content/scripts/dist/` → `dist/scripts/dist/`
-   - hashed bundles and minified assets from `content/`
+### 3. Code Quality Setup
+- Added ESLint with AngularJS globals
+- Added Prettier for formatting
+- Set up Husky + lint-staged for pre-commit hooks
+- Created `.editorconfig` for consistency
 
-4. Move top-level HTML and XHTML pages and shared scripts into `src/`.
-   - Root-level `content/*.html` and `content/*.xhtml` pages → `src/pages/`
-   - `content/chatwindow.js` → `src/scripts/chatwindow.js`
-   - `content/utils_script.js` → `src/scripts/utils_script.js`
+### 4. Template Consolidation
+- Moved all templates to `packages/templates/`
+- Deleted `apps/main-app/templates/`
+- Updated 161 template URLs to use `@templates/` alias
+- Created `template-loader.js` for Vite compatibility
 
-5. Move API documentation and test files.
-   - `content/apidocfiles/` → `src/apidocfiles/`
-   - `content/apidoc.json` → `src/apidocfiles/apidoc.json`
-   - `content/tests/` → `tests/`
-   - `content/karma.conf.js` → `tests/karma.conf.js`
-   - `content/testmedia/` → `tests/testmedia/`
+### 5. CI/CD Setup
+- Created `.github/workflows/ci.yml`
+- Added GitHub Actions workflow for:
+  - Install (pnpm)
+  - Lint (ESLint)
+  - Build (Vite)
+  - Security audit
 
-6. Move downloadable binaries and archives.
-   - `content/ringID*.exe`, `content/ringID*.zip` → `dist/downloads/`
+### 6. Cleanup
+- Removed legacy files: `.jshintrc`, `.tern-project`, `.eslintrc.json`
+- Deleted backup files (`*_old*`, `*_backup*`)
+- Flattened nested package directories
+- Added `package.json` to all workspace packages
 
-7. Move root-level static files.
-   - `content/robots.txt` → `robots.txt`
-   - `content/sitemap.xml` → `sitemap.xml`
+### 7. Documentation
+- Updated `README.md` with pnpm commands
+- Created `CONTRIBUTING.md`
+- Created `CHANGELOG.md`
+- Created `ARCHITECTURE.md`
+- Created `TODO.md` with gap analysis
 
-8. Archive backup/legacy files.
-   - `content/*.backup`, `content/*_old*.html`, `content/index_old_file_important.html`
-   - `content/privacy_old_important.html` → `legacy/`
-   - `content/ringidUpdate.txt` → `legacy/`
+## Migration Script
 
-9. Use the provided script
-   - Run `npm run migrate` from the repository root
-   - This moves safe source directories into `src/`, generated assets into `dist/`, test files into `tests/`, and archives legacy files into `legacy/`
+The original migration script (`scripts/migrate-to-src.js`) is obsolete. The actual migration was done manually with these steps:
 
-10. Update repository tooling.
-    - `content/bower.json` → `bower.json` (root level)
-    - Merge `content/.gitignore` entries into root `.gitignore`
-    - Merge `content/README.md` into root `README.md`
-    - Modify any server or deployment references to point to `src/` and `dist/`.
+1. Set up pnpm workspace
+2. Configure Vite for AngularJS
+3. Move files to monorepo structure
+4. Update all references and imports
+5. Add modern tooling (ESLint, Prettier, Husky)
+6. Create CI/CD pipeline
+7. Document everything
 
-11. Validate the refactor.
-    - Run the application and confirm builds still work.
-    - Remove `content/index.html` if it is just a redirect duplicate.
-    - Keep `content/` as fallback until the migration is fully verified.
+## Lessons Learned
 
-## Notes
+- **Incremental migration works better** than big-bang changes
+- **Template URLs need careful handling** — sed replacements can break strings
+- **AngularJS globals must be configured** in ESLint
+- **Git lock files** can be an issue in containerized environments
+- **pnpm workspaces** are excellent for monorepo management
 
-- Do not delete files until the new structure is confirmed working.
-- Use the `legacy/` folder for any content that is preserved for later review.
+## Future Migrations
+
+### AngularJS → Modern Framework
+See `TODO.md` for the long-term migration strategy to Angular/React/Vue.
+
+Recommended approach:
+1. Research and prototype (1-2 weeks)
+2. Incremental migration using micro-frontends (3-6 months)
+3. Sunset AngularJS version
+
+### Security Updates
+- Upgrade AngularJS 1.3.15 → Latest 1.x (or migrate framework)
+- Upgrade Bootstrap 3.3.5 → 4.x/5.x or Tailwind
+- Fix known XSS vulnerabilities
