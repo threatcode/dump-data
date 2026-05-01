@@ -1,0 +1,55 @@
+{
+  "compilerOptions": {
+    // TypeScript configuration for gradual adoption
+    // Allows mixing JS and TS files during migration
+
+    // Basic settings
+    "target": "ES2020",
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "moduleResolution": "node",
+    "allowJs": true,        // Allow JS files in the project
+    "checkJs": false,       // Don't type-check JS files (enable gradually)
+    "maxNodeModuleJsDepth": 2,
+
+    // Output settings (not used with Vite, but needed for IDE)
+    "noEmit": true,
+
+    // Strictness (enable gradually)
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "strictFunctionTypes": false,
+    "strictBindCallApply": false,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": false,
+    "alwaysStrict": false,
+
+    // Additional checks
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": false,
+
+    // Module resolution
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["apps/main-app/app/*"],
+      "@packages/*": ["packages/*"],
+      "@templates/*": ["packages/templates/*"]
+    },
+
+    // Include/exclude
+    "include": [
+      "apps/**/*.js",
+      "packages/**/*.js",
+      "tests/**/*.js"
+    ],
+    "exclude": [
+      "node_modules",
+      "dist",
+      "**/*.spec.js",
+      "**/*.Spec.js"
+    ]
+  },
+  "compileOnSave": false
+}

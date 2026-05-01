@@ -24,7 +24,8 @@
     "format": "prettier --write apps/*/app/**/*.js packages/**/*.js",
     "audit": "pnpm audit --audit-level moderate",
     "prepare": "husky",
-    "validate-build": "bash scripts/validate-build.sh"
+    "validate-build": "bash scripts/validate-build.sh",
+    "check-bundle-size": "node scripts/bundle-size-check.js"
   },
   "lint-staged": {
     "*.js": [
