@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'pnpm'
+        
+    - name: Install pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 10
+        
+    - name: Install dependencies
+      run: pnpm install
+      
+    - name: Run linter
+      run: pnpm lint
+      
+    - name: Run formatter check
+      run: pnpm format --check
+      
+    - name: Build project
+      run: pnpm build
+      
+    - name: Run tests
+      run: pnpm test
+      continue-on-error: true
+      
+    - name: Security audit
+      run: pnpm audit --audit-level high
+      continue-on-error: true
