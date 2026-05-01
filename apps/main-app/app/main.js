@@ -1,19 +1,22 @@
-// Main entry point for Vite
+// Main entry point for Vite (ESM)
 import angular from 'angular';
 import 'angular-route';
 import 'angular-animate';
 import 'angular-loader';
 import 'ngstorage';
 
-// Import app modules
-const appContext = require.context('./', true, /\.js$/);
-appContext.keys().forEach(key => {
-    if (key !== './main.js') {
-        appContext(key);
-    }
-});
+// Import app modules dynamically
+const modules = import.meta.glob('./**/*.js', { eager: true });
 
-// Bootstrap Angular manually to ensure modules are loaded
-angular.element(document).ready(function() {
-    angular.bootstrap(document, ['ringid']);
+// Load templates into AngularJS $templateCache
+import loadTemplates from '@templates/template-loader.js';
+
+// Bootstrap Angular manually
+angular.element(document).ready(() => {
+  // Load templates before bootstrap
+  const injector = angular.injector(['ng', 'ringid']);
+  const $templateCache = injector.get('$templateCache');
+  loadTemplates($templateCache);
+  
+  angular.bootstrap(document, ['ringid']);
 });

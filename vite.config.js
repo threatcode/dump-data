@@ -32,5 +32,8 @@ export default defineConfig({
       '@packages': '/packages',
       '@templates': '/packages/templates'
     }
+  },
+  optimizeDeps: {
+    include: ['angular', 'angular-route', 'angular-animate', 'angular-loader', 'ngstorage']
   }
 });
