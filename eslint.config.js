@@ -1,11 +1,26 @@
+import angularPlugin from 'eslint-plugin-angular';
+
 export default [
   {
     files: ['**/*.js'],
-    ignores: ['**/dist/**', '**/node_modules/**', '**/chatwindow.js', '**/utils_script.js', '**/*.module.js', '**/websocket.service.js', '**/ring-socket.service.js', '**/feed-shared.service.js'],
+    ignores: ['**/dist/**', '**/node_modules/**', '**/chatwindow.js', '**/utils_script.js', '**/*.module.js', '**/websocket.service.js', '**/ring-socket.service.js', '**/feed-shared.service.js', '**/feed.wrappers.js'],
+    plugins: {
+      angular: angularPlugin
+    },
     rules: {
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
       'no-console': 'off',
-      'no-undef': 'error'
+      'no-undef': 'error',
+      // AngularJS best practices
+      'angular/directive-restrict': ['error', 'EAC'],
+      'angular/no-service-method': 'error',
+      'angular/no-USER-TIMER': 'warn',
+      'angular/typecheck-array': 'error',
+      'angular/typecheck-date': 'error',
+      'angular/typecheck-function': 'error',
+      'angular/typecheck-number': 'error',
+      'angular/typecheck-object': 'error',
+      'angular/typecheck-string': 'error'
     },
     languageOptions: {
       globals: {
@@ -29,7 +44,7 @@ export default [
         requestAnimationFrame: 'readonly',
         // AngularJS
         angular: 'readonly',
-        // jQuery
+        // jQuery (being phased out)
         $: 'readonly',
         jQuery: 'readonly',
         // CommonJS/AMD
@@ -103,7 +118,7 @@ export default [
         fastdom: 'readonly',
         keepAlive: 'readonly'
       },
-      ecmaVersion: 5,
+      ecmaVersion: 2020,
       sourceType: 'script'
     }
   },

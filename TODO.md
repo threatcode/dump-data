@@ -65,19 +65,17 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
   - Staging and production environments
 
 ### Code Quality
-- [ ] **Install pre-commit hooks** (Husky + lint-staged)
-  ```bash
-  pnpm add -D husky lint-staged
-  ```
-  - Run ESLint + Prettier on staged files
-- [ ] **Expand ESLint configuration**
-  - Add `eslint-plugin-angular`
-  - Enable more rules, update to `ecmaVersion: 2020`
-  - Remove conflicting `.eslintrc.json` if exists
+- [x] **Install pre-commit hooks** (Husky + lint-staged)
+   - Configured in `package.json` with lint-staged
+   - Runs ESLint + Prettier on staged files
+- [x] **Expand ESLint configuration**
+   - Added `eslint-plugin-angular` with AngularJS best practice rules
+   - Updated `ecmaVersion` to 2020
+   - Added angular directive restrict, no-service-method rules
 - [x] **Align EditorConfig with Prettier**
-  - Both should use 2 spaces for JS files
-- [ ] **Remove legacy linter configs**
-  - Delete `.jshintrc`, `.bowerrc`, `.tern-project`
+   - Both use 2 spaces for JS files
+- [x] **Remove legacy linter configs**
+   - Deleted `.jshintrc`, `.bowerrc`, `.tern-project`
 
 ### Testing Infrastructure
 - [x] **Expand test coverage** (currently 8 test files)
@@ -219,16 +217,16 @@ Comprehensive gap analysis and action items for the modernized RingID web fronte
   - Should be in a dedicated service/factory
 
 ### Feed System
-- [ ] **Refactor feed controllers**
-  - 15+ feed controllers in `app/feed/controllers/`
-  - Many are near-identical (share, edit, tag, who-share)
-  - Consolidate into a single feed controller with parameters
+- [ ] **Refactor feed controllers** (partial)
+   - 15+ feed controllers in `app/feed/controllers/`
+   - Consolidated 6 wrapper controllers into `feed.wrappers.js`
+   - Remaining: refactor base controllers (share, edit, tag, whoshare, sub)
 - [ ] **Fix feed directive registration**
-  - Directives register `angular.module('ringid.feed')` repeatedly
-  - Should import the module once and add directives
+   - Directives register `angular.module('ringid.feed')` repeatedly
+   - Should import the module once and add directives
 - [x] **Remove commented lazy-load code**
-  - `app.routes.js` has 50+ lines of commented `$ocLazyLoad` code
-  - Either implement lazy loading properly or remove comments
+   - `app.routes.js` has 50+ lines of commented `$ocLazyLoad` code
+   - Either implement lazy loading properly or remove comments
 
 ### Authentication & User Management
 - [ ] **Consolidate auth modules**
