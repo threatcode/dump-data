@@ -2,6 +2,7 @@
     "name": "dump-data",
     "version": "0.2.0",
     "private": true,
+    "type": "module",
     "description": "RingID Monorepo - Legacy web frontend with monorepo structure",
     "engines": {
         "node": ">=18"
@@ -16,7 +17,9 @@
         "build": "vite build",
         "preview": "vite preview",
         "migrate": "bash scripts/migrate-content.sh",
-        "test": "cd tests && karma start karma.conf.js --single-run",
+        "test": "cd tests && karma start karma.conf.cjs --single-run",
+        "test:e2e": "playwright test",
+        "test:e2e:ui": "playwright test --ui",
         "lint": "eslint apps/*/app/**/*.js packages/**/*.js",
         "format": "prettier --write apps/*/app/**/*.js packages/**/*.js",
         "prepare": "husky init"
@@ -33,6 +36,7 @@
     "devDependencies": {
         "@babel/core": "^7.29.0",
         "@babel/preset-env": "^7.29.3",
+        "@playwright/test": "^1.59.1",
         "angular-mocks": "^1.8.3",
         "eslint": "^10.3.0",
         "husky": "^9.1.7",
