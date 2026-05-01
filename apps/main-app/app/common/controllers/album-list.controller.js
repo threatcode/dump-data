@@ -57,7 +57,7 @@
                     },
                     scope:false,
                     controller: 'AlbumCreateController',
-                    templateUrl: '@templates/popups/create-album-popup.html"
+                    templateUrl: '@templates/popups/create-album-popup.html'
             });
 
            boxInstance.result.then(function(albumMap){
