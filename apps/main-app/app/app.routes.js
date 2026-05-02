@@ -205,6 +205,10 @@
                             }
                         }).when(RING_ROUTES.API_DASHBOARD, {
                             templateUrl: '@templates/api.index.html'
+                        }).when('/about', {
+                            templateUrl: '@templates/react/about.html'
+                        }).when('/settings', {
+                            templateUrl: '@templates/react/settings.html'
                         }).otherwise({
                             redirectTo: '/'
                         });
@@ -214,9 +218,7 @@
                 //if(window.history && window.history.pushState){
                     //$locationProvider.html5Mode(true); //will cause an error $location in HTML5 mode requires a  tag to be present! Unless you set baseUrl tag after head tag like so: <head> <base href="/">
 
-                     //to know more about setting base URL visit: https://docs.angularjs.org/error/$location/nobase
-
-                     }
+                      //to know more about setting base URL visit: https://docs.angularjs.org/error/$location/nobase
 
             }])
         .run(['$rootScope', '$location', 'Auth', 'rgDropdownService', '$ringbox','PAGE_TITLES','Utils',

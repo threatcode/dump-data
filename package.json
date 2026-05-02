@@ -66,6 +66,9 @@
     "angular-route": "^1.8.3",
     "bootstrap": "^5.3.3",
     "ng-device-detector": "^5.1.4",
-    "ngstorage": "^0.3.11"
+    "ngstorage": "^0.3.11",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react2angular": "^4.0.6"
   }
 }

@@ -49,6 +49,12 @@ function angularTemplateCache(options = {}) {
 
 export default defineConfig({
   root: '.',
+  esbuild: {
+    jsxFactory: 'React.createElement',
+    jsxFragment: 'React.Fragment',
+    loader: 'jsx',
+    include: /src\/react\/.*\.[jt]sx?$/,
+  },
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
@@ -88,7 +94,8 @@ export default defineConfig({
     alias: {
       '@app': '/apps/main-app/app',
       '@packages': '/packages',
-      '@templates': '/packages/templates'
+      '@templates': '/packages/templates',
+      '@react': '/apps/main-app/app/react'
     }
   },
   plugins: [
@@ -105,6 +112,6 @@ export default defineConfig({
     })
   ],
   optimizeDeps: {
-    include: ['angular', 'angular-route', 'angular-animate', 'angular-loader', 'ngstorage']
+    include: ['angular', 'angular-route', 'angular-animate', 'angular-loader', 'ngstorage', 'react', 'react-dom', 'react2angular']
   }
 });

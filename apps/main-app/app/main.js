@@ -12,6 +12,12 @@ import './profile/profile.module.js';
 import './chat/chat.module.js';
 import './newsportal/newsportal.module.js';
 
+// Import React bridge module
+import './react/react.module.js';
+
+// Import React component styles
+import './react/styles.css';
+
 // Import app modules dynamically
 const modules = import.meta.glob('./**/*.js', { eager: true, ignore: ['**/main.js', '**/*.module.js'] });
 
