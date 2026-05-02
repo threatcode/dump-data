@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { useAuth } from '@/hooks/useAuth';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { Bookmark, Home, Bell, Mail, Settings, Search, TrendingUp } from 'lucide-react';
 
@@ -69,8 +68,6 @@ export default function NewsPage() {
 }
 
 function NewsContent() {
-  const { user } = useAuth();
-
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}

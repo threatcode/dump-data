@@ -1,10 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useAuth } from '@/hooks/useAuth';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { FeedPost } from '@/components/FeedPost';
-import { Search, Bell, Mail, Settings } from 'lucide-react';
+import { Search, Bell, Mail, Settings, Home } from 'lucide-react';
 
 const SAMPLE_POSTS = [
   {
@@ -60,8 +59,6 @@ export default function FeedPage() {
 }
 
 function FeedContent() {
-  const { user } = useAuth();
-
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}

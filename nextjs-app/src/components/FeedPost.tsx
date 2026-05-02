@@ -18,7 +18,6 @@ interface FeedPostProps {
 }
 
 export function FeedPost({
-  id,
   author,
   content,
   timestamp,
