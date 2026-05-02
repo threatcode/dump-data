@@ -1,8 +1,8 @@
 // Debug flags from environment variables
-const ALL_CHAT = import.meta.env.VITE_DEBUG_ALL_CHAT === 'true';
-const ALL_AUTH = import.meta.env.VITE_DEBUG_ALL_AUTH === 'true';
-const OTHERS = import.meta.env.VITE_DEBUG_OTHERS === 'true';
-const VIEW = import.meta.env.VITE_DEBUG_VIEW === 'true';
+let ALL_CHAT = import.meta.env.VITE_DEBUG_ALL_CHAT === 'true';
+let ALL_AUTH = import.meta.env.VITE_DEBUG_ALL_AUTH === 'true';
+let OTHERS = import.meta.env.VITE_DEBUG_OTHERS === 'true';
+let VIEW = import.meta.env.VITE_DEBUG_VIEW === 'true';
 
 RingLogger.showFileUrl                                       = false;
 RingLogger.tags.AUTH                                         = 'AUTH';

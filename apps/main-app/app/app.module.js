@@ -13,7 +13,8 @@ try {
     'ringid.profile',
     'ringid.chat',
     'ringid.newsportal',
-    'ringid.services'
+    'ringid.services',
+    'ringid.react'
   ]);
 }
 
